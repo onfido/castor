@@ -1,0 +1,38 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - 'release/*.*.x'
+
+jobs:
+  publish:
+    name: Publish packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Install Node dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Publish core to npm
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          package: ./packages/core/package.json
+          token: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish React to npm
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          package: ./packages/react/package.json
+          token: ${{ secrets.NPM_TOKEN }}

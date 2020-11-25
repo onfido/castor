@@ -1,0 +1,65 @@
+{
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">= 14"
+  },
+  "scripts": {
+    "start": "start-storybook -p 6006",
+    "prebuild": "shx rm -rf packages/*/dist",
+    "build": "concurrently yarn:build:*",
+    "build:core:css": "sass packages/core/style:packages/core/dist --no-source-map -s compressed",
+    "build:core:esm": "tsc -p packages/core/tsconfig.json",
+    "build:react:esm": "tsc -p packages/react/tsconfig.json",
+    "lint": "concurrently yarn:lint:*",
+    "lint:commit": "commitlint --from origin/main --to HEAD --verbose",
+    "lint:prettier": "prettier . --check --ignore-path .gitignore",
+    "lint:style": "stylelint '**/*.scss' --ignore-path .gitignore --max-warnings 0",
+    "lint:ts": "eslint . --ignore-path .gitignore --max-warnings 0",
+    "test": "jest --coverage",
+    "release": "HUSKY_SKIP_HOOKS=true standard-version"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@onfido/castor-icons": "^1.0.0",
+    "@storybook/addon-a11y": "^6.1.1",
+    "@storybook/addon-controls": "^6.1.1",
+    "@storybook/addon-docs": "^6.1.1",
+    "@storybook/addon-google-analytics": "^6.1.1",
+    "@storybook/addon-toolbars": "^6.1.1",
+    "@storybook/components": "^6.1.1",
+    "@storybook/react": "^6.1.1",
+    "@types/jest": "^26.0.15",
+    "@types/react": "^16.9.49",
+    "@typescript-eslint/eslint-plugin": "^4.8.1",
+    "@typescript-eslint/parser": "^4.8.1",
+    "commitizen": "^4.2.2",
+    "concurrently": "^5.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.13.0",
+    "eslint-plugin-react": "^7.21.5",
+    "husky": "^4.3.0",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.5.2",
+    "prettier": "^2.1.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.1.0",
+    "shx": "^0.3.3",
+    "standard-version": "^9.0.0",
+    "stylelint": "^13.8.0",
+    "stylelint-config-sass-guidelines": "^7.1.0",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.2"
+  },
+  "lint-staged": {
+    "*.{json,md,ts}": "prettier --write",
+    "{.storybook,docs,packages}/**/*.ts{,x}": "eslint --fix"
+  }
+}

@@ -1,0 +1,33 @@
+$space: 8px;
+
+.container {
+  align-items: center;
+  display: flex;
+
+  > * + * {
+    margin-left: $space;
+  }
+}
+
+.block {
+  display: inline-grid;
+  gap: $space;
+}
+
+.flow {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  margin: -$space;
+
+  > * {
+    margin: $space;
+  }
+}
+
+.grid {
+  align-items: center;
+  display: grid;
+  gap: $space;
+  grid: auto-flow / 1fr 1fr 1fr 1fr;
+}

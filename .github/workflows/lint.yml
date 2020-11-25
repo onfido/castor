@@ -1,0 +1,42 @@
+name: Lint
+
+on: push
+
+jobs:
+  run-linters:
+    name: Run linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v2
+      - run: git fetch origin main # needed for commitlint
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Install Node dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run commitlint
+        if: github.actor != 'dependabot[bot]' # allow long commit message body
+        run: yarn lint:commit
+
+      - name: Run all other linters
+        uses: wearerequired/lint-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Enable and configure linters:
+          eslint: true
+          eslint_args: '--ignore-path .gitignore --max-warnings 0'
+          eslint_extensions: 'ts'
+          stylelint: true
+          stylelint_args: '--ignore-path .gitignore --max-warnings 0'
+          stylelint_extensions: 'scss'
+          prettier: true
+          prettier_args: '--ignore-path .gitignore'
+          prettier_extensions: 'json,md,ts'
+          # Additionally configure action:
+          commit_message: 'style: fix code issues with ${linter}'

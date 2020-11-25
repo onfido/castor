@@ -1,0 +1,79 @@
+@use '../tokens' as castor;
+
+@mixin day() {
+  @include castor.tokens();
+
+  --color-content-main: var(--color-neutral-800), 1;
+  --color-content-secondary: var(--color-neutral-700), 1;
+  --color-content-action: var(--color-primary-500), 1;
+  --color-content-placeholder: var(--color-neutral-600), 1;
+  --color-content-disabled: var(--color-neutral-600), 1;
+  --color-content-link: var(--color-primary-500), 1;
+  --color-content-link-hover: var(--color-primary-600), 1;
+  --color-content-link-visited: var(--color-accent-3-600), 1;
+  --color-content-negative: var(--color-error-500), 1;
+  --color-content-warning: var(--color-warning-600), 1;
+  --color-content-positive: var(--color-success-500), 1;
+  --color-content-info: var(--color-info-500), 1;
+  --color-content-logo: var(--color-primary-500), 1;
+  --color-content-inverse-main: var(--color-neutral-200), 1;
+  --color-content-inverse-secondary: var(--color-neutral-400), 1;
+  --color-content-on-action: var(--color-neutral-200), 1;
+  --color-content-on-inverse-action: var(--color-primary-500), 1;
+  --color-content-always-light: var(--color-neutral-200), 1;
+  --color-content-always-dark: var(--color-neutral-800), 1;
+
+  --color-background-main: var(--color-neutral-200), 1;
+  --color-background-surface: var(--color-neutral-white), 1;
+  --color-background-surface-alt: var(--color-neutral-300), 1;
+  --color-background-action: var(--color-primary-500), 1;
+  --color-background-action-hover: var(--color-primary-400), 1;
+  --color-background-action-active: var(--color-primary-600), 1;
+  --color-background-action-subtle: var(--color-primary-500), 0.1;
+  --color-background-action-subtle-hover: var(--color-primary-500), 0.05;
+  --color-background-disabled: var(--color-neutral-300), 1;
+  --color-background-negative: var(--color-error-500), 1;
+  --color-background-negative-hover: var(--color-error-400), 1;
+  --color-background-negative-active: var(--color-error-600), 1;
+  --color-background-negative-subtle: var(--color-error-500), 0.1;
+  --color-background-negative-subtle-hover: var(--color-error-500), 0.05;
+  --color-background-warning: var(--color-warning-400), 1;
+  --color-background-warning-subtle: var(--color-warning-400), 0.1;
+  --color-background-positive: var(--color-success-400), 1;
+  --color-background-positive-subtle: var(--color-success-400), 0.1;
+  --color-background-info: var(--color-info-500), 1;
+  --color-background-info-subtle: var(--color-info-500), 0.1;
+  --color-background-input: var(--color-neutral-white), 1;
+  --color-background-input-selected: var(--color-primary-500), 1;
+  --color-background-overlay: var(--color-neutral-black), 0.8;
+  --color-background-overlay-subtle: var(--color-neutral-black), 0.5;
+  --color-background-inverse-main: var(--color-neutral-900), 1;
+  --color-background-inverse-surface: var(--color-neutral-800), 1;
+  --color-background-inverse-action: var(--color-neutral-white), 1;
+
+  --color-border-separator: var(--color-neutral-300), 1;
+  --color-border-input: var(--color-neutral-600), 1;
+  --color-border-input-hover: var(--color-neutral-700), 1;
+  --color-border-action: var(--color-primary-500), 1;
+  --color-border-action-hover: var(--color-primary-400), 1;
+  --color-border-action-subtle: var(--color-primary-200), 1;
+  --color-border-disabled: var(--color-neutral-300), 1;
+  --color-border-negative: var(--color-error-500), 1;
+  --color-border-negative-subtle: var(--color-error-200), 1;
+  --color-border-warning: var(--color-warning-400), 1;
+  --color-border-warning-subtle: var(--color-warning-muted-300), 1;
+  --color-border-positive: var(--color-success-500), 1;
+  --color-border-positive-subtle: var(--color-success-muted-300), 1;
+  --color-border-info: var(--color-info-500), 1;
+  --color-border-info-subtle: var(--color-info-200), 1;
+  --color-border-focus-inner: var(--color-neutral-white), 1;
+  --color-border-action-focus: var(--color-primary-600), 1;
+  --color-border-negative-focus: var(--color-error-600), 1;
+  --color-border-inverse-action: var(--color-neutral-white), 1;
+}
+
+@mixin day-class() {
+  .castor-theme--day {
+    @include day();
+  }
+}

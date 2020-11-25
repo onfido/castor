@@ -1,0 +1,135 @@
+@use '../../core' as castor;
+@use '../../mixins';
+
+@mixin Button() {
+  $border-width: 1px;
+
+  .ods-button {
+    @include castor.font('300-regular');
+    @include mixins.interactive();
+
+    align-items: center;
+    appearance: none;
+    background-color: transparent;
+    border: $border-width solid transparent;
+    border-radius: castor.border-radius('medium');
+    box-sizing: border-box;
+    display: inline-flex;
+    gap: castor.space(1);
+    justify-content: center;
+    padding: castor.space(1.5) - $border-width castor.space(3) - $border-width;
+    position: relative;
+    text-decoration: none;
+    transition: 0.15s ease;
+    transition-property: background-color, border-color, box-shadow, color;
+    width: fit-content;
+
+    > * {
+      box-sizing: inherit;
+    }
+
+    &.-action--primary {
+      background-color: castor.color('background-action');
+      color: castor.color('content-on-action');
+
+      &:hover {
+        background-color: castor.color('background-action-hover');
+      }
+
+      &:active {
+        background-color: castor.color('background-action-active');
+      }
+    }
+
+    &.-action--secondary {
+      border-color: castor.color('border-action');
+
+      &:hover,
+      &:active {
+        border-color: castor.color('border-action-hover');
+      }
+    }
+
+    &.-action--secondary,
+    &.-action--tertiary {
+      color: castor.color('content-action');
+
+      &:hover {
+        background-color: castor.color('background-action-subtle-hover');
+      }
+
+      &:active {
+        background-color: castor.color('background-action-subtle');
+      }
+    }
+
+    &.-action--primary,
+    &.-action--secondary,
+    &.-action--tertiary {
+      @include mixins.with-focus('action', $border-width);
+    }
+
+    &.-destructive--primary {
+      background-color: castor.color('background-negative');
+      color: castor.color('content-always-light');
+
+      &:hover {
+        background-color: castor.color('background-negative-hover');
+      }
+
+      &:active {
+        background-color: castor.color('background-negative-active');
+      }
+    }
+
+    &.-destructive--secondary {
+      border-color: castor.color('border-negative');
+    }
+
+    &.-destructive--secondary,
+    &.-destructive--tertiary {
+      color: castor.color('content-negative');
+
+      &:hover {
+        background-color: castor.color('background-negative-subtle-hover');
+      }
+
+      &:active {
+        background-color: castor.color('background-negative-subtle');
+      }
+    }
+
+    &.-destructive--primary,
+    &.-destructive--secondary,
+    &.-destructive--tertiary {
+      @include mixins.with-focus('negative', $border-width);
+    }
+
+    &:disabled {
+      color: castor.color('content-disabled');
+    }
+
+    &.-action--primary,
+    &.-destructive--primary {
+      &:disabled {
+        background-color: castor.color('background-disabled');
+      }
+    }
+
+    &.-action--secondary,
+    &.-destructive--secondary {
+      &:disabled {
+        border-color: castor.color('border-disabled');
+      }
+    }
+
+    &.-action--secondary,
+    &.-action--tertiary,
+    &.-destructive--secondary,
+    &.-destructive--tertiary {
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+  }
+}

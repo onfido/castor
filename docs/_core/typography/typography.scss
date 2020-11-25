@@ -1,0 +1,19 @@
+@use '~@onfido/castor';
+
+.container {
+  align-items: center;
+  display: grid;
+  gap: castor.space(4);
+  grid: auto-flow / 1fr 6fr;
+}
+
+.header {
+  color: castor.color('content-secondary');
+}
+
+.text {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

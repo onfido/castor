@@ -1,0 +1,47 @@
+@use '../../core' as castor;
+@use '../../mixins';
+
+@mixin Textarea() {
+  $border-width: 1px;
+
+  .ods-textarea {
+    @include castor.font('300-regular');
+    @include mixins.with-focus('action', $border-width);
+
+    background-color: castor.color('background-input');
+    border: $border-width solid castor.color('border-input');
+    border-radius: castor.border-radius('medium');
+    box-sizing: border-box;
+    color: castor.color('content-main');
+    padding: castor.space(1.5) - $border-width castor.space(2) - $border-width;
+    resize: vertical;
+    transition: 0.15s ease;
+    transition-property: border-color, box-shadow, color;
+    width: castor.space(50);
+
+    &::placeholder {
+      color: castor.color('content-placeholder');
+    }
+
+    &:hover {
+      border-color: castor.color('border-input-hover');
+    }
+
+    &.-invalid {
+      @include mixins.with-focus('negative', $border-width);
+
+      border-color: castor.color('border-negative');
+      color: castor.color('content-negative');
+    }
+
+    &:disabled {
+      background-color: castor.color('background-disabled');
+      border-color: castor.color('border-disabled');
+      color: castor.color('content-disabled');
+
+      &::placeholder {
+        color: inherit;
+      }
+    }
+  }
+}
