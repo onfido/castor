@@ -1,0 +1,4 @@
+// this file will generate ./dist/castor.css
+@use '../src/components' as castor;
+
+@include castor.components();

@@ -1,0 +1,119 @@
+@use 'sass:map';
+@use 'sass:string';
+
+$allowed-combinations: (
+  '800-bold',
+  '700-bold',
+  '600-bold',
+  '500-bold',
+  '400-bold',
+  '300-bold',
+  '200-bold',
+  '100-bold',
+  '800-regular',
+  '700-regular',
+  '600-regular',
+  '500-regular',
+  '400-regular',
+  '300-regular',
+  '200-regular',
+  '100-regular',
+  '800-light',
+  '700-light',
+  '600-light',
+  '500-light',
+  '400-allcaps',
+  '300-allcaps',
+  '200-allcaps',
+  '100-allcaps',
+  '400-mono',
+  '300-mono',
+  '200-mono'
+);
+
+$sizes: (
+  '800': (
+    font-size: 3.375rem,
+    line-height: 4rem,
+  ),
+  '700': (
+    font-size: 2.875rem,
+    line-height: 3.5rem,
+  ),
+  '600': (
+    font-size: 1.875rem,
+    line-height: 2.5rem,
+  ),
+  '500': (
+    font-size: 1.5rem,
+    line-height: 2rem,
+  ),
+  '400': (
+    font-size: 1.25rem,
+    line-height: 1.5rem,
+  ),
+  '300': (
+    font-size: 1rem,
+    line-height: 1.5rem,
+  ),
+  '200': (
+    font-size: 0.875rem,
+    line-height: 1.5rem,
+  ),
+  '100': (
+    font-size: 0.75rem,
+    line-height: 1rem,
+  ),
+);
+
+$types: (
+  'bold': (
+    font-weight: 500,
+  ),
+  'regular': (
+    font-weight: 400,
+  ),
+  'light': (
+    font-weight: 300,
+  ),
+  'allcaps': (
+    text-transform: uppercase,
+  ),
+  'mono': (
+    font-family: '"Roboto Mono", monospace',
+  ),
+);
+
+@mixin font($name) {
+  @if not index($allowed-combinations, $name) {
+    @error 'Font token not supported: #{$name}';
+  }
+
+  $styles: ();
+
+  @if $name {
+    $separator-index: string.index($name, '-');
+
+    $size-key: string.slice($name, 1, $separator-index - 1);
+    $size-styles: map.get($sizes, $size-key);
+    $styles: map.merge($styles, $size-styles);
+
+    $type-key: string.slice($name, $separator-index + 1);
+    $type-styles: map.get($types, $type-key);
+    $styles: map.merge($styles, $type-styles);
+  }
+
+  font-family: get-or-default($styles, font-family, inherit);
+  font-size: get-or-default($styles, font-size, initial);
+  font-weight: get-or-default($styles, font-weight, initial);
+  line-height: get-or-default($styles, line-height, initial);
+  text-transform: get-or-default($styles, text-transform, none);
+}
+
+@function get-or-default($map, $key, $default) {
+  @if map.has-key($map, $key) {
+    @return map.get($map, $key);
+  }
+
+  @return $default;
+}

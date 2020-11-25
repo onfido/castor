@@ -1,0 +1,8 @@
+@mixin interactive() {
+  cursor: pointer;
+  user-select: none;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}

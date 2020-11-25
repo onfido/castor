@@ -1,0 +1,1 @@
+export { storyOf } from './storyOf';

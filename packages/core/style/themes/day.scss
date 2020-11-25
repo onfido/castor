@@ -1,0 +1,6 @@
+// this file will generate ./dist/themes/day.css
+@use '../../src/core/themes/day' as theme;
+
+:root {
+  @include theme.day();
+}

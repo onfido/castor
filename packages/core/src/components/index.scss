@@ -1,0 +1,15 @@
+@use './button/button';
+@forward './button/button';
+@use './icon/icon';
+@forward './icon/icon';
+@use './input/input';
+@forward './input/input';
+@use './textarea/textarea';
+@forward './textarea/textarea';
+
+@mixin components() {
+  @include button.Button();
+  @include icon.Icon();
+  @include input.Input();
+  @include textarea.Textarea();
+}

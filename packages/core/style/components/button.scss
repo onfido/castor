@@ -1,0 +1,4 @@
+// this file will generate ./dist/components/button.css
+@use '../../src/components';
+
+@include components.Button();

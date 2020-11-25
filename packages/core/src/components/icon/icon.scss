@@ -1,0 +1,11 @@
+@use '../../core' as castor;
+
+@mixin Icon() {
+  $size: castor.space(3);
+
+  .ods-icon {
+    display: inline-block;
+    height: $size;
+    width: $size;
+  }
+}

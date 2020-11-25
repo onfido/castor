@@ -1,0 +1,9 @@
+$allowed-sizes: ('small', 'medium', 'large', 'full');
+
+@function border-radius($size) {
+  @if not index($allowed-sizes, $size) {
+    @error '$size must be one of (#{$allowed-sizes})';
+  }
+
+  @return var(--border-radius-#{$size});
+}

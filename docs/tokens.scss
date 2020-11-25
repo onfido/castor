@@ -1,0 +1,5 @@
+@use '~@onfido/castor';
+
+:export {
+  @include castor.tokens();
+}

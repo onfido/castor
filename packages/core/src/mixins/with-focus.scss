@@ -1,0 +1,38 @@
+@use '../core' as castor;
+
+$allowed-types: ('action', 'negative');
+
+$spread: 4px;
+$inner-size: 1px;
+$color-size: $spread - $inner-size;
+
+$max-border-width: $color-size; // when max - border used instead of color line
+
+@mixin with-focus($type, $border-width: 0) {
+  @if not index($allowed-types, $type) {
+    @error '$type must be one of (#{$allowed-types})';
+  }
+
+  @if type-of($border-width) != number {
+    @error '$border-width must be a number';
+  }
+  @if $border-width < 0 or $border-width > $max-border-width {
+    @error '$border-width must be between 0 and #{$max-border-width}';
+  }
+
+  $inner-spread: $spread - $border-width;
+  $color-spread: $inner-spread - $inner-size;
+
+  $inner-line: inset 0 0 0 $inner-spread castor.color('border-focus-inner');
+  $color-line: inset 0 0 0 $color-spread castor.color('border-#{$type}-focus');
+
+  outline: none;
+
+  &:focus {
+    box-shadow: $color-line, $inner-line;
+
+    @if $border-width > 0 {
+      border-color: castor.color('border-#{$type}-focus');
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "rules": {
+    "max-nesting-depth": [1, { "ignore": ["pseudo-classes"] }],
+    "selector-class-pattern": "^-?[a-z]+(?:--?[a-z]+)*$",
+    "scss/dollar-variable-pattern": "^[a-z]+(?:-[a-z]+)*$",
+    "scss/at-function-pattern": "^[a-z]+(?:-[a-z]+)*$",
+    "scss/at-mixin-pattern": "^[A-Z]?[a-z]+(?:-[a-z]+)*$",
+    "scss/at-mixin-argumentless-call-parentheses": "always",
+    "scss/at-rule-conditional-no-parentheses": true,
+    "scss/no-global-function-names": true,
+    "order/order": [
+      [
+        {
+          "type": "at-rule",
+          "name": "include"
+        },
+        {
+          "type": "at-rule",
+          "name": "extend"
+        },
+        "dollar-variables",
+        "custom-properties",
+        "declarations",
+        "rules"
+      ]
+    ]
+  }
+}

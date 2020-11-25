@@ -1,0 +1,6 @@
+@use '~@onfido/castor';
+
+:global {
+  @include castor.day-class();
+  @include castor.night-class();
+}

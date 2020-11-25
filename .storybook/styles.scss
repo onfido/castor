@@ -1,0 +1,26 @@
+@use '~@onfido/castor';
+
+:global {
+  @include castor.components();
+
+  html {
+    min-height: 100%;
+  }
+
+  body {
+    background-color: castor.color('background-main');
+    color: castor.color('content-main');
+    font-family: 'Helvetica Neue', Tahoma, sans-serif;
+    font-size: 16px;
+  }
+
+  // unfortunate hack to override background color of the Docs panel
+  .sbdocs-preview {
+    background-color: castor.color('background-main') !important;
+  }
+
+  // fix appearance of <select> control on the Docs panel
+  .docblock-argstable select {
+    box-sizing: border-box;
+  }
+}

@@ -1,0 +1,26 @@
+name: Build
+
+on:
+  push:
+    branches-ignore:
+      - 'release/*.*.x' # already building package when publishing
+
+jobs:
+  build:
+    name: Build packages (test)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install Node dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build packages
+        run: yarn build

@@ -1,0 +1,22 @@
+{
+  "include": ["**/*"],
+  "exclude": ["node_modules/**/*"],
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "declaration": false,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": false,
+    "strictNullChecks": true,
+
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es2019",
+    "esModuleInterop": true,
+    "jsx": "react",
+
+    "lib": ["esnext", "dom"]
+  }
+}
