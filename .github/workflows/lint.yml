@@ -13,7 +13,7 @@ jobs:
       - run: git fetch origin main # needed for commitlint
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v2.1.2
         with:
           node-version: 14
 
