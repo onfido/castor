@@ -33,7 +33,7 @@
     "@storybook/addon-google-analytics": "^6.1.1",
     "@storybook/addon-toolbars": "^6.1.1",
     "@storybook/components": "^6.1.1",
-    "@storybook/react": "^6.1.1",
+    "@storybook/react": "^6.1.9",
     "@types/jest": "^26.0.15",
     "@types/react": "^16.9.49",
     "@typescript-eslint/eslint-plugin": "^4.8.1",
