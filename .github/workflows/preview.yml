@@ -1,0 +1,33 @@
+name: Preview
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, closed]
+
+jobs:
+  preview:
+    name: Preview Storybook
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v2
+        with:
+          ref: refs/pull/${{ github.event.pull_request.number }}/merge
+
+      - name: Deploy preview to Surge
+        uses: afc163/surge-preview@v1
+        id: preview_step
+        env:
+          STORYBOOK_MODE: preview
+        with:
+          surge_token: ${{ secrets.SURGE_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          build: |
+            yarn install --frozen-lockfile
+            npx build-storybook -o public
+          dist: 'public'
+          teardown: 'true'
+
+      - name: Get preview URL
+        run: echo "url => ${{ steps.preview_step.outputs.preview_url }}"
