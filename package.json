@@ -35,7 +35,7 @@
     "@storybook/components": "^6.1.9",
     "@storybook/react": "^6.1.9",
     "@types/jest": "^26.0.15",
-    "@types/react": "^16.9.49",
+    "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.0",
     "@typescript-eslint/parser": "^4.9.0",
     "commitizen": "^4.2.2",
