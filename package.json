@@ -32,7 +32,7 @@
     "@storybook/addon-docs": "^6.1.1",
     "@storybook/addon-google-analytics": "^6.1.1",
     "@storybook/addon-toolbars": "^6.1.1",
-    "@storybook/components": "^6.1.1",
+    "@storybook/components": "^6.1.9",
     "@storybook/react": "^6.1.1",
     "@types/jest": "^26.0.15",
     "@types/react": "^16.9.49",
