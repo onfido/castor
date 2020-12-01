@@ -1878,19 +1878,19 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@storybook/addon-a11y@^6.1.1":
-  version "6.1.1"
-  resolved "https://registry.npmjs.org/@storybook/addon-a11y/-/addon-a11y-6.1.1.tgz#fd5d4cbe6c836c650576af3df4273bfce716fae7"
-  integrity sha512-AVh6W5Z7mlbbAgvpif+lH/ZhCQ2siZ+BYz6dpAZ635QEuj79qBt+aDEwejAcPTVKH42WI/OS/Cay6oIKzjctZQ==
+"@storybook/addon-a11y@^6.1.9":
+  version "6.1.9"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-6.1.9.tgz#79429cad1c3d8e6451c8731a3ddc941c0f7a9cbd"
+  integrity sha512-mInNQi5/ldUL4Lmr9PTZZq8oTpACvex2nxvd5QMxgIx5dlYFwQKM0Lo1ONF74dV32GmptwWv7gkrOFT0oXCXTQ==
   dependencies:
-    "@storybook/addons" "6.1.1"
-    "@storybook/api" "6.1.1"
-    "@storybook/channels" "6.1.1"
-    "@storybook/client-api" "6.1.1"
-    "@storybook/client-logger" "6.1.1"
-    "@storybook/components" "6.1.1"
-    "@storybook/core-events" "6.1.1"
-    "@storybook/theming" "6.1.1"
+    "@storybook/addons" "6.1.9"
+    "@storybook/api" "6.1.9"
+    "@storybook/channels" "6.1.9"
+    "@storybook/client-api" "6.1.9"
+    "@storybook/client-logger" "6.1.9"
+    "@storybook/components" "6.1.9"
+    "@storybook/core-events" "6.1.9"
+    "@storybook/theming" "6.1.9"
     axe-core "^4.0.1"
     core-js "^3.0.1"
     global "^4.3.2"
@@ -2170,32 +2170,6 @@
   dependencies:
     core-js "^3.0.1"
     global "^4.3.2"
-
-"@storybook/components@6.1.1", "@storybook/components@^6.1.1":
-  version "6.1.1"
-  resolved "https://registry.npmjs.org/@storybook/components/-/components-6.1.1.tgz#01b14762b95d6e455d8356c7e8d1d25aa24b113f"
-  integrity sha512-L8C1quAARkUIABzVeqnYZnGPYa98sY6XaEIS9wGNGvtuthxkVZbDpHp98W7UaehYW3t63bxYO2Fw6NWI+DILFg==
-  dependencies:
-    "@popperjs/core" "^2.4.4"
-    "@storybook/client-logger" "6.1.1"
-    "@storybook/csf" "0.0.1"
-    "@storybook/theming" "6.1.1"
-    "@types/overlayscrollbars" "^1.9.0"
-    "@types/react-color" "^3.0.1"
-    "@types/react-syntax-highlighter" "11.0.4"
-    core-js "^3.0.1"
-    fast-deep-equal "^3.1.1"
-    global "^4.3.2"
-    lodash "^4.17.15"
-    markdown-to-jsx "^6.11.4"
-    memoizerific "^1.11.3"
-    overlayscrollbars "^1.10.2"
-    polished "^3.4.4"
-    react-color "^2.17.0"
-    react-popper-tooltip "^3.1.0"
-    react-syntax-highlighter "^13.5.0"
-    react-textarea-autosize "^8.1.1"
-    ts-dedent "^2.0.0"
 
 "@storybook/components@6.1.1":
   version "6.1.1"
