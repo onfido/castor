@@ -30,7 +30,7 @@
     "@storybook/addon-a11y": "^6.1.9",
     "@storybook/addon-controls": "^6.1.9",
     "@storybook/addon-docs": "^6.1.1",
-    "@storybook/addon-google-analytics": "^6.1.1",
+    "@storybook/addon-google-analytics": "^6.1.9",
     "@storybook/addon-toolbars": "^6.1.9",
     "@storybook/components": "^6.1.9",
     "@storybook/react": "^6.1.9",
