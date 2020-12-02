@@ -1,0 +1,21 @@
+name: Rebase
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  rebase:
+    name: Automatic rebase
+    if: github.event.issue.pull_request != '' && github.event.comment.body == '/rebase'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v2
+      - run: git fetch origin main # needed for cirrus-actions/rebase
+
+      - name: Rebase to main
+        uses: cirrus-actions/rebase@1.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
