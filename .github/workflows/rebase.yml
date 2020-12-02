@@ -7,7 +7,7 @@ on:
 jobs:
   rebase:
     name: Automatic rebase
-    if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/rebase')
+    if: github.event.issue.pull_request != '' && github.event.comment.body == '/rebase'
     runs-on: ubuntu-latest
 
     steps:
