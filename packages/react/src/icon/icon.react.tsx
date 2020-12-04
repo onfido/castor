@@ -6,8 +6,7 @@ import { c, classy, color, IconProps as BaseProps } from '@onfido/castor';
  * app. If you wish to use individual inlined SVGs, use generated components
  * from Castor Icons package instead.
  *
- * More details:
- * https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/design/castor-icons
+ * More details: https://github.com/onfido/castor-icons
  */
 export const Icon = ({
   name,
