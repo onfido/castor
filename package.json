@@ -28,7 +28,7 @@
     "@commitlint/config-conventional": "^11.0.0",
     "@onfido/castor-icons": "^1.0.0",
     "@storybook/addon-a11y": "^6.1.9",
-    "@storybook/addon-controls": "^6.1.9",
+    "@storybook/addon-controls": "^6.1.10",
     "@storybook/addon-docs": "^6.1.9",
     "@storybook/addon-google-analytics": "^6.1.9",
     "@storybook/addon-toolbars": "^6.1.9",
