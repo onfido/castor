@@ -1,5 +1,5 @@
 @use 'sass:list';
-@use '../tokens' as castor;
+@use './tokens' as castor;
 
 // ...$types: 'class' | 'raw';
 @mixin theme($name, $types...) {
