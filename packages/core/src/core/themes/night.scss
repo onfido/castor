@@ -3,8 +3,9 @@
 
 // $type?: class | raw;
 @mixin night($type1: null, $type2: null) {
-  $class: list.index(($type1, $type2), 'class');
-  $raw: list.index(($type1, $type2), 'raw');
+  $types: ($type1, $type2);
+  $class: list.index($types, 'class');
+  $raw: list.index($types, 'raw');
 
   $selector: if($class, '.castor-theme--night', '&');
 
