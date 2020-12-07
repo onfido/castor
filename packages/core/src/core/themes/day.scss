@@ -1,19 +1,9 @@
 @use 'sass:list';
-@use '../tokens' as castor;
+@use './theme' as castor;
 
-// $type?: class | raw;
-@mixin day($type1: null, $type2: null) {
-  $types: ($type1, $type2);
-  $class: list.index($types, 'class');
-  $raw: list.index($types, 'raw');
-
-  $selector: if($class, '.castor-theme--day', '&');
-
-  #{$selector} {
-    @if not $raw {
-      @include castor.tokens();
-    }
-
+// ...$types: 'class' | 'raw';
+@mixin day($types...) {
+  @include castor.theme('day', $types...) {
     --color-content-main: var(--color-neutral-800), 1;
     --color-content-secondary: var(--color-neutral-700), 1;
     --color-content-action: var(--color-primary-500), 1;

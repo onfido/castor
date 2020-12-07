@@ -1,0 +1,18 @@
+@use 'sass:list';
+@use '../tokens' as castor;
+
+// ...$types: 'class' | 'raw';
+@mixin theme($name, $types...) {
+  $class: list.index($types, 'class');
+  $raw: list.index($types, 'raw');
+
+  $selector: if($class, '.castor-theme--#{$name}', '&');
+
+  #{$selector} {
+    @if not $raw {
+      @include castor.tokens();
+    }
+
+    @content;
+  }
+}
