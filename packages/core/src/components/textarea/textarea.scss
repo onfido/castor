@@ -15,8 +15,6 @@
     color: castor.color('content-main');
     padding: castor.space(1.5) - $border-width castor.space(2) - $border-width;
     resize: vertical;
-    transition: 0.15s ease;
-    transition-property: border-color, box-shadow, color;
     width: castor.space(50);
 
     &::placeholder {
