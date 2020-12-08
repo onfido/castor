@@ -112,8 +112,8 @@ You can also include class themes within your Sass file instead:
 ```scss
 @use '~@onfido/castor';
 
-@include castor.day-class();
-@include castor.night-class();
+@include castor.day('class');
+@include castor.night('class');
 ```
 
 These themes are not applied to the root element but instead theme variables are scoped to CSS classes, which are then applied to the body element.
@@ -131,6 +131,19 @@ switchTheme('custom', document.querySelector('.section'));
 ```
 
 If you do not use JavaScript, you might consider including a different CSS theme file based on URL parameter.
+
+Lastly, if you're extremely concerned about efficiency, you can shave off 1-3 KBs by not including base tokens twice, if they're shared between the themes you're switching:
+
+```scss
+@use '~@onfido/castor';
+
+:root {
+  @include castor.tokens();
+}
+
+@include castor.day('class', 'raw');
+@include castor.night('class', 'raw');
+```
 
 ## Use components
 
