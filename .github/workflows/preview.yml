@@ -27,6 +27,7 @@ jobs:
             yarn install --frozen-lockfile
             npx build-storybook -o public
           dist: 'public'
+          failOnError: 'failed'
           teardown: 'true'
 
       - name: Get preview URL
