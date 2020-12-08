@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout Git repository
         uses: actions/checkout@v2
+        with:
+          ref: refs/pull/${{ github.event.pull_request.number }}/merge
 
       - name: Deploy preview to Surge
         uses: afc163/surge-preview@v1.5.5
