@@ -1,5 +1,5 @@
 import { IconName } from '@onfido/castor-icons';
-import { Color } from '../../core';
+import { Color } from '../../helpers';
 
 export interface IconProps {
   name: IconName;

@@ -1,4 +1,4 @@
 // this file will generate ./dist/themes/day-class.css
-@use '../../src/core/themes/day' as theme;
+@use '../../src/theme';
 
 @include theme.day('class');

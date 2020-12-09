@@ -1,4 +1,4 @@
-import { Font } from '../../core/helpers';
+import { Font } from '../../helpers';
 import { dashCase } from '../../utils';
 
 /**
