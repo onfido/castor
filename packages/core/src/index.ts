@@ -1,4 +1,4 @@
 export * from './components';
 export * from './helpers';
-export * from './themes';
+export * from './theming';
 export * from './utils';
