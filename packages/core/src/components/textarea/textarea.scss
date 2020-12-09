@@ -1,12 +1,12 @@
-@use '../../core' as castor;
-@use '../../mixins';
+@use '../../helpers' as castor;
+@use '../../utils';
 
 @mixin Textarea() {
   $border-width: 1px;
 
   .ods-textarea {
     @include castor.font('300-regular');
-    @include mixins.with-focus('action', $border-width);
+    @include utils.with-focus('action', $border-width);
 
     background-color: castor.color('background-input');
     border: $border-width solid castor.color('border-input');
@@ -26,7 +26,7 @@
     }
 
     &.-invalid {
-      @include mixins.with-focus('negative', $border-width);
+      @include utils.with-focus('negative', $border-width);
 
       border-color: castor.color('border-negative');
       color: castor.color('content-negative');

@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react';
-import { toCSS } from '../../../utils';
+import { toCSS } from '../../utils';
 
 /**
  * Returns an object that represents a `Font`.
