@@ -1,12 +1,12 @@
 @use '../../helpers' as castor;
-@use '../../utils';
+@use '../../mixins';
 
 @mixin Button() {
   $border-width: 1px;
 
   .ods-button {
     @include castor.font('300-regular');
-    @include utils.interactive();
+    @include mixins.interactive();
 
     align-items: center;
     appearance: none;
@@ -64,7 +64,7 @@
     &.-action--primary,
     &.-action--secondary,
     &.-action--tertiary {
-      @include utils.with-focus('action', $border-width);
+      @include mixins.with-focus('action', $border-width);
     }
 
     &.-destructive--primary {
@@ -100,7 +100,7 @@
     &.-destructive--primary,
     &.-destructive--secondary,
     &.-destructive--tertiary {
-      @include utils.with-focus('negative', $border-width);
+      @include mixins.with-focus('negative', $border-width);
     }
 
     &:disabled {
