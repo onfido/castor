@@ -1,4 +1,4 @@
-@use '../theming' as castor;
+@use '../theme' as castor;
 
 // ...$types: 'class' | 'raw';
 @mixin night($types...) {
