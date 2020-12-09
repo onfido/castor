@@ -187,6 +187,7 @@ type BorderColor =
   | 'border-positive-subtle'
   | 'border-info'
   | 'border-info-subtle'
+  | 'border-input-selected'
   | 'border-focus-inner'
   | 'border-action-focus'
   | 'border-negative-focus'
