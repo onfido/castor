@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { switchTheme } from './switchTheme';
+import { switchTheme } from './switch-theme';
 
 describe('switchTheme', () => {
   const prefix = 'castor-theme--';
