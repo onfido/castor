@@ -1,4 +1,4 @@
-@use '../helpers' as castor;
+@use '../helpers';
 
 $allowed-types: ('action', 'negative');
 
@@ -23,8 +23,8 @@ $max-border-width: $color-size; // when max - border used instead of color line
   $inner-spread: $spread - $border-width;
   $color-spread: $inner-spread - $inner-size;
 
-  $inner-line: inset 0 0 0 $inner-spread castor.color('border-focus-inner');
-  $color-line: inset 0 0 0 $color-spread castor.color('border-#{$type}-focus');
+  $inner-line: inset 0 0 0 $inner-spread helpers.color('border-focus-inner');
+  $color-line: inset 0 0 0 $color-spread helpers.color('border-#{$type}-focus');
 
   outline: none;
 
@@ -32,7 +32,7 @@ $max-border-width: $color-size; // when max - border used instead of color line
     box-shadow: $color-line, $inner-line;
 
     @if $border-width > 0 {
-      border-color: castor.color('border-#{$type}-focus');
+      border-color: helpers.color('border-#{$type}-focus');
     }
   }
 }

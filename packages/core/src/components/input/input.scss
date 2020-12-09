@@ -1,40 +1,40 @@
-@use '../../helpers' as castor;
+@use '../../helpers';
 @use '../../mixins';
 
 @mixin Input() {
   $border-width: 1px;
 
   .ods-input {
-    @include castor.font('300-regular');
+    @include helpers.font('300-regular');
     @include mixins.with-focus('action', $border-width);
 
-    background-color: castor.color('background-input');
-    border: $border-width solid castor.color('border-input');
-    border-radius: castor.border-radius('medium');
+    background-color: helpers.color('background-input');
+    border: $border-width solid helpers.color('border-input');
+    border-radius: helpers.border-radius('medium');
     box-sizing: border-box;
-    color: castor.color('content-main');
-    padding: castor.space(1.5) - $border-width castor.space(2) - $border-width;
-    width: castor.space(50);
+    color: helpers.color('content-main');
+    padding: helpers.space(1.5) - $border-width helpers.space(2) - $border-width;
+    width: helpers.space(50);
 
     &::placeholder {
-      color: castor.color('content-placeholder');
+      color: helpers.color('content-placeholder');
     }
 
     &:hover {
-      border-color: castor.color('border-input-hover');
+      border-color: helpers.color('border-input-hover');
     }
 
     &.-invalid {
       @include mixins.with-focus('negative', $border-width);
 
-      border-color: castor.color('border-negative');
-      color: castor.color('content-negative');
+      border-color: helpers.color('border-negative');
+      color: helpers.color('content-negative');
     }
 
     &:disabled {
-      background-color: castor.color('background-disabled');
-      border-color: castor.color('border-disabled');
-      color: castor.color('content-disabled');
+      background-color: helpers.color('background-disabled');
+      border-color: helpers.color('border-disabled');
+      color: helpers.color('content-disabled');
 
       &::placeholder {
         color: inherit;

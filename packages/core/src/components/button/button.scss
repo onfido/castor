@@ -1,23 +1,23 @@
-@use '../../helpers' as castor;
+@use '../../helpers';
 @use '../../mixins';
 
 @mixin Button() {
   $border-width: 1px;
 
   .ods-button {
-    @include castor.font('300-regular');
+    @include helpers.font('300-regular');
     @include mixins.interactive();
 
     align-items: center;
     appearance: none;
     background-color: transparent;
     border: $border-width solid transparent;
-    border-radius: castor.border-radius('medium');
+    border-radius: helpers.border-radius('medium');
     box-sizing: border-box;
     display: inline-flex;
-    gap: castor.space(1);
+    gap: helpers.space(1);
     justify-content: center;
-    padding: castor.space(1.5) - $border-width castor.space(3) - $border-width;
+    padding: helpers.space(1.5) - $border-width helpers.space(3) - $border-width;
     position: relative;
     text-decoration: none;
     width: fit-content;
@@ -27,37 +27,37 @@
     }
 
     &.-action--primary {
-      background-color: castor.color('background-action');
-      color: castor.color('content-on-action');
+      background-color: helpers.color('background-action');
+      color: helpers.color('content-on-action');
 
       &:hover {
-        background-color: castor.color('background-action-hover');
+        background-color: helpers.color('background-action-hover');
       }
 
       &:active {
-        background-color: castor.color('background-action-active');
+        background-color: helpers.color('background-action-active');
       }
     }
 
     &.-action--secondary {
-      border-color: castor.color('border-action');
+      border-color: helpers.color('border-action');
 
       &:hover,
       &:active {
-        border-color: castor.color('border-action-hover');
+        border-color: helpers.color('border-action-hover');
       }
     }
 
     &.-action--secondary,
     &.-action--tertiary {
-      color: castor.color('content-action');
+      color: helpers.color('content-action');
 
       &:hover {
-        background-color: castor.color('background-action-subtle-hover');
+        background-color: helpers.color('background-action-subtle-hover');
       }
 
       &:active {
-        background-color: castor.color('background-action-subtle');
+        background-color: helpers.color('background-action-subtle');
       }
     }
 
@@ -68,32 +68,32 @@
     }
 
     &.-destructive--primary {
-      background-color: castor.color('background-negative');
-      color: castor.color('content-always-light');
+      background-color: helpers.color('background-negative');
+      color: helpers.color('content-always-light');
 
       &:hover {
-        background-color: castor.color('background-negative-hover');
+        background-color: helpers.color('background-negative-hover');
       }
 
       &:active {
-        background-color: castor.color('background-negative-active');
+        background-color: helpers.color('background-negative-active');
       }
     }
 
     &.-destructive--secondary {
-      border-color: castor.color('border-negative');
+      border-color: helpers.color('border-negative');
     }
 
     &.-destructive--secondary,
     &.-destructive--tertiary {
-      color: castor.color('content-negative');
+      color: helpers.color('content-negative');
 
       &:hover {
-        background-color: castor.color('background-negative-subtle-hover');
+        background-color: helpers.color('background-negative-subtle-hover');
       }
 
       &:active {
-        background-color: castor.color('background-negative-subtle');
+        background-color: helpers.color('background-negative-subtle');
       }
     }
 
@@ -104,20 +104,20 @@
     }
 
     &:disabled {
-      color: castor.color('content-disabled');
+      color: helpers.color('content-disabled');
     }
 
     &.-action--primary,
     &.-destructive--primary {
       &:disabled {
-        background-color: castor.color('background-disabled');
+        background-color: helpers.color('background-disabled');
       }
     }
 
     &.-action--secondary,
     &.-destructive--secondary {
       &:disabled {
-        border-color: castor.color('border-disabled');
+        border-color: helpers.color('border-disabled');
       }
     }
 
