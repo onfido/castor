@@ -1,6 +1,6 @@
 // this file will generate ./dist/themes/night.css
-@use '../../src/themes';
+@use '../../src/theme';
 
 :root {
-  @include themes.night();
+  @include theme.night();
 }
