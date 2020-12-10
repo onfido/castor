@@ -4,6 +4,10 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended"
   ],
+  "env": {
+    "node": true,
+    "browser": true
+  },
   "settings": {
     "react": {
       "version": "detect"
