@@ -26,3 +26,8 @@ updates:
     directory: '/examples/html-css-js-parcel'
     schedule:
       interval: 'weekly'
+
+  - package-ecosystem: 'npm'
+    directory: '/examples/html-scss-ts-parcel'
+    schedule:
+      interval: 'weekly'
