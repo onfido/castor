@@ -1,0 +1,38 @@
+body {
+  align-items: center;
+  display: flex;
+  font-family: 'Helvetica Neue', Tahoma, sans-serif;
+  font-size: 16px;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  gap: 40px;
+  grid: auto-flow / 1fr 1fr 1fr;
+  margin: 0;
+  place-items: center;
+}
+
+.raised {
+  box-shadow: 0 2px 4px rgba(var(--color-neutral-900), 0.3);
+}
+
+.round {
+  border-radius: var(--border-radius-full);
+}
+
+.icon {
+  background-color: currentColor;
+  display: inline-block;
+  height: 24px;
+  mask: var(--mask);
+  mask: var(--mask);
+  width: 24px;
+}
+
+.passport {
+  --mask: url('./.castor-icons/svg/icon-passport.svg') no-repeat 100%;
+}

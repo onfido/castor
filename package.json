@@ -3,6 +3,7 @@
   "version": "1.0.0-rc.1",
   "private": true,
   "workspaces": [
+    "examples/*",
     "packages/*"
   ],
   "engines": {
@@ -18,7 +19,7 @@
     "lint": "concurrently yarn:lint:*",
     "lint:commit": "commitlint --from origin/main --to HEAD --verbose",
     "lint:prettier": "prettier . --check --ignore-path .gitignore",
-    "lint:style": "stylelint '**/*.scss' --ignore-path .gitignore --max-warnings 0",
+    "lint:style": "stylelint '**/*.{,s}css' --ignore-path .gitignore --max-warnings 0",
     "lint:ts": "eslint . --ignore-path .gitignore --max-warnings 0",
     "test": "jest --coverage",
     "release": "HUSKY_SKIP_HOOKS=true standard-version"
@@ -60,7 +61,7 @@
   },
   "lint-staged": {
     "*.{json,md,ts}": "prettier --write",
-    "{.storybook,docs,packages}/**/*.ts{,x}": "eslint --fix",
-    "{.storybook,docs,packages}/**/*.scss": "stylelint --fix"
+    "{.storybook,docs,examples,packages}/**/*.ts{,x}": "eslint --fix",
+    "{.storybook,docs,examples,packages}/**/*.{,s}css": "stylelint --fix"
   }
 }

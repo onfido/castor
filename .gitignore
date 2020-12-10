@@ -21,5 +21,8 @@ package-lock.json
 *.tgz
 
 # Repository specific
-coverage
+.cache
+.castor*
+examples/*/dist
 packages/*/dist
+coverage
