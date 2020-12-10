@@ -4,6 +4,7 @@
     "examples/html-css-js/package.json",
     "examples/html-css-js-parcel/package.json",
     "examples/html-scss-ts-parcel/package.json",
+    "examples/react-scss-ts-parcel/package.json",
     "packages/core/package.json",
     "packages/react/package.json",
     "package.json"
