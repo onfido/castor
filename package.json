@@ -18,9 +18,9 @@
     "build:react:esm": "tsc -p packages/react/tsconfig.json",
     "lint": "concurrently yarn:lint:*",
     "lint:commit": "commitlint --from origin/main --to HEAD --verbose",
-    "lint:prettier": "prettier . --check --ignore-path .gitignore",
+    "lint:es": "eslint . --ignore-path .gitignore --max-warnings 0",
     "lint:style": "stylelint '**/*.{,s}css' --ignore-path .gitignore --max-warnings 0",
-    "lint:ts": "eslint . --ignore-path .gitignore --max-warnings 0",
+    "lint:prettier": "prettier . --check --ignore-path .gitignore",
     "test": "jest --coverage",
     "release": "HUSKY_SKIP_HOOKS=true standard-version"
   },
@@ -60,8 +60,8 @@
     "typescript": "^4.1.2"
   },
   "lint-staged": {
-    "*.{json,md,ts}": "prettier --write",
-    "{.storybook,docs,examples,packages}/**/*.ts{,x}": "eslint --fix",
+    "*.{js,jsx,json,md,ts,tsx,yml}": "prettier --write",
+    "{.storybook,docs,examples,packages}/**/*.{js,jsx,ts,tsx}": "eslint --fix",
     "{.storybook,docs,examples,packages}/**/*.{,s}css": "stylelint --fix"
   }
 }

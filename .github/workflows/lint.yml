@@ -31,12 +31,12 @@ jobs:
           # Enable and configure linters:
           eslint: true
           eslint_args: '--ignore-path .gitignore --max-warnings 0'
-          eslint_extensions: 'ts'
+          eslint_extensions: 'js,jsx,ts,tsx'
           stylelint: true
           stylelint_args: '--ignore-path .gitignore --max-warnings 0'
-          stylelint_extensions: 'scss'
+          stylelint_extensions: 'css,scss'
           prettier: true
           prettier_args: '--ignore-path .gitignore'
-          prettier_extensions: 'json,md,ts'
+          prettier_extensions: 'js,jsx,json,md,ts,tsx,yml'
           # Additionally configure action:
           commit_message: 'style: fix code issues with ${linter}'
