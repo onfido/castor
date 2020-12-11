@@ -1,5 +1,5 @@
 import icons from '@onfido/castor-icons/svg/icons.svg';
-import styles from './App.scss';
+import styles from './app.scss';
 
 const button = 'ods-button -action';
 

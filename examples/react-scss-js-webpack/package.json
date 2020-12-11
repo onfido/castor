@@ -4,11 +4,8 @@
   "private": true,
   "main": "src/index.html",
   "scripts": {
-    "prepare": "concurrently yarn:prepare:*",
-    "prepare:castor": "yarn --cwd ../../ build:core:css && yarn --cwd ../../ build:core:esm",
-    "prepare:castor-react": "yarn --cwd ../../ build:react:esm",
-    "build": "yarn prepare && webpack --mode production",
-    "start": "yarn prepare && webpack-dev-server --mode development --open --hot",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open --hot",
     "test": "es-check --module es5 ./dist/*.js"
   },
   "dependencies": {

@@ -5,9 +5,7 @@
   "main": "index.html",
   "scripts": {
     "copy": "concurrently yarn:copy:*",
-    "precopy:castor": "shx rm -rf .castor && yarn --cwd ../../ build:core:css",
     "copy:castor": "shx cp -R ../../node_modules/@onfido/castor/ .castor",
-    "precopy:castor-icons": "shx rm -rf .castor-icons",
     "copy:castor-icons": "shx cp -R ../../node_modules/@onfido/castor-icons/ .castor-icons",
     "start": "yarn copy && http-server -p 1111 -o"
   },

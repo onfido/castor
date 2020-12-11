@@ -4,11 +4,8 @@
   "private": true,
   "main": "src/index.html",
   "scripts": {
-    "prepare": "concurrently yarn:prepare:*",
-    "prepare:castor": "yarn --cwd ../../ build:core:css && yarn --cwd ../../ build:core:esm",
-    "prepare:castor-react": "yarn --cwd ../../ build:react:esm",
-    "build": "yarn prepare && parcel build src/index.html",
-    "start": "yarn prepare && parcel src/index.html --open"
+    "build": "parcel build src/index.html",
+    "start": "parcel src/index.html --open"
   },
   "dependencies": {
     "@onfido/castor-icons": "^1.0.0",
@@ -19,7 +16,6 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "autoprefixer": "^9.8.6",
-    "concurrently": "^5.3.0",
     "parcel": "^1.12.4",
     "postcss-modules": "^3.2.2",
     "sass": "^1.30.0",

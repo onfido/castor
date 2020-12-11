@@ -4,9 +4,8 @@
   "private": true,
   "main": "src/index.html",
   "scripts": {
-    "prepare:castor": "yarn --cwd ../../ build:core:css && yarn --cwd ../../ build:core:esm",
-    "build": "yarn prepare:castor && parcel build src/index.html",
-    "start": "yarn prepare:castor && parcel src/index.html --open"
+    "build": "parcel build src/index.html",
+    "start": "parcel src/index.html --open"
   },
   "dependencies": {
     "@onfido/castor-icons": "^1.0.0"
