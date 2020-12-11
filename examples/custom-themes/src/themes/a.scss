@@ -1,0 +1,8 @@
+@use '~@onfido/castor';
+@use '../tokens' as custom;
+
+// castor themes must have prefix: `.castor-theme--`
+:global .castor-theme--a {
+  @include castor.day();
+  @include custom.tokens();
+}

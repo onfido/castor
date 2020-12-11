@@ -1,5 +1,6 @@
 {
   "bumpFiles": [
+    "examples/custom-themes/package.json",
     "examples/html-css/package.json",
     "examples/html-css-js/package.json",
     "examples/html-css-js-parcel/package.json",
