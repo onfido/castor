@@ -23,6 +23,5 @@ package-lock.json
 # Repository specific
 .cache
 .castor*
-examples/*/dist
-packages/*/dist
 coverage
+dist
