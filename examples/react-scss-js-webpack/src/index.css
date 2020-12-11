@@ -1,0 +1,9 @@
+body {
+  align-items: center;
+  display: flex;
+  font-family: 'Helvetica Neue', Tahoma, sans-serif;
+  font-size: 16px;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+}

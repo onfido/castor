@@ -1,0 +1,20 @@
+{
+  "name": "castor-custom-themes",
+  "version": "1.0.0-rc.1",
+  "private": true,
+  "main": "src/index.html",
+  "scripts": {
+    "build": "parcel build src/index.html",
+    "start": "parcel src/index.html --open"
+  },
+  "dependencies": {
+    "@onfido/castor-icons": "^1.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "parcel": "^1.12.4",
+    "postcss-modules": "^3.2.2",
+    "sass": "^1.30.0",
+    "typescript": "^4.1.2"
+  }
+}

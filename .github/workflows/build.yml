@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Build packages (test)
+    name: Build packages and examples (test)
     runs-on: ubuntu-latest
 
     steps:
@@ -24,3 +24,12 @@ jobs:
 
       - name: Build packages
         run: yarn build
+
+      - name: Build (bundled) examples
+        run: |
+          yarn --cwd ./examples/custom-themes build
+          yarn --cwd ./examples/html-css-js-parcel build
+          yarn --cwd ./examples/html-scss-ts-parcel build
+          yarn --cwd ./examples/react-emotion-ts-parcel build
+          yarn --cwd ./examples/react-scss-js-webpack build
+          yarn --cwd ./examples/react-scss-ts-parcel build
