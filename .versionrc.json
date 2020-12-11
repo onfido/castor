@@ -5,6 +5,7 @@
     "examples/html-css-js-parcel/package.json",
     "examples/html-scss-ts-parcel/package.json",
     "examples/react-emotion-ts-parcel/package.json",
+    "examples/react-scss-js-webpack/package.json",
     "examples/react-scss-ts-parcel/package.json",
     "packages/core/package.json",
     "packages/react/package.json",

@@ -38,6 +38,11 @@ updates:
       interval: 'weekly'
 
   - package-ecosystem: 'npm'
+    directory: '/examples/react-scss-js-webpack'
+    schedule:
+      interval: 'weekly'
+
+  - package-ecosystem: 'npm'
     directory: '/examples/react-scss-ts-parcel'
     schedule:
       interval: 'weekly'
