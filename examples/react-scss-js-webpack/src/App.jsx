@@ -1,5 +1,5 @@
+import { IconPassport, Icons } from '@onfido/castor-icons';
 import { Button, Icon } from '@onfido/castor-react';
-import { Icons, IconPassport } from '@onfido/castor-icons';
 import React from 'react';
 import styles from './App.scss';
 

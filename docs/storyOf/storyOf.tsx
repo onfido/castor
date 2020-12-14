@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, Fragment, createElement } from 'react';
+import React, { createElement, FC, Fragment, ReactNode } from 'react';
 import { Story } from '../Story';
 import styles from './storyOf.scss';
 

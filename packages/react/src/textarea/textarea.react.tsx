@@ -1,5 +1,5 @@
-import React from 'react';
 import { c, classy, m, TextareaProps as BaseProps } from '@onfido/castor';
+import React from 'react';
 
 export const Textarea = ({
   resize = 'vertical',

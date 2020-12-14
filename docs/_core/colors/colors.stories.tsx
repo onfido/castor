@@ -1,5 +1,7 @@
+import { Primary, Stories, Title } from '@storybook/addon-docs/blocks';
 import React from 'react';
-import { Title, Primary, Stories } from '@storybook/addon-docs/blocks';
+import { Helpers } from './helpers.story';
+import { Intro } from './intro.story';
 
 const docsPage = () => (
   <>
@@ -16,5 +18,4 @@ export default {
   },
 };
 
-export { Intro } from './intro.story';
-export { Helpers } from './helpers.story';
+export { Intro, Helpers };

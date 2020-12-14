@@ -1,5 +1,5 @@
+import { c, classy, InputProps as BaseProps, m } from '@onfido/castor';
 import React from 'react';
-import { c, classy, m, InputProps as BaseProps } from '@onfido/castor';
 
 export const Input = ({
   type = 'text',

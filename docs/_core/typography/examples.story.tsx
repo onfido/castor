@@ -1,5 +1,5 @@
+import { font, FontName } from '@onfido/castor';
 import React from 'react';
-import { FontName, font } from '@onfido/castor';
 import styles from './typography.scss';
 
 export const Examples = () => (

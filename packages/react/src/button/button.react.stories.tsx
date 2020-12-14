@@ -1,9 +1,9 @@
-import React, { SyntheticEvent } from 'react';
 import { space } from '@onfido/castor';
 import { IconName, iconNames } from '@onfido/castor-icons';
-import { Meta, Story, omit, storyOf } from '../../../../docs';
+import React, { SyntheticEvent } from 'react';
 import { Icon } from '../';
-import { ButtonProps, Button } from './button.react';
+import { Meta, omit, Story, storyOf } from '../../../../docs';
+import { Button, ButtonProps } from './button.react';
 
 export default {
   title: 'React/Button',

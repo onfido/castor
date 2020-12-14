@@ -1,5 +1,5 @@
-import React from 'react';
 import { c, classy, color, IconProps as BaseProps } from '@onfido/castor';
+import React from 'react';
 
 /**
  * Please note that this component requires an SVG sprite to be inlined in your
