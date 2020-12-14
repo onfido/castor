@@ -1,8 +1,10 @@
 @use '~@onfido/castor';
 @use '../tokens' as custom;
 
-// castor themes must have prefix: `.castor-theme--`
-:global .castor-theme--b {
-  @include castor.night();
-  @include custom.tokens();
+:global {
+  // .castor-theme--b
+  @include castor.theme('b', 'class') {
+    @include castor.night();
+    @include custom.tokens(); // override with custom tokens
+  }
 }
