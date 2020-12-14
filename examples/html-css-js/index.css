@@ -17,11 +17,11 @@ body {
 }
 
 .raised {
-  box-shadow: 0 2px 4px rgba(var(--color-neutral-900), 0.3);
+  box-shadow: 0 2px 4px rgba(var(--ods-color-neutral-900), 0.3);
 }
 
 .round {
-  border-radius: var(--border-radius-full);
+  border-radius: var(--ods-border-radius-full);
 }
 
 .icon {

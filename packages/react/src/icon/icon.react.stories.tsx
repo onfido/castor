@@ -5,7 +5,7 @@ import { Meta, omit, Story, storyOf, tokens } from '../../../../docs';
 import { Icon, IconProps } from './icon.react';
 
 const colors = Object.keys(tokens).reduce((accumulator, name) => {
-  const [, color] = name.match(/^--color-([a-z0-9-]+)$/) ?? [];
+  const [, color] = name.match(/^--ods-color-([a-z0-9-]+)$/) ?? [];
   return color ? [...accumulator, color] : accumulator;
 }, []) as Color[];
 

@@ -141,10 +141,10 @@ $aliases: (
 
 @function color($name, $alpha: 1) {
   @if index($aliases, $name) {
-    @return rgba(var(--color-#{$name}));
+    @return rgba(var(--ods-color-#{$name}));
   }
   @if index($palette, $name) {
-    @return rgba(var(--color-#{$name}), #{$alpha});
+    @return rgba(var(--ods-color-#{$name}), #{$alpha});
   }
 
   @error 'Color token not supported: #{$name}';
