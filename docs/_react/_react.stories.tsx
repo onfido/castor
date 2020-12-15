@@ -1,5 +1,5 @@
-import React from 'react';
 import { Primary, Stories } from '@storybook/addon-docs/blocks';
+import React from 'react';
 
 const docsPage = () => (
   <>

@@ -1,4 +1,4 @@
-import { StorySortComparator, Parameters } from '@storybook/addons';
+import { Parameters, StorySortComparator } from '@storybook/addons';
 
 // sorts stories naturally by kind, then by ID
 export const storySort: StorySortComparator = ([_, a]: Story, [__, b]: Story) =>

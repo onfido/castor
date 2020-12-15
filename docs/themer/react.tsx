@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { StoryContext } from '@storybook/addons';
 import { switchTheme } from '@onfido/castor';
+import { StoryContext } from '@storybook/addons';
+import { useEffect } from 'react';
 import './themes.scss';
 
 export function withThemer(

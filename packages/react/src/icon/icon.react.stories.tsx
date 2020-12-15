@@ -1,8 +1,8 @@
-import React from 'react';
 import { Color } from '@onfido/castor';
 import { iconNames } from '@onfido/castor-icons';
-import { Meta, Story, omit, storyOf, tokens } from '../../../../docs';
-import { IconProps, Icon } from './icon.react';
+import React from 'react';
+import { Meta, omit, Story, storyOf, tokens } from '../../../../docs';
+import { Icon, IconProps } from './icon.react';
 
 const colors = Object.keys(tokens).reduce((accumulator, name) => {
   const [, color] = name.match(/^--color-([a-z0-9-]+)$/) ?? [];

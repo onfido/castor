@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { borderRadius, color, space } from '@onfido/castor';
+import { IconPassport, Icons } from '@onfido/castor-icons';
 import { Button, Icon } from '@onfido/castor-react';
-import { Icons, IconPassport } from '@onfido/castor-icons';
 import React from 'react';
 
 export const App = () => (

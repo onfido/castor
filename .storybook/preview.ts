@@ -1,7 +1,7 @@
 import { Parameters } from '@storybook/addons';
-import { withThemer, themeNames } from '../docs/themer/react';
-import { withSpacer } from '../docs/spacer/react';
 import { withIcons } from '../docs/icons/react';
+import { withSpacer } from '../docs/spacer/react';
+import { themeNames, withThemer } from '../docs/themer/react';
 import { storySort } from './storySort';
 import './styles.scss';
 

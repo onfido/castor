@@ -1,5 +1,5 @@
-import React, { HTMLAttributes } from 'react';
 import { ButtonProps as BaseProps, c, classy, m } from '@onfido/castor';
+import React, { HTMLAttributes } from 'react';
 
 export const Button: ButtonComponent = ({
   kind = 'action',

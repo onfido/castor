@@ -1,6 +1,6 @@
 import React from 'react';
-import { Meta, Story, omit, storyOf } from '../../../../docs';
-import { TextareaProps, Textarea } from './textarea.react';
+import { Meta, omit, Story, storyOf } from '../../../../docs';
+import { Textarea, TextareaProps } from './textarea.react';
 
 export default {
   title: 'React/Textarea',

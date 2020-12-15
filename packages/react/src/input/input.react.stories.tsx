@@ -1,6 +1,6 @@
 import React from 'react';
-import { Meta, Story, omit, storyOf } from '../../../../docs';
-import { InputProps, Input } from './input.react';
+import { Meta, omit, Story, storyOf } from '../../../../docs';
+import { Input, InputProps } from './input.react';
 
 export default {
   title: 'React/Input',
