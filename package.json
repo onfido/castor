@@ -58,10 +58,5 @@
     "stylelint-config-sass-guidelines": "^7.1.0",
     "ts-jest": "^26.4.4",
     "typescript": "^4.1.3"
-  },
-  "lint-staged": {
-    "*.{js,jsx,json,md,ts,tsx,yml}": "prettier --write",
-    "{.storybook,docs,examples,packages}/**/*.{js,jsx,ts,tsx}": "eslint --fix",
-    "{.storybook,docs,examples,packages}/**/*.{,s}css": "stylelint --fix"
   }
 }
