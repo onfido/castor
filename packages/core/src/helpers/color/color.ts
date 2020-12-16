@@ -38,88 +38,38 @@ export type Palette =
   | WarningColor
   | ErrorColor;
 
-type NeutralColor =
-  | 'neutral-900'
-  | 'neutral-800'
-  | 'neutral-700'
-  | 'neutral-600'
-  | 'neutral-500'
-  | 'neutral-400'
-  | 'neutral-300'
-  | 'neutral-200'
-  | 'neutral-050'
-  | 'neutral-white'
-  | 'neutral-black';
+type Weight =
+  | '900'
+  | '800'
+  | '700'
+  | '600'
+  | '500'
+  | '400'
+  | '300'
+  | '200'
+  | '100'
+  | '050';
 
-type PrimaryColor =
-  | 'primary-700'
-  | 'primary-600'
-  | 'primary-500'
-  | 'primary-400'
-  | 'primary-300'
-  | 'primary-200'
-  | 'primary-100'
-  | 'primary-050'
-  | 'primary-muted-600'
-  | 'primary-muted-300';
+type From700 = Exclude<Weight, '900' | '800'>;
+type From600 = Exclude<From700, '700'>;
 
-type AccentColor =
-  | 'accent-1-600'
-  | 'accent-1-500'
-  | 'accent-1-400'
-  | 'accent-2-600'
-  | 'accent-2-500'
-  | 'accent-2-400'
-  | 'accent-3-600'
-  | 'accent-3-500'
-  | 'accent-3-400';
+type Muted = `muted-${'600' | '300'}`;
+type MutedLight = `muted-${'500' | '300'}`;
+type Vivid = 'vivid-300';
 
-type SuccessColor =
-  | 'success-600'
-  | 'success-500'
-  | 'success-400'
-  | 'success-300'
-  | 'success-200'
-  | 'success-100'
-  | 'success-050'
-  | 'success-vivid-300'
-  | 'success-muted-500'
-  | 'success-muted-300';
+type NeutralColor = `neutral-${Exclude<Weight, '100'> | 'white' | 'black'}`;
 
-type InfoColor =
-  | 'info-700'
-  | 'info-600'
-  | 'info-500'
-  | 'info-400'
-  | 'info-300'
-  | 'info-200'
-  | 'info-100'
-  | 'info-050'
-  | 'info-muted-600'
-  | 'info-muted-300';
+type PrimaryColor = `primary-${From700 | Muted}`;
 
-type WarningColor =
-  | 'warning-600'
-  | 'warning-500'
-  | 'warning-400'
-  | 'warning-300'
-  | 'warning-200'
-  | 'warning-100'
-  | 'warning-050'
-  | 'warning-vivid-300'
-  | 'warning-muted-500'
-  | 'warning-muted-300';
+type AccentColor = `accent-${'1' | '2' | '3'}-${'600' | '500' | '400'}`;
 
-type ErrorColor =
-  | 'error-600'
-  | 'error-500'
-  | 'error-400'
-  | 'error-300'
-  | 'error-200'
-  | 'error-100'
-  | 'error-050'
-  | 'error-muted-500'
-  | 'error-muted-300';
+type SuccessColor = `success-${From600 | Vivid | MutedLight}`;
+
+type InfoColor = `info-${From600 | Muted}`;
+
+type WarningColor = `warning-${From600 | Vivid | MutedLight}`;
+
+type ErrorColor = `error-${From600 | MutedLight}`;
 
 type ContentColor =
   | 'content-main'

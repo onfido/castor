@@ -41,37 +41,19 @@ export function font(name: FontName): Font {
 
 export type Font = Pick<
   CSSProperties,
-  'fontFamily' | 'fontSize' | 'fontWeight' | 'lineHeight' | 'textTransform'
+  `font${'Family' | 'Size' | 'Weight'}` | 'lineHeight' | 'textTransform'
 >;
 
 export type FontName =
-  | '800-bold'
-  | '700-bold'
-  | '600-bold'
-  | '500-bold'
-  | '400-bold'
-  | '300-bold'
-  | '200-bold'
-  | '100-bold'
-  | '800-regular'
-  | '700-regular'
-  | '600-regular'
-  | '500-regular'
-  | '400-regular'
-  | '300-regular'
-  | '200-regular'
-  | '100-regular'
-  | '800-light'
-  | '700-light'
-  | '600-light'
-  | '500-light'
-  | '400-allcaps'
-  | '300-allcaps'
-  | '200-allcaps'
-  | '100-allcaps'
-  | '400-mono'
-  | '300-mono'
-  | '200-mono';
+  | `${FontSize}-bold`
+  | `${FontSize}-regular`
+  | `${LargeFont}-light`
+  | `${SmallFont}-allcaps`
+  | `${Exclude<SmallFont, '100'>}-mono`;
+
+type FontSize = keyof typeof sizes;
+type LargeFont = Exclude<FontSize, '400' | '300' | '200' | '100'>;
+type SmallFont = Exclude<FontSize, LargeFont>;
 
 const sizes = {
   '800': {
@@ -108,7 +90,7 @@ const sizes = {
   },
 };
 
-type FontSize = '800' | '700' | '600' | '500' | '400' | '300' | '200' | '100';
+type FontType = keyof typeof types;
 
 const types = {
   bold: {
@@ -127,5 +109,3 @@ const types = {
     fontFamily: '"Roboto Mono", monospace',
   },
 };
-
-type FontType = 'bold' | 'regular' | 'light' | 'allcaps' | 'mono';
