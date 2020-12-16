@@ -3,9 +3,11 @@ import { c, classy, m } from './classy';
 
 describe('classy', () => {
   const falsy = {
+    all: [] as any[],
     array: ['', undefined, null],
     object: { a: false, b: null, c: undefined },
   };
+  falsy.all = [...falsy.array, falsy.object];
 
   it('should work with strings', () => {
     const result = classy('foo', 'bar');
@@ -35,33 +37,17 @@ describe('classy', () => {
 
   describe('c', () => {
     it('should apply component prefix', () => {
-      const result = c('foo', falsy.array, falsy.object, 'bar');
+      const result = c('foo', ...falsy.all, { bar: true, zed: true });
 
-      expect(result.join(' ')).toBe('ods-foo ods-bar');
-    });
-
-    it('should work with tagged template literals', () => {
-      const result = c`foo  bar  ${falsy.object}  ${
-        falsy.array
-      }  ${''}  ${undefined}  ${null}  ${'a'}-${{ b: true }}`;
-
-      expect(result.join(' ')).toBe('ods-foo ods-bar ods-a-b');
+      expect(result.join(' ')).toBe('ods-foo ods-bar ods-zed');
     });
   });
 
   describe('m', () => {
     it('should apply modifier prefix', () => {
-      const result = m('foo', falsy.array, falsy.object, 'bar');
+      const result = m('foo', ...falsy.all, { bar: true, zed: true });
 
-      expect(result.join(' ')).toBe('-foo -bar');
-    });
-
-    it('should work with tagged template literals', () => {
-      const result = m`foo  bar  ${falsy.object}  ${
-        falsy.array
-      }  ${''}  ${undefined}  ${null}  ${'a'}--${{ b: true }}`;
-
-      expect(result.join(' ')).toBe('-foo -bar -a--b');
+      expect(result.join(' ')).toBe('-foo -bar -zed');
     });
   });
 });
