@@ -47,9 +47,9 @@ export type Font = Pick<
 export type FontName =
   | `${FontSize}-bold`
   | `${FontSize}-regular`
-  | `${Exclude<FontSize, '800' | '700' | '600' | '500'>}-light`
-  | `${Exclude<FontSize, '400' | '300' | '200' | '100'>}-allcaps`
-  | `${Exclude<FontSize, '400' | '300' | '200'>}-mono`;
+  | `${Extract<FontSize, '800' | '700' | '600' | '500'>}-light`
+  | `${Extract<FontSize, '400' | '300' | '200' | '100'>}-allcaps`
+  | `${Extract<FontSize, '400' | '300' | '200'>}-mono`;
 
 type FontSize = keyof typeof sizes;
 
