@@ -47,13 +47,11 @@ export type Font = Pick<
 export type FontName =
   | `${FontSize}-bold`
   | `${FontSize}-regular`
-  | `${LargeFont}-light`
-  | `${SmallFont}-allcaps`
-  | `${Exclude<SmallFont, '100'>}-mono`;
+  | `${Exclude<FontSize, '800' | '700' | '600' | '500'>}-light`
+  | `${Exclude<FontSize, '400' | '300' | '200' | '100'>}-allcaps`
+  | `${Exclude<FontSize, '400' | '300' | '200'>}-mono`;
 
 type FontSize = keyof typeof sizes;
-type LargeFont = Exclude<FontSize, '400' | '300' | '200' | '100'>;
-type SmallFont = Exclude<FontSize, LargeFont>;
 
 const sizes = {
   '800': {
