@@ -34,9 +34,7 @@ jobs:
           eslint_extensions: 'js,jsx,ts,tsx'
           stylelint: true
           stylelint_args: '--ignore-path .gitignore --max-warnings 0'
-          stylelint_extensions: 'css,scss'
           prettier: true
           prettier_args: '--ignore-path .gitignore'
-          prettier_extensions: 'js,jsx,json,md,ts,tsx,yml'
           # Additionally configure action:
           commit_message: 'style: fix code issues with ${linter}'
