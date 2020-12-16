@@ -30,16 +30,16 @@
     --ods-color-background-action-hover: var(--ods-color-primary-100), 1;
     --ods-color-background-action-active: var(--ods-color-primary-200), 1;
     --ods-color-background-action-subtle: var(--ods-color-primary-300), 0.2;
-    --ods-color-background-action-subtle-hover: var(--ods-color-primary-300),
-      0.1;
+    // prettier-ignore
+    --ods-color-background-action-subtle-hover: var(--ods-color-primary-300), 0.1;
     --ods-color-background-disabled: var(--ods-color-neutral-700), 1;
     --ods-color-background-negative: var(--ods-color-error-500), 1;
     --ods-color-background-negative-hover: var(--ods-color-error-300), 1;
     --ods-color-background-negative-active: var(--ods-color-error-600), 1;
-    --ods-color-background-negative-subtle: var(--ods-color-error-muted-500),
-      0.3;
-    --ods-color-background-negative-subtle-hover: var(--ods-color-error-muted-500),
-      0.2;
+    // prettier-ignore
+    --ods-color-background-negative-subtle: var(--ods-color-error-muted-500), 0.3;
+    // prettier-ignore
+    --ods-color-background-negative-subtle-hover: var(--ods-color-error-muted-500), 0.2;
     --ods-color-background-warning: var(--ods-color-warning-400), 1;
     --ods-color-background-warning-subtle: var(--ods-color-warning-300), 0.2;
     --ods-color-background-positive: var(--ods-color-success-400), 1;
