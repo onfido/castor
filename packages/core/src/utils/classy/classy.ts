@@ -29,7 +29,7 @@ export const classy = (...classNames: ClassNames[]) =>
  * c('button');
  * // ['ods-button']
  */
-export const c = mapWithPrefix('ods-');
+export const c = withPrefix('ods-');
 
 /**
  * Prefixes modifier names with a predetermined identifier.
@@ -40,7 +40,7 @@ export const c = mapWithPrefix('ods-');
  * m('action', 'primary');
  * // ['-action', '-primary']
  */
-export const m = mapWithPrefix('-');
+export const m = withPrefix('-');
 
 const truthyNames = (value: ClassName | ClassNameRecord) =>
   (value instanceof Object
@@ -50,7 +50,7 @@ const truthyNames = (value: ClassName | ClassNameRecord) =>
     : [value]
   ).filter(Boolean);
 
-function mapWithPrefix(prefix: string) {
+function withPrefix(prefix: string) {
   return (...classNames: (ClassName | ClassNameRecord)[]) =>
     classNames.flatMap(truthyNames).map((name) => `${prefix}${name}`);
 }
