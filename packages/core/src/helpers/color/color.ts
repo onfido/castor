@@ -63,7 +63,8 @@ type PrimaryColor = `primary-${
   | Exclude<ColorWeight, '900' | '800'>
   | ColorMuted}`;
 
-type AccentColor = `accent-${'1' | '2' | '3'}-${'600' | '500' | '400'}`;
+type AccentColor = `accent-${'1' | '2' | '3'}-${AccentWeight}`;
+type AccentWeight = Extract<ColorWeight, '600' | '500' | '400'>;
 
 type SuccessColor = `success-${
   | Exclude<ColorWeight, '900' | '800' | '700'>
