@@ -38,7 +38,7 @@ export type Palette =
   | WarningColor
   | ErrorColor;
 
-type Weight =
+type ColorWeight =
   | '900'
   | '800'
   | '700'
@@ -50,31 +50,38 @@ type Weight =
   | '100'
   | '050';
 
-type Muted = `muted-${'600' | '300'}`;
-type MutedLight = `muted-${'500' | '300'}`;
-type Vivid = 'vivid-300';
+type ColorMuted = `muted-${Extract<ColorWeight, '600' | '300'>}`;
+type ColorMutedLight = `muted-${Extract<ColorWeight, '500' | '300'>}`;
+type ColorVivid = `vivid-${Extract<ColorWeight, '300'>}`;
 
-type NeutralColor = `neutral-${Exclude<Weight, '100'> | 'white' | 'black'}`;
+type NeutralColor = `neutral-${
+  | Exclude<ColorWeight, '100'>
+  | 'white'
+  | 'black'}`;
 
-type PrimaryColor = `primary-${Exclude<Weight, '900' | '800'> | Muted}`;
+type PrimaryColor = `primary-${
+  | Exclude<ColorWeight, '900' | '800'>
+  | ColorMuted}`;
 
 type AccentColor = `accent-${'1' | '2' | '3'}-${'600' | '500' | '400'}`;
 
 type SuccessColor = `success-${
-  | Exclude<Weight, '900' | '800' | '700'>
-  | Vivid
-  | MutedLight}`;
+  | Exclude<ColorWeight, '900' | '800' | '700'>
+  | ColorVivid
+  | ColorMutedLight}`;
 
-type InfoColor = `info-${Exclude<Weight, '900' | '800' | '700'> | Muted}`;
+type InfoColor = `info-${
+  | Exclude<ColorWeight, '900' | '800' | '700'>
+  | ColorMuted}`;
 
 type WarningColor = `warning-${
-  | Exclude<Weight, '900' | '800' | '700'>
-  | Vivid
-  | MutedLight}`;
+  | Exclude<ColorWeight, '900' | '800' | '700'>
+  | ColorVivid
+  | ColorMutedLight}`;
 
 type ErrorColor = `error-${
-  | Exclude<Weight, '900' | '800' | '700'>
-  | MutedLight}`;
+  | Exclude<ColorWeight, '900' | '800' | '700'>
+  | ColorMutedLight}`;
 
 type ContentColor =
   | 'content-main'
