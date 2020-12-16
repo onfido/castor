@@ -14,6 +14,7 @@
       width: 100%;
     }
 
+    // removes webkit specific X button/icon that clears the input
     .ods-input::-webkit-search-decoration,
     .ods-input::-webkit-search-cancel-button,
     .ods-input::-webkit-search-results-button,
