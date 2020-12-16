@@ -1,18 +1,11 @@
 {
+  "root": true,
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended"
   ],
-  "env": {
-    "node": true,
-    "browser": true
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
+  "settings": { "react": { "version": "detect" } },
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": "off"
   },

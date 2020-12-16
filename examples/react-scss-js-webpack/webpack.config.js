@@ -1,3 +1,4 @@
+/* eslint-env node */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { resolve } = require('path');
 const WebpackIndexHTMLPlugin = require('@open-wc/webpack-index-html-plugin');
