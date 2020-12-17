@@ -18,7 +18,7 @@ export const Icon = ({
     {...restProps}
     fill={token ? color(token) : 'currentColor'}
     focusable="false"
-    className={classy(c`icon`, className)}
+    className={classy(c('icon'), className)}
   >
     <use href={`#${name}`}></use>
   </svg>

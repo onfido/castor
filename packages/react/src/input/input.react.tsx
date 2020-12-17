@@ -10,7 +10,7 @@ export const Input = ({
   <input
     {...restProps}
     type={type}
-    className={classy(c`input`, m({ invalid }), className)}
+    className={classy(c('input'), m({ invalid }), className)}
   />
 );
 

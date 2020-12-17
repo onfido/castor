@@ -13,7 +13,7 @@ export const Button: ButtonComponent = ({
     <Element
       {...(restProps as HTMLAttributes<HTMLElement>)}
       {...(Element === 'a' && { role: 'button' })}
-      className={classy(c`button`, m`${kind}--${variant}`, className)}
+      className={classy(c('button'), m(`${kind}--${variant}`), className)}
     />
   );
 };

@@ -12,7 +12,7 @@ export const Textarea = ({
   <textarea
     {...restProps}
     rows={rows}
-    className={classy(c`textarea`, m({ invalid }), className)}
+    className={classy(c('textarea'), m({ invalid }), className)}
     style={{ ...style, resize }}
   />
 );
