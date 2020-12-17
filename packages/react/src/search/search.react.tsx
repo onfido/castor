@@ -1,20 +1,16 @@
 import { c, classy } from '@onfido/castor';
 import { Icon } from '@onfido/castor-react';
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { Input, InputProps } from '../input/input.react';
+import { withRef } from '../utils';
 
-export const Search = forwardRef(_Search) as typeof _Search;
-function _Search(
-  { children, className, style, ...props }: SearchProps,
-  ref: SearchProps['ref']
-) {
-  return (
-    <label className={classy(c`search`, className)} style={style}>
-      {children}
+export const Search = withRef(
+  ({ className, style, ...props }: SearchProps, ref: SearchProps['ref']) => (
+    <div className={classy(c('search'), className)} style={style}>
       <Input {...props} ref={ref} type="search" />
       <Icon name="search" />
-    </label>
-  );
-}
+    </div>
+  )
+);
 
-export type SearchProps = InputProps;
+export type SearchProps = Omit<InputProps, 'children' | 'invalid' | 'type'>;
