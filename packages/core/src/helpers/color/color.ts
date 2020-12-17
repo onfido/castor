@@ -22,9 +22,8 @@ export function color(name: Color): string;
 export function color(name: Palette, opacity?: number): string;
 
 export function color(name: Color, opacity?: number): string {
-  return opacity
-    ? `rgba(var(--ods-color-${name}), ${opacity})`
-    : `rgba(var(--ods-color-${name}))`;
+  const alpha = opacity ? `, ${opacity}` : '';
+  return `rgba(var(--ods-color-${name})${alpha})`;
 }
 
 export type Color = ContentColor | BackgroundColor | BorderColor | Palette;
