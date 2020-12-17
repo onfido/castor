@@ -5,7 +5,7 @@
  *
  * @example
  * color('content-main');
- * // 'rgba(var(--color-content-main))'
+ * // 'rgba(var(--ods-color-content-main))'
  */
 export function color(name: Color): string;
 /**
@@ -17,14 +17,14 @@ export function color(name: Color): string;
  *
  * @example
  * color('primary-500', 0.5);
- * // 'rgba(var(--color-primary-500), 0.5)'
+ * // 'rgba(var(--ods-color-primary-500), 0.5)'
  */
 export function color(name: Palette, opacity?: number): string;
 
 export function color(name: Color, opacity?: number): string {
   return opacity
-    ? `rgba(var(--color-${name}), ${opacity})`
-    : `rgba(var(--color-${name}))`;
+    ? `rgba(var(--ods-color-${name}), ${opacity})`
+    : `rgba(var(--ods-color-${name}))`;
 }
 
 export type Color = ContentColor | BackgroundColor | BorderColor | Palette;

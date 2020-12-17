@@ -5,5 +5,5 @@ $allowed-sizes: ('small', 'medium', 'large', 'full');
     @error '$size must be one of (#{$allowed-sizes})';
   }
 
-  @return var(--border-radius-#{$size});
+  @return var(--ods-border-radius-#{$size});
 }

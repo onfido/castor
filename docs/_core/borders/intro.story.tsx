@@ -12,7 +12,7 @@ export const Intro = () => (
       language="css"
       code={`
         .box {
-          border-radius: var(--border-radius-medium);
+          border-radius: var(--ods-border-radius-medium);
         }
       `}
       format

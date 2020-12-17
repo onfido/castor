@@ -5,6 +5,6 @@ describe('borderRadius', () => {
   it('should return the correct CSS variable', () => {
     const size = 'medium';
 
-    expect(borderRadius(size)).toBe(`var(--border-radius-${size})`);
+    expect(borderRadius(size)).toBe(`var(--ods-border-radius-${size})`);
   });
 });

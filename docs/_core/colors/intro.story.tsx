@@ -20,7 +20,7 @@ export const Intro = () => (
       language="css"
       code={`
         .text {
-          color: var(--color-content-main);
+          color: var(--ods-color-content-main);
         }
       `}
       format

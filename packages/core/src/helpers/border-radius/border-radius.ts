@@ -3,10 +3,10 @@
  *
  * @example
  * borderRadius('medium');
- * // 'var(--border-radius-medium)'
+ * // 'var(--ods-border-radius-medium)'
  */
 export function borderRadius(size: BorderRadius) {
-  return `var(--border-radius-${size})`;
+  return `var(--ods-border-radius-${size})`;
 }
 
 export type BorderRadius = 'small' | 'medium' | 'large' | 'full';

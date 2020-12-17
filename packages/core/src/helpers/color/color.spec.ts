@@ -6,7 +6,7 @@ describe('color', () => {
     it('should return the correct rgba value', () => {
       const name = 'content-main';
 
-      expect(color(name)).toBe(`rgba(var(--color-${name}))`);
+      expect(color(name)).toBe(`rgba(var(--ods-color-${name}))`);
     });
   });
 
@@ -16,14 +16,14 @@ describe('color', () => {
       const opacity = 0.5;
 
       expect(color(name, opacity)).toBe(
-        `rgba(var(--color-${name}), ${opacity})`
+        `rgba(var(--ods-color-${name}), ${opacity})`
       );
     });
 
     it('should work without opacity', () => {
       const name = 'primary-500';
 
-      expect(color(name)).toBe(`rgba(var(--color-${name}))`);
+      expect(color(name)).toBe(`rgba(var(--ods-color-${name}))`);
     });
   });
 });

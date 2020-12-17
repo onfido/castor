@@ -161,7 +161,7 @@ For example, if you'd like a round button, you can create a CSS modifier class u
 
 ```css
 .ods-button.round {
-  border-radius: var(--border-radius-full);
+  border-radius: var(--ods-border-radius-full);
 }
 ```
 
