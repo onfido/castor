@@ -54,56 +54,22 @@ export type FontName =
 type FontSize = keyof typeof sizes;
 
 const sizes = {
-  '800': {
-    fontSize: '3.375rem',
-    lineHeight: '4rem',
-  },
-  '700': {
-    fontSize: '2.875rem',
-    lineHeight: '3.5rem',
-  },
-  '600': {
-    fontSize: '1.875rem',
-    lineHeight: '2.5rem',
-  },
-  '500': {
-    fontSize: '1.5rem',
-    lineHeight: '2rem',
-  },
-  '400': {
-    fontSize: '1.25rem',
-    lineHeight: '1.5rem',
-  },
-  '300': {
-    fontSize: '1rem',
-    lineHeight: '1.5rem',
-  },
-  '200': {
-    fontSize: '0.875rem',
-    lineHeight: '1.5rem',
-  },
-  '100': {
-    fontSize: '0.75rem',
-    lineHeight: '1rem',
-  },
+  '800': { fontSize: '3.375rem', lineHeight: '4rem' },
+  '700': { fontSize: '2.875rem', lineHeight: '3.5rem' },
+  '600': { fontSize: '1.875rem', lineHeight: '2.5rem' },
+  '500': { fontSize: '1.5rem', lineHeight: '2rem' },
+  '400': { fontSize: '1.25rem', lineHeight: '1.5rem' },
+  '300': { fontSize: '1rem', lineHeight: '1.5rem' },
+  '200': { fontSize: '0.875rem', lineHeight: '1.5rem' },
+  '100': { fontSize: '0.75rem', lineHeight: '1rem' },
 };
 
 type FontType = keyof typeof types;
 
 const types = {
-  bold: {
-    fontWeight: 500,
-  },
-  regular: {
-    fontWeight: 400,
-  },
-  light: {
-    fontWeight: 300,
-  },
-  allcaps: {
-    textTransform: 'uppercase',
-  },
-  mono: {
-    fontFamily: '"Roboto Mono", monospace',
-  },
+  bold: { fontWeight: 500 },
+  regular: { fontWeight: 400 },
+  light: { fontWeight: 300 },
+  allcaps: { textTransform: 'uppercase' },
+  mono: { fontFamily: '"Roboto Mono", monospace' },
 };
