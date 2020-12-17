@@ -2,6 +2,7 @@
 
 // ...$types: 'class' | 'raw';
 @mixin day($types...) {
+  // prettier-ignore
   @include castor.theme('day', $types...) {
     --ods-color-content-main: var(--ods-color-neutral-800), 1;
     --ods-color-content-secondary: var(--ods-color-neutral-700), 1;
@@ -30,14 +31,12 @@
     --ods-color-background-action-hover: var(--ods-color-primary-400), 1;
     --ods-color-background-action-active: var(--ods-color-primary-600), 1;
     --ods-color-background-action-subtle: var(--ods-color-primary-500), 0.1;
-    // prettier-ignore
     --ods-color-background-action-subtle-hover: var(--ods-color-primary-500), 0.05;
     --ods-color-background-disabled: var(--ods-color-neutral-300), 1;
     --ods-color-background-negative: var(--ods-color-error-500), 1;
     --ods-color-background-negative-hover: var(--ods-color-error-400), 1;
     --ods-color-background-negative-active: var(--ods-color-error-600), 1;
     --ods-color-background-negative-subtle: var(--ods-color-error-500), 0.1;
-    // prettier-ignore
     --ods-color-background-negative-subtle-hover: var(--ods-color-error-500), 0.05;
     --ods-color-background-warning: var(--ods-color-warning-400), 1;
     --ods-color-background-warning-subtle: var(--ods-color-warning-400), 0.1;
