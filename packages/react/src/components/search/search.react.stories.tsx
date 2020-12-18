@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, omit, Story, storyOf } from '../../../../docs';
+import { Meta, omit, Story, storyOf } from '../../../../../docs';
 import { Search, SearchProps } from './search.react';
 
 export default {
