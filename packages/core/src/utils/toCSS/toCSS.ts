@@ -1,5 +1,5 @@
 import { Font } from '../../helpers';
-import { dashCase } from '../../utils';
+import { kebabCase } from '../../utils';
 
 /**
  * Transforms a `Font` style object into a valid CSS string.
@@ -8,6 +8,6 @@ import { dashCase } from '../../utils';
  */
 export const toCSS = (font: Font) =>
   Object.entries(font)
-    .map(([key, value]) => `${dashCase(key)}: ${value};`)
+    .map(([key, value]) => `${kebabCase(key)}: ${value};`)
     .join('\n')
     .replace(/"|'/g, '');
