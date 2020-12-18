@@ -5,8 +5,8 @@ import { Input, InputProps } from '../input/input.react';
 import { withRef } from '../utils';
 
 /**
- * @note `Search` uses an `Icon` that requires
- * `Icons` (SVG sprite) to be included in your app.
+ * @note `Search` uses an `Icon` that requires `Icons` (SVG sprite) to be
+ * included in your app.
  *
  * https://github.com/onfido/castor-icons#use-with-plain-code
  */
