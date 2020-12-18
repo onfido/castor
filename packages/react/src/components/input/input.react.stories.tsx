@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, omit, Story, storyOf } from '../../../../docs';
+import { Meta, omit, Story, storyOf } from '../../../../../docs';
 import { Input, InputProps } from './input.react';
 
 export default {

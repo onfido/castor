@@ -1,6 +1,6 @@
 import { c, classy, InputProps as BaseProps, m } from '@onfido/castor';
 import React from 'react';
-import { withRef } from '../utils';
+import { withRef } from '../../utils';
 
 export const Input = withRef(
   (
