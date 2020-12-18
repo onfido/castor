@@ -11,9 +11,9 @@ import { withRef } from '../utils';
  * https://github.com/onfido/castor-icons#use-with-plain-code
  */
 export const Search = withRef(
-  ({ className, style, ...props }: SearchProps, ref: SearchProps['ref']) => (
+  ({ className, style, ...restProps }: SearchProps, ref: SearchProps['ref']) => (
     <div className={classy(c('search'), className)} style={style}>
-      <Input {...props} ref={ref} type="search" />
+      <Input {...restProps} ref={ref} type="search" />
       <Icon name="search" />
     </div>
   )
