@@ -6,7 +6,6 @@ export default {
   title: 'React/Search',
   component: Search,
   argTypes: {
-    ...omit<HTMLInputElement>('type'),
     placeholder: { control: 'text' },
     disabled: { table: { type: { summary: 'boolean' } } },
   },
