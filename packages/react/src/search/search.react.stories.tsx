@@ -7,12 +7,12 @@ export default {
   component: Search,
   argTypes: {
     ...omit<HTMLInputElement>('type'),
-    disabled: { table: { type: { summary: 'boolean' } } },
     placeholder: { control: 'text' },
+    disabled: { table: { type: { summary: 'boolean' } } },
   },
   args: {
-    disabled: false,
     placeholder: 'Placeholder',
+    disabled: false,
   },
 } as Meta<SearchProps>;
 
