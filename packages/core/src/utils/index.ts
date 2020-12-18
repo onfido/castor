@@ -1,3 +1,3 @@
 export * from './classy/classy';
-export * from './dashCase/dashCase';
+export * from './kebabCase/kebabCase';
 export * from './toCSS/toCSS';

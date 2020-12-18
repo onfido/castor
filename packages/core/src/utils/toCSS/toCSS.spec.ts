@@ -2,7 +2,7 @@ import { describe, expect, it, jest } from '@jest/globals';
 import { toCSS } from './toCSS';
 
 jest.mock('../../utils', () => ({
-  dashCase: (s: string) => s.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(),
+  kebabCase: (s: string) => s.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(),
 }));
 
 describe('toCSS', () => {
