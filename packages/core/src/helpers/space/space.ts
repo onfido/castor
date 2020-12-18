@@ -11,9 +11,7 @@
  */
 export function space(multiplier: number): string {
   if (!isAllowed(multiplier))
-    throw new Error(
-      `"multiplier" must be an integer or (${allowedFloats}). Got: ${multiplier}`
-    );
+    throw new Error(`"multiplier" must be an integer or (${allowedFloats})`);
 
   return `${multiplier * base}px`;
 }

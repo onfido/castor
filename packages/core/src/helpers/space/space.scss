@@ -3,7 +3,7 @@ $base: 8px;
 
 @function space($multiplier) {
   @if not is-allowed($multiplier) {
-    @error '$multiplier must be an integer or (#{$allowed-floats}). Got: #{$multiplier}';
+    @error '$multiplier must be an integer or (#{$allowed-floats})';
   }
 
   @return $multiplier * $base;
