@@ -10,16 +10,16 @@
  * // '32px'
  */
 export function space(multiplier: number): string {
-  if (!isAllowed(multiplier)) {
-    const msg = '"multiplier" must be an integer or (1.5, 0.5, 0.25, 0.125)';
-    throw new Error(`${msg}. Got: ${multiplier}`);
-  }
+  if (!isAllowed(multiplier))
+    throw new Error(`"multiplier" must be an integer or (${allowedFloats})`);
 
   return `${multiplier * base}px`;
 }
 
-const allowedFractionals = new Set([1.5, 0.5, 0.25, 0.125]);
+const allowedFloats = new Set([1.5, 0.5, 0.25, 0.125]);
+allowedFloats.toString = () => [...allowedFloats].join(', ');
+
 const base = 8;
 
 const isAllowed = (multiplier: number) =>
-  Number.isInteger(multiplier) || allowedFractionals.has(multiplier);
+  Number.isInteger(multiplier) || allowedFloats.has(multiplier);

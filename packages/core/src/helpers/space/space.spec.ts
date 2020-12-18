@@ -15,7 +15,7 @@ describe('space', () => {
 
   it('should throw for non integers or not in (1.5, 0.5, 0.25, 0.125)', () => {
     expect(() => space(2.5)).toThrowError(
-      '"multiplier" must be an integer or (1.5, 0.5, 0.25, 0.125). Got: 2.5'
+      '"multiplier" must be an integer or (1.5, 0.5, 0.25, 0.125)'
     );
   });
 });
