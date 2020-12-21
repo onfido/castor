@@ -1,0 +1,4 @@
+// this file will generate ./dist/components/search.css
+@use '../../src/components';
+
+@include components.Search();

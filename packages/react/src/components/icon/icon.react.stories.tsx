@@ -1,7 +1,7 @@
 import { Color } from '@onfido/castor';
 import { iconNames } from '@onfido/castor-icons';
 import React from 'react';
-import { Meta, omit, Story, storyOf, tokens } from '../../../../docs';
+import { Meta, omit, Story, storyOf, tokens } from '../../../../../docs';
 import { Icon, IconProps } from './icon.react';
 
 const colors = Object.keys(tokens).reduce((accumulator, name) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, omit, Story, storyOf } from '../../../../docs';
+import { Meta, omit, Story, storyOf } from '../../../../../docs';
 import { Textarea, TextareaProps } from './textarea.react';
 
 export default {

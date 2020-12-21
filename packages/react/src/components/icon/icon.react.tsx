@@ -2,11 +2,11 @@ import { c, classy, color, IconProps as BaseProps } from '@onfido/castor';
 import React from 'react';
 
 /**
- * Please note that this component requires an SVG sprite to be inlined in your
- * app. If you wish to use individual inlined SVGs, use generated components
- * from Castor Icons package instead.
+ * @note `Icon` requires `Icons` (SVG sprite) to be included in your app.
+ * If you wish to use individual inlined SVGs, use generated components from
+ * `@onfido/castor-icons` instead.
  *
- * More details: https://github.com/onfido/castor-icons
+ * https://github.com/onfido/castor-icons
  */
 export const Icon = ({
   name,

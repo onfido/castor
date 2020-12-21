@@ -1,0 +1,32 @@
+@use '../../helpers';
+
+@mixin Search() {
+  .ods-search {
+    align-items: center;
+    display: inline-flex;
+    position: relative;
+    width: helpers.space(50);
+
+    .ods-input {
+      border-radius: helpers.border-radius('full');
+      padding-left: helpers.space(2.5);
+      padding-right: helpers.space(6);
+      width: 100%;
+    }
+
+    // removes WebKit specific "x" button/icon that clears the input
+    .ods-input::-webkit-search-decoration,
+    .ods-input::-webkit-search-cancel-button,
+    .ods-input::-webkit-search-results-button,
+    .ods-input::-webkit-search-results-decoration {
+      display: none;
+    }
+
+    .ods-icon {
+      color: helpers.color('content-placeholder');
+      pointer-events: none;
+      position: absolute;
+      right: helpers.space(2);
+    }
+  }
+}
