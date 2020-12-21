@@ -3,8 +3,8 @@ import React from 'react';
 
 /**
  * @note `Icon` requires `Icons` (SVG sprite) to be included in your app.
- * If you wish to use individual inlined SVGs, use generated components
- * from `@onfido/castor-icons` instead.
+ * If you wish to use individual inlined SVGs, use generated components from
+ * `@onfido/castor-icons` instead.
  *
  * https://github.com/onfido/castor-icons
  */
