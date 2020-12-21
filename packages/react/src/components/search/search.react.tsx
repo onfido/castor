@@ -22,4 +22,4 @@ export const Search = withRef(
   )
 );
 
-export type SearchProps = Omit<InputProps, 'children' | 'invalid' | 'type'>;
+export type SearchProps = Omit<InputProps, 'invalid' | 'type'>;

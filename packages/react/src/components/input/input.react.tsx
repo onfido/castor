@@ -16,4 +16,5 @@ export const Input = withRef(
   )
 );
 
-export type InputProps = BaseProps & JSX.IntrinsicElements['input'];
+export type InputProps = BaseProps &
+  Omit<JSX.IntrinsicElements['input'], 'children'>;
