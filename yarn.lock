@@ -1715,10 +1715,10 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@onfido/castor-icons@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-1.0.0.tgz#1b40d3f03dff3d5b8f7dcf81daf8abe1ad6c9035"
-  integrity sha512-EqhRx/JlmxoTus9DemPfJW82eqf3zHIRMB5HvLb2/XctC2f3C9eQs3NZlXFHhOja1Rn/iasEygzXZ7L2GoABPQ==
+"@onfido/castor-icons@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-1.1.0.tgz#6ac9246c1d7228cfa77875d371d8a177f3d64019"
+  integrity sha512-q6y4vfSMqh1m6lucil7Qjv8C1EOp2spwKFvTj8CTrEI6zmSbKV736LAdUGaSsAvmANE4jnMHSTkb03XSE7DZKg==
 
 "@open-wc/building-utils@^2.18.3":
   version "2.18.3"
