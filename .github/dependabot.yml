@@ -5,12 +5,3 @@ updates:
     directory: '/'
     schedule:
       interval: 'weekly'
-
-  - package-ecosystem: 'npm'
-    directory: '/'
-    schedule:
-      interval: 'daily'
-    ignore:
-      - dependency-name: 'webpack'
-        versions: ['5.x']
-    open-pull-requests-limit: 10
