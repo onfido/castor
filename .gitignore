@@ -8,7 +8,6 @@ Desktop.ini
 
 # Editor configuration
 .idea
-.vscode
 *.sublime-project
 *.sublime-workspace
 
@@ -25,3 +24,4 @@ package-lock.json
 .castor*
 coverage
 dist
+packages/core/src/theme/tokens.scss
