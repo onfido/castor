@@ -6,8 +6,11 @@ export default {
   title: 'React/Search',
   component: Search,
   argTypes: {
+    ...omit<SearchProps>('className', 'style'),
     placeholder: { control: 'text' },
-    disabled: { table: { type: { summary: 'boolean' } } },
+    disabled: {
+      table: { type: { summary: 'boolean' } },
+    },
   },
   args: {
     placeholder: 'Placeholder',

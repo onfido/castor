@@ -6,7 +6,7 @@ export const Input = withRef(
   (
     { type = 'text', invalid, className, ...restProps }: InputProps,
     ref: InputProps['ref']
-  ) => (
+  ): JSX.Element => (
     <input
       {...restProps}
       ref={ref}

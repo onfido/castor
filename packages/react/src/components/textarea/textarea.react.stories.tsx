@@ -12,10 +12,6 @@ export default {
       control: 'number',
       table: { type: { summary: 'number' }, defaultValue: { summary: '3' } },
     },
-    maxLength: {
-      control: 'number',
-      table: { type: { summary: 'number' } },
-    },
     invalid: {
       table: { type: { summary: 'boolean' } },
     },

@@ -8,10 +8,6 @@ export default {
   argTypes: {
     ...omit<InputProps>('className', 'style'),
     placeholder: { control: 'text' },
-    maxLength: {
-      control: 'number',
-      table: { type: { summary: 'number' } },
-    },
     invalid: {
       table: { type: { summary: 'boolean' } },
     },
