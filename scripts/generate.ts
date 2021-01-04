@@ -27,7 +27,5 @@ convert({
     type: 'scss',
   },
 })
-  .then((scss) => {
-    writeFileSync(type.dest, scss);
-  })
-  .catch((error) => console.error(error));
+  .then((scss) => writeFileSync(type.dest, scss))
+  .catch(console.error);
