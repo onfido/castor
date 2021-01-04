@@ -1,6 +1,6 @@
+import { Input, InputProps } from '@onfido/castor-react';
 import React from 'react';
 import { Meta, omit, Story, storyOf } from '../../../../../docs';
-import { Input, InputProps } from './input.react';
 
 export default {
   title: 'React/Input',

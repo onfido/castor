@@ -1,6 +1,6 @@
+import { Textarea, TextareaProps } from '@onfido/castor-react';
 import React from 'react';
 import { Meta, omit, Story, storyOf } from '../../../../../docs';
-import { Textarea, TextareaProps } from './textarea.react';
 
 export default {
   title: 'React/Textarea',

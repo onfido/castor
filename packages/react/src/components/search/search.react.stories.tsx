@@ -1,6 +1,6 @@
+import { Search, SearchProps } from '@onfido/castor-react';
 import React from 'react';
 import { Meta, omit, Story, storyOf } from '../../../../../docs';
-import { Search, SearchProps } from './search.react';
 
 export default {
   title: 'React/Search',
