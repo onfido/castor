@@ -13,7 +13,7 @@
     "prestart": "yarn generate",
     "start": "start-storybook -p 6006",
     "generate": "concurrently yarn:generate:*",
-    "generate:tokens": "esbuild scripts/generate.ts --bundle --platform=node --target=es2019 --format=cjs --external:theo | node",
+    "generate:tokens": "esbuild scripts/generate-tokens.ts --bundle --platform=node --target=es2019 --format=cjs --external:theo | node",
     "prebuild": "shx rm -rf packages/*/dist && yarn generate",
     "build": "concurrently yarn:build:*",
     "build:core:css": "sass packages/core/style:packages/core/dist --no-source-map -s compressed",
