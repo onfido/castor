@@ -28,7 +28,9 @@ jobs:
         env:
           STORYBOOK_MODE: production
           STORYBOOK_GA_ID: ${{ secrets.STORYBOOK_GA_ID }}
-        run: npx build-storybook -o public
+        run: |
+          yarn generate
+          npx build-storybook -o public
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1

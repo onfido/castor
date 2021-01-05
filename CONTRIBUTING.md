@@ -62,10 +62,10 @@ Castor consists of multiple packages. You can build them by running:
 
     yarn build
 
-It will concurrently execute multiple steps for each package:
+It generates style tokens, then concurrently executes multiple steps for each package by:
 
-- generates compressed `.css` files (without source map) for vanilla integration
-- generates ESM compiled `.js` from `.ts` files with `tsc` and `tsconfig.json`
+- generating compressed `.css` files (without source map) for vanilla integration
+- generating ESM compiled `.js` from `.ts` files with `tsc` and `tsconfig.json`
 
 ## Publish new version
 
