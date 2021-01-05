@@ -6,7 +6,7 @@ const rootPath = resolve('.');
 const themePath = join(rootPath, 'packages/core/src/theme');
 const formatsPath = join(rootPath, 'scripts/formats');
 
-const types = {
+const variants = {
   tokens: {
     src: join(themePath, 'tokens.json'),
     dest: join(themePath, 'tokens.scss'),
@@ -14,18 +14,18 @@ const types = {
   },
 };
 
-const type = types['tokens'];
+const variant = variants['tokens'];
 
-registerFormat('scss', readFileSync(type.format, 'utf8'));
+registerFormat('scss', readFileSync(variant.format, 'utf8'));
 
 convert({
   transform: {
     type: 'raw',
-    file: type.src,
+    file: variant.src,
   },
   format: {
     type: 'scss',
   },
 })
-  .then((scss) => writeFileSync(type.dest, scss))
+  .then((scss) => writeFileSync(variant.dest, scss))
   .catch(console.error);
