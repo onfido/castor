@@ -2,14 +2,13 @@
 @use '../../mixins';
 
 @mixin Radio() {
-  $boundary: helpers.space(6);
-  $size: helpers.space(2.75);
-  $border-width: 1px;
+  $input-size: helpers.space(2.75);
 
   .ods-radio-label {
     @include mixins.interactive();
 
-    $padding: ($boundary - $size) / 2;
+    $border-width: 1px;
+    $padding: (helpers.space(6) - $input-size) / 2;
 
     display: inline-flex;
     flex-direction: row;
@@ -58,6 +57,7 @@
 
   .ods-radio-input {
     @include mixins.interactive();
+    @include mixins.with-outer-focus('action');
 
     appearance: none;
     border: 2px solid helpers.color('border-separator');
@@ -66,7 +66,7 @@
 
     &,
     + span {
-      @include mixins.square($size);
+      @include mixins.square($input-size);
       border-radius: helpers.border-radius('full');
     }
 
@@ -86,6 +86,7 @@
     }
 
     &.-invalid {
+      @include mixins.with-outer-focus('negative');
       border-color: helpers.color('border-negative');
     }
 
