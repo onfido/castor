@@ -2,6 +2,7 @@
   cursor: pointer;
   user-select: none;
 
+  &.-disabled,
   &:disabled {
     cursor: not-allowed;
   }

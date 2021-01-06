@@ -1,11 +1,9 @@
 @use '../../helpers';
+@use '../../mixins';
 
 @mixin Icon() {
-  $size: helpers.space(3);
-
   .ods-icon {
+    @include mixins.square(helpers.space(3));
     display: inline-block;
-    height: $size;
-    width: $size;
   }
 }

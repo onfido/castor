@@ -4,6 +4,8 @@
 @forward './icon/icon';
 @use './input/input';
 @forward './input/input';
+@use './radio/radio';
+@forward './radio/radio';
 @use './search/search';
 @forward './search/search';
 @use './textarea/textarea';
@@ -13,6 +15,7 @@
   @include button.Button();
   @include icon.Icon();
   @include input.Input();
+  @include radio.Radio();
   @include search.Search();
   @include textarea.Textarea();
 }
