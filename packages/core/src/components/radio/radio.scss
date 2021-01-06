@@ -1,0 +1,105 @@
+@use '../../helpers';
+@use '../../mixins';
+
+@mixin Radio() {
+  $boundary: helpers.space(6);
+  $size: helpers.space(2.75);
+  $border-width: 1px;
+
+  .ods-radio-label {
+    @include mixins.interactive();
+
+    $padding: ($boundary - $size) / 2;
+
+    display: inline-flex;
+    flex-direction: row;
+    padding: $padding;
+    position: relative;
+    transition: background-color, border-color 0.15s ease-out;
+
+    &.-bordered {
+      border: $border-width solid helpers.color('border-separator');
+      border-radius: helpers.border-radius('medium');
+      display: flex;
+      padding: $padding - $border-width;
+    }
+
+    &.-bordered.-checked {
+      background-color: helpers.color('background-action-subtle');
+      border-color: helpers.color('border-action-subtle');
+    }
+
+    &.-disabled {
+      border-color: helpers.color('border-disabled');
+    }
+
+    > :not([aria-hidden='true']) {
+      display: flex;
+      flex-direction: column;
+      padding-left: helpers.space(1.625);
+      padding-right: helpers.space(0.375);
+      white-space: pre-line;
+    }
+
+    :not([aria-hidden='true']) :nth-child(1) {
+      @include helpers.font('300-regular');
+      color: helpers.color('content-main');
+    }
+
+    :not([aria-hidden='true']) :nth-child(2) {
+      @include helpers.font('200-regular');
+      color: helpers.color('content-secondary');
+    }
+
+    &.-disabled :not([aria-hidden='true']) > * {
+      color: helpers.color('content-disabled');
+    }
+  }
+
+  .ods-radio-input {
+    @include mixins.interactive();
+
+    appearance: none;
+    border: 2px solid helpers.color('border-separator');
+    margin: 0;
+    transition: border-color 0.15s ease-out;
+
+    &,
+    + span {
+      @include mixins.square($size);
+      border-radius: helpers.border-radius('full');
+    }
+
+    + span {
+      background-color: helpers.color('content-action');
+      position: absolute;
+      transform: scale(0);
+      transition: transform 0.15s ease-out;
+    }
+
+    &:checked {
+      border-color: helpers.color('content-action');
+
+      + span {
+        transform: scale(0.6);
+      }
+    }
+
+    &.-invalid {
+      border-color: helpers.color('border-negative');
+    }
+
+    &.-invalid + span {
+      background-color: helpers.color('content-negative');
+    }
+
+    &:disabled {
+      background-color: helpers.color('background-disabled');
+      border-color: helpers.color('border-disabled');
+
+      + span {
+        display: none;
+      }
+    }
+  }
+}
