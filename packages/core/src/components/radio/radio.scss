@@ -11,10 +11,10 @@
     $padding: (helpers.space(6) - $input-size) / 2;
 
     display: inline-flex;
-    flex-direction: row;
     padding: $padding;
     position: relative;
-    transition: background-color, border-color 0.15s ease-out;
+    transition: 0.15s ease-out;
+    transition-property: background-color, border-color;
 
     &.-bordered {
       border: $border-width solid helpers.color('border-separator');
@@ -62,7 +62,8 @@
     appearance: none;
     border: 2px solid helpers.color('border-separator');
     margin: 0;
-    transition: border-color 0.15s ease-out;
+    transition: 0.15s ease-out;
+    transition-property: background-color, border-color;
 
     &,
     + span {

@@ -31,7 +31,7 @@ export const Radio = withRef(
         type="radio"
         className={classy(c('radio-input'), m({ invalid }))}
       />
-      <span aria-hidden="true">{/* custom "checked" indicator */}</span>
+      <span /* custom "checked" indicator */ aria-hidden="true" />
       {(label || description) && (
         <span>
           <span>{label}</span>
@@ -42,4 +42,5 @@ export const Radio = withRef(
   )
 );
 
-export type RadioProps = BaseProps & JSX.IntrinsicElements['input'];
+export type RadioProps = BaseProps &
+  Omit<JSX.IntrinsicElements['input'], 'type'>;
