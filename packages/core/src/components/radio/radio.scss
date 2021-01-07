@@ -2,6 +2,7 @@
 @use '../../mixins';
 
 @mixin Radio() {
+  $transition: 0.15s ease-out;
   $input-size: helpers.space(2.75);
   $input-margin: 1px;
 
@@ -14,7 +15,7 @@
     gap: $padding;
     padding: $padding;
     position: relative;
-    transition: 0.15s ease-out;
+    transition: $transition;
     transition-property: background-color, border-color;
 
     &.-bordered {
@@ -61,7 +62,7 @@
     appearance: none;
     border: 2px solid helpers.color('border-separator');
     margin: $input-margin;
-    transition: 0.15s ease-out;
+    transition: $transition;
     transition-property: background-color, border-color;
 
     &,
@@ -74,7 +75,7 @@
       background-color: helpers.color('content-action');
       position: absolute;
       transform: scale(0);
-      transition: transform 0.15s ease-out;
+      transition: transform $transition;
     }
 
     &:checked {
