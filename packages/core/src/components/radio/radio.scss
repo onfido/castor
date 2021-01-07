@@ -46,7 +46,7 @@
     @include mixins.with-outer-focus('action');
 
     appearance: none;
-    border: 2px solid helpers.color('border-separator');
+    border: 2px solid helpers.color('border-input');
     transition-property: background-color, border-color;
 
     &,
@@ -63,6 +63,10 @@
       position: absolute;
       transform: scale(0);
       transition-property: transform;
+    }
+
+    &:hover {
+      border-color: helpers.color('border-input-hover');
     }
 
     &:checked {
