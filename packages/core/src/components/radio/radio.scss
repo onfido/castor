@@ -37,7 +37,7 @@
     }
 
     > :not([aria-hidden='true']) {
-      padding-right: helpers.space(0.5);
+      padding-right: helpers.space(2) - $padding;
     }
   }
 
