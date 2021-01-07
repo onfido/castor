@@ -61,14 +61,15 @@
 
     appearance: none;
     border: 2px solid helpers.color('border-separator');
-    margin: $input-margin;
     transition: $transition;
     transition-property: background-color, border-color;
 
     &,
     + span {
       @include mixins.square($input-size);
+
       border-radius: helpers.border-radius('full');
+      margin: $input-margin;
     }
 
     + span {
