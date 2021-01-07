@@ -61,7 +61,6 @@
 
     appearance: none;
     border: 2px solid helpers.color('border-separator');
-    transition: $transition;
     transition-property: background-color, border-color;
 
     &,
@@ -70,13 +69,14 @@
 
       border-radius: helpers.border-radius('full');
       margin: $input-margin;
+      transition: $transition;
     }
 
     + span {
       background-color: helpers.color('content-action');
       position: absolute;
       transform: scale(0);
-      transition: transform $transition;
+      transition-property: transform;
     }
 
     &:checked {
