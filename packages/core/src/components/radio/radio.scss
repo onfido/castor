@@ -7,9 +7,11 @@
   $input-margin: 1px;
 
   .ods-radio-label {
+    @include helpers.font('300-regular');
     @include mixins.interactive();
 
     $padding: (helpers.space(6) - $input-size - $input-margin * 2) / 2;
+    color: helpers.color('content-main');
 
     display: inline-flex;
     gap: $padding;
@@ -31,27 +33,11 @@
 
     &.-disabled {
       border-color: helpers.color('border-disabled');
+      color: helpers.color('content-disabled');
     }
 
     > :not([aria-hidden='true']) {
-      display: flex;
-      flex-direction: column;
       padding-right: helpers.space(0.5);
-      white-space: pre-line;
-    }
-
-    :not([aria-hidden='true']) :nth-child(1) {
-      @include helpers.font('300-regular');
-      color: helpers.color('content-main');
-    }
-
-    :not([aria-hidden='true']) :nth-child(2) {
-      @include helpers.font('200-regular');
-      color: helpers.color('content-secondary');
-    }
-
-    &.-disabled :not([aria-hidden='true']) > * {
-      color: helpers.color('content-disabled');
     }
   }
 
@@ -81,10 +67,10 @@
 
     &:checked {
       border-color: helpers.color('content-action');
+    }
 
-      + span {
-        transform: scale(0.6);
-      }
+    &:checked + span {
+      transform: scale(0.6);
     }
 
     &.-invalid {
@@ -99,10 +85,10 @@
     &:disabled {
       background-color: helpers.color('background-disabled');
       border-color: helpers.color('border-disabled');
+    }
 
-      + span {
-        background-color: helpers.color('content-disabled');
-      }
+    &:disabled + span {
+      background-color: helpers.color('content-disabled');
     }
   }
 }

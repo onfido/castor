@@ -1,4 +1,5 @@
 export * from './button/button.react';
+export * from './description/description.react';
 export * from './icon/icon.react';
 export * from './input/input.react';
 export * from './radio/radio.react';

@@ -1,4 +1,8 @@
-import { Radio as BaseRadio, RadioProps } from '@onfido/castor-react';
+import {
+  Description,
+  Radio as BaseRadio,
+  RadioProps,
+} from '@onfido/castor-react';
 import React, { useEffect, useState } from 'react';
 import { Meta, omit, Story, storyOf } from '../../../../../docs';
 
@@ -23,8 +27,7 @@ export default {
   title: 'React/Radio',
   component: Radio,
   argTypes: {
-    label: { control: 'text' },
-    description: { control: 'text' },
+    children: { control: 'text' },
     bordered: {
       table: { type: { summary: 'boolean' } },
     },
@@ -47,19 +50,38 @@ export const Playground: Story<RadioProps> = (props: RadioProps) => (
 );
 
 export const Bordered = storyOf(Radio, 'bordered', [true, false], {
-  labelMode: 'prop',
-  labelProp: 'label',
+  labelMode: 'children',
 });
 Bordered.argTypes = omit<RadioProps>('bordered');
 
 export const Invalid = storyOf(Radio, 'invalid', [true, false], {
-  labelMode: 'prop',
-  labelProp: 'label',
+  labelMode: 'children',
 });
 Invalid.argTypes = omit<RadioProps>('invalid');
 
 export const Disabled = storyOf(Radio, 'disabled', [true, false], {
-  labelMode: 'prop',
-  labelProp: 'label',
+  labelMode: 'children',
 });
 Disabled.argTypes = omit<RadioProps>('disabled');
+
+interface RadioWithDescriptionProps extends RadioProps {
+  label: string;
+  description: string;
+}
+
+export const WithDescription = ({
+  label,
+  description,
+  disabled,
+  ...restRadioProps
+}: RadioWithDescriptionProps) => (
+  <Radio {...{ ...restRadioProps, disabled }}>
+    {label}
+    <Description {...{ disabled }}>{description}</Description>
+  </Radio>
+);
+WithDescription.argTypes = omit<RadioWithDescriptionProps>('children');
+WithDescription.args = {
+  label: 'Label',
+  description: 'Description',
+};
