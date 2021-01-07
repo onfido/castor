@@ -24,7 +24,7 @@
       display: flex;
     }
 
-    &.-bordered.-checked {
+    &:not(.-disabled).-bordered.-checked {
       background-color: helpers.color('background-action-subtle');
       border-color: helpers.color('border-action-subtle');
     }
