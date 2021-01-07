@@ -3,24 +3,24 @@
 
 @mixin Radio() {
   $input-size: helpers.space(2.75);
+  $input-margin: 1px;
 
   .ods-radio-label {
     @include mixins.interactive();
 
-    $border-width: 1px;
-    $padding: (helpers.space(6) - $input-size) / 2;
+    $padding: (helpers.space(6) - $input-size - $input-margin * 2) / 2;
 
     display: inline-flex;
+    gap: $padding;
     padding: $padding;
     position: relative;
     transition: 0.15s ease-out;
     transition-property: background-color, border-color;
 
     &.-bordered {
-      border: $border-width solid helpers.color('border-separator');
+      border: 1px solid helpers.color('border-separator');
       border-radius: helpers.border-radius('medium');
       display: flex;
-      padding: $padding - $border-width;
     }
 
     &.-bordered.-checked {
@@ -35,8 +35,7 @@
     > :not([aria-hidden='true']) {
       display: flex;
       flex-direction: column;
-      padding-left: helpers.space(1.625);
-      padding-right: helpers.space(0.375);
+      padding-right: helpers.space(0.5);
       white-space: pre-line;
     }
 
@@ -61,7 +60,7 @@
 
     appearance: none;
     border: 2px solid helpers.color('border-separator');
-    margin: 0;
+    margin: $input-margin;
     transition: 0.15s ease-out;
     transition-property: background-color, border-color;
 
