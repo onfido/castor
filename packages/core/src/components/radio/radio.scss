@@ -100,7 +100,7 @@
       border-color: helpers.color('border-disabled');
 
       + span {
-        display: none;
+        background-color: helpers.color('content-disabled');
       }
     }
   }
