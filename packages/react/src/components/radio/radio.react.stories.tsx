@@ -1,27 +1,6 @@
-import {
-  Description,
-  Radio as BaseRadio,
-  RadioProps,
-} from '@onfido/castor-react';
-import React, { useEffect, useState } from 'react';
+import { Description, Radio, RadioProps } from '@onfido/castor-react';
+import React from 'react';
 import { Meta, omit, Story, storyOf } from '../../../../../docs';
-
-const Radio = (props: RadioProps): JSX.Element => {
-  const [checked, setChecked] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (checked) {
-        setChecked(false);
-      }
-    }, 3000);
-    return () => clearTimeout(timeout);
-  }, [checked]);
-
-  return (
-    <BaseRadio {...props} checked={checked} onChange={() => setChecked(true)} />
-  );
-};
 
 export default {
   title: 'React/Radio',
