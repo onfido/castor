@@ -11,8 +11,8 @@
     @include mixins.interactive();
 
     $padding: (helpers.space(6) - $input-size - $input-margin * 2) / 2;
-    color: helpers.color('content-main');
 
+    color: helpers.color('content-main');
     display: inline-flex;
     gap: $padding;
     padding: $padding;
