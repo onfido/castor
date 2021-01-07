@@ -5,12 +5,11 @@ import { withRef } from '../../utils';
 export const Radio = withRef(
   (
     {
-      label,
-      description,
       bordered,
       checked,
       invalid,
       disabled,
+      children,
       className,
       style,
       ...restProps
@@ -32,12 +31,7 @@ export const Radio = withRef(
         className={classy(c('radio-input'), m({ invalid }))}
       />
       <span /* custom "checked" indicator */ aria-hidden="true" />
-      {(label || description) && (
-        <span>
-          <span>{label}</span>
-          <span>{description}</span>
-        </span>
-      )}
+      {children && <span>{children}</span>}
     </label>
   )
 );

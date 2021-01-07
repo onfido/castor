@@ -1,0 +1,14 @@
+@use '../../helpers';
+
+@mixin Description() {
+  .ods-description {
+    @include helpers.font('200-regular');
+
+    color: helpers.color('content-secondary');
+    display: block;
+
+    &.-disabled {
+      color: helpers.color('content-disabled');
+    }
+  }
+}
