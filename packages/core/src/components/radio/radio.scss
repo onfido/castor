@@ -12,28 +12,34 @@
 
     $padding: (helpers.space(6) - $input-size - $input-margin * 2) / 2;
 
-    color: helpers.color('content-main');
+    --color: #{helpers.color('content-main')};
+
+    color: var(--color);
     display: inline-flex;
     gap: $padding;
     padding: $padding;
     position: relative;
-    transition: $transition;
-    transition-property: background-color, border-color;
 
     &.-bordered {
-      border: 1px solid helpers.color('border-separator');
+      --border-color: #{helpers.color('border-separator')};
+
+      background-color: var(--background-color);
+      border: 1px solid var(--border-color);
       border-radius: helpers.border-radius('medium');
       display: flex;
+      transition: $transition;
+      transition-property: background-color;
     }
 
-    &:not(.-disabled).-bordered.-checked {
-      background-color: helpers.color('background-action-subtle');
-      border-color: helpers.color('border-action-subtle');
+    &.-checked {
+      --background-color: #{helpers.color('background-action-subtle')};
+      --border-color: #{helpers.color('border-action-subtle')};
     }
 
     &.-disabled {
-      border-color: helpers.color('border-disabled');
-      color: helpers.color('content-disabled');
+      --background-color: unset;
+      --border-color: #{helpers.color('border-disabled')};
+      --color: #{helpers.color('content-disabled')};
     }
 
     > :not([aria-hidden='true']) {
@@ -45,8 +51,10 @@
     @include mixins.interactive();
     @include mixins.with-outer-focus('action');
 
+    --border-color: #{helpers.color('border-input')};
+
     appearance: none;
-    border: 2px solid helpers.color('border-input');
+    border: 2px solid var(--border-color);
     transition-property: background-color, border-color;
 
     &,
@@ -66,11 +74,11 @@
     }
 
     &:hover {
-      border-color: helpers.color('border-input-hover');
+      --border-color: #{helpers.color('border-input-hover')};
     }
 
     &:checked {
-      border-color: helpers.color('content-action');
+      --border-color: #{helpers.color('content-action')};
     }
 
     &:checked + span {
@@ -79,7 +87,7 @@
 
     &.-invalid {
       @include mixins.with-outer-focus('negative');
-      border-color: helpers.color('border-negative');
+      --border-color: #{helpers.color('border-negative')};
     }
 
     &.-invalid + span {
@@ -87,8 +95,8 @@
     }
 
     &:disabled {
+      --border-color: #{helpers.color('border-disabled')};
       background-color: helpers.color('background-disabled');
-      border-color: helpers.color('border-disabled');
     }
 
     &:disabled + span {
