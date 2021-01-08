@@ -11,7 +11,7 @@ export default {
       table: { type: { summary: 'boolean' } },
     },
     checked: {
-      description: 'When `undefined` fallsback to internal control.',
+      description: 'When `undefined` falls back to internal control.',
       table: { type: { summary: 'boolean' } },
       control: 'boolean',
     },
