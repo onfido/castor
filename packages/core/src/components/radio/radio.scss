@@ -55,7 +55,8 @@
 
     appearance: none;
     border: 2px solid var(--border-color);
-    transition-property: background-color, border-color;
+    transition: $transition;
+    transition-property: background-color;
 
     &,
     + span {
@@ -63,13 +64,13 @@
 
       border-radius: helpers.border-radius('full');
       margin: $input-margin;
-      transition: $transition;
     }
 
     + span {
       background-color: helpers.color('content-action');
       position: absolute;
       transform: scale(0);
+      transition: $transition;
       transition-property: transform;
     }
 
