@@ -38,16 +38,19 @@ export const Bordered = storyOf(Radio, 'bordered', [true, false], {
   labelMode: 'children',
 });
 Bordered.argTypes = omit<RadioProps>('bordered');
+Bordered.args = { name: 'bordered-playground' };
 
 export const Invalid = storyOf(Radio, 'invalid', [true, false], {
   labelMode: 'children',
 });
 Invalid.argTypes = omit<RadioProps>('invalid');
+Invalid.args = { name: 'invalid-playground' };
 
 export const Disabled = storyOf(Radio, 'disabled', [true, false], {
   labelMode: 'children',
 });
 Disabled.argTypes = omit<RadioProps>('disabled');
+Disabled.args = { name: 'disabled-playground' };
 
 interface RadioWithDescriptionProps extends RadioProps {
   label: string;
