@@ -51,10 +51,8 @@
     @include mixins.interactive();
     @include mixins.with-outer-focus('action');
 
-    --border-color: #{helpers.color('border-input')};
-
     appearance: none;
-    border: 2px solid var(--border-color);
+    border: 2px solid #{helpers.color('border-input')};
     transition: $transition;
     transition-property: background-color;
 
@@ -75,11 +73,11 @@
     }
 
     &:hover {
-      --border-color: #{helpers.color('border-input-hover')};
+      border-color: #{helpers.color('border-input-hover')};
     }
 
     &:checked {
-      --border-color: #{helpers.color('content-action')};
+      border-color: #{helpers.color('content-action')};
     }
 
     &:checked + span {
@@ -88,7 +86,7 @@
 
     &.-invalid {
       @include mixins.with-outer-focus('negative');
-      --border-color: #{helpers.color('border-negative')};
+      border-color: #{helpers.color('border-negative')};
     }
 
     &.-invalid + span {
@@ -96,8 +94,8 @@
     }
 
     &:disabled {
-      --border-color: #{helpers.color('border-disabled')};
       background-color: helpers.color('background-disabled');
+      border-color: #{helpers.color('border-disabled')};
     }
 
     &:disabled + span {
