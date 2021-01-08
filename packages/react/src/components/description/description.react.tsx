@@ -6,16 +6,13 @@ import React from 'react';
  */
 export const Description = ({
   disabled,
-  children,
   className,
   ...restProps
 }: DescriptionProps): JSX.Element => (
   <span
     {...restProps}
     className={classy(c('description'), m({ disabled }), className)}
-  >
-    {children}
-  </span>
+  />
 );
 
 export type DescriptionProps = BaseProps & JSX.IntrinsicElements['span'];
