@@ -8,9 +8,22 @@ export default {
   argTypes: {
     ...omit<TextareaProps>('className', 'style'),
     placeholder: { control: 'text' },
+    resize: {
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'vertical' },
+      },
+      control: {
+        type: 'select',
+        options: ['vertical', 'horizontal', 'both', 'none'],
+      },
+    },
     rows: {
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: '3' },
+      },
       control: 'number',
-      table: { type: { summary: 'number' }, defaultValue: { summary: '3' } },
     },
     invalid: {
       table: { type: { summary: 'boolean' } },
@@ -21,6 +34,7 @@ export default {
   },
   args: {
     placeholder: 'Placeholder',
+    resize: 'vertical',
     rows: 3,
     invalid: false,
     disabled: false,
