@@ -1,4 +1,4 @@
-$palette: (
+$_palette: (
   'neutral-900',
   'neutral-800',
   'neutral-700',
@@ -70,7 +70,7 @@ $palette: (
   'error-muted-300'
 );
 
-$aliases: (
+$_aliases: (
   'content-main',
   'content-secondary',
   'content-action',
@@ -140,10 +140,10 @@ $aliases: (
 );
 
 @function color($name, $alpha: 1) {
-  @if index($aliases, $name) {
+  @if index($_aliases, $name) {
     @return rgba(var(--ods-color-#{$name}));
   }
-  @if index($palette, $name) {
+  @if index($_palette, $name) {
     @return rgba(var(--ods-color-#{$name}), #{$alpha});
   }
 
