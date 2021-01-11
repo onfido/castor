@@ -42,7 +42,7 @@
       --color: #{helpers.color('content-disabled')};
     }
 
-    > :not([aria-hidden='true']) {
+    > :nth-child(2) ~ * {
       padding-right: helpers.space(2) - $padding;
     }
   }
