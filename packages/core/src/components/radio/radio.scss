@@ -140,7 +140,7 @@
     cursor: not-allowed;
 
     ~ *,
-    ~ * > .ods-description {
+    .ods-description {
       color: helpers.color('content-disabled');
     }
 
