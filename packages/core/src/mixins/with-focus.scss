@@ -17,7 +17,7 @@ $_max-border-width: $_color-size; // when max, border used instead of color line
     @error '$border-width must be a number';
   }
   @if $border-width < 0 or $border-width > $_max-border-width {
-    @error '$border-width must be between 0 and #{$max-border-width}';
+    @error '$border-width must be between 0 and #{$_max-border-width}';
   }
 
   $inner-spread: $_spread - $border-width;
