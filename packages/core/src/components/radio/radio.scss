@@ -5,101 +5,152 @@
   $transition: 0.15s ease-out;
   $input-size: helpers.space(2.75);
   $input-margin: 1px;
+  $padding: (helpers.space(6) - $input-size - $input-margin * 2) / 2;
 
+  // label
   .ods-radio-label {
     @include helpers.font('300-regular');
     @include mixins.interactive();
 
-    $padding: (helpers.space(6) - $input-size - $input-margin * 2) / 2;
-
-    --color: #{helpers.color('content-main')};
-
-    color: var(--color);
+    color: helpers.color('content-main');
     display: inline-flex;
     gap: $padding;
     padding: $padding;
     position: relative;
 
     &.-bordered {
-      --border-color: #{helpers.color('border-separator')};
-
-      background-color: var(--background-color);
-      border: 1px solid var(--border-color);
-      border-radius: helpers.border-radius('medium');
       display: flex;
-      transition: $transition;
-      transition-property: background-color;
-    }
-
-    &.-checked {
-      --background-color: #{helpers.color('background-action-subtle')};
-      --border-color: #{helpers.color('border-action-subtle')};
-    }
-
-    &.-disabled {
-      --background-color: unset;
-      --border-color: #{helpers.color('border-disabled')};
-      --color: #{helpers.color('content-disabled')};
-    }
-
-    > :nth-child(2) ~ * {
-      padding-right: helpers.space(2) - $padding;
     }
   }
 
+  // input
   .ods-radio-input {
-    @include mixins.interactive();
-    @include mixins.with-outer-focus('action');
+    margin: $input-margin;
+    opacity: 0;
+  }
 
-    appearance: none;
-    border: 2px solid helpers.color('border-input');
+  // text
+  .ods-radio-indicator ~ * {
+    margin-right: helpers.space(2) - $padding;
+  }
+
+  // input and indicators
+  .ods-radio-input,
+  .ods-radio-indicator::after,
+  .ods-radio-indicator::before {
+    @include mixins.square($input-size);
+
+    border-radius: helpers.border-radius('full');
+  }
+
+  // indicator box (container fakes as "label")
+  .ods-radio-indicator {
+    border: 1px solid transparent;
+    border-radius: helpers.border-radius('medium');
+    bottom: 0;
+    left: 0;
+    padding: $padding;
+    right: 0;
+    top: 0;
     transition: $transition;
-    transition-property: background-color;
+    transition-property: background-color, border-color;
 
     &,
-    + span {
-      @include mixins.square($input-size);
-
-      border-radius: helpers.border-radius('full');
-      margin: $input-margin;
-    }
-
-    + span {
-      background-color: helpers.color('content-action');
+    &::after,
+    &::before {
+      box-sizing: border-box;
+      content: '';
+      display: block;
       position: absolute;
-      transform: scale(0);
+    }
+
+    // "outline" (simulating <input />)
+    &::before {
+      border: 2px solid helpers.color('border-input');
       transition: $transition;
-      transition-property: transform;
+      transition-property: background-color, border-color, box-shadow;
     }
 
-    &:hover {
-      border-color: helpers.color('border-input-hover');
+    // "dot" for [checked]
+    &::after {
+      background-color: helpers.color('content-action');
+      transform: scale(0);
+      transition: $transition transform;
+    }
+  }
+
+  // hover
+  .ods-radio-label:hover > .ods-radio-indicator::before {
+    border-color: helpers.color('border-input-hover');
+  }
+
+  // bordered
+  .ods-radio-label.-bordered {
+    > .ods-radio-indicator {
+      border-color: helpers.color('border-separator');
     }
 
-    &:checked {
-      border-color: helpers.color('content-action');
-    }
+    > .ods-radio-input {
+      &:checked + .ods-radio-indicator {
+        background-color: helpers.color('background-action-subtle');
+        border-color: helpers.color('border-action-subtle');
+      }
 
-    &:checked + span {
+      &:disabled + .ods-radio-indicator {
+        background-color: unset;
+        border-color: helpers.color('border-disabled');
+      }
+    }
+  }
+
+  // focus
+  .ods-radio-input:focus + .ods-radio-indicator::before {
+    $size: helpers.space(0.5);
+    $color-line: 0 0 0 $size helpers.color('border-action-focus');
+    $inner-line: 0 0 0 ($size / 2) helpers.color('border-focus-inner');
+
+    box-shadow: $inner-line, $color-line;
+  }
+
+  // checked
+  .ods-radio-input:checked + .ods-radio-indicator {
+    &::after {
       transform: scale(0.6);
     }
 
-    &.-invalid {
-      @include mixins.with-outer-focus('negative');
-      border-color: helpers.color('border-negative');
+    &::before {
+      border-color: helpers.color('content-action');
     }
+  }
 
-    &.-invalid + span {
+  // invalid
+  .ods-radio-input.-invalid + .ods-radio-indicator {
+    &::after {
       background-color: helpers.color('content-negative');
     }
 
-    &:disabled {
-      background-color: helpers.color('background-disabled');
-      border-color: helpers.color('border-disabled');
+    &::before {
+      @include mixins.with-outer-focus('negative');
+      border-color: helpers.color('border-negative');
+    }
+  }
+
+  // disabled
+  .ods-radio-input:disabled + .ods-radio-indicator {
+    cursor: not-allowed;
+
+    ~ *,
+    ~ * > .ods-description {
+      color: helpers.color('content-disabled');
     }
 
-    &:disabled + span {
+    &::after {
       background-color: helpers.color('content-disabled');
+    }
+
+    &::before {
+      background-color: helpers.color('background-disabled');
+      border-color: helpers.color('border-disabled');
     }
   }
 }
