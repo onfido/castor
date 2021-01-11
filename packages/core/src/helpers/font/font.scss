@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use 'sass:string';
 
-$allowed-combinations: (
+$_allowed-combinations: (
   '800-bold',
   '700-bold',
   '600-bold',
@@ -31,7 +31,7 @@ $allowed-combinations: (
   '200-mono'
 );
 
-$sizes: (
+$_sizes: (
   '800': (
     font-size: 3.375rem,
     line-height: 4rem,
@@ -66,7 +66,7 @@ $sizes: (
   ),
 );
 
-$types: (
+$_types: (
   'bold': (
     font-weight: 500,
   ),
@@ -85,7 +85,7 @@ $types: (
 );
 
 @mixin font($name) {
-  @if not index($allowed-combinations, $name) {
+  @if not index($_allowed-combinations, $name) {
     @error 'Font token not supported: #{$name}';
   }
 
@@ -95,22 +95,22 @@ $types: (
     $separator-index: string.index($name, '-');
 
     $size-key: string.slice($name, 1, $separator-index - 1);
-    $size-styles: map.get($sizes, $size-key);
+    $size-styles: map.get($_sizes, $size-key);
     $styles: map.merge($styles, $size-styles);
 
     $type-key: string.slice($name, $separator-index + 1);
-    $type-styles: map.get($types, $type-key);
+    $type-styles: map.get($_types, $type-key);
     $styles: map.merge($styles, $type-styles);
   }
 
-  font-family: get-or-default($styles, font-family, inherit);
-  font-size: get-or-default($styles, font-size, initial);
-  font-weight: get-or-default($styles, font-weight, initial);
-  line-height: get-or-default($styles, line-height, initial);
-  text-transform: get-or-default($styles, text-transform, none);
+  font-family: _get-or-default($styles, font-family, inherit);
+  font-size: _get-or-default($styles, font-size, initial);
+  font-weight: _get-or-default($styles, font-weight, initial);
+  line-height: _get-or-default($styles, line-height, initial);
+  text-transform: _get-or-default($styles, text-transform, none);
 }
 
-@function get-or-default($map, $key, $default) {
+@function _get-or-default($map, $key, $default) {
   @if map.has-key($map, $key) {
     @return map.get($map, $key);
   }

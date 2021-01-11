@@ -1,8 +1,8 @@
-$allowed-sizes: ('small', 'medium', 'large', 'full');
+$_allowed-sizes: ('small', 'medium', 'large', 'full');
 
 @function border-radius($size) {
-  @if not index($allowed-sizes, $size) {
-    @error '$size must be one of (#{$allowed-sizes})';
+  @if not index($_allowed-sizes, $size) {
+    @error '$size must be one of (#{$_allowed-sizes})';
   }
 
   @return var(--ods-border-radius-#{$size});

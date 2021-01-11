@@ -1,18 +1,18 @@
-$allowed-floats: (2.5, 1.5, 0.5, 0.25, 0.125);
-$base: 8px;
+$_allowed-floats: (2.5, 1.5, 0.5, 0.25, 0.125);
+$_base: 8px;
 
 @function space($multiplier) {
-  @if not is-allowed($multiplier) {
-    @error '$multiplier must be an integer or (#{$allowed-floats})';
+  @if not _is-allowed($multiplier) {
+    @error '$multiplier must be an integer or (#{$_allowed-floats})';
   }
 
-  @return $multiplier * $base;
+  @return $multiplier * $_base;
 }
 
-@function is-allowed($multiplier) {
-  @return is-integer($multiplier) or index($allowed-floats, $multiplier);
+@function _is-allowed($multiplier) {
+  @return _is-integer($multiplier) or index($_allowed-floats, $multiplier);
 }
 
-@function is-integer($number) {
+@function _is-integer($number) {
   @return $number % 1 == 0;
 }
