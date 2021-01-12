@@ -10,11 +10,6 @@ export default {
     bordered: {
       table: { type: { summary: 'boolean' } },
     },
-    checked: {
-      description: 'When `undefined` falls back to internal control.',
-      table: { type: { summary: 'boolean' } },
-      control: 'boolean',
-    },
     invalid: {
       table: { type: { summary: 'boolean' } },
     },
@@ -24,7 +19,6 @@ export default {
   },
   args: {
     bordered: false,
-    checked: undefined,
     invalid: false,
     disabled: false,
   },

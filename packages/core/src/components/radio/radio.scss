@@ -2,104 +2,154 @@
 @use '../../mixins';
 
 @mixin Radio() {
-  $transition: 0.15s ease-out;
   $input-size: helpers.space(2.75);
   $input-margin: 1px;
+  $padding: (helpers.space(6) - $input-size - $input-margin * 2) / 2;
+  $transition: 0.15s ease-out;
 
   .ods-radio-label {
     @include helpers.font('300-regular');
-    @include mixins.interactive();
 
-    $padding: (helpers.space(6) - $input-size - $input-margin * 2) / 2;
-
-    --color: #{helpers.color('content-main')};
-
-    color: var(--color);
+    color: helpers.color('content-main');
     display: inline-flex;
     gap: $padding;
     padding: $padding;
     position: relative;
 
     &.-bordered {
-      --border-color: #{helpers.color('border-separator')};
-
-      background-color: var(--background-color);
-      border: 1px solid var(--border-color);
-      border-radius: helpers.border-radius('medium');
       display: flex;
-      transition: $transition;
-      transition-property: background-color;
-    }
-
-    &.-checked {
-      --background-color: #{helpers.color('background-action-subtle')};
-      --border-color: #{helpers.color('border-action-subtle')};
-    }
-
-    &.-disabled {
-      --background-color: unset;
-      --border-color: #{helpers.color('border-disabled')};
-      --color: #{helpers.color('content-disabled')};
-    }
-
-    > :nth-child(2) ~ * {
-      padding-right: helpers.space(2) - $padding;
     }
   }
 
   .ods-radio-input {
-    @include mixins.interactive();
-    @include mixins.with-outer-focus('action');
+    @include mixins.interactive('+ .ods-radio-indicator');
+    @include mixins.with-outer-focus(
+      'action',
+      '+ .ods-radio-indicator::before'
+    );
 
-    appearance: none;
-    border: 2px solid helpers.color('border-input');
+    margin: $input-margin;
+    opacity: 0;
+
+    &.-invalid {
+      @include mixins.with-outer-focus(
+        'negative',
+        '+ .ods-radio-indicator::before'
+      );
+    }
+  }
+
+  .ods-radio-input,
+  .ods-radio-indicator::after,
+  .ods-radio-indicator::before {
+    @include mixins.square($input-size);
+    border-radius: helpers.border-radius('full');
+  }
+
+  // indicator box (container fakes as <label />)
+  .ods-radio-indicator {
+    border: 1px solid transparent;
+    border-radius: helpers.border-radius('medium');
+    bottom: 0;
+    left: 0;
+    padding: $padding;
+    right: 0;
+    top: 0;
     transition: $transition;
-    transition-property: background-color;
+    transition-property: background-color, border-color;
 
     &,
-    + span {
-      @include mixins.square($input-size);
-
-      border-radius: helpers.border-radius('full');
-      margin: $input-margin;
+    &::after,
+    &::before {
+      box-sizing: border-box;
+      content: '';
+      display: block;
+      position: absolute;
     }
 
-    + span {
+    // "outline" (simulating <input />)
+    &::before {
+      border: 2px solid helpers.color('border-input');
+      transition: $transition;
+      transition-property: background-color, border-color;
+    }
+
+    // "dot" for [checked]
+    &::after {
       background-color: helpers.color('content-action');
-      position: absolute;
       transform: scale(0);
       transition: $transition;
       transition-property: transform;
     }
+  }
 
-    &:hover {
+  // children
+  .ods-radio-indicator ~ * {
+    margin-right: helpers.space(2) - $padding;
+  }
+
+  // bordered
+  .ods-radio-label.-bordered {
+    > .ods-radio-indicator {
+      border-color: helpers.color('border-separator');
+    }
+
+    // and [checked]
+    > .ods-radio-input:checked + .ods-radio-indicator {
+      background-color: helpers.color('background-action-subtle');
+      border-color: helpers.color('border-action-subtle');
+    }
+
+    // and [disabled]
+    > .ods-radio-input:disabled + .ods-radio-indicator {
+      background-color: unset;
+      border-color: helpers.color('border-disabled');
+    }
+  }
+
+  // [hover]
+  .ods-radio-input:hover + .ods-radio-indicator {
+    &::before {
       border-color: helpers.color('border-input-hover');
     }
+  }
 
-    &:checked {
-      border-color: helpers.color('content-action');
-    }
-
-    &:checked + span {
+  // [checked]
+  .ods-radio-input:checked + .ods-radio-indicator {
+    &::after {
       transform: scale(0.6);
     }
 
-    &.-invalid {
-      @include mixins.with-outer-focus('negative');
-      border-color: helpers.color('border-negative');
+    &::before {
+      border-color: helpers.color('content-action');
     }
+  }
 
-    &.-invalid + span {
+  // invalid
+  .ods-radio-input.-invalid + .ods-radio-indicator {
+    &::after {
       background-color: helpers.color('content-negative');
     }
 
-    &:disabled {
-      background-color: helpers.color('background-disabled');
-      border-color: helpers.color('border-disabled');
+    &::before {
+      border-color: helpers.color('border-negative');
+    }
+  }
+
+  // [disabled]
+  .ods-radio-input:disabled + .ods-radio-indicator {
+    ~ *,
+    .ods-description {
+      color: helpers.color('content-disabled');
     }
 
-    &:disabled + span {
+    &::after {
       background-color: helpers.color('content-disabled');
+    }
+
+    &::before {
+      background-color: helpers.color('background-disabled');
+      border-color: helpers.color('border-disabled');
     }
   }
 }

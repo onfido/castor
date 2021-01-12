@@ -6,7 +6,7 @@ $_color-spread: 4px;
 $_color-size: 2px;
 $_inner-spread: $_color-spread - $_color-size;
 
-@mixin with-outer-focus($type) {
+@mixin with-outer-focus($type, $target: null) {
   @if not index($_allowed-types, $type) {
     @error '$type must be one of (#{$_allowed-types})';
   }
@@ -14,9 +14,11 @@ $_inner-spread: $_color-spread - $_color-size;
   $color-line: 0 0 0 $_color-spread helpers.color('border-#{$type}-focus');
   $inner-line: 0 0 0 $_inner-spread helpers.color('border-focus-inner');
 
-  outline: none;
+  #{if($target, $target, '&')} {
+    outline: none;
+  }
 
-  &:focus {
+  &:focus #{$target} {
     box-shadow: $inner-line, $color-line;
   }
 }
