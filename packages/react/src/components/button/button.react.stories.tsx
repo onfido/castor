@@ -27,7 +27,17 @@ export default {
   },
 } as Meta<ButtonProps>;
 
-export const Playground: Story<ButtonProps> = (props) => <Button {...props} />;
+export const Playground: Story<ButtonProps> = ({
+  href,
+  ...restProps
+}: ButtonProps & Pick<JSX.IntrinsicElements['a'], 'href'>) => (
+  <Button
+    {...{
+      ...restProps,
+      ...(href && { href }), // don't set "href" key when value is empty string
+    }}
+  />
+);
 
 export const Kind = storyOf(Button, 'kind', ['action', 'destructive']);
 Kind.argTypes = omit<ButtonProps>('kind', 'children');
