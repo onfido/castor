@@ -31,7 +31,7 @@
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@onfido/castor-icons": "^1.1.0",
-    "@storybook/addon-a11y": "^6.1.11",
+    "@storybook/addon-a11y": "^6.1.12",
     "@storybook/addon-controls": "^6.1.12",
     "@storybook/addon-docs": "^6.1.11",
     "@storybook/addon-google-analytics": "^6.1.11",
