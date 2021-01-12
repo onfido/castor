@@ -90,7 +90,7 @@
     }
 
     // and [checked]
-    > .ods-radio-input:checked + .ods-radio-indicator {
+    > .ods-radio-input:not(.-invalid):checked + .ods-radio-indicator {
       background-color: helpers.color('background-action-subtle');
       border-color: helpers.color('border-action-subtle');
     }
