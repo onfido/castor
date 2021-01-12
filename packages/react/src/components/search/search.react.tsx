@@ -21,5 +21,6 @@ export const Search = withRef(
     </div>
   )
 );
+Search.displayName = 'Search';
 
 export type SearchProps = Omit<InputProps, 'invalid' | 'type'>;

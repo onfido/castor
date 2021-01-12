@@ -15,6 +15,7 @@ export const Input = withRef(
     />
   )
 );
+Input.displayName = 'Input';
 
 export type InputProps = BaseProps &
   Omit<JSX.IntrinsicElements['input'], 'children'>;

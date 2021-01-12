@@ -23,6 +23,7 @@ export const Textarea = withRef(
     />
   )
 );
+Textarea.displayName = 'Textarea';
 
 export type TextareaProps = BaseProps &
   Omit<JSX.IntrinsicElements['textarea'], 'children'>;
