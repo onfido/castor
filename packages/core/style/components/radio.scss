@@ -1,0 +1,4 @@
+// this file will generate ./dist/components/radio.css
+@use '../../src/components';
+
+@include components.Radio();

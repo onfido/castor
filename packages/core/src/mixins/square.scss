@@ -1,0 +1,8 @@
+@mixin square($size) {
+  @if type-of($size) != number or $size <= 0 {
+    @error '$size must be a positive number';
+  }
+
+  height: $size;
+  width: $size;
+}

@@ -1,9 +1,13 @@
 @use './button/button';
 @forward './button/button';
+@use './description/description';
+@forward './description/description';
 @use './icon/icon';
 @forward './icon/icon';
 @use './input/input';
 @forward './input/input';
+@use './radio/radio';
+@forward './radio/radio';
 @use './search/search';
 @forward './search/search';
 @use './textarea/textarea';
@@ -11,8 +15,10 @@
 
 @mixin components() {
   @include button.Button();
+  @include description.Description();
   @include icon.Icon();
   @include input.Input();
+  @include radio.Radio();
   @include search.Search();
   @include textarea.Textarea();
 }

@@ -1,8 +1,11 @@
-@mixin interactive() {
-  cursor: pointer;
-  user-select: none;
+@mixin interactive($target: null) {
+  #{if($target, $target, '&')} {
+    cursor: pointer;
+    user-select: none;
+  }
 
-  &:disabled {
+  &.-disabled #{$target},
+  &:disabled #{$target} {
     cursor: not-allowed;
   }
 }

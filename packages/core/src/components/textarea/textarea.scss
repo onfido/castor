@@ -6,7 +6,7 @@
 
   .ods-textarea {
     @include helpers.font('300-regular');
-    @include mixins.with-focus('action', $border-width);
+    @include mixins.with-inner-focus('action', $border-width);
 
     background-color: helpers.color('background-input');
     border: $border-width solid helpers.color('border-input');
@@ -26,7 +26,7 @@
     }
 
     &.-invalid {
-      @include mixins.with-focus('negative', $border-width);
+      @include mixins.with-inner-focus('negative', $border-width);
 
       border-color: helpers.color('border-negative');
       color: helpers.color('content-negative');

@@ -8,7 +8,7 @@ $_color-size: $_spread - $_inner-size;
 
 $_max-border-width: $_color-size; // when max, border used instead of color line
 
-@mixin with-focus($type, $border-width: 0) {
+@mixin with-inner-focus($type, $border-width: 0, $target: null) {
   @if not index($_allowed-types, $type) {
     @error '$type must be one of (#{$_allowed-types})';
   }
@@ -26,9 +26,11 @@ $_max-border-width: $_color-size; // when max, border used instead of color line
   $inner-line: inset 0 0 0 $inner-spread helpers.color('border-focus-inner');
   $color-line: inset 0 0 0 $color-spread helpers.color('border-#{$type}-focus');
 
-  outline: none;
+  #{if($target, $target, '&')} {
+    outline: none;
+  }
 
-  &:focus {
+  &:focus #{$target} {
     box-shadow: $color-line, $inner-line;
 
     @if $border-width > 0 {

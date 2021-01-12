@@ -64,7 +64,7 @@
     &.-action--primary,
     &.-action--secondary,
     &.-action--tertiary {
-      @include mixins.with-focus('action', $border-width);
+      @include mixins.with-inner-focus('action', $border-width);
     }
 
     &.-destructive--primary {
@@ -100,7 +100,7 @@
     &.-destructive--primary,
     &.-destructive--secondary,
     &.-destructive--tertiary {
-      @include mixins.with-focus('negative', $border-width);
+      @include mixins.with-inner-focus('negative', $border-width);
     }
 
     &:disabled {
