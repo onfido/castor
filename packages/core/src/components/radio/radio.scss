@@ -5,7 +5,6 @@
   $input-size: helpers.space(2.75);
   $input-margin: 1px;
   $padding: (helpers.space(6) - $input-size - $input-margin * 2) / 2;
-  $transition: 0.15s ease-out;
 
   .ods-radio-label {
     @include helpers.font('300-regular');
@@ -55,8 +54,6 @@
     padding: $padding;
     right: 0;
     top: 0;
-    transition: $transition;
-    transition-property: background-color, border-color;
 
     &,
     &::after,
@@ -70,15 +67,13 @@
     // "outline" (simulating <input />)
     &::before {
       border: 2px solid helpers.color('border-input');
-      transition: $transition;
-      transition-property: background-color, border-color;
     }
 
     // "dot" for [checked]
     &::after {
       background-color: helpers.color('content-action');
       transform: scale(0);
-      transition: $transition;
+      transition: 0.15s ease-out;
       transition-property: transform;
     }
   }
