@@ -10,16 +10,17 @@ import { Input, InputProps } from '../input/input.react';
  *
  * https://github.com/onfido/castor-icons#use-with-plain-code
  */
-export const Search = withRef(function Search(
-  { className, style, ...restProps }: SearchProps,
-  ref: SearchProps['ref']
-): JSX.Element {
-  return (
+export const Search = withRef(
+  (
+    { className, style, ...restProps }: SearchProps,
+    ref: SearchProps['ref']
+  ): JSX.Element => (
     <div className={classy(c('search'), className)} style={style}>
       <Input {...restProps} ref={ref} type="search" />
       <Icon name="search" />
     </div>
-  );
-});
+  )
+);
+Search.displayName = 'Search';
 
 export type SearchProps = Omit<InputProps, 'invalid' | 'type'>;
