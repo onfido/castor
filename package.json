@@ -34,7 +34,7 @@
     "@storybook/addon-a11y": "^6.1.14",
     "@storybook/addon-controls": "^6.1.14",
     "@storybook/addon-docs": "^6.1.14",
-    "@storybook/addon-google-analytics": "^6.1.12",
+    "@storybook/addon-google-analytics": "^6.1.14",
     "@storybook/addon-toolbars": "^6.1.14",
     "@storybook/components": "^6.1.14",
     "@storybook/react": "^6.1.14",
