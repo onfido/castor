@@ -22,6 +22,7 @@ export const Radio = withRef(
     </label>
   )
 );
+Radio.displayName = 'Radio';
 
 export type RadioProps = BaseProps &
   Omit<JSX.IntrinsicElements['input'], 'type'>;
