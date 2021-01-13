@@ -37,7 +37,7 @@
     "@storybook/addon-google-analytics": "^6.1.12",
     "@storybook/addon-toolbars": "^6.1.12",
     "@storybook/components": "^6.1.14",
-    "@storybook/react": "^6.1.12",
+    "@storybook/react": "^6.1.14",
     "@types/jest": "^26.0.20",
     "@types/react": "^17.0.0",
     "@types/theo": "^8.1.3",
