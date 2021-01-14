@@ -1720,10 +1720,10 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@onfido/castor-icons@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-1.1.0.tgz#6ac9246c1d7228cfa77875d371d8a177f3d64019"
-  integrity sha512-q6y4vfSMqh1m6lucil7Qjv8C1EOp2spwKFvTj8CTrEI6zmSbKV736LAdUGaSsAvmANE4jnMHSTkb03XSE7DZKg==
+"@onfido/castor-icons@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-1.2.0.tgz#269abd74e863a92620e84355d13c016333fe249d"
+  integrity sha512-I/LQKwQwE1Uyb+Uhml9AoiXZeLCZL/wuvDVQ3jdOmvj4RNAvp2O9alFmqcyghQFGqtTxFIHza9jpDbTLjdQ0Uw==
 
 "@open-wc/building-utils@^2.18.3":
   version "2.18.3"

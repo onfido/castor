@@ -10,7 +10,7 @@
     "start": "yarn copy && http-server -p 1111 -o"
   },
   "dependencies": {
-    "@onfido/castor-icons": "^1.1.0"
+    "@onfido/castor-icons": "^1.2.0"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
