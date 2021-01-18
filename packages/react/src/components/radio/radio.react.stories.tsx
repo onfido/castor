@@ -54,12 +54,11 @@ interface RadioWithDescriptionProps extends RadioProps {
 export const WithDescription = ({
   label,
   description,
-  disabled,
   ...restRadioProps
 }: RadioWithDescriptionProps) => (
-  <Radio {...{ ...restRadioProps, disabled }}>
+  <Radio {...restRadioProps}>
     {label}
-    <Description {...{ disabled }}>{description}</Description>
+    <Description>{description}</Description>
   </Radio>
 );
 WithDescription.argTypes = omit<RadioWithDescriptionProps>('children');

@@ -69,7 +69,7 @@
       border: 2px solid helpers.color('border-input');
     }
 
-    // "dot" for [checked]
+    // "dot" for [checked] indication
     &::after {
       background-color: helpers.color('content-action');
       transform: scale(0);
@@ -78,38 +78,33 @@
     }
   }
 
-  // children
-  .ods-radio-indicator ~ * {
-    margin-right: helpers.space(2) - $padding;
-  }
-
-  // bordered
+  // bordered label
   .ods-radio-label.-bordered {
     > .ods-radio-indicator {
       border-color: helpers.color('border-separator');
     }
 
-    // and [checked]
+    // and [checked] (but not invalid) input
     > .ods-radio-input:not(.-invalid):checked + .ods-radio-indicator {
       background-color: helpers.color('background-action-subtle');
       border-color: helpers.color('border-action-subtle');
     }
 
-    // and [disabled]
+    // and [disabled] input
     > .ods-radio-input:disabled + .ods-radio-indicator {
       background-color: unset;
       border-color: helpers.color('border-disabled');
     }
   }
 
-  // [hover]
+  // on input [hover] indication
   .ods-radio-input:hover + .ods-radio-indicator {
     &::before {
       border-color: helpers.color('border-input-hover');
     }
   }
 
-  // [checked]
+  // indicating [checked] input
   .ods-radio-input:checked + .ods-radio-indicator {
     &::after {
       transform: scale(0.6);
@@ -120,7 +115,7 @@
     }
   }
 
-  // invalid
+  // indicating invalid input
   .ods-radio-input.-invalid + .ods-radio-indicator {
     &::after {
       background-color: helpers.color('content-negative');
@@ -131,13 +126,8 @@
     }
   }
 
-  // [disabled]
+  // indicating [disabled] input
   .ods-radio-input:disabled + .ods-radio-indicator {
-    ~ *,
-    .ods-description {
-      color: helpers.color('content-disabled');
-    }
-
     &::after {
       background-color: helpers.color('content-disabled');
     }
@@ -145,6 +135,20 @@
     &::before {
       background-color: helpers.color('background-disabled');
       border-color: helpers.color('border-disabled');
+    }
+  }
+
+  // radio children
+  .ods-radio-indicator ~ * {
+    margin-right: helpers.space(2) - $padding;
+  }
+
+  // children (including description) on [disabled] input
+  .ods-radio-input:disabled ~ {
+    *,
+    .ods-description,
+    * .ods-description {
+      color: helpers.color('content-disabled');
     }
   }
 }
