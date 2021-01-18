@@ -2,7 +2,7 @@ import { c, classy, DescriptionProps as BaseProps, m } from '@onfido/castor';
 import React from 'react';
 
 /**
- * @note Intended to be used within Radio component.
+ * Intended to be used within `Radio` component.
  */
 export const Description = ({
   disabled,
