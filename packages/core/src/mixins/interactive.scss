@@ -1,5 +1,7 @@
+@use './wrap-if' as mixins;
+
 @mixin interactive($target: null) {
-  #{if($target, $target, '&')} {
+  @include mixins.wrap-if($target) {
     cursor: pointer;
     user-select: none;
   }

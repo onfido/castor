@@ -1,0 +1,9 @@
+@mixin wrap-if($selector) {
+  @if not $selector {
+    @content;
+  } @else {
+    #{$selector} {
+      @content;
+    }
+  }
+}
