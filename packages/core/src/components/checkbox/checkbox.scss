@@ -12,7 +12,6 @@
 
     // "outline" (simulating <input />)
     + .ods-input-indicator::before {
-      border: 2px solid helpers.color('border-input');
       transition: 0.15s ease-out;
       transition-property: background-color;
     }
