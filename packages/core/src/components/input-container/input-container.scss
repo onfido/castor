@@ -130,7 +130,7 @@
 
     // for children
     ~ *,
-    ~ * .ods-description {
+    ~ * .ods-helper-text {
       color: helpers.color('content-disabled');
     }
   }

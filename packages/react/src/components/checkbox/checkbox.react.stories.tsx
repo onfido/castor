@@ -1,4 +1,4 @@
-import { Checkbox, CheckboxProps, Description } from '@onfido/castor-react';
+import { Checkbox, CheckboxProps, HelperText } from '@onfido/castor-react';
 import React, { ChangeEvent, useRef } from 'react';
 import { Meta, omit, Story, storyOf } from '../../../../../docs';
 
@@ -59,23 +59,23 @@ export const AsIndeterminate = (props: CheckboxProps) => {
   return <Checkbox {...props} ref={checkboxRef} onChange={handleChange} />;
 };
 
-interface CheckboxWithDescriptionProps extends CheckboxProps {
+interface CheckboxWithHelperTextProps extends CheckboxProps {
   label: string;
-  description: string;
+  helperText: string;
 }
 
-export const WithDescription = ({
+export const WithHelperText = ({
   label,
-  description,
+  helperText,
   ...restCheckboxProps
-}: CheckboxWithDescriptionProps) => (
+}: CheckboxWithHelperTextProps) => (
   <Checkbox {...restCheckboxProps}>
     {label}
-    <Description>{description}</Description>
+    <HelperText>{helperText}</HelperText>
   </Checkbox>
 );
-WithDescription.argTypes = omit<CheckboxWithDescriptionProps>('children');
-WithDescription.args = {
+WithHelperText.argTypes = omit<CheckboxWithHelperTextProps>('children');
+WithHelperText.args = {
   label: 'Label',
-  description: 'Description',
+  helperText: 'Helper text',
 };
