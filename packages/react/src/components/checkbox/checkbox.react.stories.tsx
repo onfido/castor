@@ -6,6 +6,7 @@ export default {
   title: 'React/Checkbox',
   component: Checkbox,
   argTypes: {
+    ...omit<CheckboxProps>('className', 'style'),
     children: { control: 'text' },
     bordered: {
       table: { type: { summary: 'boolean' } },
