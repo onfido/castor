@@ -10,7 +10,7 @@
       border-radius: helpers.border-radius('medium');
     }
 
-    // "outline" (simulating <input />)
+    // "outline" transition
     + .ods-input-indicator::before {
       transition: 0.15s ease-out;
       transition-property: background-color;
