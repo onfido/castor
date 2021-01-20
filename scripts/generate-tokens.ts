@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync } from 'fs';
-import { resolve, join } from 'path';
+import { join, resolve } from 'path';
 import { convert, registerFormat } from 'theo';
 
 const rootPath = resolve('.');
