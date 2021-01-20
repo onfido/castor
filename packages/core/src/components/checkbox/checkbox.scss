@@ -1,0 +1,72 @@
+@use '../../helpers';
+@use '../../mixins';
+
+@mixin Checkbox() {
+  $size: helpers.space(2.75);
+
+  .ods-checkbox {
+    &,
+    + .ods-input-indicator::before {
+      border-radius: helpers.border-radius('medium');
+    }
+
+    // "outline" (simulating <input />)
+    + .ods-input-indicator::before {
+      border: 2px solid helpers.color('border-input');
+      transition: 0.15s ease-out;
+      transition-property: background-color;
+    }
+
+    // "tick" for [checked] indication
+    &:checked + .ods-input-indicator::after {
+      $border-width: 3px;
+      $width: $size / 2;
+
+      border-bottom: $border-width solid helpers.color('content-on-action');
+      border-right: $border-width solid helpers.color('content-on-action');
+      height: $size;
+      margin: -($border-width / 2) ($width / 2) 0;
+      opacity: 0;
+      transform: rotate(45deg) scale(0.6);
+      width: $width;
+    }
+
+    // "line" for [indeterminate] indication
+    &:indeterminate + .ods-input-indicator::after {
+      $height: 3px;
+
+      background-color: helpers.color('content-on-action');
+      height: $height;
+      opacity: 0;
+      top: calc(50% - #{$height} / 2);
+      transform: scale(0.6);
+      width: $size;
+    }
+  }
+
+  // indicating [checked] or [indeterminate] input
+  .ods-checkbox:checked,
+  .ods-checkbox:indeterminate {
+    + .ods-input-indicator::after {
+      opacity: 1;
+    }
+
+    + .ods-input-indicator::before {
+      background-color: helpers.color('background-action');
+    }
+  }
+
+  // indicating invalid and not [disabled] input
+  .ods-checkbox.-invalid:not(:disabled) {
+    // and [checked] or [indeterminate]
+    &:checked + .ods-input-indicator::before,
+    &:indeterminate + .ods-input-indicator::before {
+      background-color: helpers.color('content-negative');
+    }
+  }
+
+  // indicating [disabled] input
+  .ods-checkbox:disabled + .ods-input-indicator::after {
+    border-color: helpers.color('content-disabled');
+  }
+}

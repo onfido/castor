@@ -1,11 +1,15 @@
 @use './button/button';
 @forward './button/button';
+@use './checkbox/checkbox';
+@forward './checkbox/checkbox';
 @use './helper-text/helper-text';
 @forward './helper-text/helper-text';
 @use './icon/icon';
 @forward './icon/icon';
 @use './input/input';
 @forward './input/input';
+@use './input-container/input-container';
+@forward './input-container/input-container';
 @use './radio/radio';
 @forward './radio/radio';
 @use './search/search';
@@ -15,9 +19,11 @@
 
 @mixin components() {
   @include button.Button();
+  @include checkbox.Checkbox();
   @include helper-text.HelperText();
   @include icon.Icon();
   @include input.Input();
+  @include input-container.InputContainer();
   @include radio.Radio();
   @include search.Search();
   @include textarea.Textarea();

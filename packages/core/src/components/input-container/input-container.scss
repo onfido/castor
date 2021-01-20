@@ -1,0 +1,142 @@
+@use '../../helpers';
+@use '../../mixins';
+
+@mixin InputContainer() {
+  $input-size: helpers.space(2.75);
+  $input-margin: 1px;
+  $padding: (helpers.space(6) - $input-size - $input-margin * 2) / 2;
+
+  .ods-input-label {
+    @include helpers.font('300-regular');
+
+    color: helpers.color('content-main');
+    display: inline-flex;
+    gap: $padding;
+    padding: $padding;
+    position: relative;
+
+    &.-bordered {
+      display: flex;
+    }
+  }
+
+  .ods-checkbox,
+  .ods-radio {
+    @include mixins.interactive('+ .ods-input-indicator');
+    @include mixins.with-outer-focus(
+      'action',
+      '+ .ods-input-indicator::before'
+    );
+
+    margin: $input-margin;
+    opacity: 0;
+
+    &.-invalid {
+      @include mixins.with-outer-focus(
+        'negative',
+        '+ .ods-input-indicator::before'
+      );
+    }
+  }
+
+  .ods-checkbox,
+  .ods-radio,
+  .ods-input-indicator::after,
+  .ods-input-indicator::before {
+    @include mixins.square($input-size);
+  }
+
+  .ods-input-indicator {
+    border: 1px solid transparent;
+    border-radius: helpers.border-radius('medium');
+    bottom: 0;
+    left: 0;
+    padding: $padding;
+    right: 0;
+    top: 0;
+
+    &,
+    &::after,
+    &::before {
+      box-sizing: border-box;
+      content: '';
+      display: block;
+      position: absolute;
+    }
+
+    // "outline" (simulating <input />)
+    &::before {
+      border: 2px solid helpers.color('border-input');
+    }
+  }
+
+  // bordered label
+  .ods-input-label.-bordered {
+    > .ods-input-indicator {
+      border-color: helpers.color('border-separator');
+    }
+
+    // and [checked] (or [indeterminate] when applicable) but not disabled and not invalid input
+    > .ods-checkbox:checked,
+    > .ods-checkbox:indeterminate,
+    > .ods-radio:checked {
+      &:not(:disabled):not(.-invalid) + .ods-input-indicator {
+        background-color: helpers.color('background-action-subtle');
+        border-color: helpers.color('border-action-subtle');
+      }
+    }
+
+    // and [disabled] input
+    > .ods-checkbox,
+    > .ods-radio {
+      &:disabled + .ods-input-indicator {
+        border-color: helpers.color('border-disabled');
+      }
+    }
+  }
+
+  // on input [hover] indication
+  .ods-checkbox:hover,
+  .ods-radio:hover {
+    + .ods-input-indicator::before {
+      border-color: helpers.color('border-input-hover');
+    }
+  }
+
+  // indicating [checked] (and [indeterminate] when applicable) input
+  .ods-checkbox:checked,
+  .ods-checkbox:indeterminate,
+  .ods-radio:checked {
+    + .ods-input-indicator::before {
+      border-color: helpers.color('content-action');
+    }
+  }
+
+  // indicating invalid input
+  .ods-checkbox.-invalid,
+  .ods-radio.-invalid {
+    + .ods-input-indicator::before {
+      border-color: helpers.color('border-negative');
+    }
+  }
+
+  // indicating [disabled] input
+  .ods-checkbox:disabled,
+  .ods-radio:disabled {
+    + .ods-input-indicator::before {
+      background-color: helpers.color('background-disabled');
+      border-color: helpers.color('border-disabled');
+    }
+
+    // for children
+    ~ *,
+    ~ * .ods-description {
+      color: helpers.color('content-disabled');
+    }
+  }
+
+  // container children
+  .ods-input-indicator ~ * {
+    margin-right: helpers.space(2) - $padding;
+  }
+}

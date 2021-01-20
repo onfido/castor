@@ -1,0 +1,4 @@
+// this file will generate ./dist/components/input-container.css
+@use '../../src/components';
+
+@include components.InputContainer();

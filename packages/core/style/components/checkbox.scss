@@ -1,0 +1,4 @@
+// this file will generate ./dist/components/checkbox.css
+@use '../../src/components';
+
+@include components.Checkbox();
