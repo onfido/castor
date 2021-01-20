@@ -1,44 +1,7 @@
-@use '../../helpers';
 @use '../../mixins';
 
 @mixin Input() {
-  $border-width: 1px;
-
   .ods-input {
-    @include helpers.font('300-regular');
-    @include mixins.with-inner-focus('action', $border-width);
-
-    background-color: helpers.color('background-input');
-    border: $border-width solid helpers.color('border-input');
-    border-radius: helpers.border-radius('medium');
-    box-sizing: border-box;
-    color: helpers.color('content-main');
-    padding: helpers.space(1.5) - $border-width helpers.space(2) - $border-width;
-    width: helpers.space(50);
-
-    &::placeholder {
-      color: helpers.color('content-placeholder');
-    }
-
-    &:hover {
-      border-color: helpers.color('border-input-hover');
-    }
-
-    &.-invalid {
-      @include mixins.with-inner-focus('negative', $border-width);
-
-      border-color: helpers.color('border-negative');
-      color: helpers.color('content-negative');
-    }
-
-    &:disabled {
-      background-color: helpers.color('background-disabled');
-      border-color: helpers.color('border-disabled');
-      color: helpers.color('content-disabled');
-
-      &::placeholder {
-        color: inherit;
-      }
-    }
+    @include mixins.as-text-input();
   }
 }
