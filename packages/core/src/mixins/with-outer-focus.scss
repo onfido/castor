@@ -1,4 +1,5 @@
 @use '../helpers';
+@use './wrap-if' as mixins;
 
 $_allowed-types: ('action', 'negative');
 
@@ -14,7 +15,7 @@ $_inner-spread: $_color-spread - $_color-size;
   $color-line: 0 0 0 $_color-spread helpers.color('border-#{$type}-focus');
   $inner-line: 0 0 0 $_inner-spread helpers.color('border-focus-inner');
 
-  #{if($target, $target, '&')} {
+  @include mixins.wrap-if($target) {
     outline: none;
   }
 

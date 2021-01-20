@@ -11,15 +11,9 @@
     "scss/no-global-function-names": true,
     "order/order": [
       [
-        {
-          "type": "at-rule",
-          "name": "include"
-        },
-        {
-          "type": "at-rule",
-          "name": "extend"
-        },
         "dollar-variables",
+        { "type": "at-rule", "name": "include" },
+        { "type": "at-rule", "name": "extend" },
         "custom-properties",
         "declarations",
         "rules"

@@ -1,4 +1,5 @@
 @use '../helpers';
+@use './wrap-if' as mixins;
 
 $_allowed-types: ('action', 'negative');
 
@@ -26,7 +27,7 @@ $_max-border-width: $_color-size; // when max, border used instead of color line
   $inner-line: inset 0 0 0 $inner-spread helpers.color('border-focus-inner');
   $color-line: inset 0 0 0 $color-spread helpers.color('border-#{$type}-focus');
 
-  #{if($target, $target, '&')} {
+  @include mixins.wrap-if($target) {
     outline: none;
   }
 

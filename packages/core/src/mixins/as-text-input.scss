@@ -2,9 +2,9 @@
 @use './with-inner-focus' as mixins;
 
 @mixin as-text-input() {
-  @include helpers.font('300-regular');
-
   $border-width: 1px;
+
+  @include helpers.font('300-regular');
 
   background-color: helpers.color('background-input');
   border: $border-width solid helpers.color('border-input');

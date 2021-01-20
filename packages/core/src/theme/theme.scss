@@ -1,4 +1,5 @@
 @use 'sass:list';
+@use '../mixins';
 @use './tokens' as castor;
 
 // ...$types: 'class' | 'raw';
@@ -6,9 +7,9 @@
   $class: list.index($types, 'class');
   $raw: list.index($types, 'raw');
 
-  $selector: if($class, '.castor-theme--#{$name}', '&');
+  $selector: if($class, '.castor-theme--#{$name}', null);
 
-  #{$selector} {
+  @include mixins.wrap-if($selector) {
     @if not $raw {
       @include castor.tokens();
     }
