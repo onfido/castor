@@ -8,7 +8,7 @@ export const Radio = withRef(
     { bordered, invalid, children, className, style, ...restProps }: RadioProps,
     ref: RadioProps['ref']
   ): JSX.Element => (
-    <InputContainer {...{ bordered, className, style }}>
+    <InputContainer bordered={bordered} className={className} style={style}>
       {{
         children,
         input: (

@@ -15,7 +15,7 @@ export const Checkbox = withRef(
     }: CheckboxProps,
     ref: CheckboxProps['ref']
   ): JSX.Element => (
-    <InputContainer {...{ bordered, className, style }}>
+    <InputContainer bordered={bordered} className={className} style={style}>
       {{
         children,
         input: (
