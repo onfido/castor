@@ -1,6 +1,6 @@
 import { c, classy, m, RadioProps as BaseProps } from '@onfido/castor';
-import { InputContainer } from '@onfido/castor-react';
 import React from 'react';
+import { InputContainer } from '../../internal';
 import { withRef } from '../../utils';
 
 export const Radio = withRef(

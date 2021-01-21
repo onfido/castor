@@ -1,4 +1,5 @@
-import { c, classy, InputContainerProps as BaseProps, m } from '@onfido/castor';
+import { c, classy, m } from '@onfido/castor';
+import { InputContainerProps as BaseProps } from '@onfido/castor/src/internal';
 import React from 'react';
 
 /**

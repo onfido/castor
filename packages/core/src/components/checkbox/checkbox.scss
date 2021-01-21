@@ -1,11 +1,11 @@
 @use '../../helpers';
+@use '../../internal';
 @use '../../mixins';
-@use '../input-container/input-container' as components;
 
 @mixin Checkbox() {
   $stroke-size: helpers.space(0.25);
 
-  @include components.InputContainer();
+  @include internal.InputContainer();
 
   .ods-checkbox {
     &,

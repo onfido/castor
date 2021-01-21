@@ -1,9 +1,9 @@
 @use '../../helpers';
+@use '../../internal';
 @use '../../mixins';
-@use '../input-container/input-container' as components;
 
 @mixin Radio() {
-  @include components.InputContainer();
+  @include internal.InputContainer();
 
   .ods-radio {
     &,

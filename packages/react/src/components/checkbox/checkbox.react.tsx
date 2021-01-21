@@ -1,6 +1,6 @@
 import { c, CheckboxProps as BaseProps, classy, m } from '@onfido/castor';
-import { InputContainer } from '@onfido/castor-react';
 import React from 'react';
+import { InputContainer } from '../../internal';
 import { withRef } from '../../utils';
 
 export const Checkbox = withRef(
