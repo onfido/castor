@@ -33,19 +33,16 @@ export const Bordered = storyOf(Checkbox, 'bordered', [true, false], {
   labelMode: 'children',
 });
 Bordered.argTypes = omit<CheckboxProps>('bordered');
-Bordered.args = { name: 'bordered-playground' };
 
 export const Invalid = storyOf(Checkbox, 'invalid', [true, false], {
   labelMode: 'children',
 });
 Invalid.argTypes = omit<CheckboxProps>('invalid');
-Invalid.args = { name: 'invalid-playground' };
 
 export const Disabled = storyOf(Checkbox, 'disabled', [true, false], {
   labelMode: 'children',
 });
 Disabled.argTypes = omit<CheckboxProps>('disabled');
-Disabled.args = { name: 'disabled-playground' };
 
 export const AsIndeterminate = (props: CheckboxProps) => {
   const checkboxRef = useRef<HTMLInputElement | null>(null);
