@@ -36,6 +36,7 @@
 
       background-color: helpers.color('content-on-action');
       height: $height;
+      margin: 0;
       opacity: 0;
       top: calc(50% - #{$height} / 2);
       transform: scale(0.6);
