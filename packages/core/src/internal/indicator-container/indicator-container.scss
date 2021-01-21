@@ -1,7 +1,7 @@
 @use '../../helpers';
 @use '../../mixins';
 
-@mixin InputContainer() {
+@mixin IndicatorContainer() {
   $input-size: helpers.space(2.75);
   $input-margin: 1px;
   $padding: (helpers.space(6) - $input-size - $input-margin * 2) / 2;

@@ -3,7 +3,7 @@
 @use '../../mixins';
 
 @mixin Radio() {
-  @include internal.InputContainer();
+  @include internal.IndicatorContainer();
 
   .ods-radio {
     &,

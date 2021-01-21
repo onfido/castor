@@ -1,6 +1,6 @@
 import { c, classy, m, RadioProps as BaseProps } from '@onfido/castor';
 import React from 'react';
-import { InputContainer } from '../../internal';
+import { IndicatorContainer } from '../../internal';
 import { withRef } from '../../utils';
 
 export const Radio = withRef(
@@ -8,7 +8,7 @@ export const Radio = withRef(
     { bordered, invalid, children, className, style, ...restProps }: RadioProps,
     ref: RadioProps['ref']
   ): JSX.Element => (
-    <InputContainer bordered={bordered} className={className} style={style}>
+    <IndicatorContainer bordered={bordered} className={className} style={style}>
       {{
         children,
         input: (
@@ -20,7 +20,7 @@ export const Radio = withRef(
           />
         ),
       }}
-    </InputContainer>
+    </IndicatorContainer>
   )
 );
 Radio.displayName = 'Radio';

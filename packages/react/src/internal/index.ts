@@ -1,1 +1,1 @@
-export * from './input-container/input-container.react';
+export * from './indicator-container/indicator-container.react';

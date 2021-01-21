@@ -5,7 +5,7 @@
 @mixin Checkbox() {
   $stroke-size: helpers.space(0.25);
 
-  @include internal.InputContainer();
+  @include internal.IndicatorContainer();
 
   .ods-checkbox {
     &,

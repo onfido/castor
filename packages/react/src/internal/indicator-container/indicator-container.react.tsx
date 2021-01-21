@@ -1,17 +1,17 @@
 import { c, classy, m } from '@onfido/castor';
-import { InputContainerProps as BaseProps } from '@onfido/castor/src/internal';
+import { IndicatorContainerProps as BaseProps } from '@onfido/castor/src/internal';
 import React from 'react';
 
 /**
  * Container for `Checkbox` and `Radio` input components, adding custom
  * indicator within <label> element.
  */
-export const InputContainer = ({
+export const IndicatorContainer = ({
   bordered,
   children: { input, children },
   className,
   ...restProps
-}: InputContainerProps): JSX.Element => (
+}: IndicatorContainerProps): JSX.Element => (
   <label
     {...restProps}
     className={classy(c('input-label'), m({ bordered }), className)}
@@ -22,7 +22,7 @@ export const InputContainer = ({
   </label>
 );
 
-export type InputContainerProps = BaseProps &
+export type IndicatorContainerProps = BaseProps &
   Omit<JSX.IntrinsicElements['label'], 'children'> & {
     children: {
       children: JSX.IntrinsicElements['label']['children'];
