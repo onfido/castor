@@ -1,7 +1,10 @@
 @use '../../helpers';
 @use '../../mixins';
+@use '../input-container/input-container' as components;
 
 @mixin Radio() {
+  @include components.InputContainer();
+
   .ods-radio {
     &,
     + .ods-input-indicator::after,
