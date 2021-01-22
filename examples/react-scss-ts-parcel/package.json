@@ -8,7 +8,7 @@
     "start": "parcel src/index.html --open"
   },
   "dependencies": {
-    "@onfido/castor-icons": "^1.2.0",
+    "@onfido/castor-icons": "*",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },

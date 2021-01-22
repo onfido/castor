@@ -30,7 +30,7 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
-    "@onfido/castor-icons": "^1.2.0",
+    "@onfido/castor-icons": "*",
     "@storybook/addon-a11y": "^6.1.14",
     "@storybook/addon-controls": "^6.1.14",
     "@storybook/addon-docs": "^6.1.14",
