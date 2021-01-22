@@ -1,7 +1,7 @@
 @use './button/button';
 @forward './button/button';
-@use './description/description';
-@forward './description/description';
+@use './helper-text/helper-text';
+@forward './helper-text/helper-text';
 @use './icon/icon';
 @forward './icon/icon';
 @use './input/input';
@@ -15,7 +15,7 @@
 
 @mixin components() {
   @include button.Button();
-  @include description.Description();
+  @include helper-text.HelperText();
   @include icon.Icon();
   @include input.Input();
   @include radio.Radio();

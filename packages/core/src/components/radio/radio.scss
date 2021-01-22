@@ -143,11 +143,11 @@
     margin-right: helpers.space(2) - $padding;
   }
 
-  // children (including description) on [disabled] input
+  // children (including helper text) on [disabled] input
   .ods-radio-input:disabled ~ {
     *,
-    .ods-description,
-    * .ods-description {
+    .ods-helper-text,
+    * .ods-helper-text {
       color: helpers.color('content-disabled');
     }
   }
