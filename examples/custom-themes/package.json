@@ -8,7 +8,7 @@
     "start": "parcel src/index.html --open"
   },
   "dependencies": {
-    "@onfido/castor-icons": "^1.2.0"
+    "@onfido/castor-icons": "*"
   },
   "devDependencies": {
     "autoprefixer": "^9.8.6",
