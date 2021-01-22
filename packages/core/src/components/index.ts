@@ -1,5 +1,5 @@
 export * from './button/button';
-export * from './description/description';
+export * from './helper-text/helper-text';
 export * from './icon/icon';
 export * from './input/input';
 export * from './radio/radio';

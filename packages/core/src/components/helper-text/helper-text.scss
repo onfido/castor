@@ -1,7 +1,7 @@
 @use '../../helpers';
 
-@mixin Description() {
-  .ods-description {
+@mixin HelperText() {
+  .ods-helper-text {
     @include helpers.font('200-regular');
 
     color: helpers.color('content-secondary');

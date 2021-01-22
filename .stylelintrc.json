@@ -5,7 +5,7 @@
     "selector-class-pattern": "^-?[a-z]+(?:--?[a-z]+)*$",
     "scss/dollar-variable-pattern": "^_?[a-z]+(?:-[a-z]+)*$",
     "scss/at-function-pattern": "^_?[a-z]+(?:-[a-z]+)*$",
-    "scss/at-mixin-pattern": "^[A-Z]?[a-z]+(?:-[a-z]+)*$",
+    "scss/at-mixin-pattern": "^[A-z]+$|^[a-z]+(?:-[a-z]+)*$",
     "scss/at-mixin-argumentless-call-parentheses": "always",
     "scss/at-rule-conditional-no-parentheses": true,
     "scss/no-global-function-names": true,
