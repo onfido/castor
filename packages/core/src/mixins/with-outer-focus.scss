@@ -1,3 +1,4 @@
+@use 'sass:list';
 @use '../helpers';
 @use './wrap-if' as mixins;
 
@@ -8,7 +9,7 @@ $_color-size: 2px;
 $_inner-spread: $_color-spread - $_color-size;
 
 @mixin with-outer-focus($type, $target: null) {
-  @if not index($_allowed-types, $type) {
+  @if not list.index($_allowed-types, $type) {
     @error '$type must be one of (#{$_allowed-types})';
   }
 

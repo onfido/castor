@@ -1,3 +1,4 @@
+@use 'sass:list';
 @use 'sass:map';
 @use 'sass:string';
 
@@ -85,7 +86,7 @@ $_types: (
 );
 
 @mixin font($name) {
-  @if not index($_allowed-combinations, $name) {
+  @if not list.index($_allowed-combinations, $name) {
     @error 'Font token not supported: #{$name}';
   }
 

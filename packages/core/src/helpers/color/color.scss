@@ -1,3 +1,5 @@
+@use 'sass:list';
+
 $_palette: (
   'neutral-900',
   'neutral-800',
@@ -140,10 +142,10 @@ $_aliases: (
 );
 
 @function color($name, $alpha: 1) {
-  @if index($_aliases, $name) {
+  @if list.index($_aliases, $name) {
     @return rgba(var(--ods-color-#{$name}));
   }
-  @if index($_palette, $name) {
+  @if list.index($_palette, $name) {
     @return rgba(var(--ods-color-#{$name}), #{$alpha});
   }
 
