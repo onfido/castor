@@ -1,0 +1,15 @@
+@use 'sass:map';
+
+$_all-included: ();
+
+@function is-included($key) {
+  @if not map.get($_all-included, $key) {
+    $_current-included: (
+      $key: true,
+    );
+    $_all-included: map.merge($_all-included, $_current-included) !global;
+    @return false;
+  }
+
+  @return true;
+}

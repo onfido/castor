@@ -1,9 +1,12 @@
 @use '../../helpers';
 @use '../../internal';
 @use '../../mixins';
+@use '../included';
 
 @mixin Radio() {
-  @include internal.IndicatorContainer();
+  @if not included.is-included('indicator-container') {
+    @include internal.IndicatorContainer();
+  }
 
   .ods-radio {
     &,

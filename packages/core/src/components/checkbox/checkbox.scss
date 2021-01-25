@@ -1,11 +1,14 @@
 @use '../../helpers';
 @use '../../internal';
 @use '../../mixins';
+@use '../included';
 
 @mixin Checkbox() {
   $stroke-size: helpers.space(0.25);
 
-  @include internal.IndicatorContainer();
+  @if not included.is-included('indicator-container') {
+    @include internal.IndicatorContainer();
+  }
 
   .ods-checkbox {
     &,
