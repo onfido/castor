@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-rc.4](https://github.com/onfido/castor/compare/v1.0.0-rc.3...v1.0.0-rc.4) (2021-01-26)
+
+### ⚠ BREAKING CHANGES
+
+- **core:** CSS for each individual component is no longer being generated and distributed. Use
+  Sass to pick individual component styling, or eliminate dead code from "castor.css" on your app.
+- Use HelperText instead of Description within Radio
+  component.
+
+### Features
+
+- add checkbox component ([#78](https://github.com/onfido/castor/issues/78)) ([4ede06a](https://github.com/onfido/castor/commit/4ede06ab5975632d3f49cd2f7b8010a81a2087c6)), closes [#1](https://github.com/onfido/castor/issues/1)
+- **core:** do not distribute individual component css files ([#225](https://github.com/onfido/castor/issues/225)) ([c1e4feb](https://github.com/onfido/castor/commit/c1e4feb47468dccf9e781dbde0bfff5242736029))
+- rename description component to helper-text ([#216](https://github.com/onfido/castor/issues/216)) ([2cdabe0](https://github.com/onfido/castor/commit/2cdabe075a9752576119a829f61e28e0a2ebba6a))
+
 ## [1.0.0-rc.3](https://github.com/onfido/castor/compare/v1.0.0-rc.2...v1.0.0-rc.3) (2021-01-20)
 
 ### Features
