@@ -1,10 +1,10 @@
 @use '../../helpers';
 @use '../../internal';
 @use '../../mixins';
-@use '../included';
+@use '../includes';
 
 @mixin Radio() {
-  @if not included.is-included('indicator-container') {
+  @if not includes.the('indicator-container') {
     @include internal.IndicatorContainer();
   }
 

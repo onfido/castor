@@ -2,7 +2,7 @@
 
 $_included: ();
 
-@function is-included($key) {
+@function the($key) {
   @if not map.get($_included, $key) {
     $_included: map.set($_included, $key, true) !global;
     @return false;
