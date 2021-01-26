@@ -1,0 +1,71 @@
+@use '../../helpers';
+@use '../../internal';
+@use '../../mixins';
+@use '../includes';
+
+@mixin Checkbox() {
+  $stroke-size: helpers.space(0.25);
+
+  @if not includes.the('indicator-container') {
+    @include internal.IndicatorContainer();
+  }
+
+  .ods-checkbox {
+    &,
+    + .ods-input-indicator::before {
+      border-radius: helpers.border-radius('medium');
+    }
+
+    // "outline" transition
+    + .ods-input-indicator::before {
+      transition: 0.15s ease-out;
+      transition-property: background-color;
+    }
+
+    // "tick" for [checked] indication
+    &:checked + .ods-input-indicator::after {
+      $width: helpers.space(1.75);
+
+      border: 0 solid helpers.color('content-on-action');
+      border-width: 0 0 $stroke-size $stroke-size;
+      height: $width / 2;
+      transform: rotate(-45deg);
+      transform-origin: 110% 20%; // rotates rectangle from dead center
+      width: $width;
+    }
+
+    // "line" for [indeterminate] indication
+    &:indeterminate + .ods-input-indicator::after {
+      $size: helpers.space(2.75);
+      $width: helpers.space(1.5);
+
+      background-color: helpers.color('content-on-action');
+      height: $stroke-size;
+      margin: (($size - $stroke-size) / 2) (($size - $width) / 2);
+      transform: none; // Firefox sets both [checked] and [indeterminate] states
+      width: $width;
+    }
+  }
+
+  // indicating [checked] or [indeterminate] input
+  .ods-checkbox:checked,
+  .ods-checkbox:indeterminate {
+    + .ods-input-indicator::before {
+      background-color: helpers.color('background-action');
+    }
+  }
+
+  // indicating invalid and not [disabled] input
+  .ods-checkbox.-invalid:not(:disabled) {
+    // and [checked] or [indeterminate]
+    &:checked + .ods-input-indicator::before,
+    &:indeterminate + .ods-input-indicator::before {
+      background-color: helpers.color('content-negative');
+    }
+  }
+
+  // indicating [disabled] input
+  .ods-checkbox:disabled + .ods-input-indicator::after {
+    border-color: helpers.color('content-disabled');
+  }
+}

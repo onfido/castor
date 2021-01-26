@@ -1,4 +1,5 @@
 export * from './button/button.react';
+export * from './checkbox/checkbox.react';
 export * from './helper-text/helper-text.react';
 export * from './icon/icon.react';
 export * from './input/input.react';

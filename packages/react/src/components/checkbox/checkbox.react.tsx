@@ -1,12 +1,19 @@
-import { c, classy, m, RadioProps as BaseProps } from '@onfido/castor';
+import { c, CheckboxProps as BaseProps, classy, m } from '@onfido/castor';
 import React from 'react';
 import { IndicatorContainer } from '../../internal';
 import { withRef } from '../../utils';
 
-export const Radio = withRef(
+export const Checkbox = withRef(
   (
-    { bordered, invalid, children, className, style, ...restProps }: RadioProps,
-    ref: RadioProps['ref']
+    {
+      bordered,
+      invalid,
+      children,
+      className,
+      style,
+      ...restProps
+    }: CheckboxProps,
+    ref: CheckboxProps['ref']
   ): JSX.Element => (
     <IndicatorContainer bordered={bordered} className={className} style={style}>
       {{
@@ -15,15 +22,15 @@ export const Radio = withRef(
           <input
             {...restProps}
             ref={ref}
-            type="radio"
-            className={classy(c('radio'), m({ invalid }))}
+            type="checkbox"
+            className={classy(c('checkbox'), m({ invalid }))}
           />
         ),
       }}
     </IndicatorContainer>
   )
 );
-Radio.displayName = 'Radio';
+Checkbox.displayName = 'Checkbox';
 
-export type RadioProps = BaseProps &
+export type CheckboxProps = BaseProps &
   Omit<JSX.IntrinsicElements['input'], 'type'>;

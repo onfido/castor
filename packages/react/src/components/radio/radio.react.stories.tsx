@@ -6,6 +6,7 @@ export default {
   title: 'React/Radio',
   component: Radio,
   argTypes: {
+    ...omit<RadioProps>('className', 'style'),
     children: { control: 'text' },
     bordered: {
       table: { type: { summary: 'boolean' } },

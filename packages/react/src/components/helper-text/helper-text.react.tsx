@@ -2,7 +2,7 @@ import { c, classy, HelperTextProps as BaseProps, m } from '@onfido/castor';
 import React from 'react';
 
 /**
- * Intended to be used within `Radio` component.
+ * Intended to be used within `Checkbox` and `Radio` components.
  */
 export const HelperText = ({
   disabled,

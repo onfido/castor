@@ -1,76 +1,22 @@
 @use '../../helpers';
+@use '../../internal';
 @use '../../mixins';
+@use '../includes';
 
 @mixin Radio() {
-  $input-size: helpers.space(2.75);
-  $input-margin: 1px;
-  $padding: (helpers.space(6) - $input-size - $input-margin * 2) / 2;
-
-  .ods-radio-label {
-    @include helpers.font('300-regular');
-
-    color: helpers.color('content-main');
-    display: inline-flex;
-    gap: $padding;
-    padding: $padding;
-    position: relative;
-
-    &.-bordered {
-      display: flex;
-    }
+  @if not includes.the('indicator-container') {
+    @include internal.IndicatorContainer();
   }
 
-  .ods-radio-input {
-    @include mixins.interactive('+ .ods-radio-indicator');
-    @include mixins.with-outer-focus(
-      'action',
-      '+ .ods-radio-indicator::before'
-    );
-
-    margin: $input-margin;
-    opacity: 0;
-
-    &.-invalid {
-      @include mixins.with-outer-focus(
-        'negative',
-        '+ .ods-radio-indicator::before'
-      );
-    }
-  }
-
-  .ods-radio-input,
-  .ods-radio-indicator::after,
-  .ods-radio-indicator::before {
-    @include mixins.square($input-size);
-    border-radius: helpers.border-radius('full');
-  }
-
-  // indicator box (container fakes as <label />)
-  .ods-radio-indicator {
-    border: 1px solid transparent;
-    border-radius: helpers.border-radius('medium');
-    bottom: 0;
-    left: 0;
-    padding: $padding;
-    right: 0;
-    top: 0;
-
+  .ods-radio {
     &,
-    &::after,
-    &::before {
-      box-sizing: border-box;
-      content: '';
-      display: block;
-      position: absolute;
-    }
-
-    // "outline" (simulating <input />)
-    &::before {
-      border: 2px solid helpers.color('border-input');
+    + .ods-input-indicator::after,
+    + .ods-input-indicator::before {
+      border-radius: helpers.border-radius('full');
     }
 
     // "dot" for [checked] indication
-    &::after {
+    + .ods-input-indicator::after {
       background-color: helpers.color('content-action');
       transform: scale(0);
       transition: 0.15s ease-out;
@@ -78,77 +24,18 @@
     }
   }
 
-  // bordered label
-  .ods-radio-label.-bordered {
-    > .ods-radio-indicator {
-      border-color: helpers.color('border-separator');
-    }
-
-    // and [checked] (but not invalid) input
-    > .ods-radio-input:not(.-invalid):checked + .ods-radio-indicator {
-      background-color: helpers.color('background-action-subtle');
-      border-color: helpers.color('border-action-subtle');
-    }
-
-    // and [disabled] input
-    > .ods-radio-input:disabled + .ods-radio-indicator {
-      background-color: unset;
-      border-color: helpers.color('border-disabled');
-    }
-  }
-
-  // on input [hover] indication
-  .ods-radio-input:hover + .ods-radio-indicator {
-    &::before {
-      border-color: helpers.color('border-input-hover');
-    }
-  }
-
   // indicating [checked] input
-  .ods-radio-input:checked + .ods-radio-indicator {
-    &::after {
-      transform: scale(0.6);
-    }
-
-    &::before {
-      border-color: helpers.color('content-action');
-    }
+  .ods-radio:checked + .ods-input-indicator::after {
+    transform: scale(0.6);
   }
 
   // indicating invalid input
-  .ods-radio-input.-invalid + .ods-radio-indicator {
-    &::after {
-      background-color: helpers.color('content-negative');
-    }
-
-    &::before {
-      border-color: helpers.color('border-negative');
-    }
+  .ods-radio.-invalid + .ods-input-indicator::after {
+    background-color: helpers.color('content-negative');
   }
 
   // indicating [disabled] input
-  .ods-radio-input:disabled + .ods-radio-indicator {
-    &::after {
-      background-color: helpers.color('content-disabled');
-    }
-
-    &::before {
-      background-color: helpers.color('background-disabled');
-      border-color: helpers.color('border-disabled');
-    }
-  }
-
-  // radio children
-  .ods-radio-indicator ~ * {
-    margin-right: helpers.space(2) - $padding;
-  }
-
-  // children (including helper text) on [disabled] input
-  .ods-radio-input:disabled ~ {
-    *,
-    .ods-helper-text,
-    * .ods-helper-text {
-      color: helpers.color('content-disabled');
-    }
+  .ods-radio:disabled + .ods-input-indicator::after {
+    background-color: helpers.color('content-disabled');
   }
 }
