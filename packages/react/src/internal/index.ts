@@ -1,1 +1,1 @@
-export * from './indicator-container/indicator-container';
+export * from './indicator-container';
