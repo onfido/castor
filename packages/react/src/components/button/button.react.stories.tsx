@@ -70,8 +70,9 @@ export const WithIcon = ({
 }: ButtonWithIconProps) => (
   <div
     style={{
-      display: 'flex',
+      display: 'inline-grid',
       gap: space(1),
+      gridAutoFlow: 'column',
     }}
   >
     <Button {...restButtonProps}>

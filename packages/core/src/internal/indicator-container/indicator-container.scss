@@ -10,13 +10,14 @@
     @include helpers.font('300-regular');
 
     color: helpers.color('content-main');
-    display: inline-flex;
+    display: inline-grid;
     gap: $padding;
+    grid-auto-flow: column;
     padding: $padding;
     position: relative;
 
     &.-bordered {
-      display: flex;
+      display: grid;
     }
   }
 
