@@ -1,3 +1,3 @@
-export * from './map';
-export * from './partition';
-export * from './pipe';
+export * from './map/map';
+export * from './partition/partition';
+export * from './pipe/pipe';

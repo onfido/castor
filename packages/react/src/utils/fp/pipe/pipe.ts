@@ -10,7 +10,8 @@ export const pipe: Pipe = <F extends Fn, O extends Unary<unknown, unknown>>(
     firstOperator(...initialArgs)
   );
 
-type Fn = (...args: unknown[]) => unknown;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Fn = (...args: any[]) => any;
 type In<Op extends Fn, R> = Unary<ReturnType<Op>, R>;
 type Unary<I, O> = (arg: I) => O;
 
