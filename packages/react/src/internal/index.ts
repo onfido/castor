@@ -1,1 +1,1 @@
-export * from './indicator-container/indicator-container.react';
+export * from './indicator-container/indicator-container';

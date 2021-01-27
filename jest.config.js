@@ -3,9 +3,10 @@
 export default {
   collectCoverageFrom: [
     '**/*.{ts,tsx}',
-    '!**/*.react.tsx', // components
     '!**/*.stor{y,ies}.tsx', // stories
-    '!*/dist/**/*', // distribution files
+    '!**/components/**/*', // components
+    '!**/internal/**/*', // internal components
+    '!**/dist/**/*', // distribution files
     '!**/index.ts', // index files
   ],
   coverageDirectory: '../coverage',
