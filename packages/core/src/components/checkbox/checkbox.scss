@@ -57,10 +57,19 @@
 
   // indicating invalid and not [disabled] input
   .ods-checkbox.-invalid:not(:disabled) {
-    // and [checked] or [indeterminate]
+    // and [checked] indicator
+    &:checked + .ods-input-indicator::after {
+      border-color: helpers.color('content-always-light');
+    }
+    // or [indeterminate] indicator
+    &:indeterminate + .ods-input-indicator::after {
+      background-color: helpers.color('content-always-light');
+    }
+
+    // also [checked] or [indeterminate] outline
     &:checked + .ods-input-indicator::before,
     &:indeterminate + .ods-input-indicator::before {
-      background-color: helpers.color('content-negative');
+      background-color: helpers.color('background-negative');
     }
   }
 
