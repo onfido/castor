@@ -1,2 +1,2 @@
-export * from './indicator-container.react';
+export * from './indicator-container';
 export * from './splitContainerProps';
