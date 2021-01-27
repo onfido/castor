@@ -14,8 +14,9 @@
     border: $border-width solid transparent;
     border-radius: helpers.border-radius('medium');
     box-sizing: border-box;
-    display: inline-flex;
+    display: inline-grid;
     gap: helpers.space(1);
+    grid-auto-flow: column;
     justify-content: center;
     padding: helpers.space(1.5) - $border-width helpers.space(3) - $border-width;
     position: relative;
