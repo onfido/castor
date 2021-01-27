@@ -11,6 +11,12 @@
   },
   "overrides": [
     {
+      "files": ["*.cjs"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    },
+    {
       "files": ["*.spec.ts{,x}"],
       "rules": {
         "@typescript-eslint/no-empty-function": "off",
