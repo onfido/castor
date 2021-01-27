@@ -10,6 +10,10 @@
     "examples/react-scss-ts-parcel/package.json",
     "packages/core/package.json",
     "packages/react/package.json",
+    {
+      "filename": "packages/react/package.json",
+      "updater": "scripts/bump-core-peer-dependency.cjs"
+    },
     "package.json"
   ],
   "scripts": {
