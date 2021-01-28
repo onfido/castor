@@ -3,10 +3,10 @@ import { partitionObject } from '../../utils';
 /**
  * Splits `Indicator` properties into `label` and `input` props.
  */
-export const splitContainerProps = (props: Input | Label) =>
+export const splitContainerProps = (props: InputElementProps | LabelElementProps) =>
   partitionObject(props, ([key]) => containerProps.test(key));
 
 const containerProps = /^aria-|^data-/;
 
-type Input = JSX.IntrinsicElements['input'];
-type Label = JSX.IntrinsicElements['label'];
+type InputElementProps = JSX.IntrinsicElements['input'];
+type LabelElementProps = JSX.IntrinsicElements['label'];
