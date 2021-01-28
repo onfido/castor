@@ -1,16 +1,14 @@
-import { map, partition, pipe } from '../../utils';
+import { partition } from '../../utils';
 
 /**
  * Splits `Indicator` properties into `label` and `input` props.
  */
-export const splitContainerProps = <T extends Input | Label>(props: T) =>
-  partitionProps(props) as [Partial<Label>, Partial<Input>];
+export const splitContainerProps = <T extends Input | Label>(props: T) => {
+  const entries = Object.entries(props);
+  const splitProps = partition(entries, ([key]) => labelProps.test(key));
 
-const partitionProps = pipe(
-  Object.entries,
-  partition(([key]) => labelProps.test(key)),
-  map(Object.fromEntries)
-);
+  return splitProps.map(Object.fromEntries) as [Label, Input];
+};
 
 const labelProps = /^aria-|^data-/;
 
