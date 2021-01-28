@@ -1,6 +1,9 @@
 /**
  * Partitions an `array` in two with elements that satisfy the `predicate` then
  * those that don't, respectively.
+ *
+ * @param array List to be partitioned.
+ * @param predicate Function that determines in where to put each element.
  */
 export const partition = <T>(
   array: T[],
