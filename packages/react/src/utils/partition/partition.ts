@@ -1,6 +1,6 @@
 /**
- * Partitions an `array` in two with elements that satisfy the `predicate`
- * then those that don't, respectively.
+ * Partitions an `array` in two with elements that satisfy the `predicate` then
+ * those that don't, respectively.
  */
 export const partition = <T>(
   array: T[],
