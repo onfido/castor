@@ -7192,9 +7192,9 @@ falafel@^2.1.0:
     isarray "^2.0.1"
     object-keys "^1.0.6"
 
-"falsey@^0.3.2":
+"falsy@^0.3.2":
   version "0.3.2"
-  resolved "https://registry.yarnpkg.com/falsey/-/falsey-0.3.2.tgz#b21c90c5c34660fc192bf909575db95b6880d597"
+  resolved "https://registry.yarnpkg.com/falsy/-/falsy-0.3.2.tgz#b21c90c5c34660fc192bf909575db95b6880d597"
   integrity sha512-lxEuefF5MBIVDmE6XeqCdM4BWk1+vYmGZtkbKZ/VFcg6uBBw6fXNEbWmxCjDdQlFc9hy450nkiWwM3VAW6G1qg==
   dependencies:
     kind-of "^5.0.2"
@@ -8184,7 +8184,7 @@ handlebars-helpers@0.10.0:
     array-sort "^0.1.4"
     create-frame "^1.0.0"
     define-property "^1.0.0"
-    "falsey" "^0.3.2"
+    "falsy" "^0.3.2"
     for-in "^1.0.2"
     for-own "^1.0.0"
     get-object "^0.2.0"

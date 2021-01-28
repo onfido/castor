@@ -5,9 +5,9 @@ describe('partition', () => {
   it('should split the list like ["do", "do not"] satisfy the predicate', () => {
     const list = [true, false];
 
-    const [truey, falsey] = partition(list, Boolean);
+    const [truthy, falsy] = partition(list, Boolean);
 
-    expect(truey).toStrictEqual([true]);
-    expect(falsey).toStrictEqual([false]);
+    expect(truthy).toStrictEqual([true]);
+    expect(falsy).toStrictEqual([false]);
   });
 });
