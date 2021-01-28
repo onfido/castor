@@ -18,6 +18,20 @@ If you plan to use Icon component, also install [Castor Icons](https://github.co
 npm install @onfido/castor-icons
 ```
 
+Then (only once) inline the SVG sprite in your app:
+
+```jsx
+import { Icons } from '@onfido/castor-icons';
+import React, { Fragment } from 'react';
+
+const App = () => (
+  <Fragment>
+    <Icons />
+    {/* ...anything else e.g. app routes */}
+  </Fragment>
+);
+```
+
 ## Use components
 
 Include any Castor component and use it within JSX directly.

@@ -32,5 +32,24 @@ export const Intro = () => (
       format
       dark
     />
+    <p>
+      Then (only once) inline the <code>Icons</code> SVG sprite in your app:
+    </p>
+    <Source
+      language="jsx"
+      code={`
+        import { Icons } from '@onfido/castor-icons';
+        import React, { Fragment } from 'react';
+        
+        const App = () => (
+          <Fragment>
+            <Icons />
+            {/* ...anything else e.g. app routes */}
+          </Fragment>
+        );
+      `}
+      format
+      dark
+    />
   </>
 );
