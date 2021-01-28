@@ -38,7 +38,7 @@ const App = () => (
 
 Please note that Castor is exported as an [ECMAScript module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) targeting ECMAScript 2019.
 
-You may wish to configure your bundler to transpile to a different module syntax, and/or to target lower a ECMAScript version.
+You may wish to configure your bundler to transpile to a different module syntax, and/or to target a lower ECMAScript version.
 
 For example, you might choose UMD module syntax targeting ES5 if your app needs to support IE11.
 
