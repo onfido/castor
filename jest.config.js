@@ -2,10 +2,7 @@
 
 export default {
   collectCoverageFrom: [
-    '**/*.{ts,tsx}',
-    '!**/*.stor{y,ies}.tsx', // stories
-    '!**/components/**/*', // components
-    '!**/internal/**/*', // internal components
+    '**/*.ts',
     '!**/dist/**/*', // distribution files
     '!**/index.ts', // index files
   ],
