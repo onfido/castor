@@ -29,10 +29,12 @@ import { Button } from '@onfido/castor-react';
 Then use within your JSX app. For example, as a "destructive" kind:
 
 ```jsx
+import React, { Fragment } from 'react';
+
 const App = () => (
-  <>
+  <Fragment>
     <Button kind="destructive">Destructive Button</Button>
-  </>
+  </Fragment>
 );
 ```
 
