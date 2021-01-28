@@ -23,9 +23,11 @@ export const IndicatorContainer = ({
 );
 
 export type IndicatorContainerProps = BaseProps &
-  Omit<JSX.IntrinsicElements['label'], 'children'> & {
+  Omit<LabelElementProps, 'children'> & {
     children: {
-      children: JSX.IntrinsicElements['label']['children'];
+      children: LabelElementProps['children'];
       input: JSX.IntrinsicElements['input'];
     };
   };
+
+type LabelElementProps = JSX.IntrinsicElements['label'];
