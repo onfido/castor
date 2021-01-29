@@ -162,4 +162,4 @@ npm run release
 git push --follow-tags -u origin release/1.x.x
 ```
 
-No need to open a PR to merge a non-latest release back to `main`, nor tags need to be moved.
+No need to open a PR to merge a non-latest release back to `main`, nor do tags need to be moved.
