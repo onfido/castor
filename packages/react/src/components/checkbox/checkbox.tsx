@@ -1,6 +1,6 @@
 import { c, CheckboxProps as BaseProps, classy, m } from '@onfido/castor';
 import React from 'react';
-import { IndicatorContainer } from '../../internal';
+import { IndicatorContainer, splitContainerProps } from '../../internal';
 import { withRef } from '../../utils';
 
 export const Checkbox = withRef(
@@ -14,21 +14,30 @@ export const Checkbox = withRef(
       ...restProps
     }: CheckboxProps,
     ref: CheckboxProps['ref']
-  ): JSX.Element => (
-    <IndicatorContainer bordered={bordered} className={className} style={style}>
-      {{
-        children,
-        input: (
-          <input
-            {...restProps}
-            ref={ref}
-            type="checkbox"
-            className={classy(c('checkbox'), m({ invalid }))}
-          />
-        ),
-      }}
-    </IndicatorContainer>
-  )
+  ): JSX.Element => {
+    const [containerProps, inputProps] = splitContainerProps(restProps);
+
+    return (
+      <IndicatorContainer
+        {...containerProps}
+        bordered={bordered}
+        className={className}
+        style={style}
+      >
+        {{
+          children,
+          input: (
+            <input
+              {...inputProps}
+              ref={ref}
+              type="checkbox"
+              className={classy(c('checkbox'), m({ invalid }))}
+            />
+          ),
+        }}
+      </IndicatorContainer>
+    );
+  }
 );
 Checkbox.displayName = 'Checkbox';
 

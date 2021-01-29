@@ -2,6 +2,8 @@ import { c, classy, m } from '@onfido/castor';
 import { IndicatorContainerProps as BaseProps } from '@onfido/castor/src/internal';
 import React from 'react';
 
+export * from './splitContainerProps';
+
 /**
  * Container for `Checkbox` and `Radio` input components, adding custom
  * indicator within <label> element.
