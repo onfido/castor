@@ -10,23 +10,23 @@ export const Intro = () => (
 
     <h2>Install</h2>
     <p>
-      You can install with <code>npm</code>:
+      You can install with <code>npm</code> CLI tool:
     </p>
     <Source
       language="bash"
       code={`
-        npm install @onfido/castor @onfido/castor-icons
+        npm install @onfido/castor
       `}
       format
       dark
     />
     <p>
-      Or add with <code>Yarn</code>:
+      If you plan to use icons, also install <code>Castor Icons</code> package:
     </p>
     <Source
       language="bash"
       code={`
-        yarn add @onfido/castor @onfido/castor-icons
+        npm install @onfido/castor-icons
       `}
       format
       dark
