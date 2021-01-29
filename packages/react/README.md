@@ -40,7 +40,7 @@ Please note that Castor is exported as an [ECMAScript module](https://developer.
 
 You may wish to configure your bundler to transpile to a different module syntax, and/or to target lower a ECMAScript version.
 
-For example, you might choose UMD module syntax targeting ES5 if your app needs to support IE11.
+For example, you might choose UMD module syntax targeting ES5 if your app needs to support IE11 (please note that Castor is not tested in Internet Explorer).
 
 ### Make custom styled components
 
