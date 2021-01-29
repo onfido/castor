@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/onfido/castor/compare/v1.0.0-rc.4...v1.0.0) (2021-01-29)
+
+### Bug Fixes
+
+- **react:** indicator data- and aria- properties apply to label ([#236](https://github.com/onfido/castor/issues/236)) ([ef83180](https://github.com/onfido/castor/commit/ef831808d71f96f18724a3c4dd5698d5f2bbd802)), closes [#230](https://github.com/onfido/castor/issues/230)
+- use "gap" with grid ([#232](https://github.com/onfido/castor/issues/232)) ([fc3cf09](https://github.com/onfido/castor/commit/fc3cf0911ebf8534f6e297dfb95a62d29a141896))
+- **core:** checkbox component "invalid" state styling ([#231](https://github.com/onfido/castor/issues/231)) ([caf3578](https://github.com/onfido/castor/commit/caf3578c57490fa90a77a620cfcd5cd816fa0439))
+- correct indicator container border radius to "large" ([#229](https://github.com/onfido/castor/issues/229)) ([a2a04cc](https://github.com/onfido/castor/commit/a2a04cc5bc505db8d9cf95ff0c39325732d7c913))
+
 ## [1.0.0-rc.4](https://github.com/onfido/castor/compare/v1.0.0-rc.3...v1.0.0-rc.4) (2021-01-26)
 
 ### ⚠ BREAKING CHANGES
