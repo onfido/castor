@@ -1,19 +1,13 @@
-$space: 8px;
+@use '@onfido/castor';
 
-.container {
-  align-items: center;
-  display: grid;
-  gap: $space;
-  grid-auto-columns: max-content;
-  grid-auto-flow: column;
-}
+$space: castor.space(1);
 
 .block {
   display: inline-grid;
   gap: $space;
 }
 
-.flow {
+.flex {
   align-items: center;
   display: flex;
   flex-flow: row wrap;

@@ -1,8 +1,8 @@
 import { Parameters } from '@storybook/addons';
-import { withIcons } from '../docs/icons/react';
-import { withSpacer } from '../docs/spacer/react';
-import { themeNames, withThemer } from '../docs/themer/react';
-import { storySort } from './storySort';
+import { withIcons } from '../docs/decorators/withIcons';
+import { withSpacer } from '../docs/decorators/withSpacer';
+import { themeNames, withTheme } from '../docs/decorators/withTheme';
+import { prepareForInline, storySort, transformSource } from './custom';
 import './styles.scss';
 
 export const parameters: Parameters = {
@@ -11,11 +11,11 @@ export const parameters: Parameters = {
     'storybook/docs/panel': { hidden: false },
     canvas: { hidden: false },
   },
-  knobs: { escapeHTML: false },
   options: {
     panelPosition: 'right',
     storySort,
   },
+  docs: { prepareForInline, transformSource },
 };
 
 export const globalTypes = {
@@ -30,4 +30,4 @@ export const globalTypes = {
   },
 };
 
-export const decorators = [withThemer, withSpacer, withIcons];
+export const decorators = [withTheme, withSpacer, withIcons];

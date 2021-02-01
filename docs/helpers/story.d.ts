@@ -9,15 +9,24 @@ import {
 import { FC, ReactElement } from 'react';
 
 export interface Meta<Args>
-  extends Omit<BaseMeta<Args>, 'argTypes'>,
+  extends Omit<BaseMeta<Args>, 'argTypes' | 'component'>,
     Annotation<Args> {
-  component: FC<Args>;
+  component: FC<Args> | ((props: Args) => string);
 }
 
 export interface Story<Args>
   extends Annotation<Args>,
     Omit<BaseStory<Args>, 'argTypes'> {
-  (args: Args, context: StoryContext): ReactElement | ReactElement[];
+  (args: Args, context: StoryContext): ReactElement | ReactElement[] | string;
+  parameters?: BaseStory['parameters'] & {
+    /**
+     * If `display` === 'grid', determines CSS grid-template-columns.
+     * Default `repeat(4, 1fr)`.
+     */
+    columns?: string;
+    /** Determines how to display the wrapping element. */
+    display?: 'block' | 'flex' | 'grid';
+  };
 }
 
 /**

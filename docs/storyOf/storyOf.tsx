@@ -1,26 +1,28 @@
-import React, { createElement, FC, Fragment, ReactNode } from 'react';
-import { Story } from '../Story';
+import React, { FC, Fragment, ReactNode } from 'react';
+import { Story } from '../helpers/story';
 import styles from './storyOf.scss';
 
 /**
  * Automatically generates a story for a `component` with all of the variations
  * for the specified `prop`.
  *
- * @param component Component to generate story for.
+ * @param Component Component to generate story for.
  * @param prop Property to generate variants for.
  * @param propValues An array of all possible values for the `prop`.
  * @param config Defines how the story is created. See each property for their
  * description.
+ *
+ * @deprecated Use `reactMatrix` instead.
  */
 export function storyOf<Props, Prop extends keyof Props>(
-  component: FC<Props>,
+  Component: FC<Props>,
   prop: Prop,
   propValues: readonly Props[Prop][],
   { display = 'flow', labelMode = 'children', labelProp }: Config<Props> = {}
 ): Story<Props> {
   const MaybeContainer = roots.has(labelMode) ? Fragment : Container;
 
-  return (props: Props) => (
+  return (props) => (
     <div className={styles[display]}>
       {propValues.map((value) => {
         const label = `${value}`;
@@ -30,11 +32,11 @@ export function storyOf<Props, Prop extends keyof Props>(
         return (
           <MaybeContainer key={label}>
             {labelMode === 'before' && <span>{label}</span>}
-            {createElement(
-              component,
-              { ...props, [prop]: value, ...propLabel },
-              labelMode === 'children' ? label : undefined
-            )}
+            {
+              <Component {...props} {...{ [prop]: value }} {...propLabel}>
+                {labelMode === 'children' ? label : null}
+              </Component>
+            }
             {labelMode === 'after' && <span>{label}</span>}
           </MaybeContainer>
         );
@@ -52,7 +54,7 @@ interface Config<T> {
    *
    * Default `flow`.
    */
-  display?: 'block' | 'flow' | 'grid';
+  display?: Display;
   /**
    * Where to render the value of each variation.
    * Default `children`.
@@ -81,6 +83,8 @@ interface Config<T> {
    */
   labelProp?: keyof T;
 }
+
+type Display = 'block' | 'flow' | 'grid';
 
 type LabelMode = 'after' | 'before' | 'children' | 'prop' | 'none';
 
