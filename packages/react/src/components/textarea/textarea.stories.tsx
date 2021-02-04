@@ -1,4 +1,9 @@
-import { Textarea, TextareaProps } from '@onfido/castor-react';
+import {
+  FieldLabel,
+  HelperText,
+  Textarea,
+  TextareaProps,
+} from '@onfido/castor-react';
 import React from 'react';
 import { Meta, omit, Story, storyOf } from '../../../../../docs';
 
@@ -72,3 +77,29 @@ export const Disabled = storyOf(Textarea, 'disabled', [true, false], {
   labelProp: 'defaultValue',
 });
 Disabled.argTypes = omit<TextareaProps>('disabled');
+
+interface TextareaWithFieldLabelProps extends TextareaProps {
+  id: string;
+  label: string;
+  helperText: string;
+}
+
+export const WithFieldLabel = ({
+  id,
+  label,
+  helperText,
+  ...restTextareaProps
+}: TextareaWithFieldLabelProps) => (
+  <>
+    <FieldLabel htmlFor={id}>
+      {label}
+      {helperText && <HelperText>{helperText}</HelperText>}
+    </FieldLabel>
+    <Textarea {...restTextareaProps} id={id} />
+  </>
+);
+WithFieldLabel.args = {
+  id: 'textarea-with-field-label',
+  label: 'Label',
+  helperText: '',
+};

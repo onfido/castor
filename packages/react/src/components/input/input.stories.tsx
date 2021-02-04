@@ -1,4 +1,9 @@
-import { Input, InputProps } from '@onfido/castor-react';
+import {
+  FieldLabel,
+  HelperText,
+  Input,
+  InputProps,
+} from '@onfido/castor-react';
 import React from 'react';
 import { Meta, omit, Story, storyOf } from '../../../../../docs';
 
@@ -37,3 +42,29 @@ export const Disabled = storyOf(Input, 'disabled', [true, false], {
   labelProp: 'defaultValue',
 });
 Disabled.argTypes = omit<InputProps>('disabled');
+
+interface InputWithFieldLabelProps extends InputProps {
+  id: string;
+  label: string;
+  helperText: string;
+}
+
+export const WithFieldLabel = ({
+  id,
+  label,
+  helperText,
+  ...restInputProps
+}: InputWithFieldLabelProps) => (
+  <>
+    <FieldLabel htmlFor={id}>
+      {label}
+      {helperText && <HelperText>{helperText}</HelperText>}
+    </FieldLabel>
+    <Input {...restInputProps} id={id} />
+  </>
+);
+WithFieldLabel.args = {
+  id: 'input-with-field-label',
+  label: 'Label',
+  helperText: '',
+};
