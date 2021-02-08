@@ -1,5 +1,5 @@
 import { html } from '../../../../../docs';
-import { IconProps } from './icon';
+import { IconProps } from '@onfido/castor';
 
 export const Icon = ({ name }: IconProps) =>
   html('svg', {
