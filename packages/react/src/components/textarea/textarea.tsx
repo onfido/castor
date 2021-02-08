@@ -6,6 +6,7 @@ import { withRef } from '../../utils';
 export const Textarea = withRef(
   (
     {
+      id = `${autoIdPrefix}${autoId++}`,
       resize = 'vertical',
       rows = 3,
       invalid,
@@ -16,14 +17,16 @@ export const Textarea = withRef(
     }: TextareaProps,
     ref: TextareaProps['ref']
   ): JSX.Element => {
-    const Wrapper = children ? FieldLabel : Fragment;
+    const hasLabel = Boolean(children);
+    const Wrapper = hasLabel ? FieldLabel : Fragment;
 
     return (
-      <Wrapper>
-        {children && <span>{children}</span>}
+      <Wrapper {...{ ...(hasLabel && { htmlFor: id }) }}>
+        {hasLabel && <span>{children}</span>}
         <textarea
           {...restProps}
           ref={ref}
+          id={id}
           rows={rows}
           className={classy(c('textarea'), m({ invalid }), className)}
           style={{ ...style, resize }}
@@ -33,5 +36,8 @@ export const Textarea = withRef(
   }
 );
 Textarea.displayName = 'Textarea';
+
+const autoIdPrefix = 'castor_textarea_';
+let autoId = 0;
 
 export type TextareaProps = BaseProps & JSX.IntrinsicElements['textarea'];
