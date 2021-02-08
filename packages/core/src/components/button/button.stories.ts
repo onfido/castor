@@ -16,7 +16,7 @@ export default {
 export const Playground: Story<HtmlButtonProps> = (props) => Button(props);
 
 export const AsAnchor: Story<HtmlButtonProps> = (props) =>
-  Button({ ...props, href: 'javascript:0' });
+  Button({ ...props, href: 'javascript:void 0' });
 
 const icon = Icon({ name: 'alarm' });
 export const WithIcon: Story<HtmlButtonProps> = (props: HtmlButtonProps) =>
