@@ -1,6 +1,6 @@
 import { iconNames } from '@onfido/castor-icons';
 import { htmlMatrix, Meta, Story } from '../../../../../docs';
-import { IconProps } from './icon';
+import { IconProps } from '@onfido/castor';
 import { Icon } from './icon.story';
 
 export default {
