@@ -5,8 +5,8 @@
     @include helpers.font('300-regular');
 
     color: helpers.color('content-main');
-    display: flex;
-    flex-flow: column wrap;
-    padding: helpers.space(0.5) 0;
+    display: grid;
+    gap: helpers.space(0.5);
+    padding-top: helpers.space(0.5);
   }
 }

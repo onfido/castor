@@ -17,10 +17,10 @@ interface Node {
 
 type NodeChildren = string | Node | Node[];
 
-function hasSpacer(node?: Node): boolean {
-  if (node?.type?.displayName === (Spacer as FC).displayName) return true;
+function hasSpacer(node: Node): boolean {
+  if (node.type?.displayName === (Spacer as FC).displayName) return true;
 
-  const children = node?.props?.children;
+  const children = node.props?.children;
 
   if (!children || typeof children === 'string') return false;
 
