@@ -1,6 +1,6 @@
 import { html } from '../../../../../docs';
 import { c, classy, m } from '../../utils';
-import { ButtonProps } from './button';
+import { ButtonProps } from '@onfido/castor';
 
 export interface HtmlButtonProps extends ButtonProps {
   children: string;
