@@ -1,15 +1,12 @@
 @use '../../helpers';
 
 @mixin FieldLabel() {
-  $padding: helpers.space(0.5);
-
   .ods-field-label {
     @include helpers.font('300-regular');
 
     color: helpers.color('content-main');
     display: flex;
     flex-flow: column wrap;
-    padding-bottom: $padding;
-    padding-top: $padding;
+    padding: helpers.space(0.5) 0;
   }
 }
