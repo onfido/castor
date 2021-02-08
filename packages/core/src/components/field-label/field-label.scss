@@ -5,8 +5,15 @@
     @include helpers.font('300-regular');
 
     color: helpers.color('content-main');
-    display: grid;
-    gap: helpers.space(0.5);
+    display: flex;
+    flex-flow: column wrap;
     padding-top: helpers.space(0.5);
+
+    + input,
+    + textarea,
+    > input,
+    > textarea {
+      margin-top: helpers.space(0.5);
+    }
   }
 }

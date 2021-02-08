@@ -2,7 +2,10 @@ import { c, classy } from '@onfido/castor';
 import React from 'react';
 
 /**
- * Intended to be used alongside `Input` and `Textarea` components.
+ * Intended to be used within `Input` and `Textarea` components.
+ *
+ * Can also be used alongside these components, but should then be connected via
+ * the "htmlFor" prop.
  */
 export const FieldLabel = ({
   className,
