@@ -1,12 +1,15 @@
 import { c, classy, InputProps as BaseProps, m } from '@onfido/castor';
-import { FieldLabel } from '@onfido/castor-react';
-import React, { Fragment } from 'react';
+import React from 'react';
+import { FieldLabelWrapper } from '../../internal';
 import { withRef } from '../../utils';
+
+const idPrefix = 'castor_input';
+let idCount = 0;
 
 export const Input = withRef(
   (
     {
-      id = `${autoIdPrefix}${autoId++}`,
+      id = `${idPrefix}_${idCount++}`,
       type = 'text',
       invalid,
       children,
@@ -14,27 +17,23 @@ export const Input = withRef(
       ...restProps
     }: InputProps,
     ref: InputProps['ref']
-  ): JSX.Element => {
-    const hasLabel = Boolean(children);
-    const Wrapper = hasLabel ? FieldLabel : Fragment;
-
-    return (
-      <Wrapper {...{ ...(hasLabel && { htmlFor: id }) }}>
-        {hasLabel && <span>{children}</span>}
-        <input
-          {...restProps}
-          ref={ref}
-          id={id}
-          type={type}
-          className={classy(c('input'), m({ invalid }), className)}
-        />
-      </Wrapper>
-    );
-  }
+  ): JSX.Element => (
+    <FieldLabelWrapper id={id}>
+      {{
+        children,
+        element: (
+          <input
+            {...restProps}
+            ref={ref}
+            id={id}
+            type={type}
+            className={classy(c('input'), m({ invalid }), className)}
+          />
+        ),
+      }}
+    </FieldLabelWrapper>
+  )
 );
 Input.displayName = 'Input';
-
-const autoIdPrefix = 'castor_input_';
-let autoId = 0;
 
 export type InputProps = BaseProps & JSX.IntrinsicElements['input'];
