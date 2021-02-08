@@ -5,6 +5,7 @@ import { prepareForInline } from './prepareForInline';
 /**
  * Makes story source code more readable by running prettier and unwrapping
  * strings.
+
  * @param src Source story code as string to transform.
  */
 export const transformSource = (src: string) =>
