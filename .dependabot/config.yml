@@ -9,5 +9,8 @@ update_configs:
       - 'javascript'
     ignored_updates:
       - match:
+          dependency_name: 'sass-loader'
+          version_requirement: '11.x'
+      - match:
           dependency_name: 'webpack'
           version_requirement: '5.x'
