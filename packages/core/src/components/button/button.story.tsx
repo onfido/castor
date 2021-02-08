@@ -12,4 +12,5 @@ export const Button = ({ href, kind, variant, ...props }: HtmlButtonProps) =>
     ...props,
     class: classy(c('button'), m(`${kind}--${variant}`)),
     href,
+    role: href && 'button',
   });
