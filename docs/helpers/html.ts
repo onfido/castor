@@ -1,5 +1,6 @@
 /**
  * Renders as HTML inside a React `div`.
+
  * @param name Tag name, to use as root element.
  * @param param1 Properties and attributes.
  */
