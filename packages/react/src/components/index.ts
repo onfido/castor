@@ -1,5 +1,6 @@
 export * from './button/button';
 export * from './checkbox/checkbox';
+export * from './field-label/field-label';
 export * from './helper-text/helper-text';
 export * from './icon/icon';
 export * from './input/input';

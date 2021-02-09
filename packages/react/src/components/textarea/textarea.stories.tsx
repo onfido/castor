@@ -1,4 +1,4 @@
-import { Textarea, TextareaProps } from '@onfido/castor-react';
+import { HelperText, Textarea, TextareaProps } from '@onfido/castor-react';
 import React from 'react';
 import { Meta, omit, Story, storyOf } from '../../../../../docs';
 
@@ -15,6 +15,7 @@ export default {
   component: Textarea,
   argTypes: {
     ...omit<TextareaProps>('className', 'style'),
+    children: { control: 'text' },
     placeholder: { control: 'text' },
     resize: {
       table: {
@@ -72,3 +73,24 @@ export const Disabled = storyOf(Textarea, 'disabled', [true, false], {
   labelProp: 'defaultValue',
 });
 Disabled.argTypes = omit<TextareaProps>('disabled');
+
+interface TextareaWithHelperTextProps extends TextareaProps {
+  label: string;
+  helperText: string;
+}
+
+export const WithHelperText = ({
+  label,
+  helperText,
+  ...restTextareaProps
+}: TextareaWithHelperTextProps) => (
+  <Textarea {...restTextareaProps}>
+    {label}
+    <HelperText>{helperText}</HelperText>
+  </Textarea>
+);
+WithHelperText.argTypes = omit<TextareaWithHelperTextProps>('children');
+WithHelperText.args = {
+  label: 'Label',
+  helperText: 'Helper text',
+};

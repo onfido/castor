@@ -1,21 +1,44 @@
 import { c, classy, InputProps as BaseProps, m } from '@onfido/castor';
-import React from 'react';
+import React, { useState } from 'react';
+import { FieldLabelWrapper } from '../../internal';
 import { withRef } from '../../utils';
+
+const idPrefix = 'castor_input';
+let idCount = 0;
 
 export const Input = withRef(
   (
-    { type = 'text', invalid, className, ...restProps }: InputProps,
+    {
+      id: externalId,
+      type = 'text',
+      invalid,
+      children,
+      className,
+      ...restProps
+    }: InputProps,
     ref: InputProps['ref']
-  ): JSX.Element => (
-    <input
-      {...restProps}
-      ref={ref}
-      type={type}
-      className={classy(c('input'), m({ invalid }), className)}
-    />
-  )
+  ): JSX.Element => {
+    const [autoId] = useState(() => `${idPrefix}_${++idCount}`);
+    const id = externalId || (children ? autoId : undefined);
+
+    return (
+      <FieldLabelWrapper id={id}>
+        {{
+          children,
+          element: (
+            <input
+              {...restProps}
+              ref={ref}
+              id={id}
+              type={type}
+              className={classy(c('input'), m({ invalid }), className)}
+            />
+          ),
+        }}
+      </FieldLabelWrapper>
+    );
+  }
 );
 Input.displayName = 'Input';
 
-export type InputProps = BaseProps &
-  Omit<JSX.IntrinsicElements['input'], 'children'>;
+export type InputProps = BaseProps & JSX.IntrinsicElements['input'];

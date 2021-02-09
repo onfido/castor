@@ -2,6 +2,8 @@
 @forward './button/button';
 @use './checkbox/checkbox';
 @forward './checkbox/checkbox';
+@use './field-label/field-label';
+@forward './field-label/field-label';
 @use './helper-text/helper-text';
 @forward './helper-text/helper-text';
 @use './icon/icon';
@@ -18,6 +20,7 @@
 @mixin components() {
   @include button.Button();
   @include checkbox.Checkbox();
+  @include field-label.FieldLabel();
   @include helper-text.HelperText();
   @include icon.Icon();
   @include input.Input();
