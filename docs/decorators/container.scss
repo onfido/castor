@@ -11,11 +11,14 @@ $space: castor.space(1);
   align-items: center;
   display: flex;
   flex-flow: row wrap;
+
+  // --- this is the same as gap, except Safari supports it
   margin: -$space;
 
   > * {
     margin: $space;
   }
+  // ---
 }
 
 .grid {

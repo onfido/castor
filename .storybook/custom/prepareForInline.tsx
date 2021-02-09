@@ -1,58 +1,31 @@
-import { StoryContext } from '@storybook/react/types-6-0';
+import { StoryContext } from '@storybook/addons';
 import React from 'react';
+import { ContainerContext } from '../../docs/decorators/withContainer';
 import { decorators } from '../preview';
-import styles from './container.scss';
 
 export const prepareForInline = (
   storyFn: () => JSX.Element,
-  ctx: StoryContext & { parameters: ContainerContext }
+  ctx: StoryContext & ContainerContext
 ) => {
   const story = storyFn();
   const content: unknown = ctx.getOriginal()(ctx.args);
-  const { columns, display } = ctx.parameters;
   const decorate = withDecorators(ctx);
 
-  if (typeof content === 'string')
-    return decorate(<Html params={{ columns, display }}>{content}</Html>);
+  if (typeof content === 'string') return decorate(<Html>{content}</Html>);
 
-  if (content instanceof Element)
-    return decorate(<DomNode params={{ columns, display }}>{content}</DomNode>);
+  if (content instanceof Element) return decorate(<DomNode>{content}</DomNode>);
 
   return story;
 };
 
-interface ContainerContext {
-  columns?: string;
-  display: 'block' | 'flex' | 'grid';
-}
-
-interface DomNodeProps {
-  children: Element;
-  params: ContainerContext;
-}
-
-const DomNode = ({ children, params }: DomNodeProps) => (
-  <Container {...params} ref={(node) => node?.appendChild(children)} />
+const DomNode = ({ children }: { children: Element }) => (
+  <Html>{children.innerHTML}</Html>
 );
 
-interface HtmlProps {
-  children: string;
-  params: ContainerContext;
-}
-
-const Html = ({ children, params }: HtmlProps) => (
-  <Container {...params} dangerouslySetInnerHTML={{ __html: children }} />
+const Html = ({ children }: { children: string }) => (
+  <div ref={(node) => node && (node.outerHTML = children)} />
 );
 
-type ContainerProps = ContainerContext & JSX.IntrinsicElements['div'];
-
-const Container = ({ columns, display, ...props }: ContainerProps) => (
-  <div
-    {...props}
-    className={styles[display || 'flex']}
-    style={columns && { gridTemplateColumns: columns }}
-  />
-);
-
-const withDecorators = (ctx: StoryContext) => (content: JSX.Element) =>
-  decorators.reduce((final, next) => next(() => final, ctx), content);
+const withDecorators = (ctx: StoryContext & ContainerContext) => (
+  content: JSX.Element
+) => decorators.reduce((final, next) => next(() => final, ctx), content);

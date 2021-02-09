@@ -1,6 +1,6 @@
 import { Parameters } from '@storybook/addons';
+import { withContainer } from '../docs/decorators/withContainer';
 import { withIcons } from '../docs/decorators/withIcons';
-import { withSpacer } from '../docs/decorators/withSpacer';
 import { themeNames, withTheme } from '../docs/decorators/withTheme';
 import { prepareForInline, storySort, transformSource } from './custom';
 import './styles.scss';
@@ -30,4 +30,4 @@ export const globalTypes = {
   },
 };
 
-export const decorators = [withTheme, withSpacer, withIcons];
+export const decorators = [withTheme, withContainer, withIcons];

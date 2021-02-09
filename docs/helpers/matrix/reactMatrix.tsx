@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Story } from '../story';
 import { getEntries } from './getEntries';
 import { Entries } from './types';
@@ -26,13 +26,16 @@ import { Entries } from './types';
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function reactMatrix<Props extends Record<string, any>>(
-  Component: (props: Props) => JSX.Element | null,
+  Component: FC<Props>,
   props: Entries<Props>,
-  Render: (p: Props) => JSX.Element = (p) => <Component {...p} />
+  Render: FC<Props> = (p) => <Component {...p} />
 ): Story<Props> {
   const entries = getEntries(props);
 
-  return (storyProps) =>
+  if (!Render.name)
+    Render.displayName ??= Component.displayName || Component.name;
+
+  return (storyProps: Props) =>
     entries.map((matrixProps, i) => (
       <Render key={i} {...storyProps} {...matrixProps} />
     ));

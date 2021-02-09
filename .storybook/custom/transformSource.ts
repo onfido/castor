@@ -1,6 +1,5 @@
 import { format } from 'prettier';
 import parserTypeScript from 'prettier/parser-typescript';
-import { prepareForInline } from './prepareForInline';
 
 /**
  * Makes story source code more readable by running prettier and unwrapping
@@ -18,8 +17,6 @@ export const transformSource = (src: string) =>
         .slice(2, -5)
         // and `shift + tab` once
         .replace(/^ {2}/gm, '');
-
-export const docs = { prepareForInline, transformSource };
 
 const prettier = (src: string) =>
   format(src, {

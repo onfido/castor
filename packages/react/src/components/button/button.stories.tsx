@@ -1,23 +1,20 @@
-import { space } from '@onfido/castor';
 import { IconName, iconNames } from '@onfido/castor-icons';
 import { Button, ButtonProps, Icon } from '@onfido/castor-react';
 import React from 'react';
-import { Meta, omit, Story, storyOf } from '../../../../../docs';
+import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 
 export default {
   title: 'React/Button',
   component: Button,
   argTypes: {
-    ...omit<ButtonProps>('className', 'onClick', 'style'),
-    children: { control: 'text' },
+    children: {},
+    disabled: {
+      description: 'Only available when no `href` is set.',
+    },
     href: {
       description: 'When set will render as `<a>` element.',
       table: { type: { summary: 'string' } },
       control: 'text',
-    },
-    disabled: {
-      description: 'Only available when no `href` is set.',
-      table: { type: { summary: 'boolean' } },
     },
   },
   args: {
@@ -26,29 +23,25 @@ export default {
   },
 } as Meta<ButtonProps>;
 
-export const Playground: Story<ButtonProps> = ({
-  href,
-  ...restProps
-}: ButtonProps & Pick<JSX.IntrinsicElements['a'], 'href'>) => (
+const disabled = [true, false] as const;
+const kind = ['action', 'destructive'] as const;
+const variant = ['primary', 'secondary', 'tertiary'] as const;
+
+export const Playground: Story<ButtonProps<'a'>> = ({ href, ...restProps }) => (
   <Button
-    {...{
-      ...restProps,
-      ...(href && { href }), // don't set "href" key when value is empty string
-    }}
+    {...restProps}
+    // don't set "href" key when value is empty string
+    {...(href && { href })}
   />
 );
 
-export const Kind = storyOf(Button, 'kind', ['action', 'destructive']);
+export const Kind = reactMatrix(Button, { kind });
 Kind.argTypes = omit<ButtonProps>('kind', 'children');
 
-export const Variant = storyOf(Button, 'variant', [
-  'primary',
-  'secondary',
-  'tertiary',
-]);
+export const Variant = reactMatrix(Button, { variant });
 Variant.argTypes = omit<ButtonProps>('variant', 'children');
 
-export const Disabled = storyOf(Button, 'disabled', [true, false]);
+export const Disabled = reactMatrix(Button, { disabled });
 Disabled.argTypes = omit<ButtonProps>('disabled', 'children');
 
 export const AsAnchor: Story<ButtonProps<'a'>> = (props) => (
@@ -56,33 +49,27 @@ export const AsAnchor: Story<ButtonProps<'a'>> = (props) => (
 );
 AsAnchor.argTypes = omit<ButtonProps<'a'>>('href');
 
+const [firstIconName] = iconNames;
+
 interface ButtonWithIconProps extends ButtonProps {
   iconName: IconName;
 }
 
-const [firstIconName] = iconNames;
-
-export const WithIcon = ({
+export const WithIcon: Story<ButtonWithIconProps> = ({
   iconName,
   children,
-  ...restButtonProps
+  ...restProps
 }: ButtonWithIconProps) => (
-  <div
-    style={{
-      display: 'inline-grid',
-      gap: space(1),
-      gridAutoFlow: 'column',
-    }}
-  >
-    <Button {...restButtonProps}>
+  <>
+    <Button {...restProps}>
       <Icon name={iconName} />
       {children}
     </Button>
-    <Button {...restButtonProps}>
+    <Button {...restProps}>
       {children}
       <Icon name={iconName} />
     </Button>
-  </div>
+  </>
 );
 WithIcon.argTypes = {
   ...omit<ButtonWithIconProps>('children'),
@@ -91,3 +78,16 @@ WithIcon.argTypes = {
 WithIcon.args = {
   iconName: firstIconName,
 };
+
+export const AllCombinations = reactMatrix(
+  Button,
+  { disabled, kind, variant },
+  (props) => <Button {...props}>{label(props)}</Button>
+);
+AllCombinations.parameters = {
+  display: 'grid',
+  columns: 'repeat(3, 1fr)',
+};
+
+const label = ({ disabled, kind, variant }: ButtonProps) =>
+  `${kind} ${variant} ${disabled ? 'disabled' : ''}`;
