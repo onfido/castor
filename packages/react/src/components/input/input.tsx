@@ -1,5 +1,5 @@
 import { c, classy, InputProps as BaseProps, m } from '@onfido/castor';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FieldLabelWrapper } from '../../internal';
 import { withRef } from '../../utils';
 
@@ -18,12 +18,10 @@ export const Input = withRef(
     }: InputProps,
     ref: InputProps['ref']
   ): JSX.Element => {
-    const [id, setId] = useState<string | undefined>(externalId);
-
-    useEffect(() => {
-      if (externalId || children)
-        setId(externalId || `${idPrefix}_${++idCount}`);
-    }, [externalId]);
+    const [autoId] = useState<string | undefined>(() =>
+      children ? `${idPrefix}_${++idCount}` : undefined
+    );
+    const id = externalId || autoId;
 
     return (
       <FieldLabelWrapper id={id}>
