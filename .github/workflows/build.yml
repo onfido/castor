@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches-ignore:
-      - 'release/*.x.x' # already building package when publishing
+      - release/* # already building package when publishing
 
 jobs:
   build:

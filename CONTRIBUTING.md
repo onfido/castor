@@ -89,7 +89,7 @@ The last line of the script's log will give you the command you need to execute 
 
 ### Release the latest version (example)
 
-You will need `release/*.x.x` branch push permissions.
+You will need `release/*` branch push permissions.
 
 In the following example we assume that:
 
@@ -108,13 +108,13 @@ git checkout main
 git pull
 
 # create and checkout release branch
-git checkout -b release/1.x.x
+git checkout -b release/1.1.0
 
 # use automated release script
 npm run release
 
 # push to trigger 'publish' GitHub Action
-git push --follow-tags origin release/1.x.x
+git push --follow-tags origin release/1.1.0
 ```
 
 Open a release PR to merge the version bump and the changelog back to `main` branch.
@@ -130,7 +130,7 @@ git push origin v1.1.0 -f
 
 ### Release a non-latest minor/patch version (example)
 
-You will need `release/*.x.x` branch push permissions.
+You will need `release/*` branch push permissions.
 
 In the following example we assume that:
 
@@ -149,7 +149,7 @@ git fetch --all --prune
 git checkout v1.2.0
 
 # create and checkout release branch
-git checkout -b release/1.x.x
+git checkout -b release/1.2.x
 
 # cherry-pick required fixes from 'main'
 git cherry-pick 64b6be1
@@ -159,7 +159,7 @@ git cherry-pick 64b6be1
 npm run release
 
 # push to trigger 'publish' GitHub Action
-git push --follow-tags -u origin release/1.x.x
+git push --follow-tags -u origin release/1.2.x
 ```
 
 No need to open a PR to merge a non-latest release back to `main`, nor do tags need to be moved.
