@@ -1,6 +1,6 @@
 {
   "name": "html-scss-ts-parcel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "main": "src/index.html",
   "scripts": {
