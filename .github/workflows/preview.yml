@@ -3,7 +3,7 @@ name: Preview
 on:
   pull_request:
     branches-ignore:
-      - 'release/*.x.x'
+      - release/*
 
 jobs:
   preview:
