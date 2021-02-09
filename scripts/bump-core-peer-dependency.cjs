@@ -13,6 +13,6 @@ module.exports.writeVersion = function (contents, version) {
   const json = JSON.parse(contents);
   const indent = detectIndent(contents).indent;
   const newline = detectNewline(contents);
-  json.peerDependencies['@onfido/castor'] = version;
+  json.peerDependencies['@onfido/castor'] = `^${version}`;
   return stringifyPackage(json, indent, newline);
 };
