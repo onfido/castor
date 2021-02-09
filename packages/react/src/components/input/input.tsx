@@ -1,5 +1,5 @@
 import { c, classy, InputProps as BaseProps, m } from '@onfido/castor';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FieldLabelWrapper } from '../../internal';
 import { withRef } from '../../utils';
 
@@ -9,7 +9,7 @@ let idCount = 0;
 export const Input = withRef(
   (
     {
-      id = `${idPrefix}_${++idCount}`,
+      id: externalId,
       type = 'text',
       invalid,
       children,
@@ -17,22 +17,31 @@ export const Input = withRef(
       ...restProps
     }: InputProps,
     ref: InputProps['ref']
-  ): JSX.Element => (
-    <FieldLabelWrapper id={id}>
-      {{
-        children,
-        element: (
-          <input
-            {...restProps}
-            ref={ref}
-            id={id}
-            type={type}
-            className={classy(c('input'), m({ invalid }), className)}
-          />
-        ),
-      }}
-    </FieldLabelWrapper>
-  )
+  ): JSX.Element => {
+    const [id, setId] = useState<string | undefined>(externalId);
+
+    useEffect(() => {
+      if (externalId || children)
+        setId(externalId || `${idPrefix}_${++idCount}`);
+    }, [externalId]);
+
+    return (
+      <FieldLabelWrapper id={id}>
+        {{
+          children,
+          element: (
+            <input
+              {...restProps}
+              ref={ref}
+              id={id}
+              type={type}
+              className={classy(c('input'), m({ invalid }), className)}
+            />
+          ),
+        }}
+      </FieldLabelWrapper>
+    );
+  }
 );
 Input.displayName = 'Input';
 
