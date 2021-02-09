@@ -20,10 +20,8 @@ export const Textarea = withRef(
     }: TextareaProps,
     ref: TextareaProps['ref']
   ): JSX.Element => {
-    const [autoId] = useState<string | undefined>(() =>
-      children ? `${idPrefix}_${++idCount}` : undefined
-    );
-    const id = externalId || autoId;
+    const [autoId] = useState(() => `${idPrefix}_${++idCount}`);
+    const id = externalId || (children ? autoId : undefined);
 
     return (
       <FieldLabelWrapper id={id}>
