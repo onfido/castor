@@ -9,7 +9,7 @@ let idCount = 0;
 export const Textarea = withRef(
   (
     {
-      id = `${idPrefix}_${idCount++}`,
+      id = `${idPrefix}_${++idCount}`,
       resize = 'vertical',
       rows = 3,
       invalid,

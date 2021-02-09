@@ -9,7 +9,7 @@ let idCount = 0;
 export const Input = withRef(
   (
     {
-      id = `${idPrefix}_${idCount++}`,
+      id = `${idPrefix}_${++idCount}`,
       type = 'text',
       invalid,
       children,
