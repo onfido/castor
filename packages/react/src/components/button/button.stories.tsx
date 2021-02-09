@@ -1,7 +1,7 @@
 import { space } from '@onfido/castor';
 import { IconName, iconNames } from '@onfido/castor-icons';
 import { Button, ButtonProps, Icon } from '@onfido/castor-react';
-import React, { SyntheticEvent } from 'react';
+import React from 'react';
 import { Meta, omit, Story, storyOf } from '../../../../../docs';
 
 export default {
@@ -23,7 +23,6 @@ export default {
   args: {
     children: 'Button',
     disabled: false,
-    onClick: (event: SyntheticEvent<EventTarget>) => event.preventDefault(),
   },
 } as Meta<ButtonProps>;
 
@@ -53,7 +52,7 @@ export const Disabled = storyOf(Button, 'disabled', [true, false]);
 Disabled.argTypes = omit<ButtonProps>('disabled', 'children');
 
 export const AsAnchor: Story<ButtonProps<'a'>> = (props) => (
-  <Button href="#" {...props} />
+  <Button href="javascript:void 0" {...props} />
 );
 AsAnchor.argTypes = omit<ButtonProps<'a'>>('href');
 
