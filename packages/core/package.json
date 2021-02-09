@@ -25,6 +25,6 @@
     "!src/**/*.d.ts"
   ],
   "peerDependencies": {
-    "@onfido/castor-icons": "^1.0.0"
+    "@onfido/castor-icons": ">=1.0.0"
   }
 }

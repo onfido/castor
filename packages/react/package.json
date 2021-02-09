@@ -26,8 +26,8 @@
     "!src/**/*.d.ts"
   ],
   "peerDependencies": {
-    "@onfido/castor": "1.0.0",
-    "@onfido/castor-icons": "^1.0.0",
-    "react": "^16.8.0"
+    "@onfido/castor": "^1.0.0",
+    "@onfido/castor-icons": ">=1.0.0",
+    "react": ">=16.8.0"
   }
 }
