@@ -44,6 +44,7 @@ export default {
     },
   },
   args: {
+    children: 'Label',
     placeholder: 'Placeholder',
     resize: 'vertical',
     rows: 3,
