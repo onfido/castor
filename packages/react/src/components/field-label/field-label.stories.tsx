@@ -72,7 +72,7 @@ interface FieldLabelWithTextareaProps extends FieldLabelProps {
   label: string;
 }
 
-export const WithTexarea = ({
+export const WithTextarea = ({
   id,
   label,
   ...restFieldLabelProps
@@ -84,7 +84,7 @@ export const WithTexarea = ({
     <Textarea id={id} />
   </>
 );
-WithTexarea.args = {
+WithTextarea.args = {
   id: 'field-label-with-textarea',
   label: 'Label',
 };
