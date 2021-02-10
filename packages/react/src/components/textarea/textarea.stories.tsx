@@ -15,7 +15,10 @@ export default {
   component: Textarea,
   argTypes: {
     ...omit<TextareaProps>('className', 'style'),
-    children: { control: 'text' },
+    children: {
+      description: 'Acts as a label for a `<textarea>`.',
+      control: 'text',
+    },
     placeholder: { control: 'text' },
     resize: {
       table: {

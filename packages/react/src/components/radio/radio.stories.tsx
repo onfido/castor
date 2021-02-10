@@ -7,7 +7,10 @@ export default {
   component: Radio,
   argTypes: {
     ...omit<RadioProps>('className', 'style'),
-    children: { control: 'text' },
+    children: {
+      description: 'Acts as a label for an `<input>`.',
+      control: 'text',
+    },
     bordered: {
       table: { type: { summary: 'boolean' } },
     },
@@ -19,6 +22,7 @@ export default {
     },
   },
   args: {
+    children: '',
     bordered: false,
     invalid: false,
     disabled: false,
