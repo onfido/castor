@@ -1,3 +1,5 @@
+@use './includes';
+
 @use './button/button';
 @forward './button/button';
 @use './checkbox/checkbox';
@@ -18,10 +20,6 @@
 @forward './textarea/textarea';
 
 @mixin components() {
-  // conditionally includable in other components
-  @include field-label.FieldLabel();
-
-  // all the rest
   @include button.Button();
   @include checkbox.Checkbox();
   @include helper-text.HelperText();
@@ -30,4 +28,8 @@
   @include radio.Radio();
   @include search.Search();
   @include textarea.Textarea();
+
+  @if not includes.the('field-label') {
+    @include field-label.FieldLabel();
+  }
 }
