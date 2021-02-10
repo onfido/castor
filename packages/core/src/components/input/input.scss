@@ -1,6 +1,13 @@
 @use '../../mixins';
+@use '../includes';
+
+@use '../field-label/field-label';
 
 @mixin Input() {
+  @if not includes.the('field-label') {
+    @include field-label.FieldLabel();
+  }
+
   .ods-input {
     @include mixins.as-text-input();
   }
