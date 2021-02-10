@@ -1,6 +1,13 @@
 @use '../../mixins';
+@use '../includes';
+
+@use '../field-label/field-label';
 
 @mixin Textarea() {
+  @if not includes.the('field-label') {
+    @include field-label.FieldLabel();
+  }
+
   .ods-textarea {
     @include mixins.as-text-input();
 

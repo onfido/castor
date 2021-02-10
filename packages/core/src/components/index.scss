@@ -18,9 +18,12 @@
 @forward './textarea/textarea';
 
 @mixin components() {
+  // conditionally includable in other components
+  @include field-label.FieldLabel();
+
+  // all the rest
   @include button.Button();
   @include checkbox.Checkbox();
-  @include field-label.FieldLabel();
   @include helper-text.HelperText();
   @include icon.Icon();
   @include input.Input();
