@@ -17,6 +17,7 @@ export default {
     },
   },
   args: {
+    children: 'Label',
     placeholder: 'Placeholder',
     invalid: false,
     disabled: false,
