@@ -1,3 +1,4 @@
+import { color } from '@onfido/castor';
 import {
   FieldLabel,
   FieldLabelProps,
@@ -22,6 +23,32 @@ export default {
 
 export const Playground: Story<FieldLabelProps> = (props: FieldLabelProps) => (
   <FieldLabel {...props} />
+);
+
+export const AsOptional: Story<FieldLabelProps> = ({
+  children,
+  ...restProps
+}: FieldLabelProps) => (
+  <FieldLabel {...restProps}>
+    <span>
+      {children}
+      &nbsp;
+      <span style={{ color: color('content-secondary') }}>(optional)</span>
+    </span>
+  </FieldLabel>
+);
+
+export const AsRequired: Story<FieldLabelProps> = ({
+  children,
+  ...restProps
+}: FieldLabelProps) => (
+  <FieldLabel {...restProps}>
+    <span>
+      {children}
+      &nbsp;
+      <span style={{ color: color('content-negative') }}>*</span>
+    </span>
+  </FieldLabel>
 );
 
 interface FieldLabelWithHelperTextProps extends FieldLabelProps {
