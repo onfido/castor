@@ -7,13 +7,11 @@
     color: helpers.color('content-main');
     display: flex;
     flex-flow: column wrap;
-    padding-top: helpers.space(0.5);
+    padding: helpers.space(0.5) 0;
 
-    + .ods-input,
-    + .ods-textarea,
     > .ods-input,
     > .ods-textarea {
-      margin-top: helpers.space(0.5);
+      margin: helpers.space(0.5) 0 helpers.space(-0.5);
     }
   }
 }
