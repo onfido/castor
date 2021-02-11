@@ -18,6 +18,8 @@
 @forward './search/search';
 @use './textarea/textarea';
 @forward './textarea/textarea';
+@use './validation/validation';
+@forward './validation/validation';
 
 @mixin components() {
   @include button.Button();
@@ -28,6 +30,7 @@
   @include radio.Radio();
   @include search.Search();
   @include textarea.Textarea();
+  @include validation.Validation();
 
   @if not includes.the('field-label') {
     @include field-label.FieldLabel();

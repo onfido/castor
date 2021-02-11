@@ -1,4 +1,9 @@
-import { Checkbox, CheckboxProps, HelperText } from '@onfido/castor-react';
+import {
+  Checkbox,
+  CheckboxProps,
+  HelperText,
+  Validation,
+} from '@onfido/castor-react';
 import React, { ChangeEvent, useRef } from 'react';
 import { Meta, omit, Story, storyOf } from '../../../../../docs';
 
@@ -79,4 +84,34 @@ WithHelperText.argTypes = omit<CheckboxWithHelperTextProps>('children');
 WithHelperText.args = {
   label: 'Label',
   helperText: 'Helper text',
+};
+
+interface CheckboxWithValidationProps extends CheckboxProps {
+  label: string;
+  validation: string;
+  showIcon: boolean;
+}
+
+export const WithValidation = ({
+  label,
+  validation,
+  showIcon,
+  ...restCheckboxProps
+}: CheckboxWithValidationProps) => (
+  <>
+    <Checkbox {...restCheckboxProps} invalid={Boolean(validation)}>
+      {label}
+    </Checkbox>
+    <Validation showIcon={showIcon}>{validation}</Validation>
+  </>
+);
+WithValidation.argTypes = omit<CheckboxWithHelperTextProps>(
+  'children',
+  'invalid',
+  'disabled'
+);
+WithValidation.args = {
+  label: 'Label',
+  validation: 'This field is not valid',
+  showIcon: true,
 };

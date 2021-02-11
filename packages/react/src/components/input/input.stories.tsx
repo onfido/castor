@@ -1,4 +1,9 @@
-import { HelperText, Input, InputProps } from '@onfido/castor-react';
+import {
+  HelperText,
+  Input,
+  InputProps,
+  Validation,
+} from '@onfido/castor-react';
 import React from 'react';
 import { Meta, omit, Story, storyOf } from '../../../../../docs';
 
@@ -62,4 +67,34 @@ WithHelperText.argTypes = omit<InputWithHelperTextProps>('children');
 WithHelperText.args = {
   label: 'Label',
   helperText: 'Helper text',
+};
+
+interface InputWithValidationProps extends InputProps {
+  label: string;
+  validation: string;
+  showIcon: boolean;
+}
+
+export const WithValidation = ({
+  label,
+  validation,
+  showIcon,
+  ...restInputProps
+}: InputWithValidationProps) => (
+  <>
+    <Input {...restInputProps} invalid={Boolean(validation)}>
+      {label}
+    </Input>
+    <Validation showIcon={showIcon}>{validation}</Validation>
+  </>
+);
+WithValidation.argTypes = omit<InputWithHelperTextProps>(
+  'children',
+  'invalid',
+  'disabled'
+);
+WithValidation.args = {
+  label: 'Label',
+  validation: 'This field is not valid',
+  showIcon: true,
 };

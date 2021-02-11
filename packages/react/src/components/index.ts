@@ -7,3 +7,4 @@ export * from './input/input';
 export * from './radio/radio';
 export * from './search/search';
 export * from './textarea/textarea';
+export * from './validation/validation';

@@ -1,0 +1,15 @@
+@use '../../helpers';
+
+@mixin Validation() {
+  .ods-validation {
+    @include helpers.font('300-regular');
+
+    color: helpers.color('content-negative');
+    display: grid;
+    gap: helpers.space(1);
+    grid-auto-flow: column;
+    padding: helpers.space(0.5) 0;
+    place-content: start;
+    width: fit-content;
+  }
+}
