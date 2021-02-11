@@ -10,6 +10,7 @@
     "node": ">= 14"
   },
   "scripts": {
+    "postinstall": "husky install",
     "prestart": "yarn generate",
     "start": "start-storybook -p 6006",
     "generate": "concurrently yarn:generate:*",
@@ -25,7 +26,7 @@
     "lint:style": "stylelint '**/*.{,s}css' --ignore-path .gitignore --max-warnings 0",
     "lint:prettier": "prettier . --check --ignore-path .gitignore",
     "test": "jest --coverage",
-    "release": "HUSKY_SKIP_HOOKS=true standard-version"
+    "release": "HUSKY=0 standard-version"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
