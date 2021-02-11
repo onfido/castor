@@ -3,7 +3,7 @@ import { Icon } from '@onfido/castor-react';
 import React from 'react';
 
 /**
- * Intended to be used alongside `Input` and `Textarea` components.
+ * Intended to be used alongside field components.
  *
  * `Validation` uses an `Icon` that requires `Icons` (SVG sprite) to be included
  * in your app.

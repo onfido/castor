@@ -1,5 +1,6 @@
 import { color } from '@onfido/castor';
 import {
+  Field,
   FieldLabel,
   FieldLabelProps,
   HelperText,
@@ -80,12 +81,12 @@ export const WithInput = ({
   label,
   ...restFieldLabelProps
 }: FieldLabelWithInputProps) => (
-  <>
+  <Field>
     <FieldLabel {...restFieldLabelProps} htmlFor={id}>
       {label}
     </FieldLabel>
     <Input id={id} />
-  </>
+  </Field>
 );
 WithInput.args = {
   id: 'field-label-with-input',
@@ -102,12 +103,12 @@ export const WithTextarea = ({
   label,
   ...restFieldLabelProps
 }: FieldLabelWithTextareaProps) => (
-  <>
+  <Field>
     <FieldLabel {...restFieldLabelProps} htmlFor={id}>
       {label}
     </FieldLabel>
     <Textarea id={id} />
-  </>
+  </Field>
 );
 WithTextarea.args = {
   id: 'field-label-with-textarea',

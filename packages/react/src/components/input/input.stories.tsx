@@ -1,4 +1,5 @@
 import {
+  Field,
   HelperText,
   Input,
   InputProps,
@@ -58,10 +59,12 @@ export const WithHelperText = ({
   helperText,
   ...restInputProps
 }: InputWithHelperTextProps) => (
-  <Input {...restInputProps}>
-    {label}
-    <HelperText>{helperText}</HelperText>
-  </Input>
+  <Field>
+    <Input {...restInputProps}>
+      {label}
+      <HelperText>{helperText}</HelperText>
+    </Input>
+  </Field>
 );
 WithHelperText.argTypes = omit<InputWithHelperTextProps>('children');
 WithHelperText.args = {
@@ -81,12 +84,12 @@ export const WithValidation = ({
   showIcon,
   ...restInputProps
 }: InputWithValidationProps) => (
-  <>
+  <Field>
     <Input {...restInputProps} invalid={Boolean(validation)}>
       {label}
     </Input>
     <Validation showIcon={showIcon}>{validation}</Validation>
-  </>
+  </Field>
 );
 WithValidation.argTypes = omit<InputWithHelperTextProps>(
   'children',

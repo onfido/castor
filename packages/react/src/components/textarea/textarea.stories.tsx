@@ -1,4 +1,5 @@
 import {
+  Field,
   HelperText,
   Textarea,
   TextareaProps,
@@ -93,10 +94,12 @@ export const WithHelperText = ({
   helperText,
   ...restTextareaProps
 }: TextareaWithHelperTextProps) => (
-  <Textarea {...restTextareaProps}>
-    {label}
-    <HelperText>{helperText}</HelperText>
-  </Textarea>
+  <Field>
+    <Textarea {...restTextareaProps}>
+      {label}
+      <HelperText>{helperText}</HelperText>
+    </Textarea>
+  </Field>
 );
 WithHelperText.argTypes = omit<TextareaWithHelperTextProps>('children');
 WithHelperText.args = {
@@ -116,12 +119,12 @@ export const WithValidation = ({
   showIcon,
   ...restTextareaProps
 }: TextareaWithValidationProps) => (
-  <>
+  <Field>
     <Textarea {...restTextareaProps} invalid={Boolean(validation)}>
       {label}
     </Textarea>
     <Validation showIcon={showIcon}>{validation}</Validation>
-  </>
+  </Field>
 );
 WithValidation.argTypes = omit<TextareaWithValidationProps>(
   'children',
