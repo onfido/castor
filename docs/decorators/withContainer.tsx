@@ -21,7 +21,12 @@ export interface ContainerContext {
   parameters: ContainerParams;
 }
 
-interface ContainerParams {
+export interface ContainerParams {
+  /**
+   * If `display` === 'grid', determines CSS grid-template-columns.
+   * Default `repeat(4, 1fr)`.
+   */
   columns?: string;
+  /** Determines how to display the wrapping element. */
   display?: 'block' | 'flex' | 'grid';
 }

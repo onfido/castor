@@ -7,6 +7,7 @@ import {
   Story as BaseStory,
 } from '@storybook/react/types-6-0';
 import { FC, ReactElement } from 'react';
+import { ContainerParams } from '../decorators/withContainer';
 
 export interface Meta<Args>
   extends Omit<BaseMeta<Args>, 'argTypes' | 'component'>,
@@ -18,15 +19,7 @@ export interface Story<Args>
   extends Annotation<Args>,
     Omit<BaseStory<Args>, 'argTypes'> {
   (args: Args, context: StoryContext): ReactElement | ReactElement[] | string;
-  parameters?: BaseStory['parameters'] & {
-    /**
-     * If `display` === 'grid', determines CSS grid-template-columns.
-     * Default `repeat(4, 1fr)`.
-     */
-    columns?: string;
-    /** Determines how to display the wrapping element. */
-    display?: 'block' | 'flex' | 'grid';
-  };
+  parameters?: BaseStory['parameters'] & ContainerParams;
 }
 
 /**
