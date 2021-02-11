@@ -7,7 +7,10 @@ export default {
   component: Input,
   argTypes: {
     ...omit<InputProps>('className', 'style'),
-    children: { control: 'text' },
+    children: {
+      description: 'Acts as a label for an `<input>`.',
+      control: 'text',
+    },
     placeholder: { control: 'text' },
     invalid: {
       table: { type: { summary: 'boolean' } },
