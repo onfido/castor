@@ -110,20 +110,20 @@ WithHelperText.args = {
 interface TextareaWithValidationProps extends TextareaProps {
   label: string;
   validation: string;
-  showIcon: boolean;
+  withIcon: boolean;
 }
 
 export const WithValidation = ({
   label,
   validation,
-  showIcon,
+  withIcon,
   ...restTextareaProps
 }: TextareaWithValidationProps) => (
   <Field>
     <Textarea {...restTextareaProps} invalid={Boolean(validation)}>
       {label}
     </Textarea>
-    <Validation showIcon={showIcon}>{validation}</Validation>
+    <Validation withIcon={withIcon}>{validation}</Validation>
   </Field>
 );
 WithValidation.argTypes = omit<TextareaWithValidationProps>(
@@ -134,5 +134,5 @@ WithValidation.argTypes = omit<TextareaWithValidationProps>(
 WithValidation.args = {
   label: 'Label',
   validation: 'This field is not valid',
-  showIcon: true,
+  withIcon: true,
 };

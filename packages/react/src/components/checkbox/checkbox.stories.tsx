@@ -89,20 +89,20 @@ WithHelperText.args = {
 interface CheckboxWithValidationProps extends CheckboxProps {
   label: string;
   validation: string;
-  showIcon: boolean;
+  withIcon: boolean;
 }
 
 export const WithValidation = ({
   label,
   validation,
-  showIcon,
+  withIcon,
   ...restCheckboxProps
 }: CheckboxWithValidationProps) => (
   <>
     <Checkbox {...restCheckboxProps} invalid={Boolean(validation)}>
       {label}
     </Checkbox>
-    <Validation showIcon={showIcon}>{validation}</Validation>
+    <Validation withIcon={withIcon}>{validation}</Validation>
   </>
 );
 WithValidation.argTypes = omit<CheckboxWithHelperTextProps>(
@@ -113,5 +113,5 @@ WithValidation.argTypes = omit<CheckboxWithHelperTextProps>(
 WithValidation.args = {
   label: 'Label',
   validation: 'This field is not valid',
-  showIcon: true,
+  withIcon: true,
 };

@@ -80,20 +80,20 @@ WithHelperText.args = {
 interface RadioWithValidationProps extends RadioProps {
   label: string;
   validation: string;
-  showIcon: boolean;
+  withIcon: boolean;
 }
 
 export const WithValidation = ({
   label,
   validation,
-  showIcon,
+  withIcon,
   ...restRadioProps
 }: RadioWithValidationProps) => (
   <>
     <Radio {...restRadioProps} invalid={Boolean(validation)}>
       {label}
     </Radio>
-    <Validation showIcon={showIcon}>{validation}</Validation>
+    <Validation withIcon={withIcon}>{validation}</Validation>
   </>
 );
 WithValidation.argTypes = omit<RadioWithHelperTextProps>(
@@ -104,5 +104,5 @@ WithValidation.argTypes = omit<RadioWithHelperTextProps>(
 WithValidation.args = {
   label: 'Label',
   validation: 'This field is not valid',
-  showIcon: true,
+  withIcon: true,
 };
