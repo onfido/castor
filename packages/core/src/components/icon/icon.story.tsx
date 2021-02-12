@@ -7,10 +7,10 @@ import { c, classy } from '../../utils';
  *
  * https://github.com/onfido/castor-icons
  */
-export const Icon = ({ name }: IconProps) =>
+export const Icon = ({ name, color: token }: IconProps) =>
   html('svg', {
     class: classy(c('icon')),
-    fill: 'currentColor',
+    fill: token ? color(token) : 'currentColor',
     focusable: 'false',
     height: '24',
     width: '24',
