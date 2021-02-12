@@ -40,7 +40,8 @@ Disabled.argTypes = omit<ButtonProps>('disabled', 'children');
 export const AsAnchor: Story<ButtonProps> = (props) =>
   Button({ ...props, href: 'javascript:void 0' });
 
-const icon = Icon({ name: 'alarm' });
+const [firstIconName] = iconNames;
+const icon = Icon({ name: firstIconName });
 export const WithIcon: Story<ButtonProps> = (props: ButtonProps) =>
   Button({ ...props, children: icon + 'Button' }) +
   Button({ ...props, children: 'Button' + icon });
