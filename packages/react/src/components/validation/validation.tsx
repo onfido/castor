@@ -5,8 +5,8 @@ import React from 'react';
 /**
  * Intended to be used alongside field components.
  *
- * `Validation` uses an `Icon` that requires `Icons` (SVG sprite) to be included
- * in your app.
+ * `Validation` when `showIcon` prop is enabled uses an `Icon` component that
+ * requires `Icons` (SVG sprite) to be included in your app.
  *
  * https://github.com/onfido/castor-icons#use-with-plain-code
  */
