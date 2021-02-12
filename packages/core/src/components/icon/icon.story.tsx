@@ -3,9 +3,7 @@ import { html } from '../../../../../docs';
 import { c, classy } from '../../utils';
 
 /**
- * `.ods-icon` requires SVG sprite to be included in your app. If you wish to
- * use individual SVGs, import them directly from `@onfido/castor-icons/svg`
- * instead.
+ * `.ods-icon` requires SVG sprite to be included in your app.
  *
  * https://github.com/onfido/castor-icons
  */
