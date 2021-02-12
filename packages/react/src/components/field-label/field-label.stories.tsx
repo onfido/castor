@@ -44,7 +44,7 @@ export const AsRequired: Story<FieldLabelProps> = ({
   <FieldLabel {...restProps}>
     <span>
       {children}
-      <span style={{ color: color('content-secondary') }}> *</span>
+      <span style={{ color: color('content-negative') }}> *</span>
     </span>
   </FieldLabel>
 );
