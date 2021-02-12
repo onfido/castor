@@ -1,4 +1,4 @@
-import { c, classy, m } from '@onfido/castor';
+import { c, classy } from '@onfido/castor';
 import { Icon } from '@onfido/castor-react';
 import React from 'react';
 
@@ -16,10 +16,7 @@ export const Validation = ({
   className,
   ...restProps
 }: ValidationProps): JSX.Element => (
-  <div
-    {...restProps}
-    className={classy(c('validation'), m({ showIcon }), className)}
-  >
+  <div {...restProps} className={classy(c('validation'), className)}>
     {showIcon && <Icon name="error" />}
     {children}
   </div>
