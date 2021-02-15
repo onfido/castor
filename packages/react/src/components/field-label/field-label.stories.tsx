@@ -32,7 +32,7 @@ export const AsOptional: Story<FieldLabelProps> = ({
   <FieldLabel {...restProps}>
     <span>
       {children}{' '}
-      <abbr style={{ color: color('content-secondary') }}>(optional)</abbr>
+      <span style={{ color: color('content-secondary') }}>(optional)</span>
     </span>
   </FieldLabel>
 );
