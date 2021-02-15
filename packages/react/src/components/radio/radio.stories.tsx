@@ -93,7 +93,9 @@ export const WithValidation = ({
     <Radio {...restRadioProps} invalid={Boolean(validation)}>
       {label}
     </Radio>
-    <Validation withIcon={withIcon}>{validation}</Validation>
+    <Validation state="error" withIcon={withIcon}>
+      {validation}
+    </Validation>
   </>
 );
 WithValidation.argTypes = omit<RadioWithHelperTextProps>(

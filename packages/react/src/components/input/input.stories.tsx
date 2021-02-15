@@ -88,7 +88,9 @@ export const WithValidation = ({
     <Input {...restInputProps} invalid={Boolean(validation)}>
       {label}
     </Input>
-    <Validation withIcon={withIcon}>{validation}</Validation>
+    <Validation state="error" withIcon={withIcon}>
+      {validation}
+    </Validation>
   </Field>
 );
 WithValidation.argTypes = omit<InputWithHelperTextProps>(

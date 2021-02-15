@@ -1,4 +1,4 @@
-import { c, classy } from '@onfido/castor';
+import { c, classy, m, ValidationProps as BaseProps } from '@onfido/castor';
 import { Icon } from '@onfido/castor-react';
 import React from 'react';
 
@@ -11,17 +11,19 @@ import React from 'react';
  * https://github.com/onfido/castor-icons#use-with-plain-code
  */
 export const Validation = ({
+  state,
   withIcon,
   children,
   className,
   ...restProps
 }: ValidationProps): JSX.Element => (
-  <div {...restProps} className={classy(c('validation'), className)}>
+  <div {...restProps} className={classy(c('validation'), m(state), className)}>
     {withIcon && <Icon name="error" />}
     {children}
   </div>
 );
 
-export type ValidationProps = JSX.IntrinsicElements['div'] & {
-  withIcon?: boolean;
-};
+export type ValidationProps = BaseProps &
+  JSX.IntrinsicElements['div'] & {
+    withIcon?: boolean;
+  };

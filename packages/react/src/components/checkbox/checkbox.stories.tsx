@@ -102,7 +102,9 @@ export const WithValidation = ({
     <Checkbox {...restCheckboxProps} invalid={Boolean(validation)}>
       {label}
     </Checkbox>
-    <Validation withIcon={withIcon}>{validation}</Validation>
+    <Validation state="error" withIcon={withIcon}>
+      {validation}
+    </Validation>
   </>
 );
 WithValidation.argTypes = omit<CheckboxWithHelperTextProps>(

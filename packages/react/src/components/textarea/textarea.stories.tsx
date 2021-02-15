@@ -123,7 +123,9 @@ export const WithValidation = ({
     <Textarea {...restTextareaProps} invalid={Boolean(validation)}>
       {label}
     </Textarea>
-    <Validation withIcon={withIcon}>{validation}</Validation>
+    <Validation state="error" withIcon={withIcon}>
+      {validation}
+    </Validation>
   </Field>
 );
 WithValidation.argTypes = omit<TextareaWithValidationProps>(
