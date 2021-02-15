@@ -1,4 +1,9 @@
-import { HelperText, Radio, RadioProps } from '@onfido/castor-react';
+import {
+  HelperText,
+  Radio,
+  RadioProps,
+  Validation,
+} from '@onfido/castor-react';
 import React from 'react';
 import { Meta, omit, Story, storyOf } from '../../../../../docs';
 
@@ -70,4 +75,36 @@ WithHelperText.argTypes = omit<RadioWithHelperTextProps>('children');
 WithHelperText.args = {
   label: 'Label',
   helperText: 'Helper text',
+};
+
+interface RadioWithValidationProps extends RadioProps {
+  label: string;
+  validation: string;
+  withIcon: boolean;
+}
+
+export const WithValidation = ({
+  label,
+  validation,
+  withIcon,
+  ...restRadioProps
+}: RadioWithValidationProps) => (
+  <>
+    <Radio {...restRadioProps} invalid={Boolean(validation)}>
+      {label}
+    </Radio>
+    <Validation state="error" withIcon={withIcon}>
+      {validation}
+    </Validation>
+  </>
+);
+WithValidation.argTypes = omit<RadioWithHelperTextProps>(
+  'children',
+  'invalid',
+  'disabled'
+);
+WithValidation.args = {
+  label: 'Label',
+  validation: 'This field is not valid',
+  withIcon: true,
 };

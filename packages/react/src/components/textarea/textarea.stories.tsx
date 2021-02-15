@@ -1,4 +1,10 @@
-import { HelperText, Textarea, TextareaProps } from '@onfido/castor-react';
+import {
+  Field,
+  HelperText,
+  Textarea,
+  TextareaProps,
+  Validation,
+} from '@onfido/castor-react';
 import React from 'react';
 import { Meta, omit, Story, storyOf } from '../../../../../docs';
 
@@ -88,13 +94,47 @@ export const WithHelperText = ({
   helperText,
   ...restTextareaProps
 }: TextareaWithHelperTextProps) => (
-  <Textarea {...restTextareaProps}>
-    {label}
-    <HelperText>{helperText}</HelperText>
-  </Textarea>
+  <Field>
+    <Textarea {...restTextareaProps}>
+      {label}
+      <HelperText>{helperText}</HelperText>
+    </Textarea>
+  </Field>
 );
 WithHelperText.argTypes = omit<TextareaWithHelperTextProps>('children');
 WithHelperText.args = {
   label: 'Label',
   helperText: 'Helper text',
+};
+
+interface TextareaWithValidationProps extends TextareaProps {
+  label: string;
+  validation: string;
+  withIcon: boolean;
+}
+
+export const WithValidation = ({
+  label,
+  validation,
+  withIcon,
+  ...restTextareaProps
+}: TextareaWithValidationProps) => (
+  <Field>
+    <Textarea {...restTextareaProps} invalid={Boolean(validation)}>
+      {label}
+    </Textarea>
+    <Validation state="error" withIcon={withIcon}>
+      {validation}
+    </Validation>
+  </Field>
+);
+WithValidation.argTypes = omit<TextareaWithValidationProps>(
+  'children',
+  'invalid',
+  'disabled'
+);
+WithValidation.args = {
+  label: 'Label',
+  validation: 'This field is not valid',
+  withIcon: true,
 };

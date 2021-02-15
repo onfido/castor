@@ -4,6 +4,8 @@
 @forward './button/button';
 @use './checkbox/checkbox';
 @forward './checkbox/checkbox';
+@use './field/field';
+@forward './field/field';
 @use './field-label/field-label';
 @forward './field-label/field-label';
 @use './helper-text/helper-text';
@@ -18,16 +20,20 @@
 @forward './search/search';
 @use './textarea/textarea';
 @forward './textarea/textarea';
+@use './validation/validation';
+@forward './validation/validation';
 
 @mixin components() {
   @include button.Button();
   @include checkbox.Checkbox();
+  @include field.Field();
   @include helper-text.HelperText();
   @include icon.Icon();
   @include input.Input();
   @include radio.Radio();
   @include search.Search();
   @include textarea.Textarea();
+  @include validation.Validation();
 
   @if not includes.the('field-label') {
     @include field-label.FieldLabel();
