@@ -31,8 +31,8 @@ export const AsOptional: Story<FieldLabelProps> = ({
 }: FieldLabelProps) => (
   <FieldLabel {...restProps}>
     <span>
-      {children}
-      <span style={{ color: color('content-secondary') }}> (optional)</span>
+      {children}{' '}
+      <abbr style={{ color: color('content-secondary') }}>(optional)</abbr>
     </span>
   </FieldLabel>
 );
@@ -43,8 +43,10 @@ export const AsRequired: Story<FieldLabelProps> = ({
 }: FieldLabelProps) => (
   <FieldLabel {...restProps}>
     <span>
-      {children}
-      <span style={{ color: color('content-negative') }}> *</span>
+      {children}{' '}
+      <abbr aria-label="required" style={{ color: color('content-negative') }}>
+        *
+      </abbr>
     </span>
   </FieldLabel>
 );
