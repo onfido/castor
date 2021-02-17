@@ -1,3 +1,4 @@
+export * from './asterisk/asterisk';
 export * from './button/button';
 export * from './checkbox/checkbox';
 export * from './field-label/field-label';

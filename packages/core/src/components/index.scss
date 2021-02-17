@@ -1,5 +1,7 @@
 @use './includes';
 
+@use './asterisk/asterisk';
+@forward './asterisk/asterisk';
 @use './button/button';
 @forward './button/button';
 @use './checkbox/checkbox';
@@ -24,6 +26,7 @@
 @forward './validation/validation';
 
 @mixin components() {
+  @include asterisk.Asterisk();
   @include button.Button();
   @include checkbox.Checkbox();
   @include field.Field();
