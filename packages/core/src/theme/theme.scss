@@ -15,9 +15,9 @@
     }
 
     @content;
-  }
 
-  @media (prefers-reduced-motion) {
-    --ods-transition-duration: 0s;
+    @media (prefers-reduced-motion) {
+      --ods-transition-duration: 0s;
+    }
   }
 }
