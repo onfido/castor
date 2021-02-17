@@ -35,7 +35,13 @@
   }
 
   // indicating [disabled] input
-  .ods-radio:disabled + .ods-input-indicator::after {
-    background-color: helpers.color('content-disabled');
+  .ods-radio:disabled + .ods-input-indicator {
+    &::after {
+      background-color: helpers.color('content-disabled');
+    }
+
+    &::before {
+      background-color: helpers.color('background-disabled');
+    }
   }
 }

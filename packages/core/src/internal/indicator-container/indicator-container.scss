@@ -126,7 +126,6 @@
   .ods-checkbox:disabled,
   .ods-radio:disabled {
     + .ods-input-indicator::before {
-      background-color: helpers.color('background-disabled');
       border-color: helpers.color('border-disabled');
     }
 
