@@ -58,6 +58,14 @@ You may wish to configure your bundler to transpile to a different module syntax
 
 For example, you might choose UMD module syntax targeting ES5 if your app needs to support IE11 (please note that Castor is not tested in Internet Explorer).
 
+### Use with TypeScript
+
+Components extend base prop types with JSX additions.
+
+When using with TypeScript, always import types from `@onfido/castor-react`.
+
+Please note that the `@onfido/castor-icons` package is a peer dependency and is required to be installed for types to work properly. Yarn and newer versions of npm (using lockfile v2) will resolve it, however otherwise it must be installed manually even if you don't plan to use icons.
+
 ### Make custom styled components
 
 You should use props for each component modifier, but it is also possible to create custom styled components.
