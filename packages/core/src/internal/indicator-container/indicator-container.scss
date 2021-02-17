@@ -83,8 +83,8 @@
     > .ods-checkbox:checked,
     > .ods-checkbox:indeterminate,
     > .ods-radio:checked {
-      &:not(.-touched:invalid:disabled) + .ods-input-indicator,
-      &:not(.-invalid:disabled) + .ods-input-indicator {
+      &:not(.-invalid:disabled) + .ods-input-indicator,
+      &:not(.-touched:invalid:disabled) + .ods-input-indicator {
         background-color: helpers.color('background-action-subtle');
         border-color: helpers.color('border-action-subtle');
       }
