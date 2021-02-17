@@ -30,8 +30,11 @@
   }
 
   // indicating invalid input
-  .ods-radio.-invalid + .ods-input-indicator::after {
-    background-color: helpers.color('content-negative');
+  .ods-radio.-invalid,
+  .ods-radio.-touched:invalid {
+    + .ods-input-indicator::after {
+      background-color: helpers.color('content-negative');
+    }
   }
 
   // indicating [disabled] input
