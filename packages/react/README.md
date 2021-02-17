@@ -64,7 +64,7 @@ Components extend base prop types with JSX additions.
 
 When using with TypeScript, always import types from `@onfido/castor-react`.
 
-Please note that the `@onfido/castor-icons` package is a peer dependency and is required to be installed for types to work properly. Yarn and newer versions of npm (using lockfile v2) will resolve it, however otherwise it must be installed manually even if you don't plan to use icons.
+Please note that the `@onfido/castor-icons` package is a peer dependency and is required to be installed for **types** to work properly. Yarn and newer versions of npm (using lockfile v2) will resolve it, otherwise it must be installed manually even if you don't plan to use icons.
 
 ### Make custom styled components
 
