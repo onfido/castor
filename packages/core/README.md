@@ -178,3 +178,7 @@ Or using the Sass helper:
 ```html
 <button class="ods-button -action--primary round">Round Button</button>
 ```
+
+Components have basic types exported so that you could create your own JS/TS variations using any renderer chosen (for example, Vue or Angular).
+
+Please note that the `@onfido/castor-icons` package is a peer dependency and is required to be installed for **types** to work properly. Yarn and newer versions of npm (using lockfile v2) will resolve it, otherwise it must be installed manually even if you don't plan to use icons.
