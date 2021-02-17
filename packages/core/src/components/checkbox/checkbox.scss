@@ -74,7 +74,13 @@
   }
 
   // indicating [disabled] input
-  .ods-checkbox:disabled + .ods-input-indicator::after {
-    border-color: helpers.color('content-disabled');
+  .ods-checkbox:disabled + .ods-input-indicator {
+    &::after {
+      border-color: helpers.color('content-disabled');
+    }
+
+    &::before {
+      background-color: helpers.color('background-disabled');
+    }
   }
 }
