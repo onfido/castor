@@ -1,5 +1,6 @@
 import { color } from '@onfido/castor';
 import {
+  Asterisk,
   Field,
   FieldLabel,
   FieldLabelProps,
@@ -44,10 +45,8 @@ export const AsRequired: Story<FieldLabelProps> = ({
 }: FieldLabelProps) => (
   <FieldLabel {...restProps}>
     <span>
-      {children}{' '}
-      <abbr aria-label="required" style={{ color: color('content-negative') }}>
-        *
-      </abbr>
+      {children}
+      <Asterisk aria-label="required" />
     </span>
   </FieldLabel>
 );

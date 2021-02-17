@@ -1,0 +1,7 @@
+@use '../../helpers';
+
+@mixin Asterisk() {
+  .ods-asterisk {
+    color: helpers.color('content-negative');
+  }
+}
