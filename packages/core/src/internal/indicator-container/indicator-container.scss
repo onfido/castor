@@ -12,7 +12,7 @@
     color: helpers.color('content-main');
     display: inline-grid;
     gap: $padding;
-    grid-auto-flow: column;
+    grid: auto-flow / auto 1fr;
     padding: $padding;
     place-content: start;
     position: relative;
