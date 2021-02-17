@@ -12,6 +12,8 @@
   box-sizing: border-box;
   color: helpers.color('content-main');
   padding: helpers.space(1.5) - $border-width helpers.space(2) - $border-width;
+  transition: var(--ods-transition-duration, 0s) ease;
+  transition-property: background-color, border-color, box-shadow, color;
   width: helpers.space(50);
 
   &::placeholder {
