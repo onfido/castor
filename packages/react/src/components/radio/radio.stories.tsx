@@ -1,4 +1,5 @@
 import {
+  Fieldset,
   HelperText,
   Radio,
   RadioProps,
@@ -89,14 +90,14 @@ export const WithValidation = ({
   withIcon,
   ...restRadioProps
 }: RadioWithValidationProps) => (
-  <>
+  <Fieldset>
     <Radio {...restRadioProps} invalid={Boolean(validation)}>
       {label}
     </Radio>
     <Validation state="error" withIcon={withIcon}>
       {validation}
     </Validation>
-  </>
+  </Fieldset>
 );
 WithValidation.argTypes = omit<RadioWithHelperTextProps>(
   'children',
