@@ -26,7 +26,8 @@
   // stylelint-disable-next-line order/order
   @include mixins.with-inner-focus('action', $border-width);
 
-  &.-invalid {
+  &.-invalid,
+  &.-touched:invalid {
     @include mixins.with-inner-focus('negative', $border-width);
 
     border-color: helpers.color('border-negative');

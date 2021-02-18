@@ -33,7 +33,8 @@
     margin: $input-margin;
     opacity: 0;
 
-    &.-invalid {
+    &.-invalid,
+    &.-touched:invalid {
       @include mixins.with-outer-focus(
         'negative',
         '+ .ods-input-indicator::before'
@@ -82,7 +83,8 @@
     > .ods-checkbox:checked,
     > .ods-checkbox:indeterminate,
     > .ods-radio:checked {
-      &:not(:disabled):not(.-invalid) + .ods-input-indicator {
+      &:not(.-invalid:disabled) + .ods-input-indicator,
+      &:not(.-touched:invalid:disabled) + .ods-input-indicator {
         background-color: helpers.color('background-action-subtle');
         border-color: helpers.color('border-action-subtle');
       }
@@ -116,7 +118,9 @@
 
   // indicating invalid input
   .ods-checkbox.-invalid,
-  .ods-radio.-invalid {
+  .ods-checkbox.-touched:invalid,
+  .ods-radio.-invalid,
+  .ods-radio.-touched:invalid {
     + .ods-input-indicator::before {
       border-color: helpers.color('border-negative');
     }
