@@ -1,6 +1,7 @@
 import {
   Checkbox,
   CheckboxProps,
+  Fieldset,
   HelperText,
   Validation,
 } from '@onfido/castor-react';
@@ -98,14 +99,14 @@ export const WithValidation = ({
   withIcon,
   ...restCheckboxProps
 }: CheckboxWithValidationProps) => (
-  <>
+  <Fieldset>
     <Checkbox {...restCheckboxProps} invalid={Boolean(validation)}>
       {label}
     </Checkbox>
     <Validation state="error" withIcon={withIcon}>
       {validation}
     </Validation>
-  </>
+  </Fieldset>
 );
 WithValidation.argTypes = omit<CheckboxWithHelperTextProps>(
   'children',
