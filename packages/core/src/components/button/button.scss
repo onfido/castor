@@ -21,6 +21,8 @@
     padding: helpers.space(1.5) - $border-width helpers.space(3) - $border-width;
     position: relative;
     text-decoration: none;
+    transition: var(--ods-transition-duration, 0s) ease;
+    transition-property: background-color, border-color, box-shadow, color;
     width: fit-content;
 
     > * {

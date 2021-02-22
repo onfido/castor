@@ -18,8 +18,10 @@
 
     // "outline" transition
     + .ods-input-indicator::before {
-      transition: 0.15s ease-out;
-      transition-property: background-color;
+      transition: //
+        background-color var(--ods-transition-duration, 0.15s) ease-out,
+        border-color var(--ods-transition-duration, 0s) ease,
+        box-shadow var(--ods-transition-duration, 0s) ease;
     }
 
     // "tick" for [checked] indication
