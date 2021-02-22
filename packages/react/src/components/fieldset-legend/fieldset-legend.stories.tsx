@@ -78,7 +78,7 @@ export const WithHelperText = ({
 );
 WithHelperText.argTypes = omit<FieldsetLegendWithHelperTextProps>('children');
 WithHelperText.args = {
-  legend: 'Lgend',
+  legend: 'Legend',
   helperText: 'Helper text',
 };
 

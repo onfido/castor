@@ -64,16 +64,15 @@ interface RadiosWithFieldsetLegendProps extends RadioProps {
 }
 
 export const WithFieldsetLegend = ({
-  name,
   legend,
   ...restRadioProps
 }: RadiosWithFieldsetLegendProps) => (
   <Fieldset>
     <FieldsetLegend>{legend}</FieldsetLegend>
-    <Radio {...restRadioProps} name={name} value="yes">
+    <Radio {...restRadioProps} value="yes">
       yes
     </Radio>
-    <Radio {...restRadioProps} name={name} value="no">
+    <Radio {...restRadioProps} value="no">
       no
     </Radio>
   </Fieldset>

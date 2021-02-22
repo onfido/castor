@@ -73,16 +73,15 @@ interface CheckboxesWithFieldsetLegendProps extends CheckboxProps {
 }
 
 export const WithFieldsetLegend = ({
-  name,
   legend,
   ...restCheckboxProps
 }: CheckboxesWithFieldsetLegendProps) => (
   <Fieldset>
     <FieldsetLegend>{legend}</FieldsetLegend>
-    <Checkbox {...restCheckboxProps} name={name} value="1">
+    <Checkbox {...restCheckboxProps} value="1">
       one
     </Checkbox>
-    <Checkbox {...restCheckboxProps} name={name} value="2">
+    <Checkbox {...restCheckboxProps} value="2">
       two
     </Checkbox>
   </Fieldset>
