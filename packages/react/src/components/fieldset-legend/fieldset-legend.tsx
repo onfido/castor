@@ -2,7 +2,7 @@ import { c, classy } from '@onfido/castor';
 import React from 'react';
 
 /**
- * Intended to be used within `Fieldset` component, providing a text legend.
+ * Use within `Fieldset` component to provide a text legend.
  */
 export const FieldsetLegend = ({
   className,
