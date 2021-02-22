@@ -89,6 +89,7 @@ export const WithInput = ({
     <Input id={id} />
   </Field>
 );
+WithInput.argTypes = omit<FieldLabelWithInputProps>('children');
 WithInput.args = {
   id: 'field-label-with-input',
   label: 'Label',
@@ -111,6 +112,7 @@ export const WithTextarea = ({
     <Textarea id={id} />
   </Field>
 );
+WithTextarea.argTypes = omit<FieldLabelWithTextareaProps>('children');
 WithTextarea.args = {
   id: 'field-label-with-textarea',
   label: 'Label',

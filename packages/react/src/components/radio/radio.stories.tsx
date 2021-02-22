@@ -1,5 +1,6 @@
 import {
   Fieldset,
+  FieldsetLegend,
   HelperText,
   Radio,
   RadioProps,
@@ -57,6 +58,31 @@ export const Disabled = storyOf(Radio, 'disabled', [true, false], {
 Disabled.argTypes = omit<RadioProps>('disabled');
 Disabled.args = { name: 'disabled-playground' };
 
+interface RadiosWithFieldsetLegendProps extends RadioProps {
+  name: string;
+  legend: string;
+}
+
+export const WithFieldsetLegend = ({
+  legend,
+  ...restRadioProps
+}: RadiosWithFieldsetLegendProps) => (
+  <Fieldset>
+    <FieldsetLegend>{legend}</FieldsetLegend>
+    <Radio {...restRadioProps} value="yes">
+      yes
+    </Radio>
+    <Radio {...restRadioProps} value="no">
+      no
+    </Radio>
+  </Fieldset>
+);
+WithFieldsetLegend.argTypes = omit<RadiosWithFieldsetLegendProps>('children');
+WithFieldsetLegend.args = {
+  name: 'radios-with-fieldset-legend',
+  legend: 'Legend',
+};
+
 interface RadioWithHelperTextProps extends RadioProps {
   label: string;
   helperText: string;
@@ -90,14 +116,14 @@ export const WithValidation = ({
   withIcon,
   ...restRadioProps
 }: RadioWithValidationProps) => (
-  <Fieldset>
+  <>
     <Radio {...restRadioProps} invalid={Boolean(validation)}>
       {label}
     </Radio>
     <Validation state="error" withIcon={withIcon}>
       {validation}
     </Validation>
-  </Fieldset>
+  </>
 );
 WithValidation.argTypes = omit<RadioWithHelperTextProps>(
   'children',

@@ -1,0 +1,12 @@
+@use '../../helpers';
+
+@mixin FieldsetLegend() {
+  .ods-fieldset-legend {
+    @include helpers.font('300-regular');
+
+    color: helpers.color('content-main');
+    display: flex;
+    flex-flow: column wrap;
+    padding: helpers.space(0.5) 0;
+  }
+}

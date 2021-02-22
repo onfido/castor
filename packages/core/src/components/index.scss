@@ -10,6 +10,8 @@
 @forward './field-label/field-label';
 @use './field/field';
 @forward './field/field';
+@use './fieldset-legend/fieldset-legend';
+@forward './fieldset-legend/fieldset-legend';
 @use './fieldset/fieldset';
 @forward './fieldset/fieldset';
 @use './helper-text/helper-text';
@@ -32,6 +34,7 @@
   @include button.Button();
   @include checkbox.Checkbox();
   @include field.Field();
+  @include fieldset-legend.FieldsetLegend();
   @include fieldset.Fieldset();
   @include helper-text.HelperText();
   @include icon.Icon();

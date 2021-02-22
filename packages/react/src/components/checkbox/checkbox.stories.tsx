@@ -2,6 +2,7 @@ import {
   Checkbox,
   CheckboxProps,
   Fieldset,
+  FieldsetLegend,
   HelperText,
   Validation,
 } from '@onfido/castor-react';
@@ -66,6 +67,33 @@ export const AsIndeterminate = (props: CheckboxProps) => {
   return <Checkbox {...props} ref={checkboxRef} onChange={handleChange} />;
 };
 
+interface CheckboxesWithFieldsetLegendProps extends CheckboxProps {
+  name: string;
+  legend: string;
+}
+
+export const WithFieldsetLegend = ({
+  legend,
+  ...restCheckboxProps
+}: CheckboxesWithFieldsetLegendProps) => (
+  <Fieldset>
+    <FieldsetLegend>{legend}</FieldsetLegend>
+    <Checkbox {...restCheckboxProps} value="1">
+      one
+    </Checkbox>
+    <Checkbox {...restCheckboxProps} value="2">
+      two
+    </Checkbox>
+  </Fieldset>
+);
+WithFieldsetLegend.argTypes = omit<CheckboxesWithFieldsetLegendProps>(
+  'children'
+);
+WithFieldsetLegend.args = {
+  name: 'checkboxes-with-fieldset-legend',
+  legend: 'Legend',
+};
+
 interface CheckboxWithHelperTextProps extends CheckboxProps {
   label: string;
   helperText: string;
@@ -99,14 +127,14 @@ export const WithValidation = ({
   withIcon,
   ...restCheckboxProps
 }: CheckboxWithValidationProps) => (
-  <Fieldset>
+  <>
     <Checkbox {...restCheckboxProps} invalid={Boolean(validation)}>
       {label}
     </Checkbox>
     <Validation state="error" withIcon={withIcon}>
       {validation}
     </Validation>
-  </Fieldset>
+  </>
 );
 WithValidation.argTypes = omit<CheckboxWithHelperTextProps>(
   'children',
