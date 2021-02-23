@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "@emotion/core": "^11.0.0",
-    "@emotion/styled": "^10.0.27",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
     "@onfido/castor-icons": "*",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
