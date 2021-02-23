@@ -14,10 +14,10 @@
       @include castor.tokens();
     }
 
+    @content;
+    
     @media (prefers-reduced-motion) {
       --ods-transition-duration: 0s;
     }
-
-    @content;
   }
 }
