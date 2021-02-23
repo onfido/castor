@@ -19,8 +19,7 @@
     + .ods-input-indicator::after {
       background-color: helpers.color('content-action');
       transform: scale(0);
-      transition: 0.15s ease-out;
-      transition-property: transform;
+      transition: transform var(--ods-transition-duration) ease-out;
     }
   }
 
