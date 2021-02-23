@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/onfido/castor/compare/v1.0.1...v1.1.0) (2021-02-23)
+
+### Features
+
+- add asterisk component ([#326](https://github.com/onfido/castor/issues/326)) ([f9f9fb2](https://github.com/onfido/castor/commit/f9f9fb2eaa25d2d57ab9fd8f09118d2e37b8276c))
+- add field-label component ([#267](https://github.com/onfido/castor/issues/267)) ([3e91a40](https://github.com/onfido/castor/commit/3e91a4098b56b9fe7180d2b40166646f3b858568)), closes [#4](https://github.com/onfido/castor/issues/4)
+- add fieldset component ([#333](https://github.com/onfido/castor/issues/333)) ([ab42203](https://github.com/onfido/castor/commit/ab4220324998dce6a6a71e5c4010219104e8692e))
+- add fieldset-legend component ([#338](https://github.com/onfido/castor/issues/338)) ([baa765a](https://github.com/onfido/castor/commit/baa765a713cc0cea917b4de2c19636ec9d8cce48))
+- support custom transition-duration ([#330](https://github.com/onfido/castor/issues/330)) ([1d112ba](https://github.com/onfido/castor/commit/1d112ba9d23c242e6c198fc442746fd6e6ba3465))
+- **core:** add .-touched:invalid as an alternative to .-invalid ([#329](https://github.com/onfido/castor/issues/329)) ([785a3f0](https://github.com/onfido/castor/commit/785a3f0c3927153fc485ef658e9a0366c1e168c2))
+- add validation component ([#303](https://github.com/onfido/castor/issues/303)) ([4894c1b](https://github.com/onfido/castor/commit/4894c1b67a231dd993e2b98574cc6f35980258fd)), closes [#5](https://github.com/onfido/castor/issues/5)
+- **core:** automatically include field-label (for input/textarea) ([#293](https://github.com/onfido/castor/issues/293)) ([c9984f6](https://github.com/onfido/castor/commit/c9984f6b58d03c205288b5fa22611a3e6e15a2ea))
+
+### Bug Fixes
+
+- **core:** compile field-label only once ([#298](https://github.com/onfido/castor/issues/298)) ([055fcdd](https://github.com/onfido/castor/commit/055fcdda07fc5e272882b0f63417fc33a87afdb1))
+- **core:** correct "disabled" styling for checkbox and radio ([#328](https://github.com/onfido/castor/issues/328)) ([a68dc30](https://github.com/onfido/castor/commit/a68dc30b715d062044c3991aedbb71a01e852c61))
+- **core:** correct placement of "bordered" indicator-container ([#301](https://github.com/onfido/castor/issues/301)) ([851a386](https://github.com/onfido/castor/commit/851a386687e1f2657eb91d612000fb5153041515))
+- **core:** correctly space full width checkbox and radio ([#327](https://github.com/onfido/castor/issues/327)) ([68aab8a](https://github.com/onfido/castor/commit/68aab8abe76e98f3b3901eaf45fe1c19c4b15254))
+- **core:** make sure field-label follows 8px grid ([#291](https://github.com/onfido/castor/issues/291)) ([880be1b](https://github.com/onfido/castor/commit/880be1b344db0bade0dcbdc48b09cc40ca6c3b89))
+
 ### [1.0.1](https://github.com/onfido/castor/compare/v1.0.0...v1.0.1) (2021-02-09)
 
 ### Bug Fixes
