@@ -32,7 +32,7 @@
     "@commitlint/cli": "^12.0.0",
     "@commitlint/config-conventional": "^12.0.0",
     "@onfido/castor-icons": "*",
-    "@storybook/addon-a11y": "^6.1.19",
+    "@storybook/addon-a11y": "^6.1.20",
     "@storybook/addon-controls": "^6.1.20",
     "@storybook/addon-docs": "^6.1.19",
     "@storybook/addon-google-analytics": "^6.1.19",
