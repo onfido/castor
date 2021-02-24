@@ -1,13 +1,8 @@
-import { Color } from '@onfido/castor';
 import { iconNames } from '@onfido/castor-icons';
 import { Icon, IconProps } from '@onfido/castor-react';
 import React from 'react';
-import { Meta, omit, Story, storyOf, tokens } from '../../../../../docs';
-
-const colors = Object.keys(tokens).reduce((accumulator, name) => {
-  const [, color] = name.match(/^--ods-color-([a-z0-9-]+)$/) ?? [];
-  return color ? [...accumulator, color] : accumulator;
-}, []) as Color[];
+import { Meta, omit, Story, storyOf } from '../../../../../docs';
+import { colors } from '../../../../../docs/colors';
 
 const [firstIconName] = iconNames;
 
