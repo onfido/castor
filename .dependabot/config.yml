@@ -12,6 +12,9 @@ update_configs:
           dependency_name: 'autoprefixer'
           version_requirement: '10.x'
       - match:
+          dependency_name: 'postcss-modules'
+          version_requirement: '4.x'
+      - match:
           dependency_name: 'sass-loader'
           version_requirement: '11.x'
       - match:
