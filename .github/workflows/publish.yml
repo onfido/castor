@@ -25,6 +25,9 @@ jobs:
       - name: Build packages
         run: yarn build
 
+      - name: Generate prototype
+        run: yarn prototype
+
       - name: Publish core to npm
         uses: JS-DevTools/npm-publish@v1
         with:

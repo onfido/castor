@@ -81,3 +81,32 @@ const RoundButton = styled(Button)({
   borderRadius: borderRadius('full'),
 });
 ```
+
+## Use for prototyping
+
+If you need to prototype with Castor, the quickest way is to use the generated single file global `Castor` exposed as UMD module:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@onfido/castor-react/prototype/react.min.js"></script>
+```
+
+You can also use any previously released version (v1.2.0 and up), for example:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@onfido/castor-react@1.2.0/prototype/react.min.js"></script>
+```
+
+The same prototype file (not minified) is localed on each npm package version.
+
+For modern browsers you may use ECMAScript modules directly via [Skypack](https://www.skypack.dev/):
+
+```html
+<script type="module">
+  import { borderRadius } from 'https://cdn.skypack.dev/@onfido/castor';
+  import { Button } from 'https://cdn.skypack.dev/@onfido/castor-react';
+
+  // all other app code
+</script>
+```
+
+Also it is easy to use Skypack distributions [with Deno](https://docs.skypack.dev/skypack-cdn/code/deno).
