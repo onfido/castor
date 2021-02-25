@@ -96,7 +96,7 @@ You can also use any previously released version (v1.2.0 and up), for example:
 <script src="https://cdn.jsdelivr.net/npm/@onfido/castor-react@1.2.0/prototype/react.min.js"></script>
 ```
 
-The same prototype file (not minified) is localed on each npm package version.
+The same prototype file (not minified) is located on each npm package version.
 
 For modern browsers you may use ECMAScript modules directly via [Skypack](https://www.skypack.dev/):
 
