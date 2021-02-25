@@ -20,7 +20,7 @@
     "build:core:css": "sass packages/core/style:packages/core/dist --no-source-map -s compressed",
     "build:core:esm": "tsc -p packages/core/tsconfig.json",
     "build:react:esm": "tsc -p packages/react/tsconfig.json",
-    "preprototype": "shx rm -rf packages/*/prototype",
+    "preprototype": "shx rm -f packages/*/prototype.js",
     "prototype": "concurrently yarn:prototype:*",
     "prototype:react": "parcel build packages/react/src/index.ts --out-dir packages/react --out-file prototype.js --global Castor --no-minify --no-source-maps",
     "lint": "concurrently yarn:lint:*",
