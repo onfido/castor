@@ -22,7 +22,7 @@
     "build:react:esm": "tsc -p packages/react/tsconfig.json",
     "preprototype": "shx rm -rf packages/*/prototype",
     "prototype": "concurrently yarn:prototype:*",
-    "prototype:react": "parcel build packages/react/src/index.ts --out-dir packages/react/prototype --out-file react.js --global Castor --no-minify --no-source-maps",
+    "prototype:react": "parcel build packages/react/src/index.ts --out-dir packages/react --out-file prototype.js --global Castor --no-minify --no-source-maps",
     "lint": "concurrently yarn:lint:*",
     "lint:commit": "commitlint --from origin/main --to HEAD --verbose",
     "lint:es": "eslint . --ignore-path .gitignore --max-warnings 0",

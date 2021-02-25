@@ -87,13 +87,13 @@ const RoundButton = styled(Button)({
 If you need to prototype with Castor, the quickest way is to use the generated single file global `Castor` exposed as UMD module:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@onfido/castor-react/prototype/react.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@onfido/castor-react/prototype.min.js"></script>
 ```
 
 You can also use any previously released version (v1.2.0 and up), for example:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@onfido/castor-react@1.2.0/prototype/react.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@onfido/castor-react@1.2.0/prototype.min.js"></script>
 ```
 
 The same prototype file (not minified) is located on each npm package version.
