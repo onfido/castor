@@ -17,7 +17,7 @@
   "homepage": "https://github.com/onfido/castor",
   "types": "src/index.ts",
   "files": [
-    "prototype.js",
+    "prototype.js*",
     "index.js",
     "dist",
     "src",
