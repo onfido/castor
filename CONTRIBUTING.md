@@ -67,7 +67,7 @@ It generates style tokens, then concurrently executes multiple steps for each pa
 - generating compressed `.css` files (without source map) for vanilla integration
 - generating ESM compiled `.js` from `.ts` files with `tsc` and `tsconfig.json`
 
-Additionally you may also generate the single file global `Castor` for prototyping (from `.ts` files, with Parcel) by running:
+Additionally you may also generate the single file global `Castor` for prototyping (from `.ts` files, with esbuild) by running:
 
     yarn prototype
 
