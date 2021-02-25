@@ -84,7 +84,7 @@ const RoundButton = styled(Button)({
 
 ## Use for prototyping
 
-If you need to prototype with Castor, the quickest way is to use the generated single file global `Castor` exposed as UMD module:
+If you need to prototype with Castor, the quickest way is to use the generated single file global `Castor` exposed as [IIFE module](https://esbuild.github.io/api/#format-iife):
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/@onfido/castor-react/prototype.min.js"></script>
