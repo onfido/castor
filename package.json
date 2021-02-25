@@ -22,7 +22,7 @@
     "build:react:esm": "tsc -p packages/react/tsconfig.json",
     "preprototype": "shx rm -f packages/*/prototype.js*",
     "prototype": "concurrently yarn:prototype:*",
-    "prototype:react": "esbuild packages/react/src/index.ts --outfile=packages/react/prototype.js --bundle --define:process.env.NODE_ENV=\\\"production\\\" --target=es2015 --sourcemap",
+    "prototype:react": "esbuild packages/react/src/index.ts --outfile=packages/react/prototype.js --bundle --define:process.env.NODE_ENV=\\\"production\\\" --target=es2015 --sourcemap --global-name=Castor",
     "lint": "concurrently yarn:lint:*",
     "lint:commit": "commitlint --from origin/main --to HEAD --verbose",
     "lint:es": "eslint . --ignore-path .gitignore --max-warnings 0",
