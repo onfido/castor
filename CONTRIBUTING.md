@@ -115,7 +115,7 @@ git pull
 git checkout -b release/1.1.0
 
 # use automated release script
-npm run release
+yarn release
 
 # push to trigger 'publish' GitHub Action
 git push --follow-tags origin release/1.1.0
@@ -160,7 +160,7 @@ git cherry-pick 64b6be1
 # pick appropriate commit hashes and repeat as needed
 
 # use automated release script
-npm run release
+yarn release
 
 # push to trigger 'publish' GitHub Action
 git push --follow-tags -u origin release/1.2.x
