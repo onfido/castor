@@ -80,6 +80,13 @@
       border-color: helpers.color('border-separator');
     }
 
+    > .ods-checkbox,
+    > .ods-radio {
+      &:not(:disabled) + .ods-input-indicator {
+        background-color: helpers.color('background-input');
+      }
+    }
+
     // and [checked] (or [indeterminate] when applicable) but not disabled and not invalid input
     > .ods-checkbox:checked,
     > .ods-checkbox:indeterminate,
@@ -144,5 +151,6 @@
   // container children
   .ods-input-indicator ~ * {
     margin-right: helpers.space(2) - $padding;
+    position: relative;
   }
 }
