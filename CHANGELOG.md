@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/onfido/castor/compare/v1.1.0...v1.1.1) (2021-02-26)
+
+### Bug Fixes
+
+- **core:** correct background color of simulated input ([#383](https://github.com/onfido/castor/issues/383)) ([22a8816](https://github.com/onfido/castor/commit/22a8816c36d2cba93e9217eeb2c5c8c4bfd798a6))
+- checkbox grid and ghost gap ([#380](https://github.com/onfido/castor/issues/380)) ([b9df8fb](https://github.com/onfido/castor/commit/b9df8fb4975ac740480646b12363be1e24b530ea))
+
 ## [1.1.0](https://github.com/onfido/castor/compare/v1.0.1...v1.1.0) (2021-02-23)
 
 ### Features
