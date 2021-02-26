@@ -33,3 +33,6 @@ jobs:
           yarn --cwd ./examples/react-emotion-ts-parcel build
           yarn --cwd ./examples/react-scss-js-webpack build
           yarn --cwd ./examples/react-scss-ts-parcel build
+
+      - name: Generate prototype
+        run: yarn prototype
