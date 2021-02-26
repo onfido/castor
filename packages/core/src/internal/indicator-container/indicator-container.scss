@@ -69,6 +69,7 @@
 
     // "outline" (simulating <input />)
     &::before {
+      background-color: helpers.color('background-input');
       border: 2px solid helpers.color('border-input');
     }
   }
