@@ -21,6 +21,7 @@ export default {
     children: 'Button',
     disabled: false,
   },
+  parameters: { display: 'flex' },
 } as Meta<ButtonProps>;
 
 const disabled = [true, false] as const;

@@ -1,3 +1,4 @@
+import { iconNames } from '@onfido/castor-icons';
 import { htmlMatrix, Meta, omit, Story } from '../../../../../docs';
 import { Icon } from '../icon/icon.story';
 import { Button, ButtonProps } from './button.story';
@@ -20,6 +21,7 @@ export default {
     kind: 'action',
     variant: 'primary',
   },
+  parameters: { display: 'flex' },
 } as Meta<ButtonProps>;
 
 const disabled = [true, false] as const;

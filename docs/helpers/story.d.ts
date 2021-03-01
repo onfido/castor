@@ -13,6 +13,7 @@ export interface Meta<Args>
   extends Omit<BaseMeta<Args>, 'argTypes' | 'component'>,
     Annotation<Args> {
   component: FC<Args> | ((props: Args) => string);
+  parameters?: BaseMeta['parameters'] & ContainerParams;
 }
 
 export interface Story<Args>

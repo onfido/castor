@@ -1,4 +1,4 @@
-import { space } from '@onfido/castor';
+import { classy } from '@onfido/castor';
 import React from 'react';
 import styles from './container.scss';
 
@@ -7,11 +7,8 @@ export const withContainer = (
   { parameters: { columns, display } }: ContainerContext
 ): JSX.Element => (
   <div
-    className={styles[display || 'flex']}
-    style={{
-      gridTemplateColumns: columns,
-      margin: space(4),
-    }}
+    className={classy(styles['container'], styles[display || ''])}
+    style={{ gridTemplateColumns: columns }}
   >
     {storyFn()}
   </div>
