@@ -7,7 +7,6 @@ export default {
   title: 'Core/Button',
   component: Button,
   argTypes: {
-    children: {},
     disabled: {
       description: 'Only available in `<button>` element.',
     },

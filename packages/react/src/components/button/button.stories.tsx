@@ -7,7 +7,6 @@ export default {
   title: 'React/Button',
   component: Button,
   argTypes: {
-    children: {},
     disabled: {
       description: 'Only available when no `href` is set.',
     },
