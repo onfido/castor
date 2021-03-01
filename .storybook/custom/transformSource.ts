@@ -11,8 +11,11 @@ export const transformSource = (src: string) =>
   src.startsWith('{`') ? htmlString(src) : react(src);
 
 const react = (src: string) =>
-  // remove React keys
-  src.replace(/^ *key="\d+"\n?/gm, '');
+  src
+    // remove React keys
+    .replace(/^ *key="\d+"\n?/gm, '')
+    // remove "space" strings
+    .replace(/{' '}/g, '');
 
 const htmlString = (src: string) =>
   // prettier requires JSX element arrays to have parents, so we add a fragment
