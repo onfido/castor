@@ -8,15 +8,19 @@ import parserTypeScript from 'prettier/parser-typescript';
  * @param src Source story code as string to transform.
  */
 export const transformSource = (src: string) =>
-  !src.startsWith('{`')
-    ? src
-    : // prettier requires JSX element arrays to have parents,
-      // so we add a fragment here
-      prettier('<>' + src.replace(/{`|`}/g, '') + '</>')
-        // then remove it
-        .slice(2, -5)
-        // and `shift + tab` once
-        .replace(/^ {2}/gm, '');
+  src.startsWith('{`') ? htmlString(src) : react(src);
+
+const react = (src: string) =>
+  // remove React keys
+  src.replace(/^ *key="\d+"\n?/gm, '');
+
+const htmlString = (src: string) =>
+  // prettier requires JSX element arrays to have parents, so we add a fragment
+  prettier('<>' + src.replace(/{`|`}/g, '') + '</>')
+    // then remove it
+    .slice(2, -5)
+    // and `shift + tab` once
+    .replace(/^ {2}/gm, '');
 
 const prettier = (src: string) =>
   format(src, {

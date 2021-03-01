@@ -8,7 +8,9 @@ import { Entries } from './types';
  *
  * @param Component Component to apply property matrix.
  * @param props Properties to generate matrix from.
- * @param render Render function. Default `<Component {...props} />`.
+ * @param render Render function (not a React component, hooks not supported).
+ *
+ * Default `(props) => <Component {...props} />`.
  *
  * @example
  * const Button = (props) => <button {...props} />;
@@ -28,15 +30,12 @@ import { Entries } from './types';
 export function reactMatrix<Props extends Record<string, any>>(
   Component: FC<Props>,
   props: Entries<Props>,
-  Render: FC<Props> = (p) => <Component {...p} />
+  render: Render<Props> = (p) => <Component {...p} />
 ): Story<Props> {
   const entries = getEntries(props);
 
-  if (!Render.name)
-    Render.displayName ??= Component.displayName || Component.name;
-
   return (storyProps: Props) =>
-    entries.map((matrixProps, i) => (
-      <Render key={i} {...storyProps} {...matrixProps} />
-    ));
+    entries.map((matrixProps) => render({ ...storyProps, ...matrixProps }));
 }
+
+type Render<Props> = (props: Props) => JSX.Element;
