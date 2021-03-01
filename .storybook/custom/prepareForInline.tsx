@@ -11,10 +11,8 @@ export const prepareForInline = (
   const content: unknown = ctx.getOriginal()(ctx.args);
   const decorate = withDecorators(ctx);
 
-  console.log(story);
-  console.log(content);
-
-  if (typeof content === 'string') return decorate(<Html>{content}</Html>);
+  if (typeof content === 'string')
+    return decorate(<HtmlContainer>{content}</HtmlContainer>);
 
   if (content instanceof Element) return decorate(<DomNode>{content}</DomNode>);
 
@@ -22,10 +20,10 @@ export const prepareForInline = (
 };
 
 const DomNode = ({ children }: { children: Element }) => (
-  <Html>{children.innerHTML}</Html>
+  <HtmlContainer>{children.innerHTML}</HtmlContainer>
 );
 
-const Html = ({ children }: { children: string }) => (
+const HtmlContainer = ({ children }: { children: string }) => (
   <div ref={(node) => node && (node.outerHTML = children)} />
 );
 
