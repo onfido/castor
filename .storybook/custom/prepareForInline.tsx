@@ -11,6 +11,9 @@ export const prepareForInline = (
   const content: unknown = ctx.getOriginal()(ctx.args);
   const decorate = withDecorators(ctx);
 
+  console.log(story);
+  console.log(content);
+
   if (typeof content === 'string') return decorate(<Html>{content}</Html>);
 
   if (content instanceof Element) return decorate(<DomNode>{content}</DomNode>);
