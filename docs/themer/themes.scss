@@ -1,6 +1,10 @@
 @use '~@onfido/castor';
 
+:root {
+  @include castor.tokens();
+}
+
 :global {
-  @include castor.day('class');
-  @include castor.night('class');
+  @include castor.day('class', 'raw');
+  @include castor.night('class', 'raw');
 }
