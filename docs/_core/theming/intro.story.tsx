@@ -67,7 +67,7 @@ export const Intro = () => (
     />
     <p>This allows you to have multiple themes within a single document.</p>
     <p>
-      If you prefer, you may also include class themes within your Sass files:
+      If you prefer, you may also include class themes within your Sass file:
     </p>
     <Source
       language="scss"
