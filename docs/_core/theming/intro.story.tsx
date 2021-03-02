@@ -35,8 +35,8 @@ export const Intro = () => (
     </p>
     <p>
       In order to be able to switch between themes, Castor also comes with
-      generated &#34;classed&#34; version of themes, alongside a theme switching
-      helper:
+      generated &#34;classed&#34; versions of themes, alongside a theme
+      switching helper:
     </p>
     <Source
       language="js"
