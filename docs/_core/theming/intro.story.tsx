@@ -7,7 +7,7 @@ export const Intro = () => (
       Castor comes with generated theme <code>.css</code> files. You can use
       them directly in your app.
     </p>
-    <p>For example, you may import a &#34;day&#34; theme via JavaScript:</p>
+    <p>For example, you may import the &#34;day&#34; theme in JavaScript:</p>
     <Source
       language="js"
       code={`
@@ -17,7 +17,7 @@ export const Intro = () => (
       dark
     />
     <p>
-      Then if you import also a &#34;night&#34; theme, it will override any
+      Then if you also import the &#34;night&#34; theme, it will override any
       previously imported one:
     </p>
     <Source
@@ -30,7 +30,7 @@ export const Intro = () => (
     />
     <p>
       This happens because a theme (or theme CSS variables, to be more precise)
-      by default gets attached to a <code>:root</code> element of a document. So
+      by default is defined in the <code>:root</code> element of a document. So
       there can only be one at a time.
     </p>
     <p>
@@ -54,7 +54,7 @@ export const Intro = () => (
       dark
     />
     <p>
-      You are also able to switch a theme on any selectable element, like such:
+      You are also able to switch themes on any selectable element, for example:
     </p>
     <Source
       language="js"
@@ -65,7 +65,7 @@ export const Intro = () => (
       format
       dark
     />
-    <p>This allows to manage multiple themes within one document.</p>
+    <p>This allows you to have multiple themes within a single document.</p>
     <p>
       If you prefer, you may also include class themes within your Sass files:
     </p>
@@ -81,8 +81,8 @@ export const Intro = () => (
       dark
     />
     <p>
-      And optimize such by including base tokens only once, then each
-      &#34;raw&#34; version of a theme:
+      And optimize them by including base tokens only once, then their
+      &#34;raw&#34; versions:
     </p>
     <Source
       language="scss"

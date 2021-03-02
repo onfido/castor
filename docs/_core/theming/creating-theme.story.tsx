@@ -5,13 +5,14 @@ export const CreatingTheme = () => (
   <>
     <p>Castor components use theme tokens for styling.</p>
     <p>
-      Most of a time theme tokens will be using base tokens with an alpha
-      variation. But it can also have static values.
+      Most of the time theme tokens will reference base tokens, but they can
+      also have static values. Colors may have an alpha/opacity value defined in
+      either approach.
     </p>
     <p>When creating a new theme, each theme token must be defined.</p>
     <p>
-      Easiest would be to extend one of Castor themes, for example a
-      &#34;day&#34; theme, and then changing some of theme tokens:
+      The easiest way would be to extend one of Castor&#39;s themes, for example
+      &#34;day&#34; theme, and then to change some theme tokens:
     </p>
     <Source
       language="scss"
@@ -31,8 +32,7 @@ export const CreatingTheme = () => (
       dark
     />
     <p>
-      Or by extending a &#34;night&#34; theme, and then changing some of base
-      tokens:
+      Or by extending &#34;night&#34; theme, and then changing some base tokens:
     </p>
     <Source
       language="scss"
@@ -52,7 +52,7 @@ export const CreatingTheme = () => (
       dark
     />
     <p>
-      Also, you can use Castor&#39;s default &#34;day&#34; and &#34;night&#34;
+      You can also use Castor&#39;s default &#34;day&#34; and &#34;night&#34;
       themes, but instead override base tokens:
     </p>
     <Source
@@ -76,8 +76,8 @@ export const CreatingTheme = () => (
     />
     <p>
       Please note that here default Castor themes are used as &#34;raw&#34;, as
-      they should not include base tokens but use the ones attached/overriden
-      from the <code>:root</code> element.
+      they should not include base tokens but use the ones defined/overriden in
+      the <code>:root</code> element.
     </p>
   </>
 );
