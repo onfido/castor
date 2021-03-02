@@ -50,7 +50,7 @@
     "commitizen": "^4.2.3",
     "concurrently": "^6.0.0",
     "cz-conventional-changelog": "^3.3.0",
-    "esbuild": "^0.8.53",
+    "esbuild": "^0.8.54",
     "eslint": "^7.21.0",
     "eslint-plugin-react": "^7.22.0",
     "husky": "^5.1.2",
