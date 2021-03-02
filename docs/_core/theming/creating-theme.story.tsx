@@ -52,6 +52,18 @@ export const CreatingTheme = () => (
       dark
     />
     <p>
+      In order for a theme switching helper to function properly, the name of a
+      theme class must start with <code>castor-theme--</code> following by the
+      actual theme name.
+    </p>
+    <p>
+      We recommend to use the <code>castor.theme()</code> mixin that applies a
+      correct theme class name (theme name is the first mixin argument).
+      Additionally it accepts arguments: &#34;class&#34; that informs to wrap
+      tokens within CSS class; &#34;raw&#34; that excludes base tokens leaving
+      only theme tokens in the output.
+    </p>
+    <p>
       You can also use Castor&#39;s default &#34;day&#34; and &#34;night&#34;
       themes, but instead override base tokens:
     </p>
