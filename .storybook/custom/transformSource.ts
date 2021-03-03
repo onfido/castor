@@ -2,7 +2,7 @@ import { format } from 'prettier';
 import parserTypeScript from 'prettier/parser-typescript';
 
 /**
- * Makes story source code more readable by running prettier and unwrapping
+ * Makes story source code more readable by running Prettier and unwrapping
  * strings.
 
  * @param src Source story code as string to transform.
