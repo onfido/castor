@@ -7,17 +7,20 @@ import {
   Story as BaseStory,
 } from '@storybook/react/types-6-0';
 import { FC, ReactElement } from 'react';
+import { ContainerParams } from '../decorators/withContainer';
 
 export interface Meta<Args>
-  extends Omit<BaseMeta<Args>, 'argTypes'>,
+  extends Omit<BaseMeta<Args>, 'argTypes' | 'component'>,
     Annotation<Args> {
-  component: FC<Args>;
+  component: FC<Args> | ((props: Args) => string);
+  parameters?: BaseMeta['parameters'] & ContainerParams;
 }
 
 export interface Story<Args>
   extends Annotation<Args>,
     Omit<BaseStory<Args>, 'argTypes'> {
-  (args: Args, context: StoryContext): ReactElement | ReactElement[];
+  (args: Args, context: StoryContext): ReactElement | ReactElement[] | string;
+  parameters?: BaseStory['parameters'] & ContainerParams;
 }
 
 /**

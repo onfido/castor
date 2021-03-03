@@ -3,7 +3,7 @@ import { StoryContext } from '@storybook/addons';
 import { useEffect } from 'react';
 import './themes.scss';
 
-export function withThemer(
+export function withTheme(
   storyFn: () => JSX.Element,
   context: StoryContext
 ): JSX.Element {

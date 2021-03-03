@@ -12,7 +12,7 @@ module.exports = {
     '@storybook/addon-controls',
     '@storybook/addon-a11y',
   ],
-  stories: ['../docs/**/*.stories.tsx', '../packages/**/*.stories.tsx'],
+  stories: ['../{docs,packages}/**/*.stories.ts{,x}'],
   webpackFinal: (config) => {
     config.module.rules.push({
       test: /\.scss$/,

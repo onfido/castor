@@ -2,11 +2,10 @@ $space: 8px;
 
 .container {
   align-items: center;
-  display: flex;
-
-  > * + * {
-    margin-left: $space;
-  }
+  display: grid;
+  gap: $space;
+  grid-auto-columns: max-content;
+  grid-auto-flow: column;
 }
 
 .block {
@@ -29,5 +28,5 @@ $space: 8px;
   align-items: center;
   display: grid;
   gap: $space;
-  grid: auto-flow / 1fr 1fr 1fr 1fr;
+  grid: auto-flow / repeat(4, 1fr);
 }
