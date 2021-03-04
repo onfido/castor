@@ -23,4 +23,4 @@ export const Search = withRef(
 );
 Search.displayName = 'Search';
 
-export type SearchProps = Omit<InputProps, 'invalid' | 'type'>;
+export type SearchProps = Omit<InputProps, 'type' | 'invalid' | 'children'>;
