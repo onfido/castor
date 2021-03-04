@@ -32,6 +32,10 @@
 
     border-color: helpers.color('border-negative');
     color: helpers.color('content-negative');
+
+    &::placeholder {
+      color: inherit;
+    }
   }
 
   &:disabled {
