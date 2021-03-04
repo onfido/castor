@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/onfido/castor/compare/v1.1.1...v1.1.2) (2021-03-04)
+
+### Bug Fixes
+
+- **core:** set placeholder opacity so each browser is aligned ([#417](https://github.com/onfido/castor/issues/417)) ([7ec9ff4](https://github.com/onfido/castor/commit/7ec9ff47061e0da976d5a121e899ecad406a064e))
+- **react:** exclude "children" from search component props type ([#411](https://github.com/onfido/castor/issues/411)) ([946bbf6](https://github.com/onfido/castor/commit/946bbf627fa8eddbd3aa5d09b6f5e4be0a5531df))
+
 ### [1.1.1](https://github.com/onfido/castor/compare/v1.1.0...v1.1.1) (2021-02-26)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
   "name": "castor-react-scss-js-webpack",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": true,
   "main": "src/index.html",
   "scripts": {
