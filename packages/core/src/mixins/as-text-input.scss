@@ -16,6 +16,7 @@
 
   &::placeholder {
     color: helpers.color('content-placeholder');
+    opacity: 1; // Firefox has reduced opacity
   }
 
   &:hover {
