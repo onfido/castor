@@ -16,6 +16,7 @@ export default {
   title: 'Core/Textarea',
   component: Textarea,
   argTypes: {
+    ...omit<TextareaProps>('value'),
     disabled: {
       table: { type: { summary: 'boolean' } },
     },
