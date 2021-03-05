@@ -19,6 +19,7 @@ export default {
   title: 'Core/Input',
   component: Input,
   argTypes: {
+    ...omit<InputProps>('value'),
     disabled: {
       table: { type: { summary: 'boolean' } },
     },
