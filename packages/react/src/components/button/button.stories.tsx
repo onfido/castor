@@ -3,6 +3,10 @@ import { Button, ButtonProps, Icon } from '@onfido/castor-react';
 import React from 'react';
 import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 
+const disabled = [true, false] as const;
+const kind = ['action', 'destructive'] as const;
+const variant = ['primary', 'secondary', 'tertiary'] as const;
+
 export default {
   title: 'React/Button',
   component: Button,
@@ -23,10 +27,6 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<ButtonProps>;
 
-const disabled = [true, false] as const;
-const kind = ['action', 'destructive'] as const;
-const variant = ['primary', 'secondary', 'tertiary'] as const;
-
 export const Playground: Story<ButtonProps<'a'>> = ({ href, ...restProps }) => (
   <Button
     {...restProps}
@@ -36,13 +36,13 @@ export const Playground: Story<ButtonProps<'a'>> = ({ href, ...restProps }) => (
 );
 
 export const Kind = reactMatrix(Button, { kind });
-Kind.argTypes = omit<ButtonProps>('kind', 'children');
+Kind.argTypes = omit<ButtonProps>('kind');
 
 export const Variant = reactMatrix(Button, { variant });
-Variant.argTypes = omit<ButtonProps>('variant', 'children');
+Variant.argTypes = omit<ButtonProps>('variant');
 
 export const Disabled = reactMatrix(Button, { disabled });
-Disabled.argTypes = omit<ButtonProps>('disabled', 'children');
+Disabled.argTypes = omit<ButtonProps>('disabled');
 
 export const AsAnchor: Story<ButtonProps<'a'>> = (props) => (
   <Button href="javascript:void 0" {...props} />
@@ -72,7 +72,6 @@ export const WithIcon: Story<ButtonWithIconProps> = ({
   </>
 );
 WithIcon.argTypes = {
-  ...omit<ButtonWithIconProps>('children'),
   iconName: { control: { type: 'select', options: iconNames } },
 };
 WithIcon.args = {

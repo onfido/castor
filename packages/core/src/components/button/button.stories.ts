@@ -3,6 +3,10 @@ import { htmlMatrix, Meta, omit, Story } from '../../../../../docs';
 import { Icon } from '../icon/icon.story';
 import { Button, ButtonProps } from './button.story';
 
+const disabled = [true, false] as const;
+const kind = ['action', 'destructive'] as const;
+const variant = ['primary', 'secondary', 'tertiary'] as const;
+
 export default {
   title: 'Core/Button',
   component: Button,
@@ -23,20 +27,16 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<ButtonProps>;
 
-const disabled = [true, false] as const;
-const kind = ['action', 'destructive'] as const;
-const variant = ['primary', 'secondary', 'tertiary'] as const;
-
 export const Playground: Story<ButtonProps> = (props) => Button(props);
 
 export const Kind = htmlMatrix(Button, { kind });
-Kind.argTypes = omit<ButtonProps>('kind', 'children');
+Kind.argTypes = omit<ButtonProps>('kind');
 
 export const Variant = htmlMatrix(Button, { variant });
-Variant.argTypes = omit<ButtonProps>('variant', 'children');
+Variant.argTypes = omit<ButtonProps>('variant');
 
 export const Disabled = htmlMatrix(Button, { disabled });
-Disabled.argTypes = omit<ButtonProps>('disabled', 'children');
+Disabled.argTypes = omit<ButtonProps>('disabled');
 
 export const AsAnchor: Story<ButtonProps> = (props) =>
   Button({ ...props, href: 'javascript:void 0' });
