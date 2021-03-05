@@ -64,7 +64,7 @@ Disabled.argTypes = omit<TextareaProps>('disabled');
 export const AllCombinations = htmlMatrix(
   Textarea,
   { disabled, invalid },
-  (props) => Textarea({ ...props, value: value(props) })
+  (props) => Textarea({ ...props, children: value(props) })
 );
 AllCombinations.parameters = {
   display: 'grid',

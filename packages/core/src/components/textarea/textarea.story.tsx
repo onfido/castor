@@ -3,8 +3,8 @@ import { html } from '../../../../../docs';
 import { c, classy, m } from '../../utils';
 
 export interface TextareaProps extends BaseProps {
+  children: string;
   rows?: number;
-  value?: string;
 }
 
 export const Textarea = ({
