@@ -16,6 +16,6 @@ export const Textarea = ({
   html('textarea', {
     ...props,
     class: classy(c('textarea'), m({ invalid })),
-    resize,
     rows,
+    style: `resize: ${resize}`,
   });

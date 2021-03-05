@@ -39,7 +39,7 @@ export default {
       control: { type: 'radio', options: resize },
       table: {
         type: { summary: resize.toString() },
-        defaultValue: { summary: 'text' },
+        defaultValue: { summary: 'vertical' },
       },
     },
     rows: {
