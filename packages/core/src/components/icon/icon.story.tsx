@@ -1,4 +1,4 @@
-import { IconProps } from '@onfido/castor';
+import { color, IconProps } from '@onfido/castor';
 import { html } from '../../../../../docs';
 import { c, classy } from '../../utils';
 
