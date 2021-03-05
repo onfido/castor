@@ -1,4 +1,5 @@
 export interface InputProps {
-  type?: 'text' | 'number' | 'email' | 'password' | 'tel' | 'url' | 'search';
+  disabled?: boolean;
   invalid?: boolean;
+  type?: 'text' | 'number' | 'email' | 'password' | 'tel' | 'url' | 'search';
 }
