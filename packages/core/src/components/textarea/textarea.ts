@@ -1,4 +1,5 @@
 export interface TextareaProps {
-  resize?: 'vertical' | 'horizontal' | 'both' | 'none';
+  disabled?: boolean;
   invalid?: boolean;
+  resize?: 'vertical' | 'horizontal' | 'both' | 'none';
 }

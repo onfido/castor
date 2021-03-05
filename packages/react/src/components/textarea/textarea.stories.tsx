@@ -6,83 +6,79 @@ import {
   Validation,
 } from '@onfido/castor-react';
 import React from 'react';
-import { Meta, omit, Story, storyOf } from '../../../../../docs';
+import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 
-const resizes: readonly TextareaProps['resize'][] = [
+const disabled = [true, false] as const;
+const invalid = [true, false] as const;
+
+const resize: readonly TextareaProps['resize'][] = [
   'vertical',
   'horizontal',
   'both',
   'none',
 ];
-resizes.toString = () => resizes.map((value) => `"${value}"`).join('|');
+resize.toString = () => resize.map((value) => `"${value}"`).join('|');
 
 export default {
   title: 'React/Textarea',
   component: Textarea,
   argTypes: {
-    ...omit<TextareaProps>('className', 'style'),
     children: {
       description: 'Acts as a label for a `<textarea>`.',
-      control: 'text',
-    },
-    placeholder: { control: 'text' },
-    resize: {
-      table: {
-        type: {
-          summary: resizes.toString(),
-        },
-        defaultValue: { summary: 'vertical' },
-      },
-      control: {
-        type: 'radio',
-        options: resizes,
-      },
-    },
-    rows: {
-      table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '3' },
-      },
-      control: 'number',
-    },
-    invalid: {
-      table: { type: { summary: 'boolean' } },
     },
     disabled: {
       table: { type: { summary: 'boolean' } },
     },
+    invalid: {
+      table: { type: { summary: 'boolean' } },
+    },
+    placeholder: {
+      table: { type: { summary: 'string' } },
+    },
+    resize: {
+      control: { type: 'radio', options: resize },
+      table: {
+        type: { summary: resize.toString() },
+        defaultValue: { summary: 'text' },
+      },
+    },
+    rows: {
+      control: 'number',
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: '3' },
+      },
+    },
   },
   args: {
     children: 'Label',
+    disabled: false,
+    invalid: false,
     placeholder: 'Placeholder',
     resize: 'vertical',
     rows: 3,
-    invalid: false,
-    disabled: false,
   },
+  parameters: { display: 'flex' },
 } as Meta<TextareaProps>;
 
 export const Playground: Story<TextareaProps> = (props: TextareaProps) => (
   <Textarea {...props} />
 );
 
-export const Resize = storyOf(Textarea, 'resize', resizes, {
-  labelMode: 'prop',
-  labelProp: 'defaultValue',
-});
+export const Resize = reactMatrix(Textarea, { resize });
 Resize.argTypes = omit<TextareaProps>('resize');
 
-export const Invalid = storyOf(Textarea, 'invalid', [true, false], {
-  labelMode: 'prop',
-  labelProp: 'defaultValue',
-});
+export const Invalid = reactMatrix(Textarea, { invalid });
 Invalid.argTypes = omit<TextareaProps>('invalid');
 
-export const Disabled = storyOf(Textarea, 'disabled', [true, false], {
-  labelMode: 'prop',
-  labelProp: 'defaultValue',
-});
+export const Disabled = reactMatrix(Textarea, { disabled });
 Disabled.argTypes = omit<TextareaProps>('disabled');
+
+export const WithoutLabel = (props: TextareaProps) => <Textarea {...props} />;
+WithoutLabel.argTypes = omit<TextareaProps>('children');
+WithoutLabel.args = {
+  children: null,
+};
 
 interface TextareaWithHelperTextProps extends TextareaProps {
   label: string;
@@ -92,10 +88,10 @@ interface TextareaWithHelperTextProps extends TextareaProps {
 export const WithHelperText = ({
   label,
   helperText,
-  ...restTextareaProps
+  ...restProps
 }: TextareaWithHelperTextProps) => (
   <Field>
-    <Textarea {...restTextareaProps}>
+    <Textarea {...restProps}>
       {label}
       <HelperText>{helperText}</HelperText>
     </Textarea>
@@ -114,27 +110,35 @@ interface TextareaWithValidationProps extends TextareaProps {
 }
 
 export const WithValidation = ({
-  label,
   validation,
   withIcon,
-  ...restTextareaProps
+  ...restProps
 }: TextareaWithValidationProps) => (
   <Field>
-    <Textarea {...restTextareaProps} invalid={Boolean(validation)}>
-      {label}
-    </Textarea>
+    <Textarea {...restProps} invalid={Boolean(validation)} />
     <Validation state="error" withIcon={withIcon}>
       {validation}
     </Validation>
   </Field>
 );
 WithValidation.argTypes = omit<TextareaWithValidationProps>(
-  'children',
   'invalid',
   'disabled'
 );
 WithValidation.args = {
-  label: 'Label',
   validation: 'This field is not valid',
   withIcon: true,
 };
+
+export const AllCombinations = reactMatrix(
+  Textarea,
+  { disabled, invalid },
+  (props) => <Textarea {...props} value={value(props)} />
+);
+AllCombinations.parameters = {
+  display: 'grid',
+  columns: 'repeat(2, 1fr)',
+};
+
+const value = ({ disabled, invalid }: TextareaProps) =>
+  `${invalid ? 'invalid' : 'valid'} ${disabled ? 'disabled' : ''}`;
