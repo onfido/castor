@@ -100,7 +100,7 @@ Jest uses Babel to transpile code before running tests. However, it does not inc
 You will need to adjust the [`transformIgnorePatterns` setting](https://jestjs.io/docs/en/configuration.html#transformignorepatterns-arraystring) to make sure Castor code does not get excluded when transpiling:
 
 ```json
-"transformIgnorePatterns": ["node_modules/(?!@onfido/castor.*)"]
+"transformIgnorePatterns": ["node_modules/(?!@onfido/castor)"]
 ```
 
 Please note that due to an [existing issue](https://github.com/facebook/jest/issues/10256) Jest will only support your Babel configuration named as `babel.config.js`.
