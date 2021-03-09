@@ -91,6 +91,20 @@ import '@onfido/castor/dist/themes/day.css';
 import '@onfido/castor/dist/themes/night.css';
 ```
 
+### Testing with (JS) Jest
+
+Castor (and its additions) are exported as [ECMAScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) targeting ECMAScript 2019. Jest will not understand the code in these modules, resulting in syntax errors.
+
+Jest uses Babel to transpile code before running tests. However, it does not include any files from the `node_modules` directory.
+
+You will need to adjust the [`transformIgnorePatterns` setting](https://jestjs.io/docs/en/configuration.html#transformignorepatterns-arraystring) to make sure Castor code does not get excluded when transpiling:
+
+```json
+"transformIgnorePatterns": ["node_modules/(?!@onfido/castor.*)"]
+```
+
+Please note that due to an [existing issue](https://github.com/facebook/jest/issues/10256) Jest will only support your Babel configuration named as `babel.config.js`.
+
 ## Switch theme
 
 To be able to switch between one and another, use "classed" themes when importing, and switch with the helper:
