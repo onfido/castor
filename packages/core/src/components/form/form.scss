@@ -1,0 +1,9 @@
+@use '../../helpers';
+
+@mixin Form() {
+  .ods-form {
+    display: grid;
+    gap: helpers.space(2);
+    grid: auto-flow / 1fr;
+  }
+}

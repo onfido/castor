@@ -1,4 +1,5 @@
 import { c, classy, m, TextareaProps as BaseProps } from '@onfido/castor';
+import { useField } from '@onfido/castor-react';
 import React, { useState } from 'react';
 import { FieldLabelWrapper } from '../../internal';
 import { withRef } from '../../utils';
@@ -20,6 +21,7 @@ export const Textarea = withRef(
     }: TextareaProps,
     ref: TextareaProps['ref']
   ): JSX.Element => {
+    const { disabled, touched } = useField();
     const [autoId] = useState(() => `${idPrefix}_${++idCount}`);
     const id = externalId || (children ? autoId : undefined);
 
@@ -29,11 +31,16 @@ export const Textarea = withRef(
           children,
           element: (
             <textarea
+              disabled={disabled} // will be overriden by props if set
               {...restProps}
               ref={ref}
               id={id}
               rows={rows}
-              className={classy(c('textarea'), m({ invalid }), className)}
+              className={classy(
+                c('textarea'),
+                m({ invalid, touched }),
+                className
+              )}
               style={{ ...style, resize }}
             />
           ),
