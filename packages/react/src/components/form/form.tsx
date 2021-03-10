@@ -5,14 +5,14 @@ import { FormProvider, FormState } from './useForm';
 
 export { useForm } from './useForm';
 
-export function Form<T extends Values>({
+export const Form = <T extends Values>({
   className,
   disabled,
   onChange,
   onInvalid,
   onSubmit,
   ...restProps
-}: FormProps<T>) {
+}: FormProps<T>) => {
   const [form, setForm] = useState({ disabled } as FormState);
 
   useEffect(() => update({ disabled }), [disabled]);
@@ -50,7 +50,7 @@ export function Form<T extends Values>({
       />
     </FormProvider>
   );
-}
+};
 
 export interface FormProps<T extends Values>
   extends BaseProps,

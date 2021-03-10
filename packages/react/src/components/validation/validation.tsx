@@ -10,14 +10,14 @@ import React from 'react';
  *
  * https://github.com/onfido/castor-icons#use-with-plain-code
  */
-export function Validation({
+export const Validation = ({
   children,
   className,
   for: key,
   state,
   withIcon,
   ...restProps
-}: ValidationProps): JSX.Element | null {
+}: ValidationProps): JSX.Element | null => {
   const { disabled, touched, validity } = useField();
 
   if (key)
@@ -38,7 +38,7 @@ export function Validation({
       {children}
     </div>
   );
-}
+};
 
 export type ValidationProps = BaseProps &
   JSX.IntrinsicElements['div'] & {

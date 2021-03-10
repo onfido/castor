@@ -9,14 +9,14 @@ export { useField } from './useField';
  * Intended to wrap `Input` and `Textarea` components, so that `FieldLabel` and
  * `Validation` can wrap nicely following the minimum content allowed.
  */
-export function Field({
+export const Field = ({
   className,
   disabled,
   onBlur,
   onChange,
   onInvalid,
   ...restProps
-}: FieldProps): JSX.Element {
+}: FieldProps): JSX.Element => {
   const form = useForm();
   const [field, setField] = useState<FieldState>(initial);
 
@@ -56,6 +56,6 @@ export function Field({
       />
     </FieldProvider>
   );
-}
+};
 
 export type FieldProps = BaseProps & JSX.IntrinsicElements['div'];
