@@ -1,6 +1,8 @@
 /**
  * Gets the values of a form element in object format, based on names.
+
  * @param form Form element to extract values from.
+
  * @example
  * <form ref={formRef}>
  *   <input name="foo" value="bar" />
