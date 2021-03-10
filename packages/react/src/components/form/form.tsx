@@ -3,6 +3,8 @@ import React, { FormEvent, useEffect, useState } from 'react';
 import { getFormValues } from './getFormValues';
 import { FormProvider, FormState } from './useForm';
 
+export { useForm } from './useForm';
+
 export function Form<T extends Values>({
   className,
   disabled,

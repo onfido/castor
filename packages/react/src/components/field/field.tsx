@@ -3,6 +3,8 @@ import { useForm } from '@onfido/castor-react';
 import React, { SyntheticEvent, useEffect, useState } from 'react';
 import { FieldProvider } from './useField';
 
+export { useField } from './useField';
+
 /**
  * Intended to wrap `Input` and `Textarea` components, so that `FieldLabel` and
  * `Validation` can wrap nicely following the minimum content allowed.
