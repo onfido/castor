@@ -55,7 +55,7 @@ export const Playground: Story<FormProps<Values>> = (props) => (
         Email address <Asterisk aria-label="required" />
       </Input>
       <Validation state="error" for="valueMissing">
-        Please fill this field
+        Please fill in this field
       </Validation>
       <Validation state="error" for="typeMismatch">
         Please enter a valid email address
@@ -69,7 +69,7 @@ export const Playground: Story<FormProps<Values>> = (props) => (
         <div
           style={{
             display: 'grid',
-            gap: '2rem',
+            gap: '0.5rem',
             grid: '1fr / 5rem 5rem 6rem',
           }}
         >
