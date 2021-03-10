@@ -1,4 +1,4 @@
 export interface ValidationProps {
-  for?: keyof ValidityState;
+  if?: Exclude<keyof ValidityState, 'valid'> | 'invalid';
   state: 'error';
 }

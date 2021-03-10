@@ -17,7 +17,7 @@ import { Meta, Story } from '../../../../../docs';
 export default {
   title: 'React/Form',
   component: Form,
-} as Meta<FormProps<unknown>>;
+} as Meta<FormProps<Values>>;
 
 interface Values {
   firstName: string;
@@ -36,7 +36,7 @@ export const Playground: Story<FormProps<Values>> = (props) => (
       <Input name="firstName" required>
         First name <Asterisk aria-label="required" />
       </Input>
-      <Validation state="error" for="valid">
+      <Validation state="error" if="invalid">
         Please fill in this field
       </Validation>
     </Field>
@@ -45,7 +45,7 @@ export const Playground: Story<FormProps<Values>> = (props) => (
       <Input name="lastName" required>
         Last name <Asterisk aria-label="required" />
       </Input>
-      <Validation state="error" for="valid">
+      <Validation state="error" if="invalid">
         Please fill in this field
       </Validation>
     </Field>
@@ -54,10 +54,10 @@ export const Playground: Story<FormProps<Values>> = (props) => (
       <Input type="email" name="email" required>
         Email address <Asterisk aria-label="required" />
       </Input>
-      <Validation state="error" for="valueMissing">
+      <Validation state="error" if="valueMissing">
         Please fill in this field
       </Validation>
-      <Validation state="error" for="typeMismatch">
+      <Validation state="error" if="typeMismatch">
         Please enter a valid email address
       </Validation>
     </Field>
@@ -124,7 +124,7 @@ export const Playground: Story<FormProps<Values>> = (props) => (
       <Checkbox name="agreement" required>
         I agree to the <a>Privacy policy</a> and <a>Terms and conditions</a>.
       </Checkbox>
-      <Validation state="error" for="valid">
+      <Validation state="error" if="invalid">
         Please confirm you agree
       </Validation>
     </Field>

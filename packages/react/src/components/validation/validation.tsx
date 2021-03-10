@@ -13,7 +13,7 @@ import React from 'react';
 export const Validation = ({
   children,
   className,
-  for: key,
+  if: key,
   state,
   withIcon,
   ...restProps
@@ -25,7 +25,7 @@ export const Validation = ({
       disabled ||
       !touched ||
       validity.valid ||
-      (key === 'valid') === validity[key]
+      (key === 'invalid') === validity[key as keyof ValidityState]
     )
       return null;
 
