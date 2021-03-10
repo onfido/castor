@@ -63,27 +63,34 @@ export const Playground: Story<FormProps<Values>> = (props) => (
     </Field>
 
     <Field>
-      <FieldLabel>
+      <FieldLabel htmlFor="dob-day">
         Date of birth
         <HelperText>DD / MM / YYYY</HelperText>
-        <div
-          style={{
-            display: 'grid',
-            gap: '0.5rem',
-            grid: '1fr / 5rem 5rem 6rem',
-          }}
-        >
-          <Input type="number" name="day" placeholder="DD" min={1} max={31} />
-          <Input type="number" name="month" placeholder="MM" min={1} max={12} />
-          <Input
-            type="number"
-            name="year"
-            placeholder="YYYY"
-            min={new Date().getUTCFullYear() - 150}
-            max={new Date().getUTCFullYear()}
-          />
-        </div>
       </FieldLabel>
+      <div
+        style={{
+          display: 'grid',
+          gap: '0.5rem',
+          grid: '1fr / 5rem 5rem 6rem',
+        }}
+      >
+        <Input
+          id="dob-day"
+          type="number"
+          name="day"
+          placeholder="DD"
+          min={1}
+          max={31}
+        />
+        <Input type="number" name="month" placeholder="MM" min={1} max={12} />
+        <Input
+          type="number"
+          name="year"
+          placeholder="YYYY"
+          min={new Date().getUTCFullYear() - 150}
+          max={new Date().getUTCFullYear()}
+        />
+      </div>
     </Field>
 
     <Field>
