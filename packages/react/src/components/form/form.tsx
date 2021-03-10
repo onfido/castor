@@ -1,5 +1,5 @@
 import { c, classy, FormProps as BaseProps } from '@onfido/castor';
-import React, { FormEvent, useEffect, useRef, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import { getFormValues } from './getFormValues';
 import { FormProvider, FormState } from './useForm';
 
@@ -11,7 +11,6 @@ export function Form<T extends Values>({
   onSubmit,
   ...restProps
 }: FormProps<T>) {
-  const ref = useRef<HTMLFormElement>(null);
   const [form, setForm] = useState({ disabled } as FormState);
 
   useEffect(() => update({ disabled }), [disabled]);
@@ -23,7 +22,6 @@ export function Form<T extends Values>({
     <FormProvider value={form}>
       <form
         {...restProps}
-        ref={ref}
         className={classy(c('form'), className)}
         onChange={(event) =>
           onChange?.(event, getFormValues(event.currentTarget))

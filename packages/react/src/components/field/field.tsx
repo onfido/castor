@@ -1,6 +1,6 @@
 import { c, classy, FieldProps as BaseProps, FieldState } from '@onfido/castor';
 import { useForm } from '@onfido/castor-react';
-import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
+import React, { SyntheticEvent, useEffect, useState } from 'react';
 import { FieldProvider } from './useField';
 
 /**
@@ -16,7 +16,6 @@ export function Field({
   ...restProps
 }: FieldProps): JSX.Element {
   const form = useForm();
-  const ref = useRef<HTMLDivElement>(null);
   const [field, setField] = useState<FieldState>(initial);
 
   useEffect(() => update(form), [form]);
@@ -38,7 +37,6 @@ export function Field({
     <FieldProvider value={field}>
       <div
         {...restProps}
-        ref={ref}
         className={classy(c('field'), className)}
         onBlur={(event) => {
           update({ touched: true });
