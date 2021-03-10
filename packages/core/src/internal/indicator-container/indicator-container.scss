@@ -151,6 +151,7 @@
   // container children
   .ods-input-indicator ~ * {
     margin-right: helpers.space(2) - $padding;
+    pointer-events: none;
     position: relative;
   }
 }
