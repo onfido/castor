@@ -13,6 +13,8 @@ import {
 } from '@onfido/castor-react';
 import React from 'react';
 import { Meta, Story } from '../../../../../docs';
+import { FieldsetLegend } from '../fieldset-legend/fieldset-legend';
+import { Fieldset } from '../fieldset/fieldset';
 
 export default {
   title: 'React/Form',
@@ -36,7 +38,7 @@ export const Playground: Story<FormProps<Values>> = (props) => (
       <Input name="firstName" required>
         First name <Asterisk aria-label="required" />
       </Input>
-      <Validation state="error" if="invalid">
+      <Validation state="error" if="valueMissing">
         Please fill in this field
       </Validation>
     </Field>
@@ -45,7 +47,7 @@ export const Playground: Story<FormProps<Values>> = (props) => (
       <Input name="lastName" required>
         Last name <Asterisk aria-label="required" />
       </Input>
-      <Validation state="error" if="invalid">
+      <Validation state="error" if="valueMissing">
         Please fill in this field
       </Validation>
     </Field>
@@ -94,37 +96,23 @@ export const Playground: Story<FormProps<Values>> = (props) => (
     </Field>
 
     <Field>
-      <FieldLabel>How did you hear about us?</FieldLabel>
-      <ul
-        style={{
-          listStyle: 'none',
-          margin: 0,
-          padding: 0,
-        }}
-      >
-        <li>
-          <Radio name="source">
-            Social media
-            <HelperText>Facebook, Twitter, TikTok, etc...</HelperText>
-          </Radio>
-        </li>
-        <li>
-          <Radio name="source">Search engine</Radio>
-        </li>
-        <li>
-          <Radio name="source">Word of mouth</Radio>
-        </li>
-        <li>
-          <Radio name="source">Other...</Radio>
-        </li>
-      </ul>
+      <Fieldset>
+        <FieldsetLegend>How did you hear about us?</FieldsetLegend>
+        <Radio name="source">
+          Social media
+          <HelperText>Facebook, Twitter, TikTok, etc...</HelperText>
+        </Radio>
+        <Radio name="source">Search engine</Radio>
+        <Radio name="source">Word of mouth</Radio>
+        <Radio name="source">Other...</Radio>
+      </Fieldset>
     </Field>
 
     <Field>
       <Checkbox name="agreement" required>
         I agree to the <a>Privacy policy</a> and <a>Terms and conditions</a>.
       </Checkbox>
-      <Validation state="error" if="invalid">
+      <Validation state="error" if="valueMissing">
         Please confirm you agree
       </Validation>
     </Field>
