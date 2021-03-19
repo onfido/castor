@@ -1,5 +1,6 @@
 import { ButtonProps as BaseProps, c, classy, m } from '@onfido/castor';
 import React, { HTMLAttributes } from 'react';
+import { useField } from '../field/useField';
 
 export const Button: ButtonComponent = ({
   kind = 'action',
@@ -7,10 +8,15 @@ export const Button: ButtonComponent = ({
   className,
   ...restProps
 }: ButtonProps<'a'> | ButtonProps<'button'>) => {
+  const { disabled } = useField();
+
   const Element = 'href' in restProps ? 'a' : 'button';
 
   return (
     <Element
+      // will be overriden by props if set
+      {...(Element === 'button' && { disabled })}
+      //
       {...(restProps as HTMLAttributes<HTMLElement>)}
       {...(Element === 'a' && { role: 'button' })}
       className={classy(c('button'), m(`${kind}--${variant}`), className)}

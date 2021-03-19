@@ -1,4 +1,4 @@
-import { c, classy, FormProps as BaseProps } from '@onfido/castor';
+import { c, classy, FormProps as BaseProps, m } from '@onfido/castor';
 import React, { FormEvent, useEffect, useState } from 'react';
 import { getFormValues } from './getFormValues';
 import { FormProvider, FormState } from './useForm';
@@ -24,7 +24,7 @@ export const Form = <T extends Values>({
     <FormProvider value={form}>
       <form
         {...restProps}
-        className={classy(c('form'), className)}
+        className={classy(c('form'), m({ disabled }), className)}
         onChange={(event) =>
           onChange?.(event, getFormValues(event.currentTarget))
         }
