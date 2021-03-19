@@ -11,11 +11,11 @@ import React from 'react';
  * https://github.com/onfido/castor-icons#use-with-plain-code
  */
 export const Validation = ({
-  children,
-  className,
   if: key,
   state,
   withIcon,
+  children,
+  className,
   ...restProps
 }: ValidationProps): JSX.Element | null => {
   const { disabled, touched, validity } = useField();
