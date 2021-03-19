@@ -108,8 +108,9 @@ export const Playground: Story<FormProps<Values>> = (props) => (
 
     <Field>
       <Checkbox name="agreement" required>
-        I agree to the <a href="onfido.com">Privacy policy</a> and{' '}
-        <a href="onfido.com">Terms and conditions</a>.
+        I agree to the{' '}
+        <a href="https://github.com/onfido/castor">Privacy policy</a> and{' '}
+        <a href="https://github.com/onfido/castor">Terms and conditions</a>.
       </Checkbox>
       <Validation state="error" if="valueMissing">
         Please confirm you agree
