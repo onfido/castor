@@ -6,11 +6,11 @@ import { FormProvider, FormState } from './useForm';
 export { useForm } from './useForm';
 
 export const Form = <T extends Values>({
-  className,
   disabled,
   onChange,
   onInvalid,
   onSubmit,
+  className,
   ...restProps
 }: FormProps<T>) => {
   const [form, setForm] = useState({ disabled } as FormState);
