@@ -7,11 +7,11 @@ export { useField } from './useField';
 
 /**
  * Use to wrap any input component (`Input`, `Textarea`, `Radio`, `Checkbox`)
- * to make `Validation` react to its `ValidityState`. Requires a [name].
+ * to make `Validation` react to its `ValidityState`.
  *
  * @example
  * <Field>
- *   <Input name="foo" minlength={3} required />
+ *   <Input minlength={3} required />
  *   <Validation state="error" if="valueMissing">
  *     Will show if [required] is invalid.
  *   </Validation>
