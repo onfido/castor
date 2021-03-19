@@ -11,5 +11,6 @@ export * from './icon/icon';
 export * from './input/input';
 export * from './radio/radio';
 export * from './search/search';
+export * from './spinner/spinner';
 export * from './textarea/textarea';
 export * from './validation/validation';

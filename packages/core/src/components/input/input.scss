@@ -4,7 +4,7 @@
 @use '../field-label/field-label';
 
 @mixin Input() {
-  @if not includes.the('field-label') {
+  @if not includes.the('field-label-component') {
     @include field-label.FieldLabel();
   }
 

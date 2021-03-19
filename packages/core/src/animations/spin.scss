@@ -1,0 +1,9 @@
+@use '../mixins';
+
+@mixin Spin() {
+  @include mixins.keyframes('spin') {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
