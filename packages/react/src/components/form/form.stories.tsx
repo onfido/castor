@@ -95,18 +95,16 @@ export const Playground: Story<FormProps<Values>> = (props) => (
       </div>
     </Field>
 
-    <Field>
-      <Fieldset>
-        <FieldsetLegend>How did you hear about us?</FieldsetLegend>
-        <Radio name="source">
-          Social media
-          <HelperText>Facebook, Twitter, TikTok, etc...</HelperText>
-        </Radio>
-        <Radio name="source">Search engine</Radio>
-        <Radio name="source">Word of mouth</Radio>
-        <Radio name="source">Other...</Radio>
-      </Fieldset>
-    </Field>
+    <Fieldset>
+      <FieldsetLegend>How did you hear about us?</FieldsetLegend>
+      <Radio name="source">
+        Social media
+        <HelperText>Facebook, Twitter, TikTok, etc...</HelperText>
+      </Radio>
+      <Radio name="source">Search engine</Radio>
+      <Radio name="source">Word of mouth</Radio>
+      <Radio name="source">Other...</Radio>
+    </Fieldset>
 
     <Field>
       <Checkbox name="agreement" required>
