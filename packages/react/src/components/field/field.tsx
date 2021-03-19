@@ -10,11 +10,11 @@ export { useField } from './useField';
  * `Validation` can wrap nicely following the minimum content allowed.
  */
 export const Field = ({
-  className,
   disabled,
   onBlur,
   onChange,
   onInvalid,
+  className,
   ...restProps
 }: FieldProps): JSX.Element => {
   const form = useForm();
