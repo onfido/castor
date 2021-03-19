@@ -6,8 +6,19 @@ import { FieldProvider } from './useField';
 export { useField } from './useField';
 
 /**
- * Intended to wrap `Input` and `Textarea` components, so that `FieldLabel` and
- * `Validation` can wrap nicely following the minimum content allowed.
+ * Use to wrap any input component (`Input`, `Textarea`, `Radio`, `Checkbox`)
+ * to make `Validation` react to its `ValidityState`. Requires a [name].
+ *
+ * @example
+ * <Field>
+ *   <Input name="foo" minlength={3} required />
+ *   <Validation state="error" if="valueMissing">
+ *     Will show if [required] is invalid.
+ *   </Validation>
+ *   <Validation state="error" if="tooShort">
+ *     Will show if [minlength] is invalid.
+ *   </Validation>
+ * </Field>
  */
 export const Field = ({
   disabled,
