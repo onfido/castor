@@ -4,7 +4,7 @@
 @use '../includes';
 
 @mixin Radio() {
-  @if not includes.the('indicator-container') {
+  @if not includes.the('internal-indicator-container') {
     @include internal.IndicatorContainer();
   }
 

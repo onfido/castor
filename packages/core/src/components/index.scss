@@ -24,6 +24,8 @@
 @forward './input/input';
 @use './radio/radio';
 @forward './radio/radio';
+@use './spinner/spinner';
+@forward './spinner/spinner';
 @use './search/search';
 @forward './search/search';
 @use './textarea/textarea';
@@ -43,11 +45,12 @@
   @include icon.Icon();
   @include input.Input();
   @include radio.Radio();
+  @include spinner.Spinner();
   @include search.Search();
   @include textarea.Textarea();
   @include validation.Validation();
 
-  @if not includes.the('field-label') {
+  @if not includes.the('field-label-component') {
     @include field-label.FieldLabel();
   }
 }
