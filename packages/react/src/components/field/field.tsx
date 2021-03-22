@@ -1,6 +1,5 @@
 import { c, classy, FieldProps as BaseProps, FieldState } from '@onfido/castor';
-import { useForm } from '@onfido/castor-react';
-import React, { SyntheticEvent, useEffect, useState } from 'react';
+import React, { SyntheticEvent, useState } from 'react';
 import { FieldProvider } from './useField';
 
 export { useField } from './useField';
@@ -28,40 +27,31 @@ export const Field = ({
   className,
   ...restProps
 }: FieldProps): JSX.Element => {
-  const form = useForm();
   const [field, setField] = useState<FieldState>(initial);
-
-  useEffect(() => update(form), [form]);
 
   function initial(): FieldState {
     const reset = () => setField(initial);
-    return { ...form, disabled, reset, validity: {} } as FieldState;
+    return { reset, validity: {} } as FieldState;
   }
 
   const update = (state: Partial<FieldState>) =>
     setField((field) => ({ ...field, ...state }));
 
-  const readInput = (event: SyntheticEvent<HTMLDivElement>) => {
-    const { disabled, validity } = event.target as HTMLInputElement;
-    update({ disabled, validity });
-  };
-
   return (
-    <FieldProvider value={field}>
+    <FieldProvider value={{ ...field, disabled }}>
       <div
         {...restProps}
         className={classy(c('field'), className)}
         onBlur={(event) => {
-          update({ touched: true });
-          readInput(event);
+          update({ touched: true, ...readInput(event) });
           onBlur?.(event);
         }}
         onChange={(event) => {
-          readInput(event);
+          update({ touched: true, ...readInput(event) });
           onChange?.(event);
         }}
         onInvalid={(event) => {
-          readInput(event);
+          update(readInput(event));
           onInvalid?.(event);
         }}
       />
@@ -70,3 +60,8 @@ export const Field = ({
 };
 
 export type FieldProps = BaseProps & JSX.IntrinsicElements['div'];
+
+const readInput = (event: SyntheticEvent<HTMLDivElement>) => {
+  const { disabled, validity } = event.target as HTMLInputElement;
+  return { ...(disabled != null && { disabled }), validity };
+};
