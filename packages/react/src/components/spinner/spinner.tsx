@@ -30,7 +30,7 @@ const LabelWrapper = ({
   return (
     <div className={classy(c('spinner-container'))}>
       {element}
-      {children && <div className={classy(c('spinner-label'))}>{children}</div>}
+      <div className={classy(c('spinner-label'))}>{children}</div>
     </div>
   );
 };
