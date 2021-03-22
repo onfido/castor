@@ -1,5 +1,7 @@
+@use '../../helpers';
+
 @mixin Field() {
   .ods-field {
-    width: min-content;
+    min-width: helpers.space(50);
   }
 }

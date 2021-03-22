@@ -12,7 +12,7 @@
   box-sizing: border-box;
   color: helpers.color('content-main');
   padding: helpers.space(1.5) - $border-width helpers.space(2) - $border-width;
-  width: helpers.space(50);
+  width: 100%;
 
   &::placeholder {
     color: helpers.color('content-placeholder');

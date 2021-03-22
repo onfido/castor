@@ -14,6 +14,8 @@
 @forward './fieldset-legend/fieldset-legend';
 @use './fieldset/fieldset';
 @forward './fieldset/fieldset';
+@use './form/form';
+@forward './form/form';
 @use './helper-text/helper-text';
 @forward './helper-text/helper-text';
 @use './icon/icon';
@@ -36,6 +38,7 @@
   @include field.Field();
   @include fieldset-legend.FieldsetLegend();
   @include fieldset.Fieldset();
+  @include form.Form();
   @include helper-text.HelperText();
   @include icon.Icon();
   @include input.Input();
