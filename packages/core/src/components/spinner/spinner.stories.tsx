@@ -23,4 +23,7 @@ export const Size = htmlMatrix(Spinner, { size });
 Size.argTypes = omit<SpinnerProps>('size');
 
 export const WithoutLabel: Story<SpinnerProps> = (props) => Spinner(props);
-Size.argTypes = omit<SpinnerProps>('children');
+WithoutLabel.argTypes = omit<SpinnerProps>('children');
+WithoutLabel.args = {
+  children: null,
+};

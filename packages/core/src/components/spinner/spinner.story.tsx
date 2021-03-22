@@ -6,31 +6,8 @@ export interface SpinnerProps extends BaseProps {
   children: string;
 }
 
-export const Spinner = ({ size = 'large', children, ...props }: SpinnerProps) =>
-  LabelWrapper({
-    children,
-    element: html('div', {
-      ...props,
-      class: classy(c('spinner'), m(size)),
-    }),
+export const Spinner = ({ size = 'large', ...props }: SpinnerProps) =>
+  html('div', {
+    ...props,
+    class: classy(c('spinner'), m(size)),
   });
-
-const LabelWrapper = ({ element, children }: LabelWrapperProps) => {
-  if (!children) return element;
-
-  return html('div', {
-    class: classy(c('spinner-container')),
-    children: [
-      element,
-      html('div', {
-        class: classy(c('spinner-label')),
-        children,
-      }),
-    ].join('\n'),
-  });
-};
-
-interface LabelWrapperProps {
-  children: string;
-  element: string;
-}

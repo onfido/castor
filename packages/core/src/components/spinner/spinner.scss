@@ -9,62 +9,52 @@
   }
 
   .ods-spinner {
-    animation: ods-spin 0.6s linear infinite;
-    border: 0 solid helpers.color('background-spinner');
-    border-left-color: helpers.color('content-spinner');
-    border-radius: helpers.border-radius('full');
+    align-items: center;
+    color: helpers.color('content-secondary');
+    display: grid;
+    justify-items: center;
 
-    &.-large {
-      @include mixins.square(helpers.space(6));
-
-      border-width: helpers.space(0.5);
+    &::before {
+      animation: ods-spin 0.6s linear infinite;
+      border: 0 solid helpers.color('background-spinner');
+      border-left-color: helpers.color('content-spinner');
+      border-radius: helpers.border-radius('full');
+      box-sizing: border-box;
+      content: '';
+      display: block;
     }
 
-    &.-medium {
-      @include mixins.square(helpers.space(3));
+    &.-large::before {
+      @include mixins.square(helpers.space(6));
+    }
 
+    &.-large,
+    &.-medium {
+      @include helpers.font('300-regular');
+
+      gap: helpers.space(2);
+    }
+
+    &.-large::before,
+    &.-medium::before {
       border-width: helpers.space(0.375);
     }
 
+    &.-medium::before {
+      @include mixins.square(helpers.space(3));
+    }
+
     &.-small {
+      @include helpers.font('200-regular');
+
+      gap: helpers.space(1);
+      grid-auto-flow: column;
+    }
+
+    &.-small::before {
       @include mixins.square(helpers.space(2));
 
       border-width: helpers.space(0.25);
     }
-  }
-
-  .ods-spinner-container {
-    align-items: center;
-    display: grid;
-    grid: auto-flow / auto 1fr;
-    justify-items: center;
-  }
-
-  .ods-spinner-label {
-    color: helpers.color('content-secondary');
-    text-align: center;
-  }
-
-  .ods-spinner.-large + .ods-spinner-label {
-    margin-top: helpers.space(2);
-  }
-
-  .ods-spinner.-large,
-  .ods-spinner.-medium {
-    + .ods-spinner-label {
-      @include helpers.font('300-regular');
-
-      grid-column: 1;
-    }
-  }
-
-  .ods-spinner.-medium + .ods-spinner-label {
-    margin-top: helpers.space(1.25);
-  }
-
-  .ods-spinner.-small + .ods-spinner-label {
-    @include helpers.font('200-regular');
-
-    margin-left: helpers.space(1);
   }
 }
