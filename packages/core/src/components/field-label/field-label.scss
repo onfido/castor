@@ -8,6 +8,7 @@
     display: flex;
     flex-flow: column wrap;
     padding: helpers.space(0.5) 0;
+    width: 100%;
 
     > .ods-input,
     > .ods-textarea {
