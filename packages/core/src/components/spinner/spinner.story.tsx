@@ -6,7 +6,7 @@ export interface SpinnerProps extends BaseProps {
   children: string;
 }
 
-export const Spinner = ({ size = 'large', ...props }: SpinnerProps) =>
+export const Spinner = ({ size = 'medium', ...props }: SpinnerProps) =>
   html('div', {
     ...props,
     class: classy(c('spinner'), m(size)),
