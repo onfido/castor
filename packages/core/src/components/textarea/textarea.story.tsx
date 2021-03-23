@@ -7,12 +7,7 @@ export interface TextareaProps extends BaseProps {
   rows?: number;
 }
 
-export const Textarea = ({
-  resize = 'vertical',
-  rows = 3,
-  invalid,
-  ...props
-}: TextareaProps) =>
+export const Textarea = ({ resize, rows, invalid, ...props }: TextareaProps) =>
   html('textarea', {
     ...props,
     class: classy(c('textarea'), m({ invalid })),

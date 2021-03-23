@@ -13,6 +13,7 @@ export default {
   },
   args: {
     children: 'Label',
+    size: 'medium',
   },
   parameters: { display: 'flex' },
 } as Meta<SpinnerProps>;
