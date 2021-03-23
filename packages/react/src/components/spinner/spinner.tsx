@@ -2,7 +2,7 @@ import { c, classy, m, SpinnerProps as BaseProps } from '@onfido/castor';
 import React from 'react';
 
 export const Spinner = ({
-  size = 'large',
+  size = 'medium',
   children,
   className,
   ...restProps
