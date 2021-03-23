@@ -31,10 +31,7 @@ export default {
     },
     type: {
       control: { type: 'radio', options: type },
-      table: {
-        type: { summary: type.toString() },
-        defaultValue: { summary: 'text' },
-      },
+      table: { type: { summary: type.toString() } },
     },
   },
   args: {

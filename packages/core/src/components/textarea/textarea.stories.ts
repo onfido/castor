@@ -27,17 +27,11 @@ export default {
     },
     resize: {
       control: { type: 'radio', options: resize },
-      table: {
-        type: { summary: resize.toString() },
-        defaultValue: { summary: 'vertical' },
-      },
+      table: { type: { summary: resize.toString() } },
     },
     rows: {
       control: 'number',
-      table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '3' },
-      },
+      table: { type: { summary: 'number' } },
     },
   },
   args: {
