@@ -9,7 +9,12 @@ export default {
   title: 'React/Icon',
   component: Icon,
   argTypes: {
-    color: { control: { type: 'select', options: colors } },
+    color: {
+      control: { type: 'select', options: colors },
+      table: {
+        type: { summary: colors.map((value) => `"${value}"`).join('|') },
+      },
+    },
   },
   args: {
     name: firstIconName,
