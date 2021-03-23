@@ -3,8 +3,8 @@ export interface FieldProps {
 }
 
 export interface FieldState {
-  disabled: boolean;
+  disabled?: boolean;
   reset: () => void;
-  touched: boolean;
+  touched?: boolean;
   validity: ValidityState;
 }

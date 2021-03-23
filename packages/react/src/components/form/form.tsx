@@ -1,7 +1,7 @@
 import { c, classy, FormProps as BaseProps, m } from '@onfido/castor';
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import { getFormValues } from './getFormValues';
-import { FormProvider, FormState } from './useForm';
+import { FormProvider } from './useForm';
 
 export { useForm } from './useForm';
 
@@ -13,15 +13,10 @@ export const Form = <T extends Values>({
   className,
   ...restProps
 }: FormProps<T>) => {
-  const [form, setForm] = useState({ disabled } as FormState);
-
-  useEffect(() => update({ disabled }), [disabled]);
-
-  const update = (values: Partial<FormState>) =>
-    setForm((form) => ({ ...form, ...values }));
+  const [touched, setTouched] = useState<boolean>();
 
   return (
-    <FormProvider value={form}>
+    <FormProvider value={{ disabled, touched }}>
       <form
         {...restProps}
         className={classy(c('form'), m({ disabled }), className)}
@@ -30,12 +25,12 @@ export const Form = <T extends Values>({
         }
         onInvalid={(event) => {
           event.preventDefault();
-          update({ touched: true });
+          setTouched(true);
           onInvalid?.(event);
         }}
         onSubmit={(event) => {
           event.preventDefault();
-          update({ touched: true });
+          setTouched(true);
 
           if (disabled) return;
 

@@ -1,12 +1,14 @@
-import { describe, expect, it } from '@jest/globals';
+import { describe, expect, it, jest } from '@jest/globals';
 import { useContext } from 'react';
+import { useForm } from '../form/useForm';
 import { FieldProvider, useField } from './useField';
 
+jest.mock('../form/useForm', () => ({ useForm: jest.fn() }));
 jest.mock('react', () => {
   const context = { Provider: {} };
   return {
     createContext: () => context,
-    useContext: () => context,
+    useContext: jest.fn(() => context),
   };
 });
 
@@ -19,11 +21,14 @@ describe('FieldProvider', () => {
 });
 
 describe('useField', () => {
-  it('should simply wrap useContext', () => {
-    const context = useContext(null as any);
+  it('should non-nullish-ly merge form and field state', () => {
+    const form = { disabled: true, touched: undefined };
+    (useForm as jest.Mock).mockReturnValueOnce(form);
+    const field = { disabled: undefined, validity: {} };
+    (useContext as jest.Mock).mockReturnValueOnce(field);
 
     const result = useField();
 
-    expect(result).toBe(context);
+    expect(result).toStrictEqual({ disabled: true, validity: field.validity });
   });
 });
