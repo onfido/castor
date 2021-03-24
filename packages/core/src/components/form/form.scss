@@ -5,6 +5,7 @@
     display: grid;
     gap: helpers.space(2);
     grid: auto-flow / 1fr;
+    justify-items: start;
 
     &.-disabled a {
       pointer-events: none;

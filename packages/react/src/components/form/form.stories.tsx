@@ -95,7 +95,12 @@ export const Playground: Story<FormProps<Values>> = (props) => (
       </div>
     </Field>
 
-    <Fieldset>
+    <Fieldset
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       <FieldsetLegend>How did you hear about us?</FieldsetLegend>
       <Radio name="source">
         Social media
