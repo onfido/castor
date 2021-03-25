@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/onfido/castor/compare/v1.1.0...v1.2.0) (2021-03-25)
+
+### Features
+
+- add spinner component ([#402](https://github.com/onfido/castor/issues/402)) ([a9a1776](https://github.com/onfido/castor/commit/a9a177677ffa22888268ad6d0d80b734a97b120b)), closes [#67](https://github.com/onfido/castor/issues/67)
+- default spinner as "medium" size ([#459](https://github.com/onfido/castor/issues/459)) ([718f8c4](https://github.com/onfido/castor/commit/718f8c4367c420f85f4f3df96fef150779f8c864))
+- form ([#439](https://github.com/onfido/castor/issues/439)) ([e7e1e5d](https://github.com/onfido/castor/commit/e7e1e5d2ad3cbda12b6cf6aec5c4af4c22971bb0))
+- html stories support ([#249](https://github.com/onfido/castor/issues/249)) ([49c23a3](https://github.com/onfido/castor/commit/49c23a3882b2733c756bd95d45b80ec41eaa7321))
+- set background color for "bordered" indicator container ([#386](https://github.com/onfido/castor/issues/386)) ([eecd7e6](https://github.com/onfido/castor/commit/eecd7e68ae8d88ba90e31f88b8e9d963dc5888dd))
+
+### Bug Fixes
+
+- align field label width with input/textarea ([#469](https://github.com/onfido/castor/issues/469)) ([e2fad4e](https://github.com/onfido/castor/commit/e2fad4ee7954e65abd6f6a21ed018486c7d9cba2))
+- checkbox grid and ghost gap ([#380](https://github.com/onfido/castor/issues/380)) ([7387123](https://github.com/onfido/castor/commit/73871237ec96ada4afcd10d7d061f58986c4ce69))
+- correct pointer for checkbox/radio component label ([#440](https://github.com/onfido/castor/issues/440)) ([f51012e](https://github.com/onfido/castor/commit/f51012e8aae559162e03b0d8853e26c597c482ae))
+- form disabled interactions ([#456](https://github.com/onfido/castor/issues/456)) ([1ed733b](https://github.com/onfido/castor/commit/1ed733b69a53e0832838a820eb785c9bd044b746))
+- form grid styles and story radios ([#484](https://github.com/onfido/castor/issues/484)) ([e86f0d6](https://github.com/onfido/castor/commit/e86f0d6bd0aa263a18aea2a6e370005deb52b915))
+- **core:** correct background color of simulated input ([#383](https://github.com/onfido/castor/issues/383)) ([e4926e9](https://github.com/onfido/castor/commit/e4926e96050c1f04ccd0606d6e07fd019c8e5193))
+- **core:** set placeholder opacity so each browser is aligned ([#417](https://github.com/onfido/castor/issues/417)) ([b3d6e39](https://github.com/onfido/castor/commit/b3d6e393aa757b994d48356b7d24ba0fb0521903))
+- **react:** exclude "children" from search component props type ([#411](https://github.com/onfido/castor/issues/411)) ([49c687d](https://github.com/onfido/castor/commit/49c687da532cca76407ddeb8d0fc2b4393fd9fd5))
+
 ## [1.1.0](https://github.com/onfido/castor/compare/v1.0.1...v1.1.0) (2021-02-23)
 
 ### Features
