@@ -9,7 +9,6 @@ All notable changes to this project will be documented in this file. See [standa
 - add spinner component ([#402](https://github.com/onfido/castor/issues/402)) ([a9a1776](https://github.com/onfido/castor/commit/a9a177677ffa22888268ad6d0d80b734a97b120b)), closes [#67](https://github.com/onfido/castor/issues/67)
 - default spinner as "medium" size ([#459](https://github.com/onfido/castor/issues/459)) ([718f8c4](https://github.com/onfido/castor/commit/718f8c4367c420f85f4f3df96fef150779f8c864))
 - form ([#439](https://github.com/onfido/castor/issues/439)) ([e7e1e5d](https://github.com/onfido/castor/commit/e7e1e5d2ad3cbda12b6cf6aec5c4af4c22971bb0))
-- html stories support ([#249](https://github.com/onfido/castor/issues/249)) ([49c23a3](https://github.com/onfido/castor/commit/49c23a3882b2733c756bd95d45b80ec41eaa7321))
 - set background color for "bordered" indicator container ([#386](https://github.com/onfido/castor/issues/386)) ([eecd7e6](https://github.com/onfido/castor/commit/eecd7e68ae8d88ba90e31f88b8e9d963dc5888dd))
 
 ### Bug Fixes
