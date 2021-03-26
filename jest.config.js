@@ -3,7 +3,8 @@
 export default {
   collectCoverageFrom: [
     '**/*.ts',
-    '!**/*.stories.ts', // stories
+    '!**/*.story.ts', // core component story
+    '!**/*.stories.ts', // all stories
     '!**/dist/**/*', // distribution files
     '!**/index.ts', // index files
   ],

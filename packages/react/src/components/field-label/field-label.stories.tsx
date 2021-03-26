@@ -14,10 +14,6 @@ import { Meta, omit, Story } from '../../../../../docs';
 export default {
   title: 'React/FieldLabel',
   component: FieldLabel,
-  argTypes: {
-    ...omit<FieldLabelProps>('className', 'style'),
-    children: { control: 'text' },
-  },
   args: {
     children: 'Label',
   },
@@ -59,9 +55,9 @@ interface FieldLabelWithHelperTextProps extends FieldLabelProps {
 export const WithHelperText = ({
   label,
   helperText,
-  ...restFieldLabelProps
+  ...restProps
 }: FieldLabelWithHelperTextProps) => (
-  <FieldLabel {...restFieldLabelProps}>
+  <FieldLabel {...restProps}>
     {label}
     <HelperText>{helperText}</HelperText>
   </FieldLabel>
@@ -80,10 +76,10 @@ interface FieldLabelWithInputProps extends FieldLabelProps {
 export const WithInput = ({
   id,
   label,
-  ...restFieldLabelProps
+  ...restProps
 }: FieldLabelWithInputProps) => (
   <Field>
-    <FieldLabel {...restFieldLabelProps} htmlFor={id}>
+    <FieldLabel {...restProps} htmlFor={id}>
       {label}
     </FieldLabel>
     <Input id={id} />
@@ -103,10 +99,10 @@ interface FieldLabelWithTextareaProps extends FieldLabelProps {
 export const WithTextarea = ({
   id,
   label,
-  ...restFieldLabelProps
+  ...restProps
 }: FieldLabelWithTextareaProps) => (
   <Field>
-    <FieldLabel {...restFieldLabelProps} htmlFor={id}>
+    <FieldLabel {...restProps} htmlFor={id}>
       {label}
     </FieldLabel>
     <Textarea id={id} />

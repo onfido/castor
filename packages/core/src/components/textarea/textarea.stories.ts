@@ -1,4 +1,7 @@
 import { htmlMatrix, Meta, omit, Story } from '../../../../../docs';
+import { FieldLabel } from '../field-label/field-label.story';
+import { Field } from '../field/field.story';
+import { HelperText } from '../helper-text/helper-text.story';
 import { Textarea, TextareaProps } from './textarea.story';
 
 const disabled = [true, false] as const;
@@ -16,6 +19,7 @@ export default {
   title: 'Core/Textarea',
   component: Textarea,
   argTypes: {
+    ...omit<TextareaProps>('id'),
     disabled: {
       table: { type: { summary: 'boolean' } },
     },
@@ -54,6 +58,33 @@ Invalid.argTypes = omit<TextareaProps>('invalid');
 
 export const Disabled = htmlMatrix(Textarea, { disabled });
 Disabled.argTypes = omit<TextareaProps>('disabled');
+
+interface TextareaWithLabelAndHelperTextProps extends TextareaProps {
+  id: string;
+  label: string;
+  helperText: string;
+}
+
+export const WithLabelAndHelperText = ({
+  id,
+  label,
+  helperText,
+  ...props
+}: TextareaWithLabelAndHelperTextProps) =>
+  Field({
+    children: [
+      FieldLabel({
+        children: [label, HelperText({ children: helperText })],
+        for: id,
+      }),
+      Textarea({ ...props, id }),
+    ],
+  });
+WithLabelAndHelperText.args = {
+  id: 'textarea-with-label-and-helper-text',
+  label: 'Label',
+  helperText: 'Helper text',
+};
 
 export const AllCombinations = htmlMatrix(
   Textarea,

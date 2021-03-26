@@ -12,7 +12,7 @@ export const html = (
     `<${name}`,
     Object.entries(props).map(toAttribute).join('\n'),
     '>',
-    children,
+    Array.isArray(children) ? children.join('') : children,
     `</${name}>`,
   ]
     .filter(Boolean)
