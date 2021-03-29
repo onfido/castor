@@ -1,4 +1,7 @@
 import { htmlMatrix, Meta, omit, Story } from '../../../../../docs';
+import { FieldLabel } from '../field-label/field-label.story';
+import { Field } from '../field/field.story';
+import { HelperText } from '../helper-text/helper-text.story';
 import { Input, InputProps } from './input.story';
 
 const disabled = [true, false] as const;
@@ -19,7 +22,7 @@ export default {
   title: 'Core/Input',
   component: Input,
   argTypes: {
-    ...omit<InputProps>('value'),
+    ...omit<InputProps>('id', 'value'),
     disabled: {
       table: { type: { summary: 'boolean' } },
     },
@@ -50,6 +53,28 @@ Invalid.argTypes = omit<InputProps>('invalid');
 
 export const Disabled = htmlMatrix(Input, { disabled });
 Disabled.argTypes = omit<InputProps>('disabled');
+
+interface InputWithLabelAndHelperTextProps extends InputProps {
+  label: string;
+  helperText: string;
+}
+
+export const WithLabelAndHelperText = ({
+  label,
+  helperText,
+  ...props
+}: InputWithLabelAndHelperTextProps) =>
+  Field({
+    children: [
+      FieldLabel({
+        children: [label, HelperText({ children: helperText }), Input(props)],
+      }),
+    ],
+  });
+WithLabelAndHelperText.args = {
+  label: 'Label',
+  helperText: 'Helper text',
+};
 
 export const AllCombinations = htmlMatrix(
   Input,
