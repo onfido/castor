@@ -1986,16 +1986,16 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-google-analytics@^6.1.21":
-  version "6.1.21"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-google-analytics/-/addon-google-analytics-6.1.21.tgz#bd588d57817faa7d45387909a6f67a7c3e0f6a26"
-  integrity sha512-bP2aeUHtXpas00BvQBYNU/0ZFZOHXNeZ3l5A370wa/ujd7foBM1VSpUv8DoI31Nt78GxKDDBmkiwEjYreYy+nw==
+"@storybook/addon-google-analytics@^6.2.1":
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-google-analytics/-/addon-google-analytics-6.2.1.tgz#17d97f0988413dc5bd68392adaa8e0f97046c2db"
+  integrity sha512-/VLCVqehXRHA6ftyrw/SGR+IXxibJI9Nc8BfsWT92U/j0U8kHfa7YiJd1mKIjY2jxD5TTO0dcDPVf2tcNsPXlw==
   dependencies:
-    "@storybook/addons" "6.1.21"
-    "@storybook/core-events" "6.1.21"
-    core-js "^3.0.1"
-    global "^4.3.2"
-    react-ga "^2.5.7"
+    "@storybook/addons" "6.2.1"
+    "@storybook/core-events" "6.2.1"
+    core-js "^3.8.2"
+    global "^4.4.0"
+    react-ga "^2.7.0"
     regenerator-runtime "^0.13.7"
 
 "@storybook/addon-toolbars@^6.2.1":
@@ -13323,7 +13323,7 @@ react-fast-compare@^3.0.1, react-fast-compare@^3.2.0:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
   integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
 
-react-ga@^2.5.7:
+react-ga@^2.7.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.7.0.tgz#24328f157f31e8cffbf4de74a3396536679d8d7c"
   integrity sha512-AjC7UOZMvygrWTc2hKxTDvlMXEtbmA0IgJjmkhgmQQ3RkXrWR11xEagLGFGaNyaPnmg24oaIiaNPnEoftUhfXA==
