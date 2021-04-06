@@ -1,6 +1,7 @@
 # Castor React
 
-[![npm version](https://img.shields.io/npm/v/@onfido/castor-react.svg?style=flat-square)](https://www.npmjs.com/package/@onfido/castor-react)
+[![npm version](https://badgen.net/npm/v/@onfido/castor-react)](https://www.npmjs.com/package/@onfido/castor-react)
+[![Bundle size](https://badgen.net/bundlephobia/minzip/@onfido/castor-react)](https://bundlephobia.com/result?p=@onfido/castor-react)
 
 _Castor React_ is Onfido's design system addition. It provides [React](https://reactjs.org/) component library.
 

@@ -1,6 +1,7 @@
 # Castor
 
-[![npm version](https://img.shields.io/npm/v/@onfido/castor.svg?style=flat-square)](https://www.npmjs.com/package/@onfido/castor)
+[![npm version](https://badgen.net/npm/v/@onfido/castor)](https://www.npmjs.com/package/@onfido/castor)
+[![Bundle size](https://badgen.net/bundlephobia/minzip/@onfido/castor)](https://bundlephobia.com/result?p=@onfido/castor)
 
 _Castor_ is Onfido's design system.
 
