@@ -33,6 +33,14 @@ module.exports = {
       '@onfido/castor-react': resolve(__dirname, '../packages/react/src'),
     };
 
+    // instrument source code if running e2e tests
+    if (process.env.NODE_ENV === 'e2e')
+      config.module.rules
+        .flatMap((r) => r.use)
+        .map((u) => u?.options?.plugins)
+        .filter(Boolean)
+        .forEach((p) => p.push('istanbul'));
+
     return config;
   },
 };

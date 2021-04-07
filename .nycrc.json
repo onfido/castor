@@ -7,8 +7,8 @@
   "reporter": ["cobertura", "json", "lcov"],
 
   "check-coverage": true,
-  "branches": 21,
-  "lines": 42,
-  "functions": 25,
-  "statements": 39
+  "branches": 26,
+  "lines": 47,
+  "functions": 22,
+  "statements": 46
 }
