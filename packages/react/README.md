@@ -13,7 +13,7 @@ _Castor React_ is Onfido's design system addition. It provides [React](https://r
 npm install @onfido/castor @onfido/castor-react
 ```
 
-Follow [Castor](https://github.com/onfido/castor) instructions for initial setup.
+Follow [Castor](https://github.com/onfido/castor/blob/main/packages/core) instructions for initial setup.
 
 If you plan to use Icon component, also install [Castor Icons](https://github.com/onfido/castor-icons) package:
 
