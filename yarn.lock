@@ -1986,13 +1986,13 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-google-analytics@^6.2.3":
-  version "6.2.3"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-google-analytics/-/addon-google-analytics-6.2.3.tgz#d2a600d37012206d49be8c110733572ca50b8686"
-  integrity sha512-PYFgtfyZxZ6IVLb3fLWdme5HqhOOinyUK3oUF38ife63n1FDrjNQLMVJhS6qvJkjTjsn3FtpdamPilC+5pOi7w==
+"@storybook/addon-google-analytics@^6.2.4":
+  version "6.2.4"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-google-analytics/-/addon-google-analytics-6.2.4.tgz#b0e524b37e1cbbdd79095e899b9241efa5768714"
+  integrity sha512-cC4ZDZUKqxmubCGdKEMmXB3/NmQkllLGdLz3bA1T/D1Jx7c+iCeueM5x7FYPKcc9Wm/niqkHGk8qBDB+BIRI/w==
   dependencies:
-    "@storybook/addons" "6.2.3"
-    "@storybook/core-events" "6.2.3"
+    "@storybook/addons" "6.2.4"
+    "@storybook/core-events" "6.2.4"
     core-js "^3.8.2"
     global "^4.4.0"
     react-ga "^2.7.0"
