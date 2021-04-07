@@ -1,0 +1,14 @@
+{
+  "all": true,
+  "include": ["packages/**/*.tsx"],
+  "exclude": ["**/*.{spec,story,stories}.tsx"],
+  "exclude-after-remap": false,
+  "report-dir": "coverage/e2e",
+  "reporter": ["cobertura", "json", "lcov"],
+
+  "check-coverage": true,
+  "branches": 21,
+  "lines": 42,
+  "functions": 25,
+  "statements": 39
+}
