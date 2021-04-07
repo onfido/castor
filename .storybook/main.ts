@@ -1,5 +1,6 @@
-// can't be `main.ts` and use config type here - build fails because of
-// unsupported syntax, see https://github.com/storybookjs/storybook/issues/11843
+// cannot use typescript here - build fails because of unsupported syntax,
+// see https://github.com/storybookjs/storybook/issues/11843
+// import { StorybookConfig } from '@storybook/react/types';
 
 const { resolve } = require('path');
 
@@ -12,7 +13,8 @@ module.exports = {
     '@storybook/addon-controls',
     '@storybook/addon-a11y',
   ],
-  stories: ['../{docs,packages}/**/*.stories.ts{,x}'],
+  // https://github.com/storybookjs/storybook/issues/14342
+  stories: ['docs', 'packages'].map((f) => `../${f}/**/*.stories.ts{,x}`),
   webpackFinal: (config) => {
     config.module.rules.push({
       test: /\.scss$/,
