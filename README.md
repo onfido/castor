@@ -2,7 +2,7 @@
 
 [![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://onfido.github.io/castor/)
 
-_Castor_ is Onfido's design system. It is intended to support different renderers, and plain HTML + CSS.
+_Castor_ is Onfido's design system. It has been designed to support different renderers, and plain HTML + CSS.
 
 ## Browser support
 
