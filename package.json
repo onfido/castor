@@ -34,10 +34,10 @@
     "cy": "concurrently -k yarn:e2e:serve yarn:cypress:open",
     "cypress:open": "cypress open",
     "e2e": "concurrently -k --success first yarn:e2e:*",
-    "e2e:run": "wait-on http://localhost:6006 && cypress run -c video=true",
-    "e2e:serve": "NODE_ENV=e2e yarn start --ci --quiet",
     "poste2e": "nyc report -r text -r text-summary",
     "pree2e:run": "mkdir -p cypress",
+    "e2e:run": "wait-on http://localhost:6006 && cypress run -c video=true",
+    "e2e:serve": "NODE_ENV=e2e yarn start --ci --quiet",
     "snapshot": "CYPRESS_updateSnapshots=true yarn e2e",
     "release": "HUSKY=0 standard-version"
   },
