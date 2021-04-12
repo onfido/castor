@@ -33,7 +33,7 @@ module.exports = {
       '@onfido/castor-react': resolve(__dirname, '../packages/react/src'),
     };
 
-    // instrument source code if running e2e tests
+    // instrument source code if running E2E tests
     if (process.env.NODE_ENV === 'e2e')
       config.module.rules
         .flatMap((r) => r.use)
