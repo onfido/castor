@@ -10,7 +10,7 @@ export const Button: ButtonComponent = ({
 }: ButtonProps<'a'> | ButtonProps<'button'>) => {
   const { disabled } = useField();
 
-  const Element = 'href' in restProps ? 'a' : 'button';
+  const Element = (restProps as ButtonProps<'a'>).href ? 'a' : 'button';
 
   return (
     <Element
