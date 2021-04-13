@@ -88,9 +88,19 @@ You can run UI tests as the CI would with:
 
 That runs all specs and generates coverage reports.
 
-You can run the development/watch mode with:
+For writing tests locally:
 
-    yarn cy
+1. You can serve the app in e2e mode with:
+
+   yarn e2e:serve
+
+2. Then in another terminal open Cypress with:
+
+   yarn cypress open
+
+Alternatively you could use a single terminal with:
+
+    yarn concurrently -k -n ,cypress:open yarn:e2e:serve "yarn cypress open"
 
 If tests fail on image diffing, make sure no regression has been introduced.
 

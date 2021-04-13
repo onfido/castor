@@ -31,8 +31,6 @@
     "lint:style": "stylelint '**/*.{,s}css' --ignore-path .gitignore --max-warnings 0",
     "lint:prettier": "prettier . --check --ignore-path .gitignore",
     "test": "jest --coverage",
-    "cy": "concurrently -k yarn:e2e:serve yarn:cypress:open",
-    "cypress:open": "cypress open",
     "e2e": "concurrently -k --success first yarn:e2e:*",
     "poste2e": "nyc report -r text -r text-summary",
     "pree2e:run": "shx mkdir -p cypress",
