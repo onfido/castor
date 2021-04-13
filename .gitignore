@@ -22,6 +22,7 @@ package-lock.json
 # Repository specific
 .cache
 .castor*
+.nyc_output
 coverage
 dist
 packages/*/prototype.js*
