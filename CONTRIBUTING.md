@@ -78,7 +78,7 @@ You can also filter to a single file if you want, like:
 
 Those are found in `./e2e`, in its root or inside folders, but mandatorily with a `.e2e.ts` file suffix.
 
-They are written in Cypress.
+They are written in [Cypress](https://www.cypress.io/).
 
 Visual regression tests are run for all "All Combinations" stories, or you can add specs individually for other stories.
 
