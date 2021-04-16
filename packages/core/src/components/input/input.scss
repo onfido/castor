@@ -1,9 +1,10 @@
 @use '../../mixins';
+@use '../field-label/field-label';
 @use '../includes';
 
-@use '../field-label/field-label';
-
 @mixin Input() {
+  $a: includes.the('input');
+
   @if not includes.the('field-label-component') {
     @include field-label.FieldLabel();
   }
