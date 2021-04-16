@@ -1,7 +1,10 @@
 @use '../../helpers';
 @use '../../mixins';
+@use '../includes';
 
 @mixin Icon() {
+  $a: includes.the('icon');
+
   .ods-icon {
     @include mixins.square(helpers.space(3));
     display: inline-block;
