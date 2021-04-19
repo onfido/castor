@@ -1,16 +1,18 @@
 @use '../../helpers';
+@use '../../mixins';
 @use '../icon/icon';
-@use '../includes';
 @use '../input/input';
 
 @mixin Search() {
-  @if not includes.the('icon') {
-    @include icon.Icon();
-  }
-  @if not includes.the('input') {
-    @include input.Input();
-  }
+  @include icon.Icon();
+  @include input.Input();
 
+  @if not mixins.includes('Search') {
+    @include _Search();
+  }
+}
+
+@mixin _Search {
   .ods-search {
     align-items: center;
     display: inline-flex;

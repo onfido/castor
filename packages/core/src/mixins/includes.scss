@@ -1,0 +1,12 @@
+@use 'sass:map';
+
+$_included: ();
+
+@function includes($key) {
+  @if map.get($_included, $key) {
+    @return true;
+  }
+
+  $_included: map.set($_included, $key, true) !global;
+  @return false;
+}

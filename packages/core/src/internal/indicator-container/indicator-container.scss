@@ -2,6 +2,12 @@
 @use '../../mixins';
 
 @mixin IndicatorContainer() {
+  @if not mixins.includes('internal: IndicatorContainer') {
+    @include _IndicatorContainer();
+  }
+}
+
+@mixin _IndicatorContainer() {
   $input-size: helpers.space(2.75);
   $input-margin: 1px;
   $padding: (helpers.space(6) - $input-size - $input-margin * 2) / 2;

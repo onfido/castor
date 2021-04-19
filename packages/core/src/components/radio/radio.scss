@@ -1,13 +1,16 @@
 @use '../../helpers';
 @use '../../internal';
 @use '../../mixins';
-@use '../includes';
 
 @mixin Radio() {
-  @if not includes.the('internal-indicator-container') {
-    @include internal.IndicatorContainer();
-  }
+  @include internal.IndicatorContainer();
 
+  @if not mixins.includes('Radio') {
+    @include _Radio();
+  }
+}
+
+@mixin _Radio() {
   .ods-radio {
     &,
     + .ods-input-indicator::after,

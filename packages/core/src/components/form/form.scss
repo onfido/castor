@@ -1,6 +1,13 @@
 @use '../../helpers';
+@use '../../mixins';
 
 @mixin Form() {
+  @if not mixins.includes('Form') {
+    @include _Form();
+  }
+}
+
+@mixin _Form() {
   .ods-form {
     display: grid;
     gap: helpers.space(2);

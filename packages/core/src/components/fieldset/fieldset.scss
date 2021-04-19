@@ -1,4 +1,12 @@
+@use '../../mixins';
+
 @mixin Fieldset() {
+  @if not mixins.includes('Fieldset') {
+    @include _Fieldset();
+  }
+}
+
+@mixin _Fieldset() {
   .ods-fieldset {
     border: 0;
     margin: 0;

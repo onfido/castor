@@ -2,6 +2,12 @@
 @use '../../mixins';
 
 @mixin Button() {
+  @if not mixins.includes('Button') {
+    @include _Button();
+  }
+}
+
+@mixin _Button() {
   $border-width: 1px;
 
   .ods-button {
