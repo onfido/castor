@@ -1,6 +1,13 @@
 @use '../../helpers';
+@use '../../mixins';
 
 @mixin HelperText() {
+  @if not mixins.includes('HelperText') {
+    @include _HelperText();
+  }
+}
+
+@mixin _HelperText() {
   .ods-helper-text {
     @include helpers.font('200-regular');
 

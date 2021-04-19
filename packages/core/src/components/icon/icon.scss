@@ -1,10 +1,13 @@
 @use '../../helpers';
 @use '../../mixins';
-@use '../includes';
 
 @mixin Icon() {
-  $a: includes.the('icon');
+  @if not mixins.includes('Icon') {
+    @include _Icon();
+  }
+}
 
+@mixin _Icon() {
   .ods-icon {
     @include mixins.square(helpers.space(3));
     display: inline-block;

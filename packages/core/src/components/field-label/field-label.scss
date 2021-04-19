@@ -1,6 +1,13 @@
 @use '../../helpers';
+@use '../../mixins';
 
 @mixin FieldLabel() {
+  @if not mixins.includes('FieldLabel') {
+    @include _FieldLabel();
+  }
+}
+
+@mixin _FieldLabel() {
   .ods-field-label {
     @include helpers.font('300-regular');
 

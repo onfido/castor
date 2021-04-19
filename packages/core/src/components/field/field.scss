@@ -1,6 +1,13 @@
 @use '../../helpers';
+@use '../../mixins';
 
 @mixin Field() {
+  @if not mixins.includes('Field') {
+    @include _Field();
+  }
+}
+
+@mixin _Field() {
   .ods-field {
     min-width: helpers.space(50);
   }

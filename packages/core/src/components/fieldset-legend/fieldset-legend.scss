@@ -1,6 +1,13 @@
 @use '../../helpers';
+@use '../../mixins';
 
 @mixin FieldsetLegend() {
+  @if not mixins.includes('FieldsetLegend') {
+    @include _FieldsetLegend();
+  }
+}
+
+@mixin _FieldsetLegend() {
   .ods-fieldset-legend {
     @include helpers.font('300-regular');
 

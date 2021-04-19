@@ -1,13 +1,15 @@
 @use '../../mixins';
-@use '../includes';
-
 @use '../field-label/field-label';
 
 @mixin Textarea() {
-  @if not includes.the('field-label-component') {
-    @include field-label.FieldLabel();
-  }
+  @include field-label.FieldLabel();
 
+  @if not mixins.includes('Textarea') {
+    @include _Textarea();
+  }
+}
+
+@mixin _Textarea() {
   .ods-textarea {
     @include mixins.as-text-input();
 

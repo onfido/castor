@@ -1,6 +1,12 @@
 @use '../mixins';
 
 @mixin Spin() {
+  @if not mixins.includes('animation: spin') {
+    @include _Spin();
+  }
+}
+
+@mixin _Spin() {
   @include mixins.keyframes('spin') {
     to {
       transform: rotate(360deg);

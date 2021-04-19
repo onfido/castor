@@ -1,6 +1,13 @@
 @use '../../helpers';
+@use '../../mixins';
 
 @mixin Validation() {
+  @if not mixins.includes('Validation') {
+    @include _Validation();
+  }
+}
+
+@mixin _Validation() {
   .ods-validation {
     @include helpers.font('300-regular');
 

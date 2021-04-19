@@ -1,13 +1,16 @@
 @use '../../animations';
 @use '../../helpers';
 @use '../../mixins';
-@use '../includes';
 
 @mixin Spinner() {
-  @if not includes.the('spin-animation') {
-    @include animations.Spin();
-  }
+  @include animations.Spin();
 
+  @if not mixins.includes('Spinner') {
+    @include _Spinner();
+  }
+}
+
+@mixin _Spinner() {
   .ods-spinner {
     align-items: center;
     color: helpers.color('content-secondary');
