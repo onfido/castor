@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/onfido/castor/compare/v1.2.0...v1.2.1) (2021-04-20)
+
+### Bug Fixes
+
+- **core:** search includes icon and input if not already added ([76d1648](https://github.com/onfido/castor/commit/76d164824618434a0a66962835f001da9218bd08))
+- **react:** change button href check from key to value ([#576](https://github.com/onfido/castor/issues/576)) ([4a349e1](https://github.com/onfido/castor/commit/4a349e1df3cf93a402957f361a343df1c1cb7068))
+
 ## [1.2.0](https://github.com/onfido/castor/compare/v1.1.0...v1.2.0) (2021-03-25)
 
 ### Features
