@@ -3,7 +3,10 @@
 // ...$types: 'class' | 'raw';
 @mixin night($types...) {
   // prettier-ignore
-  @include castor.theme('night', 'dark', $types...) {
+  @include castor.theme('night', $types...) {
+    color-scheme: dark;
+    
+    /* stylelint-disable-next-line order/order */
     --ods-transition-duration: 0.15s;
 
     --ods-color-content-main: var(--ods-color-neutral-200), 1;
