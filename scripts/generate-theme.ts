@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync } from 'fs';
-import { join, resolve } from 'path';
+import { join } from 'path';
 import {
   convert,
   Prop,
@@ -14,8 +14,7 @@ if (!themeName) throw new Error('No theme name provided');
 const colorScheme = process.env.COLOR_SCHEME;
 if (!colorScheme) throw new Error('No color scheme provided');
 
-const rootPath = resolve('.');
-const themesPath = join(rootPath, 'packages/core/src/theme/themes');
+const themesPath = join(__dirname, 'packages/core/src/theme/themes');
 
 const srcPath = join(themesPath, `${themeName}.json`);
 const destPath = join(themesPath, `${themeName}.scss`);

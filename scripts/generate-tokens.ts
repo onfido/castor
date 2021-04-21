@@ -1,9 +1,8 @@
 import { readFileSync, writeFileSync } from 'fs';
-import { join, resolve } from 'path';
+import { join } from 'path';
 import { convert, registerFormat } from 'theo';
 
-const rootPath = resolve('.');
-const themePath = join(rootPath, 'packages/core/src/theme');
+const themePath = join(__dirname, 'packages/core/src/theme');
 
 const srcPath = join(themePath, 'tokens.json');
 const destPath = join(themePath, 'tokens.scss');
