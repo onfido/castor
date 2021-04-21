@@ -3,9 +3,9 @@
 
 @use '../theme' as castor;
 
-@mixin $$THEME_NAME$$($types...) {
-  @include castor.theme('$$THEME_NAME$$', $types...) {
-    color-scheme: $$COLOR_SCHEME$$;
+@mixin {{THEME_NAME}}($types...) {
+  @include castor.theme('{{THEME_NAME}}', $types...) {
+    color-scheme: {{COLOR_SCHEME}};
 
   {{#each props as |prop|}}
     --ods-{{prop.category}}-{{prop.name}}: {{prop.value}};

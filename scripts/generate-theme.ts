@@ -28,7 +28,12 @@ registerValueTransform(
 
 registerTransform('raw', ['ods/color/var']);
 
-registerFormat('scss', readFileSync(formatPath, 'utf8'));
+registerFormat(
+  'scss',
+  readFileSync(formatPath, 'utf8')
+    .replace(/{{THEME_NAME}}/g, themeName)
+    .replace(/{{COLOR_SCHEME}}/g, colorScheme)
+);
 
 convert({
   transform: {
@@ -39,14 +44,7 @@ convert({
     type: 'scss',
   },
 })
-  .then((data) =>
-    writeFileSync(
-      destPath,
-      data
-        .replace(/\$\$THEME_NAME\$\$/g, themeName)
-        .replace(/\$\$COLOR_SCHEME\$\$/g, colorScheme)
-    )
-  )
+  .then((data) => writeFileSync(destPath, data))
   .catch(console.error);
 
 function cssVar(prop: Prop) {
