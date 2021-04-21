@@ -4,6 +4,9 @@
 @mixin day($types...) {
   // prettier-ignore
   @include castor.theme('day', $types...) {
+    color-scheme: light;
+    
+    /* stylelint-disable-next-line order/order */
     --ods-transition-duration: 0.15s;
 
     --ods-color-content-main: var(--ods-color-neutral-800), 1;
