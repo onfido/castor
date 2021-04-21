@@ -1,31 +1,23 @@
 import { readFileSync, writeFileSync } from 'fs';
-import { join, resolve } from 'path';
+import { join } from 'path';
 import { convert, registerFormat } from 'theo';
 
-const rootPath = resolve('.');
-const themePath = join(rootPath, 'packages/core/src/theme');
-const formatsPath = join(rootPath, 'scripts/formats');
+const themePath = join(__dirname, 'packages/core/src/theme');
 
-const variants = {
-  tokens: {
-    src: join(themePath, 'tokens.json'),
-    dest: join(themePath, 'tokens.scss'),
-    format: join(formatsPath, 'tokens.scss.hbs'),
-  },
-};
+const srcPath = join(themePath, 'tokens.json');
+const destPath = join(themePath, 'tokens.scss');
+const formatPath = join(themePath, 'tokens.scss.hbs');
 
-const variant = variants['tokens'];
-
-registerFormat('scss', readFileSync(variant.format, 'utf8'));
+registerFormat('scss', readFileSync(formatPath, 'utf8'));
 
 convert({
   transform: {
     type: 'raw',
-    file: variant.src,
+    file: srcPath,
   },
   format: {
     type: 'scss',
   },
 })
-  .then((scss) => writeFileSync(variant.dest, scss))
+  .then((data) => writeFileSync(destPath, data))
   .catch(console.error);
