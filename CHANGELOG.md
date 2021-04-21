@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/onfido/castor/compare/v1.2.1...v1.2.2) (2021-04-21)
+
+### Bug Fixes
+
+- **core:** monospace font ([#592](https://github.com/onfido/castor/issues/592)) ([b686c75](https://github.com/onfido/castor/commit/b686c75a7e6170a5fd6a191cf6ccb5ccba058994))
+- **react:** useField types ([#590](https://github.com/onfido/castor/issues/590)) ([1f37281](https://github.com/onfido/castor/commit/1f3728182e8060de0ec5ae3c38d49898e3271d3f))
+
 ### [1.2.1](https://github.com/onfido/castor/compare/v1.2.0...v1.2.1) (2021-04-20)
 
 ### Bug Fixes
