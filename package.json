@@ -41,7 +41,7 @@
     "@storybook/addon-controls": "^6.2.9",
     "@storybook/addon-docs": "^6.2.8",
     "@storybook/addon-google-analytics": "^6.2.8",
-    "@storybook/addon-toolbars": "^6.2.8",
+    "@storybook/addon-toolbars": "^6.2.9",
     "@storybook/components": "^6.2.9",
     "@storybook/react": "^6.2.9",
     "@types/jest": "^26.0.22",
