@@ -1,4 +1,5 @@
 import {
+  Field,
   Fieldset,
   FieldsetLegend,
   HelperText,
@@ -7,56 +8,50 @@ import {
   Validation,
 } from '@onfido/castor-react';
 import React from 'react';
-import { Meta, omit, Story, storyOf } from '../../../../../docs';
+import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
+
+const bordered = [true, false] as const;
+const disabled = [true, false] as const;
+const invalid = [true, false] as const;
 
 export default {
   title: 'React/Radio',
   component: Radio,
   argTypes: {
-    ...omit<RadioProps>('className', 'style'),
     children: {
       description: 'Acts as a label for an `<input>`.',
-      control: 'text',
     },
     bordered: {
       table: { type: { summary: 'boolean' } },
     },
-    invalid: {
+    disabled: {
       table: { type: { summary: 'boolean' } },
     },
-    disabled: {
+    invalid: {
       table: { type: { summary: 'boolean' } },
     },
   },
   args: {
     children: '',
     bordered: false,
-    invalid: false,
     disabled: false,
+    invalid: false,
   },
+  parameters: { display: 'flex' },
 } as Meta<RadioProps>;
 
 export const Playground: Story<RadioProps> = (props: RadioProps) => (
   <Radio {...props} />
 );
 
-export const Bordered = storyOf(Radio, 'bordered', [true, false], {
-  labelMode: 'children',
-});
+export const Bordered = reactMatrix(Radio, { bordered });
 Bordered.argTypes = omit<RadioProps>('bordered');
-Bordered.args = { name: 'bordered-playground' };
 
-export const Invalid = storyOf(Radio, 'invalid', [true, false], {
-  labelMode: 'children',
-});
+export const Invalid = reactMatrix(Radio, { invalid });
 Invalid.argTypes = omit<RadioProps>('invalid');
-Invalid.args = { name: 'invalid-playground' };
 
-export const Disabled = storyOf(Radio, 'disabled', [true, false], {
-  labelMode: 'children',
-});
+export const Disabled = reactMatrix(Radio, { disabled });
 Disabled.argTypes = omit<RadioProps>('disabled');
-Disabled.args = { name: 'disabled-playground' };
 
 interface RadiosWithFieldsetLegendProps extends RadioProps {
   name: string;
@@ -65,16 +60,20 @@ interface RadiosWithFieldsetLegendProps extends RadioProps {
 
 export const WithFieldsetLegend = ({
   legend,
-  ...restRadioProps
+  ...restProps
 }: RadiosWithFieldsetLegendProps) => (
   <Fieldset>
     <FieldsetLegend>{legend}</FieldsetLegend>
-    <Radio {...restRadioProps} value="yes">
-      yes
-    </Radio>
-    <Radio {...restRadioProps} value="no">
-      no
-    </Radio>
+    <Field>
+      <Radio {...restProps} value="yes">
+        yes
+      </Radio>
+    </Field>
+    <Field>
+      <Radio {...restProps} value="no">
+        no
+      </Radio>
+    </Field>
   </Fieldset>
 );
 WithFieldsetLegend.argTypes = omit<RadiosWithFieldsetLegendProps>('children');
@@ -91,12 +90,14 @@ interface RadioWithHelperTextProps extends RadioProps {
 export const WithHelperText = ({
   label,
   helperText,
-  ...restRadioProps
+  ...restProps
 }: RadioWithHelperTextProps) => (
-  <Radio {...restRadioProps}>
-    {label}
-    <HelperText>{helperText}</HelperText>
-  </Radio>
+  <Field>
+    <Radio {...restProps}>
+      {label}
+      <HelperText>{helperText}</HelperText>
+    </Radio>
+  </Field>
 );
 WithHelperText.argTypes = omit<RadioWithHelperTextProps>('children');
 WithHelperText.args = {
@@ -105,33 +106,41 @@ WithHelperText.args = {
 };
 
 interface RadioWithValidationProps extends RadioProps {
-  label: string;
   validation: string;
   withIcon: boolean;
 }
 
 export const WithValidation = ({
-  label,
   validation,
   withIcon,
-  ...restRadioProps
+  ...restProps
 }: RadioWithValidationProps) => (
-  <>
-    <Radio {...restRadioProps} invalid={Boolean(validation)}>
-      {label}
-    </Radio>
+  <Field>
+    <Radio {...restProps} invalid={Boolean(validation)} />
     <Validation state="error" withIcon={withIcon}>
       {validation}
     </Validation>
-  </>
+  </Field>
 );
-WithValidation.argTypes = omit<RadioWithHelperTextProps>(
-  'children',
-  'invalid',
-  'disabled'
-);
+WithValidation.argTypes = omit<RadioWithValidationProps>('invalid', 'disabled');
 WithValidation.args = {
-  label: 'Label',
   validation: 'This field is not valid',
   withIcon: true,
 };
+
+export const AllCombinations = reactMatrix(
+  Radio,
+  { bordered, disabled, invalid },
+  (props) => <Radio {...props}>{label(props)}</Radio>
+);
+AllCombinations.parameters = {
+  display: 'grid',
+  columns: 'repeat(2, 1fr)',
+};
+
+const label = ({ bordered, disabled, invalid }: RadioProps) =>
+  [
+    invalid ? 'invalid' : 'valid',
+    bordered ? 'bordered' : '',
+    disabled ? 'disabled' : '',
+  ].join(' ');
