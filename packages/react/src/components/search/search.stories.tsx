@@ -1,29 +1,30 @@
 import { Search, SearchProps } from '@onfido/castor-react';
 import React from 'react';
-import { Meta, omit, Story, storyOf } from '../../../../../docs';
+import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
+
+const disabled = [true, false] as const;
 
 export default {
   title: 'React/Search',
   component: Search,
   argTypes: {
-    ...omit<SearchProps>('className', 'style'),
-    placeholder: { control: 'text' },
     disabled: {
       table: { type: { summary: 'boolean' } },
     },
+    placeholder: {
+      table: { type: { summary: 'string' } },
+    },
   },
   args: {
-    placeholder: 'Placeholder',
     disabled: false,
+    placeholder: 'Placeholder',
   },
+  parameters: { display: 'flex' },
 } as Meta<SearchProps>;
 
 export const Playground: Story<SearchProps> = (props: SearchProps) => (
   <Search {...props} />
 );
 
-export const Disabled = storyOf(Search, 'disabled', [true, false], {
-  labelMode: 'prop',
-  labelProp: 'defaultValue',
-});
+export const Disabled = reactMatrix(Search, { disabled });
 Disabled.argTypes = omit<SearchProps>('disabled');
