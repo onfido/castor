@@ -14,9 +14,9 @@ export const Button: ButtonComponent = ({
 
   return (
     <Element
-      // will be overriden by props if set
-      {...(Element === 'button' && { disabled })}
-      //
+      {...(Element === 'button' && {
+        disabled, // will be overriden by props if set
+      })}
       {...(restProps as HTMLAttributes<HTMLElement>)}
       {...(Element === 'a' && { role: 'button' })}
       className={classy(c('button'), m(`${kind}--${variant}`), className)}
