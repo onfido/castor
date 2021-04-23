@@ -1,58 +1,56 @@
 import {
   Checkbox,
   CheckboxProps,
+  Field,
   Fieldset,
   FieldsetLegend,
   HelperText,
   Validation,
 } from '@onfido/castor-react';
 import React, { ChangeEvent, useRef } from 'react';
-import { Meta, omit, Story, storyOf } from '../../../../../docs';
+import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
+
+const bordered = [true, false] as const;
+const disabled = [true, false] as const;
+const invalid = [true, false] as const;
 
 export default {
   title: 'React/Checkbox',
   component: Checkbox,
   argTypes: {
-    ...omit<CheckboxProps>('className', 'style'),
     children: {
       description: 'Acts as a label for an `<input>`.',
-      control: 'text',
     },
     bordered: {
       table: { type: { summary: 'boolean' } },
     },
-    invalid: {
+    disabled: {
       table: { type: { summary: 'boolean' } },
     },
-    disabled: {
+    invalid: {
       table: { type: { summary: 'boolean' } },
     },
   },
   args: {
     children: '',
     bordered: false,
-    invalid: false,
     disabled: false,
+    invalid: false,
   },
+  parameters: { display: 'flex' },
 } as Meta<CheckboxProps>;
 
 export const Playground: Story<CheckboxProps> = (props: CheckboxProps) => (
   <Checkbox {...props} />
 );
 
-export const Bordered = storyOf(Checkbox, 'bordered', [true, false], {
-  labelMode: 'children',
-});
+export const Bordered = reactMatrix(Checkbox, { bordered });
 Bordered.argTypes = omit<CheckboxProps>('bordered');
 
-export const Invalid = storyOf(Checkbox, 'invalid', [true, false], {
-  labelMode: 'children',
-});
+export const Invalid = reactMatrix(Checkbox, { invalid });
 Invalid.argTypes = omit<CheckboxProps>('invalid');
 
-export const Disabled = storyOf(Checkbox, 'disabled', [true, false], {
-  labelMode: 'children',
-});
+export const Disabled = reactMatrix(Checkbox, { disabled });
 Disabled.argTypes = omit<CheckboxProps>('disabled');
 
 export const AsIndeterminate = (props: CheckboxProps) => {
@@ -74,16 +72,20 @@ interface CheckboxesWithFieldsetLegendProps extends CheckboxProps {
 
 export const WithFieldsetLegend = ({
   legend,
-  ...restCheckboxProps
+  ...restProps
 }: CheckboxesWithFieldsetLegendProps) => (
   <Fieldset>
     <FieldsetLegend>{legend}</FieldsetLegend>
-    <Checkbox {...restCheckboxProps} value="1">
-      one
-    </Checkbox>
-    <Checkbox {...restCheckboxProps} value="2">
-      two
-    </Checkbox>
+    <Field>
+      <Checkbox {...restProps} value="1">
+        one
+      </Checkbox>
+    </Field>
+    <Field>
+      <Checkbox {...restProps} value="2">
+        two
+      </Checkbox>
+    </Field>
   </Fieldset>
 );
 WithFieldsetLegend.argTypes = omit<CheckboxesWithFieldsetLegendProps>(
@@ -102,12 +104,14 @@ interface CheckboxWithHelperTextProps extends CheckboxProps {
 export const WithHelperText = ({
   label,
   helperText,
-  ...restCheckboxProps
+  ...restProps
 }: CheckboxWithHelperTextProps) => (
-  <Checkbox {...restCheckboxProps}>
-    {label}
-    <HelperText>{helperText}</HelperText>
-  </Checkbox>
+  <Field>
+    <Checkbox {...restProps}>
+      {label}
+      <HelperText>{helperText}</HelperText>
+    </Checkbox>
+  </Field>
 );
 WithHelperText.argTypes = omit<CheckboxWithHelperTextProps>('children');
 WithHelperText.args = {
@@ -122,27 +126,39 @@ interface CheckboxWithValidationProps extends CheckboxProps {
 }
 
 export const WithValidation = ({
-  label,
   validation,
   withIcon,
-  ...restCheckboxProps
+  ...restProps
 }: CheckboxWithValidationProps) => (
-  <>
-    <Checkbox {...restCheckboxProps} invalid={Boolean(validation)}>
-      {label}
-    </Checkbox>
+  <Field>
+    <Checkbox {...restProps} invalid={Boolean(validation)} />
     <Validation state="error" withIcon={withIcon}>
       {validation}
     </Validation>
-  </>
+  </Field>
 );
-WithValidation.argTypes = omit<CheckboxWithHelperTextProps>(
-  'children',
+WithValidation.argTypes = omit<CheckboxWithValidationProps>(
   'invalid',
   'disabled'
 );
 WithValidation.args = {
-  label: 'Label',
   validation: 'This field is not valid',
   withIcon: true,
 };
+
+export const AllCombinations = reactMatrix(
+  Checkbox,
+  { bordered, disabled, invalid },
+  (props) => <Checkbox {...props}>{label(props)}</Checkbox>
+);
+AllCombinations.parameters = {
+  display: 'grid',
+  columns: 'repeat(2, 1fr)',
+};
+
+const label = ({ bordered, disabled, invalid }: CheckboxProps) =>
+  [
+    invalid ? 'invalid' : 'valid',
+    bordered ? 'bordered' : '',
+    disabled ? 'disabled' : '',
+  ].join(' ');
