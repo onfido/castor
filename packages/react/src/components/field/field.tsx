@@ -10,12 +10,12 @@ export { useField } from './useField';
  *
  * @example
  * <Field>
- *   <Input minlength={3} required />
+ *   <Input minLength={3} required />
  *   <Validation state="error" if="valueMissing">
  *     Will show if [required] is invalid.
  *   </Validation>
  *   <Validation state="error" if="tooShort">
- *     Will show if [minlength] is invalid.
+ *     Will show if [minLength] is invalid.
  *   </Validation>
  * </Field>
  */
