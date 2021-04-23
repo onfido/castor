@@ -27,12 +27,8 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<ButtonProps>;
 
-export const Playground: Story<ButtonProps<'a'>> = ({ href, ...restProps }) => (
-  <Button
-    {...restProps}
-    // don't set "href" key when value is empty string
-    {...(href && { href })}
-  />
+export const Playground: Story<ButtonProps<'a'>> = (props) => (
+  <Button {...props} />
 );
 
 export const Kind = reactMatrix(Button, { kind });
