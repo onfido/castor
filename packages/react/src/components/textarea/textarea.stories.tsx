@@ -104,7 +104,6 @@ WithHelperText.args = {
 };
 
 interface TextareaWithValidationProps extends TextareaProps {
-  label: string;
   validation: string;
   withIcon: boolean;
 }

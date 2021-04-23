@@ -96,7 +96,6 @@ WithHelperText.args = {
 };
 
 interface InputWithValidationProps extends InputProps {
-  label: string;
   validation: string;
   withIcon: boolean;
 }
@@ -113,7 +112,7 @@ export const WithValidation = ({
     </Validation>
   </Field>
 );
-WithValidation.argTypes = omit<InputWithHelperTextProps>('invalid', 'disabled');
+WithValidation.argTypes = omit<InputWithValidationProps>('invalid', 'disabled');
 WithValidation.args = {
   validation: 'This field is not valid',
   withIcon: true,
