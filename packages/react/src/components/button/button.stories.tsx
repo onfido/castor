@@ -23,6 +23,8 @@ export default {
   args: {
     children: 'Button',
     disabled: false,
+    kind: 'action',
+    variant: 'primary',
   },
   parameters: { display: 'flex' },
 } as Meta<ButtonProps>;
