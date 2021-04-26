@@ -13,10 +13,15 @@
  */
 export const getFormValues = <T extends Result>(form: HTMLFormElement): T =>
   Object.fromEntries(
-    (Array.from(form.elements) as HTMLInputElement[])
+    (Array.from(form.elements) as HTMLNamedElement[])
       .filter((el) => !!el.name)
       .map((el) => [el.name, el.value])
   ) as T;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Result = Record<string, any>;
+
+interface HTMLNamedElement extends HTMLElement {
+  name: string;
+  value: string;
+}
