@@ -71,5 +71,5 @@ const types = {
   regular: { fontWeight: 400 },
   light: { fontWeight: 300 },
   allcaps: { textTransform: 'uppercase' },
-  mono: { fontFamily: '"Roboto Mono", monospace' },
+  mono: { fontFamily: '"Roboto Mono", Consolas, Menlo, monospace' },
 };
