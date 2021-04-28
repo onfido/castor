@@ -14,6 +14,7 @@ export const Textarea = withRef(
       resize = 'vertical',
       rows = 3,
       invalid,
+      label: externalLabel,
       children,
       className,
       style,
@@ -22,13 +23,14 @@ export const Textarea = withRef(
     ref: TextareaProps['ref']
   ): JSX.Element => {
     const { disabled, touched } = useField();
+    const label = externalLabel || children;
     const [autoId] = useState(() => `${idPrefix}_${++idCount}`);
-    const id = externalId || (children ? autoId : undefined);
+    const id = externalId || (label ? autoId : undefined);
 
     return (
       <FieldLabelWrapper id={id}>
         {{
-          children,
+          label,
           element: (
             <textarea
               disabled={disabled} // will be overriden by props if set
@@ -51,4 +53,12 @@ export const Textarea = withRef(
 );
 Textarea.displayName = 'Textarea';
 
-export type TextareaProps = BaseProps & JSX.IntrinsicElements['textarea'];
+export type TextareaProps = BaseProps &
+  Omit<TextareaElementProps, 'children'> & {
+    /** @deprecated Use `label` prop instead */
+    children?: TextareaElementProps['children'];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    label?: any;
+  };
+
+type TextareaElementProps = JSX.IntrinsicElements['textarea'];

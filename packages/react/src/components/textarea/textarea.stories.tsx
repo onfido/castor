@@ -1,5 +1,6 @@
 import {
   Field,
+  FieldLabel,
   HelperText,
   Textarea,
   TextareaProps,
@@ -23,14 +24,14 @@ export default {
   title: 'React/Textarea',
   component: Textarea,
   argTypes: {
-    children: {
-      description: 'Acts as a label for a `<textarea>`.',
-    },
     disabled: {
       table: { type: { summary: 'boolean' } },
     },
     invalid: {
       table: { type: { summary: 'boolean' } },
+    },
+    label: {
+      description: 'Optional label for an `<textarea>`.',
     },
     placeholder: {
       table: { type: { summary: 'string' } },
@@ -51,9 +52,9 @@ export default {
     },
   },
   args: {
-    children: 'Label',
     disabled: false,
     invalid: false,
+    label: 'Label',
     placeholder: 'Placeholder',
     resize: 'vertical',
     rows: 3,
@@ -75,13 +76,12 @@ export const Disabled = reactMatrix(Textarea, { disabled });
 Disabled.argTypes = omit<TextareaProps>('disabled');
 
 export const WithoutLabel = (props: TextareaProps) => <Textarea {...props} />;
-WithoutLabel.argTypes = omit<TextareaProps>('children');
+WithoutLabel.argTypes = omit<TextareaProps>('label');
 WithoutLabel.args = {
-  children: null,
+  label: undefined,
 };
 
 interface TextareaWithHelperTextProps extends TextareaProps {
-  label: string;
   helperText: string;
 }
 
@@ -91,15 +91,14 @@ export const WithHelperText = ({
   ...restProps
 }: TextareaWithHelperTextProps) => (
   <Field>
-    <Textarea {...restProps}>
+    <FieldLabel>
       {label}
       <HelperText>{helperText}</HelperText>
-    </Textarea>
+      <Textarea {...restProps} />
+    </FieldLabel>
   </Field>
 );
-WithHelperText.argTypes = omit<TextareaWithHelperTextProps>('children');
 WithHelperText.args = {
-  label: 'Label',
   helperText: 'Helper text',
 };
 

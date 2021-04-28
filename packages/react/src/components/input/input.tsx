@@ -13,6 +13,7 @@ export const Input = withRef(
       id: externalId,
       type = 'text',
       invalid,
+      label: externalLabel,
       children,
       className,
       ...restProps
@@ -20,13 +21,14 @@ export const Input = withRef(
     ref: InputProps['ref']
   ): JSX.Element => {
     const { disabled, touched } = useField();
+    const label = externalLabel || children;
     const [autoId] = useState(() => `${idPrefix}_${++idCount}`);
-    const id = externalId || (children ? autoId : undefined);
+    const id = externalId || (label ? autoId : undefined);
 
     return (
       <FieldLabelWrapper id={id}>
         {{
-          children,
+          label,
           element: (
             <input
               disabled={disabled} // will be overriden by props if set
@@ -44,4 +46,12 @@ export const Input = withRef(
 );
 Input.displayName = 'Input';
 
-export type InputProps = BaseProps & JSX.IntrinsicElements['input'];
+export type InputProps = BaseProps &
+  Omit<InputElementProps, 'children'> & {
+    /** @deprecated Use `label` prop instead */
+    children?: InputElementProps['children'];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    label?: any;
+  };
+
+type InputElementProps = JSX.IntrinsicElements['input'];

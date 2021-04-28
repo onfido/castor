@@ -35,27 +35,46 @@ interface Values {
 export const Playground: Story<FormProps<Values>> = (props) => (
   <Form {...props}>
     <Field>
-      <Input name="firstName" required>
-        First name <Asterisk aria-label="required" />
-      </Input>
+      <Input
+        name="firstName"
+        label={
+          <>
+            First name <Asterisk aria-label="required" />
+          </>
+        }
+        required
+      />
       <Validation state="error" if="valueMissing">
         Please fill in this field
       </Validation>
     </Field>
 
     <Field>
-      <Input name="lastName" required>
-        Last name <Asterisk aria-label="required" />
-      </Input>
+      <Input
+        name="lastName"
+        label={
+          <>
+            Last name <Asterisk aria-label="required" />
+          </>
+        }
+        required
+      />
       <Validation state="error" if="valueMissing">
         Please fill in this field
       </Validation>
     </Field>
 
     <Field>
-      <Input type="email" name="email" required>
-        Email address <Asterisk aria-label="required" />
-      </Input>
+      <Input
+        type="email"
+        name="email"
+        label={
+          <>
+            Email address <Asterisk aria-label="required" />
+          </>
+        }
+        required
+      />
       <Validation state="error" if="valueMissing">
         Please fill in this field
       </Validation>

@@ -3,17 +3,17 @@ import React from 'react';
 
 /**
  * Wrapper for `Input` and `Textarea` components, using `FieldLabel` when
- * children is provided.
+ * `label` prop is provided.
  */
 export const FieldLabelWrapper = ({
   id,
-  children: { element, children },
+  children: { element, label },
 }: FieldLabelWrapperProps): JSX.Element => {
-  if (!children) return element;
+  if (!label) return element;
 
   return (
     <FieldLabel htmlFor={id}>
-      <span>{children}</span>
+      <span>{label}</span>
       {element}
     </FieldLabel>
   );
@@ -22,8 +22,9 @@ export const FieldLabelWrapper = ({
 export interface FieldLabelWrapperProps {
   id: InputElementProps['id'] | TextareaElementProps['id'];
   children: {
-    children: InputElementProps['children'] | TextareaElementProps['children'];
     element: JSX.Element;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    label: any;
   };
 }
 
