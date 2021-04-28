@@ -81,7 +81,7 @@ $_types: (
     text-transform: uppercase,
   ),
   'mono': (
-    font-family: string.unquote('"Roboto Mono", monospace'),
+    font-family: string.unquote('"Roboto Mono", Consolas, Menlo, monospace'),
   ),
 );
 
