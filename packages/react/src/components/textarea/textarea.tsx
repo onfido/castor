@@ -1,6 +1,6 @@
 import { c, classy, m, TextareaProps as BaseProps } from '@onfido/castor';
 import { useField } from '@onfido/castor-react';
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { FieldLabelWrapper } from '../../internal';
 import { withRef } from '../../utils';
 
@@ -57,8 +57,7 @@ export type TextareaProps = BaseProps &
   Omit<TextareaElementProps, 'children'> & {
     /** @deprecated Use `label` prop instead */
     children?: TextareaElementProps['children'];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    label?: any;
+    label?: ReactNode;
   };
 
 type TextareaElementProps = JSX.IntrinsicElements['textarea'];

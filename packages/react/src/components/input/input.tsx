@@ -1,6 +1,6 @@
 import { c, classy, InputProps as BaseProps, m } from '@onfido/castor';
 import { useField } from '@onfido/castor-react';
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { FieldLabelWrapper } from '../../internal';
 import { withRef } from '../../utils';
 
@@ -50,8 +50,7 @@ export type InputProps = BaseProps &
   Omit<InputElementProps, 'children'> & {
     /** @deprecated Use `label` prop instead */
     children?: InputElementProps['children'];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    label?: any;
+    label?: ReactNode;
   };
 
 type InputElementProps = JSX.IntrinsicElements['input'];

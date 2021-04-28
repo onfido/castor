@@ -1,5 +1,5 @@
 import { FieldLabel } from '@onfido/castor-react';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 /**
  * Wrapper for `Input` and `Textarea` components, using `FieldLabel` when
@@ -23,8 +23,7 @@ export interface FieldLabelWrapperProps {
   id: InputElementProps['id'] | TextareaElementProps['id'];
   children: {
     element: JSX.Element;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    label: any;
+    label: ReactNode;
   };
 }
 
