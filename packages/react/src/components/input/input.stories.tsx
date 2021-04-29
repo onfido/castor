@@ -33,9 +33,6 @@ export default {
     invalid: {
       table: { type: { summary: 'boolean' } },
     },
-    label: {
-      description: 'Optional label for an `<input>`.',
-    },
     placeholder: {
       table: { type: { summary: 'string' } },
     },
@@ -50,7 +47,6 @@ export default {
   args: {
     disabled: false,
     invalid: false,
-    label: 'Label',
     placeholder: 'Placeholder',
     type: 'text',
   },
@@ -67,21 +63,16 @@ Invalid.argTypes = omit<InputProps>('invalid');
 export const Disabled = reactMatrix(Input, { disabled });
 Disabled.argTypes = omit<InputProps>('disabled');
 
-export const WithoutLabel = (props: InputProps) => <Input {...props} />;
-WithoutLabel.argTypes = omit<InputProps>('label');
-WithoutLabel.args = {
-  label: undefined,
-};
-
-interface InputWithHelperTextProps extends InputProps {
+interface InputWithLabelAndHelperTextProps extends InputProps {
+  label: string;
   helperText: string;
 }
 
-export const WithHelperText = ({
+export const WithLabelAndHelperText = ({
   label,
   helperText,
   ...restProps
-}: InputWithHelperTextProps) => (
+}: InputWithLabelAndHelperTextProps) => (
   <Field>
     <FieldLabel>
       {label}
@@ -90,7 +81,8 @@ export const WithHelperText = ({
     </FieldLabel>
   </Field>
 );
-WithHelperText.args = {
+WithLabelAndHelperText.args = {
+  label: 'Label',
   helperText: 'Helper text',
 };
 

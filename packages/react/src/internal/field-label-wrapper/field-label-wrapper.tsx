@@ -1,19 +1,19 @@
 import { FieldLabel } from '@onfido/castor-react';
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 /**
  * Wrapper for `Input` and `Textarea` components, using `FieldLabel` when
- * `label` prop is provided.
+ * children is provided.
  */
 export const FieldLabelWrapper = ({
   id,
-  children: { element, label },
+  children: { element, children },
 }: FieldLabelWrapperProps): JSX.Element => {
-  if (!label) return element;
+  if (!children) return element;
 
   return (
     <FieldLabel htmlFor={id}>
-      <span>{label}</span>
+      <span>{children}</span>
       {element}
     </FieldLabel>
   );
@@ -22,8 +22,8 @@ export const FieldLabelWrapper = ({
 export interface FieldLabelWrapperProps {
   id: InputElementProps['id'] | TextareaElementProps['id'];
   children: {
+    children: InputElementProps['children'] | TextareaElementProps['children'];
     element: JSX.Element;
-    label: ReactNode;
   };
 }
 

@@ -30,9 +30,6 @@ export default {
     invalid: {
       table: { type: { summary: 'boolean' } },
     },
-    label: {
-      description: 'Optional label for an `<textarea>`.',
-    },
     placeholder: {
       table: { type: { summary: 'string' } },
     },
@@ -54,7 +51,6 @@ export default {
   args: {
     disabled: false,
     invalid: false,
-    label: 'Label',
     placeholder: 'Placeholder',
     resize: 'vertical',
     rows: 3,
@@ -75,21 +71,16 @@ Invalid.argTypes = omit<TextareaProps>('invalid');
 export const Disabled = reactMatrix(Textarea, { disabled });
 Disabled.argTypes = omit<TextareaProps>('disabled');
 
-export const WithoutLabel = (props: TextareaProps) => <Textarea {...props} />;
-WithoutLabel.argTypes = omit<TextareaProps>('label');
-WithoutLabel.args = {
-  label: undefined,
-};
-
-interface TextareaWithHelperTextProps extends TextareaProps {
+interface TextareaWithLabelAndHelperTextProps extends TextareaProps {
+  label: string;
   helperText: string;
 }
 
-export const WithHelperText = ({
+export const WithLabelAndHelperText = ({
   label,
   helperText,
   ...restProps
-}: TextareaWithHelperTextProps) => (
+}: TextareaWithLabelAndHelperTextProps) => (
   <Field>
     <FieldLabel>
       {label}
@@ -98,7 +89,8 @@ export const WithHelperText = ({
     </FieldLabel>
   </Field>
 );
-WithHelperText.args = {
+WithLabelAndHelperText.args = {
+  label: 'Label',
   helperText: 'Helper text',
 };
 

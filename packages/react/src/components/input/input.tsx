@@ -1,6 +1,6 @@
 import { c, classy, InputProps as BaseProps, m } from '@onfido/castor';
 import { useField } from '@onfido/castor-react';
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import { FieldLabelWrapper } from '../../internal';
 import { withRef } from '../../utils';
 
@@ -13,7 +13,6 @@ export const Input = withRef(
       id: externalId,
       type = 'text',
       invalid,
-      label: externalLabel,
       children,
       className,
       ...restProps
@@ -21,14 +20,13 @@ export const Input = withRef(
     ref: InputProps['ref']
   ): JSX.Element => {
     const { disabled, touched } = useField();
-    const label = externalLabel || children;
     const [autoId] = useState(() => `${idPrefix}_${++idCount}`);
-    const id = externalId || (label ? autoId : undefined);
+    const id = externalId || (children ? autoId : undefined);
 
     return (
       <FieldLabelWrapper id={id}>
         {{
-          label,
+          children,
           element: (
             <input
               disabled={disabled} // will be overriden by props if set
@@ -48,9 +46,8 @@ Input.displayName = 'Input';
 
 export type InputProps = BaseProps &
   Omit<InputElementProps, 'children'> & {
-    /** @deprecated Use `label` prop instead */
+    /** @deprecated Use component composition instead */
     children?: InputElementProps['children'];
-    label?: ReactNode;
   };
 
 type InputElementProps = JSX.IntrinsicElements['input'];

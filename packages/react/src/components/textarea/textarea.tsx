@@ -1,6 +1,6 @@
 import { c, classy, m, TextareaProps as BaseProps } from '@onfido/castor';
 import { useField } from '@onfido/castor-react';
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import { FieldLabelWrapper } from '../../internal';
 import { withRef } from '../../utils';
 
@@ -14,7 +14,6 @@ export const Textarea = withRef(
       resize = 'vertical',
       rows = 3,
       invalid,
-      label: externalLabel,
       children,
       className,
       style,
@@ -23,14 +22,13 @@ export const Textarea = withRef(
     ref: TextareaProps['ref']
   ): JSX.Element => {
     const { disabled, touched } = useField();
-    const label = externalLabel || children;
     const [autoId] = useState(() => `${idPrefix}_${++idCount}`);
-    const id = externalId || (label ? autoId : undefined);
+    const id = externalId || (children ? autoId : undefined);
 
     return (
       <FieldLabelWrapper id={id}>
         {{
-          label,
+          children,
           element: (
             <textarea
               disabled={disabled} // will be overriden by props if set
@@ -55,9 +53,8 @@ Textarea.displayName = 'Textarea';
 
 export type TextareaProps = BaseProps &
   Omit<TextareaElementProps, 'children'> & {
-    /** @deprecated Use `label` prop instead */
+    /** @deprecated Use component composition instead */
     children?: TextareaElementProps['children'];
-    label?: ReactNode;
   };
 
 type TextareaElementProps = JSX.IntrinsicElements['textarea'];
