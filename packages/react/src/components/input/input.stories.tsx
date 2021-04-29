@@ -1,5 +1,6 @@
 import {
   Field,
+  FieldLabel,
   HelperText,
   Input,
   InputProps,
@@ -26,9 +27,6 @@ export default {
   title: 'React/Input',
   component: Input,
   argTypes: {
-    children: {
-      description: 'Acts as a label for an `<input>`.',
-    },
     disabled: {
       table: { type: { summary: 'boolean' } },
     },
@@ -47,7 +45,6 @@ export default {
     },
   },
   args: {
-    children: 'Label',
     disabled: false,
     invalid: false,
     placeholder: 'Placeholder',
@@ -66,31 +63,25 @@ Invalid.argTypes = omit<InputProps>('invalid');
 export const Disabled = reactMatrix(Input, { disabled });
 Disabled.argTypes = omit<InputProps>('disabled');
 
-export const WithoutLabel = (props: InputProps) => <Input {...props} />;
-WithoutLabel.argTypes = omit<InputProps>('children');
-WithoutLabel.args = {
-  children: null,
-};
-
-interface InputWithHelperTextProps extends InputProps {
+interface InputWithLabelAndHelperTextProps extends InputProps {
   label: string;
   helperText: string;
 }
 
-export const WithHelperText = ({
+export const WithLabelAndHelperText = ({
   label,
   helperText,
   ...restProps
-}: InputWithHelperTextProps) => (
+}: InputWithLabelAndHelperTextProps) => (
   <Field>
-    <Input {...restProps}>
+    <FieldLabel>
       {label}
       <HelperText>{helperText}</HelperText>
-    </Input>
+      <Input {...restProps} />
+    </FieldLabel>
   </Field>
 );
-WithHelperText.argTypes = omit<InputWithHelperTextProps>('children');
-WithHelperText.args = {
+WithLabelAndHelperText.args = {
   label: 'Label',
   helperText: 'Helper text',
 };

@@ -44,4 +44,19 @@ export const Input = withRef(
 );
 Input.displayName = 'Input';
 
-export type InputProps = BaseProps & JSX.IntrinsicElements['input'];
+export type InputProps = BaseProps &
+  Omit<InputElementProps, 'children'> & {
+    /**
+     * @deprecated
+     * Use component composition instead.
+     *
+     * @example
+     * <FieldLabel>
+     *   My Label
+     *   <Input name="my-input" />
+     * </FieldLabel>
+     */
+    children?: InputElementProps['children'];
+  };
+
+type InputElementProps = JSX.IntrinsicElements['input'];

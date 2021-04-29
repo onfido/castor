@@ -51,4 +51,19 @@ export const Textarea = withRef(
 );
 Textarea.displayName = 'Textarea';
 
-export type TextareaProps = BaseProps & JSX.IntrinsicElements['textarea'];
+export type TextareaProps = BaseProps &
+  Omit<TextareaElementProps, 'children'> & {
+    /**
+     * @deprecated
+     * Use component composition instead.
+     *
+     * @example
+     * <FieldLabel>
+     *   My Label
+     *   <Textarea name="my-textarea" />
+     * </FieldLabel>
+     */
+    children?: TextareaElementProps['children'];
+  };
+
+type TextareaElementProps = JSX.IntrinsicElements['textarea'];
