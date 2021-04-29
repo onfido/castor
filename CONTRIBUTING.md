@@ -74,7 +74,7 @@ You can also filter to a single file if you want, like:
 
     yarn jest --watch my-file
 
-#### UI tests (including visual-regression)
+#### UI tests (including visual regression)
 
 Those are found in `./e2e`, in its root or inside folders, but mandatorily with a `.e2e.ts` file suffix.
 
