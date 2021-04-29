@@ -76,5 +76,5 @@ jobs:
         uses: actions/upload-artifact@v2
         if: always()
         with:
-          name: .screenshots
-          path: e2e/.screenshots
+          name: screenshots
+          path: e2e/.snapshots
