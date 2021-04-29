@@ -7,7 +7,7 @@ export default {
     '!**/dist/**/*', // distribution files
     '!**/index.ts', // index files
   ],
-  coverageDirectory: '../coverage',
+  coverageDirectory: '../coverage/unit',
   coverageThreshold: {
     global: {
       branches: 100,

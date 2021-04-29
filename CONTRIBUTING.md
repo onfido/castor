@@ -56,6 +56,60 @@ You can run a Storybook instance locally with:
 
     yarn start
 
+### Testing locally
+
+#### Unit tests
+
+You can run unit tests as the CI would with:
+
+    yarn test
+
+That runs all specs and generates coverage reports.
+
+If you want watch mode for your changes only, use:
+
+    yarn jest --watch
+
+You can also filter to a single file if you want, like:
+
+    yarn jest --watch my-file
+
+#### UI tests (including visual regression)
+
+Those are found in `./e2e`, in its root or inside folders, but mandatorily with a `.e2e.ts` file suffix.
+
+They are written in [Cypress](https://www.cypress.io/).
+
+Visual regression tests are run for all "All Combinations" stories, or you can add specs individually for other stories.
+
+You can run UI tests as the CI would with:
+
+    yarn e2e
+
+That runs all specs and generates coverage reports.
+
+For writing tests locally:
+
+1. You can serve the app in E2E mode with:
+
+   yarn e2e:serve
+
+2. Then in another terminal open Cypress with:
+
+   yarn cypress open
+
+Alternatively you could use a single terminal with:
+
+    yarn concurrently -k -n ,cypress:open yarn:e2e:serve "yarn cypress open"
+
+If tests fail on image diffing, make sure no regression has been introduced.
+
+Diffed images are stored in `./coverage/e2e/.diff`.
+
+If you introduced visual changes intentionally and are sure it's how it should look, update the screenshot baselines with:
+
+    yarn snapshot
+
 ### Build packages locally
 
 Castor consists of multiple packages. You can build them by running:

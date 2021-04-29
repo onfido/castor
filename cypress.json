@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cypress-io/cypress/develop/cli/schema/cypress.schema.json",
+
+  "baseUrl": "http://localhost:6006",
+  "nodeVersion": "system",
+  "video": false,
+
+  "integrationFolder": "e2e",
+  "componentFolder": false,
+  "fixturesFolder": false,
+  "screenshotsFolder": "coverage/e2e/screenshots",
+  "videosFolder": "coverage/e2e/videos",
+
+  "pluginsFile": "e2e/plugins.ts",
+  "supportFile": "e2e/support.ts",
+
+  "testFiles": "**/*.e2e.ts",
+
+  "viewportHeight": 1280,
+  "viewportWidth": 1920
+}

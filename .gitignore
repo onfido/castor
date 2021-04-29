@@ -22,7 +22,9 @@ package-lock.json
 # Repository specific
 .cache
 .castor*
+.nyc_output
 coverage
+cypress
 dist
 packages/*/prototype.js*
 packages/core/src/theme/tokens.scss
