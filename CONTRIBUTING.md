@@ -88,6 +88,8 @@ You can run UI tests as the CI would with:
 
 That runs all specs and generates coverage reports.
 
+Beware that environment differences between CI and your local machine might be enough for a diff to be detected.
+
 For writing tests locally:
 
 1. You can serve the app in E2E mode with:
@@ -96,19 +98,23 @@ For writing tests locally:
 
 2. Then in another terminal open Cypress with:
 
-   `yarn cypress open`
+   `yarn cypress open --env failOnSnapshotDiff=false`
 
 Alternatively you could use a single terminal with:
 
-    yarn concurrently -k -n ,cypress:open yarn:e2e:serve "yarn cypress open"
+    yarn concurrently -k -n ,cypress:open yarn:e2e:serve "yarn cypress open --env failOnSnapshotDiff=false"
+
+For a nicer experience, [you can report snapshot diffs in your test results to console](https://github.com/jaredpalmer/cypress-image-snapshot#reporter):
+
+    --reporter cypress-image-snapshot/reporter
 
 If tests fail on image diffing, make sure no regression has been introduced.
 
 Diffed images are stored in `./coverage/e2e/.diff`.
 
-If you introduced visual changes intentionally and are sure it's how it should look, update the screenshot baselines with:
-
-    yarn snapshot
+If you introduced visual changes intentionally and are sure it's how it should look,
+update the screenshot baselines by downloading `screenshots` artifacts in your PR's checks
+and copying the images into `./e2e/.snapshots`.
 
 ### Build packages locally
 
