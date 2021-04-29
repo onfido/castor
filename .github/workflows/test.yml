@@ -53,3 +53,28 @@ jobs:
         with:
           name: coverage
           path: coverage/e2e
+
+  screenshot-baselines:
+    name: Take baseline screenshots
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          command: yarn snapshot
+
+      - name: Keep artifacts
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: .screenshots
+          path: e2e/.screenshots
