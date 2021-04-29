@@ -46,7 +46,16 @@ Input.displayName = 'Input';
 
 export type InputProps = BaseProps &
   Omit<InputElementProps, 'children'> & {
-    /** @deprecated Use component composition instead */
+    /**
+     * @deprecated
+     * Use component composition instead.
+     *
+     * @example
+     * <FieldLabel>
+     *   My Label
+     *   <Input name="my-input" />
+     * </FieldLabel>
+     */
     children?: InputElementProps['children'];
   };
 

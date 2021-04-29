@@ -53,7 +53,16 @@ Textarea.displayName = 'Textarea';
 
 export type TextareaProps = BaseProps &
   Omit<TextareaElementProps, 'children'> & {
-    /** @deprecated Use component composition instead */
+    /**
+     * @deprecated
+     * Use component composition instead.
+     *
+     * @example
+     * <FieldLabel>
+     *   My Label
+     *   <Textarea name="my-textarea" />
+     * </FieldLabel>
+     */
     children?: TextareaElementProps['children'];
   };
 
