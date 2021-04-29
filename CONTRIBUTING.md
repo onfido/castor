@@ -112,9 +112,7 @@ If tests fail on image diffing, make sure no regression has been introduced.
 
 Diffed images are stored in `./coverage/e2e/.diff`.
 
-If you introduced visual changes intentionally and are sure it's how it should look,
-update the screenshot baselines by downloading `screenshots` artifacts in your PR's checks
-and copying the images into `./e2e/.snapshots`.
+If you introduced visual changes intentionally and are sure it's how it should look, update the screenshot baselines by downloading `screenshots` artifacts in your PR's checks and copying the images into `./e2e/.snapshots`.
 
 ### Build packages locally
 
