@@ -92,11 +92,11 @@ For writing tests locally:
 
 1. You can serve the app in E2E mode with:
 
-   yarn e2e:serve
+   `yarn e2e:serve`
 
 2. Then in another terminal open Cypress with:
 
-   yarn cypress open
+   `yarn cypress open`
 
 Alternatively you could use a single terminal with:
 
