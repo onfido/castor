@@ -90,7 +90,7 @@ That runs all specs and generates coverage reports.
 
 For writing tests locally:
 
-1. You can serve the app in e2e mode with:
+1. You can serve the app in E2E mode with:
 
    yarn e2e:serve
 
