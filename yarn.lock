@@ -1939,9 +1939,9 @@
     rimraf "^3.0.2"
 
 "@onfido/castor-icons@*":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-2.1.0.tgz#ac8c02f8af2aeceed10f8a566c4d809623967c52"
-  integrity sha512-RGWNi8v1ipArHoL4R66BTISYdMWkx8M0YX0dWViaqEX1QePPy2aLnuVUEKw+Y0Z5C2fLi68uBeh3hpNxkUttoA==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-2.2.0.tgz#c639331af6eff32bb08f4a474941d69b60d59501"
+  integrity sha512-txU0TauRHv/adB5FecY0fB/0sb2eGmhHYLcrRLCBDafFeQDls31Y44A0H/5K1JR0cwob2KEeGDw2Is2oEISBLQ==
 
 "@open-wc/building-utils@^2.18.3":
   version "2.18.4"
