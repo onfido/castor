@@ -7227,10 +7227,10 @@ es6-shim@^0.35.5:
   resolved "https://registry.yarnpkg.com/es6-shim/-/es6-shim-0.35.6.tgz#d10578301a83af2de58b9eadb7c2c9945f7388a0"
   integrity sha512-EmTr31wppcaIAgblChZiuN/l9Y7DPyw8Xtbg7fIVngn6zMW+IEBJDJngeKC3x6wr0V/vcA2wqeFnaw1bFJbDdA==
 
-esbuild@^0.11.16:
-  version "0.11.16"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.11.16.tgz#435f00474fb21e70f59a545b85e4cfc7ba106485"
-  integrity sha512-34ZWjo4ouvM5cDe7uRoM9GFuMyEmpH9fnVYmomvS1cq9ED9d/0ZG1r+p4P2VbX7ihjv36zA2SWTmP8Zmt/EANA==
+esbuild@^0.11.18:
+  version "0.11.18"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.11.18.tgz#b587ec9e84d2e291b545e3c6342b5b703fd009cb"
+  integrity sha512-KD7v4N9b5B8bxPUNn/3GA9r0HWo4nJk3iwjZ+2zG1ffg+r8ig+wqj7sW6zgI6Sn4/B2FnbzqWxcAokAGGM5zwQ==
 
 escalade@^3.0.2, escalade@^3.1.1:
   version "3.1.1"
