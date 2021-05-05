@@ -22,13 +22,13 @@ jobs:
 
       - name: Run commitlint
         if: github.actor != 'dependabot-preview[bot]' # allow long commit message body
-        run: npm run lint:commit
+        run: yarn lint:commit
 
       - name: Run stylelint
-        run: npm run lint:style
+        run: yarn lint:style
 
       - name: Run ESLint
-        run: npm run lint:es
+        run: yarn lint:es
 
       - name: Run Prettier
-        run: npm run lint:prettier
+        run: yarn lint:prettier
