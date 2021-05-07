@@ -27,3 +27,5 @@ npm install @onfido/castor-react
 ```
 
 Also setup following [React documentation](./packages/react).
+
+[![Vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)](https://vercel.com/?utm_source=onfido-oss&utm_campaign=oss)

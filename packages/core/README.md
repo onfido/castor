@@ -199,3 +199,5 @@ Or using the Sass helper:
 Components have basic types exported so that you could create your own JS/TS variations using any renderer chosen (for example, Vue or Angular).
 
 Please note that the `@onfido/castor-icons` package is a peer dependency and is required to be installed for **types** to work properly. Yarn and newer versions of npm (using lockfile v2) will resolve it, otherwise it must be installed manually even if you don't plan to use icons.
+
+[![Vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)](https://vercel.com/?utm_source=onfido-oss&utm_campaign=oss)
