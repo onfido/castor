@@ -113,5 +113,3 @@ For modern browsers you may use ECMAScript modules directly via [Skypack](https:
 ```
 
 Also it is easy to use Skypack distributions [with Deno](https://docs.skypack.dev/skypack-cdn/code/deno).
-
-[![Vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)](https://vercel.com/?utm_source=onfido-oss&utm_campaign=oss)
