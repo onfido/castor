@@ -145,6 +145,7 @@ export const Playground: Story<FormProps<Values>> = (props) => (
         Please confirm you agree
       </Validation>
     </Field>
+
     <Button>Send email</Button>
   </Form>
 );
