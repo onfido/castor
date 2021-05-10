@@ -115,6 +115,9 @@ export const Playground: Story<FormProps<Values>> = (props) => (
         Social media
         <HelperText>Facebook, Twitter, TikTok, etc...</HelperText>
       </Radio>
+      <Radio name="source" value="search-engine">
+        Search engine
+      </Radio>
       <Radio name="source" value="word-of-mouth">
         Word of mouth
       </Radio>
