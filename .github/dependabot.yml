@@ -1,0 +1,26 @@
+version: 2
+
+updates:
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    open-pull-requests-limit: 15
+    ignore:
+      - dependency-name: 'autoprefixer'
+        versions:
+          - 10.x
+      - dependency-name: 'postcss-modules'
+        versions:
+          - 4.x
+      - dependency-name: 'sass-loader'
+        versions:
+          - 11.x
+      - dependency-name: 'webpack'
+        versions:
+          - 5.x
