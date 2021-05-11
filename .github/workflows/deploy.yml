@@ -17,7 +17,7 @@ jobs:
           persist-credentials: false # required by JamesIves/github-pages-deploy-action
 
       - name: Setup Node
-        uses: actions/setup-node@v2.1.4
+        uses: actions/setup-node@v2.1.5
         with:
           node-version: 14
 
