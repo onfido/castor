@@ -1,6 +1,6 @@
 # Castor
 
-[![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://onfido.github.io/castor/)
+[![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://castor.vercel.app)
 
 _Castor_ is Onfido's design system. It has been designed to support different renderers, and plain HTML + CSS.
 
