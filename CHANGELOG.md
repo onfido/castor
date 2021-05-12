@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/onfido/castor/compare/v1.2.0...v1.3.0) (2021-05-12)
+
+### Features
+
+- **core:** improve font monospace list ([#619](https://github.com/onfido/castor/issues/619)) ([59d9801](https://github.com/onfido/castor/commit/59d9801fe15c3d14d3c00879b62dd620c31751f8))
+- **core:** themes set color-scheme ([#591](https://github.com/onfido/castor/issues/591)) ([6e65067](https://github.com/onfido/castor/commit/6e65067e8ab9f090edf3feed2f7feffdc50e61ec))
+- **react:** deprecate "children" for adding input/textarea label ([#622](https://github.com/onfido/castor/issues/622)) ([359b5a2](https://github.com/onfido/castor/commit/359b5a2fc599cdb6e2ac8228b03b8e4712d7f860))
+- generate themes with theo ([#589](https://github.com/onfido/castor/issues/589)) ([6037ab5](https://github.com/onfido/castor/commit/6037ab5aa3dd3af615fe77cda9a5c47ed76b91df))
+
+### Bug Fixes
+
+- **core:** monospace font ([#592](https://github.com/onfido/castor/issues/592)) ([5137132](https://github.com/onfido/castor/commit/513713238acc16ac2a86f03f564c8f856b0aa804))
+- **core:** search includes icon and input if not already added ([e293315](https://github.com/onfido/castor/commit/e293315598fde7f95330885d41cc108c711e2e88))
+- **react:** change button href check from key to value ([#576](https://github.com/onfido/castor/issues/576)) ([2f7ffe4](https://github.com/onfido/castor/commit/2f7ffe493299a6fca42d7d45cc9ac6f72de60b62))
+- **react:** form onSubmit values ([#615](https://github.com/onfido/castor/issues/615)) ([46b1899](https://github.com/onfido/castor/commit/46b18999762dbd29f0af8ff488f7576f9402ce8c))
+- **react:** form values onChange and onSubmit ([#635](https://github.com/onfido/castor/issues/635)) ([4cf3691](https://github.com/onfido/castor/commit/4cf36914890365bd75248fdcaac06f6791f849c8))
+- **react:** useField types ([#590](https://github.com/onfido/castor/issues/590)) ([3d48384](https://github.com/onfido/castor/commit/3d48384be8ee8ba27833f69d713d7b2062abb31d))
+
 ## [1.2.0](https://github.com/onfido/castor/compare/v1.1.0...v1.2.0) (2021-03-25)
 
 ### Features
