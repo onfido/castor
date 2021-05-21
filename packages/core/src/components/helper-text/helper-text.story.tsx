@@ -1,6 +1,5 @@
-import { HelperTextProps as BaseProps, m } from '@onfido/castor';
+import { c, classy, HelperTextProps as BaseProps, m } from '@onfido/castor';
 import { html } from '../../../../../docs';
-import { c, classy } from '../../utils';
 
 export interface HelperTextProps extends BaseProps {
   children: string | string[];

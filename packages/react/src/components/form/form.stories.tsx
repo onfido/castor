@@ -4,6 +4,8 @@ import {
   Checkbox,
   Field,
   FieldLabel,
+  Fieldset,
+  FieldsetLegend,
   Form,
   FormProps,
   HelperText,
@@ -13,8 +15,6 @@ import {
 } from '@onfido/castor-react';
 import React from 'react';
 import { Meta, Story } from '../../../../../docs';
-import { FieldsetLegend } from '../fieldset-legend/fieldset-legend';
-import { Fieldset } from '../fieldset/fieldset';
 
 export default {
   title: 'React/Form',

@@ -1,9 +1,5 @@
-import { describe, expect, it, jest } from '@jest/globals';
+import { describe, expect, it } from '@jest/globals';
 import { toCSS } from './toCSS';
-
-jest.mock('../../utils', () => ({
-  kebabCase: (s: string) => s.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(),
-}));
 
 describe('toCSS', () => {
   it('should transform a style object correctly to CSS', () => {

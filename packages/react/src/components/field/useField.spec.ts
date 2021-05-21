@@ -1,9 +1,9 @@
 import { describe, expect, it, jest } from '@jest/globals';
+import { useForm } from '@onfido/castor-react';
 import { useContext } from 'react';
-import { useForm } from '../form/useForm';
 import { FieldProvider, useField } from './useField';
 
-jest.mock('../form/useForm', () => ({ useForm: jest.fn() }));
+jest.mock('@onfido/castor-react', () => ({ useForm: jest.fn() }));
 jest.mock('react', () => {
   const context = { Provider: {} };
   return {

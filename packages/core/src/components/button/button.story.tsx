@@ -1,6 +1,5 @@
-import { ButtonProps as BaseProps } from '@onfido/castor';
+import { ButtonProps as BaseProps, c, classy, m } from '@onfido/castor';
 import { html } from '../../../../../docs';
-import { c, classy, m } from '../../utils';
 
 export interface ButtonProps extends BaseProps {
   children: string;

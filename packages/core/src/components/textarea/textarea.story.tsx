@@ -1,6 +1,5 @@
-import { TextareaProps as BaseProps } from '@onfido/castor';
+import { c, classy, m, TextareaProps as BaseProps } from '@onfido/castor';
 import { html } from '../../../../../docs';
-import { c, classy, m } from '../../utils';
 
 export interface TextareaProps extends BaseProps {
   children?: string;

@@ -1,6 +1,5 @@
-import { InputProps as BaseProps } from '@onfido/castor';
+import { c, classy, InputProps as BaseProps, m } from '@onfido/castor';
 import { html } from '../../../../../docs';
-import { c, classy, m } from '../../utils';
 
 export interface InputProps extends BaseProps {
   id?: string;

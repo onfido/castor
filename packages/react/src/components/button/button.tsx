@@ -1,6 +1,6 @@
 import { ButtonProps as BaseProps, c, classy, m } from '@onfido/castor';
+import { useField } from '@onfido/castor-react';
 import React, { HTMLAttributes } from 'react';
-import { useField } from '../field/useField';
 
 export const Button: ButtonComponent = ({
   kind = 'action',
