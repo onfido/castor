@@ -1994,9 +1994,9 @@
     rimraf "^3.0.2"
 
 "@onfido/castor-icons@*":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-2.3.0.tgz#8d050b6d67b130eab9779753f49228e9e3f3fb26"
-  integrity sha512-9E+BqbAL2Ji47uM3WCxr0FzUZa3d3Hi/LtNcL1+93xyI4fPNCDJpedjT8zzpXeTKXn0H/6Iymwr2M9GkNM64wQ==
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-2.4.0.tgz#8d8462220a4ce69152e12f92db8764f70bebc2aa"
+  integrity sha512-iiv0OpzzZ8W8zikqNjGgcoUhzzc/yPJRR5T/ieWxCVkbyV6KjFLadb9yC9M2jbCAJRY23if2uuGhj7ZOuNe70A==
 
 "@open-wc/building-utils@^2.18.3":
   version "2.18.4"
