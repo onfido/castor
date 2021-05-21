@@ -93,7 +93,7 @@
     "files": [
       {
         "path": "./packages/core/dist/index.js",
-        "maxSize": "20B"
+        "maxSize": "200B"
       },
       {
         "path": "./packages/core/dist/castor.css",
@@ -101,7 +101,7 @@
       },
       {
         "path": "./packages/react/dist/index.js",
-        "maxSize": "9B"
+        "maxSize": "90B"
       }
     ]
   }
