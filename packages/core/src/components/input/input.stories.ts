@@ -55,11 +55,13 @@ export const Disabled = htmlMatrix(Input, { disabled });
 Disabled.argTypes = omit<InputProps>('disabled');
 
 interface InputWithLabelAndHelperTextProps extends InputProps {
+  id: string;
   label: string;
   helperText: string;
 }
 
 export const WithLabelAndHelperText = ({
+  id,
   label,
   helperText,
   ...props
@@ -67,11 +69,17 @@ export const WithLabelAndHelperText = ({
   Field({
     children: [
       FieldLabel({
-        children: [label, HelperText({ children: helperText }), Input(props)],
+        children: [
+          label,
+          HelperText({ children: helperText }),
+          Input({ ...props, id }),
+        ],
+        for: id,
       }),
     ],
   });
 WithLabelAndHelperText.args = {
+  id: 'input-with-label-and-helper-text',
   label: 'Label',
   helperText: 'Helper text',
 };

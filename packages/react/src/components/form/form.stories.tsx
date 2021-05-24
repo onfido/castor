@@ -35,11 +35,11 @@ interface Values {
 export const Playground: Story<FormProps<Values>> = (props) => (
   <Form {...props}>
     <Field>
-      <FieldLabel>
+      <FieldLabel htmlFor="first-name">
         <span>
           First name <Asterisk aria-label="required" />
         </span>
-        <Input name="firstName" required />
+        <Input id="first-name" name="firstName" required />
       </FieldLabel>
       <Validation state="error" if="valueMissing">
         Please fill in this field
@@ -47,11 +47,11 @@ export const Playground: Story<FormProps<Values>> = (props) => (
     </Field>
 
     <Field>
-      <FieldLabel>
+      <FieldLabel htmlFor="last-name">
         <span>
           Last name <Asterisk aria-label="required" />
         </span>
-        <Input name="lastName" required />
+        <Input id="last-name" name="lastName" required />
       </FieldLabel>
       <Validation state="error" if="valueMissing">
         Please fill in this field
@@ -59,11 +59,11 @@ export const Playground: Story<FormProps<Values>> = (props) => (
     </Field>
 
     <Field>
-      <FieldLabel>
+      <FieldLabel htmlFor="email">
         <span>
           Email address <Asterisk aria-label="required" />
         </span>
-        <Input type="email" name="email" required />
+        <Input type="email" id="email" name="email" required />
       </FieldLabel>
       <Validation state="error" if="valueMissing">
         Please fill in this field
