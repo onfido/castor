@@ -1,14 +1,15 @@
 import { c, classy, m, RadioProps as BaseProps } from '@onfido/castor';
 import { useField } from '@onfido/castor-react';
 import React from 'react';
-import { useAutoId } from '../../hooks';
 import { IndicatorContainer, splitContainerProps } from '../../internal';
 import { withRef } from '../../utils';
+
+let idCount = 0;
 
 export const Radio = withRef(
   (
     {
-      id: externalId,
+      id = `castor_radio_${++idCount}`,
       bordered,
       invalid,
       children,
@@ -19,8 +20,6 @@ export const Radio = withRef(
     ref: RadioProps['ref']
   ): JSX.Element => {
     const { disabled, touched } = useField();
-    const autoId = useAutoId('castor_radio');
-    const id = externalId || autoId;
     const [containerProps, inputProps] = splitContainerProps(restProps);
 
     return (

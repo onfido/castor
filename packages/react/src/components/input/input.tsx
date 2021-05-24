@@ -1,14 +1,15 @@
 import { c, classy, InputProps as BaseProps, m } from '@onfido/castor';
 import { useField } from '@onfido/castor-react';
 import React from 'react';
-import { useAutoId } from '../../hooks';
 import { FieldLabelWrapper } from '../../internal';
 import { withRef } from '../../utils';
+
+let idCount = 0;
 
 export const Input = withRef(
   (
     {
-      id: externalId,
+      id = `castor_input_${++idCount}`,
       type = 'text',
       invalid,
       children,
@@ -18,8 +19,6 @@ export const Input = withRef(
     ref: InputProps['ref']
   ): JSX.Element => {
     const { disabled, touched } = useField();
-    const autoId = useAutoId('castor_input');
-    const id = externalId || autoId;
 
     return (
       <FieldLabelWrapper htmlFor={id}>

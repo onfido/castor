@@ -1,14 +1,15 @@
 import { c, CheckboxProps as BaseProps, classy, m } from '@onfido/castor';
 import { useField } from '@onfido/castor-react';
 import React from 'react';
-import { useAutoId } from '../../hooks';
 import { IndicatorContainer, splitContainerProps } from '../../internal';
 import { withRef } from '../../utils';
+
+let count = 0;
 
 export const Checkbox = withRef(
   (
     {
-      id: externalId,
+      id = `castor_checkbox_${++count}`,
       bordered,
       invalid,
       children,
@@ -19,8 +20,6 @@ export const Checkbox = withRef(
     ref: CheckboxProps['ref']
   ): JSX.Element => {
     const { disabled, touched } = useField();
-    const autoId = useAutoId('castor_checkbox');
-    const id = externalId || autoId;
     const [containerProps, inputProps] = splitContainerProps(restProps);
 
     return (
