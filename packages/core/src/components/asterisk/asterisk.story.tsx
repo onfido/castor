@@ -1,5 +1,5 @@
+import { c, classy } from '@onfido/castor';
 import { html } from '../../../../../docs';
-import { c, classy } from '../../utils';
 
 export interface AsteriskProps {
   'aria-label': string;

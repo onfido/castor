@@ -16,6 +16,10 @@ export default {
       statements: 100,
     },
   },
+  moduleNameMapper: {
+    '^@onfido/castor$': '<rootDir>/core/src',
+    '^@onfido/castor-(.*)$': '<rootDir>/$1/src',
+  },
   preset: 'ts-jest',
   rootDir: 'packages',
   testEnvironment: 'jsdom',

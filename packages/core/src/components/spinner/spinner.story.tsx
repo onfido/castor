@@ -1,6 +1,5 @@
-import { SpinnerProps as BaseProps } from '@onfido/castor';
+import { c, classy, m, SpinnerProps as BaseProps } from '@onfido/castor';
 import { html } from '../../../../../docs';
-import { c, classy, m } from '../../utils';
 
 export interface SpinnerProps extends BaseProps {
   children: string;

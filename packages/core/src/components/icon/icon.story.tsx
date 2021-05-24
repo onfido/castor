@@ -1,6 +1,5 @@
-import { color, IconProps } from '@onfido/castor';
+import { c, classy, color, IconProps } from '@onfido/castor';
 import { html } from '../../../../../docs';
-import { c, classy } from '../../utils';
 
 /**
  * `.ods-icon` requires SVG sprite to be included in your app.

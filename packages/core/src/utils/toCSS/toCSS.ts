@@ -1,5 +1,4 @@
-import { Font } from '../../helpers';
-import { kebabCase } from '../../utils';
+import { Font, kebabCase } from '@onfido/castor';
 
 /**
  * Transforms a `Font` style object into a valid CSS string.
