@@ -6,13 +6,13 @@ import React from 'react';
  * children is provided.
  */
 export const FieldLabelWrapper = ({
-  id,
+  htmlFor,
   children: { element, children },
 }: FieldLabelWrapperProps): JSX.Element => {
   if (!children) return element;
 
   return (
-    <FieldLabel htmlFor={id}>
+    <FieldLabel htmlFor={htmlFor}>
       <span>{children}</span>
       {element}
     </FieldLabel>
@@ -20,12 +20,13 @@ export const FieldLabelWrapper = ({
 };
 
 export interface FieldLabelWrapperProps {
-  id: InputElementProps['id'] | TextareaElementProps['id'];
+  htmlFor: LabelElementProps['htmlFor'];
   children: {
     children: InputElementProps['children'] | TextareaElementProps['children'];
     element: JSX.Element;
   };
 }
 
+type LabelElementProps = JSX.IntrinsicElements['label'];
 type InputElementProps = JSX.IntrinsicElements['input'];
 type TextareaElementProps = JSX.IntrinsicElements['textarea'];
