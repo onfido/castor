@@ -42,7 +42,7 @@ export const AsAnchor: Story<ButtonProps> = (props) =>
   Button({ ...props, href: 'javascript:void 0' });
 
 const [firstIconName] = iconNames;
-const icon = Icon({ name: firstIconName });
+const icon = Icon({ name: firstIconName, ['aria-hidden']: 'true' });
 export const WithIcon: Story<ButtonProps> = (props: ButtonProps) =>
   Button({ ...props, children: icon + 'Button' }) +
   Button({ ...props, children: 'Button' + icon });

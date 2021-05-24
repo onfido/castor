@@ -60,12 +60,12 @@ export const WithIcon: Story<ButtonWithIconProps> = ({
 }: ButtonWithIconProps) => (
   <>
     <Button {...restProps}>
-      <Icon name={iconName} />
+      <Icon name={iconName} aria-hidden="true" />
       {children}
     </Button>
     <Button {...restProps}>
       {children}
-      <Icon name={iconName} />
+      <Icon name={iconName} aria-hidden="true" />
     </Button>
   </>
 );
