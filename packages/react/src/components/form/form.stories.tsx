@@ -37,7 +37,7 @@ export const Playground: Story<FormProps<Values>> = (props) => (
     <Field>
       <FieldLabel htmlFor="first-name">
         <span>
-          First name <Asterisk aria-label="required" />
+          First name <Asterisk />
         </span>
         <Input id="first-name" name="firstName" required />
       </FieldLabel>
@@ -49,7 +49,7 @@ export const Playground: Story<FormProps<Values>> = (props) => (
     <Field>
       <FieldLabel htmlFor="last-name">
         <span>
-          Last name <Asterisk aria-label="required" />
+          Last name <Asterisk />
         </span>
         <Input id="last-name" name="lastName" required />
       </FieldLabel>
@@ -61,7 +61,7 @@ export const Playground: Story<FormProps<Values>> = (props) => (
     <Field>
       <FieldLabel htmlFor="email">
         <span>
-          Email address <Asterisk aria-label="required" />
+          Email address <Asterisk />
         </span>
         <Input type="email" id="email" name="email" required />
       </FieldLabel>

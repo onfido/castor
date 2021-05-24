@@ -13,6 +13,4 @@ export const Asterisk = ({
   </abbr>
 );
 
-export type AsteriskProps = Omit<JSX.IntrinsicElements['abbr'], 'children'> & {
-  'aria-label': string;
-};
+export type AsteriskProps = Omit<JSX.IntrinsicElements['abbr'], 'children'>;
