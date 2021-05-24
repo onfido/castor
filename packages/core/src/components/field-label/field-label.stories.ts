@@ -36,7 +36,7 @@ export const AsRequired: Story<FieldLabelProps> = ({ children, ...props }) =>
   FieldLabel({
     ...props,
     children: html('span', {
-      children: [children, Asterisk({ 'aria-label': 'required' })],
+      children: [children, Asterisk()],
     }),
   });
 

@@ -42,7 +42,7 @@ export const AsRequired: Story<FieldLabelProps> = ({
   <FieldLabel {...restProps}>
     <span>
       {children}
-      <Asterisk aria-label="required" />
+      <Asterisk />
     </span>
   </FieldLabel>
 );

@@ -53,7 +53,7 @@ export const AsRequired: Story<FieldsetLegendProps> = ({
     <FieldsetLegend {...restProps}>
       <span>
         {children}
-        <Asterisk aria-label="required" />
+        <Asterisk />
       </span>
     </FieldsetLegend>
   </Fieldset>
