@@ -4,9 +4,12 @@ import React from 'react';
 import { IndicatorContainer, splitContainerProps } from '../../internal';
 import { withRef } from '../../utils';
 
+let count = 0;
+
 export const Checkbox = withRef(
   (
     {
+      id = `castor_checkbox_${++count}`,
       bordered,
       invalid,
       children,
@@ -22,6 +25,7 @@ export const Checkbox = withRef(
     return (
       <IndicatorContainer
         {...containerProps}
+        htmlFor={id}
         bordered={bordered}
         className={className}
         style={style}
@@ -33,6 +37,7 @@ export const Checkbox = withRef(
               disabled={disabled} // will be overriden by props if set
               {...inputProps}
               ref={ref}
+              id={id}
               type="checkbox"
               className={classy(c('checkbox'), m({ invalid, touched }))}
             />

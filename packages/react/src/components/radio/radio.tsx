@@ -4,9 +4,19 @@ import React from 'react';
 import { IndicatorContainer, splitContainerProps } from '../../internal';
 import { withRef } from '../../utils';
 
+let idCount = 0;
+
 export const Radio = withRef(
   (
-    { bordered, invalid, children, className, style, ...restProps }: RadioProps,
+    {
+      id = `castor_radio_${++idCount}`,
+      bordered,
+      invalid,
+      children,
+      className,
+      style,
+      ...restProps
+    }: RadioProps,
     ref: RadioProps['ref']
   ): JSX.Element => {
     const { disabled, touched } = useField();
@@ -15,6 +25,7 @@ export const Radio = withRef(
     return (
       <IndicatorContainer
         {...containerProps}
+        htmlFor={id}
         bordered={bordered}
         className={className}
         style={style}
@@ -26,6 +37,7 @@ export const Radio = withRef(
               disabled={disabled} // will be overriden by props if set
               {...inputProps}
               ref={ref}
+              id={id}
               type="radio"
               className={classy(c('radio'), m({ invalid, touched }))}
             />
