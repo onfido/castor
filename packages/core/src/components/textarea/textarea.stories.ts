@@ -60,11 +60,13 @@ export const Disabled = htmlMatrix(Textarea, { disabled });
 Disabled.argTypes = omit<TextareaProps>('disabled');
 
 interface TextareaWithLabelAndHelperTextProps extends TextareaProps {
+  id: string;
   label: string;
   helperText: string;
 }
 
 export const WithLabelAndHelperText = ({
+  id,
   label,
   helperText,
   ...props
@@ -75,12 +77,14 @@ export const WithLabelAndHelperText = ({
         children: [
           label,
           HelperText({ children: helperText }),
-          Textarea(props),
+          Textarea({ ...props, id }),
         ],
+        for: id,
       }),
     ],
   });
 WithLabelAndHelperText.args = {
+  id: 'input-with-label-and-helper-text',
   label: 'Label',
   helperText: 'Helper text',
 };

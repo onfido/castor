@@ -72,24 +72,27 @@ export const Disabled = reactMatrix(Textarea, { disabled });
 Disabled.argTypes = omit<TextareaProps>('disabled');
 
 interface TextareaWithLabelAndHelperTextProps extends TextareaProps {
+  id: string;
   label: string;
   helperText: string;
 }
 
 export const WithLabelAndHelperText = ({
+  id,
   label,
   helperText,
   ...restProps
 }: TextareaWithLabelAndHelperTextProps) => (
   <Field>
-    <FieldLabel>
+    <FieldLabel htmlFor={id}>
       {label}
       <HelperText>{helperText}</HelperText>
-      <Textarea {...restProps} />
+      <Textarea {...restProps} id={id} />
     </FieldLabel>
   </Field>
 );
 WithLabelAndHelperText.args = {
+  id: 'textarea-with-label-and-helper-text',
   label: 'Label',
   helperText: 'Helper text',
 };

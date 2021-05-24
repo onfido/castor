@@ -64,24 +64,27 @@ export const Disabled = reactMatrix(Input, { disabled });
 Disabled.argTypes = omit<InputProps>('disabled');
 
 interface InputWithLabelAndHelperTextProps extends InputProps {
+  id: string;
   label: string;
   helperText: string;
 }
 
 export const WithLabelAndHelperText = ({
+  id,
   label,
   helperText,
   ...restProps
 }: InputWithLabelAndHelperTextProps) => (
   <Field>
-    <FieldLabel>
+    <FieldLabel htmlFor={id}>
       {label}
       <HelperText>{helperText}</HelperText>
-      <Input {...restProps} />
+      <Input {...restProps} id={id} />
     </FieldLabel>
   </Field>
 );
 WithLabelAndHelperText.args = {
+  id: 'input-with-label-and-helper-text',
   label: 'Label',
   helperText: 'Helper text',
 };
