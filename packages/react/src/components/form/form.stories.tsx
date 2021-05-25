@@ -39,7 +39,12 @@ export const Playground: Story<FormProps<Values>> = (props) => (
         <span>
           First name <Asterisk />
         </span>
-        <Input id="first-name" name="firstName" required />
+        <Input
+          id="first-name"
+          name="firstName"
+          autoComplete="given-name"
+          required
+        />
       </FieldLabel>
       <Validation state="error" if="valueMissing">
         Please fill in this field
@@ -51,7 +56,12 @@ export const Playground: Story<FormProps<Values>> = (props) => (
         <span>
           Last name <Asterisk />
         </span>
-        <Input id="last-name" name="lastName" required />
+        <Input
+          id="last-name"
+          name="lastName"
+          autoComplete="family-name"
+          required
+        />
       </FieldLabel>
       <Validation state="error" if="valueMissing">
         Please fill in this field
@@ -63,7 +73,13 @@ export const Playground: Story<FormProps<Values>> = (props) => (
         <span>
           Email address <Asterisk />
         </span>
-        <Input type="email" id="email" name="email" required />
+        <Input
+          type="email"
+          id="email"
+          name="email"
+          autoComplete="email"
+          required
+        />
       </FieldLabel>
       <Validation state="error" if="valueMissing">
         Please fill in this field
