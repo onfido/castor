@@ -58,7 +58,7 @@
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
     "commitizen": "^4.2.4",
-    "concurrently": "^6.1.0",
+    "concurrently": "^6.2.0",
     "cypress": "^7.3.0",
     "cypress-image-snapshot": "^4.0.1",
     "cz-conventional-changelog": "^3.3.0",
