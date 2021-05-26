@@ -38,7 +38,7 @@
     "e2e:serve": "NODE_ENV=e2e yarn start --ci --quiet",
     "snapshot": "CYPRESS_updateSnapshots=true yarn e2e",
     "release": "HUSKY=0 standard-version",
-    "check-bundle-size": "yarn build && yarn run bundlewatch"
+    "check-bundle-size": "yarn build && yarn run bundlewatch --config ./.bundlewatchrc.json"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
@@ -85,24 +85,5 @@
     "ts-jest": "^26.5.6",
     "typescript": "^4.2.4",
     "wait-on": "^5.3.0"
-  },
-  "bundlewatch": {
-    "trackBranches": [
-      "main"
-    ],
-    "files": [
-      {
-        "path": "./packages/core/dist/index.js",
-        "maxSize": "200B"
-      },
-      {
-        "path": "./packages/core/dist/castor.css",
-        "maxSize": "3kB"
-      },
-      {
-        "path": "./packages/react/dist/index.js",
-        "maxSize": "90B"
-      }
-    ]
   }
 }
