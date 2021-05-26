@@ -16,7 +16,7 @@ export const Search = withRef(
   ): JSX.Element => (
     <div className={classy(c('search'), className)} style={style}>
       <Input {...restProps} ref={ref} type="search" />
-      <Icon name="search" />
+      <Icon name="search" aria-hidden="true" />
     </div>
   )
 );
