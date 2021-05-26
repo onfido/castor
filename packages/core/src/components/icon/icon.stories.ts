@@ -1,5 +1,6 @@
 import { iconNames } from '@onfido/castor-icons';
 import {
+  aria,
   colors,
   htmlMatrix,
   Meta,
@@ -29,6 +30,9 @@ export default {
         type: { summary: optionsToSummary(iconNames) },
       },
     },
+    name: {}, // just reorders in the table
+    'aria-hidden': aria.hidden,
+    'aria-label': aria.label,
   },
   args: {
     name: firstIconName,
@@ -36,12 +40,18 @@ export default {
 } as Meta<IconProps>;
 
 export const Playground: Story<IconProps> = (props) => Icon(props);
+Playground.args = {
+  'aria-label': 'A label for an icon',
+};
 
 export const Name = htmlMatrix(
   Icon,
   { name: iconNames },
   (props) => Icon(props) + props.name
 );
+Name.args = {
+  'aria-hidden': 'true',
+};
 Name.parameters = {
   display: 'grid',
   columns: 'repeat(4, auto 1fr)',
