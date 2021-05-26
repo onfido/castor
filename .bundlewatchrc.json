@@ -1,5 +1,5 @@
 {
-  "trackBranches": ["master"],
+  "trackBranches": ["main"],
   "files": [
     {
       "path": "./packages/core/dist/index.js",
