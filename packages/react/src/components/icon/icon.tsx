@@ -7,6 +7,8 @@ import React from 'react';
  * `@onfido/castor-icons` instead.
  *
  * https://github.com/onfido/castor-icons
+ *
+ * Requires either `aria-hidden="true"` or `aria-label` for accessibility.
  */
 export const Icon = ({
   name,
