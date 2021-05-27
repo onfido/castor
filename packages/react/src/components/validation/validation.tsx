@@ -40,7 +40,4 @@ export const Validation = ({
   );
 };
 
-export type ValidationProps = BaseProps &
-  JSX.IntrinsicElements['div'] & {
-    withIcon?: boolean;
-  };
+export type ValidationProps = BaseProps & JSX.IntrinsicElements['div'];
