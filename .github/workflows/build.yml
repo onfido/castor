@@ -25,6 +25,12 @@ jobs:
       - name: Build packages
         run: yarn build
 
+      - name: Check bundle size
+        uses: jackyef/bundlewatch-gh-action@0.2.0
+        with:
+          bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+          bundlewatch-config: .bundlewatchrc.json
+
       - name: Build (bundled) examples
         run: |
           yarn --cwd ./examples/custom-themes build

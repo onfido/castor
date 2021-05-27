@@ -1,0 +1,17 @@
+{
+  "trackBranches": ["main"],
+  "files": [
+    {
+      "path": "./packages/core/dist/index.js",
+      "maxSize": "200B"
+    },
+    {
+      "path": "./packages/core/dist/castor.css",
+      "maxSize": "3kB"
+    },
+    {
+      "path": "./packages/react/dist/index.js",
+      "maxSize": "90B"
+    }
+  ]
+}
