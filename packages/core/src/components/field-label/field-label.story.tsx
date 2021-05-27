@@ -2,7 +2,7 @@ import { c, classy } from '@onfido/castor';
 import { html } from '../../../../../docs';
 
 export interface FieldLabelProps {
-  children: string | string[];
+  children?: string | string[] | null;
   for?: string;
 }
 

@@ -2,7 +2,7 @@ import { c, classy, HelperTextProps as BaseProps, m } from '@onfido/castor';
 import { html } from '../../../../../docs';
 
 export interface HelperTextProps extends BaseProps {
-  children: string | string[];
+  children?: string | string[] | null;
 }
 
 /**
