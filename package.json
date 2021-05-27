@@ -28,6 +28,7 @@
     "lint": "concurrently yarn:lint:*",
     "lint:commit": "commitlint --from origin/main --to HEAD --verbose",
     "lint:es": "eslint . --ignore-path .gitignore --max-warnings 0",
+    "lint:ts": "tsc --noEmit",
     "lint:style": "stylelint '**/*.{,s}css' --ignore-path .gitignore --max-warnings 0",
     "lint:prettier": "prettier . --check --ignore-path .gitignore",
     "test": "jest --coverage",
