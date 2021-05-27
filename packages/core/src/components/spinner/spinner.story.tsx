@@ -2,7 +2,7 @@ import { c, classy, m, SpinnerProps as BaseProps } from '@onfido/castor';
 import { html } from '../../../../../docs';
 
 export interface SpinnerProps extends BaseProps {
-  children: string;
+  children?: string | null;
 }
 
 export const Spinner = ({ size, ...props }: SpinnerProps) =>

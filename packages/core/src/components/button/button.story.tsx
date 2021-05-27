@@ -2,7 +2,7 @@ import { ButtonProps as BaseProps, c, classy, m } from '@onfido/castor';
 import { html } from '../../../../../docs';
 
 export interface ButtonProps extends BaseProps {
-  children: string;
+  children?: string | null;
   href?: string;
 }
 

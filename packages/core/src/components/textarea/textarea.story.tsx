@@ -2,7 +2,7 @@ import { c, classy, m, TextareaProps as BaseProps } from '@onfido/castor';
 import { html } from '../../../../../docs';
 
 export interface TextareaProps extends BaseProps {
-  children?: string;
+  children?: string | null;
   id?: string;
   rows?: number;
 }
