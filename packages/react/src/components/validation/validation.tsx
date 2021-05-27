@@ -34,7 +34,7 @@ export const Validation = ({
       {...restProps}
       className={classy(c('validation'), m(state), className)}
     >
-      {withIcon && <Icon name="error" />}
+      {withIcon && <Icon name="error" aria-hidden="true" />}
       {children}
     </div>
   );
