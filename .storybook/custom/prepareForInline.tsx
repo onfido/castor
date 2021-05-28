@@ -27,6 +27,6 @@ const HtmlContainer = ({ children }: { children: string }) => (
   <div ref={(node) => node && (node.outerHTML = children)} />
 );
 
-const withDecorators = (ctx: StoryContext & ContainerContext) => (
-  content: JSX.Element
-) => decorators.reduce((final, next) => next(() => final, ctx), content);
+const withDecorators =
+  (ctx: StoryContext & ContainerContext) => (content: JSX.Element) =>
+    decorators.reduce((final, next) => next(() => final, ctx), content);

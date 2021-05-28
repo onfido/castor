@@ -88,9 +88,8 @@ export const WithFieldsetLegend = ({
     </Field>
   </Fieldset>
 );
-WithFieldsetLegend.argTypes = omit<CheckboxesWithFieldsetLegendProps>(
-  'children'
-);
+WithFieldsetLegend.argTypes =
+  omit<CheckboxesWithFieldsetLegendProps>('children');
 WithFieldsetLegend.args = {
   name: 'checkboxes-with-fieldset-legend',
   legend: 'Legend',
