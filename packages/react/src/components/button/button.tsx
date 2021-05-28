@@ -18,14 +18,13 @@ export const Button: ButtonComponent = ({
         disabled, // will be overriden by props if set
       })}
       {...(restProps as HTMLAttributes<HTMLElement>)}
-      {...(Element === 'a' && { role: 'button' })}
       className={classy(c('button'), m(`${kind}--${variant}`), className)}
     />
   );
 };
 
 export type ButtonProps<T extends 'a' | 'button' = 'button'> = BaseProps &
-  (T extends 'a' ? Omit<AnchorElementProps, 'role'> : ButtonElementProps);
+  (T extends 'a' ? AnchorElementProps : ButtonElementProps);
 
 type ButtonComponent = {
   (props: BaseProps & AnchorElementProps): JSX.Element;
