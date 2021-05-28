@@ -24,6 +24,9 @@
     "!src/**/*.spec.*",
     "!src/**/*.d.ts"
   ],
+  "dependencies": {
+    "@onfido/castor-tokens": "^1.0.0-beta.3"
+  },
   "peerDependencies": {
     "@onfido/castor-icons": ">=1.0.0"
   }

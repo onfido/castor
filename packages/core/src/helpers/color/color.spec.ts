@@ -2,7 +2,7 @@ import { describe, expect, it } from '@jest/globals';
 import { color } from './color';
 
 describe('color', () => {
-  describe('alias', () => {
+  describe('theme', () => {
     it('should return the correct rgba value', () => {
       const name = 'content-main';
 

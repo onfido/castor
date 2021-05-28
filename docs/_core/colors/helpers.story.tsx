@@ -3,10 +3,10 @@ import React from 'react';
 
 export const Helpers = () => (
   <>
-    <h4>Color Aliases</h4>
+    <h4>Theme Colors</h4>
     <p>
-      Use a supported alias token for setting color of content, background,
-      border, etc.
+      Use a supported theme color token for setting color of content,
+      background, border, etc.
     </p>
     <h5>Sass</h5>
     <Source

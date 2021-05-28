@@ -5,6 +5,7 @@ export default {
     '**/*.ts',
     '!**/*.stories.ts', // stories
     '!**/dist/**/*', // distribution files
+    '!**/integrated/**/*', // integrated files
     '!**/index.ts', // index files
   ],
   coverageDirectory: '../coverage/unit',
