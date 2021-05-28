@@ -8,7 +8,7 @@ export const Intro = () => (
       on the screen.
     </p>
     <p>
-      You can use tokens from the color palette or color aliases. The latter
+      You can use tokens from the color palette or theme colors. The latter
       refers to a predefined color alongside an alpha channel that is reflected
       based on the theme used.
     </p>

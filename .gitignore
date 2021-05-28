@@ -26,6 +26,5 @@ package-lock.json
 coverage
 cypress
 dist
+packages/*/src/integrated
 packages/*/prototype.js*
-packages/core/src/theme/tokens.scss
-packages/core/src/theme/themes/*.scss

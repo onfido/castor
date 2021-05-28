@@ -1,6 +1,0 @@
-// this file will generate ./dist/themes/night.css
-@use '../../src/theme';
-
-:root {
-  @include theme.night();
-}

@@ -1,3 +1,5 @@
+import { BorderRadius } from '@onfido/castor';
+
 /**
  * Returns the border-radius CSS var of a specified size.
  *
@@ -8,5 +10,3 @@
 export function borderRadius(size: BorderRadius) {
   return `var(--ods-border-radius-${size})`;
 }
-
-export type BorderRadius = 'small' | 'medium' | 'large' | 'full';
