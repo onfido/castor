@@ -42,8 +42,7 @@ Invalid.argTypes = omit<SelectProps>('invalid');
 export const Disabled = htmlMatrix(Select, { disabled });
 Disabled.argTypes = omit<SelectProps>('disabled');
 
-export const WithPlaceholder = ({ placeholder, ...props }: SelectProps) =>
-  Select({ ...props, placeholder });
+export const WithPlaceholder: Story<SelectProps> = (props) => Select(props);
 WithPlaceholder.args = {
   placeholder: 'Placeholder',
   children: null,

@@ -85,8 +85,6 @@
   $padding-horizontal: helpers.space(1.5) - $border-width;
   $padding-vertical: helpers.space(2) - $border-width;
 
-  padding-bottom: $padding-horizontal;
-  padding-left: $padding-vertical;
+  padding: $padding-vertical $padding-horizontal;
   padding-right: $padding-vertical + helpers.space(3.5); // extra space for icon
-  padding-top: $padding-horizontal;
 }

@@ -38,7 +38,7 @@ export const Select = withRef(
           ref={ref}
           id={id}
           defaultValue={
-            defaultValue || value != null ? undefined : placeholder && ''
+            defaultValue || (value == null && placeholder ? '' : undefined)
           }
           value={value}
           className={classy(

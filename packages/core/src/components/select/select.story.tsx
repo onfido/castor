@@ -34,14 +34,14 @@ export const Select = ({
           m({
             borderless,
             invalid,
-            ...(placeholder && (!value || value === '') && { empty: true }),
+            ...(placeholder && !value && { empty: true }),
           })
         ),
         children: [
           placeholder &&
             html('option', {
               value: '',
-              selected: !value || value === '',
+              selected: !value,
               disabled: true,
               children: placeholder,
             }),
