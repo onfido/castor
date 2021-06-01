@@ -82,8 +82,8 @@
     @error '$border-width must be a number';
   }
 
-  $padding-horizontal: helpers.space(1.5) - $border-width;
-  $padding-vertical: helpers.space(2) - $border-width;
+  $padding-horizontal: helpers.space(2) - $border-width;
+  $padding-vertical: helpers.space(1.5) - $border-width;
 
   padding: $padding-vertical $padding-horizontal;
   padding-right: $padding-vertical + helpers.space(3.5); // extra space for icon
