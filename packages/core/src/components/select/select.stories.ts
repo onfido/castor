@@ -1,3 +1,4 @@
+import { classy, m } from '@onfido/castor';
 import { html, htmlMatrix, Meta, omit, Story } from '../../../../../docs';
 import { FieldLabel } from '../field-label/field-label.story';
 import { Field } from '../field/field.story';
@@ -12,14 +13,18 @@ export default {
   title: 'Core/Select',
   component: Select,
   argTypes: {
-    ...omit<SelectProps>('id', 'placeholder', 'value'),
+    ...omit<SelectProps>('id', 'value'),
     children: {
-      description: 'List of options using `<option>`.',
+      description: [
+        'List of options using `<option>`.',
+        'For "empty" selection (placeholder) use `-empty` modifier on `<select>`.',
+      ].join('\n\n'),
       control: false,
     },
   },
   args: {
     children: [
+      html('option', { children: '', selected: true }),
       html('option', { children: 'Option 1' }),
       html('option', { children: 'Option 2' }),
       html('option', { children: 'Option 3' }),
@@ -42,10 +47,18 @@ Invalid.argTypes = omit<SelectProps>('invalid');
 export const Disabled = htmlMatrix(Select, { disabled });
 Disabled.argTypes = omit<SelectProps>('disabled');
 
-export const WithPlaceholder: Story<SelectProps> = (props) => Select(props);
-WithPlaceholder.args = {
-  placeholder: 'Placeholder',
-  children: null,
+export const WithNamedPlaceholder: Story<SelectProps> = (props) => {
+  console.log(props);
+  return Select({ ...props, class: classy(m({ empty: true })) });
+};
+WithNamedPlaceholder.args = {
+  children: [
+    html('option', {
+      children: 'Placeholder',
+      disabled: true,
+      selected: true,
+    }),
+  ],
 };
 
 interface SelectWithLabelAndHelperTextProps extends SelectProps {
@@ -81,7 +94,7 @@ WithLabelAndHelperText.args = {
 export const AllCombinations = htmlMatrix(
   Select,
   { borderless, disabled, invalid },
-  (props) => Select({ ...props, placeholder: placeholder(props) })
+  (props) => Select({ ...props, children: children(props) })
 );
 AllCombinations.argTypes = omit<SelectProps>('children');
 AllCombinations.args = {
@@ -92,9 +105,13 @@ AllCombinations.parameters = {
   columns: 'repeat(2, 1fr)',
 };
 
-const placeholder = ({ borderless, disabled, invalid }: SelectProps) =>
-  [
-    invalid ? 'invalid' : 'valid',
-    borderless ? 'borderless' : '',
-    disabled ? 'disabled' : '',
-  ].join(' ');
+const children = ({ borderless, disabled, invalid }: SelectProps) => [
+  html('option', {
+    children: [
+      invalid ? 'invalid' : 'valid',
+      borderless ? 'borderless' : '',
+      disabled ? 'disabled' : '',
+    ].join(' '),
+    selected: true,
+  }),
+];

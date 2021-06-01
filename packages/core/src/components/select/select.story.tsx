@@ -4,8 +4,8 @@ import { Icon } from '../icon/icon.story';
 
 export interface SelectProps extends BaseProps {
   children?: string | string[] | null;
+  class?: string;
   id?: string;
-  placeholder?: string;
   value?: string;
 }
 
@@ -17,11 +17,10 @@ export interface SelectProps extends BaseProps {
  */
 export const Select = ({
   id,
-  placeholder,
-  value,
   borderless,
   invalid,
   children,
+  class: className,
   ...props
 }: SelectProps) =>
   html('div', {
@@ -31,23 +30,10 @@ export const Select = ({
         ...props,
         class: classy(
           c('select-native'),
-          m({
-            borderless,
-            invalid,
-            ...(placeholder && !value && { empty: true }),
-          })
+          m({ borderless, invalid }),
+          className
         ),
-        children: [
-          placeholder &&
-            html('option', {
-              value: '',
-              selected: !value,
-              disabled: true,
-              hidden: true,
-              children: placeholder,
-            }),
-          ...(children ?? []),
-        ],
+        children,
         id,
       }),
       Icon({ name: 'chevron-down', ['aria-hidden']: 'true' }),

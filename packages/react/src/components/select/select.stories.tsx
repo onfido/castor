@@ -18,7 +18,10 @@ export default {
   component: Select,
   argTypes: {
     children: {
-      description: 'List of options using `<option>`.',
+      description: [
+        'List of options using `<option>`.',
+        'Set value as `""` to style selection as "empty" (for placeholder).',
+      ].join('\n\n'),
       control: false,
     },
     borderless: {
@@ -30,13 +33,11 @@ export default {
     invalid: {
       table: { type: { summary: 'boolean' } },
     },
-    placeholder: {
-      table: { type: { summary: 'string' } },
-    },
   },
   args: {
     children: (
       <>
+        <option value="" />
         <option>Option 1</option>
         <option>Option 2</option>
         <option>Option 3</option>
@@ -45,7 +46,6 @@ export default {
     borderless: false,
     disabled: false,
     invalid: false,
-    placeholder: 'Placeholder',
   },
   parameters: { display: 'flex' },
 } as Meta<SelectProps>;
@@ -62,6 +62,22 @@ Invalid.argTypes = omit<SelectProps>('invalid');
 
 export const Disabled = reactMatrix(Select, { disabled });
 Disabled.argTypes = omit<SelectProps>('disabled');
+
+export const WithNamedPlaceholder: Story<SelectProps> = (
+  props: SelectProps
+) => <Select {...props} defaultValue={''} />;
+WithNamedPlaceholder.args = {
+  children: (
+    <>
+      <option value="" disabled>
+        Placeholder
+      </option>
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+    </>
+  ),
+};
 
 interface SelectWithLabelAndHelperTextProps extends SelectProps {
   label: string;
@@ -115,7 +131,7 @@ WithValidation.args = {
 export const AllCombinations = reactMatrix(
   Select,
   { borderless, disabled, invalid },
-  (props) => <Select {...props} placeholder={placeholder(props)} />
+  (props) => <Select {...props}>{children(props)}</Select>
 );
 AllCombinations.argTypes = omit<SelectProps>('children');
 AllCombinations.args = {
@@ -126,9 +142,12 @@ AllCombinations.parameters = {
   columns: 'repeat(2, 1fr)',
 };
 
-const placeholder = ({ borderless, disabled, invalid }: SelectProps) =>
-  [
-    invalid ? 'invalid' : 'valid',
-    borderless ? 'borderless' : '',
-    disabled ? 'disabled' : '',
-  ].join(' ');
+const children = ({ borderless, disabled, invalid }: SelectProps) => (
+  <option>
+    {[
+      invalid ? 'invalid' : 'valid',
+      borderless ? 'borderless' : '',
+      disabled ? 'disabled' : '',
+    ].join(' ')}
+  </option>
+);

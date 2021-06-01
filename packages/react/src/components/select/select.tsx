@@ -15,8 +15,6 @@ export const Select = withRef(
   (
     {
       id = `castor_select_${++idCount}`,
-      placeholder,
-      defaultValue,
       value,
       borderless,
       invalid,
@@ -27,7 +25,7 @@ export const Select = withRef(
     }: SelectProps,
     ref: SelectProps['ref']
   ): JSX.Element => {
-    const [empty, setEmpty] = useState(!!placeholder);
+    const [empty, setEmpty] = useState(!value);
     const { disabled, touched } = useField();
 
     return (
@@ -37,9 +35,6 @@ export const Select = withRef(
           {...restProps}
           ref={ref}
           id={id}
-          defaultValue={
-            defaultValue || (value == null && placeholder ? '' : undefined)
-          }
           value={value}
           className={classy(
             c('select-native'),
@@ -51,11 +46,6 @@ export const Select = withRef(
             onChange?.(ev);
           }}
         >
-          {placeholder && (
-            <option value="" disabled hidden>
-              {placeholder}
-            </option>
-          )}
           {children}
         </select>
         <Icon name="chevron-down" />
