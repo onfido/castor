@@ -52,7 +52,7 @@ export const Select = withRef(
           }}
         >
           {placeholder && (
-            <option value="" disabled>
+            <option value="" disabled hidden>
               {placeholder}
             </option>
           )}

@@ -43,6 +43,7 @@ export const Select = ({
               value: '',
               selected: !value,
               disabled: true,
+              hidden: true,
               children: placeholder,
             }),
           ...(children ?? []),
