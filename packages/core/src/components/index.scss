@@ -26,6 +26,8 @@
 @forward './spinner/spinner';
 @use './search/search';
 @forward './search/search';
+@use './select/select';
+@forward './select/select';
 @use './textarea/textarea';
 @forward './textarea/textarea';
 @use './validation/validation';
@@ -46,6 +48,7 @@
   @include radio.Radio();
   @include spinner.Spinner();
   @include search.Search();
+  @include select.Select();
   @include textarea.Textarea();
   @include validation.Validation();
 }

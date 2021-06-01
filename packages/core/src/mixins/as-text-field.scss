@@ -1,7 +1,7 @@
 @use '../helpers';
 @use './with-inner-focus' as mixins;
 
-@mixin as-text-input() {
+@mixin as-text-field() {
   $border-width: 1px;
 
   @include helpers.font('300-regular');
