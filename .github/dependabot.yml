@@ -14,13 +14,13 @@ updates:
     ignore:
       - dependency-name: 'autoprefixer'
         versions:
-          - 10.x
+          - '>= 10.0.0'
       - dependency-name: 'postcss-modules'
         versions:
-          - 4.x
+          - '>= 4.0.0'
       - dependency-name: 'sass-loader'
         versions:
-          - 11.x
+          - '>= 11.0.0'
       - dependency-name: 'webpack'
         versions:
-          - 5.x
+          - '>= 5.0.0'
