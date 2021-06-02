@@ -2,6 +2,7 @@ import {
   Field,
   FieldLabel,
   HelperText,
+  Option,
   Select,
   SelectProps,
   Validation,
@@ -19,7 +20,7 @@ export default {
   argTypes: {
     children: {
       description: [
-        'List of options using `<option>`.',
+        'List of options using `Option`.',
         'Set value as `""` to style selection as "empty" (for placeholder).',
       ].join('\n\n'),
       control: false,
@@ -37,10 +38,10 @@ export default {
   args: {
     children: (
       <>
-        <option value="">Select an option...</option>
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
+        <Option value="">Select an option...</Option>
+        <Option>Option 1</Option>
+        <Option>Option 2</Option>
+        <Option>Option 3</Option>
       </>
     ),
     borderless: false,
@@ -69,12 +70,12 @@ export const AsRequired: Story<SelectProps> = (props: SelectProps) => (
 AsRequired.args = {
   children: (
     <>
-      <option value="" disabled>
+      <Option value="" disabled>
         Select an option...
-      </option>
-      <option>Option 1</option>
-      <option>Option 2</option>
-      <option>Option 3</option>
+      </Option>
+      <Option>Option 1</Option>
+      <Option>Option 2</Option>
+      <Option>Option 3</Option>
     </>
   ),
   required: true,
@@ -144,11 +145,11 @@ AllCombinations.parameters = {
 };
 
 const children = ({ borderless, disabled, invalid }: SelectProps) => (
-  <option>
+  <Option>
     {[
       invalid ? 'invalid' : 'valid',
       borderless ? 'borderless' : '',
       disabled ? 'disabled' : '',
     ].join(' ')}
-  </option>
+  </Option>
 );

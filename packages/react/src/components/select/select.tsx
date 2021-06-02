@@ -56,3 +56,7 @@ export const Select = withRef(
 Select.displayName = 'Select';
 
 export type SelectProps = BaseProps & JSX.IntrinsicElements['select'];
+
+export const Option = (props: OptionProps) => <option {...props} />;
+
+export type OptionProps = JSX.IntrinsicElements['option'];
