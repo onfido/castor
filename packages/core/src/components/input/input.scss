@@ -11,6 +11,6 @@
 
 @mixin _Input() {
   .ods-input {
-    @include mixins.as-text-input();
+    @include mixins.as-text-field();
   }
 }

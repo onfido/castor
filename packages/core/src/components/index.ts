@@ -6,6 +6,7 @@ export * from './helper-text/helper-text';
 export * from './icon/icon';
 export * from './input/input';
 export * from './radio/radio';
+export * from './select/select';
 export * from './spinner/spinner';
 export * from './textarea/textarea';
 export * from './validation/validation';

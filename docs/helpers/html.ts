@@ -19,8 +19,8 @@ export const html = (
     .join('\n');
 
 function toAttribute([key, value]: [string, unknown]) {
+  if (value === '' || value === true) return key;
   if (!value) return '';
-  if (value === true) return key;
 
   return `${key}="${value}"`;
 }

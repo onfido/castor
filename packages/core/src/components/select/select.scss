@@ -1,0 +1,90 @@
+@use '../../helpers';
+@use '../../mixins';
+@use '../icon/icon';
+
+@mixin Select() {
+  @include icon.Icon();
+
+  @if not mixins.includes('Select') {
+    @include _Select();
+  }
+}
+
+@mixin _Select() {
+  .ods-select {
+    align-items: center;
+    display: inline-flex;
+    position: relative;
+    width: helpers.space(50);
+
+    &.-borderless {
+      width: fit-content;
+    }
+  }
+
+  .ods-select-native {
+    @include mixins.as-text-field();
+    @include mixins.interactive();
+    @include with-padding(1px); // border width set on `as-text-field` mixin
+
+    appearance: none; // removes native arrow that opens the select
+
+    &.-empty {
+      color: helpers.color('content-placeholder');
+    }
+
+    + .ods-icon {
+      color: helpers.color('content-main');
+      pointer-events: none;
+      position: absolute;
+      right: helpers.space(2);
+    }
+
+    &.-invalid,
+    &.-touched:invalid,
+    &.-invalid + .ods-icon,
+    &.-touched:invalid + .ods-icon {
+      color: helpers.color('content-negative');
+    }
+
+    &:disabled {
+      &,
+      + .ods-icon {
+        color: helpers.color('content-disabled');
+      }
+    }
+
+    &.-borderless {
+      @include mixins.with-inner-focus('action');
+      @include with-padding(); // no border width because border will be unset
+
+      background-color: transparent;
+      border: 0;
+
+      &:hover {
+        background-color: helpers.color('background-action-subtle-hover');
+      }
+
+      &:disabled {
+        background-color: helpers.color('background-disabled');
+      }
+    }
+
+    &.-borderless.-invalid,
+    &.-borderless.-touched:invalid {
+      @include mixins.with-inner-focus('negative');
+    }
+  }
+}
+
+@mixin with-padding($border-width: 0) {
+  @if type-of($border-width) != number {
+    @error '$border-width must be a number';
+  }
+
+  $padding-horizontal: helpers.space(2) - $border-width;
+  $padding-vertical: helpers.space(1.5) - $border-width;
+
+  padding: $padding-vertical $padding-horizontal;
+  padding-right: $padding-vertical + helpers.space(3.5); // extra space for icon
+}

@@ -6,6 +6,7 @@ import {
   FieldLabelProps,
   HelperText,
   Input,
+  Select,
   Textarea,
 } from '@onfido/castor-react';
 import React from 'react';
@@ -88,6 +89,34 @@ export const WithInput = ({
 WithInput.argTypes = omit<FieldLabelWithInputProps>('children');
 WithInput.args = {
   id: 'field-label-with-input',
+  label: 'Label',
+};
+
+interface FieldLabelWithSelectProps extends FieldLabelProps {
+  id: string;
+  label: string;
+}
+
+export const WithSelect = ({
+  id,
+  label,
+  ...restProps
+}: FieldLabelWithSelectProps) => (
+  <Field>
+    <FieldLabel {...restProps} htmlFor={id}>
+      {label}
+    </FieldLabel>
+    <Select id={id} native>
+      <option value="" />
+      <option value="a">Value A</option>
+      <option value="b">Value B</option>
+      <option value="c">Value C</option>
+    </Select>
+  </Field>
+);
+WithSelect.argTypes = omit<FieldLabelWithSelectProps>('children');
+WithSelect.args = {
+  id: 'field-label-with-select',
   label: 'Label',
 };
 

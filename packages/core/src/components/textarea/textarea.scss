@@ -11,7 +11,7 @@
 
 @mixin _Textarea() {
   .ods-textarea {
-    @include mixins.as-text-input();
+    @include mixins.as-text-field();
 
     resize: vertical;
   }

@@ -4,6 +4,7 @@ import { Asterisk } from '../asterisk/asterisk.story';
 import { Field } from '../field/field.story';
 import { HelperText } from '../helper-text/helper-text.story';
 import { Input } from '../input/input.story';
+import { Select } from '../select/select.story';
 import { Textarea } from '../textarea/textarea.story';
 import { FieldLabel, FieldLabelProps } from './field-label.story';
 
@@ -79,6 +80,40 @@ export const WithInput = ({ id, label, ...props }: FieldLabelWithInputProps) =>
 WithInput.argTypes = omit<FieldLabelWithInputProps>('children');
 WithInput.args = {
   id: 'field-label-with-input',
+  label: 'Label',
+};
+
+interface FieldLabelWithSelectProps extends FieldLabelProps {
+  id: string;
+  label: string;
+}
+
+export const WithSelect = ({
+  id,
+  label,
+  ...props
+}: FieldLabelWithSelectProps) =>
+  Field({
+    children: [
+      FieldLabel({
+        ...props,
+        children: label,
+        for: id,
+      }),
+      Select({
+        children: [
+          html('option', { children: '', selected: true }),
+          html('option', { children: 'Value A', value: 'a' }),
+          html('option', { children: 'Value B', value: 'b' }),
+          html('option', { children: 'Value C', value: 'c' }),
+        ],
+        id,
+      }),
+    ],
+  });
+WithSelect.argTypes = omit<FieldLabelWithSelectProps>('children');
+WithSelect.args = {
+  id: 'field-label-with-select',
   label: 'Label',
 };
 
