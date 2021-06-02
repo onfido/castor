@@ -37,7 +37,7 @@ export default {
   args: {
     children: (
       <>
-        <option value="" />
+        <option value="">Select an option...</option>
         <option>Option 1</option>
         <option>Option 2</option>
         <option>Option 3</option>
@@ -63,20 +63,21 @@ Invalid.argTypes = omit<SelectProps>('invalid');
 export const Disabled = reactMatrix(Select, { disabled });
 Disabled.argTypes = omit<SelectProps>('disabled');
 
-export const WithNamedPlaceholder: Story<SelectProps> = (
-  props: SelectProps
-) => <Select {...props} defaultValue={''} />;
-WithNamedPlaceholder.args = {
+export const AsRequired: Story<SelectProps> = (props: SelectProps) => (
+  <Select {...props} defaultValue={''} />
+);
+AsRequired.args = {
   children: (
     <>
       <option value="" disabled>
-        Placeholder
+        Select an option...
       </option>
       <option>Option 1</option>
       <option>Option 2</option>
       <option>Option 3</option>
     </>
   ),
+  required: true,
 };
 
 interface SelectWithLabelAndHelperTextProps extends SelectProps {

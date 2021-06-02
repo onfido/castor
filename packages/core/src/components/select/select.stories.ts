@@ -24,7 +24,7 @@ export default {
   },
   args: {
     children: [
-      html('option', { children: '', selected: true }),
+      html('option', { children: 'Select an option...', selected: true }),
       html('option', { children: 'Option 1' }),
       html('option', { children: 'Option 2' }),
       html('option', { children: 'Option 3' }),
@@ -47,14 +47,27 @@ Invalid.argTypes = omit<SelectProps>('invalid');
 export const Disabled = htmlMatrix(Select, { disabled });
 Disabled.argTypes = omit<SelectProps>('disabled');
 
-export const WithNamedPlaceholder: Story<SelectProps> = (props) => {
-  console.log(props);
-  return Select({ ...props, class: classy(m({ empty: true })) });
-};
-WithNamedPlaceholder.args = {
+export const AsRequired: Story<SelectProps> = (props) =>
+  Select({ ...props, required: true });
+AsRequired.args = {
   children: [
     html('option', {
-      children: 'Placeholder',
+      children: 'Select an option...',
+      disabled: true,
+      selected: true,
+    }),
+    html('option', { children: 'Option 1' }),
+    html('option', { children: 'Option 2' }),
+    html('option', { children: 'Option 3' }),
+  ],
+};
+
+export const WithEmptyModifier: Story<SelectProps> = (props) =>
+  Select({ ...props, class: classy(m({ empty: true })) });
+WithEmptyModifier.args = {
+  children: [
+    html('option', {
+      children: 'Select an option...',
       disabled: true,
       selected: true,
     }),
