@@ -34,6 +34,10 @@ export default {
     invalid: {
       table: { type: { summary: 'boolean' } },
     },
+    native: {
+      table: { type: { summary: 'boolean' } },
+      control: false,
+    },
   },
   args: {
     children: (
@@ -47,6 +51,7 @@ export default {
     borderless: false,
     disabled: false,
     invalid: false,
+    native: true,
   },
   parameters: { display: 'flex' },
 } as Meta<SelectProps>;

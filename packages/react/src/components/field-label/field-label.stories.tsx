@@ -106,7 +106,7 @@ export const WithSelect = ({
     <FieldLabel {...restProps} htmlFor={id}>
       {label}
     </FieldLabel>
-    <Select id={id}>
+    <Select id={id} native>
       <option value="" />
       <option value="a">Value A</option>
       <option value="b">Value B</option>
