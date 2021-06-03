@@ -38,8 +38,10 @@
     "e2e:run": "wait-on http://localhost:6006 && cypress run -c video=true",
     "e2e:serve": "NODE_ENV=e2e yarn start --ci --quiet",
     "snapshot": "CYPRESS_updateSnapshots=true yarn e2e",
-    "release": "HUSKY=0 standard-version",
-    "check-bundle-size": "yarn build && yarn bundlewatch --config .bundlewatchrc.json"
+    "inspect": "concurrently yarn:inspect:*",
+    "preinspect:bundle-size": "yarn build && yarn prototype",
+    "inspect:bundle-size": "bundlewatch --config .bundlewatchrc.json",
+    "release": "HUSKY=0 standard-version"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
