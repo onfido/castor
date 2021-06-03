@@ -5,12 +5,8 @@
   },
   "files": [
     {
-      "path": "./packages/*/dist/**/*.css",
+      "path": "./packages/core/dist/castor.css",
       "maxSize": "5kB"
-    },
-    {
-      "path": "./packages/*/dist/**/*.js",
-      "maxSize": "1kB"
     },
     {
       "path": "./packages/*/prototype.js",
