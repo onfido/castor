@@ -6,11 +6,11 @@
   "files": [
     {
       "path": "./packages/core/dist/castor.css",
-      "maxSize": "5kB"
+      "maxSize": "5KB"
     },
     {
       "path": "./packages/*/prototype.js",
-      "maxSize": "20kB"
+      "maxSize": "20KB"
     }
   ]
 }
