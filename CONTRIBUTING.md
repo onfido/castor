@@ -38,17 +38,21 @@ Then remove Node that was installed alongside Yarn:
 
     `yarn lint`
 
-3.  Commit according to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). We support these tools:
+3.  Inspect built packages:
+
+    `yarn inspect`
+
+4.  Commit according to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). We support these tools:
 
     - Commitizen, which runs automatically on a pre-commit Git hook thanks to Husky.
 
     - The [VS Code plugin](https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits).
 
-4.  When opening a pull request, provide as much details as possible for a reviewer to better understand the change.
+5.  When opening a pull request, provide as much details as possible for a reviewer to better understand the change.
 
-5.  Check the change manually locally _before_ you assign reviewers.
+6.  Check the change manually locally _before_ you assign reviewers.
 
-6.  When a PR is approved - **do not merge** until acceptance testing is done, and the change is ready for a release.
+7.  When a PR is approved - **do not merge** until acceptance testing is done, and the change is ready for a release.
 
 ### Run Storybook locally
 

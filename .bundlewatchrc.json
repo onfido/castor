@@ -1,17 +1,16 @@
 {
-  "trackBranches": ["main"],
+  "ci": {
+    "repoBranchBase": "main",
+    "trackBranches": ["main"]
+  },
   "files": [
     {
-      "path": "./packages/core/dist/index.js",
-      "maxSize": "200B"
-    },
-    {
       "path": "./packages/core/dist/castor.css",
-      "maxSize": "3kB"
+      "maxSize": "5KB"
     },
     {
-      "path": "./packages/react/dist/index.js",
-      "maxSize": "90B"
+      "path": "./packages/*/prototype.js",
+      "maxSize": "20KB"
     }
   ]
 }
