@@ -10,7 +10,9 @@ import {
   FormProps,
   HelperText,
   Input,
+  Option,
   Radio,
+  Select,
   Validation,
 } from '@onfido/castor-react';
 import React from 'react';
@@ -25,6 +27,7 @@ interface Values {
   firstName: string;
   lastName: string;
   email: string;
+  gender: string;
   day?: number;
   month?: number;
   year?: number;
@@ -86,6 +89,23 @@ export const Playground: Story<FormProps<Values>> = (props) => (
       </Validation>
       <Validation state="error" if="typeMismatch">
         Please enter a valid email address
+      </Validation>
+    </Field>
+
+    <Field>
+      <FieldLabel htmlFor="gender">
+        <span>
+          Gender <Asterisk />
+        </span>
+        <Select id="gender" name="gender" native required>
+          <Option value="">Select an option...</Option>
+          <Option value="m">Male</Option>
+          <Option value="f">Female</Option>
+          <Option value="n/a">Prefer not to answer</Option>
+        </Select>
+      </FieldLabel>
+      <Validation state="error" if="valueMissing">
+        Please select an option for this field
       </Validation>
     </Field>
 
