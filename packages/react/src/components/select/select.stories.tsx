@@ -87,24 +87,27 @@ AsRequired.args = {
 };
 
 interface SelectWithLabelAndHelperTextProps extends SelectProps {
+  id: string;
   label: string;
   helperText: string;
 }
 
 export const WithLabelAndHelperText = ({
+  id,
   label,
   helperText,
   ...restProps
 }: SelectWithLabelAndHelperTextProps) => (
   <Field>
-    <FieldLabel>
+    <FieldLabel htmlFor={id}>
       {label}
       <HelperText>{helperText}</HelperText>
-      <Select {...restProps} />
+      <Select {...restProps} id={id} />
     </FieldLabel>
   </Field>
 );
 WithLabelAndHelperText.args = {
+  id: 'select-with-label-and-helper-text',
   label: 'Label',
   helperText: 'Helper text',
 };
