@@ -101,6 +101,7 @@ export const Playground: Story<FormProps<Values>> = (props) => (
           <Option value="">Select an option...</Option>
           <Option value="m">Male</Option>
           <Option value="f">Female</Option>
+          <Option value="n-b">Non-binary</Option>
           <Option value="n/a">Prefer not to answer</Option>
         </Select>
       </FieldLabel>
