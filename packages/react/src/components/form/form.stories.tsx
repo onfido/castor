@@ -19,7 +19,7 @@ import React from 'react';
 import { Meta, Story } from '../../../../../docs';
 
 export default {
-  title: 'React/Form',
+  title: 'React/Components/Form/Form',
   component: Form,
 } as Meta<FormProps<Values>>;
 

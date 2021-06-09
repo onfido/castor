@@ -19,7 +19,7 @@ const type = [
 type.toString = () => type.map((value) => `"${value}"`).join('|');
 
 export default {
-  title: 'Core/Input',
+  title: 'Core/Components/Form/Input',
   component: Input,
   argTypes: {
     ...omit<InputProps>('id', 'value'),

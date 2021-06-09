@@ -8,7 +8,7 @@ const kind = ['action', 'destructive'] as const;
 const variant = ['primary', 'secondary', 'tertiary'] as const;
 
 export default {
-  title: 'React/Button',
+  title: 'React/Components/Button',
   component: Button,
   argTypes: {
     disabled: {

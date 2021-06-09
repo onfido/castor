@@ -10,7 +10,7 @@ const disabled = [true, false] as const;
 const invalid = [true, false] as const;
 
 export default {
-  title: 'Core/Select',
+  title: 'Core/Components/Form/Select',
   component: Select,
   argTypes: {
     ...omit<SelectProps>('class', 'id', 'value'),

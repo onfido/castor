@@ -24,7 +24,7 @@ const type = [
 type.toString = () => type.map((value) => `"${value}"`).join('|');
 
 export default {
-  title: 'React/Input',
+  title: 'React/Components/Form/Input',
   component: Input,
   argTypes: {
     disabled: {

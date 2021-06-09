@@ -6,7 +6,7 @@ import { Icon } from './icon.story';
 const [firstIconName] = iconNames;
 
 export default {
-  title: 'Core/Icon',
+  title: 'Core/Components/Icon',
   component: Icon,
   argTypes: {
     color: {

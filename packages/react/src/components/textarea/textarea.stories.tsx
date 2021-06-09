@@ -21,7 +21,7 @@ const resize: readonly TextareaProps['resize'][] = [
 resize.toString = () => resize.map((value) => `"${value}"`).join('|');
 
 export default {
-  title: 'React/Textarea',
+  title: 'React/Components/Form/Textarea',
   component: Textarea,
   argTypes: {
     disabled: {

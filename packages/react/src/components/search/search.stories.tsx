@@ -5,7 +5,7 @@ import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 const disabled = [true, false] as const;
 
 export default {
-  title: 'React/Search',
+  title: 'React/Components/Search',
   component: Search,
   argTypes: {
     disabled: {
