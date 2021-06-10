@@ -2053,10 +2053,10 @@
   resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-2.4.0.tgz#8d8462220a4ce69152e12f92db8764f70bebc2aa"
   integrity sha512-iiv0OpzzZ8W8zikqNjGgcoUhzzc/yPJRR5T/ieWxCVkbyV6KjFLadb9yC9M2jbCAJRY23if2uuGhj7ZOuNe70A==
 
-"@onfido/castor-tokens@^1.0.0-beta.3":
-  version "1.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@onfido/castor-tokens/-/castor-tokens-1.0.0-beta.3.tgz#cea25b1a6cc941c2266661f73d1af198edb7c1d1"
-  integrity sha512-QLLgijcNF2CYkh05fqBgAuNqF571U7JYYPfEHKY32StGDvgp+aGQAtK3qjSdH36V7DsEAoIQnvVnZrLRBhuBCA==
+"@onfido/castor-tokens@^1.0.0-beta.4":
+  version "1.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/@onfido/castor-tokens/-/castor-tokens-1.0.0-beta.4.tgz#f3f3663a127df1752992bbaf3069dd3239967605"
+  integrity sha512-VUXbF87xH25LgNzk4YCQtPY39f2IN6pHHQpq7d5HlnTlzknkTWQt56qqES0BoopEkQlfx/xp+SCh7pCu6OBLqQ==
 
 "@open-wc/building-utils@^2.18.3":
   version "2.18.4"
