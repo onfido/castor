@@ -85,15 +85,35 @@ AllCombinations.parameters = {
   columns: '1fr',
 };
 
-export const Example = (props: ProgressProps) => {
+export const ValueLoop = (props: ProgressProps) => {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
     setTimeout(setValue, 1000, value === 100 ? 0 : value + 10);
   }, [value]);
+
   return (
     <div aria-busy={value !== 100} style={{ width: '100%' }}>
       <Progress {...props} value={value} />
     </div>
   );
+};
+ValueLoop.parameters = {
+  docs: {
+    source: {
+      code: `export const ValueLoop = (props: ProgressProps) => {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    setTimeout(setValue, 1000, value === 100 ? 0 : value + 10);
+  }, [value]);
+
+  return (
+    <div aria-busy={value !== 100} style={{ width: '100%' }}>
+      <Progress {...props} value={value} />
+    </div>
+  );
+};`,
+    },
+  },
 };
