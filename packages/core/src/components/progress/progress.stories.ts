@@ -1,6 +1,5 @@
-import { ProgressProps } from '@onfido/castor-react';
 import { htmlMatrix, Meta, omit, Story } from '../../../../../docs';
-import { Progress } from './progress.story';
+import { Progress, ProgressProps } from './progress.story';
 
 const size = ['regular', 'large'] as const;
 

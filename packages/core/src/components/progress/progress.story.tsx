@@ -1,5 +1,9 @@
-import { c, classy, m, ProgressProps } from '@onfido/castor';
+import { c, classy, m, ProgressProps as BaseProps } from '@onfido/castor';
 import { html } from '../../../../../docs';
+
+export interface ProgressProps extends BaseProps {
+  children?: string | null;
+}
 
 export const Progress = ({
   size,
