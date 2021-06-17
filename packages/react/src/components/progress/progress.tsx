@@ -12,7 +12,7 @@ export const Progress = ({
   min = 0,
   max = 100,
   size = 'regular',
-  style = {},
+  style,
   hideLabel,
   children,
   className,
@@ -32,7 +32,7 @@ export const Progress = ({
       aria-valuetext={
         ariaValuetext || (typeof children === 'string' ? children : undefined)
       }
-      style={{ ...style, ...cssVars({ percentValue }) }}
+      style={{ ...(style ?? {}), ...cssVars({ percentValue }) }}
     >
       {!hideLabel && (children || percentValue)}
     </div>
