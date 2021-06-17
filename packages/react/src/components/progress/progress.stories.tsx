@@ -4,7 +4,7 @@ import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 
 const size = ['regular', 'large'] as const;
 const hideLabel = [false, true] as const;
-const children = ['', 'Custom l'] as const;
+const children = ['', 'Custom label'] as const;
 
 export default {
   title: 'React/Progress',
