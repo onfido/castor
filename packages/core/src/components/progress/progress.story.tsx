@@ -9,6 +9,7 @@ export interface ProgressProps extends BaseProps {
 export const Progress = ({
   size,
   value,
+  min = 0,
   max = 100,
   hideLabel,
   children,
@@ -20,7 +21,7 @@ export const Progress = ({
     class: classy(c('progress'), m(size)),
     role: 'progressbar',
     'aria-valuenow': String(value),
-    'aria-valuemin': String(0),
+    'aria-valuemin': String(min),
     'aria-valuemax': String(max),
     'aria-valuetext':
       ariaValuetext || (typeof children === 'string' ? children : undefined),
