@@ -1,18 +1,25 @@
-import { c, classy, m, ProgressProps as BaseProps } from '@onfido/castor';
+import {
+  c,
+  classy,
+  cssVars,
+  m,
+  ProgressProps as BaseProps,
+} from '@onfido/castor';
 import React from 'react';
 
 export const Progress = ({
-  value = 0,
+  value,
   min = 0,
   max = 100,
   size = 'regular',
+  style = {},
   hideLabel,
   children,
   className,
   'aria-valuetext': ariaValuetext,
   ...restProps
 }: ProgressProps): JSX.Element => {
-  const percentValue = Math.round(((value - min) * 100) / (max - min));
+  const percentValue = `${Math.round(((value - min) * 100) / (max - min))}%`;
 
   return (
     <div
@@ -25,18 +32,9 @@ export const Progress = ({
       aria-valuetext={
         ariaValuetext || (typeof children === 'string' ? children : undefined)
       }
+      style={{ ...style, ...cssVars({ percentValue }) }}
     >
-      <div className={classy(c('progress-background'), m(size))}>
-        <div
-          className={classy(c('progress-indicator'))}
-          style={{ width: `${percentValue}%` }}
-        />
-      </div>
-      {!hideLabel && (
-        <div className={classy(c('progress-label'), m(size))}>
-          {children || `${percentValue}%`}
-        </div>
-      )}
+      {!hideLabel && (children || percentValue)}
     </div>
   );
 };

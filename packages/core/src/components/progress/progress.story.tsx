@@ -3,6 +3,7 @@ import { html } from '../../../../../docs';
 
 export interface ProgressProps extends BaseProps {
   children?: string | null;
+  'aria-valuetext'?: string;
 }
 
 export const Progress = ({
@@ -11,6 +12,7 @@ export const Progress = ({
   max = 100,
   hideLabel,
   children,
+  'aria-valuetext': ariaValuetext,
   ...props
 }: ProgressProps) =>
   html('div', {
@@ -20,22 +22,12 @@ export const Progress = ({
     'aria-valuenow': String(value),
     'aria-valuemin': String(0),
     'aria-valuemax': String(max),
-    'aria-valuetext': !hideLabel && children ? children : undefined,
+    'aria-valuetext':
+      ariaValuetext || (typeof children === 'string' ? children : undefined),
+    style: `--percent-value: ${Math.round((value / max) * 100)}%`,
     children: [
-      html('div', {
-        class: classy(c('progress-background'), m(size)),
-        children: [
-          html('div', {
-            class: classy(c('progress-indicator')),
-            style: `width: ${Math.round((value / max) * 100)}%`,
-          }),
-        ],
-      }),
       !hideLabel
-        ? html('div', {
-            class: classy(c('progress-label'), m(size)),
-            children: children || `${Math.round((value / max) * 100)}%`,
-          })
+        ? children || `${Math.round((value / max) * 100)}%`
         : undefined,
     ],
   });

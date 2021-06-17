@@ -11,47 +11,44 @@
   .ods-progress {
     display: inline-grid;
     grid: auto-flow/auto;
+    position: relative;
+    text-align: center;
     width: 100%;
 
+    &::before {
+      background-color: helpers.color('background-progress');
+      border-radius: helpers.border-radius('full');
+      content: '';
+      width: 100%;
+    }
+
+    &::after {
+      background-color: helpers.color('content-progress');
+      border-radius: helpers.border-radius('full');
+      content: '';
+      position: absolute;
+      transition: width var(--ods-transition-duration) ease-in-out;
+      width: var(--percent-value);
+    }
+
+    &.-regular::before,
+    &.-regular::after {
+      height: helpers.space(0.5);
+    }
+
+    &.-large::before,
+    &.-large::after {
+      height: helpers.space(1);
+    }
+
     &.-regular {
+      @include helpers.font('200-regular');
       gap: helpers.space(0.5);
     }
 
     &.-large {
-      gap: helpers.space(1);
-    }
-  }
-
-  .ods-progress-background {
-    background-color: helpers.color('background-progress');
-    border-radius: helpers.border-radius('full');
-    overflow: hidden;
-    width: 100%;
-
-    &.-regular {
-      height: helpers.space(0.5);
-    }
-
-    &.-large {
-      height: helpers.space(1);
-    }
-  }
-
-  .ods-progress-indicator {
-    background-color: helpers.color('content-progress');
-    height: 100%;
-    transition: width var(--ods-transition-duration) ease-in-out;
-  }
-
-  .ods-progress-label {
-    justify-self: center;
-
-    &.-regular {
-      @include helpers.font('200-regular');
-    }
-
-    &.-large {
       @include helpers.font('300-regular');
+      gap: helpers.space(1);
     }
   }
 }
