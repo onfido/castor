@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 
 const size = ['regular', 'large'] as const;
+const hideLabel = [false, true] as const;
+const children = ['', 'Custom l'] as const;
 
 export default {
   title: 'React/Progress',
@@ -73,13 +75,21 @@ WithoutLabel.args = {
   hideLabel: true,
 };
 
+export const AllCombinations = reactMatrix(
+  Progress,
+  { size, hideLabel, children },
+  (props) => <Progress {...props} />
+);
+AllCombinations.parameters = {
+  display: 'grid',
+  columns: '1fr',
+};
+
 export const Example = (props: ProgressProps) => {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => {
-      setValue(value === 100 ? 0 : value + 10);
-    }, 1000);
+    setTimeout(setValue, 1000, value === 100 ? 0 : value + 10);
   }, [value]);
   return (
     <div aria-busy={value !== 100} style={{ width: '100%' }}>

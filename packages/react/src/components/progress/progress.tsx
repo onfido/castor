@@ -9,31 +9,40 @@ export const Progress = ({
   hideLabel,
   children,
   className,
+  'aria-valuetext': ariaValuetext,
+  ...restProps
 }: ProgressProps): JSX.Element => {
-  const normalizedValue = Math.round((value / max) * 100);
+  const percentValue = Math.round(((value - min) * 100) / (max - min));
 
   return (
     <div
+      {...restProps}
       className={classy(c('progress'), m(size), className)}
       role="progressbar"
       aria-valuenow={value}
       aria-valuemin={min}
       aria-valuemax={max}
-      aria-valuetext={!hideLabel && children ? children : undefined}
+      aria-valuetext={
+        ariaValuetext || (typeof children === 'string' ? children : undefined)
+      }
     >
       <div className={classy(c('progress-background'), m(size))}>
         <div
           className={classy(c('progress-indicator'))}
-          style={{ width: `${normalizedValue}%` }}
+          style={{ width: `${percentValue}%` }}
         />
       </div>
       {!hideLabel && (
         <div className={classy(c('progress-label'), m(size))}>
-          {children || `${normalizedValue}%`}
+          {children || `${percentValue}%`}
         </div>
       )}
     </div>
   );
 };
 
-export type ProgressProps = BaseProps & JSX.IntrinsicElements['progress'];
+export type ProgressProps = BaseProps &
+  Omit<
+    JSX.IntrinsicElements['div'],
+    'aria-valuemax' | 'aria-valuemin' | 'aria-valuenow' | 'role'
+  >;
