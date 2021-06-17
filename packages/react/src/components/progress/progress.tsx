@@ -3,6 +3,7 @@ import React from 'react';
 
 export const Progress = ({
   value = 0,
+  min = 0,
   max = 100,
   size = 'regular',
   hideLabel,
@@ -16,7 +17,7 @@ export const Progress = ({
       className={classy(c('progress'), m(size), className)}
       role="progressbar"
       aria-valuenow={value}
-      aria-valuemin={0}
+      aria-valuemin={min}
       aria-valuemax={max}
       aria-valuetext={!hideLabel && children ? children : undefined}
     >

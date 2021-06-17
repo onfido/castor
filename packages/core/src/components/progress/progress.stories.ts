@@ -17,6 +17,12 @@ export default {
         defaultValue: { summary: '0' },
       },
     },
+    min: {
+      description: 'Optional minimum value',
+      table: {
+        defaultValue: { summary: '0' },
+      },
+    },
     max: {
       description: 'Optional maximum value',
       table: {
