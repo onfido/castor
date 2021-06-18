@@ -5,7 +5,7 @@ import {
   m,
   ProgressProps as BaseProps,
 } from '@onfido/castor';
-import React from 'react';
+import React, { useMemo } from 'react';
 
 export const Progress = ({
   value,
@@ -19,7 +19,10 @@ export const Progress = ({
   'aria-valuetext': ariaValuetext,
   ...restProps
 }: ProgressProps): JSX.Element => {
-  const percentValue = `${Math.round(((value - min) * 100) / (max - min))}%`;
+  const percentValue = useMemo(
+    () => `${Math.round(((value - min) * 100) / (max - min))}%`,
+    [value, min, max]
+  );
 
   return (
     <div
