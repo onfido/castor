@@ -5,6 +5,7 @@ export * from './form/form';
 export * from './helper-text/helper-text';
 export * from './icon/icon';
 export * from './input/input';
+export * from './progress/progress';
 export * from './radio/radio';
 export * from './select/select';
 export * from './spinner/spinner';

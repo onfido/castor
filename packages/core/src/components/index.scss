@@ -20,6 +20,8 @@
 @forward './icon/icon';
 @use './input/input';
 @forward './input/input';
+@use './progress/progress';
+@forward './progress/progress';
 @use './radio/radio';
 @forward './radio/radio';
 @use './spinner/spinner';
@@ -45,6 +47,7 @@
   @include helper-text.HelperText();
   @include icon.Icon();
   @include input.Input();
+  @include progress.Progress();
   @include radio.Radio();
   @include spinner.Spinner();
   @include search.Search();
