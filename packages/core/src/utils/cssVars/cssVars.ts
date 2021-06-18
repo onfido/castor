@@ -1,6 +1,9 @@
 /**
- * Generates a plain object of CSS variable key/value pairs based on the specified `vars`.
+ * Generates a plain object of CSS variable key/value pairs based on the
+ * specified `vars`.
+ *
  * @note Filters out falsy values and transforms names to kebab-case.
+ *
  * @example
  * const foo = 'foo';
  * const isBar = 'bar';

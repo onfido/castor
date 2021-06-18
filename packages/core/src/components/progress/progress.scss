@@ -9,41 +9,36 @@
 
 @mixin _Progress() {
   .ods-progress {
+    @include helpers.font('200-regular');
     display: inline-grid;
-    grid: auto-flow/auto;
+    gap: helpers.space(0.5);
+    grid: auto-flow / auto;
     position: relative;
     text-align: center;
     width: 100%;
 
-    &::before {
-      background-color: helpers.color('background-progress');
+    &::before,
+    &::after {
       border-radius: helpers.border-radius('full');
       content: '';
+      height: helpers.space(0.5);
+    }
+
+    &::before {
+      background-color: helpers.color('background-progress');
       width: 100%;
     }
 
     &::after {
       background-color: helpers.color('content-progress');
-      border-radius: helpers.border-radius('full');
-      content: '';
       position: absolute;
       transition: width var(--ods-transition-duration) ease-in-out;
       width: var(--percent-value);
     }
 
-    &.-regular::before,
-    &.-regular::after {
-      height: helpers.space(0.5);
-    }
-
     &.-large::before,
     &.-large::after {
       height: helpers.space(1);
-    }
-
-    &.-regular {
-      @include helpers.font('200-regular');
-      gap: helpers.space(0.5);
     }
 
     &.-large {
