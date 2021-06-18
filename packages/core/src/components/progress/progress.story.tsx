@@ -25,10 +25,12 @@ export const Progress = ({
     'aria-valuemax': String(max),
     'aria-valuetext':
       ariaValuetext || (typeof children === 'string' ? children : undefined),
-    style: `--percent-value: ${Math.round((value / max) * 100)}%`,
+    style: `--percent-value: ${Math.round(
+      ((value - min) * 100) / (max - min)
+    )}%`,
     children: [
       !hideLabel
-        ? children || `${Math.round((value / max) * 100)}%`
+        ? children || `${Math.round(((value - min) * 100) / (max - min))}%`
         : undefined,
     ],
   });
