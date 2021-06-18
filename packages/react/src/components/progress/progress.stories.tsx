@@ -14,19 +14,16 @@ export default {
       description: 'Optional label.',
     },
     value: {
-      description: 'Current value',
       table: {
         defaultValue: { summary: '0' },
       },
     },
     min: {
-      description: 'Optional minimum value',
       table: {
         defaultValue: { summary: '0' },
       },
     },
     max: {
-      description: 'Optional maximum value',
       table: {
         defaultValue: { summary: '100' },
       },
@@ -39,7 +36,6 @@ export default {
       },
     },
     hideLabel: {
-      description: 'Hide label',
       table: {
         defaultValue: { summary: 'false' },
       },
@@ -47,9 +43,6 @@ export default {
   },
   args: {
     children: '',
-    hideLabel: false,
-    max: 100,
-    size: 'regular',
     value: 25,
   },
   parameters: { display: 'flex' },
@@ -62,12 +55,6 @@ export const Playground: Story<ProgressProps> = (props: ProgressProps) => (
 export const Size = reactMatrix(Progress, { size });
 Size.argTypes = omit<ProgressProps>('size');
 
-export const CustomLabel = (props: ProgressProps) => <Progress {...props} />;
-CustomLabel.argTypes = omit<ProgressProps>('children');
-CustomLabel.args = {
-  children: 'Progress: 25%',
-};
-
 export const WithoutLabel = (props: ProgressProps) => <Progress {...props} />;
 WithoutLabel.argTypes = omit<ProgressProps>('children');
 WithoutLabel.args = {
@@ -75,14 +62,10 @@ WithoutLabel.args = {
   hideLabel: true,
 };
 
-export const AllCombinations = reactMatrix(
-  Progress,
-  { size, hideLabel, children },
-  (props) => <Progress {...props} />
-);
-AllCombinations.parameters = {
-  display: 'grid',
-  columns: '1fr',
+export const CustomLabel = (props: ProgressProps) => <Progress {...props} />;
+CustomLabel.argTypes = omit<ProgressProps>('children');
+CustomLabel.args = {
+  children: 'Progress: 25%',
 };
 
 export const ValueLoop = (props: ProgressProps) => {
@@ -116,4 +99,14 @@ ValueLoop.parameters = {
 };`,
     },
   },
+};
+
+export const AllCombinations = reactMatrix(
+  Progress,
+  { size, hideLabel, children },
+  (props) => <Progress {...props} />
+);
+AllCombinations.parameters = {
+  display: 'grid',
+  columns: '1fr',
 };
