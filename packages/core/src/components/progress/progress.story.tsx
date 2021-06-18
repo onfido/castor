@@ -15,8 +15,9 @@ export const Progress = ({
   children,
   'aria-valuetext': ariaValuetext,
   ...props
-}: ProgressProps) =>
-  html('div', {
+}: ProgressProps) => {
+  const percentValue = `${Math.round(((value - min) * 100) / (max - min))}%`;
+  return html('div', {
     ...props,
     class: classy(c('progress'), m(size)),
     role: 'progressbar',
@@ -25,12 +26,7 @@ export const Progress = ({
     'aria-valuemax': String(max),
     'aria-valuetext':
       ariaValuetext || (typeof children === 'string' ? children : undefined),
-    style: `--percent-value: ${Math.round(
-      ((value - min) * 100) / (max - min)
-    )}%`,
-    children: [
-      !hideLabel
-        ? children || `${Math.round(((value - min) * 100) / (max - min))}%`
-        : undefined,
-    ],
+    style: `--percent-value: ${percentValue}`,
+    children: [!hideLabel ? children || percentValue : undefined],
   });
+};
