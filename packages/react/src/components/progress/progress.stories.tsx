@@ -55,17 +55,16 @@ export const Playground: Story<ProgressProps> = (props: ProgressProps) => (
 export const Size = reactMatrix(Progress, { size });
 Size.argTypes = omit<ProgressProps>('size');
 
+export const CustomLabel = (props: ProgressProps) => <Progress {...props} />;
+CustomLabel.argTypes = omit<ProgressProps>('children');
+CustomLabel.args = {
+  children: 'Progress: 25%',
+};
 export const WithoutLabel = (props: ProgressProps) => <Progress {...props} />;
 WithoutLabel.argTypes = omit<ProgressProps>('children');
 WithoutLabel.args = {
   children: null,
   hideLabel: true,
-};
-
-export const CustomLabel = (props: ProgressProps) => <Progress {...props} />;
-CustomLabel.argTypes = omit<ProgressProps>('children');
-CustomLabel.args = {
-  children: 'Progress: 25%',
 };
 
 export const ValueLoop = (props: ProgressProps) => {
