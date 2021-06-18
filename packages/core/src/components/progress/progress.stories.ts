@@ -32,7 +32,7 @@ export default {
       control: { type: 'radio', options: size },
       table: {
         type: { summary: size.toString() },
-        defaultValue: { summary: 'text' },
+        defaultValue: { summary: 'regular' },
       },
     },
     hideLabel: {
