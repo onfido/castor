@@ -13,8 +13,6 @@ module.exports = {
     '@storybook/addon-controls',
     '@storybook/addon-a11y',
   ],
-  // https://github.com/storybookjs/storybook/issues/14342
-  stories: ['docs', 'packages'].map((f) => `../${f}/**/*.stories.ts{,x}`),
   webpackFinal: (config) => {
     config.module.rules.push({
       test: /\.scss$/,
@@ -42,5 +40,11 @@ module.exports = {
         .forEach((p) => p.push('istanbul'));
 
     return config;
+  },
+  // https://github.com/storybookjs/storybook/issues/14342
+  stories: ['docs', 'packages'].map((f) => `../${f}/**/*.stories.ts{,x}`),
+  // https://github.com/styleguidist/react-docgen-typescript/issues/356#issuecomment-857887751
+  typescript: {
+    reactDocgen: 'react-docgen',
   },
 };
