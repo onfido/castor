@@ -7,10 +7,10 @@ export interface ProgressProps extends BaseProps {
 }
 
 export const Progress = ({
-  size,
   value,
   min = 0,
   max = 100,
+  size,
   hideLabel,
   children,
   'aria-valuetext': ariaValuetext,

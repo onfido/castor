@@ -4,7 +4,6 @@ import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 
 const size = ['regular', 'large'] as const;
 const hideLabel = [false, true] as const;
-const children = ['', 'Custom label'] as const;
 
 export default {
   title: 'React/Progress',
@@ -13,18 +12,18 @@ export default {
     children: {
       description: 'Optional label.',
     },
-    value: {
-      table: {
-        defaultValue: { summary: '0' },
-      },
+    hideLabel: {
+      table: { type: { summary: 'boolean' } },
     },
     min: {
       table: {
+        type: { summary: 'number' },
         defaultValue: { summary: '0' },
       },
     },
     max: {
       table: {
+        type: { summary: 'number' },
         defaultValue: { summary: '100' },
       },
     },
@@ -35,14 +34,16 @@ export default {
         defaultValue: { summary: 'regular' },
       },
     },
-    hideLabel: {
+    value: {
       table: {
-        defaultValue: { summary: 'false' },
+        type: { summary: 'number' },
+        defaultValue: { summary: '0' },
       },
     },
   },
   args: {
     children: '',
+    hideLabel: false,
     value: 25,
   },
   parameters: { display: 'flex' },
@@ -55,16 +56,16 @@ export const Playground: Story<ProgressProps> = (props: ProgressProps) => (
 export const Size = reactMatrix(Progress, { size });
 Size.argTypes = omit<ProgressProps>('size');
 
-export const CustomLabel = (props: ProgressProps) => <Progress {...props} />;
-CustomLabel.argTypes = omit<ProgressProps>('children');
-CustomLabel.args = {
+export const HideLabel = reactMatrix(Progress, { hideLabel });
+HideLabel.argTypes = omit<ProgressProps>('hideLabel');
+
+export const WithCustomLabel = (props: ProgressProps) => (
+  <Progress {...props} />
+);
+WithCustomLabel.argTypes = omit<ProgressProps>('children', 'hideLabel');
+WithCustomLabel.args = {
   children: 'Progress: 25%',
-};
-export const WithoutLabel = (props: ProgressProps) => <Progress {...props} />;
-WithoutLabel.argTypes = omit<ProgressProps>('children');
-WithoutLabel.args = {
-  children: null,
-  hideLabel: true,
+  hideLabel: false,
 };
 
 export const ValueLoop = (props: ProgressProps) => {
@@ -80,10 +81,12 @@ export const ValueLoop = (props: ProgressProps) => {
     </div>
   );
 };
+ValueLoop.argTypes = omit<ProgressProps>('min', 'max', 'value');
 ValueLoop.parameters = {
   docs: {
     source: {
-      code: `export const ValueLoop = (props: ProgressProps) => {
+      code: `
+export const ValueLoop = (props: ProgressProps) => {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -95,17 +98,19 @@ ValueLoop.parameters = {
       <Progress {...props} value={value} />
     </div>
   );
-};`,
+};
+      `,
     },
   },
 };
 
 export const AllCombinations = reactMatrix(
   Progress,
-  { size, hideLabel, children },
+  { hideLabel, size },
   (props) => <Progress {...props} />
 );
+AllCombinations.argTypes = omit<ProgressProps>('hideLabel', 'size');
 AllCombinations.parameters = {
   display: 'grid',
-  columns: '1fr',
+  columns: 'repeat(2, 1fr)',
 };

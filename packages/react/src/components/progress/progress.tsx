@@ -12,9 +12,9 @@ export const Progress = ({
   min = 0,
   max = 100,
   size = 'regular',
-  style,
   hideLabel,
   children,
+  style,
   className,
   'aria-valuetext': ariaValuetext,
   ...restProps
