@@ -3,7 +3,6 @@ import { Progress, ProgressProps } from './progress.story';
 
 const size = ['regular', 'large'] as const;
 const hideLabel = [false, true] as const;
-const children = ['', 'Custom label'] as const;
 
 export default {
   title: 'Core/Progress',
@@ -13,18 +12,18 @@ export default {
     children: {
       description: 'Optional label.',
     },
-    value: {
-      table: {
-        defaultValue: { summary: '0' },
-      },
+    hideLabel: {
+      table: { type: { summary: 'boolean' } },
     },
     min: {
       table: {
+        type: { summary: 'number' },
         defaultValue: { summary: '0' },
       },
     },
     max: {
       table: {
+        type: { summary: 'number' },
         defaultValue: { summary: '100' },
       },
     },
@@ -35,14 +34,16 @@ export default {
         defaultValue: { summary: 'regular' },
       },
     },
-    hideLabel: {
+    value: {
       table: {
-        defaultValue: { summary: 'false' },
+        type: { summary: 'number' },
+        defaultValue: { summary: '0' },
       },
     },
   },
   args: {
     children: '',
+    hideLabel: false,
     value: 25,
   },
   parameters: { display: 'flex' },
@@ -53,25 +54,19 @@ export const Playground: Story<ProgressProps> = (props) => Progress(props);
 export const Size = htmlMatrix(Progress, { size });
 Size.argTypes = omit<ProgressProps>('size');
 
-export const CustomLabel: Story<ProgressProps> = (props) => Progress(props);
-CustomLabel.argTypes = omit<ProgressProps>('children');
-CustomLabel.args = {
+export const HideLabel = htmlMatrix(Progress, { hideLabel });
+HideLabel.argTypes = omit<ProgressProps>('hideLabel');
+
+export const WithCustomLabel: Story<ProgressProps> = (props) => Progress(props);
+WithCustomLabel.argTypes = omit<ProgressProps>('children', 'hideLabel');
+WithCustomLabel.args = {
   children: 'Progress: 25%',
+  hideLabel: false,
 };
 
-export const WithoutLabel: Story<ProgressProps> = (props) => Progress(props);
-WithoutLabel.argTypes = omit<ProgressProps>('children');
-WithoutLabel.args = {
-  children: undefined,
-  hideLabel: true,
-};
-
-export const AllCombinations = htmlMatrix(Progress, {
-  size,
-  hideLabel,
-  children,
-});
+export const AllCombinations = htmlMatrix(Progress, { hideLabel, size });
+AllCombinations.argTypes = omit<ProgressProps>('hideLabel', 'size');
 AllCombinations.parameters = {
   display: 'grid',
-  columns: '1fr',
+  columns: 'repeat(2, 1fr)',
 };
