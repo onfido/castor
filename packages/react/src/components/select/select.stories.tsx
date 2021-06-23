@@ -13,6 +13,8 @@ import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 const borderless = [true, false] as const;
 const disabled = [true, false] as const;
 const invalid = [true, false] as const;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const native = [true, false] as any;
 
 export default {
   title: 'React/Select',
@@ -36,22 +38,25 @@ export default {
     },
     native: {
       table: { type: { summary: 'boolean' } },
-      control: false,
     },
   },
   args: {
     children: (
       <>
         <Option value="">Select an option...</Option>
-        <Option>Option 1</Option>
-        <Option>Option 2</Option>
-        <Option>Option 3</Option>
+        <Option value={1}>Option 1</Option>
+        <Option value={2}>Option 2</Option>
+        <Option value="long">Longer option that’s quite long</Option>
+        <Option value="enormous">
+          An enormously long option that we truncate when it gets too long for a
+          flexible width box
+        </Option>
       </>
     ),
     borderless: false,
     disabled: false,
     invalid: false,
-    native: true,
+    native: false,
   },
   parameters: { display: 'flex' },
 } as Meta<SelectProps>;
@@ -69,28 +74,32 @@ Invalid.argTypes = omit<SelectProps>('invalid');
 export const Disabled = reactMatrix(Select, { disabled });
 Disabled.argTypes = omit<SelectProps>('disabled');
 
+export const Native = reactMatrix(Select, { native });
+Native.argTypes = omit<SelectProps>('native');
+
 export const AsRequired: Story<SelectProps> = (props: SelectProps) => (
   <Select {...props} defaultValue={''} />
 );
+AsRequired.argTypes = omit<SelectProps>('required');
 AsRequired.args = {
   children: (
     <>
       <Option value="" disabled>
         Select an option...
       </Option>
-      <Option>Option 1</Option>
-      <Option>Option 2</Option>
-      <Option>Option 3</Option>
+      <Option value={1}>Option 1</Option>
+      <Option value={2}>Option 2</Option>
+      <Option value={3}>Option 3</Option>
     </>
   ),
   required: true,
 };
 
-interface SelectWithLabelAndHelperTextProps extends SelectProps {
+type SelectWithLabelAndHelperTextProps = SelectProps & {
   id: string;
   label: string;
   helperText: string;
-}
+};
 
 export const WithLabelAndHelperText = ({
   id,
@@ -112,10 +121,10 @@ WithLabelAndHelperText.args = {
   helperText: 'Helper text',
 };
 
-interface SelectWithValidationProps extends SelectProps {
+type SelectWithValidationProps = SelectProps & {
   validation: string;
   withIcon: boolean;
-}
+};
 
 export const WithValidation = ({
   validation,
@@ -140,24 +149,27 @@ WithValidation.args = {
 
 export const AllCombinations = reactMatrix(
   Select,
-  { borderless, disabled, invalid },
+  { borderless, disabled, invalid, native },
   (props) => <Select {...props}>{children(props)}</Select>
 );
-AllCombinations.argTypes = omit<SelectProps>('children');
-AllCombinations.args = {
-  children: null,
-};
+AllCombinations.argTypes = omit<SelectProps>(
+  'children',
+  'borderless',
+  'disabled',
+  'invalid',
+  'native'
+);
 AllCombinations.parameters = {
   display: 'grid',
   columns: 'repeat(2, 1fr)',
 };
 
-const children = ({ borderless, disabled, invalid }: SelectProps) => (
-  <Option>
-    {[
-      invalid ? 'invalid' : 'valid',
-      borderless ? 'borderless' : '',
-      disabled ? 'disabled' : '',
-    ].join(' ')}
-  </Option>
-);
+const children = ({ borderless, disabled, invalid, native }: SelectProps) => {
+  const variation = [
+    native ? 'native' : 'custom',
+    invalid ? 'invalid' : 'valid',
+    borderless ? 'borderless' : '',
+    disabled ? 'disabled' : '',
+  ];
+  return <Option value={variation.join('-')}>{variation.join(' ')}</Option>;
+};

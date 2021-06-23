@@ -12,8 +12,9 @@
 
 @mixin _Select() {
   .ods-select {
-    align-items: center;
     display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
     position: relative;
     width: helpers.space(50);
 
@@ -31,6 +32,27 @@
 
     &.-empty {
       color: helpers.color('content-placeholder');
+    }
+
+    &.-borderless {
+      @include mixins.with-inner-focus('action');
+      @include with-padding(); // no border width because border will be unset
+
+      background-color: transparent;
+      border: 0;
+
+      &:hover {
+        background-color: helpers.color('background-action-subtle-hover');
+      }
+
+      &:disabled {
+        background-color: helpers.color('background-disabled');
+      }
+    }
+
+    &.-borderless.-invalid,
+    &.-borderless.-touched:invalid {
+      @include mixins.with-inner-focus('negative');
     }
 
     + .ods-icon {
@@ -53,26 +75,60 @@
         color: helpers.color('content-disabled');
       }
     }
+  }
 
-    &.-borderless {
-      @include mixins.with-inner-focus('action');
-      @include with-padding(); // no border width because border will be unset
+  .ods-select-custom.-open + .ods-icon {
+    transform: rotate(180deg);
+  }
 
-      background-color: transparent;
-      border: 0;
+  .ods-select-custom-dropdown {
+    @include mixins.with-inner-focus('action');
 
-      &:hover {
-        background-color: helpers.color('background-action-subtle-hover');
-      }
+    background-color: helpers.color('background-input');
+    border-radius: helpers.border-radius('small');
+    box-sizing: border-box;
+    display: none;
+    margin-top: helpers.space(0.5);
+    padding: 4px; // spread set on `with-inner-focus` mixin
+    position: absolute;
+    width: 100%;
 
-      &:disabled {
-        background-color: helpers.color('background-disabled');
-      }
+    > * {
+      box-sizing: inherit;
     }
 
-    &.-borderless.-invalid,
-    &.-borderless.-touched:invalid {
-      @include mixins.with-inner-focus('negative');
+    &.-open {
+      display: block;
+    }
+  }
+
+  .ods-select-custom-option {
+    @include helpers.font('300-regular');
+    @include mixins.interactive();
+
+    align-items: center;
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+    color: helpers.color('content-main');
+    display: flex;
+    outline: none;
+    padding: helpers.space(1.5) helpers.space(2);
+    text-align: left;
+    width: 100%;
+
+    &:hover {
+      background-color: helpers.color('background-action-subtle-hover');
+    }
+
+    &.-selected {
+      background-color: helpers.color('background-input-selected');
+      color: helpers.color('content-on-action');
+    }
+
+    &:disabled {
+      background-color: helpers.color('background-disabled');
+      color: helpers.color('content-disabled');
     }
   }
 }

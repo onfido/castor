@@ -7,7 +7,6 @@ export interface SelectProps extends BaseProps {
   class?: string;
   id?: string;
   required?: boolean;
-  value?: string;
 }
 
 /**

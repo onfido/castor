@@ -20,7 +20,8 @@ $_inner-spread: $_color-spread - $_color-size;
     outline: none;
   }
 
-  &:focus #{$target} {
+  &:focus #{$target},
+  &:focus-within #{$target} {
     box-shadow: $inner-line, $color-line;
   }
 }
