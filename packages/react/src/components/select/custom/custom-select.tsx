@@ -106,6 +106,20 @@ export const CustomSelect = withRef(
       }
     });
 
+    useKeyboardKey(selectRef, (key, stopEvent) => {
+      const open = (): void => {
+        stopEvent();
+        focusOptions();
+        setOpen(true);
+      };
+
+      switch (key) {
+        case ' ':
+          open();
+          break;
+      }
+    });
+
     useEffect(() => {
       if (open) {
         document.addEventListener('click', handleClickOutside);
@@ -141,6 +155,19 @@ export const CustomSelect = withRef(
       setOptions((state) => state.filter((item) => item.id !== id));
     };
 
+    const focusOptions = useCallback(() => {
+      setTimeout(() => {
+        const buttons = dropdownRef.current?.querySelectorAll('button');
+        if (buttons)
+          Array.from(buttons).some((button) => {
+            if (button.disabled) return; // can't focus on disabled <button>
+
+            button.focus();
+            return true; // break out, only 1 focus is enough
+          });
+      });
+    }, [dropdownRef]);
+
     const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
       setValue(event.currentTarget.value);
       onChange?.(event);
@@ -148,23 +175,15 @@ export const CustomSelect = withRef(
 
     const handleMouseDown = (event: MouseEvent<HTMLSelectElement>) => {
       onMouseDown?.(event);
-      setTimeout(() => {
-        const buttons = dropdownRef.current?.querySelectorAll('button');
-
-        if (buttons)
-          Array.from(buttons).some((button) => {
-            // can't focus on disabled <button>, so skip to next one
-            if (!button.disabled) {
-              button.focus();
-              return true; // break out, only 1 focus is enough
-            }
-          });
-      });
+      setTimeout(focusOptions);
 
       if (event.button !== 0) return; // not "left" button pressed
 
       event.preventDefault(); // prevent <select> from opening
-      setOpen(!open);
+      setOpen((open) => {
+        if (!open) setTimeout(focusOptions);
+        return !open;
+      });
     };
 
     return (
