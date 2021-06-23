@@ -8,10 +8,11 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { useKeyboardKey } from '../../../hooks';
 import { mergeRefs, withRef } from '../../../utils';
 import { NativeSelect } from '../native/native-select';
 import { CustomSelectPortal } from './custom-select-portal';
-import { CustomSelectProvider, Option } from './useCustomSelect';
+import { CustomSelectProvider, IndexedOption, Option } from './useCustomSelect';
 
 let idCount = 0;
 
@@ -32,23 +33,78 @@ export const CustomSelect = withRef(
     const backupSelectRef = useRef<HTMLSelectElement | null>(null);
     const selectRef = (ref as RefObject<HTMLSelectElement>) ?? backupSelectRef;
     const dropdownRef = useRef<HTMLDivElement | null>(null);
-    const [value, setValue] = useState<string>(
+    const [value, setValue] = useState<Option['value']>(
       controlledValue?.toString() || defaultValue?.toString() || ''
     );
+    const [options, setOptions] = useState<IndexedOption[]>([]);
+    const [focusOption, setFocusOption] = useState<IndexedOption | null>(null);
     const [open, setOpen] = useState<boolean>(false);
-    const [options, setOptions] = useState<(Option & { id: number })[]>([]);
 
     useEffect(() => {
       if (controlledValue != null) setValue(controlledValue.toString());
     }, [controlledValue]);
 
     useEffect(() => {
-      const [firstOption] = options;
-
-      if (!value && firstOption) setValue(firstOption.value);
-
       if (open) setOpen(false);
+
+      if (value) return;
+
+      const [firstOption] = options;
+      if (firstOption) setValue(firstOption.value);
     }, [value, options]);
+
+    useKeyboardKey(dropdownRef, (key, stopEvent) => {
+      const close = (): void => {
+        stopEvent();
+        if (open) setOpen(false);
+      };
+
+      const hover = (direction: 'forward' | 'back'): void => {
+        stopEvent();
+
+        if (!options.length) return;
+
+        const highlighted = options.find((option) =>
+          focusOption
+            ? // first look if something's already focused
+              option.id === focusOption.id
+            : // then fallback to what is currently selected
+              option.value === value
+        );
+        const index = highlighted
+          ? options.indexOf(highlighted)
+          : // or default to 1st option
+            0;
+
+        const found =
+          direction === 'forward' ? options[index + 1] : options[index - 1];
+        const starting =
+          direction === 'forward' ? options[0] : options[options.length - 1];
+
+        setFocusOption(found || starting);
+      };
+
+      const select = (): void => {
+        close(); // always close, even when value is not changing
+        if (focusOption) setValue(focusOption.value);
+      };
+
+      switch (key) {
+        case 'Escape':
+          close();
+          break;
+        case 'ArrowDown':
+          hover('forward');
+          break;
+        case 'ArrowUp':
+          hover('back');
+          break;
+        case ' ':
+        case 'Enter':
+          select();
+          break;
+      }
+    });
 
     useEffect(() => {
       if (open) {
@@ -56,7 +112,7 @@ export const CustomSelect = withRef(
         return () => {
           document.removeEventListener('click', handleClickOutside);
         };
-      }
+      } else setFocusOption(null); // start fresh upon next open
     }, [open]);
 
     const handleClickOutside = useCallback(
@@ -71,17 +127,17 @@ export const CustomSelect = withRef(
       [selectRef]
     );
 
-    const addOption = (id: number, option: Option): void => {
+    const addOption = (id: IndexedOption['id'], option: Option): void => {
       setOptions((state) => [...state, { ...option, id }]);
     };
 
-    const changeOption = (id: number, option: Option): void => {
+    const changeOption = (id: IndexedOption['id'], option: Option): void => {
       setOptions((state) =>
         state.map((item) => (item.id === id ? { ...option, id } : item))
       );
     };
 
-    const removeOption = (id: number): void => {
+    const removeOption = (id: IndexedOption['id']): void => {
       setOptions((state) => state.filter((item) => item.id !== id));
     };
 
@@ -140,8 +196,11 @@ export const CustomSelect = withRef(
               <CustomSelectProvider
                 value={{
                   value,
+                  options,
+                  focusOption,
                   setValue,
                   addOption,
+                  setFocusOption,
                   changeOption,
                   removeOption,
                 }}

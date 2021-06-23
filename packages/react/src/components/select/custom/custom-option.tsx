@@ -8,6 +8,7 @@ export const CustomOption = ({
   value: externalValue,
   children: title,
   className,
+  onMouseEnter,
   onClick,
   ...restProps
 }: CustomOptionProps): JSX.Element => {
@@ -15,13 +16,16 @@ export const CustomOption = ({
   const internalId = useMemo<number>(() => ++idCount, []);
   const {
     value: currentValue,
+    focusOption: currentFocusOption,
     setValue,
+    setFocusOption,
     addOption,
     changeOption,
     removeOption,
   } = useCustomSelect();
 
   const value = externalValue.toString();
+  const focused = currentFocusOption?.id === internalId;
   const selected = currentValue === value;
 
   useEffect(() => {
@@ -35,8 +39,13 @@ export const CustomOption = ({
     changeOption(internalId, { value, title });
   }, [value, title]);
 
+  const handleMouseEnter = (event: MouseEvent<HTMLButtonElement>) => {
+    if (!focused) setFocusOption({ id: internalId, value });
+    onMouseEnter?.(event);
+  };
+
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-    setValue(value);
+    if (!selected) setValue(value);
     onClick?.(event);
   };
 
@@ -44,7 +53,12 @@ export const CustomOption = ({
     <button
       {...restProps}
       ref={ref}
-      className={classy(c('select-custom-option'), m({ selected }), className)}
+      className={classy(
+        c('select-custom-option'),
+        m({ focused, selected }),
+        className
+      )}
+      onMouseEnter={handleMouseEnter}
       onClick={handleClick}
     >
       {title}

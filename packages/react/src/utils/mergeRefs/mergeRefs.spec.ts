@@ -5,7 +5,7 @@ import { mergeRefs } from './mergeRefs';
 describe('mergeRefs', () => {
   it('should merge multiple ref objects', () => {
     const ref1: LegacyRef<any> = jest.fn();
-    const ref2: MutableRefObject<any> = { current: undefined };
+    const ref2: MutableRefObject<any> = { current: null };
     const component = () => null;
 
     mergeRefs(ref1, ref2)(component);

@@ -6,11 +6,21 @@ export const useCustomSelect = () => useContext(CustomSelectContext);
 
 export const CustomSelectProvider = CustomSelectContext.Provider;
 
-export interface CustomSelectState extends Pick<SelectElementProps, 'value'> {
-  setValue: Dispatch<SetStateAction<string>>;
-  addOption: (id: number, option: Option) => void;
-  changeOption: (id: number, option: Option) => void;
-  removeOption: (id: number) => void;
+export interface CustomSelectState extends OptionsManager, FocusOptionManager {
+  value: Option['value'];
+  setValue: Dispatch<SetStateAction<Option['value']>>;
+}
+
+interface OptionsManager {
+  options: IndexedOption[];
+  addOption: (id: IndexedOption['id'], option: Option) => void;
+  changeOption: (id: IndexedOption['id'], option: Option) => void;
+  removeOption: (id: IndexedOption['id']) => void;
+}
+
+interface FocusOptionManager {
+  focusOption: IndexedOption | null;
+  setFocusOption: Dispatch<SetStateAction<IndexedOption>>;
 }
 
 export interface Option {
@@ -18,4 +28,6 @@ export interface Option {
   title?: string | number | null;
 }
 
-type SelectElementProps = JSX.IntrinsicElements['select'];
+export interface IndexedOption extends Option {
+  id: number;
+}
