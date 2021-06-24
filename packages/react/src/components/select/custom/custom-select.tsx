@@ -53,14 +53,14 @@ export const CustomSelect = withRef(
       if (firstOption) setValue(firstOption.value);
     }, [value, options]);
 
-    useKeyboardKey(dropdownRef, (key, stopEvent) => {
+    useKeyboardKey(dropdownRef, (key, haltEvent) => {
       const close = (): void => {
-        stopEvent();
+        haltEvent();
         if (open) setOpen(false);
       };
 
       const hover = (direction: 'forward' | 'back'): void => {
-        stopEvent();
+        haltEvent();
 
         if (!options.length) return;
 
@@ -106,9 +106,9 @@ export const CustomSelect = withRef(
       }
     });
 
-    useKeyboardKey(selectRef, (key, stopEvent) => {
+    useKeyboardKey(selectRef, (key, haltEvent) => {
       const open = (): void => {
-        stopEvent();
+        haltEvent();
         focusOptions();
         setOpen(true);
       };

@@ -65,12 +65,12 @@ describe('useKeyboardKey', () => {
     expect(callback).toHaveBeenCalledWith('Enter', expect.any(Function));
   });
 
-  it('should allow to stop event', () => {
+  it('should allow to halt event', () => {
     const preventDefaultFunc = jest.fn();
     const stopPropagationFunc = jest.fn();
     const callback = jest
       .fn()
-      .mockImplementation((_, stopEvent: () => void) => stopEvent());
+      .mockImplementation((_, haltEvent: () => void) => haltEvent());
     const event = new KeyboardEvent('keydown');
     Object.defineProperty(event, 'preventDefault', {
       get: () => preventDefaultFunc,
