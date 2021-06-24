@@ -82,14 +82,13 @@
   }
 
   .ods-select-custom-dropdown {
-    @include mixins.with-inner-focus('action');
-
     background-color: helpers.color('background-input');
-    border-radius: helpers.border-radius('small');
+    border: 4px solid helpers.color('border-action-focus'); // instead of inner focus, that's why width is hardcoded as "spread"
+    border-radius: helpers.border-radius('medium');
     box-sizing: border-box;
     display: none;
-    margin-top: helpers.space(0.5);
-    padding: 4px; // spread set on `with-inner-focus` mixin, must stay hardcoded
+    margin-top: 1px;
+    padding: 1px;
     position: absolute;
     width: 100%;
 

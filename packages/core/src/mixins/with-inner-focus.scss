@@ -32,8 +32,7 @@ $_max-border-width: $_color-size; // when max, border used instead of color line
     outline: none;
   }
 
-  &:focus #{$target},
-  &:focus-within #{$target} {
+  &:focus #{$target} {
     box-shadow: $color-line, $inner-line;
 
     @if $border-width > 0 {
