@@ -15,11 +15,9 @@ describe('useKeyboardKey', () => {
     current: {
       addEventListener: jest
         .fn()
-        .mockImplementation(
-          (eventName: string, handler: (event: any) => void) => {
-            if (eventName === 'keydown') eventHandlerFunc = handler;
-          }
-        ),
+        .mockImplementation((eventName: string, handler: any) => {
+          if (eventName === 'keydown') eventHandlerFunc = handler;
+        }),
       removeEventListener: jest.fn(),
     },
   };

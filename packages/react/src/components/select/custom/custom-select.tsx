@@ -8,11 +8,12 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { useKeyboardKey } from '../../../hooks';
 import { mergeRefs, withRef } from '../../../utils';
 import { NativeSelect } from '../native/native-select';
 import { CustomSelectPortal } from './custom-select-portal';
 import { CustomSelectProvider, IndexedOption, Option } from './useCustomSelect';
+import { useDropdownKeyboardKey } from './useDropdownKeyboardKey';
+import { useSelectKeyboardKey } from './useSelectKeyboardKey';
 
 const idPrefix = 'castor_custom_select';
 let idCount = 0;
@@ -54,73 +55,6 @@ export const CustomSelect = withRef(
       if (firstOption) setValue(firstOption.value);
     }, [value, options]);
 
-    useKeyboardKey(dropdownRef, (key, haltEvent) => {
-      const close = (): void => {
-        haltEvent();
-        if (open) setOpen(false);
-      };
-
-      const hover = (direction: 'forward' | 'back'): void => {
-        haltEvent();
-
-        if (!options.length) return;
-
-        const highlighted = options.find((option) =>
-          focusOption
-            ? // first look if something's already focused
-              option.id === focusOption.id
-            : // then fallback to what is currently selected
-              option.value === value
-        );
-        const index = highlighted
-          ? options.indexOf(highlighted)
-          : // or default to 1st option
-            0;
-
-        const found =
-          direction === 'forward' ? options[index + 1] : options[index - 1];
-        const starting =
-          direction === 'forward' ? options[0] : options[options.length - 1];
-
-        setFocusOption(found || starting);
-      };
-
-      const select = (): void => {
-        close(); // always close, even when value is not changing
-        if (focusOption) setValue(focusOption.value);
-      };
-
-      switch (key) {
-        case 'Escape':
-          close();
-          break;
-        case 'ArrowDown':
-          hover('forward');
-          break;
-        case 'ArrowUp':
-          hover('back');
-          break;
-        case ' ':
-        case 'Enter':
-          select();
-          break;
-      }
-    });
-
-    useKeyboardKey(selectRef, (key, haltEvent) => {
-      const open = (): void => {
-        haltEvent();
-        focusOptions();
-        setOpen(true);
-      };
-
-      switch (key) {
-        case ' ':
-          open();
-          break;
-      }
-    });
-
     useEffect(() => {
       if (open) {
         document.addEventListener('click', handleClickOutside);
@@ -156,7 +90,7 @@ export const CustomSelect = withRef(
       setOptions((state) => state.filter((item) => item.id !== id));
     };
 
-    const focusOptions = useCallback(() => {
+    const focusOnOptions = useCallback(() => {
       setTimeout(() => {
         const buttons = dropdownRef.current?.querySelectorAll('button');
         if (buttons)
@@ -168,6 +102,16 @@ export const CustomSelect = withRef(
           });
       });
     }, [dropdownRef]);
+
+    useSelectKeyboardKey(selectRef, { focusOnOptions, setOpen });
+    useDropdownKeyboardKey(dropdownRef, {
+      value,
+      options,
+      focusOption,
+      setValue,
+      setFocusOption,
+      setOpen,
+    });
 
     const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
       setValue(event.currentTarget.value);
@@ -181,7 +125,7 @@ export const CustomSelect = withRef(
 
       event.preventDefault(); // prevent <select> from opening
       setOpen((open) => {
-        if (!open) setTimeout(focusOptions);
+        if (!open) setTimeout(focusOnOptions);
         return !open;
       });
     };
