@@ -14,12 +14,13 @@ import { NativeSelect } from '../native/native-select';
 import { CustomSelectPortal } from './custom-select-portal';
 import { CustomSelectProvider, IndexedOption, Option } from './useCustomSelect';
 
+const idPrefix = 'castor_custom_select';
 let idCount = 0;
 
 export const CustomSelect = withRef(
   (
     {
-      id = `castor_custom_select_${++idCount}`,
+      id = `${idPrefix}_${++idCount}`,
       defaultValue,
       value: controlledValue,
       children,
@@ -187,7 +188,7 @@ export const CustomSelect = withRef(
     };
 
     return (
-      <CustomSelectPortal id="castor_custom_select_dropdown">
+      <CustomSelectPortal id={`${idPrefix}_dropdown`}>
         {{
           // eslint-disable-next-line react/display-name
           select: (ref) => (
