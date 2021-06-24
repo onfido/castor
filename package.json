@@ -52,7 +52,7 @@
     "@storybook/addon-controls": "^6.3.0",
     "@storybook/addon-docs": "^6.2.9",
     "@storybook/addon-google-analytics": "^6.2.9",
-    "@storybook/addon-toolbars": "^6.2.9",
+    "@storybook/addon-toolbars": "^6.3.0",
     "@storybook/components": "^6.3.0",
     "@storybook/react": "^6.3.0",
     "@types/cypress-image-snapshot": "^3.1.5",
