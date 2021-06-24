@@ -24,6 +24,7 @@ interface FocusOptionManager {
 }
 
 export interface Option {
+  disabled?: boolean;
   value: string;
   title?: string | number | null;
 }

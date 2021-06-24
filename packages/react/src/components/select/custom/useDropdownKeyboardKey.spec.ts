@@ -22,16 +22,19 @@ describe('useDropdownKeyboardKey', () => {
     id: 1,
     value: '',
     title: 'Select an option...',
+    disabled: false,
   };
   const option2: IndexedOption = {
     id: 2,
     value: 'test-value-1',
     title: 'Test Title 1',
+    disabled: false,
   };
   const option3: IndexedOption = {
     id: 3,
     value: 'test-value-2',
     title: 'Test Title 2',
+    disabled: false,
   };
   const options: IndexedOption[] = [option1, option2, option3];
   const focusOption = null;
@@ -97,6 +100,30 @@ describe('useDropdownKeyboardKey', () => {
     expect(setOpen).toHaveBeenCalledTimes(0);
   });
 
+  it('should not try to hover option when "arrow down" button is pressed if no other options available', () => {
+    const haltEvent = jest.fn();
+    const options: IndexedOption[] = [
+      option1,
+      { ...option2, disabled: true },
+      { ...option3, disabled: true },
+    ];
+
+    useDropdownKeyboardKey(dropdownRef, {
+      value,
+      options,
+      focusOption,
+      setValue,
+      setFocusOption,
+      setOpen,
+    });
+    callbackFunc('ArrowDown', haltEvent);
+
+    expect(haltEvent).toHaveBeenCalledTimes(1);
+    expect(setValue).toHaveBeenCalledTimes(0);
+    expect(setFocusOption).toHaveBeenCalledTimes(0);
+    expect(setOpen).toHaveBeenCalledTimes(0);
+  });
+
   it('should hover on next option from currently selected when "arrow down" button is pressed', () => {
     const haltEvent = jest.fn();
     const value = option2.value;
@@ -137,7 +164,79 @@ describe('useDropdownKeyboardKey', () => {
 
   it('should hover on first option when "arrow down" button is pressed and no next option available', () => {
     const haltEvent = jest.fn();
-    const value = option3.value;
+    const focusOption = option3;
+    const setFocusOption: SetFocusOptionFunc = jest.fn();
+
+    useDropdownKeyboardKey(dropdownRef, {
+      value,
+      options,
+      focusOption,
+      setValue,
+      setFocusOption,
+      setOpen,
+    });
+    callbackFunc('ArrowDown', haltEvent);
+
+    expect(setFocusOption).toHaveBeenCalledTimes(1);
+    expect(setFocusOption).toHaveBeenCalledWith(option1);
+  });
+
+  it('should skip disabled option when "arrow down" button is pressed', () => {
+    const haltEvent = jest.fn();
+    const focusOption = option1;
+    const options: IndexedOption[] = [
+      option1,
+      { ...option2, disabled: true },
+      option3,
+    ];
+    const setFocusOption: SetFocusOptionFunc = jest.fn();
+
+    useDropdownKeyboardKey(dropdownRef, {
+      value,
+      options,
+      focusOption,
+      setValue,
+      setFocusOption,
+      setOpen,
+    });
+    callbackFunc('ArrowDown', haltEvent);
+
+    expect(setFocusOption).toHaveBeenCalledTimes(1);
+    expect(setFocusOption).toHaveBeenCalledWith(option3);
+  });
+
+  it('should skip disabled first option when "arrow down" button is pressed', () => {
+    const haltEvent = jest.fn();
+    const focusOption = option3;
+    const options: IndexedOption[] = [
+      { ...option1, disabled: true },
+      option2,
+      option3,
+    ];
+    const setFocusOption: SetFocusOptionFunc = jest.fn();
+
+    useDropdownKeyboardKey(dropdownRef, {
+      value,
+      options,
+      focusOption,
+      setValue,
+      setFocusOption,
+      setOpen,
+    });
+    callbackFunc('ArrowDown', haltEvent);
+
+    expect(setFocusOption).toHaveBeenCalledTimes(1);
+    expect(setFocusOption).toHaveBeenCalledWith(option2);
+  });
+
+  it('should skip disabled last option when "arrow down" button is pressed', () => {
+    const haltEvent = jest.fn();
+    const focusOption = option2;
+    const options: IndexedOption[] = [
+      option1,
+      option2,
+      { ...option3, disabled: true },
+    ];
     const setFocusOption: SetFocusOptionFunc = jest.fn();
 
     useDropdownKeyboardKey(dropdownRef, {
@@ -176,6 +275,30 @@ describe('useDropdownKeyboardKey', () => {
   it('should not try to hover option when "arrow up" button is pressed if no options available', () => {
     const haltEvent = jest.fn();
     const options: IndexedOption[] = [];
+
+    useDropdownKeyboardKey(dropdownRef, {
+      value,
+      options,
+      focusOption,
+      setValue,
+      setFocusOption,
+      setOpen,
+    });
+    callbackFunc('ArrowUp', haltEvent);
+
+    expect(haltEvent).toHaveBeenCalledTimes(1);
+    expect(setValue).toHaveBeenCalledTimes(0);
+    expect(setFocusOption).toHaveBeenCalledTimes(0);
+    expect(setOpen).toHaveBeenCalledTimes(0);
+  });
+
+  it('should not try to hover option when "arrow up" button is pressed if no other options available', () => {
+    const haltEvent = jest.fn();
+    const options: IndexedOption[] = [
+      option1,
+      { ...option2, disabled: true },
+      { ...option3, disabled: true },
+    ];
 
     useDropdownKeyboardKey(dropdownRef, {
       value,
@@ -233,7 +356,7 @@ describe('useDropdownKeyboardKey', () => {
 
   it('should hover on last option when "arrow up" button is pressed and no previous option available', () => {
     const haltEvent = jest.fn();
-    const value = option1.value;
+    const focusOption = option1;
     const setFocusOption: SetFocusOptionFunc = jest.fn();
 
     useDropdownKeyboardKey(dropdownRef, {
@@ -248,6 +371,78 @@ describe('useDropdownKeyboardKey', () => {
 
     expect(setFocusOption).toHaveBeenCalledTimes(1);
     expect(setFocusOption).toHaveBeenCalledWith(option3);
+  });
+
+  it('should skip disabled option when "arrow down" button is pressed', () => {
+    const haltEvent = jest.fn();
+    const focusOption = option3;
+    const options: IndexedOption[] = [
+      option1,
+      { ...option2, disabled: true },
+      option3,
+    ];
+    const setFocusOption: SetFocusOptionFunc = jest.fn();
+
+    useDropdownKeyboardKey(dropdownRef, {
+      value,
+      options,
+      focusOption,
+      setValue,
+      setFocusOption,
+      setOpen,
+    });
+    callbackFunc('ArrowUp', haltEvent);
+
+    expect(setFocusOption).toHaveBeenCalledTimes(1);
+    expect(setFocusOption).toHaveBeenCalledWith(option1);
+  });
+
+  it('should skip disabled first option when "arrow down" button is pressed', () => {
+    const haltEvent = jest.fn();
+    const focusOption = option2;
+    const options: IndexedOption[] = [
+      { ...option1, disabled: true },
+      option2,
+      option3,
+    ];
+    const setFocusOption: SetFocusOptionFunc = jest.fn();
+
+    useDropdownKeyboardKey(dropdownRef, {
+      value,
+      options,
+      focusOption,
+      setValue,
+      setFocusOption,
+      setOpen,
+    });
+    callbackFunc('ArrowUp', haltEvent);
+
+    expect(setFocusOption).toHaveBeenCalledTimes(1);
+    expect(setFocusOption).toHaveBeenCalledWith(option3);
+  });
+
+  it('should skip disabled last option when "arrow down" button is pressed', () => {
+    const haltEvent = jest.fn();
+    const focusOption = option1;
+    const options: IndexedOption[] = [
+      option1,
+      option2,
+      { ...option3, disabled: true },
+    ];
+    const setFocusOption: SetFocusOptionFunc = jest.fn();
+
+    useDropdownKeyboardKey(dropdownRef, {
+      value,
+      options,
+      focusOption,
+      setValue,
+      setFocusOption,
+      setOpen,
+    });
+    callbackFunc('ArrowUp', haltEvent);
+
+    expect(setFocusOption).toHaveBeenCalledTimes(1);
+    expect(setFocusOption).toHaveBeenCalledWith(option2);
   });
 
   it('should start from first index when "arrow up" button is pressed and cannot determine what is highlighted', () => {

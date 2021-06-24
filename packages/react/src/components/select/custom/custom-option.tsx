@@ -7,6 +7,7 @@ let idCount = 0;
 export const CustomOption = ({
   value: externalValue,
   children: title,
+  disabled,
   className,
   onMouseEnter,
   onClick,
@@ -29,15 +30,15 @@ export const CustomOption = ({
   const selected = currentValue === value;
 
   useEffect(() => {
-    addOption(internalId, { value, title });
+    addOption(internalId, { value, title, disabled });
     return () => {
       removeOption(internalId);
     };
   }, []);
 
   useEffect(() => {
-    changeOption(internalId, { value, title });
-  }, [value, title]);
+    changeOption(internalId, { value, title, disabled });
+  }, [value, title, disabled]);
 
   const handleMouseEnter = (event: MouseEvent<HTMLButtonElement>) => {
     if (!focused) setFocusOption({ id: internalId, value });
@@ -53,6 +54,7 @@ export const CustomOption = ({
     <button
       {...restProps}
       ref={ref}
+      disabled={disabled}
       className={classy(
         c('select-custom-option'),
         m({ focused, selected }),

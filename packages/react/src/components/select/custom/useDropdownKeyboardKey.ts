@@ -26,34 +26,39 @@ export const useDropdownKeyboardKey = (
       setOpen(false);
     };
 
-    const hoverOption = (direction: 'forward' | 'back'): void => {
+    const hoverOption = (direction: Direction): void => {
       haltEvent();
 
       if (!options.length) return;
 
-      const highlighted = options.find((option) =>
+      const highlightedOption = options.find((option) =>
         focusOption
           ? // first look if something's already focused
             option.id === focusOption.id
           : // then fallback to what is currently selected
             option.value === value
       );
-      const index = highlighted
-        ? options.indexOf(highlighted)
+
+      if (
+        !highlightedOption?.disabled &&
+        options.filter((option) => !option.disabled).length === 1
+      )
+        return; // nothing else can be hovered
+
+      const currentIndex = highlightedOption
+        ? options.indexOf(highlightedOption)
         : // or default to 1st option
           0;
 
-      const found =
-        direction === 'forward' ? options[index + 1] : options[index - 1];
-      const starting =
-        direction === 'forward' ? options[0] : options[options.length - 1];
-
-      setFocusOption(found || starting);
+      setFocusOption(
+        findOption(options, direction, currentIndex) ||
+          getStartingOption(options, direction)
+      );
     };
 
     const selectOption = (): void => {
       closeDropdown(); // always close, even when value is not changing
-      if (focusOption) setValue(focusOption.value);
+      if (focusOption && !focusOption.disabled) setValue(focusOption.value);
     };
 
     switch (key) {
@@ -72,3 +77,37 @@ export const useDropdownKeyboardKey = (
         break;
     }
   });
+
+type Direction = 'forward' | 'back';
+
+function findOption(
+  options: IndexedOption[],
+  direction: Direction,
+  currentIndex: number
+): IndexedOption {
+  const nextIndex =
+    direction === 'forward' ? currentIndex + 1 : currentIndex - 1;
+  const foundOption = options[nextIndex];
+
+  if (!foundOption?.disabled) return foundOption;
+
+  return findOption(options, direction, nextIndex);
+}
+
+function getStartingOption(
+  options: IndexedOption[],
+  direction: Direction,
+  indexOffset = 0
+): IndexedOption {
+  const nextIndex =
+    direction === 'forward' ? indexOffset : options.length + indexOffset - 1;
+  const startingOption = options[nextIndex];
+
+  if (!startingOption.disabled) return startingOption;
+
+  return getStartingOption(
+    options,
+    direction,
+    direction === 'forward' ? indexOffset + 1 : indexOffset - 1
+  );
+}
