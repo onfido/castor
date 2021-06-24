@@ -82,13 +82,20 @@
   }
 
   .ods-select-custom-dropdown {
-    background-color: helpers.color('background-input');
-    border: 4px solid helpers.color('border-action-focus'); // instead of inner focus, that's why width is hardcoded as "spread"
+    // faking inner-focus
+    $spread: 4px;
+    $inner-size: 1px;
+    $type-size: $spread - $inner-size;
+    $inner-color: helpers.color('border-focus-inner');
+    $type-color: helpers.color('border-action-focus');
+
+    background-color: $inner-color;
+    border: $type-size solid $type-color;
     border-radius: helpers.border-radius('medium');
     box-sizing: border-box;
     display: none;
     margin-top: 1px;
-    padding: 1px;
+    padding: $inner-size;
     position: absolute;
     width: 100%;
 
@@ -107,7 +114,7 @@
 
     align-items: center;
     appearance: none;
-    background-color: transparent;
+    background-color: helpers.color('background-input');
     border: 0;
     color: helpers.color('content-main');
     display: flex;
