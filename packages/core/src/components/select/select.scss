@@ -89,7 +89,7 @@
     box-sizing: border-box;
     display: none;
     margin-top: helpers.space(0.5);
-    padding: 4px; // spread set on `with-inner-focus` mixin
+    padding: 4px; // spread set on `with-inner-focus` mixin, must stay hardcoded
     position: absolute;
     width: 100%;
 
