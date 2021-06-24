@@ -55,14 +55,7 @@ const usePortal = (id: string): HTMLDivElement => {
     };
   }, [id]);
 
-  // evaluate lazily, so that this runs only once and ref points to same element
-  // https://reactjs.org/docs/hooks-faq.html#how-to-create-expensive-objects-lazily
-  const getRootElem = () => {
-    if (!ref.current) ref.current = document.createElement('div');
-    return ref.current;
-  };
-
-  return getRootElem();
+  return (ref.current ??= document.createElement('div'));
 };
 
 function createElement(id: string): HTMLDivElement {
