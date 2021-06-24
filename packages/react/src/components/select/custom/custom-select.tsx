@@ -176,7 +176,6 @@ export const CustomSelect = withRef(
 
     const handleMouseDown = (event: MouseEvent<HTMLSelectElement>) => {
       onMouseDown?.(event);
-      setTimeout(focusOptions);
 
       if (event.button !== 0) return; // not "left" button pressed
 
