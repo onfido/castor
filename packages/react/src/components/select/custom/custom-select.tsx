@@ -113,12 +113,12 @@ export const CustomSelect = withRef(
       setOpen,
     });
 
-    const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
       setValue(event.currentTarget.value);
       onChange?.(event);
     };
 
-    const handleMouseDown = (event: MouseEvent<HTMLSelectElement>) => {
+    const handleSelectMouseDown = (event: MouseEvent<HTMLSelectElement>) => {
       onMouseDown?.(event);
 
       if (event.button !== 0) return; // not "left" button pressed
@@ -128,6 +128,10 @@ export const CustomSelect = withRef(
         if (!open) setTimeout(focusOnOptions);
         return !open;
       });
+    };
+
+    const handleDropdownMouseLeave = () => {
+      if (focusOption) setFocusOption(null);
     };
 
     return (
@@ -141,8 +145,8 @@ export const CustomSelect = withRef(
               id={id}
               value={value}
               className={classy(c('select-custom'), m({ open }), className)}
-              onChange={handleChange}
-              onMouseDown={handleMouseDown}
+              onChange={handleSelectChange}
+              onMouseDown={handleSelectMouseDown}
             >
               {options.map(({ id, value, title }) => (
                 <option key={id} value={value}>
@@ -155,6 +159,7 @@ export const CustomSelect = withRef(
             <div
               ref={dropdownRef}
               className={classy(c('select-custom-dropdown'), m({ open }))}
+              onMouseLeave={handleDropdownMouseLeave}
             >
               <CustomSelectProvider
                 value={{
