@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/onfido/castor/compare/v1.3.0...v1.4.0) (2021-06-25)
+
+### Features
+
+- add progress component ([#766](https://github.com/onfido/castor/issues/766)) ([0ade2be](https://github.com/onfido/castor/commit/0ade2be603b4585b1c461f4af90a494c5d0b0cc7))
+- add select (native) component ([#403](https://github.com/onfido/castor/issues/403)) ([dfe7075](https://github.com/onfido/castor/commit/dfe7075485f00a9c938764c15ef640be457a5637))
+- **react:** auto-generate ids for checkbox/radio + label connections ([#705](https://github.com/onfido/castor/issues/705)) ([906dd83](https://github.com/onfido/castor/commit/906dd83b40c7e146493d0353f7f533ff80f58645))
+- do not force setting label for asterisk ([#706](https://github.com/onfido/castor/issues/706)) ([033484c](https://github.com/onfido/castor/commit/033484c8b137d7f7aed2a5236fb3bd797df8ccbc))
+
+### Bug Fixes
+
+- **react:** do not set role as "button" on button as anchor ([#726](https://github.com/onfido/castor/issues/726)) ([ab12ee2](https://github.com/onfido/castor/commit/ab12ee24399e914b7a63052b82ef8d0815867f10))
+- **react:** hide icon within component using aria ([#723](https://github.com/onfido/castor/issues/723)) ([fdc2bcb](https://github.com/onfido/castor/commit/fdc2bcb6920b0fe49656fb40a1af40fc5f787797))
+- correct "withIcon" validation prop type to be on core ([#721](https://github.com/onfido/castor/issues/721)) ([49e6c39](https://github.com/onfido/castor/commit/49e6c3999f035443d1ef85c3c836cd8ab890d94d))
+
 ## [1.3.0](https://github.com/onfido/castor/compare/v1.2.0...v1.3.0) (2021-05-12)
 
 ### Features
