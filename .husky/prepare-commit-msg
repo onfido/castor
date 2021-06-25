@@ -1,4 +1,10 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-exec < /dev/tty && yarn cz --hook || true
+# COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2 # <none> (git commit) | message (git commit -m <msg>) | template | merge | squash | commit
+# SHA1=$3
+
+if [ "$COMMIT_SOURCE" = "" ]; then
+  exec < /dev/tty && yarn cz --hook || true
+fi
