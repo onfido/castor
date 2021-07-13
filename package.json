@@ -55,7 +55,7 @@
     "@storybook/addon-toolbars": "^6.3.4",
     "@storybook/components": "^6.3.4",
     "@storybook/react": "^6.3.4",
-    "@types/cypress-image-snapshot": "^3.1.5",
+    "@types/cypress-image-snapshot": "^3.1.6",
     "@types/jest": "^26.0.24",
     "@types/react": "^17.0.14",
     "@typescript-eslint/eslint-plugin": "^4.28.3",

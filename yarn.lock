@@ -3052,10 +3052,10 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
-"@types/cypress-image-snapshot@^3.1.5":
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/@types/cypress-image-snapshot/-/cypress-image-snapshot-3.1.5.tgz#03d5b8e089e96a493da31bdb9aef16f34c0000c1"
-  integrity sha512-PoYmfojdRxrAi5kXi60NKSw3f9tmP7wGtyoRpMMcV4rlEOUzpyO6zmE9G0Z42u7i9erlyrwLVqFpbsN+uLq1Kg==
+"@types/cypress-image-snapshot@^3.1.6":
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/@types/cypress-image-snapshot/-/cypress-image-snapshot-3.1.6.tgz#927680b459f265238e3cc3602886960c6f900d3d"
+  integrity sha512-N3aUkw/yWPtdV5Ilze3UskxHjkM4mHjvQ8w9o0RK7Y6IvRkdwNyZhzGacYceCx9RTQsyw6sa1DXBHx4toDR8tQ==
 
 "@types/glob-base@^0.3.0":
   version "0.3.0"
