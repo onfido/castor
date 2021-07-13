@@ -1,9 +1,11 @@
 @use '../../helpers';
 @use '../../mixins';
 @use '../icon/icon';
+@use '../popover/popover';
 
 @mixin Select() {
   @include icon.Icon();
+  @include popover.Popover();
 
   @if not mixins.includes('Select') {
     @include _Select();
@@ -12,14 +14,23 @@
 
 @mixin _Select() {
   .ods-select {
+    box-sizing: border-box;
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
     width: helpers.space(50);
 
+    > * {
+      box-sizing: inherit;
+    }
+
     &.-borderless {
       width: fit-content;
+    }
+
+    &.-open > .ods-icon {
+      transform: rotateZ(180deg);
     }
   }
 
@@ -77,62 +88,75 @@
     }
   }
 
-  .ods-select-custom.-open + .ods-icon {
-    transform: rotateZ(180deg);
+  .ods-select-output {
+    @include with-padding();
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
   }
 
-  .ods-select-custom-dropdown {
+  .ods-select-dropdown {
     // faking inner-focus
-    $spread: 4px;
-    $inner-size: 1px;
-    $type-size: $spread - $inner-size;
+    $border: helpers.space(0.5);
+    $border-inner: helpers.space(0.125);
+    $border-outer: $border - $border-inner;
     $inner-color: helpers.color('border-focus-inner');
     $type-color: helpers.color('border-action-focus');
 
-    background-color: $inner-color;
-    border: $type-size solid $type-color;
+    background-color: helpers.color('border-focus-inner');
+    border: $border-outer solid helpers.color('border-action-focus');
     border-radius: helpers.border-radius('medium');
+
     box-sizing: border-box;
-    display: none;
-    margin-top: 1px;
-    padding: $inner-size;
-    position: absolute;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: helpers.space(0.125);
+    padding: $border-inner;
+    position: sticky;
 
     > * {
       box-sizing: inherit;
     }
-
-    &.-open {
-      display: block;
-    }
   }
 
-  .ods-select-custom-option {
+  .ods-select-option {
     @include helpers.font('300-regular');
     @include mixins.interactive();
 
     align-items: center;
-    appearance: none;
-    background-color: helpers.color('background-input');
-    border: 0;
     color: helpers.color('content-main');
-    display: flex;
-    outline: none;
-    padding: helpers.space(1.5) helpers.space(2);
+    display: grid;
+    position: relative;
     text-align: left;
-    width: 100%;
 
-    &.-focused {
+    input {
+      height: 0;
+      margin: 0;
+      opacity: 0;
+      position: absolute;
+      width: 0;
+    }
+
+    input + * {
+      background-color: helpers.color('background-input');
+      padding: helpers.space(1.5) helpers.space(2);
+    }
+
+    :hover,
+    :focus + * {
       background-color: helpers.color('background-action-subtle-hover');
     }
 
-    &.-selected {
+    :active + *,
+    :checked + * {
       background-color: helpers.color('background-input-selected');
       color: helpers.color('content-on-action');
     }
 
-    &:disabled {
+    :disabled + * {
       background-color: helpers.color('background-disabled');
       color: helpers.color('content-disabled');
     }
@@ -148,5 +172,5 @@
   $padding-vertical: helpers.space(1.5) - $border-width;
 
   padding: $padding-vertical $padding-horizontal;
-  padding-right: $padding-vertical + helpers.space(3.5); // extra space for icon
+  padding-right: $padding-horizontal + helpers.space(4); // extra space for icon
 }

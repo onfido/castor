@@ -1,8 +1,20 @@
 import React from 'react';
-import { CustomOption, CustomOptionProps } from './custom/custom-option';
-import { CustomSelect, CustomSelectProps } from './custom/custom-select';
-import { NativeOption, NativeOptionProps } from './native/native-option';
-import { NativeSelect, NativeSelectProps } from './native/native-select';
+import {
+  CustomOption,
+  CustomOptionGroup,
+  CustomOptionGroupProps,
+  CustomOptionProps,
+  CustomSelect,
+  CustomSelectProps,
+} from './custom';
+import {
+  NativeOption,
+  NativeOptionGroup,
+  NativeOptionGroupProps,
+  NativeOptionProps,
+  NativeSelect,
+  NativeSelectProps,
+} from './native';
 import { SelectProvider, useSelect } from './useSelect';
 
 /**
@@ -31,12 +43,23 @@ type SelectAsCustomProps = {
   native?: false;
 } & CustomSelectProps;
 
-export const Option = (props: OptionProps): JSX.Element => {
+export function Option(props: OptionProps): JSX.Element {
   const { native } = useSelect();
 
   if (native) return <NativeOption {...(props as NativeOptionProps)} />;
 
   return <CustomOption {...(props as CustomOptionProps)} />;
-};
+}
 
 export type OptionProps = NativeOptionProps | CustomOptionProps;
+
+export function OptionGroup(props: OptionProps): JSX.Element {
+  const { native } = useSelect();
+
+  if (native)
+    return <NativeOptionGroup {...(props as NativeOptionGroupProps)} />;
+
+  return <CustomOptionGroup {...(props as CustomOptionGroupProps)} />;
+}
+
+export type OptionGroupProps = NativeOptionGroupProps | CustomOptionGroupProps;

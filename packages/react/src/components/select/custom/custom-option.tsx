@@ -1,77 +1,51 @@
-import { c, classy, m } from '@onfido/castor';
-import React, { MouseEvent, useEffect, useMemo, useRef } from 'react';
+import { c, classy } from '@onfido/castor';
+import React, { ReactNode, useEffect } from 'react';
 import { useCustomSelect } from './useCustomSelect';
 
-let idCount = 0;
-
-export const CustomOption = ({
-  value: externalValue,
-  children: title,
+export function CustomOption({
+  children,
   disabled,
-  className,
-  onMouseEnter,
-  onClick,
-  ...restProps
-}: CustomOptionProps): JSX.Element => {
-  const ref = useRef<HTMLButtonElement | null>(null);
-  const internalId = useMemo<number>(() => ++idCount, []);
-  const {
-    value: currentValue,
-    focusOption: currentFocusOption,
-    setValue,
-    setFocusOption,
-    addOption,
-    changeOption,
-    removeOption,
-  } = useCustomSelect();
+  value: optionValue,
+  ...props
+}: CustomOptionProps) {
+  const { name, select, selectedOption, value } = useCustomSelect();
 
-  const value = externalValue.toString();
-  const focused = currentFocusOption?.id === internalId;
-  const selected = currentValue === value;
-
+  // defaultValue check
   useEffect(() => {
-    addOption(internalId, { value, title, disabled });
-    return () => {
-      removeOption(internalId);
-    };
+    if (selected && !selectedOption) select(children);
   }, []);
 
-  useEffect(() => {
-    changeOption(internalId, { value, title, disabled });
-  }, [value, title, disabled]);
-
-  const handleMouseEnter = (event: MouseEvent<HTMLButtonElement>) => {
-    if (!focused) setFocusOption({ id: internalId, value });
-    onMouseEnter?.(event);
-  };
-
-  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-    if (!selected) setValue(value);
-    onClick?.(event);
-  };
+  const selected = value == optionValue;
+  const selectOption = () => select(children, optionValue);
 
   return (
-    <button
-      {...restProps}
-      ref={ref}
-      disabled={disabled}
-      className={classy(
-        c('select-custom-option'),
-        m({ focused, selected }),
-        className
-      )}
-      onMouseEnter={handleMouseEnter}
-      onClick={handleClick}
+    <label
+      {...props}
+      className={classy(c('select-option'))}
+      onKeyUp={({ key }) => {
+        if (selectOptionKeys.has(key)) selectOption();
+      }}
+      onMouseUp={selectOption}
     >
-      {title}
-    </button>
+      <input
+        autoFocus={selected}
+        checked={selected}
+        disabled={disabled}
+        name={name}
+        readOnly
+        type="radio"
+      />
+      <span>{children}</span>
+    </label>
   );
+}
+
+export type CustomOptionProps = JSX.IntrinsicElements['label'] & {
+  children?: ReactNode;
+  disabled?: boolean;
+  value: Value;
 };
 
-export type CustomOptionProps = Omit<
-  JSX.IntrinsicElements['button'],
-  'children'
-> & {
-  children?: string | number | null;
-  value: string | number;
-};
+type Value = JSX.IntrinsicElements['select']['value'];
+
+const selectOptionKeys = new Set([' ', 'Enter']);

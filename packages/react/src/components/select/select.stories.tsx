@@ -13,8 +13,7 @@ import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 const borderless = [true, false] as const;
 const disabled = [true, false] as const;
 const invalid = [true, false] as const;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const native = [true, false] as any;
+const native = [true, false] as readonly true[];
 
 export default {
   title: 'React/Select',
@@ -74,7 +73,7 @@ Invalid.argTypes = omit<SelectProps>('invalid');
 export const Disabled = reactMatrix(Select, { disabled });
 Disabled.argTypes = omit<SelectProps>('disabled');
 
-export const Native = reactMatrix(Select, { native });
+export const Native = reactMatrix<SelectProps>(Select, { native });
 Native.argTypes = omit<SelectProps>('native');
 
 export const AsRequired: Story<SelectProps> = (props: SelectProps) => (
