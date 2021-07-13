@@ -1,5 +1,5 @@
 import { toCSS } from '@onfido/castor';
-import { CSSProperties } from 'react';
+import { Properties } from 'csstype';
 
 /**
  * Returns an object that represents a `Font`.
@@ -40,7 +40,7 @@ export function font(name: FontName): Font {
 }
 
 export type Font = Pick<
-  CSSProperties,
+  Properties<string | number>,
   `font${'Family' | 'Size' | 'Weight'}` | 'lineHeight' | 'textTransform'
 >;
 
