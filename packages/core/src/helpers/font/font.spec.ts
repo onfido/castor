@@ -8,7 +8,6 @@ describe('font', () => {
     fontWeight: 'initial',
     lineHeight: 'initial',
     textTransform: 'none',
-    toString: expect.any(Function),
   };
 
   it('should allow selection by size only', () => {
