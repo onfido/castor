@@ -36,7 +36,10 @@ export function font(name: FontName): Font {
     ...(type && types[type as FontType]),
   } as Font;
 
-  return { ...styles, toString: () => toCSS(styles) } as Font;
+  // can't be enumerable otherwise it breaks CSS-in-JS
+  Object.defineProperty(styles, 'toString', { value: () => toCSS(styles) });
+
+  return styles;
 }
 
 export type Font = Pick<
