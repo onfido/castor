@@ -80,7 +80,7 @@
     "sass": "^1.35.2",
     "sass-loader": "^10.2.0",
     "shx": "^0.3.3",
-    "standard-version": "^9.3.0",
+    "standard-version": "^9.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-sass-guidelines": "^8.0.0",
     "ts-jest": "^26.5.6",
