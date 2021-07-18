@@ -37,11 +37,11 @@ interface Annotation<Args> {
   argTypes?: ArgTypes<Args>;
 }
 
-type ArgTypes<Props> = {
+export type ArgTypes<Props> = {
   [key in keyof Props]?: ArgType<Props[key]>;
 };
 
-interface ArgType<T> extends BaseArgType {
+export interface ArgType<T> extends BaseArgType {
   control?: Control<T> | Control<T>['type'] | Disable;
   defaultValue?: T;
   table?: Table;
