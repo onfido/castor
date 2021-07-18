@@ -15,7 +15,7 @@ const disabled = [true, false] as const;
 const invalid = [true, false] as const;
 
 export default {
-  title: 'React/Select',
+  title: 'React/Components/Form/Select',
   component: Select,
   argTypes: {
     children: {

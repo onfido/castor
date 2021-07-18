@@ -15,7 +15,7 @@ const disabled = [true, false] as const;
 const invalid = [true, false] as const;
 
 export default {
-  title: 'React/Checkbox',
+  title: 'React/Components/Form/Checkbox',
   component: Checkbox,
   argTypes: {
     children: {

@@ -5,7 +5,7 @@ import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 const size = ['large', 'medium', 'small'] as const;
 
 export default {
-  title: 'React/Spinner',
+  title: 'React/Components/Spinner',
   component: Spinner,
   argTypes: {
     children: {

@@ -6,7 +6,7 @@ import { colors, Meta, omit, reactMatrix, Story } from '../../../../../docs';
 const [firstIconName] = iconNames;
 
 export default {
-  title: 'React/Icon',
+  title: 'React/Components/Icon',
   component: Icon,
   argTypes: {
     color: {

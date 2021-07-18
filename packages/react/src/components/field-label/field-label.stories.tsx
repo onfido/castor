@@ -13,7 +13,7 @@ import React from 'react';
 import { Meta, omit, Story } from '../../../../../docs';
 
 export default {
-  title: 'React/FieldLabel',
+  title: 'React/Components/Form/FieldLabel',
   component: FieldLabel,
   args: {
     children: 'Label',

@@ -12,7 +12,7 @@ import React from 'react';
 import { Meta, omit, Story } from '../../../../../docs';
 
 export default {
-  title: 'React/FieldsetLegend',
+  title: 'React/Components/Form/FieldsetLegend',
   component: FieldsetLegend,
   argTypes: {
     ...omit<FieldsetLegendProps>('className', 'style'),

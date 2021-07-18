@@ -4,7 +4,7 @@ import { Spinner, SpinnerProps } from './spinner.story';
 const size = ['large', 'medium', 'small'] as const;
 
 export default {
-  title: 'Core/Spinner',
+  title: 'Core/Components/Spinner',
   component: Spinner,
   argTypes: {
     children: {

@@ -15,7 +15,7 @@ const disabled = [true, false] as const;
 const invalid = [true, false] as const;
 
 export default {
-  title: 'React/Radio',
+  title: 'React/Components/Form/Radio',
   component: Radio,
   argTypes: {
     children: {
