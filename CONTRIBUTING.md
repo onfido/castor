@@ -86,37 +86,27 @@ They are written in [Cypress](https://www.cypress.io/).
 
 Visual regression tests are run for all "All Combinations" stories, or you can add specs individually for other stories.
 
-You can run UI tests as the CI would with:
+Docker (and Compose) is used for running E2E tests, so first install it via Homebrew:
+
+    brew install --cask docker
+
+Then (only once) build the local container:
+
+    docker-compose build
+
+Now you can run UI tests with:
 
     yarn e2e
 
-That runs all specs and generates coverage reports.
-
-Beware that environment differences between CI and your local machine might be enough for a diff to be detected.
-
-For writing tests locally:
-
-1. You can serve the app in E2E mode with:
-
-   `yarn e2e:serve`
-
-2. Then in another terminal open Cypress with:
-
-   `yarn cypress open --env failOnSnapshotDiff=false`
-
-Alternatively you could use a single terminal with:
-
-    yarn concurrently -k -n ,cypress:open yarn:e2e:serve "yarn cypress open --env failOnSnapshotDiff=false"
-
-For a nicer experience, [you can report snapshot diffs in your test results to console](https://github.com/jaredpalmer/cypress-image-snapshot#reporter):
-
-    --reporter cypress-image-snapshot/reporter
+This runs all specs and generates coverage reports.
 
 If tests fail on image diffing, make sure no regression has been introduced.
 
 Diffed images are stored in `./coverage/e2e/.diff`.
 
-If you introduced visual changes intentionally and are sure it's how it should look, update the screenshot baselines by downloading `screenshots` artifacts in your PR's checks and copying the images into `./e2e/.snapshots`.
+If you introduced visual changes intentionally and are sure it's how it should look, update the screenshot baselines with:
+
+    yarn snapshot
 
 ### Build packages locally
 

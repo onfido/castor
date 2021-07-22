@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  cypress:
+    image: cypress
+    build:
+      context: .
+      dockerfile: Dockerfile.cypress
+    container_name: castor_cypress
+    extra_hosts:
+      host.docker.internal: host-gateway # https://github.com/docker/for-linux/issues/264#issuecomment-823528103
+    environment:
+      - CYPRESS_baseUrl
+      - CYPRESS_updateSnapshots
+    command: bash -c 'yarn wait-on ${CYPRESS_baseUrl} && yarn cypress run -c video=true'
+    volumes:
+      - ./.nyc_output:/cypress/.nyc_output
+      - ./coverage/e2e:/cypress/coverage/e2e
+      - ./e2e/.snapshots:/cypress/e2e/.snapshots
