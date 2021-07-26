@@ -6,48 +6,45 @@ import { withRef } from '../../utils';
 
 let count = 0;
 
-export const Checkbox = withRef(
-  (
-    {
-      id = `castor_checkbox_${++count}`,
-      bordered,
-      invalid,
-      children,
-      className,
-      style,
-      ...restProps
-    }: CheckboxProps,
-    ref: CheckboxProps['ref']
-  ): JSX.Element => {
-    const { disabled, touched } = useField();
-    const [containerProps, inputProps] = splitContainerProps(restProps);
+export const Checkbox = withRef(function Checkbox(
+  {
+    id = `castor_checkbox_${++count}`,
+    bordered,
+    invalid,
+    children,
+    className,
+    style,
+    ...restProps
+  }: CheckboxProps,
+  ref?: CheckboxProps['ref']
+) {
+  const { disabled, touched } = useField();
+  const [containerProps, inputProps] = splitContainerProps(restProps);
 
-    return (
-      <IndicatorContainer
-        {...containerProps}
-        htmlFor={id}
-        bordered={bordered}
-        className={className}
-        style={style}
-      >
-        {{
-          children,
-          input: (
-            <input
-              disabled={disabled} // will be overriden by props if set
-              {...inputProps}
-              ref={ref}
-              id={id}
-              type="checkbox"
-              className={classy(c('checkbox'), m({ invalid, touched }))}
-            />
-          ),
-        }}
-      </IndicatorContainer>
-    );
-  }
-);
-Checkbox.displayName = 'Checkbox';
+  return (
+    <IndicatorContainer
+      {...containerProps}
+      htmlFor={id}
+      bordered={bordered}
+      className={className}
+      style={style}
+    >
+      {{
+        children,
+        input: (
+          <input
+            disabled={disabled} // will be overriden by props if set
+            {...inputProps}
+            ref={ref}
+            id={id}
+            type="checkbox"
+            className={classy(c('checkbox'), m({ invalid, touched }))}
+          />
+        ),
+      }}
+    </IndicatorContainer>
+  );
+});
 
 export type CheckboxProps = BaseProps &
   Omit<JSX.IntrinsicElements['input'], 'type'>;

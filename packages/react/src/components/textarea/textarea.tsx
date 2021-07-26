@@ -6,47 +6,44 @@ import { withRef } from '../../utils';
 
 let idCount = 0;
 
-export const Textarea = withRef(
-  (
-    {
-      id = `castor_textarea_${++idCount}`,
-      resize = 'vertical',
-      rows = 3,
-      invalid,
-      children,
-      className,
-      style,
-      ...restProps
-    }: TextareaProps,
-    ref: TextareaProps['ref']
-  ): JSX.Element => {
-    const { disabled, touched } = useField();
+export const Textarea = withRef(function Textarea(
+  {
+    id = `castor_textarea_${++idCount}`,
+    resize = 'vertical',
+    rows = 3,
+    invalid,
+    children,
+    className,
+    style,
+    ...restProps
+  }: TextareaProps,
+  ref?: TextareaProps['ref']
+) {
+  const { disabled, touched } = useField();
 
-    return (
-      <FieldLabelWrapper htmlFor={id}>
-        {{
-          children,
-          element: (
-            <textarea
-              disabled={disabled} // will be overriden by props if set
-              {...restProps}
-              ref={ref}
-              id={id}
-              rows={rows}
-              className={classy(
-                c('textarea'),
-                m({ invalid, touched }),
-                className
-              )}
-              style={{ ...style, resize }}
-            />
-          ),
-        }}
-      </FieldLabelWrapper>
-    );
-  }
-);
-Textarea.displayName = 'Textarea';
+  return (
+    <FieldLabelWrapper htmlFor={id}>
+      {{
+        children,
+        element: (
+          <textarea
+            disabled={disabled} // will be overriden by props if set
+            {...restProps}
+            ref={ref}
+            id={id}
+            rows={rows}
+            className={classy(
+              c('textarea'),
+              m({ invalid, touched }),
+              className
+            )}
+            style={{ ...style, resize }}
+          />
+        ),
+      }}
+    </FieldLabelWrapper>
+  );
+});
 
 export type TextareaProps = BaseProps &
   Omit<TextareaElementProps, 'children'> & {
