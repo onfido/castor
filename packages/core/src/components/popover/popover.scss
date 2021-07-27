@@ -1,0 +1,85 @@
+@use '../../helpers';
+@use '../../mixins';
+@use 'sass:map';
+
+@mixin Popover() {
+  @if not mixins.includes('Popover') {
+    @include _Popover();
+  }
+}
+
+@mixin _Popover() {
+  .ods-popover-anchor {
+    position: absolute;
+    z-index: 9999999;
+  }
+
+  .ods-popover {
+    max-width: helpers.space(50);
+    position: absolute;
+    width: max-content;
+
+    @each $position in $positions {
+      // stylelint-disable max-nesting-depth
+      @each $align in $alignments {
+        &.-#{$position}-#{$align} {
+          #{reverse($position)}: 100%;
+          transform-origin: origin($position, $align);
+
+          @if $align == center {
+            $vertical: $position == bottom or $position == top;
+            $axis: if($vertical, X, Y);
+            $side: if($vertical, left, top);
+
+            #{$side}: 50%;
+            transform: translate#{$axis }(-50%);
+          } @else {
+            #{side($position, $align)}: 0;
+          }
+        }
+      }
+      // stylelint-enable max-nesting-depth
+    }
+  }
+}
+
+$reverse-positions: (
+  top: bottom,
+  bottom: top,
+  right: left,
+  left: right,
+);
+$positions: map.values($reverse-positions);
+$alignments: (start, center, end);
+
+@function reverse($position) {
+  @return map.get($reverse-positions, $position);
+}
+
+@function side($position, $align) {
+  $x: (
+    start: left,
+    end: right,
+  );
+  $y: (
+    start: top,
+    end: bottom,
+  );
+  $vertical: $position == bottom or $position == top;
+  $map: if($vertical, $x, $y);
+
+  @return map.get($map, $align);
+}
+
+@function origin($position, $align) {
+  $vertical: $position == bottom or $position == top;
+
+  @if $align == center {
+    $origin: if($vertical, left, top);
+    @return $origin reverse($position);
+  }
+
+  $x: if($vertical, reverse($position), side($position, $align));
+  $y: if(not $vertical, reverse($position), side($position, $align));
+  @return $x $y;
+}
