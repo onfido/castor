@@ -1,5 +1,6 @@
 import { c, classy, FieldProps as BaseProps, FieldState } from '@onfido/castor';
 import React, { SyntheticEvent, useState } from 'react';
+import { withRef } from '../../utils';
 import { FieldProvider } from './useField';
 
 export { useField } from './useField';
@@ -19,14 +20,17 @@ export { useField } from './useField';
  *   </Validation>
  * </Field>
  */
-export const Field = ({
-  disabled,
-  onBlur,
-  onChange,
-  onInvalid,
-  className,
-  ...restProps
-}: FieldProps): JSX.Element => {
+export const Field = withRef(function Field(
+  {
+    disabled,
+    onBlur,
+    onChange,
+    onInvalid,
+    className,
+    ...restProps
+  }: FieldProps,
+  ref?: FieldProps['ref']
+) {
   const [field, setField] = useState<FieldState>(initial);
 
   function initial(): FieldState {
@@ -42,6 +46,7 @@ export const Field = ({
       <div
         {...restProps}
         className={classy(c('field'), className)}
+        ref={ref}
         onBlur={(event) => {
           update({ touched: true, ...readInput(event) });
           onBlur?.(event);
@@ -57,7 +62,7 @@ export const Field = ({
       />
     </FieldProvider>
   );
-};
+});
 
 export type FieldProps = BaseProps & JSX.IntrinsicElements['div'];
 

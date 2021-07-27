@@ -6,19 +6,23 @@ import {
   ProgressProps as BaseProps,
 } from '@onfido/castor';
 import React, { useMemo } from 'react';
+import { withRef } from '../../utils';
 
-export const Progress = ({
-  value,
-  min = 0,
-  max = 100,
-  size = 'regular',
-  hideLabel,
-  children,
-  style,
-  className,
-  'aria-valuetext': ariaValuetext,
-  ...restProps
-}: ProgressProps): JSX.Element => {
+export const Progress = withRef(function Progress(
+  {
+    value,
+    min = 0,
+    max = 100,
+    size = 'regular',
+    hideLabel,
+    children,
+    style,
+    className,
+    'aria-valuetext': ariaValuetext,
+    ...restProps
+  }: ProgressProps,
+  ref?: ProgressProps['ref']
+) {
   const percentValue = useMemo(
     () => `${Math.round(((value - min) * 100) / (max - min))}%`,
     [value, min, max]
@@ -27,6 +31,7 @@ export const Progress = ({
   return (
     <div
       {...restProps}
+      ref={ref}
       className={classy(c('progress'), m(size), className)}
       role="progressbar"
       aria-valuenow={value}
@@ -40,7 +45,7 @@ export const Progress = ({
       {!hideLabel && (children || percentValue)}
     </div>
   );
-};
+});
 
 export type ProgressProps = BaseProps &
   Omit<

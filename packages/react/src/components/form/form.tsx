@@ -1,24 +1,29 @@
 import { c, classy, FormProps as BaseProps, m } from '@onfido/castor';
 import React, { FormEvent, useState } from 'react';
+import { withRef } from '../../utils';
 import { getFormValues } from './getFormValues';
 import { FormProvider } from './useForm';
 
 export { useForm } from './useForm';
 
-export const Form = <T extends Values>({
-  disabled,
-  onChange,
-  onInvalid,
-  onSubmit,
-  className,
-  ...restProps
-}: FormProps<T>) => {
+export const Form = withRef(function Form<T extends Values>(
+  {
+    disabled,
+    onChange,
+    onInvalid,
+    onSubmit,
+    className,
+    ...restProps
+  }: FormProps<T>,
+  ref?: FormProps<T>['ref']
+) {
   const [touched, setTouched] = useState<boolean>();
 
   return (
     <FormProvider value={{ disabled, touched }}>
       <form
         {...restProps}
+        ref={ref}
         className={classy(c('form'), m({ disabled }), className)}
         onChange={(event) =>
           onChange?.(event, getFormValues(event.currentTarget))
@@ -45,7 +50,7 @@ export const Form = <T extends Values>({
       />
     </FormProvider>
   );
-};
+});
 
 export interface FormProps<T extends Values>
   extends BaseProps,
