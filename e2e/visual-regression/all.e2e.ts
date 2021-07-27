@@ -17,7 +17,9 @@ describe('components', () => {
 
       cy.visit(`/iframe.html?id=${id}`);
 
-      cy.get('body').should('be.visible').matchImageSnapshot(name);
+      cy.get('#root').should('have.descendants');
+
+      cy.get('body').matchImageSnapshot(name);
     });
   });
 });
