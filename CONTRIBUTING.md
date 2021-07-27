@@ -133,6 +133,8 @@ If you introduced visual changes intentionally and are sure it's how it should l
 
     yarn snapshot
 
+You may also download `screenshots` artifacts in your PR's checks, then copy the images into `./e2e/.snapshots`
+
 ### Build packages locally
 
 Castor consists of multiple packages. You can build them by running:
