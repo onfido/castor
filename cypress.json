@@ -17,5 +17,9 @@
   "testFiles": "**/*.e2e.ts",
 
   "viewportHeight": 1280,
-  "viewportWidth": 1920
+  "viewportWidth": 1920,
+
+  "retries": {
+    "runMode": 2
+  }
 }
