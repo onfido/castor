@@ -84,11 +84,6 @@ jobs:
         uses: satackey/action-docker-layer-caching@v0.0.11
         continue-on-error: true # continue without cache in case of a failure
 
-      - name: Setup Node (uses version from .nvmrc)
-        uses: actions/setup-node@v2.3.0
-        with:
-          node-version: ${{ steps.nvm.outputs.NVMRC }}
-
       - name: Build local container
         run: docker-compose build
 

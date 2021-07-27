@@ -100,6 +100,31 @@ Now you can run UI tests with:
 
 This runs all specs and generates coverage reports.
 
+For writing tests locally, you will need to allow communication between Cypress within Docker container and Cypress GUI on the host system using XQuartz.
+
+Install XQuartz via Homebrew:
+
+    brew install --cask xquartz
+
+Restart computer after installation.
+
+Start XQuartz from command line, and make sure "Allow connections from network clients" is enabled in the preferences under "Security" tab:
+
+    open -a XQuartz
+
+Get the IP address of the host machine and allow X11 to accept incoming connections from that IP address:
+
+    IP=$(ipconfig getifaddr en0)
+    /usr/X11/bin/xhost + $IP
+
+Then open Cypress GUI (using same terminal window that had the IP address set):
+
+    DISPLAY=$IP:0 CYPRESS_baseUrl=http://host.docker.internal:6006 docker-compose -f docker-compose.yml -f docker-compose.open.yml up --abort-on-container-exit --exit-code-from cypress
+
+Finally in another terminal window serve the Storybook instance:
+
+    yarn e2e:serve
+
 If tests fail on image diffing, make sure no regression has been introduced.
 
 Diffed images are stored in `./coverage/e2e/.diff`.
