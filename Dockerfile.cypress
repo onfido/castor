@@ -1,0 +1,13 @@
+FROM cypress/base:14
+
+WORKDIR /cypress
+
+COPY ./e2e ./e2e
+COPY ./packages ./packages
+COPY ./.nycrc.json .
+COPY ./cypress.json .
+COPY ./package.json .
+COPY ./yarn.lock .
+COPY ./tsconfig.json .
+
+RUN yarn install --frozen-lockfile

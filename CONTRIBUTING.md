@@ -86,37 +86,62 @@ They are written in [Cypress](https://www.cypress.io/).
 
 Visual regression tests are run for all "All Combinations" stories, or you can add specs individually for other stories.
 
-You can run UI tests as the CI would with:
+Docker (and Compose) is used for running E2E tests, so first install it via Homebrew:
+
+    brew install --cask docker
+
+Then (only once) build the local container:
+
+    docker-compose build
+
+Now you can run UI tests with:
 
     yarn e2e
 
-That runs all specs and generates coverage reports.
+This runs all specs and generates coverage reports.
 
-Beware that environment differences between CI and your local machine might be enough for a diff to be detected.
+For writing tests locally, serve Storybook in E2E mode with
 
-For writing tests locally:
+    yarn e2e:serve
 
-1. You can serve the app in E2E mode with:
+Then in another terminal open Cypress with:
 
-   `yarn e2e:serve`
+    yarn cypress open --env failOnSnapshotDiff=false
 
-2. Then in another terminal open Cypress with:
+If you're on a Mac, you can also use XQuartz to open Cypress within a Docker container and communicate to the host system GUI. This is an advanced feature.
 
-   `yarn cypress open --env failOnSnapshotDiff=false`
+First, install XQuartz via Homebrew:
 
-Alternatively you could use a single terminal with:
+    brew install --cask xquartz
 
-    yarn concurrently -k -n ,cypress:open yarn:e2e:serve "yarn cypress open --env failOnSnapshotDiff=false"
+Restart computer after installation.
 
-For a nicer experience, [you can report snapshot diffs in your test results to console](https://github.com/jaredpalmer/cypress-image-snapshot#reporter):
+Start XQuartz from command line, and make sure "Allow connections from network clients" is enabled in the preferences under "Security" tab:
 
-    --reporter cypress-image-snapshot/reporter
+    open -a XQuartz
+
+Get the IP address of the host machine and allow X11 to accept incoming connections from that IP address:
+
+    IP=$(ipconfig getifaddr en0)
+    /usr/X11/bin/xhost + $IP
+
+Then open Cypress GUI (using same terminal window that had the IP address set):
+
+    DISPLAY=$IP:0 CYPRESS_baseUrl=http://host.docker.internal:6006 docker-compose -f docker-compose.yml -f docker-compose.mac-open.yml up --abort-on-container-exit --exit-code-from cypress
+
+Finally, in another terminal window serve the Storybook instance:
+
+    yarn e2e:serve
 
 If tests fail on image diffing, make sure no regression has been introduced.
 
 Diffed images are stored in `./coverage/e2e/.diff`.
 
-If you introduced visual changes intentionally and are sure it's how it should look, update the screenshot baselines by downloading `screenshots` artifacts in your PR's checks and copying the images into `./e2e/.snapshots`.
+If you introduced visual changes intentionally and are sure it's how it should look, update the screenshot baselines with:
+
+    yarn snapshot
+
+You may also download `screenshots` artifacts in your PR's checks, then copy the images into `./e2e/.snapshots`
 
 ### Build packages locally
 
