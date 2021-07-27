@@ -100,9 +100,13 @@ Now you can run UI tests with:
 
 This runs all specs and generates coverage reports.
 
-For writing tests locally, you will need to allow communication between Cypress within Docker container and Cypress GUI on the host system using XQuartz.
+For writing tests locally, open Cypress with:
 
-Install XQuartz via Homebrew:
+    yarn concurrently -k --success first -n ,cypress:open yarn:e2e:serve "yarn cypress open --env failOnSnapshotDiff=false"
+
+If you're on a Mac, you can also use XQuartz to open Cypress within a Docker container and communicate to the host system GUI. This is an advanced feature.
+
+First, install XQuartz via Homebrew:
 
     brew install --cask xquartz
 
@@ -119,9 +123,9 @@ Get the IP address of the host machine and allow X11 to accept incoming connecti
 
 Then open Cypress GUI (using same terminal window that had the IP address set):
 
-    DISPLAY=$IP:0 CYPRESS_baseUrl=http://host.docker.internal:6006 docker-compose -f docker-compose.yml -f docker-compose.open.yml up --abort-on-container-exit --exit-code-from cypress
+    DISPLAY=$IP:0 CYPRESS_baseUrl=http://host.docker.internal:6006 docker-compose -f docker-compose.yml -f docker-compose.mac-open.yml up --abort-on-container-exit --exit-code-from cypress
 
-Finally in another terminal window serve the Storybook instance:
+Finally, in another terminal window serve the Storybook instance:
 
     yarn e2e:serve
 
