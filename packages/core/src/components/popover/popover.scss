@@ -10,76 +10,85 @@
 
 @mixin _Popover() {
   .ods-popover-anchor {
+    pointer-events: none;
     position: absolute;
     z-index: 9999999;
   }
 
   .ods-popover {
+    height: fit-content;
     max-width: helpers.space(50);
     position: absolute;
     width: max-content;
 
-    @each $position in $positions {
-      // stylelint-disable max-nesting-depth
-      @each $align in $alignments {
-        &.-#{$position}-#{$align} {
-          #{reverse($position)}: 100%;
-          transform-origin: origin($position, $align);
-
-          @if $align == center {
-            $vertical: $position == bottom or $position == top;
-            $axis: if($vertical, X, Y);
-            $side: if($vertical, left, top);
-
-            #{$side}: 50%;
-            transform: translate#{$axis }(-50%);
-          } @else {
-            #{side($position, $align)}: 0;
-          }
-        }
-      }
-      // stylelint-enable max-nesting-depth
+    // position ==========>
+    &.-top-center,
+    &.-top-start,
+    &.-top-end {
+      @include _positionFrom(bottom);
     }
+
+    &.-bottom-center,
+    &.-bottom-start,
+    &.-bottom-end {
+      @include _positionFrom(top);
+    }
+
+    &.-left-center,
+    &.-left-start,
+    &.-left-end {
+      @include _positionFrom(right);
+    }
+
+    &.-right-center,
+    &.-right-start,
+    &.-right-end {
+      @include _positionFrom(left);
+    }
+    // <========== position
+
+    // alignment ==========>
+    &.-top-center,
+    &.-bottom-center {
+      @include _center(X);
+    }
+
+    &.-left-center,
+    &.-right-center {
+      @include _center(Y);
+    }
+
+    &.-top-start,
+    &.-bottom-start {
+      left: 0;
+    }
+
+    &.-left-start,
+    &.-right-start {
+      top: 0;
+    }
+
+    &.-top-end,
+    &.-bottom-end {
+      right: 0;
+    }
+
+    &.-left-end,
+    &.-right-end {
+      bottom: 0;
+    }
+    // <========== alignment
   }
 }
 
-$reverse-positions: (
-  top: bottom,
-  bottom: top,
-  right: left,
-  left: right,
-);
-$positions: map.values($reverse-positions);
-$alignments: (start, center, end);
-
-@function reverse($position) {
-  @return map.get($reverse-positions, $position);
+@mixin _positionFrom($side) {
+  #{$side}: 100%;
+  margin-#{$side}: helpers.space(1);
 }
 
-@function side($position, $align) {
-  $x: (
-    start: left,
-    end: right,
-  );
-  $y: (
-    start: top,
-    end: bottom,
-  );
-  $vertical: $position == bottom or $position == top;
-  $map: if($vertical, $x, $y);
+@mixin _center($axis) {
+  $side: if($axis == X, left, top);
 
-  @return map.get($map, $align);
-}
-
-@function origin($position, $align) {
-  $vertical: $position == bottom or $position == top;
-
-  @if $align == center {
-    $origin: if($vertical, left, top);
-    @return $origin reverse($position);
-  }
-
-  $x: if($vertical, reverse($position), side($position, $align));
-  $y: if(not $vertical, reverse($position), side($position, $align));
-  @return $x $y;
+  #{$side}: 50%;
+  transform: translate#{$axis }(-50%);
 }
