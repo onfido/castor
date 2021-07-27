@@ -30,7 +30,7 @@
 
       border: 0 solid helpers.color('content-on-action');
       border-width: 0 0 $stroke-size $stroke-size;
-      height: $width / 2;
+      height: $width * 0.5;
       transform: rotate(-45deg);
       transform-origin: 110% 20%; // rotates rectangle from dead center
       width: $width;
@@ -43,7 +43,7 @@
 
       background-color: helpers.color('content-on-action');
       height: $stroke-size;
-      margin: (($size - $stroke-size) / 2) (($size - $width) / 2);
+      margin: (($size - $stroke-size) * 0.5) (($size - $width) * 0.5);
       transform: none; // Firefox sets both [checked] and [indeterminate] states
       width: $width;
     }

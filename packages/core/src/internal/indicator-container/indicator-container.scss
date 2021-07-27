@@ -10,7 +10,7 @@
 @mixin _IndicatorContainer() {
   $input-size: helpers.space(2.75);
   $input-margin: 1px;
-  $padding: (helpers.space(6) - $input-size - $input-margin * 2) / 2;
+  $padding: (helpers.space(6) - $input-size - $input-margin * 2) * 0.5;
 
   .ods-input-label {
     @include helpers.font('300-regular');

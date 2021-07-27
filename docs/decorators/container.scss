@@ -19,10 +19,10 @@ $margin: castor.space(4);
   flex-flow: row wrap;
 
   // --- this is the same as gap, except Safari supports it
-  margin: $margin - $gap / 2;
+  margin: $margin - $gap * 0.5;
 
   > * {
-    margin: $gap / 2;
+    margin: $gap * 0.5;
   }
   // ---
 }
