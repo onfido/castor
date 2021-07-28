@@ -16,4 +16,8 @@ services:
     volumes:
       - ./.nyc_output:/cypress/.nyc_output
       - ./coverage/e2e:/cypress/coverage/e2e
-      - ./e2e/.snapshots:/cypress/e2e/.snapshots
+      - ./e2e:/cypress/e2e
+      - ./packages:/cypress/packages
+      - ./.nycrc.json:/cypress/.nycrc.json
+      - ./cypress.json:/cypress/cypress.json
+      - ./tsconfig.json:/cypress/tsconfig.json
