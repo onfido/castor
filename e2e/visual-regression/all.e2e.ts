@@ -1,4 +1,5 @@
 const storyName = 'All Combinations';
+const theme = 'castor-theme--day';
 
 describe('components', () => {
   it('should have no visual regressions', () => {
@@ -18,10 +19,7 @@ describe('components', () => {
       cy.visit(`/iframe.html?id=${id}`);
 
       // use slightly higher timeout because sometimes the iframe is slow
-      cy.get('body', { timeout: 10000 }).should(
-        'have.class',
-        'castor-theme--day'
-      );
+      cy.get('body', { timeout: 10000 }).should('have.class', theme);
 
       // give React one cycle to run effects and timeouts and stuff,
       // and give the browser one requestFrame
