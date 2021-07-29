@@ -3,6 +3,7 @@ import React from 'react';
 import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 
 const size = ['large', 'medium', 'small'] as const;
+size.toString = () => size.map((value) => `"${value}"`).join('|');
 
 export default {
   title: 'React/Spinner',
@@ -10,6 +11,13 @@ export default {
   argTypes: {
     children: {
       description: 'Optional label.',
+    },
+    size: {
+      control: { type: 'radio', options: size },
+      table: {
+        type: { summary: size.toString() },
+        defaultValue: { summary: 'medium' },
+      },
     },
   },
   args: {

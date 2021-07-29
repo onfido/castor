@@ -13,7 +13,7 @@ export default {
   title: 'Core/Select',
   component: Select,
   argTypes: {
-    ...omit<SelectProps>('class', 'id', 'value'),
+    ...omit<SelectProps>('class', 'id', 'required', 'value'),
     children: {
       description: [
         'List of options using `<option>`.',

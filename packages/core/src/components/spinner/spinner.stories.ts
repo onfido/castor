@@ -2,6 +2,7 @@ import { htmlMatrix, Meta, omit, Story } from '../../../../../docs';
 import { Spinner, SpinnerProps } from './spinner.story';
 
 const size = ['large', 'medium', 'small'] as const;
+size.toString = () => size.map((value) => `"${value}"`).join('|');
 
 export default {
   title: 'Core/Spinner',
@@ -9,6 +10,10 @@ export default {
   argTypes: {
     children: {
       description: 'Optional label.',
+    },
+    size: {
+      control: { type: 'radio', options: size },
+      table: { type: { summary: size.toString() } },
     },
   },
   args: {

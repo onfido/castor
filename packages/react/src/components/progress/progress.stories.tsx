@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 
 const size = ['regular', 'large'] as const;
+size.toString = () => size.map((value) => `"${value}"`).join('|');
+
 const hideLabel = [false, true] as const;
 
 export default {
@@ -16,12 +18,14 @@ export default {
       table: { type: { summary: 'boolean' } },
     },
     min: {
+      control: { type: 'number' },
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: '0' },
       },
     },
     max: {
+      control: { type: 'number' },
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: '100' },
@@ -35,6 +39,7 @@ export default {
       },
     },
     value: {
+      type: { required: true },
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: '0' },
@@ -44,6 +49,7 @@ export default {
   args: {
     children: '',
     hideLabel: false,
+    size: 'regular',
     value: 25,
   },
   parameters: { display: 'flex' },

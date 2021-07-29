@@ -15,6 +15,14 @@ export default {
         type: { summary: colors.map((value) => `"${value}"`).join('|') },
       },
     },
+    name: {
+      type: { required: true },
+      control: { type: 'select', options: iconNames },
+      table: {
+        required: true,
+        type: { summary: iconNames.map((value) => `"${value}"`).join('|') },
+      },
+    },
   },
   args: {
     name: firstIconName,
