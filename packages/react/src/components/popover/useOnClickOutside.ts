@@ -12,8 +12,11 @@ export const useOnClickOutside = <T extends Element>(
   useEffect(() => {
     if (!onClickOutside) return;
 
+    const elements = targets.map((t) => t.current).filter(Boolean) as T[];
+    if (!elements.length) return;
+
     const onClick = (ev: MouseEvent) =>
-      targets.some((t) => t.current?.contains(ev.target as Element)) ||
+      elements.some((element) => element.contains(ev.target as Element)) ||
       onClickOutside(ev);
 
     document.addEventListener('click', onClick);

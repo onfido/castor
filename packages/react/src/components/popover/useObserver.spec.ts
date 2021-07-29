@@ -11,8 +11,8 @@ import { useEffect } from 'react';
 import { useObserver } from './useObserver';
 
 jest.mock('react', () => ({
-  useEffect: jest.fn((fn: () => unknown) => fn()),
-  useRef: (current: unknown) => ({ current }),
+  useEffect: jest.fn((fn: any) => fn()),
+  useRef: (current: any) => ({ current }),
 }));
 
 describe('useObserver', () => {
@@ -50,9 +50,9 @@ describe('useObserver', () => {
 
   it('should unobserve targets on effect cleanup', () => {
     const target = { current: {} as Element };
-    let cleanup = (): unknown => void 0;
+    let cleanup = (): any => void 0;
     (useEffect as Mock<any>).mockImplementationOnce(
-      (fn: () => () => unknown) => (cleanup = fn())
+      (fn: any) => (cleanup = fn())
     );
 
     useObserver(() => {}, [target]);
@@ -67,9 +67,7 @@ describe('useObserver', () => {
     const target = { current: {} as Element };
     const debounceTime = 100;
     const entries = [{}];
-    constructor.mockImplementationOnce((fn: (a: unknown[]) => void) =>
-      fn(entries)
-    );
+    constructor.mockImplementationOnce((fn: any) => fn(entries));
 
     useObserver(onChange, [target], debounceTime);
 

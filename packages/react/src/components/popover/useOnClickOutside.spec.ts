@@ -11,8 +11,8 @@ import { useEffect } from 'react';
 import { useOnClickOutside } from './useOnClickOutside';
 
 jest.mock('react', () => ({
-  useEffect: jest.fn((fn: () => unknown) => fn()),
-  useRef: (current: unknown) => ({ current }),
+  useEffect: jest.fn((fn: any) => fn()),
+  useRef: (current: any) => ({ current }),
 }));
 
 describe('useOnClickOutside', () => {
@@ -37,9 +37,9 @@ describe('useOnClickOutside', () => {
   });
 
   it('should remove event listener from document on effect cleanup', () => {
-    let cleanup = (): unknown => void 0;
+    let cleanup = (): any => void 0;
     (useEffect as Mock<any>).mockImplementationOnce(
-      (fn: () => () => unknown) => (cleanup = fn())
+      (fn: any) => (cleanup = fn())
     );
 
     useOnClickOutside(() => {}, [{ current: {} as Element }]);
@@ -52,9 +52,7 @@ describe('useOnClickOutside', () => {
     const onClickOutside = jest.fn();
     const target = { current: { contains: () => false } as any };
     const event = { target };
-    addEventListener.mockImplementationOnce((_, fn: (_: unknown) => void) =>
-      fn(event)
-    );
+    addEventListener.mockImplementationOnce((_, fn: any) => fn(event));
 
     useOnClickOutside(onClickOutside, [target, {} as any]);
 
@@ -65,9 +63,7 @@ describe('useOnClickOutside', () => {
     const onClickOutside = jest.fn();
     const target = { current: { contains: () => true } as any };
     const event = { target };
-    addEventListener.mockImplementationOnce((_, fn: (_: unknown) => void) =>
-      fn(event)
-    );
+    addEventListener.mockImplementationOnce((_, fn: any) => fn(event));
 
     useOnClickOutside(onClickOutside, [target, {} as any]);
 
@@ -76,6 +72,12 @@ describe('useOnClickOutside', () => {
 
   it('should do nothing if onClickOutside is undefined', () => {
     useOnClickOutside(undefined, []);
+
+    expect(addEventListener).not.toBeCalled();
+  });
+
+  it('should do nothing if target array is empty', () => {
+    useOnClickOutside(() => {}, []);
 
     expect(addEventListener).not.toBeCalled();
   });
