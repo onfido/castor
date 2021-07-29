@@ -7,7 +7,13 @@ import {
   Validation,
 } from '@onfido/castor-react';
 import React from 'react';
-import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
+import {
+  Meta,
+  omit,
+  optionsToSummary,
+  reactMatrix,
+  Story,
+} from '../../../../../docs';
 
 const disabled = [true, false] as const;
 const invalid = [true, false] as const;
@@ -21,7 +27,6 @@ const type = [
   'url',
   'search',
 ] as const;
-type.toString = () => type.map((value) => `"${value}"`).join('|');
 
 export default {
   title: 'React/Input',
@@ -39,7 +44,7 @@ export default {
     type: {
       control: { type: 'radio', options: type },
       table: {
-        type: { summary: type.toString() },
+        type: { summary: optionsToSummary(type) },
         defaultValue: { summary: 'text' },
       },
     },

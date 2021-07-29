@@ -1,8 +1,13 @@
-import { htmlMatrix, Meta, omit, Story } from '../../../../../docs';
+import {
+  htmlMatrix,
+  Meta,
+  omit,
+  optionsToSummary,
+  Story,
+} from '../../../../../docs';
 import { Spinner, SpinnerProps } from './spinner.story';
 
 const size = ['large', 'medium', 'small'] as const;
-size.toString = () => size.map((value) => `"${value}"`).join('|');
 
 export default {
   title: 'Core/Spinner',
@@ -13,7 +18,7 @@ export default {
     },
     size: {
       control: { type: 'radio', options: size },
-      table: { type: { summary: size.toString() } },
+      table: { type: { summary: optionsToSummary(size) } },
     },
   },
   args: {

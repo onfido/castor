@@ -1,7 +1,14 @@
 import { iconNames } from '@onfido/castor-icons';
 import { Icon, IconProps } from '@onfido/castor-react';
 import React from 'react';
-import { colors, Meta, omit, reactMatrix, Story } from '../../../../../docs';
+import {
+  colors,
+  Meta,
+  omit,
+  optionsToSummary,
+  reactMatrix,
+  Story,
+} from '../../../../../docs';
 
 const [firstIconName] = iconNames;
 
@@ -12,7 +19,7 @@ export default {
     color: {
       control: { type: 'select', options: colors },
       table: {
-        type: { summary: colors.map((value) => `"${value}"`).join('|') },
+        type: { summary: optionsToSummary(colors) },
       },
     },
     name: {
@@ -20,7 +27,7 @@ export default {
       control: { type: 'select', options: iconNames },
       table: {
         required: true,
-        type: { summary: iconNames.map((value) => `"${value}"`).join('|') },
+        type: { summary: optionsToSummary(iconNames) },
       },
     },
   },

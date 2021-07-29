@@ -1,5 +1,12 @@
 import { iconNames } from '@onfido/castor-icons';
-import { colors, htmlMatrix, Meta, omit, Story } from '../../../../../docs';
+import {
+  colors,
+  htmlMatrix,
+  Meta,
+  omit,
+  optionsToSummary,
+  Story,
+} from '../../../../../docs';
 import { Icon, IconProps } from './icon.story';
 
 const [firstIconName] = iconNames;
@@ -12,14 +19,14 @@ export default {
     color: {
       control: { type: 'select', options: colors },
       table: {
-        type: { summary: colors.map((value) => `"${value}"`).join('|') },
+        type: { summary: optionsToSummary(colors) },
       },
     },
     name: {
       type: { required: true },
       control: { type: 'select', options: iconNames },
       table: {
-        type: { summary: iconNames.map((value) => `"${value}"`).join('|') },
+        type: { summary: optionsToSummary(iconNames) },
       },
     },
   },

@@ -1,9 +1,14 @@
 import { Spinner, SpinnerProps } from '@onfido/castor-react';
 import React from 'react';
-import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
+import {
+  Meta,
+  omit,
+  optionsToSummary,
+  reactMatrix,
+  Story,
+} from '../../../../../docs';
 
 const size = ['large', 'medium', 'small'] as const;
-size.toString = () => size.map((value) => `"${value}"`).join('|');
 
 export default {
   title: 'React/Spinner',
@@ -15,7 +20,7 @@ export default {
     size: {
       control: { type: 'radio', options: size },
       table: {
-        type: { summary: size.toString() },
+        type: { summary: optionsToSummary(size) },
         defaultValue: { summary: 'medium' },
       },
     },

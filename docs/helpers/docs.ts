@@ -1,4 +1,16 @@
 /**
+ * Converts options array to a summary string.
+ *
+ * @param options Options array.
+ *
+ * @example
+ * optionsToSummary(['one', 'two'])
+ * // '"one" | "two"'
+ */
+export const optionsToSummary = (options: unknown) =>
+  (options as string[]).map((option) => `"${option}"`).join('|');
+
+/**
  * Creates an object that disables the specified `argTypes`'s controls on the
  * @storybook/docs.
  *

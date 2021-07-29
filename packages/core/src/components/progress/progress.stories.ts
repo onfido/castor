@@ -1,8 +1,13 @@
-import { htmlMatrix, Meta, omit, Story } from '../../../../../docs';
+import {
+  htmlMatrix,
+  Meta,
+  omit,
+  optionsToSummary,
+  Story,
+} from '../../../../../docs';
 import { Progress, ProgressProps } from './progress.story';
 
 const size = ['regular', 'large'] as const;
-size.toString = () => size.map((value) => `"${value}"`).join('|');
 
 const hideLabel = [false, true] as const;
 
@@ -27,7 +32,7 @@ export default {
     },
     size: {
       control: { type: 'radio', options: size },
-      table: { type: { summary: size.toString() } },
+      table: { type: { summary: optionsToSummary(size) } },
     },
     value: {
       type: { required: true },

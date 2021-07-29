@@ -1,9 +1,14 @@
 import { Progress, ProgressProps } from '@onfido/castor-react';
 import React, { useEffect, useState } from 'react';
-import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
+import {
+  Meta,
+  omit,
+  optionsToSummary,
+  reactMatrix,
+  Story,
+} from '../../../../../docs';
 
 const size = ['regular', 'large'] as const;
-size.toString = () => size.map((value) => `"${value}"`).join('|');
 
 const hideLabel = [false, true] as const;
 
@@ -34,7 +39,7 @@ export default {
     size: {
       control: { type: 'radio', options: size },
       table: {
-        type: { summary: size.toString() },
+        type: { summary: optionsToSummary(size) },
         defaultValue: { summary: 'regular' },
       },
     },

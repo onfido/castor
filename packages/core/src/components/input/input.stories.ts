@@ -1,4 +1,10 @@
-import { htmlMatrix, Meta, omit, Story } from '../../../../../docs';
+import {
+  htmlMatrix,
+  Meta,
+  omit,
+  optionsToSummary,
+  Story,
+} from '../../../../../docs';
 import { FieldLabel } from '../field-label/field-label.story';
 import { Field } from '../field/field.story';
 import { HelperText } from '../helper-text/helper-text.story';
@@ -16,7 +22,6 @@ const type = [
   'url',
   'search',
 ] as const;
-type.toString = () => type.map((value) => `"${value}"`).join('|');
 
 export default {
   title: 'Core/Input',
@@ -34,7 +39,7 @@ export default {
     },
     type: {
       control: { type: 'radio', options: type },
-      table: { type: { summary: type.toString() } },
+      table: { type: { summary: optionsToSummary(type) } },
     },
   },
   args: {
