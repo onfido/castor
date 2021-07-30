@@ -18,14 +18,11 @@ describe('components', () => {
 
       cy.visit(`/iframe.html?id=${id}`);
 
-      // use slightly higher timeout because sometimes the iframe is slow
-      cy.get('body', { timeout: 10000 }).should('have.class', theme);
-
-      // give React one cycle to run effects and timeouts and stuff,
-      // and give the browser one requestFrame
-      cy.wait(20);
-
-      cy.get('body').matchImageSnapshot(name);
+      // use slightly longer timeout because sometimes the iframe is slow
+      cy.get('body', { timeout: 10000 })
+        // will happen after one React cycle
+        .should('have.class', theme)
+        .matchImageSnapshot(name);
     });
   });
 });
