@@ -1,6 +1,5 @@
 @use '../../helpers';
 @use '../../mixins';
-@use 'sass:map';
 
 @mixin Popover() {
   @if not mixins.includes('Popover') {
