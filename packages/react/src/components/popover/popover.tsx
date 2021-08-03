@@ -15,6 +15,11 @@ import { useOnClickOutside } from './useOnClickOutside';
 export interface PopoverProps extends BaseProps, Omit<Div, 'ref'> {
   children?: ReactNode;
   onClose?: () => void;
+  /**
+   * Ref to an element which the Popover should target for placement.
+   *
+   * Will Portal the Popover into `document.body`.
+   */
   target?: RefObject<Element>;
 }
 
