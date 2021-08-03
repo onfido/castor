@@ -4,7 +4,7 @@ import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 import { Popover, PopoverProps } from './popover';
 
 const align = ['center', 'start', 'end'] as const;
-const place = ['top', 'left', 'right', 'bottom'] as const;
+const position = ['top', 'left', 'right', 'bottom'] as const;
 
 export default {
   title: 'React/Popover',
@@ -23,10 +23,10 @@ export default {
       table: { type: { summary: 'ReactNode' } },
     },
     place: {
-      control: { type: 'inline-radio', options: place },
+      control: { type: 'inline-radio', options: position },
       table: {
         defaultValue: { summary: 'top' },
-        type: { summary: place.join('|') },
+        type: { summary: position.join('|') },
       },
     },
     withPortal: {
@@ -68,7 +68,7 @@ Playground.args = {
 
 export const AllCombinations = reactMatrix(
   Popover,
-  { align, place },
+  { align, position },
   (props) => {
     const ref = useRef<HTMLButtonElement>(null);
 
@@ -76,7 +76,7 @@ export const AllCombinations = reactMatrix(
       <>
         <Button ref={ref}>Target</Button>
         <Popover {...props} target={ref}>
-          {props.place} {props.align}
+          {props.position} {props.align}
         </Popover>
       </>
     );

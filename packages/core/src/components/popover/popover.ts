@@ -1,6 +1,6 @@
 export interface PopoverProps {
   align?: Alignment;
-  place?: Position;
+  position?: Position;
 }
 
 export type Alignment = 'center' | 'start' | 'end';

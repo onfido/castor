@@ -26,7 +26,7 @@ export interface PopoverProps extends BaseProps, Omit<Div, 'ref'> {
 export const Popover = ({
   align = 'center',
   onClose,
-  place = 'top',
+  position = 'top',
   target,
   ...props
 }: PopoverProps) =>
@@ -35,40 +35,41 @@ export const Popover = ({
       {...props}
       align={align}
       onClose={onClose}
-      place={place}
+      position={position}
       target={target}
     />
   ) : (
-    <PopoverBase {...props} align={align} place={place} />
+    <PopoverBase {...props} align={align} position={position} />
   );
 
 const PopoverBase = withRef(function Popover(
   {
     align,
     className,
-    place,
+    position,
     ...props
-  }: BaseProps & Div & Required<Pick<PopoverProps, 'place' | 'align'>>,
+  }: BaseProps & Div & Required<Pick<PopoverProps, 'align' | 'position'>>,
   ref?: Div['ref']
 ) {
   return (
     <div
       {...props}
       ref={ref}
-      className={classy(c('popover'), m(`${place}--${align}`), className)}
+      className={classy(c('popover'), m(`${position}--${align}`), className)}
     />
   );
 });
 
 function PopoverWithPortal({
-  onClose,
   align,
-  place,
+  onClose,
+  position,
   target,
   ...props
-}: PopoverProps & Required<Pick<PopoverProps, 'target' | 'place' | 'align'>>) {
+}: PopoverProps &
+  Required<Pick<PopoverProps, 'align' | 'position' | 'target'>>) {
   const popover = useRef<HTMLDivElement>(null);
-  const [placement, setPlacement] = useState([place, align] as const);
+  const [placement, setPlacement] = useState([position, align] as const);
   const [anchor, setAnchor] = useState(at(target));
 
   useOnClickOutside(onClose, [target, popover]);
@@ -88,7 +89,7 @@ function PopoverWithPortal({
           {...props}
           ref={popover}
           align={placement[1]}
-          place={placement[0]}
+          position={placement[0]}
         />
       </div>
     </Portal>

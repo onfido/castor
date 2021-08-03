@@ -3,7 +3,7 @@ import { Button } from '../button/button.story';
 import { Popover, PopoverProps } from './popover.story';
 
 const align = ['center', 'start', 'end'] as const;
-const place = ['top', 'left', 'right', 'bottom'] as const;
+const position = ['top', 'left', 'right', 'bottom'] as const;
 
 export default {
   title: 'Core/Popover',
@@ -19,11 +19,11 @@ export default {
     },
     children: { description: 'Content' },
     place: {
-      control: { type: 'inline-radio', options: place },
+      control: { type: 'inline-radio', options: position },
       defaultValue: 'top',
       table: {
         defaultValue: { summary: 'top' },
-        type: { summary: place.join('|') },
+        type: { summary: position.join('|') },
       },
     },
   },
@@ -47,14 +47,17 @@ export const Playground: Story<PopoverProps> = (props) =>
     ],
   });
 
-export const AllCombinations = htmlMatrix(Popover, { align, place }, (props) =>
-  html('div', {
-    style: { position: 'relative' },
-    children: [
-      Button({ children: 'Target', kind: 'action', variant: 'primary' }),
-      Popover({ ...props, children: `${props.place} ${props.align}` }),
-    ],
-  })
+export const AllCombinations = htmlMatrix(
+  Popover,
+  { align, position },
+  (props) =>
+    html('div', {
+      style: { position: 'relative' },
+      children: [
+        Button({ children: 'Target', kind: 'action', variant: 'primary' }),
+        Popover({ ...props, children: `${props.position} ${props.align}` }),
+      ],
+    })
 );
 AllCombinations.parameters = {
   display: 'grid',
