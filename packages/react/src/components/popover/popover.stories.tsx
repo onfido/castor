@@ -29,6 +29,13 @@ export default {
         type: { summary: place.join('|') },
       },
     },
+    withPortal: {
+      description: [
+        'Toggle between an example with and without `target` ref.',
+        'Specific to `react-dom`.',
+      ].join('\n\n'),
+      name: '[Story only] with portal',
+    },
   },
   args: {
     children: 'Popover content',
