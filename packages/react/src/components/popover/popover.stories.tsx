@@ -22,7 +22,7 @@ export default {
       description: 'Content',
       table: { type: { summary: 'ReactNode' } },
     },
-    place: {
+    position: {
       control: { type: 'inline-radio', options: position },
       table: {
         defaultValue: { summary: 'top' },

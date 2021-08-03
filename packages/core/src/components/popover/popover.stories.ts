@@ -18,7 +18,7 @@ export default {
       },
     },
     children: { description: 'Content' },
-    place: {
+    position: {
       control: { type: 'inline-radio', options: position },
       defaultValue: 'top',
       table: {
