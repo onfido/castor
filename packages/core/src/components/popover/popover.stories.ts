@@ -10,7 +10,7 @@ export default {
   component: Popover,
   argTypes: {
     align: {
-      control: { type: 'select', options: align },
+      control: { type: 'inline-radio', options: align },
       defaultValue: 'center',
       table: {
         defaultValue: { summary: 'center' },
@@ -19,7 +19,7 @@ export default {
     },
     children: { description: 'Content' },
     place: {
-      control: { type: 'select', options: place },
+      control: { type: 'inline-radio', options: place },
       defaultValue: 'top',
       table: {
         defaultValue: { summary: 'top' },

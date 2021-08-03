@@ -15,7 +15,9 @@ const react = (src: string) =>
     // remove React keys
     .replace(/^ *key="\d+"\n?/gm, '')
     // remove "space" strings
-    .replace(/{' '}/g, '');
+    .replace(/{' '}/g, '')
+    // improve refs
+    .replace(/{\s+current: '\[Circular\]'\s+}/gm, 'ref');
 
 const htmlString = (src: string) =>
   // prettier requires JSX element arrays to have parents, so we add a fragment

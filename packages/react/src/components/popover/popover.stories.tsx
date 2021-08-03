@@ -12,8 +12,7 @@ export default {
   argTypes: {
     ...omit<PopoverProps>('onClose', 'target'),
     align: {
-      control: { type: 'select', options: align },
-      defaultValue: 'center',
+      control: { type: 'inline-radio', options: align },
       table: {
         defaultValue: { summary: 'center' },
         type: { summary: align.join('|') },
@@ -24,8 +23,7 @@ export default {
       table: { type: { summary: 'ReactNode' } },
     },
     place: {
-      control: { type: 'select', options: place },
-      defaultValue: 'top',
+      control: { type: 'inline-radio', options: place },
       table: {
         defaultValue: { summary: 'top' },
         type: { summary: place.join('|') },
@@ -52,7 +50,7 @@ export const Playground: Story<PopoverProps & { withPortal?: boolean }> = ({
 
   return (
     <Container {...(withPortal || { style: { position: 'relative' } })}>
-      <Button ref={ref}>Target</Button>
+      <Button ref={withPortal ? ref : undefined}>Target</Button>
       <Popover {...props} target={withPortal ? ref : undefined} />
     </Container>
   );
