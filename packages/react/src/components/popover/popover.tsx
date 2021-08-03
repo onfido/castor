@@ -68,11 +68,12 @@ function PopoverWithPortal({
 
   useOnClickOutside(onClose, [target, popover]);
 
-  useObserver(() => setAnchor(at(target)), [target]);
-
   useObserver(
-    (entry) => setPlacement((placement) => optimalPlacement(entry, placement)),
-    [popover]
+    (entry) => {
+      setAnchor(at(target));
+      setPlacement((placement) => optimalPlacement(entry, placement));
+    },
+    [target, popover]
   );
 
   return (
