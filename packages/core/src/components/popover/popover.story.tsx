@@ -1,5 +1,4 @@
 import { c, classy } from '@onfido/castor';
-import { Properties } from 'csstype';
 import { html } from '../../../../../docs';
 import { m } from '../../utils';
 import { PopoverProps as BaseProps } from './popover';
@@ -16,17 +15,6 @@ export const Popover = ({
   html('div', {
     ...props,
     class: classy(c('popover'), m(`${place}--${align}`)),
-  });
-
-export interface PopoverAnchorProps {
-  children?: Children;
-  style?: Properties;
-}
-
-export const PopoverAnchor = (props: PopoverAnchorProps) =>
-  html('div', {
-    ...props,
-    class: classy(c('popover-anchor')),
   });
 
 type Children = Node | Node[];
