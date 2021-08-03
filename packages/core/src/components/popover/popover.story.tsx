@@ -8,10 +8,14 @@ export interface PopoverProps extends BaseProps {
   children?: Children;
 }
 
-export const Popover = ({ placement = 'top-center', ...props }: PopoverProps) =>
+export const Popover = ({
+  align = 'center',
+  place = 'top',
+  ...props
+}: PopoverProps) =>
   html('div', {
     ...props,
-    class: classy(c('popover'), m(placement)),
+    class: classy(c('popover'), m(`${place}--${align}`)),
   });
 
 export interface PopoverAnchorProps {

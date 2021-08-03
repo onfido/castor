@@ -22,66 +22,66 @@
     width: max-content;
 
     // position ==========>
-    &.-top-center,
-    &.-top-start,
-    &.-top-end {
-      @include _positionFrom(bottom);
+    &.-top--center,
+    &.-top--start,
+    &.-top--end {
+      @include _position(bottom);
     }
 
-    &.-bottom-center,
-    &.-bottom-start,
-    &.-bottom-end {
-      @include _positionFrom(top);
+    &.-bottom--center,
+    &.-bottom--start,
+    &.-bottom--end {
+      @include _position(top);
     }
 
-    &.-left-center,
-    &.-left-start,
-    &.-left-end {
-      @include _positionFrom(right);
+    &.-left--center,
+    &.-left--start,
+    &.-left--end {
+      @include _position(right);
     }
 
-    &.-right-center,
-    &.-right-start,
-    &.-right-end {
-      @include _positionFrom(left);
+    &.-right--center,
+    &.-right--start,
+    &.-right--end {
+      @include _position(left);
     }
     // <========== position
 
     // alignment ==========>
-    &.-top-center,
-    &.-bottom-center {
+    &.-top--center,
+    &.-bottom--center {
       @include _center(X);
     }
 
-    &.-left-center,
-    &.-right-center {
+    &.-left--center,
+    &.-right--center {
       @include _center(Y);
     }
 
-    &.-top-start,
-    &.-bottom-start {
+    &.-top--start,
+    &.-bottom--start {
       left: 0;
     }
 
-    &.-left-start,
-    &.-right-start {
+    &.-left--start,
+    &.-right--start {
       top: 0;
     }
 
-    &.-top-end,
-    &.-bottom-end {
+    &.-top--end,
+    &.-bottom--end {
       right: 0;
     }
 
-    &.-left-end,
-    &.-right-end {
+    &.-left--end,
+    &.-right--end {
       bottom: 0;
     }
     // <========== alignment
   }
 }
 
-@mixin _positionFrom($side) {
+@mixin _position($side) {
   #{$side}: 100%;
   margin-#{$side}: helpers.space(1);
 }

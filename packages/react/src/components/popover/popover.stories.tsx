@@ -3,26 +3,32 @@ import React, { Fragment, useRef } from 'react';
 import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 import { Popover, PopoverProps } from './popover';
 
-const placement = ['top', 'left', 'right', 'bottom'].flatMap((position) =>
-  ['center', 'start', 'end'].map((alignment) => `${position}-${alignment}`)
-) as PopoverProps['placement'][];
+const align = ['center', 'start', 'end'] as const;
+const place = ['top', 'left', 'right', 'bottom'] as const;
 
 export default {
   title: 'React/Popover',
   component: Popover,
   argTypes: {
     ...omit<PopoverProps>('onClose', 'target'),
+    align: {
+      control: { type: 'select', options: align },
+      defaultValue: 'center',
+      table: {
+        defaultValue: { summary: 'center' },
+        type: { summary: align.join('|') },
+      },
+    },
     children: {
       description: 'Content',
       table: { type: { summary: 'ReactNode' } },
     },
-    placement: {
-      control: { type: 'select', options: placement },
-      defaultValue: 'top-center',
-      description: 'A pair of where to place the tooltip and how to align it',
+    place: {
+      control: { type: 'select', options: place },
+      defaultValue: 'top',
       table: {
-        defaultValue: { summary: 'top-center' },
-        type: { summary: placement.join('|') },
+        defaultValue: { summary: 'top' },
+        type: { summary: place.join('|') },
       },
     },
   },
@@ -55,18 +61,22 @@ Playground.args = {
   withPortal: true,
 };
 
-export const AllCombinations = reactMatrix(Popover, { placement }, (props) => {
-  const ref = useRef<HTMLButtonElement>(null);
+export const AllCombinations = reactMatrix(
+  Popover,
+  { align, place },
+  (props) => {
+    const ref = useRef<HTMLButtonElement>(null);
 
-  return (
-    <>
-      <Button ref={ref}>Target</Button>
-      <Popover {...props} target={ref}>
-        {props.placement}
-      </Popover>
-    </>
-  );
-});
+    return (
+      <>
+        <Button ref={ref}>Target</Button>
+        <Popover {...props} target={ref}>
+          {props.place} {props.align}
+        </Popover>
+      </>
+    );
+  }
+);
 AllCombinations.parameters = {
   display: 'grid',
   columns: 'repeat(3, 1fr)',

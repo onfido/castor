@@ -2,22 +2,28 @@ import { html, htmlMatrix, Meta, Story } from '../../../../../docs';
 import { Button } from '../button/button.story';
 import { Popover, PopoverProps } from './popover.story';
 
-const placement = ['top', 'left', 'right', 'bottom'].flatMap((position) =>
-  ['center', 'start', 'end'].map((alignment) => `${position}-${alignment}`)
-) as PopoverProps['placement'][];
+const align = ['center', 'start', 'end'] as const;
+const place = ['top', 'left', 'right', 'bottom'] as const;
 
 export default {
   title: 'Core/Popover',
   component: Popover,
   argTypes: {
-    children: { description: 'Content' },
-    placement: {
-      control: { type: 'select', options: placement },
-      defaultValue: 'top-center',
-      description: 'A pair of where to place the tooltip and how to align it',
+    align: {
+      control: { type: 'select', options: align },
+      defaultValue: 'center',
       table: {
-        defaultValue: { summary: 'top-center' },
-        type: { summary: placement.join('|') },
+        defaultValue: { summary: 'center' },
+        type: { summary: align.join('|') },
+      },
+    },
+    children: { description: 'Content' },
+    place: {
+      control: { type: 'select', options: place },
+      defaultValue: 'top',
+      table: {
+        defaultValue: { summary: 'top' },
+        type: { summary: place.join('|') },
       },
     },
   },
@@ -41,12 +47,12 @@ export const Playground: Story<PopoverProps> = (props) =>
     ],
   });
 
-export const AllCombinations = htmlMatrix(Popover, { placement }, (props) =>
+export const AllCombinations = htmlMatrix(Popover, { align, place }, (props) =>
   html('div', {
     style: { position: 'relative' },
     children: [
       Button({ children: 'Target', kind: 'action', variant: 'primary' }),
-      Popover({ ...props, children: props.placement }),
+      Popover({ ...props, children: `${props.place} ${props.align}` }),
     ],
   })
 );

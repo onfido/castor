@@ -3,7 +3,6 @@ import {
   c,
   classy,
   m,
-  Placement,
   PopoverProps as BaseProps,
   Position,
 } from '@onfido/castor';
@@ -20,45 +19,51 @@ export interface PopoverProps extends BaseProps, Omit<Div, 'ref'> {
 }
 
 export const Popover = ({
+  align = 'center',
   onClose,
-  placement = 'top-start',
+  place = 'top',
   target,
   ...props
 }: PopoverProps) =>
   target ? (
     <PopoverWithPortal
       {...props}
+      align={align}
       onClose={onClose}
-      placement={placement}
+      place={place}
       target={target}
     />
   ) : (
-    <PopoverBase {...props} placement={placement} />
+    <PopoverBase {...props} align={align} place={place} />
   );
 
 const PopoverBase = withRef(function Popover(
-  { className, placement, ...props }: BaseProps & Div,
+  {
+    align,
+    className,
+    place,
+    ...props
+  }: BaseProps & Div & Required<Pick<PopoverProps, 'place' | 'align'>>,
   ref?: Div['ref']
 ) {
   return (
     <div
       {...props}
       ref={ref}
-      className={classy(c('popover'), m(placement), className)}
+      className={classy(c('popover'), m(`${place}--${align}`), className)}
     />
   );
 });
 
 function PopoverWithPortal({
   onClose,
-  placement: preferredPlacement,
+  align,
+  place,
   target,
   ...props
-}: PopoverProps & Required<Pick<PopoverProps, 'target' | 'placement'>>) {
+}: PopoverProps & Required<Pick<PopoverProps, 'target' | 'place' | 'align'>>) {
   const popover = useRef<HTMLDivElement>(null);
-  const [placement, setPlacement] = useState(
-    () => preferredPlacement.split('-') as [Position, Alignment]
-  );
+  const [placement, setPlacement] = useState([place, align] as const);
   const [anchor, setAnchor] = useState(at(target));
 
   useOnClickOutside(onClose, [target, popover]);
@@ -66,7 +71,7 @@ function PopoverWithPortal({
   useObserver(() => setAnchor(at(target)), [target]);
 
   useObserver(
-    (entry) => setPlacement((position) => optimalPosition(entry, position)),
+    (entry) => setPlacement((placement) => optimalPlacement(entry, placement)),
     [popover]
   );
 
@@ -76,7 +81,8 @@ function PopoverWithPortal({
         <PopoverBase
           {...props}
           ref={popover}
-          placement={placement.join('-') as Placement}
+          align={placement[1]}
+          place={placement[0]}
         />
       </div>
     </Portal>
@@ -104,9 +110,9 @@ function at(anchor: RefObject<Element>) {
 }
 
 // TODO
-function optimalPosition(
+function optimalPlacement(
   _entry: IntersectionObserverEntry,
-  [position, alignment]: [Position, Alignment]
+  [position, alignment]: readonly [Position, Alignment]
 ): [Position, Alignment] {
   return [position, alignment];
 }
