@@ -80,7 +80,7 @@ Playground.args = {
 
 export const AllCombinations = reactMatrix(
   Tooltip,
-  { align, position },
+  { position, align }, // order is important
   (props) => (
     <div style={{ position: 'relative' }}>
       <Button>Target</Button>

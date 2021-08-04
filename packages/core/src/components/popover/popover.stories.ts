@@ -55,7 +55,7 @@ export const Playground: Story<PopoverProps> = (props) =>
 
 export const AllCombinations = htmlMatrix(
   Popover,
-  { align, position },
+  { position, align }, // order is important
   (props) =>
     html('div', {
       style: { position: 'relative' },

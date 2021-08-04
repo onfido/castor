@@ -69,7 +69,7 @@ export const Playground: Story<TooltipProps> = (props) =>
 
 export const AllCombinations = htmlMatrix(
   Tooltip,
-  { align, position },
+  { position, align }, // order is important
   (props) =>
     html('div', {
       style: 'position: relative',

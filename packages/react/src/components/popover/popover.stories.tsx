@@ -74,7 +74,7 @@ Playground.args = {
 
 export const AllCombinations = reactMatrix(
   Popover,
-  { align, position },
+  { position, align }, // order is important
   (props) => {
     const ref = useRef<HTMLButtonElement>(null);
 
