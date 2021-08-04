@@ -5,16 +5,18 @@ import { PopoverProps as BaseProps } from './popover';
 
 export interface PopoverProps extends BaseProps {
   children?: Children;
+  class?: string;
 }
 
 export const Popover = ({
   align = 'center',
+  class: className,
   position = 'top',
   ...props
 }: PopoverProps) =>
   html('div', {
     ...props,
-    class: classy(c('popover'), m(`${position}--${align}`)),
+    class: classy(c('popover'), m(`${position}--${align}`), className),
   });
 
 type Children = Node | Node[];

@@ -34,6 +34,8 @@
 @forward './select/select';
 @use './textarea/textarea';
 @forward './textarea/textarea';
+@use './tooltip/tooltip';
+@forward './tooltip/tooltip';
 @use './validation/validation';
 @forward './validation/validation';
 
@@ -56,5 +58,6 @@
   @include search.Search();
   @include select.Select();
   @include textarea.Textarea();
+  @include tooltip.Tooltip();
   @include validation.Validation();
 }
