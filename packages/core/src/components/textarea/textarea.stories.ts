@@ -1,4 +1,10 @@
-import { htmlMatrix, Meta, omit, Story } from '../../../../../docs';
+import {
+  htmlMatrix,
+  Meta,
+  omit,
+  optionsToSummary,
+  Story,
+} from '../../../../../docs';
 import { FieldLabel } from '../field-label/field-label.story';
 import { Field } from '../field/field.story';
 import { HelperText } from '../helper-text/helper-text.story';
@@ -13,7 +19,6 @@ const resize: readonly TextareaProps['resize'][] = [
   'both',
   'none',
 ];
-resize.toString = () => resize.map((value) => `"${value}"`).join('|');
 
 export default {
   title: 'Core/Textarea',
@@ -31,7 +36,7 @@ export default {
     },
     resize: {
       control: { type: 'radio', options: resize },
-      table: { type: { summary: resize.toString() } },
+      table: { type: { summary: optionsToSummary(resize) } },
     },
     rows: {
       control: 'number',

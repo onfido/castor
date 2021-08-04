@@ -1,6 +1,12 @@
 import { Spinner, SpinnerProps } from '@onfido/castor-react';
 import React from 'react';
-import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
+import {
+  Meta,
+  omit,
+  optionsToSummary,
+  reactMatrix,
+  Story,
+} from '../../../../../docs';
 
 const size = ['large', 'medium', 'small'] as const;
 
@@ -10,6 +16,13 @@ export default {
   argTypes: {
     children: {
       description: 'Optional label.',
+    },
+    size: {
+      control: { type: 'radio', options: size },
+      table: {
+        type: { summary: optionsToSummary(size) },
+        defaultValue: { summary: 'medium' },
+      },
     },
   },
   args: {

@@ -7,7 +7,13 @@ import {
   Validation,
 } from '@onfido/castor-react';
 import React from 'react';
-import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
+import {
+  Meta,
+  omit,
+  optionsToSummary,
+  reactMatrix,
+  Story,
+} from '../../../../../docs';
 
 const disabled = [true, false] as const;
 const invalid = [true, false] as const;
@@ -18,7 +24,6 @@ const resize: readonly TextareaProps['resize'][] = [
   'both',
   'none',
 ];
-resize.toString = () => resize.map((value) => `"${value}"`).join('|');
 
 export default {
   title: 'React/Textarea',
@@ -36,7 +41,7 @@ export default {
     resize: {
       control: { type: 'radio', options: resize },
       table: {
-        type: { summary: resize.toString() },
+        type: { summary: optionsToSummary(resize) },
         defaultValue: { summary: 'vertical' },
       },
     },

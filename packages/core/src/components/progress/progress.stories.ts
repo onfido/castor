@@ -1,7 +1,14 @@
-import { htmlMatrix, Meta, omit, Story } from '../../../../../docs';
+import {
+  htmlMatrix,
+  Meta,
+  omit,
+  optionsToSummary,
+  Story,
+} from '../../../../../docs';
 import { Progress, ProgressProps } from './progress.story';
 
 const size = ['regular', 'large'] as const;
+
 const hideLabel = [false, true] as const;
 
 export default {
@@ -16,34 +23,28 @@ export default {
       table: { type: { summary: 'boolean' } },
     },
     min: {
-      table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '0' },
-      },
+      control: { type: 'number' },
+      table: { type: { summary: 'number' } },
     },
     max: {
-      table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '100' },
-      },
+      control: { type: 'number' },
+      table: { type: { summary: 'number' } },
     },
     size: {
       control: { type: 'radio', options: size },
-      table: {
-        type: { summary: size.toString() },
-        defaultValue: { summary: 'regular' },
-      },
+      table: { type: { summary: optionsToSummary(size) } },
     },
     value: {
-      table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '0' },
-      },
+      type: { required: true },
+      table: { type: { summary: 'number' } },
     },
   },
   args: {
     children: '',
     hideLabel: false,
+    min: 0,
+    max: 100,
+    size: 'regular',
     value: 25,
   },
   parameters: { display: 'flex' },

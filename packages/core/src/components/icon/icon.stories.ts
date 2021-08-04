@@ -1,7 +1,13 @@
-import { IconProps } from '@onfido/castor';
 import { iconNames } from '@onfido/castor-icons';
-import { colors, htmlMatrix, Meta, Story } from '../../../../../docs';
-import { Icon } from './icon.story';
+import {
+  colors,
+  htmlMatrix,
+  Meta,
+  omit,
+  optionsToSummary,
+  Story,
+} from '../../../../../docs';
+import { Icon, IconProps } from './icon.story';
 
 const [firstIconName] = iconNames;
 
@@ -9,10 +15,18 @@ export default {
   title: 'Core/Icon',
   component: Icon,
   argTypes: {
+    ...omit<IconProps>('aria-hidden'),
     color: {
       control: { type: 'select', options: colors },
       table: {
-        type: { summary: colors.map((value) => `"${value}"`).join('|') },
+        type: { summary: optionsToSummary(colors) },
+      },
+    },
+    name: {
+      type: { required: true },
+      control: { type: 'select', options: iconNames },
+      table: {
+        type: { summary: optionsToSummary(iconNames) },
       },
     },
   },

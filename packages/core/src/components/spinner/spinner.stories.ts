@@ -1,4 +1,10 @@
-import { htmlMatrix, Meta, omit, Story } from '../../../../../docs';
+import {
+  htmlMatrix,
+  Meta,
+  omit,
+  optionsToSummary,
+  Story,
+} from '../../../../../docs';
 import { Spinner, SpinnerProps } from './spinner.story';
 
 const size = ['large', 'medium', 'small'] as const;
@@ -9,6 +15,10 @@ export default {
   argTypes: {
     children: {
       description: 'Optional label.',
+    },
+    size: {
+      control: { type: 'radio', options: size },
+      table: { type: { summary: optionsToSummary(size) } },
     },
   },
   args: {

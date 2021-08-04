@@ -1,8 +1,15 @@
 import { Progress, ProgressProps } from '@onfido/castor-react';
 import React, { useEffect, useState } from 'react';
-import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
+import {
+  Meta,
+  omit,
+  optionsToSummary,
+  reactMatrix,
+  Story,
+} from '../../../../../docs';
 
 const size = ['regular', 'large'] as const;
+
 const hideLabel = [false, true] as const;
 
 export default {
@@ -16,12 +23,14 @@ export default {
       table: { type: { summary: 'boolean' } },
     },
     min: {
+      control: { type: 'number' },
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: '0' },
       },
     },
     max: {
+      control: { type: 'number' },
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: '100' },
@@ -30,11 +39,12 @@ export default {
     size: {
       control: { type: 'radio', options: size },
       table: {
-        type: { summary: size.toString() },
+        type: { summary: optionsToSummary(size) },
         defaultValue: { summary: 'regular' },
       },
     },
     value: {
+      type: { required: true },
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: '0' },
@@ -44,6 +54,7 @@ export default {
   args: {
     children: '',
     hideLabel: false,
+    size: 'regular',
     value: 25,
   },
   parameters: { display: 'flex' },

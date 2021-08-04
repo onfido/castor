@@ -11,6 +11,7 @@ export default {
   title: 'React/Button',
   component: Button,
   argTypes: {
+    children: {},
     disabled: {
       description: 'Only available when no `href` is set.',
     },
@@ -18,6 +19,12 @@ export default {
       description: 'When set will render as `<a>` element.',
       table: { type: { summary: 'string' } },
       control: 'text',
+    },
+    kind: {
+      table: { defaultValue: { summary: 'action' } },
+    },
+    variant: {
+      table: { defaultValue: { summary: 'primary' } },
     },
   },
   args: {
