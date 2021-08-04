@@ -1,4 +1,5 @@
 const storyName = 'All Combinations';
+const theme = 'castor-theme--day';
 
 describe('components', () => {
   it('should have no visual regressions', () => {
@@ -17,7 +18,11 @@ describe('components', () => {
 
       cy.visit(`/iframe.html?id=${id}`);
 
-      cy.get('body').should('be.visible').matchImageSnapshot(name);
+      // use slightly longer timeout because sometimes the iframe is slow
+      cy.get('body', { timeout: 10000 })
+        // will happen after one React cycle
+        .should('have.class', theme)
+        .matchImageSnapshot(name);
     });
   });
 });

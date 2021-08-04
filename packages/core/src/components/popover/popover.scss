@@ -1,0 +1,93 @@
+@use '../../helpers';
+@use '../../mixins';
+
+@mixin Popover() {
+  @if not mixins.includes('Popover') {
+    @include _Popover();
+  }
+}
+
+@mixin _Popover() {
+  .ods-popover-anchor {
+    pointer-events: none;
+    position: absolute;
+    z-index: 9999999;
+  }
+
+  .ods-popover {
+    height: fit-content;
+    max-width: helpers.space(50);
+    position: absolute;
+    width: max-content;
+
+    // position ==========>
+    &.-top--center,
+    &.-top--start,
+    &.-top--end {
+      @include _position(bottom);
+    }
+
+    &.-bottom--center,
+    &.-bottom--start,
+    &.-bottom--end {
+      @include _position(top);
+    }
+
+    &.-left--center,
+    &.-left--start,
+    &.-left--end {
+      @include _position(right);
+    }
+
+    &.-right--center,
+    &.-right--start,
+    &.-right--end {
+      @include _position(left);
+    }
+    // <========== position
+
+    // alignment ==========>
+    &.-top--center,
+    &.-bottom--center {
+      @include _center(X);
+    }
+
+    &.-left--center,
+    &.-right--center {
+      @include _center(Y);
+    }
+
+    &.-top--start,
+    &.-bottom--start {
+      left: 0;
+    }
+
+    &.-left--start,
+    &.-right--start {
+      top: 0;
+    }
+
+    &.-top--end,
+    &.-bottom--end {
+      right: 0;
+    }
+
+    &.-left--end,
+    &.-right--end {
+      bottom: 0;
+    }
+    // <========== alignment
+  }
+}
+
+@mixin _position($side) {
+  #{$side}: 100%;
+  margin-#{$side}: helpers.space(1);
+}
+
+@mixin _center($axis) {
+  $side: if($axis == X, left, top);
+
+  #{$side}: 50%;
+  transform: translate#{$axis }(-50%);
+}
