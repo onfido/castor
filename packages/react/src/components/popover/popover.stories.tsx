@@ -1,6 +1,12 @@
 import { Button } from '@onfido/castor-react';
 import React, { Fragment, useRef } from 'react';
-import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
+import {
+  Meta,
+  omit,
+  optionsToSummary,
+  reactMatrix,
+  Story,
+} from '../../../../../docs';
 import { Popover, PopoverProps } from './popover';
 
 const align = ['center', 'start', 'end'] as const;
@@ -15,7 +21,7 @@ export default {
       control: { type: 'inline-radio', options: align },
       table: {
         defaultValue: { summary: 'center' },
-        type: { summary: align.join('|') },
+        type: { summary: optionsToSummary(align) },
       },
     },
     children: {
@@ -26,7 +32,7 @@ export default {
       control: { type: 'inline-radio', options: position },
       table: {
         defaultValue: { summary: 'top' },
-        type: { summary: position.join('|') },
+        type: { summary: optionsToSummary(position) },
       },
     },
     withPortal: {

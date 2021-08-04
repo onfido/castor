@@ -1,4 +1,10 @@
-import { html, htmlMatrix, Meta, Story } from '../../../../../docs';
+import {
+  html,
+  htmlMatrix,
+  Meta,
+  optionsToSummary,
+  Story,
+} from '../../../../../docs';
 import { Button } from '../button/button.story';
 import { Popover, PopoverProps } from './popover.story';
 
@@ -14,7 +20,7 @@ export default {
       defaultValue: 'center',
       table: {
         defaultValue: { summary: 'center' },
-        type: { summary: align.join('|') },
+        type: { summary: optionsToSummary(align) },
       },
     },
     children: { description: 'Content' },
@@ -23,7 +29,7 @@ export default {
       defaultValue: 'top',
       table: {
         defaultValue: { summary: 'top' },
-        type: { summary: position.join('|') },
+        type: { summary: optionsToSummary(position) },
       },
     },
   },
