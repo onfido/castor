@@ -7,8 +7,8 @@
  * optionsToSummary(['one', 'two'])
  * // '"one" | "two"'
  */
-export const optionsToSummary = (options: unknown) =>
-  (options as string[]).map((option) => `"${option}"`).join('|');
+export const optionsToSummary = (options: readonly unknown[]) =>
+  options.map((option) => `"${option}"`).join('|');
 
 /**
  * Creates an object that disables the specified `argTypes`'s controls on the
