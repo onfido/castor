@@ -6,14 +6,14 @@ import {
   Story,
 } from '../../../../../docs';
 import { Button } from '../button/button.story';
-import { Popover, PopoverProps } from './popover.story';
+import { Tooltip, TooltipProps } from './tooltip.story';
 
 const align = ['center', 'start', 'end'] as const;
 const position = ['top', 'left', 'right', 'bottom'] as const;
 
 export default {
-  title: 'Core/Popover',
-  component: Popover,
+  title: 'Core/Tooltip',
+  component: Tooltip,
   argTypes: {
     align: {
       control: { type: 'inline-radio', options: align },
@@ -32,9 +32,19 @@ export default {
         type: { summary: optionsToSummary(position) },
       },
     },
+    show: {
+      control: { type: 'boolean' },
+      description: [
+        '`boolean`: show or hide the Tooltip.',
+        '`"on-hover"`: show when the previous sibling matches `:hover` or `:focus`.',
+        'Reset story props (icon on top right of this table) to set "on-hover" again.',
+      ].join('\n\n'),
+      table: { type: { summary: 'boolean | "on-hover"' } },
+    },
   },
   args: {
-    children: 'Popover content',
+    children: 'Tooltip',
+    show: 'on-hover',
   },
   parameters: {
     display: 'flex',
@@ -42,34 +52,42 @@ export default {
       placeContent: 'center',
     },
   },
-} as Meta<PopoverProps>;
+} as Meta<TooltipProps>;
 
-export const Playground: Story<PopoverProps> = (props) =>
+export const Playground: Story<TooltipProps> = (props) =>
   html('div', {
-    style: { position: 'relative' },
+    style: 'position: relative',
     children: [
-      Button({ children: 'Target', kind: 'action', variant: 'primary' }),
-      Popover(props),
+      Button({
+        children: 'Hover or focus me',
+        kind: 'action',
+        variant: 'primary',
+      }),
+      Tooltip(props),
     ],
   });
 
 export const AllCombinations = htmlMatrix(
-  Popover,
+  Tooltip,
   { position, align }, // order is important
   (props) =>
     html('div', {
-      style: { position: 'relative' },
+      style: 'position: relative',
       children: [
         Button({ children: 'Target', kind: 'action', variant: 'primary' }),
-        Popover({ ...props, children: `${props.position} ${props.align}` }),
+        Tooltip({ ...props, children: `${props.position} ${props.align}` }),
       ],
     })
 );
+AllCombinations.args = {
+  show: true,
+};
 AllCombinations.parameters = {
   display: 'grid',
   columns: 'repeat(3, 1fr)',
   style: {
     gap: '3rem',
+    margin: '3rem',
     placeItems: 'center',
   },
 };

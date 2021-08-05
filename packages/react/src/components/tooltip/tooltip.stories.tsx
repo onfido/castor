@@ -2,21 +2,19 @@ import { Button } from '@onfido/castor-react';
 import React, { Fragment, useRef } from 'react';
 import {
   Meta,
-  omit,
   optionsToSummary,
   reactMatrix,
   Story,
 } from '../../../../../docs';
-import { Popover, PopoverProps } from './popover';
+import { Tooltip, TooltipProps } from './tooltip';
 
 const align = ['center', 'start', 'end'] as const;
 const position = ['top', 'left', 'right', 'bottom'] as const;
 
 export default {
-  title: 'React/Popover',
-  component: Popover,
+  title: 'React/Tooltip',
+  component: Tooltip,
   argTypes: {
-    ...omit<PopoverProps>('onClose', 'target'),
     align: {
       control: { type: 'inline-radio', options: align },
       table: {
@@ -24,10 +22,7 @@ export default {
         type: { summary: optionsToSummary(align) },
       },
     },
-    children: {
-      description: 'Content',
-      table: { type: { summary: 'ReactNode' } },
-    },
+    children: { control: { type: 'text' } },
     position: {
       control: { type: 'inline-radio', options: position },
       table: {
@@ -35,6 +30,16 @@ export default {
         type: { summary: optionsToSummary(position) },
       },
     },
+    show: {
+      control: { type: 'boolean' },
+      description: [
+        '`boolean`: show or hide the Tooltip.',
+        '`"on-hover"`: show when the previous sibling matches `:hover` or `:focus`.',
+        'Reset story props (icon on top right of this table) to set "on-hover" again.',
+      ].join('\n\n'),
+      table: { type: { summary: 'boolean | "on-hover"' } },
+    },
+    target: { control: { disable: true } },
     withPortal: {
       description: [
         'Toggle between an example with and without `target` ref.',
@@ -44,7 +49,8 @@ export default {
     },
   },
   args: {
-    children: 'Popover content',
+    children: 'Tooltip',
+    show: 'on-hover',
   },
   parameters: {
     display: 'flex',
@@ -52,9 +58,9 @@ export default {
       placeContent: 'center',
     },
   },
-} as Meta<PopoverProps>;
+} as Meta<TooltipProps>;
 
-export const Playground: Story<PopoverProps & { withPortal?: boolean }> = ({
+export const Playground: Story<TooltipProps & { withPortal?: boolean }> = ({
   withPortal,
   ...props
 }) => {
@@ -63,8 +69,8 @@ export const Playground: Story<PopoverProps & { withPortal?: boolean }> = ({
 
   return (
     <Container {...(withPortal || { style: { position: 'relative' } })}>
-      <Button ref={withPortal ? ref : undefined}>Target</Button>
-      <Popover {...props} target={withPortal ? ref : undefined} />
+      <Button ref={withPortal ? ref : undefined}>Hover or focus me</Button>
+      <Tooltip {...props} target={withPortal ? ref : undefined} />
     </Container>
   );
 };
@@ -73,26 +79,26 @@ Playground.args = {
 };
 
 export const AllCombinations = reactMatrix(
-  Popover,
+  Tooltip,
   { position, align }, // order is important
-  (props) => {
-    const ref = useRef<HTMLButtonElement>(null);
-
-    return (
-      <>
-        <Button ref={ref}>Target</Button>
-        <Popover {...props} target={ref}>
-          {props.position} {props.align}
-        </Popover>
-      </>
-    );
-  }
+  (props) => (
+    <div style={{ position: 'relative' }}>
+      <Button>Target</Button>
+      <Tooltip {...props}>
+        {props.position} {props.align}
+      </Tooltip>
+    </div>
+  )
 );
+AllCombinations.args = {
+  show: true,
+};
 AllCombinations.parameters = {
   display: 'grid',
   columns: 'repeat(3, 1fr)',
   style: {
     gap: '3rem',
+    margin: '3rem',
     placeItems: 'center',
   },
 };

@@ -1,0 +1,11 @@
+$_base: var(--ods-transition-duration);
+
+@function time($multiplier) {
+  @if $multiplier < 0 {
+    @error '$multiplier needs to be a number greater than 0';
+  }
+  @if $multiplier {
+    @return calc(#{$_base} * #{$multiplier});
+  }
+  @return $_base;
+}
