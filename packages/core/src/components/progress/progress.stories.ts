@@ -15,7 +15,7 @@ export default {
   title: 'Core/Progress',
   component: Progress,
   argTypes: {
-    ...omit<ProgressProps>('aria-valuetext'),
+    ...omit('aria-valuetext'),
     children: {
       description: 'Optional label.',
     },
@@ -53,20 +53,20 @@ export default {
 export const Playground: Story<ProgressProps> = (props) => Progress(props);
 
 export const Size = htmlMatrix(Progress, { size });
-Size.argTypes = omit<ProgressProps>('size');
+Size.argTypes = omit('size');
 
 export const HideLabel = htmlMatrix(Progress, { hideLabel });
-HideLabel.argTypes = omit<ProgressProps>('hideLabel');
+HideLabel.argTypes = omit('hideLabel');
 
 export const WithCustomLabel: Story<ProgressProps> = (props) => Progress(props);
-WithCustomLabel.argTypes = omit<ProgressProps>('children', 'hideLabel');
+WithCustomLabel.argTypes = omit('children', 'hideLabel');
 WithCustomLabel.args = {
   children: 'Progress: 25%',
   hideLabel: false,
 };
 
 export const AllCombinations = htmlMatrix(Progress, { hideLabel, size });
-AllCombinations.argTypes = omit<ProgressProps>('hideLabel', 'size');
+AllCombinations.argTypes = omit('hideLabel', 'size');
 AllCombinations.parameters = {
   display: 'grid',
   columns: 'repeat(2, 1fr)',

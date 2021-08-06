@@ -31,20 +31,20 @@ export default {
 export const Playground: Story<ButtonProps> = (props) => Button(props);
 
 export const Kind = htmlMatrix(Button, { kind });
-Kind.argTypes = omit<ButtonProps>('kind');
+Kind.argTypes = omit('kind');
 
 export const Variant = htmlMatrix(Button, { variant });
-Variant.argTypes = omit<ButtonProps>('variant');
+Variant.argTypes = omit('variant');
 
 export const Disabled = htmlMatrix(Button, { disabled });
-Disabled.argTypes = omit<ButtonProps>('disabled');
+Disabled.argTypes = omit('disabled');
 
 export const AsAnchor: Story<ButtonProps> = (props) =>
   Button({ ...props, href: 'javascript:void 0' });
 
 const [firstIconName] = iconNames;
 const icon = Icon({ name: firstIconName, ['aria-hidden']: 'true' });
-export const WithIcon: Story<ButtonProps> = (props: ButtonProps) =>
+export const WithIcon: Story<ButtonProps> = (props) =>
   Button({ ...props, children: icon + 'Button' }) +
   Button({ ...props, children: 'Button' + icon });
 

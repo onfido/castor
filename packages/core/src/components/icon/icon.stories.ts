@@ -15,7 +15,7 @@ export default {
   title: 'Core/Icon',
   component: Icon,
   argTypes: {
-    ...omit<IconProps>('aria-hidden'),
+    ...omit('aria-hidden'),
     color: {
       control: { type: 'select', options: colors },
       table: {

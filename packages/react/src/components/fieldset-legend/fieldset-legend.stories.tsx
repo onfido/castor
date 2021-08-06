@@ -15,7 +15,7 @@ export default {
   title: 'React/FieldsetLegend',
   component: FieldsetLegend,
   argTypes: {
-    ...omit<FieldsetLegendProps>('className', 'style'),
+    ...omit('className', 'style'),
     children: { control: 'text' },
   },
   args: {
@@ -23,9 +23,7 @@ export default {
   },
 } as Meta<FieldsetLegendProps>;
 
-export const Playground: Story<FieldsetLegendProps> = (
-  props: FieldsetLegendProps
-) => (
+export const Playground: Story<FieldsetLegendProps> = (props) => (
   <Fieldset>
     <FieldsetLegend {...props} />
   </Fieldset>
@@ -34,7 +32,7 @@ export const Playground: Story<FieldsetLegendProps> = (
 export const AsOptional: Story<FieldsetLegendProps> = ({
   children,
   ...restProps
-}: FieldsetLegendProps) => (
+}) => (
   <Fieldset>
     <FieldsetLegend {...restProps}>
       <span>
@@ -48,7 +46,7 @@ export const AsOptional: Story<FieldsetLegendProps> = ({
 export const AsRequired: Story<FieldsetLegendProps> = ({
   children,
   ...restProps
-}: FieldsetLegendProps) => (
+}) => (
   <Fieldset>
     <FieldsetLegend {...restProps}>
       <span>
@@ -64,11 +62,11 @@ interface FieldsetLegendWithHelperTextProps extends FieldsetLegendProps {
   helperText: string;
 }
 
-export const WithHelperText = ({
+export const WithHelperText: Story<FieldsetLegendWithHelperTextProps> = ({
   legend,
   helperText,
   ...restFieldsetLegendProps
-}: FieldsetLegendWithHelperTextProps) => (
+}) => (
   <Fieldset>
     <FieldsetLegend {...restFieldsetLegendProps}>
       {legend}
@@ -76,7 +74,7 @@ export const WithHelperText = ({
     </FieldsetLegend>
   </Fieldset>
 );
-WithHelperText.argTypes = omit<FieldsetLegendWithHelperTextProps>('children');
+WithHelperText.argTypes = omit('children');
 WithHelperText.args = {
   legend: 'Legend',
   helperText: 'Helper text',
@@ -87,11 +85,11 @@ interface FieldsetLegendWithCheckboxesProps extends FieldsetLegendProps {
   legend: string;
 }
 
-export const WithCheckboxes = ({
+export const WithCheckboxes: Story<FieldsetLegendWithCheckboxesProps> = ({
   name,
   legend,
   ...restFieldsetLegendProps
-}: FieldsetLegendWithCheckboxesProps) => (
+}) => (
   <Fieldset>
     <FieldsetLegend {...restFieldsetLegendProps}>{legend}</FieldsetLegend>
     <Checkbox name={name} value="1">
@@ -102,7 +100,7 @@ export const WithCheckboxes = ({
     </Checkbox>
   </Fieldset>
 );
-WithCheckboxes.argTypes = omit<FieldsetLegendWithCheckboxesProps>('children');
+WithCheckboxes.argTypes = omit('children');
 WithCheckboxes.args = {
   name: 'fieldset-legend-with-checkboxes',
   legend: 'Legend',
@@ -113,11 +111,11 @@ interface FieldsetLegendWithRadiosProps extends FieldsetLegendProps {
   legend: string;
 }
 
-export const WithRadios = ({
+export const WithRadios: Story<FieldsetLegendWithRadiosProps> = ({
   name,
   legend,
   ...restFieldsetLegendProps
-}: FieldsetLegendWithRadiosProps) => (
+}) => (
   <Fieldset>
     <FieldsetLegend {...restFieldsetLegendProps}>{legend}</FieldsetLegend>
     <Radio name={name} value="yes">
@@ -128,7 +126,7 @@ export const WithRadios = ({
     </Radio>
   </Fieldset>
 );
-WithRadios.argTypes = omit<FieldsetLegendWithRadiosProps>('children');
+WithRadios.argTypes = omit('children');
 WithRadios.args = {
   name: 'fieldset-legend-with-radios',
   legend: 'Legend',

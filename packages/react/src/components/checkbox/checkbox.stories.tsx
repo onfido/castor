@@ -7,7 +7,7 @@ import {
   HelperText,
   Validation,
 } from '@onfido/castor-react';
-import React, { ChangeEvent, useRef } from 'react';
+import React from 'react';
 import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 
 const bordered = [true, false] as const;
@@ -40,40 +40,37 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<CheckboxProps>;
 
-export const Playground: Story<CheckboxProps> = (props: CheckboxProps) => (
+export const Playground: Story<CheckboxProps> = (props) => (
   <Checkbox {...props} />
 );
 
 export const Bordered = reactMatrix(Checkbox, { bordered });
-Bordered.argTypes = omit<CheckboxProps>('bordered');
+Bordered.argTypes = omit('bordered');
 
 export const Invalid = reactMatrix(Checkbox, { invalid });
-Invalid.argTypes = omit<CheckboxProps>('invalid');
+Invalid.argTypes = omit('invalid');
 
 export const Disabled = reactMatrix(Checkbox, { disabled });
-Disabled.argTypes = omit<CheckboxProps>('disabled');
+Disabled.argTypes = omit('disabled');
 
-export const AsIndeterminate = (props: CheckboxProps) => {
-  const checkboxRef = useRef<HTMLInputElement | null>(null);
-
-  const handleChange = ({
-    target: { checked: indeterminate },
-  }: ChangeEvent<HTMLInputElement>) => {
-    if (checkboxRef.current) checkboxRef.current.indeterminate = indeterminate;
-  };
-
-  return <Checkbox {...props} ref={checkboxRef} onChange={handleChange} />;
-};
+export const AsIndeterminate: Story<CheckboxProps> = (props) => (
+  <Checkbox
+    {...props}
+    onChange={(ev) =>
+      (ev.currentTarget.indeterminate = ev.currentTarget.checked)
+    }
+  />
+);
 
 interface CheckboxesWithFieldsetLegendProps extends CheckboxProps {
   name: string;
   legend: string;
 }
 
-export const WithFieldsetLegend = ({
+export const WithFieldsetLegend: Story<CheckboxesWithFieldsetLegendProps> = ({
   legend,
   ...restProps
-}: CheckboxesWithFieldsetLegendProps) => (
+}) => (
   <Fieldset>
     <FieldsetLegend>{legend}</FieldsetLegend>
     <Field>
@@ -88,8 +85,7 @@ export const WithFieldsetLegend = ({
     </Field>
   </Fieldset>
 );
-WithFieldsetLegend.argTypes =
-  omit<CheckboxesWithFieldsetLegendProps>('children');
+WithFieldsetLegend.argTypes = omit('children');
 WithFieldsetLegend.args = {
   name: 'checkboxes-with-fieldset-legend',
   legend: 'Legend',
@@ -100,11 +96,11 @@ interface CheckboxWithHelperTextProps extends CheckboxProps {
   helperText: string;
 }
 
-export const WithHelperText = ({
+export const WithHelperText: Story<CheckboxWithHelperTextProps> = ({
   label,
   helperText,
   ...restProps
-}: CheckboxWithHelperTextProps) => (
+}) => (
   <Field>
     <Checkbox {...restProps}>
       {label}
@@ -112,7 +108,7 @@ export const WithHelperText = ({
     </Checkbox>
   </Field>
 );
-WithHelperText.argTypes = omit<CheckboxWithHelperTextProps>('children');
+WithHelperText.argTypes = omit('children');
 WithHelperText.args = {
   label: 'Label',
   helperText: 'Helper text',
@@ -124,11 +120,11 @@ interface CheckboxWithValidationProps extends CheckboxProps {
   withIcon: boolean;
 }
 
-export const WithValidation = ({
+export const WithValidation: Story<CheckboxWithValidationProps> = ({
   validation,
   withIcon,
   ...restProps
-}: CheckboxWithValidationProps) => (
+}) => (
   <Field>
     <Checkbox {...restProps} invalid={Boolean(validation)} />
     <Validation state="error" withIcon={withIcon}>
@@ -136,10 +132,7 @@ export const WithValidation = ({
     </Validation>
   </Field>
 );
-WithValidation.argTypes = omit<CheckboxWithValidationProps>(
-  'invalid',
-  'disabled'
-);
+WithValidation.argTypes = omit('disabled', 'invalid');
 WithValidation.args = {
   validation: 'This field is not valid',
   withIcon: true,

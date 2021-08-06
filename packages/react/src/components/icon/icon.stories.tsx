@@ -43,7 +43,7 @@ export const Name = reactMatrix(Icon, { name: iconNames }, (props) => (
     <Icon {...props} /> {props.name}
   </>
 ));
-Name.argTypes = omit<IconProps>('name');
+Name.argTypes = omit('name');
 Name.parameters = {
   display: 'grid',
   columns: 'repeat(4, auto 1fr)',

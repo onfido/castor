@@ -27,7 +27,7 @@ export default {
   title: 'Core/Input',
   component: Input,
   argTypes: {
-    ...omit<InputProps>('id', 'value'),
+    ...omit('id', 'value'),
     disabled: {
       table: { type: { summary: 'boolean' } },
     },
@@ -54,10 +54,10 @@ export default {
 export const Playground: Story<InputProps> = (props) => Input(props);
 
 export const Invalid = htmlMatrix(Input, { invalid });
-Invalid.argTypes = omit<InputProps>('invalid');
+Invalid.argTypes = omit('invalid');
 
 export const Disabled = htmlMatrix(Input, { disabled });
-Disabled.argTypes = omit<InputProps>('disabled');
+Disabled.argTypes = omit('disabled');
 
 interface InputWithLabelAndHelperTextProps extends InputProps {
   id: string;
@@ -65,24 +65,20 @@ interface InputWithLabelAndHelperTextProps extends InputProps {
   helperText: string;
 }
 
-export const WithLabelAndHelperText = ({
-  id,
-  label,
-  helperText,
-  ...props
-}: InputWithLabelAndHelperTextProps) =>
-  Field({
-    children: [
-      FieldLabel({
-        children: [
-          label,
-          HelperText({ children: helperText }),
-          Input({ ...props, id }),
-        ],
-        for: id,
-      }),
-    ],
-  });
+export const WithLabelAndHelperText: Story<InputWithLabelAndHelperTextProps> =
+  ({ id, label, helperText, ...props }) =>
+    Field({
+      children: [
+        FieldLabel({
+          children: [
+            label,
+            HelperText({ children: helperText }),
+            Input({ ...props, id }),
+          ],
+          for: id,
+        }),
+      ],
+    });
 WithLabelAndHelperText.args = {
   id: 'input-with-label-and-helper-text',
   label: 'Label',

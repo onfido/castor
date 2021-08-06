@@ -12,19 +12,13 @@ import { Textarea, TextareaProps } from './textarea.story';
 
 const disabled = [true, false] as const;
 const invalid = [true, false] as const;
-
-const resize: readonly TextareaProps['resize'][] = [
-  'vertical',
-  'horizontal',
-  'both',
-  'none',
-];
+const resize = ['vertical', 'horizontal', 'both', 'none'] as const;
 
 export default {
   title: 'Core/Textarea',
   component: Textarea,
   argTypes: {
-    ...omit<TextareaProps>('id'),
+    ...omit('id'),
     disabled: {
       table: { type: { summary: 'boolean' } },
     },
@@ -56,13 +50,13 @@ export default {
 export const Playground: Story<TextareaProps> = (props) => Textarea(props);
 
 export const Resize = htmlMatrix(Textarea, { resize });
-Resize.argTypes = omit<TextareaProps>('resize');
+Resize.argTypes = omit('resize');
 
 export const Invalid = htmlMatrix(Textarea, { invalid });
-Invalid.argTypes = omit<TextareaProps>('invalid');
+Invalid.argTypes = omit('invalid');
 
 export const Disabled = htmlMatrix(Textarea, { disabled });
-Disabled.argTypes = omit<TextareaProps>('disabled');
+Disabled.argTypes = omit('disabled');
 
 interface TextareaWithLabelAndHelperTextProps extends TextareaProps {
   id: string;
@@ -70,24 +64,20 @@ interface TextareaWithLabelAndHelperTextProps extends TextareaProps {
   helperText: string;
 }
 
-export const WithLabelAndHelperText = ({
-  id,
-  label,
-  helperText,
-  ...props
-}: TextareaWithLabelAndHelperTextProps) =>
-  Field({
-    children: [
-      FieldLabel({
-        children: [
-          label,
-          HelperText({ children: helperText }),
-          Textarea({ ...props, id }),
-        ],
-        for: id,
-      }),
-    ],
-  });
+export const WithLabelAndHelperText: Story<TextareaWithLabelAndHelperTextProps> =
+  ({ id, label, helperText, ...props }) =>
+    Field({
+      children: [
+        FieldLabel({
+          children: [
+            label,
+            HelperText({ children: helperText }),
+            Textarea({ ...props, id }),
+          ],
+          for: id,
+        }),
+      ],
+    });
 WithLabelAndHelperText.args = {
   id: 'input-with-label-and-helper-text',
   label: 'Label',

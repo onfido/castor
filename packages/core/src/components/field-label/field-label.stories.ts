@@ -11,7 +11,7 @@ import { FieldLabel, FieldLabelProps } from './field-label.story';
 export default {
   title: 'Core/FieldLabel',
   component: FieldLabel,
-  argTypes: omit<FieldLabelProps>('for'),
+  argTypes: omit('for'),
   args: {
     children: 'Label',
   },
@@ -55,7 +55,7 @@ export const WithHelperText: Story<FieldLabelWithHelperTextProps> = ({
     ...props,
     children: [label, HelperText({ children: helperText })],
   });
-WithHelperText.argTypes = omit<FieldLabelWithHelperTextProps>('children');
+WithHelperText.argTypes = omit('children');
 WithHelperText.args = {
   label: 'Label',
   helperText: 'Helper text',
@@ -66,7 +66,11 @@ interface FieldLabelWithInputProps extends FieldLabelProps {
   label: string;
 }
 
-export const WithInput = ({ id, label, ...props }: FieldLabelWithInputProps) =>
+export const WithInput: Story<FieldLabelWithInputProps> = ({
+  id,
+  label,
+  ...props
+}) =>
   Field({
     children: [
       FieldLabel({
@@ -77,7 +81,7 @@ export const WithInput = ({ id, label, ...props }: FieldLabelWithInputProps) =>
       Input({ id }),
     ],
   });
-WithInput.argTypes = omit<FieldLabelWithInputProps>('children');
+WithInput.argTypes = omit('children');
 WithInput.args = {
   id: 'field-label-with-input',
   label: 'Label',
@@ -88,11 +92,11 @@ interface FieldLabelWithSelectProps extends FieldLabelProps {
   label: string;
 }
 
-export const WithSelect = ({
+export const WithSelect: Story<FieldLabelWithSelectProps> = ({
   id,
   label,
   ...props
-}: FieldLabelWithSelectProps) =>
+}) =>
   Field({
     children: [
       FieldLabel({
@@ -111,7 +115,7 @@ export const WithSelect = ({
       }),
     ],
   });
-WithSelect.argTypes = omit<FieldLabelWithSelectProps>('children');
+WithSelect.argTypes = omit('children');
 WithSelect.args = {
   id: 'field-label-with-select',
   label: 'Label',
@@ -122,11 +126,11 @@ interface FieldLabelWithTextareaProps extends FieldLabelProps {
   label: string;
 }
 
-export const WithTextarea = ({
+export const WithTextarea: Story<FieldLabelWithTextareaProps> = ({
   id,
   label,
   ...props
-}: FieldLabelWithTextareaProps) =>
+}) =>
   Field({
     children: [
       FieldLabel({
@@ -137,7 +141,7 @@ export const WithTextarea = ({
       Textarea({ id }),
     ],
   });
-WithTextarea.argTypes = omit<FieldLabelWithTextareaProps>('children');
+WithTextarea.argTypes = omit('children');
 WithTextarea.args = {
   id: 'field-label-with-textarea',
   label: 'Label',
