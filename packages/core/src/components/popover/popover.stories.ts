@@ -2,6 +2,7 @@ import {
   html,
   htmlMatrix,
   Meta,
+  omit,
   optionsToSummary,
   Story,
 } from '../../../../../docs';
@@ -15,6 +16,7 @@ export default {
   title: 'Core/Popover',
   component: Popover,
   argTypes: {
+    ...omit('class'),
     align: {
       control: { type: 'inline-radio', options: align },
       defaultValue: 'center',
