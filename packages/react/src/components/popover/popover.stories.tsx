@@ -16,7 +16,7 @@ export default {
   title: 'React/Popover',
   component: Popover,
   argTypes: {
-    ...omit<PopoverProps>('onClose', 'target'),
+    ...omit('onClose', 'target'),
     align: {
       control: { type: 'inline-radio', options: align },
       table: {

@@ -22,9 +22,7 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<SearchProps>;
 
-export const Playground: Story<SearchProps> = (props: SearchProps) => (
-  <Search {...props} />
-);
+export const Playground: Story<SearchProps> = (props) => <Search {...props} />;
 
 export const Disabled = reactMatrix(Search, { disabled });
-Disabled.argTypes = omit<SearchProps>('disabled');
+Disabled.argTypes = omit('disabled');

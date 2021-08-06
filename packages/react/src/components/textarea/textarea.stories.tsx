@@ -17,13 +17,7 @@ import {
 
 const disabled = [true, false] as const;
 const invalid = [true, false] as const;
-
-const resize: readonly TextareaProps['resize'][] = [
-  'vertical',
-  'horizontal',
-  'both',
-  'none',
-];
+const resize = ['vertical', 'horizontal', 'both', 'none'] as const;
 
 export default {
   title: 'React/Textarea',
@@ -63,18 +57,18 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<TextareaProps>;
 
-export const Playground: Story<TextareaProps> = (props: TextareaProps) => (
+export const Playground: Story<TextareaProps> = (props) => (
   <Textarea {...props} />
 );
 
 export const Resize = reactMatrix(Textarea, { resize });
-Resize.argTypes = omit<TextareaProps>('resize');
+Resize.argTypes = omit('resize');
 
 export const Invalid = reactMatrix(Textarea, { invalid });
-Invalid.argTypes = omit<TextareaProps>('invalid');
+Invalid.argTypes = omit('invalid');
 
 export const Disabled = reactMatrix(Textarea, { disabled });
-Disabled.argTypes = omit<TextareaProps>('disabled');
+Disabled.argTypes = omit('disabled');
 
 interface TextareaWithLabelAndHelperTextProps extends TextareaProps {
   id: string;
@@ -82,20 +76,16 @@ interface TextareaWithLabelAndHelperTextProps extends TextareaProps {
   helperText: string;
 }
 
-export const WithLabelAndHelperText = ({
-  id,
-  label,
-  helperText,
-  ...restProps
-}: TextareaWithLabelAndHelperTextProps) => (
-  <Field>
-    <FieldLabel htmlFor={id}>
-      {label}
-      <HelperText>{helperText}</HelperText>
-      <Textarea {...restProps} id={id} />
-    </FieldLabel>
-  </Field>
-);
+export const WithLabelAndHelperText: Story<TextareaWithLabelAndHelperTextProps> =
+  ({ id, label, helperText, ...restProps }) => (
+    <Field>
+      <FieldLabel htmlFor={id}>
+        {label}
+        <HelperText>{helperText}</HelperText>
+        <Textarea {...restProps} id={id} />
+      </FieldLabel>
+    </Field>
+  );
 WithLabelAndHelperText.args = {
   id: 'textarea-with-label-and-helper-text',
   label: 'Label',
@@ -107,11 +97,11 @@ interface TextareaWithValidationProps extends TextareaProps {
   withIcon: boolean;
 }
 
-export const WithValidation = ({
+export const WithValidation: Story<TextareaWithValidationProps> = ({
   validation,
   withIcon,
   ...restProps
-}: TextareaWithValidationProps) => (
+}) => (
   <Field>
     <Textarea {...restProps} invalid={Boolean(validation)} />
     <Validation state="error" withIcon={withIcon}>
@@ -119,10 +109,7 @@ export const WithValidation = ({
     </Validation>
   </Field>
 );
-WithValidation.argTypes = omit<TextareaWithValidationProps>(
-  'invalid',
-  'disabled'
-);
+WithValidation.argTypes = omit('disabled', 'invalid');
 WithValidation.args = {
   validation: 'This field is not valid',
   withIcon: true,

@@ -40,28 +40,26 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<RadioProps>;
 
-export const Playground: Story<RadioProps> = (props: RadioProps) => (
-  <Radio {...props} />
-);
+export const Playground: Story<RadioProps> = (props) => <Radio {...props} />;
 
 export const Bordered = reactMatrix(Radio, { bordered });
-Bordered.argTypes = omit<RadioProps>('bordered');
+Bordered.argTypes = omit('bordered');
 
 export const Invalid = reactMatrix(Radio, { invalid });
-Invalid.argTypes = omit<RadioProps>('invalid');
+Invalid.argTypes = omit('invalid');
 
 export const Disabled = reactMatrix(Radio, { disabled });
-Disabled.argTypes = omit<RadioProps>('disabled');
+Disabled.argTypes = omit('disabled');
 
 interface RadiosWithFieldsetLegendProps extends RadioProps {
   name: string;
   legend: string;
 }
 
-export const WithFieldsetLegend = ({
+export const WithFieldsetLegend: Story<RadiosWithFieldsetLegendProps> = ({
   legend,
   ...restProps
-}: RadiosWithFieldsetLegendProps) => (
+}) => (
   <Fieldset>
     <FieldsetLegend>{legend}</FieldsetLegend>
     <Field>
@@ -76,7 +74,7 @@ export const WithFieldsetLegend = ({
     </Field>
   </Fieldset>
 );
-WithFieldsetLegend.argTypes = omit<RadiosWithFieldsetLegendProps>('children');
+WithFieldsetLegend.argTypes = omit('children');
 WithFieldsetLegend.args = {
   name: 'radios-with-fieldset-legend',
   legend: 'Legend',
@@ -87,11 +85,11 @@ interface RadioWithHelperTextProps extends RadioProps {
   helperText: string;
 }
 
-export const WithHelperText = ({
+export const WithHelperText: Story<RadioWithHelperTextProps> = ({
   label,
   helperText,
   ...restProps
-}: RadioWithHelperTextProps) => (
+}) => (
   <Field>
     <Radio {...restProps}>
       {label}
@@ -99,7 +97,7 @@ export const WithHelperText = ({
     </Radio>
   </Field>
 );
-WithHelperText.argTypes = omit<RadioWithHelperTextProps>('children');
+WithHelperText.argTypes = omit('children');
 WithHelperText.args = {
   label: 'Label',
   helperText: 'Helper text',
@@ -110,11 +108,11 @@ interface RadioWithValidationProps extends RadioProps {
   withIcon: boolean;
 }
 
-export const WithValidation = ({
+export const WithValidation: Story<RadioWithValidationProps> = ({
   validation,
   withIcon,
   ...restProps
-}: RadioWithValidationProps) => (
+}) => (
   <Field>
     <Radio {...restProps} invalid={Boolean(validation)} />
     <Validation state="error" withIcon={withIcon}>
@@ -122,7 +120,7 @@ export const WithValidation = ({
     </Validation>
   </Field>
 );
-WithValidation.argTypes = omit<RadioWithValidationProps>('invalid', 'disabled');
+WithValidation.argTypes = omit('disabled', 'invalid');
 WithValidation.args = {
   validation: 'This field is not valid',
   withIcon: true,

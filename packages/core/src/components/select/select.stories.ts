@@ -13,7 +13,7 @@ export default {
   title: 'Core/Select',
   component: Select,
   argTypes: {
-    ...omit<SelectProps>('class', 'id', 'required', 'value'),
+    ...omit('class', 'id', 'required', 'value'),
     children: {
       description: [
         'List of options using `<option>`.',
@@ -39,13 +39,13 @@ export default {
 export const Playground: Story<SelectProps> = (props) => Select(props);
 
 export const Borderless = htmlMatrix(Select, { borderless });
-Borderless.argTypes = omit<SelectProps>('borderless');
+Borderless.argTypes = omit('borderless');
 
 export const Invalid = htmlMatrix(Select, { invalid });
-Invalid.argTypes = omit<SelectProps>('invalid');
+Invalid.argTypes = omit('invalid');
 
 export const Disabled = htmlMatrix(Select, { disabled });
-Disabled.argTypes = omit<SelectProps>('disabled');
+Disabled.argTypes = omit('disabled');
 
 export const AsRequired: Story<SelectProps> = (props) =>
   Select({ ...props, required: true });
@@ -80,24 +80,20 @@ interface SelectWithLabelAndHelperTextProps extends SelectProps {
   helperText: string;
 }
 
-export const WithLabelAndHelperText = ({
-  id,
-  label,
-  helperText,
-  ...props
-}: SelectWithLabelAndHelperTextProps) =>
-  Field({
-    children: [
-      FieldLabel({
-        children: [
-          label,
-          HelperText({ children: helperText }),
-          Select({ ...props, id }),
-        ],
-        for: id,
-      }),
-    ],
-  });
+export const WithLabelAndHelperText: Story<SelectWithLabelAndHelperTextProps> =
+  ({ id, label, helperText, ...props }) =>
+    Field({
+      children: [
+        FieldLabel({
+          children: [
+            label,
+            HelperText({ children: helperText }),
+            Select({ ...props, id }),
+          ],
+          for: id,
+        }),
+      ],
+    });
 WithLabelAndHelperText.args = {
   id: 'select-with-label-and-helper-text',
   label: 'Label',
@@ -109,7 +105,7 @@ export const AllCombinations = htmlMatrix(
   { borderless, disabled, invalid },
   (props) => Select({ ...props, children: children(props) })
 );
-AllCombinations.argTypes = omit<SelectProps>('children');
+AllCombinations.argTypes = omit('children');
 AllCombinations.args = {
   children: null,
 };

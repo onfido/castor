@@ -31,10 +31,10 @@ export default {
 export const Playground: Story<SpinnerProps> = (props) => Spinner(props);
 
 export const Size = htmlMatrix(Spinner, { size });
-Size.argTypes = omit<SpinnerProps>('size');
+Size.argTypes = omit('size');
 
 export const WithoutLabel: Story<SpinnerProps> = (props) => Spinner(props);
-WithoutLabel.argTypes = omit<SpinnerProps>('children');
+WithoutLabel.argTypes = omit('children');
 WithoutLabel.args = {
   children: null,
 };

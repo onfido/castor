@@ -58,15 +58,13 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<InputProps>;
 
-export const Playground: Story<InputProps> = (props: InputProps) => (
-  <Input {...props} />
-);
+export const Playground: Story<InputProps> = (props) => <Input {...props} />;
 
 export const Invalid = reactMatrix(Input, { invalid });
-Invalid.argTypes = omit<InputProps>('invalid');
+Invalid.argTypes = omit('invalid');
 
 export const Disabled = reactMatrix(Input, { disabled });
-Disabled.argTypes = omit<InputProps>('disabled');
+Disabled.argTypes = omit('disabled');
 
 interface InputWithLabelAndHelperTextProps extends InputProps {
   id: string;
@@ -74,20 +72,16 @@ interface InputWithLabelAndHelperTextProps extends InputProps {
   helperText: string;
 }
 
-export const WithLabelAndHelperText = ({
-  id,
-  label,
-  helperText,
-  ...restProps
-}: InputWithLabelAndHelperTextProps) => (
-  <Field>
-    <FieldLabel htmlFor={id}>
-      {label}
-      <HelperText>{helperText}</HelperText>
-      <Input {...restProps} id={id} />
-    </FieldLabel>
-  </Field>
-);
+export const WithLabelAndHelperText: Story<InputWithLabelAndHelperTextProps> =
+  ({ id, label, helperText, ...restProps }) => (
+    <Field>
+      <FieldLabel htmlFor={id}>
+        {label}
+        <HelperText>{helperText}</HelperText>
+        <Input {...restProps} id={id} />
+      </FieldLabel>
+    </Field>
+  );
 WithLabelAndHelperText.args = {
   id: 'input-with-label-and-helper-text',
   label: 'Label',
@@ -99,11 +93,11 @@ interface InputWithValidationProps extends InputProps {
   withIcon: boolean;
 }
 
-export const WithValidation = ({
+export const WithValidation: Story<InputWithValidationProps> = ({
   validation,
   withIcon,
   ...restProps
-}: InputWithValidationProps) => (
+}) => (
   <Field>
     <Input {...restProps} invalid={Boolean(validation)} />
     <Validation state="error" withIcon={withIcon}>
@@ -111,7 +105,7 @@ export const WithValidation = ({
     </Validation>
   </Field>
 );
-WithValidation.argTypes = omit<InputWithValidationProps>('invalid', 'disabled');
+WithValidation.argTypes = omit('disabled', 'invalid');
 WithValidation.args = {
   validation: 'This field is not valid',
   withIcon: true,

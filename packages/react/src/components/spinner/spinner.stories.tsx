@@ -32,15 +32,17 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<SpinnerProps>;
 
-export const Playground: Story<SpinnerProps> = (props: SpinnerProps) => (
+export const Playground: Story<SpinnerProps> = (props) => (
   <Spinner {...props} />
 );
 
 export const Size = reactMatrix(Spinner, { size });
-Size.argTypes = omit<SpinnerProps>('size');
+Size.argTypes = omit('size');
 
-export const WithoutLabel = (props: SpinnerProps) => <Spinner {...props} />;
-WithoutLabel.argTypes = omit<SpinnerProps>('children');
+export const WithoutLabel: Story<SpinnerProps> = (props) => (
+  <Spinner {...props} />
+);
+WithoutLabel.argTypes = omit('children');
 WithoutLabel.args = {
   children: null,
 };

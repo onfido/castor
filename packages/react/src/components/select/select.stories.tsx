@@ -56,20 +56,18 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<SelectProps>;
 
-export const Playground: Story<SelectProps> = (props: SelectProps) => (
-  <Select {...props} />
-);
+export const Playground: Story<SelectProps> = (props) => <Select {...props} />;
 
 export const Borderless = reactMatrix(Select, { borderless });
-Borderless.argTypes = omit<SelectProps>('borderless');
+Borderless.argTypes = omit('borderless');
 
 export const Invalid = reactMatrix(Select, { invalid });
-Invalid.argTypes = omit<SelectProps>('invalid');
+Invalid.argTypes = omit('invalid');
 
 export const Disabled = reactMatrix(Select, { disabled });
-Disabled.argTypes = omit<SelectProps>('disabled');
+Disabled.argTypes = omit('disabled');
 
-export const AsRequired: Story<SelectProps> = (props: SelectProps) => (
+export const AsRequired: Story<SelectProps> = (props) => (
   <Select {...props} defaultValue={''} />
 );
 AsRequired.args = {
@@ -92,20 +90,16 @@ interface SelectWithLabelAndHelperTextProps extends SelectProps {
   helperText: string;
 }
 
-export const WithLabelAndHelperText = ({
-  id,
-  label,
-  helperText,
-  ...restProps
-}: SelectWithLabelAndHelperTextProps) => (
-  <Field>
-    <FieldLabel htmlFor={id}>
-      {label}
-      <HelperText>{helperText}</HelperText>
-      <Select {...restProps} id={id} />
-    </FieldLabel>
-  </Field>
-);
+export const WithLabelAndHelperText: Story<SelectWithLabelAndHelperTextProps> =
+  ({ id, label, helperText, ...restProps }) => (
+    <Field>
+      <FieldLabel htmlFor={id}>
+        {label}
+        <HelperText>{helperText}</HelperText>
+        <Select {...restProps} id={id} />
+      </FieldLabel>
+    </Field>
+  );
 WithLabelAndHelperText.args = {
   id: 'select-with-label-and-helper-text',
   label: 'Label',
@@ -117,11 +111,11 @@ interface SelectWithValidationProps extends SelectProps {
   withIcon: boolean;
 }
 
-export const WithValidation = ({
+export const WithValidation: Story<SelectWithValidationProps> = ({
   validation,
   withIcon,
   ...restProps
-}: SelectWithValidationProps) => (
+}) => (
   <Field>
     <Select {...restProps} invalid={Boolean(validation)} />
     <Validation state="error" withIcon={withIcon}>
@@ -129,10 +123,7 @@ export const WithValidation = ({
     </Validation>
   </Field>
 );
-WithValidation.argTypes = omit<SelectWithValidationProps>(
-  'invalid',
-  'disabled'
-);
+WithValidation.argTypes = omit('disabled', 'invalid');
 WithValidation.args = {
   validation: 'This field is not valid',
   withIcon: true,
@@ -143,7 +134,7 @@ export const AllCombinations = reactMatrix(
   { borderless, disabled, invalid },
   (props) => <Select {...props}>{children(props)}</Select>
 );
-AllCombinations.argTypes = omit<SelectProps>('children');
+AllCombinations.argTypes = omit('children');
 AllCombinations.args = {
   children: null,
 };

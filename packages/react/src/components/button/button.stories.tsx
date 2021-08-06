@@ -41,18 +41,18 @@ export const Playground: Story<ButtonProps<'a'>> = (props) => (
 );
 
 export const Kind = reactMatrix(Button, { kind });
-Kind.argTypes = omit<ButtonProps>('kind');
+Kind.argTypes = omit('kind');
 
 export const Variant = reactMatrix(Button, { variant });
-Variant.argTypes = omit<ButtonProps>('variant');
+Variant.argTypes = omit('variant');
 
 export const Disabled = reactMatrix(Button, { disabled });
-Disabled.argTypes = omit<ButtonProps>('disabled');
+Disabled.argTypes = omit('disabled');
 
 export const AsAnchor: Story<ButtonProps<'a'>> = (props) => (
   <Button href="javascript:void 0" {...props} />
 );
-AsAnchor.argTypes = omit<ButtonProps<'a'>>('href');
+AsAnchor.argTypes = omit('href');
 
 const [firstIconName] = iconNames;
 
@@ -64,7 +64,7 @@ export const WithIcon: Story<ButtonWithIconProps> = ({
   iconName,
   children,
   ...restProps
-}: ButtonWithIconProps) => (
+}) => (
   <>
     <Button {...restProps}>
       <Icon name={iconName} aria-hidden="true" />
