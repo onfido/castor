@@ -8,9 +8,12 @@ import {
 } from '@onfido/castor';
 import React, { ReactNode, RefObject, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { withRef } from '../../utils';
-import { useObserver } from './useObserver';
-import { useOnClickOutside } from './useOnClickOutside';
+import {
+  useIntersectionObserver,
+  useOnClickOutside,
+  useResizeObserver,
+  withRef,
+} from '../../utils';
 
 export interface PopoverProps extends BaseProps, Omit<Div, 'ref'> {
   children?: ReactNode;
@@ -68,13 +71,16 @@ function PopoverWithPortal({
   ...props
 }: PopoverProps &
   Required<Pick<PopoverProps, 'align' | 'position' | 'target'>>) {
+  const domBody = useRef(document.body);
   const popover = useRef<HTMLDivElement>(null);
   const [placement, setPlacement] = useState([position, align] as const);
   const [anchor, setAnchor] = useState(at(target));
 
   useOnClickOutside(onClose, [target, popover]);
 
-  useObserver(
+  useResizeObserver(() => setAnchor(at(target)), [domBody]);
+
+  useIntersectionObserver(
     (entry) => {
       setAnchor(at(target));
       setPlacement((placement) => optimalPlacement(entry, placement));
