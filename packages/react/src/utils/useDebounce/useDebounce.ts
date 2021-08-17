@@ -4,7 +4,6 @@ import { useRef } from 'react';
  * Delays `callback` execution until there are no calls in `debounceTime`.
  * @param callback Callback to execute.
  * @param debounceTime Time in milliseconds to debounce events.
- * @returns
  */
 export function useDebounce<T extends unknown[]>(
   callback: (...args: T) => void,
