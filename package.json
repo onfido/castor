@@ -62,7 +62,7 @@
     "bundlewatch": "^0.3.2",
     "commitizen": "^4.2.4",
     "concurrently": "^6.2.1",
-    "cypress": "^8.2.0",
+    "cypress": "^8.3.0",
     "cypress-image-snapshot": "^4.0.1",
     "cz-conventional-changelog": "^3.3.0",
     "esbuild": "^0.12.20",
