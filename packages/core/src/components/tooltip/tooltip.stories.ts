@@ -33,11 +33,10 @@ export default {
       },
     },
     show: {
-      control: { type: 'boolean' },
+      control: { type: 'inline-radio', options: ['on-hover', true, false] },
       description: [
         '`boolean`: show or hide the Tooltip.',
         '`"on-hover"`: show when the previous sibling matches `:hover` or `:focus`.',
-        'Reset story props (icon on top right of this table) to set "on-hover" again.',
       ].join('\n\n'),
       table: { type: { summary: 'boolean | "on-hover"' } },
     },
