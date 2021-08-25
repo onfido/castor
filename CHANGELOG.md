@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/onfido/castor/compare/v1.4.0...v1.5.0) (2021-08-25)
+
+### Features
+
+- implement popover ([#878](https://github.com/onfido/castor/issues/878)) ([90e1d61](https://github.com/onfido/castor/commit/90e1d616dbbd37a079e35266988a1d2c5976beb1))
+- implement tooltip ([#883](https://github.com/onfido/castor/issues/883)) ([2834dfd](https://github.com/onfido/castor/commit/2834dfd310e570738ea112bb3f4da2020583b734))
+- **react:** forwardRef all components ([#869](https://github.com/onfido/castor/issues/869)) ([76f506c](https://github.com/onfido/castor/commit/76f506c143724eeeb25e03f23217c037ade0db78))
+
+### Bug Fixes
+
+- **core:** font helper CSS-in-JS compatibility ([#841](https://github.com/onfido/castor/issues/841)) ([40a66c1](https://github.com/onfido/castor/commit/40a66c1c020d5d83010cc2f3f6e83c2a2c63629d))
+- **core:** use css properties from csstype, do not rely on react ([#840](https://github.com/onfido/castor/issues/840)) ([09e3b33](https://github.com/onfido/castor/commit/09e3b338c673afd6b862e8ac8b37aa63f955de68)), closes [#811](https://github.com/onfido/castor/issues/811)
+- **react:** popover with portal reposition on document resize ([#925](https://github.com/onfido/castor/issues/925)) ([2024b19](https://github.com/onfido/castor/commit/2024b192cc2e9878f802500c61dc446ce068cf8c))
+
 ## [1.4.0](https://github.com/onfido/castor/compare/v1.3.0...v1.4.0) (2021-06-25)
 
 ### Features
