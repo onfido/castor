@@ -31,7 +31,6 @@ export default {
         type: { summary: optionsToSummary(iconNames) },
       },
     },
-    name: {}, // just reorders in the table
     'aria-hidden': aria.hidden,
     'aria-label': aria.label,
   },

@@ -15,7 +15,7 @@ export const App = () => (
       <RaisedButton>Raised</RaisedButton>
       <RoundButton>Round</RoundButton>
       <Button>
-        <Icon name="passport" />
+        <Icon name="passport" aria-hidden="true" />
         Icon sprite
       </Button>
       <Button>

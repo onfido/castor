@@ -47,7 +47,7 @@ export const Select = withRef(function Select(
       >
         {children}
       </select>
-      <Icon name="chevron-down" />
+      <Icon name="chevron-down" aria-hidden="true" />
     </div>
   );
 });

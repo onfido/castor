@@ -1,3 +1,4 @@
+import { IconProps } from '@onfido/castor';
 import { iconNames } from '@onfido/castor-icons';
 import {
   aria,
@@ -8,7 +9,7 @@ import {
   optionsToSummary,
   Story,
 } from '../../../../../docs';
-import { Icon, IconProps } from './icon.story';
+import { Icon } from './icon.story';
 
 const [firstIconName] = iconNames;
 
@@ -30,7 +31,6 @@ export default {
         type: { summary: optionsToSummary(iconNames) },
       },
     },
-    name: {}, // just reorders in the table
     'aria-hidden': aria.hidden,
     'aria-label': aria.label,
   },
