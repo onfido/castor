@@ -1,5 +1,7 @@
+import { IconProps } from '@onfido/castor';
 import { iconNames } from '@onfido/castor-icons';
 import {
+  aria,
   colors,
   htmlMatrix,
   Meta,
@@ -7,7 +9,7 @@ import {
   optionsToSummary,
   Story,
 } from '../../../../../docs';
-import { Icon, IconProps } from './icon.story';
+import { Icon } from './icon.story';
 
 const [firstIconName] = iconNames;
 
@@ -29,6 +31,8 @@ export default {
         type: { summary: optionsToSummary(iconNames) },
       },
     },
+    'aria-hidden': aria.hidden,
+    'aria-label': aria.label,
   },
   args: {
     name: firstIconName,
@@ -36,12 +40,18 @@ export default {
 } as Meta<IconProps>;
 
 export const Playground: Story<IconProps> = (props) => Icon(props);
+Playground.args = {
+  'aria-label': 'A label for an icon',
+};
 
 export const Name = htmlMatrix(
   Icon,
   { name: iconNames },
   (props) => Icon(props) + props.name
 );
+Name.args = {
+  'aria-hidden': 'true',
+};
 Name.parameters = {
   display: 'grid',
   columns: 'repeat(4, auto 1fr)',

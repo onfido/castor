@@ -8,6 +8,8 @@ import { withRef } from '../../utils';
  * `@onfido/castor-icons` instead.
  *
  * https://github.com/onfido/castor-icons
+ *
+ * Requires either `aria-hidden="true"` or `aria-label` for accessibility.
  */
 export const Icon = withRef(function Icon(
   { name, color: token, className, ...restProps }: IconProps,

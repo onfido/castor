@@ -2,6 +2,7 @@ import { iconNames } from '@onfido/castor-icons';
 import { Icon, IconProps } from '@onfido/castor-react';
 import React from 'react';
 import {
+  aria,
   colors,
   Meta,
   omit,
@@ -30,6 +31,8 @@ export default {
         type: { summary: optionsToSummary(iconNames) },
       },
     },
+    'aria-hidden': aria.hidden,
+    'aria-label': aria.label,
   },
   args: {
     name: firstIconName,
@@ -37,6 +40,9 @@ export default {
 } as Meta<IconProps>;
 
 export const Playground: Story<IconProps> = (props) => <Icon {...props} />;
+Playground.args = {
+  'aria-label': 'A label for an icon',
+};
 
 export const Name = reactMatrix(Icon, { name: iconNames }, (props) => (
   <>
@@ -44,6 +50,9 @@ export const Name = reactMatrix(Icon, { name: iconNames }, (props) => (
   </>
 ));
 Name.argTypes = omit('name');
+Name.args = {
+  'aria-hidden': 'true',
+};
 Name.parameters = {
   display: 'grid',
   columns: 'repeat(4, auto 1fr)',
