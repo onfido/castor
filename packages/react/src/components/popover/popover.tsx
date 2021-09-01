@@ -26,24 +26,39 @@ export interface PopoverProps extends BaseProps, Omit<Div, 'ref'> {
   target?: RefObject<Element>;
 }
 
-export const Popover = ({
+export function Popover({
   align = 'center',
   onClose,
   position = 'top',
   target,
   ...props
-}: PopoverProps) =>
-  target ? (
+}: PopoverProps) {
+  const popover = useRef<HTMLDivElement>(null);
+  const [placement, setPlacement] = useState([position, align] as const);
+
+  useIntersectionObserver(
+    (entry) => setPlacement((placement) => optimalPlacement(entry, placement)),
+    [popover]
+  );
+
+  return target ? (
     <PopoverWithPortal
       {...props}
-      align={align}
+      align={placement[1]}
       onClose={onClose}
-      position={position}
+      popover={popover}
+      position={placement[0]}
       target={target}
     />
   ) : (
-    <PopoverBase {...props} align={align} position={position} />
+    <PopoverBase
+      {...props}
+      ref={popover}
+      align={placement[1]}
+      position={placement[0]}
+    />
   );
+}
 
 const PopoverBase = withRef(function Popover(
   {
@@ -64,39 +79,26 @@ const PopoverBase = withRef(function Popover(
 });
 
 function PopoverWithPortal({
-  align,
   onClose,
-  position,
+  popover,
   target,
   ...props
-}: PopoverProps &
-  Required<Pick<PopoverProps, 'align' | 'position' | 'target'>>) {
+}: PopoverProps & { popover: RefObject<HTMLDivElement> } & Required<
+    Pick<PopoverProps, 'align' | 'position' | 'target'>
+  >) {
   const domBody = useRef(document.body);
-  const popover = useRef<HTMLDivElement>(null);
-  const [placement, setPlacement] = useState([position, align] as const);
   const [anchor, setAnchor] = useState(at(target));
 
   useOnClickOutside(onClose, [target, popover]);
 
   useResizeObserver(() => setAnchor(at(target)), [domBody]);
 
-  useIntersectionObserver(
-    (entry) => {
-      setAnchor(at(target));
-      setPlacement((placement) => optimalPlacement(entry, placement));
-    },
-    [target, popover]
-  );
+  useIntersectionObserver(() => setAnchor(at(target)), [target]);
 
   return (
     <Portal>
       <div className={classy(c('popover-anchor'))} style={anchor}>
-        <PopoverBase
-          {...props}
-          ref={popover}
-          align={placement[1]}
-          position={placement[0]}
-        />
+        <PopoverBase {...props} ref={popover} />
       </div>
     </Portal>
   );
@@ -122,12 +124,82 @@ function at(anchor: RefObject<Element>) {
   return { left, top, height, width };
 }
 
-// TODO
 function optimalPlacement(
-  _entry: IntersectionObserverEntry,
-  [position, alignment]: readonly [Position, Alignment]
-): [Position, Alignment] {
-  return [position, alignment];
+  entry: IntersectionObserverEntry,
+  currentPlacement: readonly [Position, Alignment]
+): readonly [Position, Alignment] {
+  const [position, alignment] = currentPlacement;
+  const popover = entry.boundingClientRect;
+  const intersection = entry.intersectionRect;
+
+  const isClipping = (side: Position) =>
+    Math.abs(popover[side] - intersection[side]) >= 1;
+
+  // check for intersections
+  const clipping = {
+    top: isClipping(sides.top),
+    left: isClipping(sides.left),
+    bottom: isClipping(sides.bottom),
+    right: isClipping(sides.right),
+  };
+
+  // if both edges of the same axis intersect, there is nothing we can do
+  if (clipping.bottom && clipping.top) return currentPlacement;
+  if (clipping.left && clipping.right) return currentPlacement;
+
+  // adjust to the clipping side, if any
+  const newPlacement =
+    check(sides.top) ||
+    check(sides.bottom) ||
+    check(sides.left) ||
+    check(sides.right);
+
+  // default is no change
+  return newPlacement || currentPlacement;
+
+  /**
+   * Checks whether `side` is clipping and gets its adjusted placement.
+   * @param side Edge to check for clipping.
+   * @returns New placement if possible to adjust, or undefined if not.
+   */
+  function check(side: Position): readonly [Position, Alignment] | undefined {
+    const target = opposite[side];
+
+    // if not clipping, nothing to do
+    if (!clipping[side]) return;
+    // if already positioned on target, nothing to do
+    if (position === target) return;
+
+    // if positioned on opposite side of the same axis, position on target
+    if (position === opposite[target]) return [target, alignment];
+    // if already optimally aligned, position on target and align on position
+    if (alignment === align[target]) return [target, align[position]];
+    // if different axis, align on target
+    return [position, align[target]];
+  }
 }
+
+const sides = {
+  top: 'top',
+  left: 'left',
+  bottom: 'bottom',
+  right: 'right',
+  start: 'start',
+  end: 'end',
+} as const;
+
+const opposite = {
+  top: sides.bottom,
+  left: sides.right,
+  bottom: sides.top,
+  right: sides.left,
+} as const;
+
+const align = {
+  top: sides.start,
+  left: sides.start,
+  bottom: sides.end,
+  right: sides.end,
+} as const;
 
 type Div = JSX.IntrinsicElements['div'];
