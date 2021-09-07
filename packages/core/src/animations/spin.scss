@@ -7,7 +7,7 @@
 }
 
 @mixin _Spin() {
-  @include mixins.keyframes('spin') {
+  @keyframes ods-spin {
     to {
       transform: rotate(360deg);
     }

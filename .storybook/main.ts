@@ -4,9 +4,19 @@
 
 const { resolve } = require('path');
 const { ESBuildMinifyPlugin } = require('esbuild-loader');
+const istanbul = require('vite-plugin-istanbul');
 
 module.exports = {
   stories: ['../{docs,packages}/**/*.stories.ts{,x}'],
+
+  core: {
+    // vite builder still not 100%, breaks Core stories and code snippets
+    // but we can use it locally as it's much faster
+    builder:
+      process.env.NODE_ENV === 'production'
+        ? 'webpack4'
+        : 'storybook-builder-vite',
+  },
 
   addons: [
     '@storybook/addon-google-analytics',
@@ -18,6 +28,38 @@ module.exports = {
     '@storybook/addon-a11y',
   ],
 
+  // used locally, with 'start-storybook' or 'yarn start'
+  viteFinal: (config) => {
+    // resolve Castor imports
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      ...aliasPackage({
+        '@onfido/castor': 'core',
+        '@onfido/castor-react': 'react',
+      }),
+    };
+
+    // if running E2E tests
+    if (process.env.NODE_ENV === 'e2e') {
+      // don't watch
+      config.watchOptions = { ignored: [/.*/] };
+
+      // instrument source code
+      config.plugins.push(
+        istanbul({
+          include: 'packages/**/*',
+          exclude: ['node_modules', 'dist', '*.stor{y,ies}.*'],
+          extension: ['.ts', '.tsx'],
+          cypress: true,
+          requireEnv: true,
+        })
+      );
+    }
+
+    return config;
+  },
+
+  // used for builds, with 'build-storybook'
   webpackFinal: (config) => {
     // minify with esbuild
     config.optimization = {
@@ -49,8 +91,10 @@ module.exports = {
     // resolve Castor imports
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@onfido/castor': resolve(__dirname, '../packages/core/src'),
-      '@onfido/castor-react': resolve(__dirname, '../packages/react/src'),
+      ...aliasPackage({
+        '@onfido/castor': 'core',
+        '@onfido/castor-react': 'react',
+      }),
     };
 
     // if running E2E tests
@@ -70,3 +114,12 @@ module.exports = {
     return config;
   },
 };
+
+const aliasPackage = (aliases) =>
+  Object.fromEntries(
+    Object.entries(aliases).flatMap(([source, packageName]) =>
+      [source, `~${source}`].map((source) => [source, resolveTo(packageName)])
+    )
+  );
+
+const resolveTo = (name) => resolve(__dirname, `../packages/${name}/src`);

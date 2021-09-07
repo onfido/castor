@@ -1,4 +1,4 @@
-import { Primary, Stories, Title } from '@storybook/addon-docs/blocks';
+import { Primary, Stories, Title } from '@storybook/addon-docs';
 import React from 'react';
 import { Helpers } from './helpers.story';
 import { Intro } from './intro.story';

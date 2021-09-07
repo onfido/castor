@@ -1,5 +1,0 @@
-@mixin keyframes($name) {
-  @keyframes :global(ods-#{$name}) {
-    @content;
-  }
-}
