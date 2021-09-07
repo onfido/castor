@@ -2402,16 +2402,16 @@
     react-ga "^2.7.0"
     regenerator-runtime "^0.13.7"
 
-"@storybook/addon-toolbars@^6.3.7":
-  version "6.3.7"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-toolbars/-/addon-toolbars-6.3.7.tgz#acd0c9eea7fad056d995a821e34abddd5b065b9b"
-  integrity sha512-UTIurbl2WXj/jSOj7ndqQ/WtG7kSpGp62T7gwEZTZ+h/3sJn+bixofBD/7+sXa4hWW07YgTXV547DMhzp5bygg==
+"@storybook/addon-toolbars@^6.3.8":
+  version "6.3.8"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-toolbars/-/addon-toolbars-6.3.8.tgz#8ac21e57d8a584055e01381010e4b5ece649c7f4"
+  integrity sha512-jo9w3/TjYSYapSzTluVJzeeATzxf85KpPA/MjuqHl4MvTA1R7ApckZOsfRDcql6xrGEYUfGjUF6MRIicuxojeg==
   dependencies:
-    "@storybook/addons" "6.3.7"
-    "@storybook/api" "6.3.7"
-    "@storybook/client-api" "6.3.7"
-    "@storybook/components" "6.3.7"
-    "@storybook/theming" "6.3.7"
+    "@storybook/addons" "6.3.8"
+    "@storybook/api" "6.3.8"
+    "@storybook/client-api" "6.3.8"
+    "@storybook/components" "6.3.8"
+    "@storybook/theming" "6.3.8"
     core-js "^3.8.2"
     regenerator-runtime "^0.13.7"
 
