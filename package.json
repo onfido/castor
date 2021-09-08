@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "engines": {
-    "node": ">= 14"
+    "node": ">= 14.17"
   },
   "scripts": {
     "postinstall": "yarn integrate && if test -d .git; then husky install; fi",
