@@ -11,7 +11,7 @@
   },
   "scripts": {
     "postinstall": "yarn integrate && if test -d .git; then husky install; fi",
-    "start": "start-storybook -p 6006",
+    "start": "start-storybook -p 6006 --modern",
     "preintegrate": "shx rm -rf packages/*/src/integrated",
     "integrate": "concurrently yarn:integrate:*",
     "preintegrate:core:tokens": "shx mkdir -p packages/core/src/integrated/tokens",
