@@ -24,7 +24,7 @@ const type = [
 ] as const;
 
 export default {
-  title: 'Core/Input',
+  title: 'CSS/Input',
   component: Input,
   argTypes: {
     ...omit('id', 'value'),

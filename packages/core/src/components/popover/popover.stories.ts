@@ -13,7 +13,7 @@ const align = ['center', 'start', 'end'] as const;
 const position = ['top', 'left', 'right', 'bottom'] as const;
 
 export default {
-  title: 'Core/Popover',
+  title: 'CSS/Popover',
   component: Popover,
   argTypes: {
     ...omit('class'),

@@ -15,7 +15,7 @@ const invalid = [true, false] as const;
 const resize = ['vertical', 'horizontal', 'both', 'none'] as const;
 
 export default {
-  title: 'Core/Textarea',
+  title: 'CSS/Textarea',
   component: Textarea,
   argTypes: {
     ...omit('id'),
