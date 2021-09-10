@@ -28,3 +28,4 @@ cypress
 dist
 packages/*/src/integrated
 packages/*/prototype.js*
+*.scss.json
