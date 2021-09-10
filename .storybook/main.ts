@@ -46,7 +46,7 @@ module.exports = {
     // https://webpack.js.org/configuration/performance/#performancehints
     config.performance = { hints: false };
 
-    // resolve @onfido/castor imports
+    // resolve Castor imports
     config.resolve.alias = {
       ...config.resolve.alias,
       '@onfido/castor': resolve(__dirname, '../packages/core/src'),
