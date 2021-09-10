@@ -24,7 +24,7 @@ module.exports = {
       minimizer: [new ESBuildMinifyPlugin({ target: 'es2019' })],
     };
 
-    // replace babel with esbuild
+    // replace Babel with esbuild
     config.module.rules
       .flatMap((rule) => rule.use || [])
       .filter((use) => use.loader?.includes('babel-loader'))
