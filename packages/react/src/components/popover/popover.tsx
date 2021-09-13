@@ -41,21 +41,23 @@ export function Popover({
     [popover]
   );
 
+  const [optimalPosition, optimalAlignment] = placement;
+
   return target ? (
     <PopoverWithPortal
       {...props}
-      align={placement[1]}
+      align={optimalAlignment}
       onClose={onClose}
       popover={popover}
-      position={placement[0]}
+      position={optimalPosition}
       target={target}
     />
   ) : (
     <PopoverBase
       {...props}
       ref={popover}
-      align={placement[1]}
-      position={placement[0]}
+      align={optimalAlignment}
+      position={optimalPosition}
     />
   );
 }
