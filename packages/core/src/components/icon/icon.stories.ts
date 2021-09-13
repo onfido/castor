@@ -14,7 +14,7 @@ import { Icon } from './icon.story';
 const [firstIconName] = iconNames;
 
 export default {
-  title: 'Core/Icon',
+  title: 'CSS/Icon',
   component: Icon,
   argTypes: {
     ...omit('aria-hidden'),

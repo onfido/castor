@@ -12,7 +12,7 @@ const align = ['center', 'start', 'end'] as const;
 const position = ['top', 'left', 'right', 'bottom'] as const;
 
 export default {
-  title: 'Core/Tooltip',
+  title: 'CSS/Tooltip',
   component: Tooltip,
   argTypes: {
     align: {

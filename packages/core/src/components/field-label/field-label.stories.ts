@@ -9,7 +9,7 @@ import { Textarea } from '../textarea/textarea.story';
 import { FieldLabel, FieldLabelProps } from './field-label.story';
 
 export default {
-  title: 'Core/FieldLabel',
+  title: 'CSS/FieldLabel',
   component: FieldLabel,
   argTypes: omit('for'),
   args: {

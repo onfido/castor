@@ -8,7 +8,7 @@ const kind = ['action', 'destructive'] as const;
 const variant = ['primary', 'secondary', 'tertiary'] as const;
 
 export default {
-  title: 'Core/Button',
+  title: 'CSS/Button',
   component: Button,
   argTypes: {
     children: {},

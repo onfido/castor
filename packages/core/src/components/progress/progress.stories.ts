@@ -12,7 +12,7 @@ const size = ['regular', 'large'] as const;
 const hideLabel = [false, true] as const;
 
 export default {
-  title: 'Core/Progress',
+  title: 'CSS/Progress',
   component: Progress,
   argTypes: {
     ...omit('aria-valuetext'),
