@@ -6,7 +6,7 @@ If you have further questions please discuss the change you wish to make with th
 
 ## Get ready for development
 
-You will need Node 14 running locally.
+You will need Node 14.17 running locally.
 
 **1. Install Node**
 
