@@ -10,7 +10,7 @@
     },
     {
       "path": "./packages/*/prototype.js",
-      "maxSize": "20KB"
+      "maxSize": "60KB"
     }
   ]
 }

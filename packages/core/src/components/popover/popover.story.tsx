@@ -1,7 +1,6 @@
-import { c, classy } from '@onfido/castor';
+import { c, classy, PopoverProps as BaseProps } from '@onfido/castor';
 import { html } from '../../../../../docs';
 import { m } from '../../utils';
-import { PopoverProps as BaseProps } from './popover';
 
 export interface PopoverProps extends BaseProps {
   children?: Children;

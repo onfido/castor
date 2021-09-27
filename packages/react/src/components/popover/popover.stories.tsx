@@ -1,4 +1,4 @@
-import { Button } from '@onfido/castor-react';
+import { Button, Popover, PopoverProps } from '@onfido/castor-react';
 import React, { Fragment, useRef } from 'react';
 import {
   Meta,
@@ -7,7 +7,6 @@ import {
   reactMatrix,
   Story,
 } from '../../../../../docs';
-import { Popover, PopoverProps } from './popover';
 
 const align = ['center', 'start', 'end'] as const;
 const position = ['top', 'left', 'right', 'bottom'] as const;
