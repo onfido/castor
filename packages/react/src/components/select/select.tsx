@@ -14,6 +14,7 @@ let idCount = 0;
 export const Select = withRef(function Select(
   {
     id = `castor_select_${++idCount}`,
+    defaultValue,
     value,
     borderless,
     invalid,
@@ -24,7 +25,7 @@ export const Select = withRef(function Select(
   }: SelectProps,
   ref?: SelectProps['ref']
 ) {
-  const [empty, setEmpty] = useState(!value);
+  const [empty, setEmpty] = useState(!(defaultValue ?? value));
   const { disabled, touched } = useField();
 
   return (
@@ -34,14 +35,15 @@ export const Select = withRef(function Select(
         {...restProps}
         ref={ref}
         id={id}
+        defaultValue={defaultValue}
         value={value}
         className={classy(
           c('select-native'),
-          m({ empty, borderless, invalid, touched }),
+          m({ borderless, empty, invalid, touched }),
           className
         )}
         onChange={(ev) => {
-          setEmpty(value != null ? !value : !ev.currentTarget.value);
+          setEmpty(!(value ?? ev.currentTarget.value));
           onChange?.(ev);
         }}
       >
