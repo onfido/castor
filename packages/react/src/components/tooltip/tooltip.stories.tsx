@@ -1,4 +1,4 @@
-import { Button } from '@onfido/castor-react';
+import { Button, Tooltip, TooltipProps } from '@onfido/castor-react';
 import React, { Fragment, useRef } from 'react';
 import {
   Meta,
@@ -6,7 +6,6 @@ import {
   reactMatrix,
   Story,
 } from '../../../../../docs';
-import { Tooltip, TooltipProps } from './tooltip';
 
 const align = ['center', 'start', 'end'] as const;
 const position = ['top', 'left', 'right', 'bottom'] as const;
