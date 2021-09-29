@@ -56,7 +56,7 @@ const eventsThatChangeHoverOrFocus = [
 
 const on = <K extends keyof HTMLElementEventMap>(
   element: HTMLElement,
-  type: K | string,
+  type: K,
   listener: (ev: HTMLElementEventMap[K]) => unknown,
   options?: boolean | AddEventListenerOptions
 ) => {
