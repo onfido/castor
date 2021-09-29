@@ -1,6 +1,6 @@
 {
   "name": "castor-html-css",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "private": true,
   "main": "index.html",
   "scripts": {

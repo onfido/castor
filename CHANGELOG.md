@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.3](https://github.com/onfido/castor/compare/v1.5.2...v1.5.3) (2021-09-29)
+
+### Bug Fixes
+
+- **react:** tooltip type simplification ([#1018](https://github.com/onfido/castor/issues/1018)) ([22ad3f7](https://github.com/onfido/castor/commit/22ad3f7d38649641d96c84daa7a8a41371205dbb))
+
 ### [1.5.2](https://github.com/onfido/castor/compare/v1.5.1...v1.5.2) (2021-09-28)
 
 ### Bug Fixes
