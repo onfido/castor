@@ -16,18 +16,22 @@
     background-color: helpers.color('background-inverse-surface');
     border-radius: helpers.border-radius('medium');
     color: helpers.color('content-inverse-main');
+    cursor: default;
     height: fit-content;
     line-height: helpers.space(2.25);
     max-width: helpers.space(40);
     opacity: 0;
     padding: helpers.space(1) helpers.space(1.5);
-    pointer-events: none;
     transition: opacity helpers.time(2) ease helpers.time(3),
       visibility helpers.time(5);
     visibility: hidden;
     width: max-content;
 
     &.-show {
+      @include _visible();
+    }
+
+    &.-on-hover:hover {
       @include _visible();
     }
   }
