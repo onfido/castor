@@ -9,8 +9,8 @@
 
 @mixin _Popover() {
   .ods-popover-anchor {
-    pointer-events: none;
     position: absolute;
+    visibility: hidden;
     z-index: 9999999;
   }
 
@@ -18,6 +18,7 @@
     height: fit-content;
     max-width: helpers.space(50);
     position: absolute;
+    visibility: initial;
     width: max-content;
 
     // position ==========>
