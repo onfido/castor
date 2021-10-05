@@ -11,7 +11,7 @@
     "@onfido/castor-icons": "*"
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.7",
+    "autoprefixer": "^9.8.8",
     "parcel-bundler": "^1.12.5"
   }
 }
