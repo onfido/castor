@@ -13,6 +13,8 @@ export * from './popover/popover';
 export * from './progress/progress';
 export * from './radio/radio';
 export * from './search/search';
+export * from './select/option';
+export * from './select/option-group';
 export * from './select/select';
 export * from './spinner/spinner';
 export * from './textarea/textarea';

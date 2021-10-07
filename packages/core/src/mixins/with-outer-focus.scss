@@ -3,24 +3,21 @@
 @use './wrap-if' as mixins;
 
 $_allowed-types: ('action', 'negative');
-
-$_color-spread: 4px;
-$_color-size: 2px;
-$_inner-spread: $_color-spread - $_color-size;
+$_size: helpers.space(0.5);
+$_color-size: $_size - helpers.space(0.25);
 
 @mixin with-outer-focus($type, $target: null) {
   @if not list.index($_allowed-types, $type) {
     @error '$type must be one of (#{$_allowed-types})';
   }
 
-  $color-line: 0 0 0 $_color-spread helpers.color('border-#{$type}-focus');
-  $inner-line: 0 0 0 $_inner-spread helpers.color('border-focus-inner');
-
   @include mixins.wrap-if($target) {
     outline: none;
   }
 
   &:focus #{$target} {
-    box-shadow: $inner-line, $color-line;
+    box-shadow: //
+      0 0 0 $_color-size helpers.color('border-focus-inner'),
+      0 0 0 $_size helpers.color('border-#{$type}-focus');
   }
 }

@@ -11,6 +11,7 @@
   border-radius: helpers.border-radius('medium');
   box-sizing: border-box;
   color: helpers.color('content-main');
+  opacity: 1;
   padding: helpers.space(1.5) - $border-width helpers.space(2) - $border-width;
   width: 100%;
 

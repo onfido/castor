@@ -13,6 +13,9 @@
 @mixin _Tooltip() {
   .ods-tooltip {
     @include helpers.font('200-regular');
+
+    --popover-gap: #{helpers.space(1)};
+
     background-color: helpers.color('background-inverse-surface');
     border-radius: helpers.border-radius('medium');
     color: helpers.color('content-inverse-main');

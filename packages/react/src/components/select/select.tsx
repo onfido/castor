@@ -1,9 +1,11 @@
-import { c, classy, m, SelectProps as BaseProps } from '@onfido/castor';
-import { Icon, useField } from '@onfido/castor-react';
-import React, { useState } from 'react';
-import { withRef } from '../../utils';
+import React from 'react';
+import { CustomSelect, CustomSelectProps } from './custom';
+import { NativeSelect, NativeSelectProps } from './native';
+import { SelectProvider } from './useSelect';
 
-let idCount = 0;
+export type SelectProps =
+  | ({ native: true } & Omit<NativeSelectProps, 'notNative'>)
+  | ({ native?: false } & CustomSelectProps);
 
 /**
  * `Select` uses an `Icon` that requires `Icons` (SVG sprite) to be included in
@@ -11,54 +13,12 @@ let idCount = 0;
  *
  * https://github.com/onfido/castor-icons#use-with-plain-code
  */
-export const Select = withRef(function Select(
-  {
-    id = `castor_select_${++idCount}`,
-    defaultValue,
-    value,
-    borderless,
-    invalid,
-    children,
-    className,
-    onChange,
-    ...restProps
-  }: SelectProps,
-  ref?: SelectProps['ref']
-) {
-  const [empty, setEmpty] = useState(!(defaultValue ?? value));
-  const { disabled, touched } = useField();
-
-  return (
-    <div className={classy(c('select'), m({ borderless }))}>
-      <select
-        disabled={disabled} // will be overriden by props if set
-        {...restProps}
-        ref={ref}
-        id={id}
-        defaultValue={defaultValue}
-        value={value}
-        className={classy(
-          c('select-native'),
-          m({ borderless, empty, invalid, touched }),
-          className
-        )}
-        onChange={(ev) => {
-          setEmpty(!(value ?? ev.currentTarget.value));
-          onChange?.(ev);
-        }}
-      >
-        {children}
-      </select>
-      <Icon name="chevron-down" aria-hidden="true" />
-    </div>
-  );
-});
-
-export type SelectProps = BaseProps &
-  JSX.IntrinsicElements['select'] & {
-    native: true;
-  };
-
-export const Option = (props: OptionProps) => <option {...props} />;
-
-export type OptionProps = JSX.IntrinsicElements['option'];
+export const Select = ({ native, ...restProps }: SelectProps) => (
+  <SelectProvider value={{ native }}>
+    {native ? (
+      <NativeSelect {...(restProps as NativeSelectProps)} />
+    ) : (
+      <CustomSelect {...(restProps as CustomSelectProps)} />
+    )}
+  </SelectProvider>
+);
