@@ -18,18 +18,10 @@ export default {
   title: 'React/Checkbox',
   component: Checkbox,
   argTypes: {
-    children: {
-      description: 'Acts as a label for an `<input>`.',
-    },
-    bordered: {
-      table: { type: { summary: 'boolean' } },
-    },
-    disabled: {
-      table: { type: { summary: 'boolean' } },
-    },
-    invalid: {
-      table: { type: { summary: 'boolean' } },
-    },
+    children: { description: 'Acts as a label for the `<input>`.' },
+    bordered: { table: { type: { summary: 'boolean' } } },
+    disabled: { table: { type: { summary: 'boolean' } } },
+    invalid: { table: { type: { summary: 'boolean' } } },
   },
   args: {
     children: '',
