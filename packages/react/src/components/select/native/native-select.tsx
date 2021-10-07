@@ -56,4 +56,4 @@ export const NativeSelect = withRef(function NativeSelect(
 
 let idCount = 0;
 
-type JsxSelect = JSX.IntrinsicElements['select'];
+type JsxSelect = Omit<JSX.IntrinsicElements['select'], 'placeholder'>;

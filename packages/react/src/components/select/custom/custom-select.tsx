@@ -4,9 +4,7 @@ import { Popover } from '../../popover/popover';
 import { NativeSelect } from '../native';
 import { CustomSelectProvider } from './useCustomSelect';
 
-export type CustomSelectProps = SelectProps &
-  PopoverProps &
-  JSX.IntrinsicElements['select'];
+export type CustomSelectProps = SelectProps & PopoverProps & JsxSelect;
 
 export function CustomSelect({
   align = 'start',
@@ -114,3 +112,5 @@ const focus = (element: HTMLElement | null | undefined) =>
   element?.focus({ preventScroll: true });
 
 let id = 0;
+
+type JsxSelect = Omit<JSX.IntrinsicElements['select'], 'placeholder'>;
