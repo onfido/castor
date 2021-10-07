@@ -16,7 +16,7 @@ export function CustomOption({
   value: optionValue,
   onKeyUp,
   onMouseUp,
-  ...props
+  ...restProps
 }: CustomOptionProps) {
   const { name, register, select, value } = useCustomSelect();
 
@@ -28,7 +28,7 @@ export function CustomOption({
 
   return (
     <label
-      {...props}
+      {...restProps}
       className={classy(c('select-option'), className)}
       onKeyUp={(event) => {
         if (selectOptionKeys.has(event.key)) selectOption();
