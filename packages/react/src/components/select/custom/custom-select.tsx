@@ -37,7 +37,9 @@ export function CustomSelect({
     <CustomSelectProvider
       value={{
         name,
-        register(option, optionValue) {
+        selectedOption,
+        value,
+        initialize(option, optionValue) {
           // initial value
           if (value == optionValue) setSelectedOption(option);
           // or placeholder is first option
@@ -48,8 +50,6 @@ export function CustomSelect({
           setValue(value);
           close();
         },
-        selectedOption,
-        value,
       }}
     >
       <NativeSelect

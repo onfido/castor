@@ -18,9 +18,9 @@ export function CustomOption({
   onMouseUp,
   ...restProps
 }: CustomOptionProps) {
-  const { name, register, select, value } = useCustomSelect();
+  const { initialize, name, select, value } = useCustomSelect();
 
-  useEffect(() => register(children, optionValue), []);
+  useEffect(() => initialize(children, optionValue), []);
 
   const selectOption = () => disabled || select(children, optionValue);
 

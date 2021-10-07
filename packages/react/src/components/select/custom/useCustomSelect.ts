@@ -7,8 +7,8 @@ export const useCustomSelect = () => useContext(CustomSelectContext);
 export const CustomSelectProvider = CustomSelectContext.Provider;
 
 export interface CustomSelectState {
+  initialize: (option: ReactNode, value: Value) => void;
   name?: string;
-  register: (option: ReactNode, value: Value) => void;
   select: (option: ReactNode, value: Value) => void;
   selectedOption?: ReactNode;
   value?: Value;
