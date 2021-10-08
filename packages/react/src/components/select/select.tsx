@@ -7,7 +7,8 @@ import { SelectProvider } from './useSelect';
 
 export type SelectProps =
   | ({ native: true } & BaseProps & NativeSelectProps)
-  | ({ native?: false } & BaseProps & CustomSelectProps);
+  | ({ native?: false } & BaseProps &
+      Omit<CustomSelectProps, 'open' | 'onOpenChange' | 'onSelectOption'>);
 
 /**
  * `Select` uses an `Icon` that requires `Icons` (SVG sprite) to be included in
