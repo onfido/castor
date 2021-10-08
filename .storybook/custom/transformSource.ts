@@ -12,8 +12,18 @@ export const transformSource = (src: string) =>
 
 const react = (src: string) =>
   src
+    // remove fragments
+    .replace(
+      / *<React.Fragment[^>]*?>([\s\S]*?)<\/React.Fragment>/g,
+      (_, content: string) =>
+        content
+          // "shift + tab" once
+          .replace(/^ {2}/gm, '')
+          // remove empty lines where fragment was
+          .slice(1, -1)
+    )
     // remove React keys
-    .replace(/^ *key="\d+"\n?/gm, '')
+    .replace(/ key="[\.\d]+"\n?/gm, '')
     // remove "space" strings
     .replace(/{' '}/g, '')
     // improve refs
@@ -24,7 +34,7 @@ const htmlString = (src: string) =>
   prettier('<>' + src.replace(/{`|`}/g, '') + '</>')
     // then remove it
     .slice(2, -5)
-    // and `shift + tab` once
+    // and "shift + tab" once
     .replace(/^ {2}/gm, '');
 
 const prettier = (src: string) =>
