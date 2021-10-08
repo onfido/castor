@@ -14,12 +14,12 @@ export function CustomSelect({
   defaultValue,
   name: initialName,
   position = 'bottom',
-  ...props
+  ...restProps
 }: CustomSelectProps) {
   const selectRef = useRef<HTMLSelectElement>(null);
   const [selectedOption, setSelectedOption] = useState<ReactNode>();
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState(props.value ?? defaultValue);
+  const [value, setValue] = useState(restProps.value ?? defaultValue);
 
   const name = useMemo(
     () => initialName || `castor-select-${++id}`,
@@ -53,7 +53,7 @@ export function CustomSelect({
       }}
     >
       <NativeSelect
-        {...props}
+        {...restProps}
         notNative
         ref={selectRef}
         borderless={borderless}

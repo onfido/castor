@@ -9,10 +9,10 @@ export const CustomOptionGroup = ({
   children,
   className,
   label,
-  ...props
+  ...restProps
 }: CustomOptionGroupProps) => (
   <>
-    <div {...props} className={classy(c('select-option-group'), className)}>
+    <div {...restProps} className={classy(c('select-option-group'), className)}>
       {label}
     </div>
     {children}
