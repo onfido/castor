@@ -171,6 +171,7 @@
     &:disabled {
       + .ods-select-option-content {
         background-color: helpers.color('background-disabled');
+        box-shadow: initial;
         color: helpers.color('content-disabled');
         cursor: not-allowed;
       }
