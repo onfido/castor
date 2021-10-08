@@ -1,5 +1,11 @@
 import { c, classy, m, PopoverProps, SelectProps } from '@onfido/castor';
-import React, { ReactNode, useMemo, useRef, useState } from 'react';
+import React, {
+  ReactNode,
+  SyntheticEvent,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { Popover } from '../../popover/popover';
 import { NativeSelect, NativeSelectProps } from '../native';
 import { CustomSelectProvider } from './useCustomSelect';
@@ -109,6 +115,10 @@ export function CustomSelect({
                 element?.querySelector('input:not(:disabled)')
             )
           }
+          // stop bubbling so that Field validation isn't affected
+          onBlur={stopPropagation}
+          onChange={stopPropagation}
+          onInvalid={stopPropagation}
         >
           {children}
         </Popover>
@@ -122,6 +132,8 @@ export function CustomSelect({
 
 const closeSelectKeys = new Set(['Escape']);
 const openSelectKeys = new Set([' ', 'ArrowDown', 'ArrowUp']);
+
+const stopPropagation = (event: SyntheticEvent) => event.stopPropagation();
 
 const focus = (element: HTMLElement | null | undefined) =>
   element?.focus({ preventScroll: true });
