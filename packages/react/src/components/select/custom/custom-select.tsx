@@ -1,10 +1,17 @@
 import { c, classy, m, PopoverProps, SelectProps } from '@onfido/castor';
 import React, { ReactNode, useMemo, useRef, useState } from 'react';
 import { Popover } from '../../popover/popover';
-import { NativeSelect } from '../native';
+import { NativeSelect, NativeSelectProps } from '../native';
 import { CustomSelectProvider } from './useCustomSelect';
 
-export type CustomSelectProps = SelectProps & PopoverProps & JsxSelect;
+export interface CustomSelectProps
+  extends SelectProps,
+    NativeSelectProps,
+    PopoverProps {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  onSelectOption?: (value: string | number | readonly string[]) => void;
+}
 
 export function CustomSelect({
   align = 'start',
@@ -13,12 +20,16 @@ export function CustomSelect({
   className,
   defaultValue,
   name: initialName,
+  open: isOpen,
   position = 'bottom',
+  onClick,
+  onKeyUp,
+  onOpenChange,
+  onSelectOption,
   ...restProps
 }: CustomSelectProps) {
   const selectRef = useRef<HTMLSelectElement>(null);
   const [selectedOption, setSelectedOption] = useState<ReactNode>();
-  const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState(restProps.value ?? defaultValue);
 
   const name = useMemo(
@@ -26,10 +37,10 @@ export function CustomSelect({
     [initialName]
   );
 
-  const open = () => setIsOpen(true);
+  const open = () => onOpenChange?.(true);
 
   const close = () => {
-    setIsOpen(false);
+    onOpenChange?.(false);
     focus(selectRef.current);
   };
 
@@ -42,32 +53,36 @@ export function CustomSelect({
         initialize(option, optionValue) {
           // initial value
           if (value == optionValue) setSelectedOption(option);
-          // or placeholder is first option
+          // or default to first option
           else setSelectedOption((current) => current ?? option);
         },
         select(option, value) {
           setSelectedOption(option);
           setValue(value);
           close();
+          onSelectOption?.(value);
         },
       }}
     >
       <NativeSelect
         {...restProps}
-        notNative
         ref={selectRef}
-        borderless={borderless}
-        className={className}
+        className={classy(m('absolute'), className)}
         name={name}
-        open={isOpen}
         value={value}
-        onClick={() => (isOpen ? close() : open())}
+        onClick={(event) => {
+          isOpen ? close() : open();
+          onClick?.(event);
+        }}
         onKeyUp={(event) => {
           if (openSelectKeys.has(event.key)) open();
+          onKeyUp?.(event);
         }}
       >
-        <output className={classy(c('select-output'))}>{selectedOption}</output>
+        {!value || <option hidden value={value} />}
       </NativeSelect>
+
+      <output className={classy(c('select-output'))}>{selectedOption}</output>
 
       {isOpen && (
         <Popover
@@ -76,9 +91,9 @@ export function CustomSelect({
           overlay
           position={position}
           target={selectRef}
-          onClose={() => setIsOpen(false)}
-          onKeyUp={(ev) => {
-            if (closeSelectKeys.has(ev.key)) close();
+          onClose={close}
+          onKeyUp={(event) => {
+            if (closeSelectKeys.has(event.key)) close();
           }}
           onKeyDown={(event) => {
             // close if focus moves outside
@@ -88,7 +103,7 @@ export function CustomSelect({
             }
           }}
           onRender={(element) =>
-            // focus either selected or first non-disabled question
+            // focus either selected or first non-disabled option
             focus(
               element?.querySelector(':checked') ??
                 element?.querySelector('input:not(:disabled)')
@@ -99,7 +114,7 @@ export function CustomSelect({
         </Popover>
       )}
 
-      {/* render once to find placeholder */}
+      {/* render once to find output */}
       {!selectedOption && <div style={{ display: 'none' }}>{children}</div>}
     </CustomSelectProvider>
   );
@@ -112,5 +127,3 @@ const focus = (element: HTMLElement | null | undefined) =>
   element?.focus({ preventScroll: true });
 
 let id = 0;
-
-type JsxSelect = Omit<JSX.IntrinsicElements['select'], 'placeholder'>;

@@ -1,11 +1,13 @@
-import React from 'react';
+import { c, classy, m, SelectProps as BaseProps } from '@onfido/castor';
+import { Icon } from '@onfido/castor-react';
+import React, { useEffect, useState } from 'react';
 import { CustomSelect, CustomSelectProps } from './custom';
 import { NativeSelect, NativeSelectProps } from './native';
 import { SelectProvider } from './useSelect';
 
 export type SelectProps =
-  | ({ native: true } & Omit<NativeSelectProps, 'notNative'>)
-  | ({ native?: false } & CustomSelectProps);
+  | ({ native: true } & BaseProps & NativeSelectProps)
+  | ({ native?: false } & BaseProps & CustomSelectProps);
 
 /**
  * `Select` uses an `Icon` that requires `Icons` (SVG sprite) to be included in
@@ -13,12 +15,68 @@ export type SelectProps =
  *
  * https://github.com/onfido/castor-icons#use-with-plain-code
  */
-export const Select = ({ native, ...restProps }: SelectProps) => (
-  <SelectProvider value={{ native }}>
-    {native ? (
-      <NativeSelect {...(restProps as NativeSelectProps)} />
-    ) : (
-      <CustomSelect {...(restProps as CustomSelectProps)} />
-    )}
-  </SelectProvider>
-);
+export const Select = ({
+  borderless,
+  className,
+  native,
+  ...restProps
+}: SelectProps) => {
+  const { defaultValue, value } = restProps;
+  const [empty, setEmpty] = useState(!(value ?? defaultValue));
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => setEmpty(!value), [value]);
+
+  return (
+    <div
+      className={classy(c('select'), m({ borderless, empty, open }), className)}
+    >
+      <SelectProvider value={{ native }}>
+        <Content
+          {...restProps}
+          borderless={borderless}
+          native={native}
+          open={open}
+          onEmptyChange={setEmpty}
+          onOpenChange={setOpen}
+        />
+        <Icon name="chevron-down" aria-hidden="true" />
+      </SelectProvider>
+    </div>
+  );
+};
+
+interface ContentProps extends CustomSelectProps {
+  borderless?: boolean;
+  native?: boolean;
+  open?: boolean;
+  onEmptyChange: (empty: boolean) => void;
+  onOpenChange: (open: boolean) => void;
+}
+
+function Content({
+  borderless,
+  native,
+  open,
+  onEmptyChange,
+  onOpenChange,
+  ...restProps
+}: ContentProps) {
+  if (native)
+    return (
+      <NativeSelect
+        {...restProps}
+        onChange={(event) => onEmptyChange(!event.currentTarget.value)}
+      />
+    );
+
+  return (
+    <CustomSelect
+      {...restProps}
+      borderless={borderless}
+      open={open}
+      onOpenChange={onOpenChange}
+      onSelectOption={(value) => onEmptyChange(!value)}
+    />
+  );
+}

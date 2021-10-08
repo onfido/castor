@@ -10,7 +10,7 @@ import {
 } from '@onfido/castor-react';
 import React from 'react';
 import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
-import { NativeSelectProps } from './native';
+import { CustomSelectProps } from './custom';
 
 const borderless = [true, false] as const;
 const disabled = [true, false] as const;
@@ -21,7 +21,7 @@ export default {
   title: 'React/Select',
   component: Select,
   argTypes: {
-    ...omit<NativeSelectProps>('defaultValue', 'notNative', 'open'),
+    ...omit<CustomSelectProps>('open', 'onOpenChange', 'onSelectOption'),
     align: {
       control: 'inline-radio',
       table: { defaultValue: { summary: 'start' } },
