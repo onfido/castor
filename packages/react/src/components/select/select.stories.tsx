@@ -42,7 +42,7 @@ export default {
   args: {
     children: (
       <>
-        <Option value="">Select an option...</Option>
+        <Option disabled>Select an option...</Option>
         <Option value={1}>Option 1</Option>
         <Option value={2}>Option 2</Option>
         <Option value="long">Longer option that’s quite long</Option>
@@ -81,9 +81,7 @@ OptionGroups.argTypes = omit('required');
 OptionGroups.args = {
   children: (
     <>
-      <Option value="" disabled>
-        Select an animal...
-      </Option>
+      <Option disabled>Select an animal...</Option>
       <OptionGroup label="Birds">
         <Option value="chicken">Chicken</Option>
         <Option value="ostrich">Ostrich</Option>
@@ -100,16 +98,6 @@ OptionGroups.args = {
 export const AsRequired: Story<SelectProps> = (props) => <Select {...props} />;
 AsRequired.argTypes = omit('required');
 AsRequired.args = {
-  children: (
-    <>
-      <Option value="" disabled>
-        Select an option...
-      </Option>
-      <Option value={1}>Option 1</Option>
-      <Option value={2}>Option 2</Option>
-      <Option value={3}>Option 3</Option>
-    </>
-  ),
   required: true,
 };
 
@@ -140,23 +128,15 @@ type SelectWithValidationProps = SelectProps & {
   withIcon: boolean;
 };
 
-export const WithValidation: Story<SelectWithValidationProps> = ({
-  validation,
-  withIcon,
-  ...restProps
-}) => (
+export const WithValidation: Story<SelectWithValidationProps> = (props) => (
   <Field>
-    <Select {...restProps} invalid={Boolean(validation)} />
-    <Validation state="error" withIcon={withIcon}>
-      {validation}
+    <Select {...props} invalid />
+    <Validation state="error" withIcon>
+      Please select an option
     </Validation>
   </Field>
 );
 WithValidation.argTypes = omit('disabled', 'invalid');
-WithValidation.args = {
-  validation: 'This field is not valid',
-  withIcon: true,
-};
 
 export const AllCombinations = reactMatrix(
   Select,
@@ -167,8 +147,8 @@ AllCombinations.args = {
   children: null,
 };
 AllCombinations.argTypes = omit(
-  'children',
   'borderless',
+  'children',
   'disabled',
   'invalid',
   'native'
