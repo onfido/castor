@@ -48,7 +48,7 @@ export function CustomOption({
         type="radio"
       />
       <span className={classy(c('select-option-content'))}>{children}</span>
-      {selected && (
+      {selected && !disabled && (
         <Icon
           className={classy(c('select-option-icon'))}
           aria-hidden="true"
