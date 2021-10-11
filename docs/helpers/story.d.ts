@@ -13,14 +13,27 @@ export interface Meta<Args>
   extends Omit<BaseMeta<Args>, 'argTypes' | 'component'>,
     Annotation<Args> {
   component: FC<Args> | ((props: Args) => string);
-  parameters?: BaseMeta['parameters'] & ContainerParams;
+  parameters?: BaseMeta['parameters'] & ContainerParams & DocsParams;
 }
 
 export interface Story<Args>
   extends Annotation<Args>,
     Omit<BaseStory<Args>, 'argTypes'> {
   (args: Args, context: StoryContext): ReactElement | ReactElement[] | string;
-  parameters?: BaseStory['parameters'] & ContainerParams;
+  parameters?: BaseStory['parameters'] & ContainerParams & DocsParams;
+}
+
+/**
+ * Types some of '@storybook/addon-docs'.
+ * https://github.com/storybookjs/storybook/blob/next/addons/docs/docs/recipes.md
+ */
+export interface DocsParams {
+  docs?: {
+    disable?: boolean;
+    description?: { story?: string };
+    source?: { code?: string };
+    page?: FC;
+  };
 }
 
 /**

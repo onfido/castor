@@ -7,6 +7,7 @@ import {
   Story,
 } from '../../../../../docs';
 import { Button } from '../button/button.story';
+import styles from './popover.stories.scss';
 import { Popover, PopoverProps } from './popover.story';
 
 const align = ['center', 'start', 'end'] as const;
@@ -34,9 +35,15 @@ export default {
         type: { summary: optionsToSummary(position) },
       },
     },
+    show: {
+      description: 'Show or hide the Popover. This example uses HTML presence.',
+      name: '[story only] show',
+      table: { control: 'boolean' },
+    },
   },
   args: {
     children: 'Popover content',
+    show: true,
   },
   parameters: {
     display: 'flex',
@@ -46,14 +53,41 @@ export default {
   },
 } as Meta<PopoverProps>;
 
-export const Playground: Story<PopoverProps> = (props) =>
+type PlaygroundProps = PopoverProps & { show?: boolean };
+export const Playground: Story<PlaygroundProps> = ({ show, ...props }) =>
   html('div', {
     style: { position: 'relative' },
     children: [
       Button({ children: 'Target', kind: 'action', variant: 'primary' }),
-      Popover(props),
+      show && Popover(props),
     ],
   });
+
+export const ShowHideWithCSS: Story<PopoverProps> = (props) =>
+  html('div', {
+    style: { position: 'relative' },
+    children: [
+      Button({ children: 'Target', kind: 'action', variant: 'primary' }),
+      Popover({ ...props, class: styles['story-popover-on-hover'] }),
+    ],
+  });
+ShowHideWithCSS.storyName = 'show/hide with CSS';
+ShowHideWithCSS.parameters = {
+  docs: {
+    source: {
+      code: `
+// CSS must be set outside of Castor, e.g.
+// :not(:focus, :hover) + .ods-popover {
+//   opacity: 0;
+// }
+<div style={{ position: 'relative' }}>
+  <button class="ods-button -action--primary">Target</button>
+  <div class="ods-popover -center--top">Popover content</div>
+</div>
+        `,
+    },
+  },
+};
 
 export const AllCombinations = htmlMatrix(
   Popover,
