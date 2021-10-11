@@ -29,11 +29,13 @@ export const Button: ButtonComponent = withRef(function Button(
 });
 
 export type ButtonProps<T extends 'a' | 'button' = 'button'> = BaseProps &
-  (T extends 'a' ? AnchorElementProps : ButtonElementProps);
+  (T extends 'a'
+    ? { href: string } & AnchorElementProps
+    : { href?: never } & ButtonElementProps);
 
 type ButtonComponent = {
-  (props: BaseProps & AnchorElementProps, ref: AnchorRef): JSX.Element;
-  (props: BaseProps & ButtonElementProps, ref: ButtonRef): JSX.Element;
+  (props: ButtonProps<'a'>, ref: AnchorRef): JSX.Element;
+  (props: ButtonProps<'button'>, ref: ButtonRef): JSX.Element;
 };
 
 type AnchorElementProps = JSX.IntrinsicElements['a'] & { ref?: AnchorRef };
