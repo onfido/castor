@@ -67,7 +67,7 @@
     "cypress-image-snapshot": "^4.0.1",
     "cz-conventional-changelog": "^3.3.0",
     "esbuild": "^0.13.4",
-    "esbuild-loader": "^2.15.1",
+    "esbuild-loader": "^2.16.0",
     "eslint": "^7.32.0",
     "eslint-plugin-react": "^7.26.1",
     "husky": "^7.0.2",
