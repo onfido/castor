@@ -133,9 +133,9 @@ export function CustomSelect({
 const closeSelectKeys = new Set(['Escape']);
 const openSelectKeys = new Set([' ', 'ArrowDown', 'ArrowUp']);
 
-const stopPropagation = (event: SyntheticEvent) => event.stopPropagation();
-
 const focus = (element: HTMLElement | null | undefined) =>
   element?.focus({ preventScroll: true });
+
+const stopPropagation = (event: SyntheticEvent) => event.stopPropagation();
 
 let id = 0;
