@@ -4,7 +4,7 @@ import { withRef } from '../../utils';
 
 export const Spinner = withRef(function Spinner(
   { size = 'medium', children, className, ...restProps }: SpinnerProps,
-  ref?: SpinnerProps['ref']
+  ref: SpinnerProps['ref']
 ) {
   return (
     <div

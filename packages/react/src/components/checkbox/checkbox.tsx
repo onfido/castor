@@ -16,7 +16,7 @@ export const Checkbox = withRef(function Checkbox(
     style,
     ...restProps
   }: CheckboxProps,
-  ref?: CheckboxProps['ref']
+  ref: CheckboxProps['ref']
 ) {
   const { disabled, touched } = useField();
   const [containerProps, inputProps] = splitContainerProps(restProps);

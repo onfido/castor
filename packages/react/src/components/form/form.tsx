@@ -1,5 +1,5 @@
 import { c, classy, FormProps as BaseProps, m } from '@onfido/castor';
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, ForwardedRef, useState } from 'react';
 import { withRef } from '../../utils';
 import { getFormValues } from './getFormValues';
 import { FormProvider } from './useForm';
@@ -15,7 +15,7 @@ export const Form = withRef(function Form<T extends Values>(
     className,
     ...restProps
   }: FormProps<T>,
-  ref?: FormProps<T>['ref']
+  ref: ForwardedRef<HTMLFormElement>
 ) {
   const [touched, setTouched] = useState<boolean>();
 

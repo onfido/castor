@@ -29,7 +29,7 @@ export const Field = withRef(function Field(
     className,
     ...restProps
   }: FieldProps,
-  ref?: FieldProps['ref']
+  ref: FieldProps['ref']
 ) {
   const [field, setField] = useState<FieldState>(initial);
 

@@ -1,6 +1,6 @@
 import { ButtonProps as BaseProps, c, classy, m } from '@onfido/castor';
 import { useField } from '@onfido/castor-react';
-import React, { HTMLAttributes } from 'react';
+import React, { ForwardedRef, HTMLAttributes } from 'react';
 import { withRef } from '../../utils';
 
 export const Button: ButtonComponent = withRef(function Button(
@@ -10,7 +10,7 @@ export const Button: ButtonComponent = withRef(function Button(
     className,
     ...restProps
   }: ButtonProps<'a'> | ButtonProps<'button'>,
-  ref?: AnchorRef | ButtonRef
+  ref: AnchorRef | ButtonRef
 ) {
   const { disabled } = useField();
 
@@ -32,11 +32,11 @@ export type ButtonProps<T extends 'a' | 'button' = 'button'> = BaseProps &
   (T extends 'a' ? AnchorElementProps : ButtonElementProps);
 
 type ButtonComponent = {
-  (props: BaseProps & AnchorElementProps, ref?: AnchorRef): JSX.Element;
-  (props: BaseProps & ButtonElementProps, ref?: ButtonRef): JSX.Element;
+  (props: BaseProps & AnchorElementProps, ref: AnchorRef): JSX.Element;
+  (props: BaseProps & ButtonElementProps, ref: ButtonRef): JSX.Element;
 };
 
-type AnchorElementProps = JSX.IntrinsicElements['a'];
-type ButtonElementProps = JSX.IntrinsicElements['button'];
-type AnchorRef = AnchorElementProps['ref'];
-type ButtonRef = ButtonElementProps['ref'];
+type AnchorElementProps = JSX.IntrinsicElements['a'] & { ref?: AnchorRef };
+type ButtonElementProps = JSX.IntrinsicElements['button'] & { ref?: ButtonRef };
+type AnchorRef = ForwardedRef<HTMLAnchorElement>;
+type ButtonRef = ForwardedRef<HTMLButtonElement>;

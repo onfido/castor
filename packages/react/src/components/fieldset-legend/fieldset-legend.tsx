@@ -7,7 +7,7 @@ import { withRef } from '../../utils';
  */
 export const FieldsetLegend = withRef(function FieldsetLegend(
   { className, ...restProps }: FieldsetLegendProps,
-  ref?: FieldsetLegendProps['ref']
+  ref: FieldsetLegendProps['ref']
 ) {
   return (
     <legend

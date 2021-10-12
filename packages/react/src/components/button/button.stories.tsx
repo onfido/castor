@@ -50,9 +50,12 @@ export const Disabled = reactMatrix(Button, { disabled });
 Disabled.argTypes = omit('disabled');
 
 export const AsAnchor: Story<ButtonProps<'a'>> = (props) => (
-  <Button href="javascript:void 0" {...props} />
+  <Button {...props} />
 );
 AsAnchor.argTypes = omit('href');
+AsAnchor.args = {
+  href: 'javascript:void 0',
+};
 
 const [firstIconName] = iconNames;
 

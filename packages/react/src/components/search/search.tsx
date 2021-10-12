@@ -11,7 +11,7 @@ import { withRef } from '../../utils';
  */
 export const Search = withRef(function Search(
   { className, style, ...restProps }: SearchProps,
-  ref?: SearchProps['ref']
+  ref: SearchProps['ref']
 ) {
   return (
     <div className={classy(c('search'), className)} style={style}>

@@ -7,7 +7,7 @@ import { withRef } from '../../utils';
  */
 export const HelperText = withRef(function HelperText(
   { disabled, className, ...restProps }: HelperTextProps,
-  ref?: HelperTextProps['ref']
+  ref: HelperTextProps['ref']
 ) {
   return (
     <span

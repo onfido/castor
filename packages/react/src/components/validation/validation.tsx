@@ -20,7 +20,7 @@ export const Validation = withRef(function Validation(
     className,
     ...restProps
   }: ValidationProps,
-  ref?: ValidationProps['ref']
+  ref: ValidationProps['ref']
 ) {
   const { disabled, touched, validity } = useField();
 

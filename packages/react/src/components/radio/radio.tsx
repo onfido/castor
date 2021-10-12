@@ -16,7 +16,7 @@ export const Radio = withRef(function Radio(
     style,
     ...restProps
   }: RadioProps,
-  ref?: RadioProps['ref']
+  ref: RadioProps['ref']
 ) {
   const { disabled, touched } = useField();
   const [containerProps, inputProps] = splitContainerProps(restProps);

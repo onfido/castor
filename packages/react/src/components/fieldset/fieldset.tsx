@@ -5,7 +5,7 @@ import { withRef } from '../../utils';
 
 export const Fieldset = withRef(function Fieldset(
   { className, ...restProps }: FieldsetProps,
-  ref?: FieldsetProps['ref']
+  ref: FieldsetProps['ref']
 ) {
   const { disabled } = useField();
 
