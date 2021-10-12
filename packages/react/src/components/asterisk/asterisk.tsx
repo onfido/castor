@@ -7,7 +7,7 @@ import { withRef } from '../../utils';
  */
 export const Asterisk = withRef(function Asterisk(
   { className, ...restProps }: AsteriskProps,
-  ref?: AsteriskProps['ref']
+  ref: AsteriskProps['ref']
 ) {
   return (
     <abbr {...restProps} ref={ref} className={classy(c('asterisk'), className)}>

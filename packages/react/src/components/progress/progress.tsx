@@ -21,7 +21,7 @@ export const Progress = withRef(function Progress(
     'aria-valuetext': ariaValuetext,
     ...restProps
   }: ProgressProps,
-  ref?: ProgressProps['ref']
+  ref: ProgressProps['ref']
 ) {
   const percentValue = useMemo(
     () => `${Math.round(((value - min) * 100) / (max - min))}%`,

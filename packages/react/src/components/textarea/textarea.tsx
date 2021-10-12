@@ -15,7 +15,7 @@ export const Textarea = withRef(function Textarea(
     style,
     ...restProps
   }: TextareaProps,
-  ref?: TextareaProps['ref']
+  ref: TextareaProps['ref']
 ) {
   const { disabled, touched } = useField();
 

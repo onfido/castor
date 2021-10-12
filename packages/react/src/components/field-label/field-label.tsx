@@ -11,7 +11,7 @@ import { withRef } from '../../utils';
  */
 export const FieldLabel = withRef(function FieldLabel(
   { className, ...restProps }: FieldLabelProps,
-  ref?: FieldLabelProps['ref']
+  ref: FieldLabelProps['ref']
 ) {
   return (
     <label

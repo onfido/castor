@@ -13,7 +13,7 @@ export const Input = withRef(function Input(
     className,
     ...restProps
   }: InputProps,
-  ref?: InputProps['ref']
+  ref: InputProps['ref']
 ) {
   const { disabled, touched } = useField();
 

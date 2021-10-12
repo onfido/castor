@@ -13,7 +13,7 @@ import { withRef } from '../../utils';
  */
 export const Icon = withRef(function Icon(
   { name, color: token, className, ...restProps }: IconProps,
-  ref?: IconProps['ref']
+  ref: IconProps['ref']
 ) {
   return (
     <svg
