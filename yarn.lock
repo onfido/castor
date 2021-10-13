@@ -2485,16 +2485,16 @@
     postcss-loader "^4.2.0"
     style-loader "^1.3.0"
 
-"@storybook/addon-toolbars@^6.3.10":
-  version "6.3.10"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-toolbars/-/addon-toolbars-6.3.10.tgz#f3c71aa20d7c69d33eb078dc89ae91d7bacaefd4"
-  integrity sha512-GQJ8sWkyIq2NQpkTfLR73az1pOLQPgLIzib9c10jZ8fpxe3xnBg95I+1UmUYB14Kat7+re0GOhEhMhFEcJZkUA==
+"@storybook/addon-toolbars@^6.3.11":
+  version "6.3.11"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-toolbars/-/addon-toolbars-6.3.11.tgz#57bb6d8258fa1e74169f01a53541b6f086d06c92"
+  integrity sha512-FvKwX/nqdUSy1g0luUfm55nocQHwvOokvsI/D4MSJwyQ9IoYaJUyu0Bwhre3xhyWqg3eTAFz6U9LheAtA4QpXw==
   dependencies:
-    "@storybook/addons" "6.3.10"
-    "@storybook/api" "6.3.10"
-    "@storybook/client-api" "6.3.10"
-    "@storybook/components" "6.3.10"
-    "@storybook/theming" "6.3.10"
+    "@storybook/addons" "6.3.11"
+    "@storybook/api" "6.3.11"
+    "@storybook/client-api" "6.3.11"
+    "@storybook/components" "6.3.11"
+    "@storybook/theming" "6.3.11"
     core-js "^3.8.2"
     regenerator-runtime "^0.13.7"
 
