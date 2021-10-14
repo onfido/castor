@@ -6,7 +6,7 @@ import { RefObject, useEffect } from 'react';
  * @param targets RefObject of elements to consider "inside".
  */
 export const useOnClickOutside = <T extends Element>(
-  onClickOutside: ((event: MouseEvent) => void) | undefined,
+  onClickOutside: ((ev: MouseEvent) => void) | undefined,
   targets: RefObject<T>[]
 ) =>
   useEffect(() => {
@@ -15,9 +15,9 @@ export const useOnClickOutside = <T extends Element>(
     const elements = targets.map((t) => t.current).filter(Boolean) as T[];
     if (!elements.length) return;
 
-    const onClick = (event: MouseEvent) =>
-      elements.some((element) => element.contains(event.target as Element)) ||
-      onClickOutside(event);
+    const onClick = (ev: MouseEvent) =>
+      elements.some((element) => element.contains(ev.target as Element)) ||
+      onClickOutside(ev);
 
     document.addEventListener('click', onClick);
     return () => document.removeEventListener('click', onClick);
