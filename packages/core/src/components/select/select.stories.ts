@@ -35,6 +35,7 @@ export default {
     children: [
       html('option', {
         children: 'Select an option...',
+        disabled: true,
         selected: true,
         value: '',
       }),
@@ -77,7 +78,7 @@ AsRequired.args = {
 };
 
 export const WithEmptyModifier: Story<SelectProps> = (props) =>
-  Select({ ...props, class: classy(m({ empty: true })) });
+  Select({ ...props, class: classy(m('empty')) });
 WithEmptyModifier.args = {
   children: [
     html('option', {

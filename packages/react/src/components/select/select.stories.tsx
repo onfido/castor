@@ -42,7 +42,9 @@ export default {
   args: {
     children: (
       <>
-        <Option disabled>Select an option...</Option>
+        <Option disabled value="">
+          Select an option...
+        </Option>
         <Option value={1}>Option 1</Option>
         <Option value={2}>Option 2</Option>
         <Option value="long">Longer option that’s quite long</Option>
@@ -60,7 +62,9 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<SelectProps>;
 
-export const Playground: Story<SelectProps> = (props) => <Select {...props} />;
+export const Playground: Story<SelectProps> = (props) => (
+  <Select {...props} defaultValue={props.native ? '' : undefined} />
+);
 
 export const Borderless = reactMatrix(Select, { borderless });
 Borderless.argTypes = omit('borderless');
