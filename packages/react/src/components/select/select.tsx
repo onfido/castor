@@ -59,6 +59,7 @@ function Content({
   borderless,
   native,
   open,
+  onChange,
   onEmptyChange,
   onOpenChange,
   ...restProps
@@ -67,7 +68,10 @@ function Content({
     return (
       <NativeSelect
         {...restProps}
-        onChange={(event) => onEmptyChange(!event.currentTarget.value)}
+        onChange={(event) => {
+          onEmptyChange(!event.currentTarget.value);
+          onChange?.(event);
+        }}
       />
     );
 
