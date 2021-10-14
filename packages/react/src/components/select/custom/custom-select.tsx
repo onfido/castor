@@ -75,7 +75,6 @@ export function CustomSelect({
         ref={selectRef}
         className={classy(m('absolute'), className)}
         name={name}
-        value={value}
         onClick={(event) => {
           isOpen ? close() : open();
           onClick?.(event);
