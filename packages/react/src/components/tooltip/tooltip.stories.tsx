@@ -14,6 +14,13 @@ export default {
   title: 'React/Tooltip',
   component: Tooltip,
   argTypes: {
+    withPortal: {
+      description: [
+        'Toggle between an example with and without `target` ref.',
+        'Specific to `react-dom`.',
+      ].join('\n\n'),
+      name: '[Story only] with portal',
+    },
     align: {
       control: { type: 'inline-radio', options: align },
       table: {
@@ -38,13 +45,6 @@ export default {
       table: { type: { summary: 'boolean | "on-hover"' } },
     },
     target: { control: { disable: true } },
-    withPortal: {
-      description: [
-        'Toggle between an example with and without `target` ref.',
-        'Specific to `react-dom`.',
-      ].join('\n\n'),
-      name: '[Story only] with portal',
-    },
   },
   args: {
     children: 'Tooltip',

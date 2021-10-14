@@ -15,6 +15,18 @@ export default {
   title: 'React/Popover',
   component: Popover,
   argTypes: {
+    show: {
+      description: 'Show or hide the Popover. This example uses HTML presence.',
+      name: '[story only] show',
+      table: { control: 'boolean' },
+    },
+    withPortal: {
+      description: [
+        'Toggle between an example with and without `target` ref.',
+        'Specific to `react-dom`.',
+      ].join('\n\n'),
+      name: '[Story only] with portal',
+    },
     align: {
       control: { type: 'inline-radio', options: align },
       description: 'Preferred value. Will readjust to avoid screen clipping.',
@@ -24,19 +36,9 @@ export default {
       },
     },
     children: { table: { type: { summary: 'ReactNode' } } },
-    onClose: {
-      description: [
-        'When `target` is specified, this event will notify of clicks outside',
-        'the Popover, which have the intention to close/hide it.',
-      ].join(' '),
-    },
-    target: {
-      control: { disable: true },
-      description: [
-        'A React `ref` of the element to use for placement.',
-        'If specified will use a React Portal to avoid overflow issues.',
-      ].join('\n\n'),
-    },
+    onClose: {},
+    onRender: {},
+    overlay: { control: { disable: true } },
     position: {
       control: { type: 'inline-radio', options: position },
       description: 'Preferred value. Will readjust to avoid screen clipping.',
@@ -45,14 +47,12 @@ export default {
         type: { summary: optionsToSummary(position) },
       },
     },
-    show: {
-      description: 'Show or hide the Popover. This example uses HTML presence.',
-      name: '[story only] show',
-      table: { control: 'boolean' },
-    },
-    withPortal: {
-      description: 'Toggle between an example with and without `target` ref.',
-      name: '[story only] with portal',
+    target: {
+      control: { disable: true },
+      description: [
+        'A React `ref` of the element to use for placement.',
+        'If specified will use a React Portal to avoid overflow issues.',
+      ].join('\n\n'),
     },
   },
   args: {

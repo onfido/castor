@@ -1,40 +1,25 @@
-import {
-  Alignment,
-  c,
-  classy,
-  m,
-  PopoverProps as BaseProps,
-  Position,
-} from '@onfido/castor';
-import React, { ReactNode, RefObject, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import {
-  useIntersectionObserver,
-  useOnClickOutside,
-  useResizeObserver,
-  withRef,
-} from '../../utils';
+import { Alignment, Position } from '@onfido/castor';
+import React, { useEffect, useRef, useState } from 'react';
+import { useIntersectionObserver } from '../../utils';
+import { PopoverBase } from './popover-base';
+import type { PopoverProps } from './popover-props';
+import { PopoverWithPortal } from './popover-with-portal';
 
-export interface PopoverProps extends BaseProps, Omit<Div, 'ref'> {
-  children?: ReactNode;
-  onClose?: () => void;
-  /**
-   * Ref to an element which the Popover should target for placement.
-   *
-   * Will Portal the Popover into `document.body`.
-   */
-  target?: RefObject<Element>;
-}
+export { PopoverProps };
 
 export function Popover({
   align = 'center',
   onClose,
+  onRender,
+  overlay,
   position = 'top',
   target,
   ...props
 }: PopoverProps) {
   const popover = useRef<HTMLDivElement>(null);
   const [placement, setPlacement] = useState([position, align] as const);
+
+  useEffect(() => onRender?.(popover.current), []);
 
   useIntersectionObserver(
     (entry) => setPlacement((placement) => optimalPlacement(entry, placement)),
@@ -47,6 +32,7 @@ export function Popover({
     <PopoverWithPortal
       {...props}
       align={optimalAlignment}
+      overlay={overlay}
       onClose={onClose}
       popover={popover}
       position={optimalPosition}
@@ -60,70 +46,6 @@ export function Popover({
       position={optimalPosition}
     />
   );
-}
-
-const PopoverBase = withRef(function Popover(
-  {
-    align,
-    className,
-    position,
-    ...props
-  }: BaseProps & Div & Required<Pick<PopoverProps, 'align' | 'position'>>,
-  ref?: Div['ref']
-) {
-  return (
-    <div
-      {...props}
-      ref={ref}
-      className={classy(c('popover'), m(`${position}--${align}`), className)}
-    />
-  );
-});
-
-function PopoverWithPortal({
-  onClose,
-  popover,
-  target,
-  ...props
-}: PopoverProps & { popover: RefObject<HTMLDivElement> } & Required<
-    Pick<PopoverProps, 'align' | 'position' | 'target'>
-  >) {
-  const domBody = useRef(document.body);
-  const [anchor, setAnchor] = useState(at(target));
-
-  useOnClickOutside(onClose, [target, popover]);
-
-  useResizeObserver(() => setAnchor(at(target)), [domBody]);
-
-  useIntersectionObserver(() => setAnchor(at(target)), [target]);
-
-  return (
-    <Portal>
-      <div className={classy(c('popover-anchor'))} style={anchor}>
-        <PopoverBase {...props} ref={popover} />
-      </div>
-    </Portal>
-  );
-}
-
-const Portal = ({ children }: { children: ReactNode }) =>
-  createPortal(children, document.body);
-
-function at(anchor: RefObject<Element>) {
-  if (!anchor.current) return;
-
-  const anchorRect = anchor.current.getBoundingClientRect();
-  let { left, top } = anchorRect;
-  const { height, width } = anchorRect;
-
-  if (document.scrollingElement) {
-    const scroll = document.scrollingElement.getBoundingClientRect();
-
-    if (scroll.top < 0) top -= scroll.top;
-    if (scroll.left < 0) left -= scroll.left;
-  }
-
-  return { left, top, height, width };
 }
 
 function optimalPlacement(
@@ -203,5 +125,3 @@ const align = {
   bottom: sides.end,
   right: sides.end,
 } as const;
-
-type Div = JSX.IntrinsicElements['div'];

@@ -1,9 +1,14 @@
 import { c, classy, m, SelectProps as BaseProps } from '@onfido/castor';
-import { Icon, useField } from '@onfido/castor-react';
-import React, { useState } from 'react';
-import { withRef } from '../../utils';
+import { Icon } from '@onfido/castor-react';
+import React, { useEffect, useState } from 'react';
+import { CustomSelect, CustomSelectProps } from './custom';
+import { NativeSelect, NativeSelectProps } from './native';
+import { SelectProvider } from './useSelect';
 
-let idCount = 0;
+export type SelectProps =
+  | ({ native: true } & BaseProps & NativeSelectProps)
+  | ({ native?: false } & BaseProps &
+      Omit<CustomSelectProps, 'open' | 'onOpenChange' | 'onSelectOption'>);
 
 /**
  * `Select` uses an `Icon` that requires `Icons` (SVG sprite) to be included in
@@ -11,54 +16,72 @@ let idCount = 0;
  *
  * https://github.com/onfido/castor-icons#use-with-plain-code
  */
-export const Select = withRef(function Select(
-  {
-    id = `castor_select_${++idCount}`,
-    defaultValue,
-    value,
-    borderless,
-    invalid,
-    children,
-    className,
-    onChange,
-    ...restProps
-  }: SelectProps,
-  ref?: SelectProps['ref']
-) {
-  const [empty, setEmpty] = useState(!(defaultValue ?? value));
-  const { disabled, touched } = useField();
+export const Select = ({
+  borderless,
+  className,
+  native,
+  ...restProps
+}: SelectProps) => {
+  const { defaultValue, value } = restProps;
+  const [empty, setEmpty] = useState(!(value ?? defaultValue));
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => setEmpty(!value), [value]);
 
   return (
-    <div className={classy(c('select'), m({ borderless }))}>
-      <select
-        disabled={disabled} // will be overriden by props if set
-        {...restProps}
-        ref={ref}
-        id={id}
-        defaultValue={defaultValue}
-        value={value}
-        className={classy(
-          c('select-native'),
-          m({ borderless, empty, invalid, touched }),
-          className
-        )}
-        onChange={(ev) => {
-          setEmpty(!(value ?? ev.currentTarget.value));
-          onChange?.(ev);
-        }}
-      >
-        {children}
-      </select>
-      <Icon name="chevron-down" aria-hidden="true" />
+    <div
+      className={classy(c('select'), m({ borderless, empty, open }), className)}
+    >
+      <SelectProvider value={{ native }}>
+        <Content
+          {...restProps}
+          borderless={borderless}
+          native={native}
+          open={open}
+          onEmptyChange={setEmpty}
+          onOpenChange={setOpen}
+        />
+        <Icon name="chevron-down" aria-hidden="true" />
+      </SelectProvider>
     </div>
   );
-});
+};
 
-export type SelectProps = BaseProps &
-  JSX.IntrinsicElements['select'] & {
-    native: true;
-  };
+interface ContentProps extends CustomSelectProps {
+  borderless?: boolean;
+  native?: boolean;
+  open?: boolean;
+  onEmptyChange: (empty: boolean) => void;
+  onOpenChange: (open: boolean) => void;
+}
 
-export const Option = (props: OptionProps) => <option {...props} />;
+function Content({
+  borderless,
+  native,
+  open,
+  onChange,
+  onEmptyChange,
+  onOpenChange,
+  ...restProps
+}: ContentProps) {
+  if (native)
+    return (
+      <NativeSelect
+        {...restProps}
+        onChange={(event) => {
+          onEmptyChange(!event.currentTarget.value);
+          onChange?.(event);
+        }}
+      />
+    );
 
-export type OptionProps = JSX.IntrinsicElements['option'];
+  return (
+    <CustomSelect
+      {...restProps}
+      borderless={borderless}
+      open={open}
+      onOpenChange={onOpenChange}
+      onSelectOption={(value) => onEmptyChange(!value)}
+    />
+  );
+}

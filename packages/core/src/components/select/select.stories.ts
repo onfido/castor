@@ -21,13 +21,27 @@ export default {
       ].join('\n\n'),
       control: false,
     },
+    borderless: {
+      table: { type: { summary: 'boolean' } },
+    },
+    disabled: {
+      table: { type: { summary: 'boolean' } },
+    },
+    invalid: {
+      table: { type: { summary: 'boolean' } },
+    },
   },
   args: {
     children: [
-      html('option', { children: 'Select an option...', selected: true }),
-      html('option', { children: 'Option 1' }),
-      html('option', { children: 'Option 2' }),
-      html('option', { children: 'Option 3' }),
+      html('option', {
+        children: 'Select an option...',
+        disabled: true,
+        selected: true,
+        value: '',
+      }),
+      html('option', { children: 'Option 1', value: 1 }),
+      html('option', { children: 'Option 2', value: 2 }),
+      html('option', { children: 'Option 3', value: 3 }),
     ],
     borderless: false,
     disabled: false,
@@ -55,21 +69,23 @@ AsRequired.args = {
       children: 'Select an option...',
       disabled: true,
       selected: true,
+      value: '',
     }),
-    html('option', { children: 'Option 1' }),
-    html('option', { children: 'Option 2' }),
-    html('option', { children: 'Option 3' }),
+    html('option', { children: 'Option 1', value: 1 }),
+    html('option', { children: 'Option 2', value: 2 }),
+    html('option', { children: 'Option 3', value: 3 }),
   ],
 };
 
 export const WithEmptyModifier: Story<SelectProps> = (props) =>
-  Select({ ...props, class: classy(m({ empty: true })) });
+  Select({ ...props, class: classy(m('empty')) });
 WithEmptyModifier.args = {
   children: [
     html('option', {
       children: 'Select an option...',
       disabled: true,
       selected: true,
+      value: '',
     }),
   ],
 };
@@ -105,7 +121,12 @@ export const AllCombinations = htmlMatrix(
   { borderless, disabled, invalid },
   (props) => Select({ ...props, children: children(props) })
 );
-AllCombinations.argTypes = omit('children');
+AllCombinations.argTypes = omit(
+  'children',
+  'borderless',
+  'disabled',
+  'invalid'
+);
 AllCombinations.args = {
   children: null,
 };
@@ -114,13 +135,17 @@ AllCombinations.parameters = {
   columns: 'repeat(2, 1fr)',
 };
 
-const children = ({ borderless, disabled, invalid }: SelectProps) => [
-  html('option', {
-    children: [
-      invalid ? 'invalid' : 'valid',
-      borderless ? 'borderless' : '',
-      disabled ? 'disabled' : '',
-    ].join(' '),
-    selected: true,
-  }),
-];
+const children = ({ borderless, disabled, invalid }: SelectProps) => {
+  const variation = [
+    invalid ? 'invalid' : 'valid',
+    borderless ? 'borderless' : '',
+    disabled ? 'disabled' : '',
+  ];
+  return [
+    html('option', {
+      children: variation.join(' '),
+      selected: true,
+      value: variation.join('-'),
+    }),
+  ];
+};

@@ -29,11 +29,7 @@ export const Select = ({
     children: [
       html('select', {
         ...props,
-        class: classy(
-          c('select-native'),
-          m({ borderless, invalid }),
-          className
-        ),
+        class: classy(c('select-native'), m({ invalid }), className),
         children,
         id,
       }),

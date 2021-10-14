@@ -97,8 +97,8 @@ export const Playground: Story<FormProps<Values>> = (props) => (
         <span>
           Gender <Asterisk />
         </span>
-        <Select id="gender" name="gender" native required>
-          <Option value="">Select an option...</Option>
+        <Select id="gender" name="gender" required>
+          <Option disabled>Select an option...</Option>
           <Option value="m">Male</Option>
           <Option value="f">Female</Option>
           <Option value="n-b">Non-binary</Option>

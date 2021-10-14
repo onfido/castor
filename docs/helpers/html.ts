@@ -22,8 +22,8 @@ const content = (nodes: unknown[]) => nodes.filter(Boolean).join('\n');
 
 function toAttribute([key, value]: [string, unknown]) {
   if (key === 'style' && typeof value === 'object') value = styleFor(value);
-  if (value === '' || value === true) return key;
-  if (!value) return '';
+  if (value === true) return key;
+  if (value === false || value == null) return '';
 
   return `${key}="${value}"`;
 }

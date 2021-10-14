@@ -3,40 +3,39 @@
 @use './wrap-if' as mixins;
 
 $_allowed-types: ('action', 'negative');
+$_size: helpers.space(0.5);
+$_inner-size: helpers.space(0.125);
 
-$_spread: 4px;
-$_inner-size: 1px;
-$_color-size: $_spread - $_inner-size;
-
-$_max-border-width: $_color-size; // when max, border used instead of color line
-
-@mixin with-inner-focus($type, $border-width: 0, $target: null) {
+@mixin inner-focus($type, $border-width: 0) {
   @if not list.index($_allowed-types, $type) {
     @error '$type must be one of (#{$_allowed-types})';
   }
-
   @if type-of($border-width) != number {
     @error '$border-width must be a number';
   }
-  @if $border-width < 0 or $border-width > $_max-border-width {
-    @error '$border-width must be between 0 and #{$_max-border-width}';
+  @if $border-width < 0 or $border-width > $_size {
+    @error '$border-width must be between 0 and #{$_size}';
   }
 
-  $inner-spread: $_spread - $border-width;
-  $color-spread: $inner-spread - $_inner-size;
+  $spread: $_size - $border-width;
+  $outer-spread: $spread - $_inner-size;
+  $color: helpers.color('border-#{$type}-focus');
 
-  $inner-line: inset 0 0 0 $inner-spread helpers.color('border-focus-inner');
-  $color-line: inset 0 0 0 $color-spread helpers.color('border-#{$type}-focus');
+  @if $border-width > 0 {
+    border-color: $color;
+  }
 
+  box-shadow: //
+    inset 0 0 0 $outer-spread $color,
+    inset 0 0 0 $spread helpers.color('border-focus-inner');
+}
+
+@mixin with-inner-focus($type, $border-width: 0, $target: null) {
   @include mixins.wrap-if($target) {
     outline: none;
   }
 
   &:focus #{$target} {
-    box-shadow: $color-line, $inner-line;
-
-    @if $border-width > 0 {
-      border-color: helpers.color('border-#{$type}-focus');
-    }
+    @include inner-focus($type, $border-width);
   }
 }

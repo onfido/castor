@@ -3,60 +3,68 @@ import {
   FieldLabel,
   HelperText,
   Option,
+  OptionGroup,
   Select,
   SelectProps,
   Validation,
 } from '@onfido/castor-react';
 import React from 'react';
 import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
+import { CustomSelectProps } from './custom';
 
 const borderless = [true, false] as const;
 const disabled = [true, false] as const;
 const invalid = [true, false] as const;
+const native = [true, false] as readonly true[];
 
 export default {
   title: 'React/Select',
   component: Select,
   argTypes: {
+    ...omit<CustomSelectProps>('open', 'onOpenChange', 'onSelectOption'),
+    align: {
+      control: 'inline-radio',
+      table: { defaultValue: { summary: 'start' } },
+    },
+    borderless: {},
     children: {
-      description: [
-        'List of options using `Option`.',
-        'Set value as `""` to style selection as "empty" (for placeholder).',
-      ].join('\n\n'),
       control: false,
+      description: 'List of options using `Option`.',
     },
-    borderless: {
-      table: { type: { summary: 'boolean' } },
-    },
-    disabled: {
-      table: { type: { summary: 'boolean' } },
-    },
-    invalid: {
-      table: { type: { summary: 'boolean' } },
-    },
-    native: {
-      table: { type: { summary: 'boolean' } },
-      control: false,
+    disabled: {},
+    invalid: {},
+    native: {},
+    position: {
+      control: 'inline-radio',
+      table: { defaultValue: { summary: 'bottom' } },
     },
   },
   args: {
     children: (
       <>
-        <Option value="">Select an option...</Option>
-        <Option>Option 1</Option>
-        <Option>Option 2</Option>
-        <Option>Option 3</Option>
+        <Option disabled value="">
+          Select an option...
+        </Option>
+        <Option value={1}>Option 1</Option>
+        <Option value={2}>Option 2</Option>
+        <Option value="long">Longer option that’s quite long</Option>
+        <Option value="enormous">
+          An enormously long option that we truncate when it gets too long for a
+          flexible width box
+        </Option>
       </>
     ),
     borderless: false,
     disabled: false,
     invalid: false,
-    native: true,
+    native: false,
   },
   parameters: { display: 'flex' },
 } as Meta<SelectProps>;
 
-export const Playground: Story<SelectProps> = (props) => <Select {...props} />;
+export const Playground: Story<SelectProps> = (props) => (
+  <Select {...props} defaultValue={props.native ? '' : undefined} />
+);
 
 export const Borderless = reactMatrix(Select, { borderless });
 Borderless.argTypes = omit('borderless');
@@ -67,28 +75,41 @@ Invalid.argTypes = omit('invalid');
 export const Disabled = reactMatrix(Select, { disabled });
 Disabled.argTypes = omit('disabled');
 
-export const AsRequired: Story<SelectProps> = (props) => (
-  <Select {...props} defaultValue={''} />
+export const Native = reactMatrix(Select, { native });
+Native.argTypes = omit('native');
+
+export const OptionGroups: Story<SelectProps> = (props) => (
+  <Select {...props} />
 );
-AsRequired.args = {
+OptionGroups.argTypes = omit('required');
+OptionGroups.args = {
   children: (
     <>
-      <Option value="" disabled>
-        Select an option...
-      </Option>
-      <Option>Option 1</Option>
-      <Option>Option 2</Option>
-      <Option>Option 3</Option>
+      <Option disabled>Select an animal...</Option>
+      <OptionGroup label="Birds">
+        <Option value="chicken">Chicken</Option>
+        <Option value="ostrich">Ostrich</Option>
+      </OptionGroup>
+      <OptionGroup label="Mammals">
+        <Option value="monkey">Monkey</Option>
+        <Option value="whale">Whale</Option>
+      </OptionGroup>
     </>
   ),
   required: true,
 };
 
-interface SelectWithLabelAndHelperTextProps extends SelectProps {
+export const AsRequired: Story<SelectProps> = (props) => <Select {...props} />;
+AsRequired.argTypes = omit('required');
+AsRequired.args = {
+  required: true,
+};
+
+type SelectWithLabelAndHelperTextProps = SelectProps & {
   id: string;
   label: string;
   helperText: string;
-}
+};
 
 export const WithLabelAndHelperText: Story<SelectWithLabelAndHelperTextProps> =
   ({ id, label, helperText, ...restProps }) => (
@@ -106,49 +127,49 @@ WithLabelAndHelperText.args = {
   helperText: 'Helper text',
 };
 
-interface SelectWithValidationProps extends SelectProps {
+type SelectWithValidationProps = SelectProps & {
   validation: string;
   withIcon: boolean;
-}
+};
 
-export const WithValidation: Story<SelectWithValidationProps> = ({
-  validation,
-  withIcon,
-  ...restProps
-}) => (
+export const WithValidation: Story<SelectWithValidationProps> = (props) => (
   <Field>
-    <Select {...restProps} invalid={Boolean(validation)} />
-    <Validation state="error" withIcon={withIcon}>
-      {validation}
+    <Select {...props} invalid />
+    <Validation state="error" withIcon>
+      Please select an option
     </Validation>
   </Field>
 );
 WithValidation.argTypes = omit('disabled', 'invalid');
-WithValidation.args = {
-  validation: 'This field is not valid',
-  withIcon: true,
-};
 
 export const AllCombinations = reactMatrix(
   Select,
-  { borderless, disabled, invalid },
+  { borderless, disabled, invalid, native },
   (props) => <Select {...props}>{children(props)}</Select>
 );
-AllCombinations.argTypes = omit('children');
 AllCombinations.args = {
   children: null,
 };
+AllCombinations.argTypes = omit(
+  'borderless',
+  'children',
+  'disabled',
+  'invalid',
+  'native'
+);
 AllCombinations.parameters = {
   display: 'grid',
   columns: 'repeat(2, 1fr)',
 };
 
-const children = ({ borderless, disabled, invalid }: SelectProps) => (
-  <Option>
-    {[
-      invalid ? 'invalid' : 'valid',
-      borderless ? 'borderless' : '',
-      disabled ? 'disabled' : '',
-    ].join(' ')}
-  </Option>
-);
+const children = ({ borderless, disabled, invalid, native }: SelectProps) => {
+  const variation = [
+    native && 'native',
+    invalid && 'invalid',
+    borderless && 'borderless',
+    disabled && 'disabled',
+  ]
+    .filter(Boolean)
+    .join(' ');
+  return <Option value={variation}>{variation || 'default'}</Option>;
+};

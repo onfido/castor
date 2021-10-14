@@ -6,6 +6,7 @@ import {
   FieldLabelProps,
   HelperText,
   Input,
+  Option,
   Select,
   Textarea,
 } from '@onfido/castor-react';
@@ -106,11 +107,11 @@ export const WithSelect: Story<FieldLabelWithSelectProps> = ({
     <FieldLabel {...restProps} htmlFor={id}>
       {label}
     </FieldLabel>
-    <Select id={id} native>
-      <option value="" />
-      <option value="a">Value A</option>
-      <option value="b">Value B</option>
-      <option value="c">Value C</option>
+    <Select id={id}>
+      <Option disabled>Select an option...</Option>
+      <Option value={1}>Option 1</Option>
+      <Option value={2}>Option 2</Option>
+      <Option value={3}>Option 3</Option>
     </Select>
   </Field>
 );
