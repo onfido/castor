@@ -57,9 +57,9 @@
     }
   }
 
-  // indicating invalid and not [disabled] input
-  .ods-checkbox.-invalid:not(:disabled),
-  .ods-checkbox.-touched:invalid:not(:disabled) {
+  // indicating invalid and :enabled input
+  .ods-checkbox.-invalid:enabled,
+  .ods-checkbox.-touched:invalid:enabled {
     // and [checked] indicator
     &:checked + .ods-input-indicator::after {
       border-color: helpers.color('content-always-light');
