@@ -88,7 +88,7 @@
 
     > .ods-checkbox,
     > .ods-radio {
-      &:not(:disabled) + .ods-input-indicator {
+      &:enabled + .ods-input-indicator {
         background-color: helpers.color('background-input');
       }
     }
