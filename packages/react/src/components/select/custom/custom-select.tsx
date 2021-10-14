@@ -109,10 +109,10 @@ export function CustomSelect({
             }
           }}
           onRender={(element) =>
-            // focus either selected or first non-disabled option
+            // focus :checked option if :enabled, otherwise first :enabled
             focus(
-              element?.querySelector(':checked') ??
-                element?.querySelector('input:not(:disabled)')
+              element?.querySelector(':checked:enabled') ??
+                element?.querySelector('input:enabled')
             )
           }
           // stop bubbling so that Field validation isn't affected
