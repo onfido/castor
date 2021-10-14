@@ -14,8 +14,8 @@ export function CustomOption({
   className,
   disabled,
   value: optionValue,
+  onClick,
   onKeyUp,
-  onMouseUp,
   ...restProps
 }: CustomOptionProps) {
   const { initialize, name, select, value } = useCustomSelect();
@@ -30,13 +30,16 @@ export function CustomOption({
     <label
       {...restProps}
       className={classy(c('select-option'), className)}
+      onClick={(event) => {
+        // moving through options with arrow keys (onChange) will trigger
+        // onClick events here, but we don't want to select then, so we filter
+        // only events that have detail, which are triggered by mouse clicks
+        if (event.detail) selectOption();
+        onClick?.(event);
+      }}
       onKeyUp={(event) => {
         if (selectOptionKeys.has(event.key)) selectOption();
         onKeyUp?.(event);
-      }}
-      onMouseUp={(event) => {
-        selectOption();
-        onMouseUp?.(event);
       }}
     >
       <input
