@@ -28,6 +28,7 @@ export function CustomSelect({
   name: initialName,
   open: isOpen,
   position = 'bottom',
+  onBlur,
   onClick,
   onKeyUp,
   onOpenChange,
@@ -75,6 +76,12 @@ export function CustomSelect({
         ref={selectRef}
         className={classy(m('absolute'), className)}
         name={name}
+        onBlur={(event) => {
+          // if the Popover is open, focus is still inside Select
+          // we don't want Field/Form validation to trigger
+          if (isOpen) event.stopPropagation();
+          onBlur?.(event);
+        }}
         onClick={(event) => {
           isOpen ? close() : open();
           onClick?.(event);
