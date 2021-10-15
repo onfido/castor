@@ -2,6 +2,20 @@
 
 ## 1.x to 2.x
 
+### Color tokens (CSS and React)
+
+As a reminder, try to use "theme tokens" over "base tokens" as much as you can.
+
+In other words, prefer `content-main` and `background-action` over `neutral-800` or `primary-500`.
+
+- `neutral`'s palette token scale has changed, shifting all tokens from 700 to 200 one level down and introducing a new token at 700
+
+1. Search for `neutral-700` to `neutral-200` tokens and replace each with one level lower. For example:
+   - `neutral-700` -> `neutral-600`
+   - `neutral-500` -> `neutral-400`
+   - `neutral-200` -> `neutral-100`
+2. (optional) Visually review all `neutral-600` and `neutral-800`, potentially use the new `neutral-700`
+
 ### Input and Textarea (React)
 
 - `children` is no longer supported in either component, instead compose with `FieldLabel`
