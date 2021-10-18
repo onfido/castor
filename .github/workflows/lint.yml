@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout Git repository
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
       - run: git fetch origin main # needed for commitlint
 
       - name: Read .nvmrc
