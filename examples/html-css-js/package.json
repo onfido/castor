@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "concurrently": "^6.3.0",
-    "http-server": "^13.0.2",
+    "http-server": "^14.0.0",
     "shx": "^0.3.3"
   }
 }
