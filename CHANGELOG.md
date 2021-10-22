@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/onfido/castor/compare/v1.5.0...v2.0.0) (2021-10-22)
+
+### ⚠ BREAKING CHANGES
+
+- add select (custom) component (#965)
+- **react:** Instead of using "children" prop for adding label to
+  Input/Textarea components, use
+  composition of FieldLabel with either nesting or using IDs.
+- current integrators will need to retro-apply either
+  attribute to all <Icon> instances.
+
+### Features
+
+- add select (custom) component ([#965](https://github.com/onfido/castor/issues/965)) ([f566ca9](https://github.com/onfido/castor/commit/f566ca9f650ed95bf321a4e47263e5bc9502e04b))
+- **react:** don't allow using "children" prop for adding input/textarea label ([#641](https://github.com/onfido/castor/issues/641)) ([db02db7](https://github.com/onfido/castor/commit/db02db7ad3342f77ce5b77372c2c2e3149b40166))
+- **react:** popover screen aware ([#947](https://github.com/onfido/castor/issues/947)) ([1c697f8](https://github.com/onfido/castor/commit/1c697f87f6f17de3883083f1190188c8754e9042))
+- icon requires aria-hidden or aria-label ([#714](https://github.com/onfido/castor/issues/714)) ([9621ba0](https://github.com/onfido/castor/commit/9621ba062e3140c03da7bab21a002fee74eea40c)), closes [#707](https://github.com/onfido/castor/issues/707)
+
+### Bug Fixes
+
+- **core:** popover allows pointer-events ([fa8b2af](https://github.com/onfido/castor/commit/fa8b2afcdefbbb367544e873139c82c9fb3f99e5))
+- **core:** tooltip stays visible when itself is :hover ([fe5acc8](https://github.com/onfido/castor/commit/fe5acc8488ddc724450797f5a1f6b9ea333692c3))
+- **react:** adds missing tooltip and popover exports ([#1009](https://github.com/onfido/castor/issues/1009)) ([bb94d06](https://github.com/onfido/castor/commit/bb94d0655e5e744e6e001d2a99421a03ae2751d6))
+- **react:** button type overloads ([#1053](https://github.com/onfido/castor/issues/1053)) ([da8e865](https://github.com/onfido/castor/commit/da8e865f23999bf62774c6905990dd13ccb3ebcf))
+- **react:** tooltip type simplification ([#1018](https://github.com/onfido/castor/issues/1018)) ([98c0ac0](https://github.com/onfido/castor/commit/98c0ac0522b75dd199cdda2c8c6aced82404b5e3))
+- select empty state ([#1008](https://github.com/onfido/castor/issues/1008)) ([6bfc34a](https://github.com/onfido/castor/commit/6bfc34a580b6f6da8ae176a561bed1a16eabb89e))
+
 ## [1.5.0](https://github.com/onfido/castor/compare/v1.4.0...v1.5.0) (2021-08-25)
 
 ### Features
