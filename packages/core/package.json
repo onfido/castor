@@ -27,7 +27,7 @@
     "!src/**/*.d.ts"
   ],
   "dependencies": {
-    "@onfido/castor-tokens": "^1.0.0-beta.4",
+    "@onfido/castor-tokens": "^1.0.0-beta.5",
     "csstype": "^3.0.9"
   },
   "peerDependencies": {
