@@ -10,7 +10,7 @@ describe('useDebounce', () => {
     jest.useFakeTimers();
     const callback = jest.fn();
     const debounceTime = 100;
-    const args = [{}, {}];
+    const args = [{}, {}] as const;
 
     const debounced = useDebounce(callback, debounceTime);
 
