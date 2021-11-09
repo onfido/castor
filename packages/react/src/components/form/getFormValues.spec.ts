@@ -154,6 +154,6 @@ describe('getFormValues', () => {
   });
 });
 
-function hasAttribute(attr: string) {
+function hasAttribute(this: Record<string, unknown>, attr: string) {
   return attr in this;
 }

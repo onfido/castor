@@ -9,7 +9,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "skipLibCheck": false,
-    "strictNullChecks": true,
+    "strict": true,
 
     "module": "esnext",
     "moduleResolution": "node",
