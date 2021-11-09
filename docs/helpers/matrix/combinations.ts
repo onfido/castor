@@ -17,6 +17,4 @@ export const combinations = <T extends unknown[]>(all: T, next: T): T =>
   // if `all` is an empty array use a placeholder
   combine(all.length ? all : [[]], next)
     // flatten the first element in the tuple
-    .map(([f, s]: Nested) => [...f, s]) as T;
-
-type Nested = [unknown[], unknown];
+    .map(([f, s]) => [...(f as unknown[]), s]) as T;

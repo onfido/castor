@@ -5,7 +5,8 @@ import { ForwardedRef, forwardRef, ReactElement } from 'react';
  *
  * @param component Component to `forwardRef`.
  */
-export const withRef = <C extends Forwarded<T, P>, T, P>(component: C): C =>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const withRef = <C extends Forwarded<any, any>>(component: C): C =>
   forwardRef(component) as never;
 
-type Forwarded<T, P> = (props: P, ref: ForwardedRef<T>) => ReactElement | null;
+type Forwarded<P, R> = (props: P, ref: ForwardedRef<R>) => ReactElement | null;
