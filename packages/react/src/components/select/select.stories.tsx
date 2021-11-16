@@ -21,7 +21,7 @@ export default {
   title: 'React/Select',
   component: Select,
   argTypes: {
-    ...omit<CustomSelectProps>('open', 'onOpenChange', 'onSelectOption'),
+    ...omit<CustomSelectProps>('open', 'onOpenChange'),
     align: {
       control: 'inline-radio',
       table: { defaultValue: { summary: 'start' } },

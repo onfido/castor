@@ -8,7 +8,7 @@ import { SelectProvider } from './useSelect';
 export type SelectProps =
   | ({ native: true } & BaseProps & NativeSelectProps)
   | ({ native?: false } & BaseProps &
-      Omit<CustomSelectProps, 'open' | 'onOpenChange' | 'onSelectOption'>);
+      Omit<CustomSelectProps, 'open' | 'onOpenChange'>);
 
 /**
  * `Select` uses an `Icon` that requires `Icons` (SVG sprite) to be included in
@@ -20,6 +20,7 @@ export const Select = ({
   borderless,
   className,
   native,
+  onChange,
   ...restProps
 }: SelectProps) => {
   const { defaultValue, value } = restProps;
@@ -38,7 +39,10 @@ export const Select = ({
           borderless={borderless}
           native={native}
           open={open}
-          onEmptyChange={setEmpty}
+          onChange={(event) => {
+            setEmpty(!event.currentTarget.value);
+            onChange?.(event);
+          }}
           onOpenChange={setOpen}
         />
         <Icon name="chevron-down" aria-hidden="true" />
@@ -51,7 +55,6 @@ interface ContentProps extends CustomSelectProps {
   borderless?: boolean;
   native?: boolean;
   open?: boolean;
-  onEmptyChange: (empty: boolean) => void;
   onOpenChange: (open: boolean) => void;
 }
 
@@ -59,21 +62,10 @@ function Content({
   borderless,
   native,
   open,
-  onChange,
-  onEmptyChange,
   onOpenChange,
   ...restProps
 }: ContentProps) {
-  if (native)
-    return (
-      <NativeSelect
-        {...restProps}
-        onChange={(event) => {
-          onEmptyChange(!event.currentTarget.value);
-          onChange?.(event);
-        }}
-      />
-    );
+  if (native) return <NativeSelect {...restProps} />;
 
   return (
     <CustomSelect
@@ -81,7 +73,6 @@ function Content({
       borderless={borderless}
       open={open}
       onOpenChange={onOpenChange}
-      onSelectOption={(value) => onEmptyChange(!value)}
     />
   );
 }

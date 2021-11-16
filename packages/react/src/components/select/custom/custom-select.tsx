@@ -16,7 +16,6 @@ export interface CustomSelectProps
     PopoverProps {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
-  onSelectOption?: (value: string | number | readonly string[]) => void;
 }
 
 export function CustomSelect({
@@ -32,7 +31,6 @@ export function CustomSelect({
   onClick,
   onKeyUp,
   onOpenChange,
-  onSelectOption,
   ...restProps
 }: CustomSelectProps) {
   const selectRef = useRef<HTMLSelectElement>(null);
@@ -67,7 +65,14 @@ export function CustomSelect({
           setSelectedOption(option);
           setValue(value);
           close();
-          onSelectOption?.(value);
+          // propagate onChange manually because <select> won't naturally when
+          // its value is changed programatically by React, and on next tick
+          // because React needs to update its value first
+          setTimeout(() =>
+            selectRef.current?.dispatchEvent(
+              new Event('change', { bubbles: true })
+            )
+          );
         },
       }}
     >
