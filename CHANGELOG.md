@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/onfido/castor/compare/v2.0.1...v2.0.2) (2021-11-16)
+
+### Bug Fixes
+
+- **react:** select onChange ([#1130](https://github.com/onfido/castor/issues/1130)) ([ae89b4a](https://github.com/onfido/castor/commit/ae89b4a6c0cafa2b98b0cbefd93d06e1230d7057))
+
 ### [2.0.1](https://github.com/onfido/castor/compare/v2.0.0...v2.0.1) (2021-11-09)
 
 ### Bug Fixes
