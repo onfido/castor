@@ -27,7 +27,9 @@ export const Select = ({
   const [empty, setEmpty] = useState(!(value ?? defaultValue));
   const [open, setOpen] = useState(false);
 
-  useEffect(() => setEmpty(!value), [value]);
+  useEffect(() => {
+    if (defaultValue == null) setEmpty(!value);
+  }, [value]);
 
   return (
     <div
