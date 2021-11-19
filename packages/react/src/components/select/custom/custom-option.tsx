@@ -13,6 +13,7 @@ export function CustomOption({
   children,
   className,
   disabled,
+  hidden,
   value: optionValue,
   onClick,
   onKeyUp,
@@ -22,8 +23,9 @@ export function CustomOption({
 
   useEffect(() => initialize(children, optionValue), []);
 
-  const selectOption = () => disabled || select(children, optionValue);
+  if (hidden) return null;
 
+  const selectOption = () => disabled || select(children, optionValue);
   const selected = value == optionValue;
 
   return (
