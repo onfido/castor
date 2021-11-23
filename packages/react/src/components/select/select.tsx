@@ -28,7 +28,7 @@ export const Select = ({
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (defaultValue == null) setEmpty(!value);
+    if (value != null) setEmpty(!value);
   }, [value]);
 
   return (
