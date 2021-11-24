@@ -30,12 +30,24 @@ import { Entries } from './types';
 export function reactMatrix<Props extends Record<string, any>>(
   Component: FC<Props>,
   props: Entries<Props>,
-  render: Render<Props> = (p) => <Component {...p} />
+  Render: Render<Props> = (p) => <Component {...p} />
 ): Story<Props> {
   const entries = getEntries(props);
 
   return (storyProps: Props) =>
-    entries.map((matrixProps) => render({ ...storyProps, ...matrixProps }));
+    entries.map((matrixProps) => (
+      <Render key={random()} {...storyProps} {...matrixProps} />
+    ));
 }
 
+const random = () =>
+  crypto.randomUUID?.() || crypto.getRandomValues(new Int32Array(1))[0];
+
 type Render<Props> = (props: Props) => JSX.Element;
+
+// TODO: remove when updated in TypeScript DOM definitions
+declare global {
+  interface Crypto {
+    randomUUID?: () => string;
+  }
+}
