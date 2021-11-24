@@ -42,7 +42,7 @@ export default {
   args: {
     children: (
       <>
-        <Option disabled value="">
+        <Option hidden value="">
           Select an option...
         </Option>
         <Option value={1}>Option 1</Option>
