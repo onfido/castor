@@ -96,20 +96,21 @@ interface SelectWithLabelAndHelperTextProps extends SelectProps {
   helperText: string;
 }
 
-export const WithLabelAndHelperText: Story<SelectWithLabelAndHelperTextProps> =
-  ({ id, label, helperText, ...props }) =>
-    Field({
-      children: [
-        FieldLabel({
-          children: [
-            label,
-            HelperText({ children: helperText }),
-            Select({ ...props, id }),
-          ],
-          for: id,
-        }),
-      ],
-    });
+export const WithLabelAndHelperText: Story<
+  SelectWithLabelAndHelperTextProps
+> = ({ id, label, helperText, ...props }) =>
+  Field({
+    children: [
+      FieldLabel({
+        children: [
+          label,
+          HelperText({ children: helperText }),
+          Select({ ...props, id }),
+        ],
+        for: id,
+      }),
+    ],
+  });
 WithLabelAndHelperText.args = {
   id: 'select-with-label-and-helper-text',
   label: 'Label',

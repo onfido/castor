@@ -111,16 +111,17 @@ type SelectWithLabelAndHelperTextProps = SelectProps & {
   helperText: string;
 };
 
-export const WithLabelAndHelperText: Story<SelectWithLabelAndHelperTextProps> =
-  ({ id, label, helperText, ...restProps }) => (
-    <Field>
-      <FieldLabel htmlFor={id}>
-        {label}
-        <HelperText>{helperText}</HelperText>
-        <Select {...restProps} id={id} />
-      </FieldLabel>
-    </Field>
-  );
+export const WithLabelAndHelperText: Story<
+  SelectWithLabelAndHelperTextProps
+> = ({ id, label, helperText, ...restProps }) => (
+  <Field>
+    <FieldLabel htmlFor={id}>
+      {label}
+      <HelperText>{helperText}</HelperText>
+      <Select {...restProps} id={id} />
+    </FieldLabel>
+  </Field>
+);
 WithLabelAndHelperText.args = {
   id: 'select-with-label-and-helper-text',
   label: 'Label',

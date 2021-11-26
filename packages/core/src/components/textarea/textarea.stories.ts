@@ -64,20 +64,21 @@ interface TextareaWithLabelAndHelperTextProps extends TextareaProps {
   helperText: string;
 }
 
-export const WithLabelAndHelperText: Story<TextareaWithLabelAndHelperTextProps> =
-  ({ id, label, helperText, ...props }) =>
-    Field({
-      children: [
-        FieldLabel({
-          children: [
-            label,
-            HelperText({ children: helperText }),
-            Textarea({ ...props, id }),
-          ],
-          for: id,
-        }),
-      ],
-    });
+export const WithLabelAndHelperText: Story<
+  TextareaWithLabelAndHelperTextProps
+> = ({ id, label, helperText, ...props }) =>
+  Field({
+    children: [
+      FieldLabel({
+        children: [
+          label,
+          HelperText({ children: helperText }),
+          Textarea({ ...props, id }),
+        ],
+        for: id,
+      }),
+    ],
+  });
 WithLabelAndHelperText.args = {
   id: 'input-with-label-and-helper-text',
   label: 'Label',
