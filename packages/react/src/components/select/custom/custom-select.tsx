@@ -2,6 +2,7 @@ import { c, classy, m, PopoverProps, SelectProps } from '@onfido/castor';
 import React, {
   ReactNode,
   SyntheticEvent,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -31,11 +32,19 @@ export function CustomSelect({
   onClick,
   onKeyUp,
   onOpenChange,
+  value,
   ...restProps
 }: CustomSelectProps) {
   const selectRef = useRef<HTMLSelectElement>(null);
-  const [selectedOption, setSelectedOption] = useState<ReactNode>();
-  const [value, setValue] = useState(restProps.value ?? defaultValue);
+  const options = useRef(new Map<typeof value, ReactNode>());
+  const [currentValue, setCurrentValue] = useState<typeof value>();
+
+  // default to first option on first render
+  useEffect(() => setCurrentValue(value ?? defaultValue), []);
+
+  useEffect(() => {
+    if (value != null) setCurrentValue(value);
+  }, [value]);
 
   const name = useMemo(
     () => initialName || `castor-select-${++id}`,
@@ -43,27 +52,26 @@ export function CustomSelect({
   );
 
   const open = () => onOpenChange?.(true);
-
   const close = () => {
     onOpenChange?.(false);
     focus(selectRef.current);
   };
+
+  const selectedOption = options.current.get(currentValue);
 
   return (
     <CustomSelectProvider
       value={{
         name,
         selectedOption,
-        value,
+        value: currentValue,
         initialize(option, optionValue) {
-          // initial value
-          if (value == optionValue) setSelectedOption(option);
-          // or default to first option
-          else setSelectedOption((current) => current ?? option);
+          options.current.set(optionValue, option);
         },
-        select(option, value) {
-          setSelectedOption(option);
-          setValue(value);
+        select(option, optionValue) {
+          // if there are repeated keys, make the selected one take priority
+          options.current.set(optionValue, option);
+          setCurrentValue(optionValue);
           close();
           // propagate onChange manually because <select> won't naturally when
           // its value is changed programatically by React, and on next tick
@@ -96,7 +104,7 @@ export function CustomSelect({
           onKeyUp?.(event);
         }}
       >
-        {!value || <option hidden value={value} />}
+        {!currentValue || <option hidden value={currentValue} />}
       </NativeSelect>
 
       <output className={classy(c('select-output'))}>{selectedOption}</output>
