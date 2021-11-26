@@ -39,7 +39,7 @@ export function CustomSelect({
   const options = useRef(new Map<typeof value, ReactNode>());
   const [currentValue, setCurrentValue] = useState<typeof value>();
 
-  // default to first option after first render
+  // default to first option on first render
   useEffect(() => setCurrentValue(value ?? defaultValue), []);
 
   useEffect(() => {
