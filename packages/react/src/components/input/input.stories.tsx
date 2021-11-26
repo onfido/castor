@@ -72,16 +72,17 @@ interface InputWithLabelAndHelperTextProps extends InputProps {
   helperText: string;
 }
 
-export const WithLabelAndHelperText: Story<InputWithLabelAndHelperTextProps> =
-  ({ id, label, helperText, ...restProps }) => (
-    <Field>
-      <FieldLabel htmlFor={id}>
-        {label}
-        <HelperText>{helperText}</HelperText>
-        <Input {...restProps} id={id} />
-      </FieldLabel>
-    </Field>
-  );
+export const WithLabelAndHelperText: Story<
+  InputWithLabelAndHelperTextProps
+> = ({ id, label, helperText, ...restProps }) => (
+  <Field>
+    <FieldLabel htmlFor={id}>
+      {label}
+      <HelperText>{helperText}</HelperText>
+      <Input {...restProps} id={id} />
+    </FieldLabel>
+  </Field>
+);
 WithLabelAndHelperText.args = {
   id: 'input-with-label-and-helper-text',
   label: 'Label',
