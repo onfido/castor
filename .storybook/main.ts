@@ -6,7 +6,7 @@ const { resolve } = require('path');
 const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
 module.exports = {
-  stories: ['../{docs,packages}/**/*.stories.ts{,x}'],
+  stories: ['../docs', '../packages'],
 
   addons: [
     '@storybook/addon-google-analytics',
