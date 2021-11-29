@@ -44,7 +44,7 @@ export default {
       },
     },
     value: {
-      type: { required: true },
+      type: { name: 'number', required: true },
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: '0' },

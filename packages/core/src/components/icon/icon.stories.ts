@@ -25,7 +25,7 @@ export default {
       },
     },
     name: {
-      type: { required: true },
+      type: { name: 'string', required: true },
       control: { type: 'select', options: iconNames },
       table: {
         type: { summary: optionsToSummary(iconNames) },
