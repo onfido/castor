@@ -35,7 +35,7 @@ export default {
       table: { type: { summary: optionsToSummary(size) } },
     },
     value: {
-      type: { required: true },
+      type: { name: 'number', required: true },
       table: { type: { summary: 'number' } },
     },
   },
