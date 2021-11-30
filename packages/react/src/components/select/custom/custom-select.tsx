@@ -37,11 +37,19 @@ export function CustomSelect({
 }: CustomSelectProps) {
   const selectRef = useRef<HTMLSelectElement>(null);
   const options = useRef(new Map<typeof value, ReactNode>());
-  const [currentValue, setCurrentValue] = useState<typeof value>();
 
-  // default to first option on first render
+  // initialize with empty array to ensure re-render even with nullish value
+  const [currentValue, _setCurrentValue] = useState<typeof value>([]);
+  const setCurrentValue = (value: typeof currentValue) =>
+    // default to first option if value is not in options
+    _setCurrentValue(
+      options.current.has(value) ? value : options.current.keys().next().value
+    );
+
+  // set initial value only after options have been initialized
   useEffect(() => setCurrentValue(value ?? defaultValue), []);
 
+  // set value every time it changes and it's not nullish
   useEffect(() => {
     if (value != null) setCurrentValue(value);
   }, [value]);
