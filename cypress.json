@@ -2,7 +2,6 @@
   "$schema": "https://raw.githubusercontent.com/cypress-io/cypress/develop/cli/schema/cypress.schema.json",
 
   "baseUrl": "http://localhost:6006",
-  "nodeVersion": "system",
   "video": false,
 
   "integrationFolder": "e2e",
