@@ -1,5 +1,4 @@
 import { Spinner, SpinnerProps } from '@onfido/castor-react';
-import React from 'react';
 import {
   Meta,
   omit,
@@ -32,17 +31,13 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<SpinnerProps>;
 
-export const Playground: Story<SpinnerProps> = (props) => (
-  <Spinner {...props} />
-);
+export const Playground: Story<SpinnerProps> = {};
 
 export const Size = reactMatrix(Spinner, { size });
-Size.argTypes = omit('size');
 
-export const WithoutLabel: Story<SpinnerProps> = (props) => (
-  <Spinner {...props} />
-);
-WithoutLabel.argTypes = omit('children');
-WithoutLabel.args = {
-  children: null,
+export const WithoutLabel: Story<SpinnerProps> = {
+  args: {
+    children: null,
+  },
+  argTypes: omit('children'),
 };

@@ -17,6 +17,7 @@ const resize = ['vertical', 'horizontal', 'both', 'none'] as const;
 export default {
   title: 'CSS/Textarea',
   component: Textarea,
+  render: Textarea as unknown,
   argTypes: {
     ...omit('id'),
     disabled: {
@@ -47,16 +48,11 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<TextareaProps>;
 
-export const Playground: Story<TextareaProps> = (props) => Textarea(props);
+export const Playground: Story<TextareaProps> = {};
 
 export const Resize = htmlMatrix(Textarea, { resize });
-Resize.argTypes = omit('resize');
-
 export const Invalid = htmlMatrix(Textarea, { invalid });
-Invalid.argTypes = omit('invalid');
-
 export const Disabled = htmlMatrix(Textarea, { disabled });
-Disabled.argTypes = omit('disabled');
 
 interface TextareaWithLabelAndHelperTextProps extends TextareaProps {
   id: string;
@@ -64,35 +60,37 @@ interface TextareaWithLabelAndHelperTextProps extends TextareaProps {
   helperText: string;
 }
 
-export const WithLabelAndHelperText: Story<
-  TextareaWithLabelAndHelperTextProps
-> = ({ id, label, helperText, ...props }) =>
-  Field({
-    children: [
-      FieldLabel({
+export const WithLabelAndHelperText: Story<TextareaWithLabelAndHelperTextProps> =
+  {
+    args: {
+      id: 'input-with-label-and-helper-text',
+      label: 'Label',
+      helperText: 'Helper text',
+    },
+    render: ({ id, label, helperText, ...props }) =>
+      Field({
         children: [
-          label,
-          HelperText({ children: helperText }),
-          Textarea({ ...props, id }),
+          FieldLabel({
+            children: [
+              label,
+              HelperText({ children: helperText }),
+              Textarea({ ...props, id }),
+            ],
+            for: id,
+          }),
         ],
-        for: id,
       }),
-    ],
-  });
-WithLabelAndHelperText.args = {
-  id: 'input-with-label-and-helper-text',
-  label: 'Label',
-  helperText: 'Helper text',
-};
+  };
 
-export const AllCombinations = htmlMatrix(
-  Textarea,
-  { disabled, invalid },
-  (props) => Textarea({ ...props, children: value(props) })
-);
-AllCombinations.parameters = {
-  display: 'grid',
-  columns: 'repeat(2, 1fr)',
+export const AllCombinations: Story<TextareaProps> = {
+  ...htmlMatrix(
+    (props: TextareaProps) => Textarea({ ...props, children: value(props) }),
+    { disabled, invalid }
+  ),
+  parameters: {
+    display: 'grid',
+    columns: 'repeat(2, 1fr)',
+  },
 };
 
 const value = ({ disabled, invalid }: TextareaProps) =>

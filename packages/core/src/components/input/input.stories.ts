@@ -26,6 +26,7 @@ const type = [
 export default {
   title: 'CSS/Input',
   component: Input,
+  render: Input as unknown,
   argTypes: {
     ...omit('id', 'value'),
     disabled: {
@@ -51,13 +52,10 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<InputProps>;
 
-export const Playground: Story<InputProps> = (props) => Input(props);
+export const Playground: Story<InputProps> = {};
 
 export const Invalid = htmlMatrix(Input, { invalid });
-Invalid.argTypes = omit('invalid');
-
 export const Disabled = htmlMatrix(Input, { disabled });
-Disabled.argTypes = omit('disabled');
 
 interface InputWithLabelAndHelperTextProps extends InputProps {
   id: string;
@@ -65,35 +63,36 @@ interface InputWithLabelAndHelperTextProps extends InputProps {
   helperText: string;
 }
 
-export const WithLabelAndHelperText: Story<
-  InputWithLabelAndHelperTextProps
-> = ({ id, label, helperText, ...props }) =>
-  Field({
-    children: [
-      FieldLabel({
-        children: [
-          label,
-          HelperText({ children: helperText }),
-          Input({ ...props, id }),
-        ],
-        for: id,
-      }),
-    ],
-  });
-WithLabelAndHelperText.args = {
-  id: 'input-with-label-and-helper-text',
-  label: 'Label',
-  helperText: 'Helper text',
+export const WithLabelAndHelperText: Story<InputWithLabelAndHelperTextProps> = {
+  args: {
+    id: 'input-with-label-and-helper-text',
+    label: 'Label',
+    helperText: 'Helper text',
+  },
+  render: ({ id, label, helperText, ...props }) =>
+    Field({
+      children: [
+        FieldLabel({
+          children: [
+            label,
+            HelperText({ children: helperText }),
+            Input({ ...props, id }),
+          ],
+          for: id,
+        }),
+      ],
+    }),
 };
 
-export const AllCombinations = htmlMatrix(
-  Input,
-  { disabled, invalid },
-  (props) => Input({ ...props, value: value(props) })
-);
-AllCombinations.parameters = {
-  display: 'grid',
-  columns: 'repeat(2, 1fr)',
+export const AllCombinations: Story<InputProps> = {
+  ...htmlMatrix(
+    (props: InputProps) => Input({ ...props, value: value(props) }),
+    { disabled, invalid }
+  ),
+  parameters: {
+    display: 'grid',
+    columns: 'repeat(2, 1fr)',
+  },
 };
 
 const value = ({ disabled, invalid }: InputProps) =>

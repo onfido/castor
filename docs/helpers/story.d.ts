@@ -1,39 +1,31 @@
 // waiting on official types but until then we can augment them a bit, see
 // https://github.com/storybookjs/storybook/issues/11916
 
-import { ArgType as BaseArgType, StoryContext } from '@storybook/addons';
+import { ArgType as BaseArgType } from '@storybook/addons';
+import { StoryContext } from '@storybook/csf';
+import { ReactFramework } from '@storybook/react/types-6-0';
 import {
   Meta as BaseMeta,
   Story as BaseStory,
-} from '@storybook/react/types-6-0';
-import { FC, ReactElement } from 'react';
+} from '@storybook/react/types-7-0';
+import { FC } from 'react';
 import { ContainerParams } from '../decorators/withContainer';
 
 export interface Meta<Args>
   extends Omit<BaseMeta<Args>, 'argTypes' | 'component'>,
     Annotation<Args> {
   component: FC<Args> | ((props: Args) => string);
-  parameters?: BaseMeta['parameters'] & ContainerParams & DocsParams;
+  parameters?: Parameters;
 }
 
 export interface Story<Args>
-  extends Annotation<Args>,
-    Omit<BaseStory<Args>, 'argTypes'> {
-  (args: Args, context: StoryContext): ReactElement | ReactElement[] | string;
-  parameters?: BaseStory['parameters'] & ContainerParams & DocsParams;
-}
-
-/**
- * Types some of '@storybook/addon-docs'.
- * https://github.com/storybookjs/storybook/blob/next/addons/docs/docs/recipes.md
- */
-export interface DocsParams {
-  docs?: {
-    disable?: boolean;
-    description?: { story?: string };
-    source?: { code?: string };
-    page?: FC;
-  };
+  extends Omit<BaseStory<Args>, 'argTypes' | 'render'>,
+    Annotation<Args> {
+  parameters?: Parameters;
+  render?: (
+    args: Args,
+    context: StoryContext<ReactFramework, Args>
+  ) => JSX.Element | JSX.Element[] | string;
 }
 
 /**
@@ -50,13 +42,27 @@ interface Annotation<Args> {
   argTypes?: ArgTypes<Args>;
 }
 
-export type ArgTypes<Props> = {
+type Parameters = BaseStory['parameters'] & ContainerParams & DocsParams;
+
+/**
+ * Types some of '@storybook/addon-docs'.
+ * https://github.com/storybookjs/storybook/blob/next/addons/docs/docs/recipes.md
+ */
+interface DocsParams {
+  docs?: {
+    disable?: boolean;
+    description?: { story?: string };
+    source?: { code?: string };
+    page?: FC;
+  };
+}
+
+type ArgTypes<Props> = {
   [key in keyof Props]?: ArgType<Props[key]>;
 };
 
 export interface ArgType<T> extends BaseArgType {
   control?: Control<T> | Control<T>['type'] | Disable;
-  defaultValue?: T;
   table?: Table;
   [key: string]: unknown;
 }

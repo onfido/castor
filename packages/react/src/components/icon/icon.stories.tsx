@@ -5,7 +5,6 @@ import {
   aria,
   colors,
   Meta,
-  omit,
   optionsToSummary,
   reactMatrix,
   Story,
@@ -24,12 +23,12 @@ export default {
       },
     },
     name: {
-      type: { name: 'number', required: true },
       control: { type: 'select', options: iconNames },
       table: {
         required: true,
         type: { summary: optionsToSummary(iconNames) },
       },
+      type: { name: 'string', required: true },
     },
     'aria-hidden': aria.hidden,
     'aria-label': aria.label,
@@ -39,21 +38,26 @@ export default {
   },
 } as Meta<IconProps>;
 
-export const Playground: Story<IconProps> = (props) => <Icon {...props} />;
-Playground.args = {
-  'aria-label': 'A label for an icon',
+export const Playground: Story<IconProps> = {
+  args: {
+    'aria-label': 'A label for an icon',
+  },
 };
 
-export const Name = reactMatrix(Icon, { name: iconNames }, (props) => (
-  <>
-    <Icon {...props} /> {props.name}
-  </>
-));
-Name.argTypes = omit('name');
-Name.args = {
-  'aria-hidden': 'true',
-};
-Name.parameters = {
-  display: 'grid',
-  columns: 'repeat(4, auto 1fr)',
+export const Name: Story<IconProps> = {
+  ...reactMatrix(
+    (props: IconProps) => (
+      <>
+        <Icon {...props} /> {props.name}
+      </>
+    ),
+    { name: iconNames }
+  ),
+  args: {
+    'aria-hidden': 'true',
+  },
+  parameters: {
+    display: 'grid',
+    columns: 'repeat(4, auto 1fr)',
+  },
 };

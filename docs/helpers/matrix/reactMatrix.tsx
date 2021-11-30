@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { omit } from '../docs';
 import { Story } from '../story';
 import { getEntries } from './getEntries';
 import { Entries } from './types';
@@ -8,7 +9,7 @@ import { Entries } from './types';
  *
  * @param Component Component to apply property matrix.
  * @param props Properties to generate matrix from.
- * @param render Render function (not a React component, hooks not supported).
+ * @param component Render function (not a React component, hooks not supported).
  *
  * Default `(props) => <Component {...props} />`.
  *
@@ -28,22 +29,29 @@ import { Entries } from './types';
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function reactMatrix<Props extends Record<string, any>>(
-  Component: FC<Props>,
-  props: Entries<Props>,
-  Render: Render<Props> = (p) => <Component {...p} />
+  component: FC<Props>,
+  props: Entries<Props>
 ): Story<Props> {
   const entries = getEntries(props);
 
-  return (storyProps: Props) =>
-    entries.map((matrixProps) => (
-      <Render key={random()} {...storyProps} {...matrixProps} />
-    ));
+  return {
+    argTypes: omit(...Object.keys(props)),
+    render: (storyProps, ctx) => {
+      // we can trust the component in the context is not undefined because
+      // Storybook throws if it is not defined in Meta
+      const Component = ctx.component as FC;
+      const Render = component || Component;
+      Render.displayName ??= Component.displayName || Component.name;
+
+      return entries.map((matrixProps) => (
+        <Render key={random()} {...storyProps} {...matrixProps} />
+      ));
+    },
+  };
 }
 
 const random = () =>
   crypto.randomUUID?.() || crypto.getRandomValues(new Int32Array(1))[0];
-
-type Render<Props> = (props: Props) => JSX.Element;
 
 // TODO: remove when updated in TypeScript DOM definitions
 declare global {

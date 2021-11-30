@@ -40,44 +40,38 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<RadioProps>;
 
-export const Playground: Story<RadioProps> = (props) => <Radio {...props} />;
+export const Playground: Story<RadioProps> = {};
 
 export const Bordered = reactMatrix(Radio, { bordered });
-Bordered.argTypes = omit('bordered');
-
 export const Invalid = reactMatrix(Radio, { invalid });
-Invalid.argTypes = omit('invalid');
-
 export const Disabled = reactMatrix(Radio, { disabled });
-Disabled.argTypes = omit('disabled');
 
 interface RadiosWithFieldsetLegendProps extends RadioProps {
   name: string;
   legend: string;
 }
 
-export const WithFieldsetLegend: Story<RadiosWithFieldsetLegendProps> = ({
-  legend,
-  ...restProps
-}) => (
-  <Fieldset>
-    <FieldsetLegend>{legend}</FieldsetLegend>
-    <Field>
-      <Radio {...restProps} value="yes">
-        yes
-      </Radio>
-    </Field>
-    <Field>
-      <Radio {...restProps} value="no">
-        no
-      </Radio>
-    </Field>
-  </Fieldset>
-);
-WithFieldsetLegend.argTypes = omit('children');
-WithFieldsetLegend.args = {
-  name: 'radios-with-fieldset-legend',
-  legend: 'Legend',
+export const WithFieldsetLegend: Story<RadiosWithFieldsetLegendProps> = {
+  args: {
+    name: 'radios-with-fieldset-legend',
+    legend: 'Legend',
+  },
+  argTypes: omit('children'),
+  render: ({ legend, ...restProps }) => (
+    <Fieldset>
+      <FieldsetLegend>{legend}</FieldsetLegend>
+      <Field>
+        <Radio {...restProps} value="yes">
+          yes
+        </Radio>
+      </Field>
+      <Field>
+        <Radio {...restProps} value="no">
+          no
+        </Radio>
+      </Field>
+    </Fieldset>
+  ),
 };
 
 interface RadioWithHelperTextProps extends RadioProps {
@@ -85,22 +79,20 @@ interface RadioWithHelperTextProps extends RadioProps {
   helperText: string;
 }
 
-export const WithHelperText: Story<RadioWithHelperTextProps> = ({
-  label,
-  helperText,
-  ...restProps
-}) => (
-  <Field>
-    <Radio {...restProps}>
-      {label}
-      <HelperText>{helperText}</HelperText>
-    </Radio>
-  </Field>
-);
-WithHelperText.argTypes = omit('children');
-WithHelperText.args = {
-  label: 'Label',
-  helperText: 'Helper text',
+export const WithHelperText: Story<RadioWithHelperTextProps> = {
+  args: {
+    label: 'Label',
+    helperText: 'Helper text',
+  },
+  argTypes: omit('children'),
+  render: ({ label, helperText, ...restProps }) => (
+    <Field>
+      <Radio {...restProps}>
+        {label}
+        <HelperText>{helperText}</HelperText>
+      </Radio>
+    </Field>
+  ),
 };
 
 interface RadioWithValidationProps extends RadioProps {
@@ -108,32 +100,31 @@ interface RadioWithValidationProps extends RadioProps {
   withIcon: boolean;
 }
 
-export const WithValidation: Story<RadioWithValidationProps> = ({
-  validation,
-  withIcon,
-  ...restProps
-}) => (
-  <Field>
-    <Radio {...restProps} invalid={Boolean(validation)} />
-    <Validation state="error" withIcon={withIcon}>
-      {validation}
-    </Validation>
-  </Field>
-);
-WithValidation.argTypes = omit('disabled', 'invalid');
-WithValidation.args = {
-  validation: 'This field is not valid',
-  withIcon: true,
+export const WithValidation: Story<RadioWithValidationProps> = {
+  args: {
+    validation: 'This field is not valid',
+    withIcon: true,
+  },
+  argTypes: omit('disabled', 'invalid'),
+  render: ({ validation, withIcon, ...restProps }) => (
+    <Field>
+      <Radio {...restProps} invalid={Boolean(validation)} />
+      <Validation state="error" withIcon={withIcon}>
+        {validation}
+      </Validation>
+    </Field>
+  ),
 };
 
-export const AllCombinations = reactMatrix(
-  Radio,
-  { bordered, disabled, invalid },
-  (props) => <Radio {...props}>{label(props)}</Radio>
-);
-AllCombinations.parameters = {
-  display: 'grid',
-  columns: 'repeat(2, 1fr)',
+export const AllCombinations: Story<RadioProps> = {
+  ...reactMatrix(
+    (props: RadioProps) => <Radio {...props}>{label(props)}</Radio>,
+    { bordered, disabled, invalid }
+  ),
+  parameters: {
+    display: 'grid',
+    columns: 'repeat(2, 1fr)',
+  },
 };
 
 const label = ({ bordered, disabled, invalid }: RadioProps) =>

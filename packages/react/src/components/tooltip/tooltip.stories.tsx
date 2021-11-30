@@ -58,45 +58,45 @@ export default {
   },
 } as Meta<TooltipProps>;
 
-export const Playground: Story<TooltipProps & { withPortal?: boolean }> = ({
-  withPortal,
-  ...props
-}) => {
-  const ref = useRef<HTMLButtonElement>(null);
-  const Container = withPortal ? Fragment : 'div';
+export const Playground: Story<TooltipProps & { withPortal?: boolean }> = {
+  args: {
+    withPortal: true,
+  },
+  render: ({ withPortal, ...props }) => {
+    const ref = useRef<HTMLButtonElement>(null);
+    const Container = withPortal ? Fragment : 'div';
 
-  return (
-    <Container {...(withPortal || { style: { position: 'relative' } })}>
-      <Button ref={withPortal ? ref : undefined}>Hover or focus me</Button>
-      <Tooltip {...props} target={withPortal ? ref : undefined} />
-    </Container>
-  );
-};
-Playground.args = {
-  withPortal: true,
+    return (
+      <Container {...(withPortal || { style: { position: 'relative' } })}>
+        <Button ref={withPortal ? ref : undefined}>Hover or focus me</Button>
+        <Tooltip {...props} target={withPortal ? ref : undefined} />
+      </Container>
+    );
+  },
 };
 
-export const AllCombinations = reactMatrix(
-  Tooltip,
-  { position, align }, // order is important
-  (props) => (
-    <div style={{ position: 'relative' }}>
-      <Button>Target</Button>
-      <Tooltip {...props}>
-        {props.position} {props.align}
-      </Tooltip>
-    </div>
-  )
-);
-AllCombinations.args = {
-  show: true,
-};
-AllCombinations.parameters = {
-  display: 'grid',
-  columns: 'repeat(3, 1fr)',
-  style: {
-    gap: '3rem',
-    margin: '3rem',
-    placeItems: 'center',
+export const AllCombinations: Story<TooltipProps> = {
+  ...reactMatrix(
+    (props: TooltipProps) => (
+      <div style={{ position: 'relative' }}>
+        <Button>Target</Button>
+        <Tooltip {...props}>
+          {props.position} {props.align}
+        </Tooltip>
+      </div>
+    ),
+    { position, align } // order is important
+  ),
+  args: {
+    show: true,
+  },
+  parameters: {
+    display: 'grid',
+    columns: 'repeat(3, 1fr)',
+    style: {
+      gap: '3rem',
+      margin: '3rem',
+      placeItems: 'center',
+    },
   },
 };

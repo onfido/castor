@@ -11,138 +11,108 @@ import { FieldLabel, FieldLabelProps } from './field-label.story';
 export default {
   title: 'CSS/FieldLabel',
   component: FieldLabel,
+  render: FieldLabel as unknown,
   argTypes: omit('for'),
   args: {
     children: 'Label',
   },
 } as Meta<FieldLabelProps>;
 
-export const Playground: Story<FieldLabelProps> = (props) => FieldLabel(props);
+export const Playground: Story<FieldLabelProps> = {};
 
-export const AsOptional: Story<FieldLabelProps> = ({ children, ...props }) =>
-  FieldLabel({
-    ...props,
-    children: html('span', {
-      children: [
-        children,
-        html('span', {
-          style: `color: ${color('content-secondary')}`,
-          children: '(optional)',
-        }),
-      ],
+export const AsOptional: Story<FieldLabelProps> = {
+  render: ({ children, ...props }) =>
+    FieldLabel({
+      ...props,
+      children: html('span', {
+        children: [
+          children,
+          html('span', {
+            style: `color: ${color('content-secondary')}`,
+            children: '(optional)',
+          }),
+        ],
+      }),
     }),
-  });
+};
 
-export const AsRequired: Story<FieldLabelProps> = ({ children, ...props }) =>
-  FieldLabel({
-    ...props,
-    children: html('span', {
-      children: [children, Asterisk()],
+export const AsRequired: Story<FieldLabelProps> = {
+  render: ({ children, ...props }) =>
+    FieldLabel({
+      ...props,
+      children: html('span', {
+        children: [children, Asterisk()],
+      }),
     }),
-  });
+};
 
 interface FieldLabelWithHelperTextProps extends FieldLabelProps {
-  label: string;
+  children: string;
   helperText: string;
 }
 
-export const WithHelperText: Story<FieldLabelWithHelperTextProps> = ({
-  label,
-  helperText,
-  ...props
-}) =>
-  FieldLabel({
-    ...props,
-    children: [label, HelperText({ children: helperText })],
-  });
-WithHelperText.argTypes = omit('children');
-WithHelperText.args = {
-  label: 'Label',
-  helperText: 'Helper text',
+export const WithHelperText: Story<FieldLabelWithHelperTextProps> = {
+  args: {
+    helperText: 'Helper text',
+  },
+  render: ({ children, helperText, ...props }) =>
+    FieldLabel({
+      ...props,
+      children: [children, HelperText({ children: helperText })],
+    }),
 };
 
 interface FieldLabelWithInputProps extends FieldLabelProps {
   id: string;
-  label: string;
 }
 
-export const WithInput: Story<FieldLabelWithInputProps> = ({
-  id,
-  label,
-  ...props
-}) =>
-  Field({
-    children: [
-      FieldLabel({
-        ...props,
-        children: label,
-        for: id,
-      }),
-      Input({ id }),
-    ],
-  });
-WithInput.argTypes = omit('children');
-WithInput.args = {
-  id: 'field-label-with-input',
-  label: 'Label',
+export const WithInput: Story<FieldLabelWithInputProps> = {
+  args: {
+    id: 'field-label-with-input',
+  },
+  render: ({ id, ...props }) =>
+    Field({
+      children: [FieldLabel({ ...props, for: id }), Input({ id })],
+    }),
 };
 
 interface FieldLabelWithSelectProps extends FieldLabelProps {
+  children: string;
   id: string;
-  label: string;
 }
 
-export const WithSelect: Story<FieldLabelWithSelectProps> = ({
-  id,
-  label,
-  ...props
-}) =>
-  Field({
-    children: [
-      FieldLabel({
-        ...props,
-        children: label,
-        for: id,
-      }),
-      Select({
-        children: [
-          html('option', { children: '', selected: true }),
-          html('option', { children: 'Value A', value: 'a' }),
-          html('option', { children: 'Value B', value: 'b' }),
-          html('option', { children: 'Value C', value: 'c' }),
-        ],
-        id,
-      }),
-    ],
-  });
-WithSelect.argTypes = omit('children');
-WithSelect.args = {
-  id: 'field-label-with-select',
-  label: 'Label',
+export const WithSelect: Story<FieldLabelWithSelectProps> = {
+  args: {
+    id: 'field-label-with-select',
+  },
+  render: ({ id, ...props }) =>
+    Field({
+      children: [
+        FieldLabel({ ...props, for: id }),
+        Select({
+          children: [
+            html('option', { children: '', selected: true }),
+            html('option', { children: 'Value A', value: 'a' }),
+            html('option', { children: 'Value B', value: 'b' }),
+            html('option', { children: 'Value C', value: 'c' }),
+          ],
+          id,
+        }),
+      ],
+    }),
 };
 
 interface FieldLabelWithTextareaProps extends FieldLabelProps {
+  children: string;
   id: string;
-  label: string;
 }
 
-export const WithTextarea: Story<FieldLabelWithTextareaProps> = ({
-  id,
-  label,
-  ...props
-}) =>
-  Field({
-    children: [
-      FieldLabel({
-        ...props,
-        children: label,
-        for: id,
-      }),
-      Textarea({ id }),
-    ],
-  });
-WithTextarea.argTypes = omit('children');
-WithTextarea.args = {
-  id: 'field-label-with-textarea',
-  label: 'Label',
+export const WithTextarea: Story<FieldLabelWithTextareaProps> = {
+  args: {
+    id: 'field-label-with-textarea',
+  },
+  render: ({ id, ...props }) =>
+    Field({
+      children: [FieldLabel({ ...props, for: id }), Textarea({ id })],
+    }),
 };

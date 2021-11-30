@@ -1,4 +1,4 @@
-import { htmlMatrix, Meta, omit, Story } from '../../../../../docs';
+import { htmlMatrix, Meta, Story } from '../../../../../docs';
 import { Checkbox, CheckboxProps } from './checkbox.story';
 
 const bordered = [true, false] as const;
@@ -8,6 +8,7 @@ const invalid = [true, false] as const;
 export default {
   title: 'CSS/Checkbox',
   component: Checkbox,
+  render: Checkbox as unknown,
   argTypes: {
     children: { description: 'Acts as a label for the `<input>`.' },
   },
@@ -20,25 +21,21 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<CheckboxProps>;
 
-export const Playground: Story<CheckboxProps> = (props) => Checkbox(props);
+export const Playground: Story<CheckboxProps> = {};
 
 export const Bordered = htmlMatrix(Checkbox, { bordered });
-Bordered.argTypes = omit('bordered');
-
 export const Invalid = htmlMatrix(Checkbox, { invalid });
-Invalid.argTypes = omit('invalid');
-
 export const Disabled = htmlMatrix(Checkbox, { disabled });
-Disabled.argTypes = omit('disabled');
 
-export const AllCombinations = htmlMatrix(
-  Checkbox,
-  { bordered, disabled, invalid },
-  (props) => Checkbox({ ...props, children: label(props) })
-);
-AllCombinations.parameters = {
-  display: 'grid',
-  columns: 'repeat(2, 1fr)',
+export const AllCombinations: Story<CheckboxProps> = {
+  ...htmlMatrix(
+    (props: CheckboxProps) => Checkbox({ ...props, children: label(props) }),
+    { bordered, disabled, invalid }
+  ),
+  parameters: {
+    display: 'grid',
+    columns: 'repeat(2, 1fr)',
+  },
 };
 
 const label = ({ bordered, disabled, invalid }: CheckboxProps) =>

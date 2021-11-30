@@ -62,47 +62,38 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<SelectProps>;
 
-export const Playground: Story<SelectProps> = (props) => (
-  <Select {...props} defaultValue={props.native ? '' : undefined} />
-);
+export const Playground: Story<SelectProps> = {};
 
 export const Borderless = reactMatrix(Select, { borderless });
-Borderless.argTypes = omit('borderless');
-
 export const Invalid = reactMatrix(Select, { invalid });
-Invalid.argTypes = omit('invalid');
-
 export const Disabled = reactMatrix(Select, { disabled });
-Disabled.argTypes = omit('disabled');
-
 export const Native = reactMatrix(Select, { native });
-Native.argTypes = omit('native');
 
-export const OptionGroups: Story<SelectProps> = (props) => (
-  <Select {...props} />
-);
-OptionGroups.argTypes = omit('required');
-OptionGroups.args = {
-  children: (
-    <>
-      <Option disabled>Select an animal...</Option>
-      <OptionGroup label="Birds">
-        <Option value="chicken">Chicken</Option>
-        <Option value="ostrich">Ostrich</Option>
-      </OptionGroup>
-      <OptionGroup label="Mammals">
-        <Option value="monkey">Monkey</Option>
-        <Option value="whale">Whale</Option>
-      </OptionGroup>
-    </>
-  ),
-  required: true,
+export const OptionGroups: Story<SelectProps> = {
+  args: {
+    children: (
+      <>
+        <Option hidden value="">
+          Select an animal...
+        </Option>
+        <OptionGroup label="Birds">
+          <Option value="chicken">Chicken</Option>
+          <Option value="ostrich">Ostrich</Option>
+        </OptionGroup>
+        <OptionGroup label="Mammals">
+          <Option value="monkey">Monkey</Option>
+          <Option value="whale">Whale</Option>
+        </OptionGroup>
+      </>
+    ),
+  },
 };
 
-export const AsRequired: Story<SelectProps> = (props) => <Select {...props} />;
-AsRequired.argTypes = omit('required');
-AsRequired.args = {
-  required: true,
+export const AsRequired: Story<SelectProps> = {
+  args: {
+    required: true,
+  },
+  argTypes: omit('required'),
 };
 
 type SelectWithLabelAndHelperTextProps = SelectProps & {
@@ -111,56 +102,51 @@ type SelectWithLabelAndHelperTextProps = SelectProps & {
   helperText: string;
 };
 
-export const WithLabelAndHelperText: Story<
-  SelectWithLabelAndHelperTextProps
-> = ({ id, label, helperText, ...restProps }) => (
-  <Field>
-    <FieldLabel htmlFor={id}>
-      {label}
-      <HelperText>{helperText}</HelperText>
-      <Select {...restProps} id={id} />
-    </FieldLabel>
-  </Field>
-);
-WithLabelAndHelperText.args = {
-  id: 'select-with-label-and-helper-text',
-  label: 'Label',
-  helperText: 'Helper text',
-};
+export const WithLabelAndHelperText: Story<SelectWithLabelAndHelperTextProps> =
+  {
+    args: {
+      id: 'select-with-label-and-helper-text',
+      label: 'Label',
+      helperText: 'Helper text',
+    },
+    render: ({ id, label, helperText, ...restProps }) => (
+      <Field>
+        <FieldLabel htmlFor={id}>
+          {label}
+          <HelperText>{helperText}</HelperText>
+          <Select {...restProps} id={id} />
+        </FieldLabel>
+      </Field>
+    ),
+  };
 
 type SelectWithValidationProps = SelectProps & {
   validation: string;
   withIcon: boolean;
 };
 
-export const WithValidation: Story<SelectWithValidationProps> = (props) => (
-  <Field>
-    <Select {...props} invalid />
-    <Validation state="error" withIcon>
-      Please select an option
-    </Validation>
-  </Field>
-);
-WithValidation.argTypes = omit('disabled', 'invalid');
-
-export const AllCombinations = reactMatrix(
-  Select,
-  { borderless, disabled, invalid, native },
-  (props) => <Select {...props}>{children(props)}</Select>
-);
-AllCombinations.args = {
-  children: null,
+export const WithValidation: Story<SelectWithValidationProps> = {
+  argTypes: omit('disabled', 'invalid'),
+  render: (props) => (
+    <Field>
+      <Select {...props} invalid />
+      <Validation state="error" withIcon>
+        Please select an option
+      </Validation>
+    </Field>
+  ),
 };
-AllCombinations.argTypes = omit(
-  'borderless',
-  'children',
-  'disabled',
-  'invalid',
-  'native'
-);
-AllCombinations.parameters = {
-  display: 'grid',
-  columns: 'repeat(2, 1fr)',
+
+export const AllCombinations: Story<SelectProps> = {
+  ...reactMatrix(
+    (props: SelectProps) => <Select {...props}>{children(props)}</Select>,
+    { borderless, disabled, invalid, native }
+  ),
+  argTypes: omit('borderless', 'children', 'disabled', 'invalid', 'native'),
+  parameters: {
+    display: 'grid',
+    columns: 'repeat(2, 1fr)',
+  },
 };
 
 const children = ({ borderless, disabled, invalid, native }: SelectProps) => {

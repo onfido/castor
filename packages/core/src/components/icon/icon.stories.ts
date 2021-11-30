@@ -5,7 +5,6 @@ import {
   colors,
   htmlMatrix,
   Meta,
-  omit,
   optionsToSummary,
   Story,
 } from '../../../../../docs';
@@ -16,8 +15,8 @@ const [firstIconName] = iconNames;
 export default {
   title: 'CSS/Icon',
   component: Icon,
+  render: Icon as unknown,
   argTypes: {
-    ...omit('aria-hidden'),
     color: {
       control: { type: 'select', options: colors },
       table: {
@@ -25,11 +24,11 @@ export default {
       },
     },
     name: {
-      type: { name: 'string', required: true },
       control: { type: 'select', options: iconNames },
       table: {
         type: { summary: optionsToSummary(iconNames) },
       },
+      type: { name: 'string', required: true },
     },
     'aria-hidden': aria.hidden,
     'aria-label': aria.label,
@@ -39,20 +38,19 @@ export default {
   },
 } as Meta<IconProps>;
 
-export const Playground: Story<IconProps> = (props) => Icon(props);
-Playground.args = {
-  'aria-label': 'A label for an icon',
+export const Playground: Story<IconProps> = {
+  args: { 'aria-label': 'A label for an icon' },
 };
 
-export const Name = htmlMatrix(
-  Icon,
-  { name: iconNames },
-  (props) => Icon(props) + props.name
-);
-Name.args = {
-  'aria-hidden': 'true',
-};
-Name.parameters = {
-  display: 'grid',
-  columns: 'repeat(4, auto 1fr)',
+export const Name: Story<IconProps> = {
+  ...htmlMatrix((props: IconProps) => Icon(props) + props.name, {
+    name: iconNames,
+  }),
+  args: {
+    'aria-hidden': 'true',
+  },
+  parameters: {
+    display: 'grid',
+    columns: 'repeat(4, auto 1fr)',
+  },
 };
