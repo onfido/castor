@@ -1,5 +1,6 @@
 import { c, classy, m, PopoverProps, SelectProps } from '@onfido/castor';
 import React, {
+  ForwardedRef,
   ReactNode,
   SyntheticEvent,
   useEffect,
@@ -7,6 +8,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { useForwardedRef, withRef } from '../../../utils';
 import { Popover } from '../../popover/popover';
 import { NativeSelect, NativeSelectProps } from '../native';
 import { CustomSelectProvider } from './useCustomSelect';
@@ -19,23 +21,26 @@ export interface CustomSelectProps
   onOpenChange?: (open: boolean) => void;
 }
 
-export function CustomSelect({
-  align = 'start',
-  borderless,
-  children,
-  className,
-  defaultValue,
-  name: initialName,
-  open: isOpen,
-  position = 'bottom',
-  onBlur,
-  onClick,
-  onKeyUp,
-  onOpenChange,
-  value,
-  ...restProps
-}: CustomSelectProps) {
-  const selectRef = useRef<HTMLSelectElement>(null);
+export const CustomSelect = withRef(function CustomSelect(
+  {
+    align = 'start',
+    borderless,
+    children,
+    className,
+    defaultValue,
+    name: initialName,
+    open: isOpen,
+    position = 'bottom',
+    onBlur,
+    onClick,
+    onKeyUp,
+    onOpenChange,
+    value,
+    ...restProps
+  }: CustomSelectProps,
+  ref: ForwardedRef<HTMLSelectElement>
+) {
+  const selectRef = useForwardedRef(ref);
   const options = useRef(new Map<typeof value, ReactNode>());
 
   // initialize with empty array to ensure re-render even with nullish value
@@ -155,7 +160,7 @@ export function CustomSelect({
       {!selectedOption && <div style={{ display: 'none' }}>{children}</div>}
     </CustomSelectProvider>
   );
-}
+});
 
 const closeSelectKeys = new Set(['Escape']);
 const openSelectKeys = new Set([' ', 'ArrowDown', 'ArrowUp']);

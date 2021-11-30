@@ -1,6 +1,7 @@
 import { c, classy, m, SelectProps as BaseProps } from '@onfido/castor';
 import { Icon } from '@onfido/castor-react';
-import React, { useEffect, useState } from 'react';
+import React, { ForwardedRef, useEffect, useState } from 'react';
+import { withRef } from '../../utils';
 import { CustomSelect, CustomSelectProps } from './custom';
 import { NativeSelect, NativeSelectProps } from './native';
 import { SelectProvider } from './useSelect';
@@ -16,13 +17,10 @@ export type SelectProps =
  *
  * https://github.com/onfido/castor-icons#use-with-plain-code
  */
-export const Select = ({
-  borderless,
-  className,
-  native,
-  onChange,
-  ...restProps
-}: SelectProps) => {
+export const Select = withRef(function Select(
+  { borderless, className, native, onChange, ...restProps }: SelectProps,
+  ref: ForwardedRef<HTMLSelectElement>
+) {
   const { defaultValue, value } = restProps;
   const [empty, setEmpty] = useState(!(value ?? defaultValue));
   const [open, setOpen] = useState(false);
@@ -38,6 +36,7 @@ export const Select = ({
       <SelectProvider value={{ native }}>
         <Content
           {...restProps}
+          ref={ref}
           borderless={borderless}
           native={native}
           open={open}
@@ -51,7 +50,7 @@ export const Select = ({
       </SelectProvider>
     </div>
   );
-};
+});
 
 interface ContentProps extends CustomSelectProps {
   borderless?: boolean;
@@ -60,21 +59,19 @@ interface ContentProps extends CustomSelectProps {
   onOpenChange: (open: boolean) => void;
 }
 
-function Content({
-  borderless,
-  native,
-  open,
-  onOpenChange,
-  ...restProps
-}: ContentProps) {
-  if (native) return <NativeSelect {...restProps} />;
+const Content = withRef(function Content(
+  { borderless, native, open, onOpenChange, ...restProps }: ContentProps,
+  ref: ForwardedRef<HTMLSelectElement>
+) {
+  if (native) return <NativeSelect {...restProps} ref={ref} />;
 
   return (
     <CustomSelect
       {...restProps}
+      ref={ref}
       borderless={borderless}
       open={open}
       onOpenChange={onOpenChange}
     />
   );
-}
+});
