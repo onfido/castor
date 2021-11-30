@@ -76,7 +76,6 @@ export const CustomSelect = withRef(function CustomSelect(
     <CustomSelectProvider
       value={{
         name,
-        selectedOption,
         value: currentValue,
         initialize(option, optionValue) {
           options.current.set(optionValue, option);
