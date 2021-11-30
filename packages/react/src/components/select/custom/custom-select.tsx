@@ -116,8 +116,8 @@ export function CustomSelect({
       </NativeSelect>
 
       <output className={classy(c('select-output'))}>
-        {/* no-break space guarantees element height */}
-        {selectedOption}&nbsp;
+        {selectedOption}
+        &nbsp; {/* no-break space guarantees element height */}
       </output>
 
       {isOpen && (
