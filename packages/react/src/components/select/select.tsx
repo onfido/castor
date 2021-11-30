@@ -1,7 +1,7 @@
 import { c, classy, m, SelectProps as BaseProps } from '@onfido/castor';
 import { Icon } from '@onfido/castor-react';
 import React, { ForwardedRef, useEffect, useState } from 'react';
-import { withRef } from '../../utils';
+import { useForwardedRef, withRef } from '../../utils';
 import { CustomSelect, CustomSelectProps } from './custom';
 import { NativeSelect, NativeSelectProps } from './native';
 import { SelectProvider } from './useSelect';
@@ -22,8 +22,12 @@ export const Select = withRef(function Select(
   ref: ForwardedRef<HTMLSelectElement>
 ) {
   const { defaultValue, value } = restProps;
+  const selectRef = useForwardedRef(ref);
   const [empty, setEmpty] = useState(!(value ?? defaultValue));
   const [open, setOpen] = useState(false);
+
+  // on every re-render, check for "empty" just after a DOM cycle
+  useEffect(() => void setTimeout(() => setEmpty(!selectRef.current?.value)));
 
   useEffect(() => {
     if (value != null) setEmpty(!value);
@@ -36,7 +40,7 @@ export const Select = withRef(function Select(
       <SelectProvider value={{ native }}>
         <Content
           {...restProps}
-          ref={ref}
+          ref={selectRef}
           borderless={borderless}
           native={native}
           open={open}
