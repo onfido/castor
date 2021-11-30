@@ -151,8 +151,8 @@ export function CustomSelect({
         </Popover>
       )}
 
-      {/* render once to find output */}
-      {!selectedOption && <div style={{ display: 'none' }}>{children}</div>}
+      {/* render once to initialize options */}
+      {!options.current.size && <div hidden>{children}</div>}
     </CustomSelectProvider>
   );
 }
