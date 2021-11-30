@@ -1,6 +1,7 @@
+// @ts-nocheck
 // cannot use typescript here - build fails because of unsupported syntax,
 // see https://github.com/storybookjs/storybook/issues/11843
-// import { StorybookConfig } from '@storybook/react/types';
+// import type { StorybookConfig } from '@storybook/react/types';
 
 const { resolve } = require('path');
 const { ESBuildMinifyPlugin } = require('esbuild-loader');
@@ -59,12 +60,11 @@ module.exports = {
       config.watchOptions = { ignored: [/.*/] };
 
       // instrument source code
-      if (process.env.NODE_ENV === 'e2e')
-        config.module.rules
-          .flatMap((r) => r.use)
-          .map((u) => u?.options?.plugins)
-          .filter(Boolean)
-          .forEach((p) => p.push('istanbul'));
+      config.module?.rules
+        .flatMap((rule) => rule.use)
+        .map((use) => use?.options?.plugins)
+        .filter(Boolean)
+        .forEach((p) => p.push('istanbul'));
     }
 
     return config;
