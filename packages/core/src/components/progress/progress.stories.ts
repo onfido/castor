@@ -8,12 +8,12 @@ import {
 import { Progress, ProgressProps } from './progress.story';
 
 const size = ['regular', 'large'] as const;
-
 const hideLabel = [false, true] as const;
 
 export default {
   title: 'CSS/Progress',
   component: Progress,
+  render: Progress as unknown,
   argTypes: {
     ...omit('aria-valuetext'),
     children: {
@@ -50,24 +50,23 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<ProgressProps>;
 
-export const Playground: Story<ProgressProps> = (props) => Progress(props);
+export const Playground: Story<ProgressProps> = {};
 
 export const Size = htmlMatrix(Progress, { size });
-Size.argTypes = omit('size');
-
 export const HideLabel = htmlMatrix(Progress, { hideLabel });
-HideLabel.argTypes = omit('hideLabel');
 
-export const WithCustomLabel: Story<ProgressProps> = (props) => Progress(props);
-WithCustomLabel.argTypes = omit('children', 'hideLabel');
-WithCustomLabel.args = {
-  children: 'Progress: 25%',
-  hideLabel: false,
+export const WithCustomLabel: Story<ProgressProps> = {
+  args: {
+    children: 'Progress: 25%',
+    hideLabel: false,
+  },
+  argTypes: omit('children', 'hideLabel'),
 };
 
-export const AllCombinations = htmlMatrix(Progress, { hideLabel, size });
-AllCombinations.argTypes = omit('hideLabel', 'size');
-AllCombinations.parameters = {
-  display: 'grid',
-  columns: 'repeat(2, 1fr)',
+export const AllCombinations: Story<ProgressProps> = {
+  ...htmlMatrix(Progress, { hideLabel, size }),
+  parameters: {
+    display: 'grid',
+    columns: 'repeat(2, 1fr)',
+  },
 };

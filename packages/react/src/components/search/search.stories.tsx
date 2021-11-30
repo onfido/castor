@@ -1,6 +1,5 @@
 import { Search, SearchProps } from '@onfido/castor-react';
-import React from 'react';
-import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
+import { Meta, reactMatrix, Story } from '../../../../../docs';
 
 const disabled = [true, false] as const;
 
@@ -22,7 +21,6 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<SearchProps>;
 
-export const Playground: Story<SearchProps> = (props) => <Search {...props} />;
+export const Playground: Story<SearchProps> = {};
 
 export const Disabled = reactMatrix(Search, { disabled });
-Disabled.argTypes = omit('disabled');

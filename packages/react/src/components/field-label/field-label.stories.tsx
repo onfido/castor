@@ -11,7 +11,7 @@ import {
   Textarea,
 } from '@onfido/castor-react';
 import React from 'react';
-import { Meta, omit, Story } from '../../../../../docs';
+import { Meta, Story } from '../../../../../docs';
 
 export default {
   title: 'React/FieldLabel',
@@ -21,125 +21,95 @@ export default {
   },
 } as Meta<FieldLabelProps>;
 
-export const Playground: Story<FieldLabelProps> = (props) => (
-  <FieldLabel {...props} />
-);
+export const Playground: Story<FieldLabelProps> = {};
 
-export const AsOptional: Story<FieldLabelProps> = ({
-  children,
-  ...restProps
-}) => (
-  <FieldLabel {...restProps}>
-    <span>
-      {children}{' '}
-      <span style={{ color: color('content-secondary') }}>(optional)</span>
-    </span>
-  </FieldLabel>
-);
+export const AsOptional: Story<FieldLabelProps> = {
+  render: ({ children, ...restProps }) => (
+    <FieldLabel {...restProps}>
+      <span>
+        {children}{' '}
+        <span style={{ color: color('content-secondary') }}>(optional)</span>
+      </span>
+    </FieldLabel>
+  ),
+};
 
-export const AsRequired: Story<FieldLabelProps> = ({
-  children,
-  ...restProps
-}) => (
-  <FieldLabel {...restProps}>
-    <span>
-      {children}
-      <Asterisk />
-    </span>
-  </FieldLabel>
-);
+export const AsRequired: Story<FieldLabelProps> = {
+  render: ({ children, ...restProps }) => (
+    <FieldLabel {...restProps}>
+      <span>
+        {children}
+        <Asterisk />
+      </span>
+    </FieldLabel>
+  ),
+};
 
 interface FieldLabelWithHelperTextProps extends FieldLabelProps {
-  label: string;
   helperText: string;
 }
 
-export const WithHelperText: Story<FieldLabelWithHelperTextProps> = ({
-  label,
-  helperText,
-  ...restProps
-}) => (
-  <FieldLabel {...restProps}>
-    {label}
-    <HelperText>{helperText}</HelperText>
-  </FieldLabel>
-);
-WithHelperText.argTypes = omit('children');
-WithHelperText.args = {
-  label: 'Label',
-  helperText: 'Helper text',
+export const WithHelperText: Story<FieldLabelWithHelperTextProps> = {
+  args: {
+    helperText: 'Helper text',
+  },
+  render: ({ children, helperText, ...restProps }) => (
+    <FieldLabel {...restProps}>
+      {children}
+      <HelperText>{helperText}</HelperText>
+    </FieldLabel>
+  ),
 };
 
 interface FieldLabelWithInputProps extends FieldLabelProps {
   id: string;
-  label: string;
 }
 
-export const WithInput: Story<FieldLabelWithInputProps> = ({
-  id,
-  label,
-  ...restProps
-}) => (
-  <Field>
-    <FieldLabel {...restProps} htmlFor={id}>
-      {label}
-    </FieldLabel>
-    <Input id={id} />
-  </Field>
-);
-WithInput.argTypes = omit('children');
-WithInput.args = {
-  id: 'field-label-with-input',
-  label: 'Label',
+export const WithInput: Story<FieldLabelWithInputProps> = {
+  args: {
+    id: 'field-label-with-input',
+  },
+  render: ({ id, ...restProps }) => (
+    <Field>
+      <FieldLabel {...restProps} htmlFor={id} />
+      <Input id={id} />
+    </Field>
+  ),
 };
 
 interface FieldLabelWithSelectProps extends FieldLabelProps {
   id: string;
-  label: string;
 }
 
-export const WithSelect: Story<FieldLabelWithSelectProps> = ({
-  id,
-  label,
-  ...restProps
-}) => (
-  <Field>
-    <FieldLabel {...restProps} htmlFor={id}>
-      {label}
-    </FieldLabel>
-    <Select id={id}>
-      <Option disabled>Select an option...</Option>
-      <Option value={1}>Option 1</Option>
-      <Option value={2}>Option 2</Option>
-      <Option value={3}>Option 3</Option>
-    </Select>
-  </Field>
-);
-WithSelect.argTypes = omit('children');
-WithSelect.args = {
-  id: 'field-label-with-select',
-  label: 'Label',
+export const WithSelect: Story<FieldLabelWithSelectProps> = {
+  args: {
+    id: 'field-label-with-select',
+  },
+  render: ({ id, ...restProps }) => (
+    <Field>
+      <FieldLabel {...restProps} htmlFor={id} />
+      <Select id={id}>
+        <Option disabled>Select an option...</Option>
+        <Option value={1}>Option 1</Option>
+        <Option value={2}>Option 2</Option>
+        <Option value={3}>Option 3</Option>
+      </Select>
+    </Field>
+  ),
 };
 
 interface FieldLabelWithTextareaProps extends FieldLabelProps {
   id: string;
-  label: string;
 }
 
-export const WithTextarea: Story<FieldLabelWithTextareaProps> = ({
-  id,
-  label,
-  ...restProps
-}) => (
-  <Field>
-    <FieldLabel {...restProps} htmlFor={id}>
-      {label}
-    </FieldLabel>
-    <Textarea id={id} />
-  </Field>
-);
-WithTextarea.argTypes = omit('children');
-WithTextarea.args = {
-  id: 'field-label-with-textarea',
-  label: 'Label',
+export const WithTextarea: Story<FieldLabelWithTextareaProps> = {
+  args: {
+    id: 'field-label-with-textarea',
+  },
+  render: ({ id, ...restProps }) => (
+    <Field>
+      <FieldLabel {...restProps} htmlFor={id} />
+      <Textarea id={id} />
+    </Field>
+  ),
 };

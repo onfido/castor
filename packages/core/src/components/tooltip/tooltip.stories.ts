@@ -14,10 +14,10 @@ const position = ['top', 'left', 'right', 'bottom'] as const;
 export default {
   title: 'CSS/Tooltip',
   component: Tooltip,
+  render: Tooltip as unknown,
   argTypes: {
     align: {
       control: { type: 'inline-radio', options: align },
-      defaultValue: 'center',
       table: {
         defaultValue: { summary: 'center' },
         type: { summary: optionsToSummary(align) },
@@ -26,7 +26,6 @@ export default {
     children: { description: 'Content' },
     position: {
       control: { type: 'inline-radio', options: position },
-      defaultValue: 'top',
       table: {
         defaultValue: { summary: 'top' },
         type: { summary: optionsToSummary(position) },
@@ -53,40 +52,43 @@ export default {
   },
 } as Meta<TooltipProps>;
 
-export const Playground: Story<TooltipProps> = (props) =>
-  html('div', {
-    style: 'position: relative',
-    children: [
-      Button({
-        children: 'Hover or focus me',
-        kind: 'action',
-        variant: 'primary',
-      }),
-      Tooltip(props),
-    ],
-  });
-
-export const AllCombinations = htmlMatrix(
-  Tooltip,
-  { position, align }, // order is important
-  (props) =>
+export const Playground: Story<TooltipProps> = {
+  render: (props) =>
     html('div', {
       style: 'position: relative',
       children: [
-        Button({ children: 'Target', kind: 'action', variant: 'primary' }),
-        Tooltip({ ...props, children: `${props.position} ${props.align}` }),
+        Button({
+          children: 'Hover or focus me',
+          kind: 'action',
+          variant: 'primary',
+        }),
+        Tooltip(props),
       ],
-    })
-);
-AllCombinations.args = {
-  show: true,
+    }),
 };
-AllCombinations.parameters = {
-  display: 'grid',
-  columns: 'repeat(3, 1fr)',
-  style: {
-    gap: '3rem',
-    margin: '3rem',
-    placeItems: 'center',
+
+export const AllCombinations: Story<TooltipProps> = {
+  ...htmlMatrix(
+    (props: TooltipProps) =>
+      html('div', {
+        style: 'position: relative',
+        children: [
+          Button({ children: 'Target', kind: 'action', variant: 'primary' }),
+          Tooltip({ ...props, children: `${props.position} ${props.align}` }),
+        ],
+      }),
+    { position, align } // order is important
+  ),
+  args: {
+    show: true,
+  },
+  parameters: {
+    display: 'grid',
+    columns: 'repeat(3, 1fr)',
+    style: {
+      gap: '3rem',
+      margin: '3rem',
+      placeItems: 'center',
+    },
   },
 };

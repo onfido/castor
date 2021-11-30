@@ -58,13 +58,10 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<InputProps>;
 
-export const Playground: Story<InputProps> = (props) => <Input {...props} />;
+export const Playground: Story<InputProps> = {};
 
 export const Invalid = reactMatrix(Input, { invalid });
-Invalid.argTypes = omit('invalid');
-
 export const Disabled = reactMatrix(Input, { disabled });
-Disabled.argTypes = omit('disabled');
 
 interface InputWithLabelAndHelperTextProps extends InputProps {
   id: string;
@@ -72,21 +69,21 @@ interface InputWithLabelAndHelperTextProps extends InputProps {
   helperText: string;
 }
 
-export const WithLabelAndHelperText: Story<
-  InputWithLabelAndHelperTextProps
-> = ({ id, label, helperText, ...restProps }) => (
-  <Field>
-    <FieldLabel htmlFor={id}>
-      {label}
-      <HelperText>{helperText}</HelperText>
-      <Input {...restProps} id={id} />
-    </FieldLabel>
-  </Field>
-);
-WithLabelAndHelperText.args = {
-  id: 'input-with-label-and-helper-text',
-  label: 'Label',
-  helperText: 'Helper text',
+export const WithLabelAndHelperText: Story<InputWithLabelAndHelperTextProps> = {
+  args: {
+    id: 'input-with-label-and-helper-text',
+    label: 'Label',
+    helperText: 'Helper text',
+  },
+  render: ({ id, label, helperText, ...restProps }) => (
+    <Field>
+      <FieldLabel htmlFor={id}>
+        {label}
+        <HelperText>{helperText}</HelperText>
+        <Input {...restProps} id={id} />
+      </FieldLabel>
+    </Field>
+  ),
 };
 
 interface InputWithValidationProps extends InputProps {
@@ -94,32 +91,31 @@ interface InputWithValidationProps extends InputProps {
   withIcon: boolean;
 }
 
-export const WithValidation: Story<InputWithValidationProps> = ({
-  validation,
-  withIcon,
-  ...restProps
-}) => (
-  <Field>
-    <Input {...restProps} invalid={Boolean(validation)} />
-    <Validation state="error" withIcon={withIcon}>
-      {validation}
-    </Validation>
-  </Field>
-);
-WithValidation.argTypes = omit('disabled', 'invalid');
-WithValidation.args = {
-  validation: 'This field is not valid',
-  withIcon: true,
+export const WithValidation: Story<InputWithValidationProps> = {
+  args: {
+    validation: 'This field is not valid',
+    withIcon: true,
+  },
+  argTypes: omit('disabled', 'invalid'),
+  render: ({ validation, withIcon, ...restProps }) => (
+    <Field>
+      <Input {...restProps} invalid={Boolean(validation)} />
+      <Validation state="error" withIcon={withIcon}>
+        {validation}
+      </Validation>
+    </Field>
+  ),
 };
 
-export const AllCombinations = reactMatrix(
-  Input,
-  { disabled, invalid },
-  (props) => <Input {...props} value={value(props)} />
-);
-AllCombinations.parameters = {
-  display: 'grid',
-  columns: 'repeat(2, 1fr)',
+export const AllCombinations: Story<InputProps> = {
+  ...reactMatrix(
+    (props: InputProps) => <Input {...props} defaultValue={value(props)} />,
+    { disabled, invalid }
+  ),
+  parameters: {
+    display: 'grid',
+    columns: 'repeat(2, 1fr)',
+  },
 };
 
 const value = ({ disabled, invalid }: InputProps) =>

@@ -17,14 +17,6 @@ export default {
     },
     href: {
       description: 'When set will render as `<a>` element.',
-      table: { type: { summary: 'string' } },
-      control: 'text',
-    },
-    kind: {
-      table: { defaultValue: { summary: 'action' } },
-    },
-    variant: {
-      table: { defaultValue: { summary: 'primary' } },
     },
   },
   args: {
@@ -36,25 +28,16 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<ButtonProps>;
 
-export const Playground: Story<ButtonProps<'a'>> = (props) => (
-  <Button {...props} />
-);
+export const Playground: Story<ButtonProps<'a'>> = {};
 
 export const Kind = reactMatrix(Button, { kind });
-Kind.argTypes = omit('kind');
-
 export const Variant = reactMatrix(Button, { variant });
-Variant.argTypes = omit('variant');
-
 export const Disabled = reactMatrix(Button, { disabled });
-Disabled.argTypes = omit('disabled');
-
-export const AsAnchor: Story<ButtonProps<'a'>> = (props) => (
-  <Button {...props} />
-);
-AsAnchor.argTypes = omit('href');
-AsAnchor.args = {
-  href: 'javascript:void 0',
+export const AsAnchor: Story<ButtonProps<'a'>> = {
+  args: {
+    href: 'javascript:void 0',
+  },
+  argTypes: omit('href'),
 };
 
 const [firstIconName] = iconNames;
@@ -63,37 +46,36 @@ interface ButtonWithIconProps extends ButtonProps {
   iconName: IconName;
 }
 
-export const WithIcon: Story<ButtonWithIconProps> = ({
-  iconName,
-  children,
-  ...restProps
-}) => (
-  <>
-    <Button {...restProps}>
-      <Icon name={iconName} aria-hidden="true" />
-      {children}
-    </Button>
-    <Button {...restProps}>
-      {children}
-      <Icon name={iconName} aria-hidden="true" />
-    </Button>
-  </>
-);
-WithIcon.argTypes = {
-  iconName: { control: { type: 'select', options: iconNames } },
-};
-WithIcon.args = {
-  iconName: firstIconName,
+export const WithIcon: Story<ButtonWithIconProps> = {
+  render: ({ iconName, children, ...restProps }) => (
+    <>
+      <Button {...restProps}>
+        <Icon name={iconName} aria-hidden="true" />
+        {children}
+      </Button>
+      <Button {...restProps}>
+        {children}
+        <Icon name={iconName} aria-hidden="true" />
+      </Button>
+    </>
+  ),
+  args: {
+    iconName: firstIconName,
+  },
+  argTypes: {
+    iconName: { control: { type: 'select', options: iconNames } },
+  },
 };
 
-export const AllCombinations = reactMatrix(
-  Button,
-  { disabled, kind, variant },
-  (props) => <Button {...props}>{label(props)}</Button>
-);
-AllCombinations.parameters = {
-  display: 'grid',
-  columns: 'repeat(3, 1fr)',
+export const AllCombinations: Story<ButtonProps> = {
+  ...reactMatrix(
+    (props: ButtonProps) => <Button {...props}>{label(props)}</Button>,
+    { disabled, kind, variant }
+  ),
+  parameters: {
+    display: 'grid',
+    columns: 'repeat(3, 1fr)',
+  },
 };
 
 const label = ({ disabled, kind, variant }: ButtonProps) =>

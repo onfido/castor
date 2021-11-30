@@ -68,44 +68,43 @@ export default {
 } as Meta<PopoverProps>;
 
 type PlaygroundProps = PopoverProps & { show?: boolean; withPortal?: boolean };
-export const Playground: Story<PlaygroundProps> = ({
-  show,
-  withPortal,
-  ...props
-}) => {
-  const ref = useRef<HTMLButtonElement>(null);
-  const Container = withPortal ? Fragment : 'div';
+export const Playground: Story<PlaygroundProps> = {
+  args: {
+    withPortal: true,
+  },
+  render: ({ show, withPortal, ...props }) => {
+    const ref = useRef<HTMLButtonElement>(null);
+    const Container = withPortal ? Fragment : 'div';
 
-  return (
-    <Container {...(withPortal || { style: { position: 'relative' } })}>
-      <Button ref={withPortal ? ref : undefined}>Target</Button>
-      {show && <Popover {...props} target={withPortal ? ref : undefined} />}
-    </Container>
-  );
-};
-Playground.args = {
-  withPortal: true,
+    return (
+      <Container {...(withPortal || { style: { position: 'relative' } })}>
+        <Button ref={withPortal ? ref : undefined}>Target</Button>
+        {show && <Popover {...props} target={withPortal ? ref : undefined} />}
+      </Container>
+    );
+  },
 };
 
-export const ShowHideWithState: Story<PopoverProps> = (props) => {
-  const ref = useRef<HTMLButtonElement>(null);
-  const [show, setShow] = useState(false);
-  const hide = () => setShow(false);
+export const ShowHideWithState: Story<PopoverProps> = {
+  render: (props) => {
+    const ref = useRef<HTMLButtonElement>(null);
+    const [show, setShow] = useState(false);
+    const hide = () => setShow(false);
 
-  return (
-    <>
-      <Button ref={ref} onBlur={hide} onFocus={() => setShow(true)}>
-        Target
-      </Button>
-      {show && <Popover {...props} target={ref} onClose={hide} />}
-    </>
-  );
-};
-ShowHideWithState.storyName = 'show/hide with State';
-ShowHideWithState.parameters = {
-  docs: {
-    source: {
-      code: `
+    return (
+      <>
+        <Button ref={ref} onBlur={hide} onFocus={() => setShow(true)}>
+          Target
+        </Button>
+        {show && <Popover {...props} target={ref} onClose={hide} />}
+      </>
+    );
+  },
+  storyName: 'show/hide with State',
+  parameters: {
+    docs: {
+      source: {
+        code: `
 function MyComponent() {
   const ref = useRef<HTMLButtonElement>(null);
   const [show, setShow] = useState(false);
@@ -120,22 +119,24 @@ function MyComponent() {
     </>
   );
 };
-      `,
+`,
+      },
     },
   },
 };
 
-export const ShowHideWithCSS: Story<PopoverProps> = (props) => (
-  <div style={{ position: 'relative' }}>
-    <Button>Target</Button>
-    <Popover {...props} className={styles['story-popover-on-hover']} />
-  </div>
-);
-ShowHideWithCSS.storyName = 'show/hide with CSS';
-ShowHideWithCSS.parameters = {
-  docs: {
-    source: {
-      code: `
+export const ShowHideWithCSS: Story<PopoverProps> = {
+  render: (props) => (
+    <div style={{ position: 'relative' }}>
+      <Button>Target</Button>
+      <Popover {...props} className={styles['story-popover-on-hover']} />
+    </div>
+  ),
+  storyName: 'show/hide with CSS',
+  parameters: {
+    docs: {
+      source: {
+        code: `
 // CSS must be set outside of Castor, e.g.
 // :not(:focus, :hover) + .ods-popover {
 //   opacity: 0;
@@ -144,32 +145,34 @@ ShowHideWithCSS.parameters = {
   <Button>Target</Button>
   <Popover>Popover content</Popover>
 </div>
-      `,
+`,
+      },
     },
   },
 };
 
-export const AllCombinations = reactMatrix(
-  Popover,
-  { position, align }, // order is important
-  (props) => {
-    const ref = useRef<HTMLButtonElement>(null);
+export const AllCombinations: Story<PopoverProps> = {
+  ...reactMatrix(
+    (props: PopoverProps) => {
+      const ref = useRef<HTMLButtonElement>(null);
 
-    return (
-      <>
-        <Button ref={ref}>Target</Button>
-        <Popover {...props} target={ref}>
-          {props.position} {props.align}
-        </Popover>
-      </>
-    );
-  }
-);
-AllCombinations.parameters = {
-  display: 'grid',
-  columns: 'repeat(3, 1fr)',
-  style: {
-    gap: '3rem',
-    placeItems: 'center',
+      return (
+        <>
+          <Button ref={ref}>Target</Button>
+          <Popover {...props} target={ref}>
+            {props.position} {props.align}
+          </Popover>
+        </>
+      );
+    },
+    { position, align } // order is important
+  ),
+  parameters: {
+    display: 'grid',
+    columns: 'repeat(3, 1fr)',
+    style: {
+      gap: '3rem',
+      placeItems: 'center',
+    },
   },
 };
