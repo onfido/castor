@@ -119,7 +119,10 @@ export const CustomSelect = withRef(function CustomSelect(
         {!currentValue || <option hidden value={currentValue} />}
       </NativeSelect>
 
-      <output className={classy(c('select-output'))}>{selectedOption}</output>
+      <output className={classy(c('select-output'))}>
+        {selectedOption}
+        &nbsp; {/* no-break space guarantees element height */}
+      </output>
 
       {isOpen && (
         <Popover
