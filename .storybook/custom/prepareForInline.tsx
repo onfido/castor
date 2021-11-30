@@ -8,20 +8,15 @@ export const prepareForInline = (
   ctx: StoryContext & ContainerContext
 ) => {
   const story = storyFn();
-  const content: unknown = ctx.getOriginal()(ctx.args);
+  const content: unknown = ctx.originalStoryFn(ctx.args as any, ctx);
   const decorate = withDecorators(ctx);
 
   if (typeof content === 'string')
     return decorate(<HtmlContainer>{content}</HtmlContainer>);
-
-  if (content instanceof Element) return decorate(<DomNode>{content}</DomNode>);
+  else if (ctx.id.startsWith('css-')) return decorate(story);
 
   return story;
 };
-
-const DomNode = ({ children }: { children: Element }) => (
-  <HtmlContainer>{children.innerHTML}</HtmlContainer>
-);
 
 const HtmlContainer = ({ children }: { children: string }) => (
   <div ref={(node) => node && (node.outerHTML = children)} />
