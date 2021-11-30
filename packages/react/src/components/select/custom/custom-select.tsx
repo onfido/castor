@@ -71,7 +71,6 @@ export function CustomSelect({
     <CustomSelectProvider
       value={{
         name,
-        selectedOption,
         value: currentValue,
         initialize(option, optionValue) {
           options.current.set(optionValue, option);
