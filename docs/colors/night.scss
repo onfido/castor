@@ -1,6 +1,5 @@
 @use '~@onfido/castor';
 
 :export {
-  @include castor.day();
   @include castor.night();
 }
