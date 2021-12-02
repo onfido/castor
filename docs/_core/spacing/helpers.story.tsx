@@ -9,7 +9,7 @@ export const Helpers = () => (
     </p>
     <h4>Sass</h4>
     <Source
-      language="scss"
+      language="css"
       code={`
         @use '~@onfido/castor';
 
