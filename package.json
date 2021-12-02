@@ -45,7 +45,7 @@
   "devDependencies": {
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
-    "@cypress/code-coverage": "^3.9.11",
+    "@cypress/code-coverage": "^3.9.12",
     "@onfido/castor-icons": "*",
     "@storybook/addon-a11y": "^6.4.4",
     "@storybook/addon-controls": "^6.4.3",
