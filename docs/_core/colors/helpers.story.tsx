@@ -38,7 +38,7 @@ export const Helpers = () => (
     <h4>Color Palette</h4>
     <p>
       You may also use colors directly from palette, providing an optional alpha
-      channel. However, theming support is then limited.
+      channel (opacity). However, theming support is then limited.
     </p>
     <h5>Sass</h5>
     <Source

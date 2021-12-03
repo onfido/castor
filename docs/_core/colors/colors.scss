@@ -1,0 +1,55 @@
+@use '~@onfido/castor';
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: castor.space(4);
+  margin: castor.space(-4);
+}
+
+.title {
+  @include castor.font('500-bold');
+  margin: 0;
+  margin-left: castor.space(3);
+  text-transform: capitalize;
+}
+
+.preview {
+  @include castor.font('400-bold');
+  align-items: center;
+  display: flex;
+  display: grid;
+  flex-wrap: wrap;
+  grid: auto / 1fr 1fr 1fr;
+}
+
+.color {
+  @include castor.font('300-regular');
+  align-items: center;
+  display: flex;
+  gap: castor.space(1);
+  justify-content: start;
+  line-height: 1;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.name {
+  color: castor.color('content-main');
+  display: flex;
+  flex-direction: column;
+  gap: castor.space(0.5);
+}
+
+.secondary {
+  @include castor.font('200-regular');
+  color: castor.color('content-secondary');
+}
+
+.circle {
+  border: castor.space(0.125) solid castor.color('background-surface-alt');
+  border-radius: castor.border-radius('full');
+  display: inline-block;
+  height: castor.space(4.5);
+  width: castor.space(4.5);
+}
