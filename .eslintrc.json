@@ -3,7 +3,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:storybook/recommended"
   ],
   "settings": { "react": { "version": "detect" } },
   "rules": {
@@ -15,12 +16,6 @@
   },
   "overrides": [
     {
-      "files": ["*.cjs"],
-      "rules": {
-        "@typescript-eslint/no-var-requires": "off"
-      }
-    },
-    {
       "files": ["*.spec.ts{,x}"],
       "rules": {
         "@typescript-eslint/no-empty-function": "off",
@@ -28,9 +23,9 @@
       }
     },
     {
-      "files": ["*.stories.tsx"],
+      "files": ["*.story.ts{,x}"],
       "rules": {
-        "react/prop-types": "off"
+        "storybook/default-exports": "off"
       }
     }
   ]

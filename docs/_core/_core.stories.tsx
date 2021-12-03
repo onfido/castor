@@ -1,17 +1,18 @@
+// eslint-disable-next-line storybook/story-exports
 import { Primary, Stories } from '@storybook/addon-docs';
 import React from 'react';
-
-const docsPage = () => (
-  <>
-    <Primary />
-    <Stories />
-  </>
-);
 
 export default {
   title: 'Castor',
   parameters: {
-    docs: { page: docsPage },
+    docs: {
+      page: () => (
+        <>
+          <Primary />
+          <Stories />
+        </>
+      ),
+    },
   },
 };
 
