@@ -53,7 +53,7 @@
     "@storybook/addon-google-analytics": "^6.2.9",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-toolbars": "^6.4.4",
-    "@storybook/components": "^6.4.4",
+    "@storybook/components": "^6.4.7",
     "@storybook/react": "^6.4.4",
     "@types/cypress-image-snapshot": "^3.1.6",
     "@types/jest": "^27.0.3",

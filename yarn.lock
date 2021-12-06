@@ -2597,7 +2597,15 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components@6.4.4", "@storybook/components@^6.4.4":
+"@storybook/client-logger@6.4.7":
+  version "6.4.7"
+  resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-6.4.7.tgz#7ac24b4d274338fdc7645a46d923cc0067d39acd"
+  integrity sha512-KVofbgKVK8e6cmkEg9U/ec4hNrVx02LGw1CrMOkhdDBEzGjXwrqK6ohnim19lCMAGOSqzyJfRPR8PJdEl4kirg==
+  dependencies:
+    core-js "^3.8.2"
+    global "^4.4.0"
+
+"@storybook/components@6.4.4":
   version "6.4.4"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.4.4.tgz#3091d581c7e1ea243ac493317d37ddffc0e6fb2d"
   integrity sha512-mU0DncZJi3c3jUqGpgKz3noh93AWbJYiGEPp4ZrgPD/3HxQNP9I3NF4D/PUlfna5nSHcqwPfPV2kvrGqyk1c3w==
@@ -2614,6 +2622,36 @@
     fast-deep-equal "^3.1.3"
     global "^4.4.0"
     lodash "^4.17.20"
+    markdown-to-jsx "^7.1.3"
+    memoizerific "^1.11.3"
+    overlayscrollbars "^1.13.1"
+    polished "^4.0.5"
+    prop-types "^15.7.2"
+    react-colorful "^5.1.2"
+    react-popper-tooltip "^3.1.1"
+    react-syntax-highlighter "^13.5.3"
+    react-textarea-autosize "^8.3.0"
+    regenerator-runtime "^0.13.7"
+    ts-dedent "^2.0.0"
+    util-deprecate "^1.0.2"
+
+"@storybook/components@^6.4.7":
+  version "6.4.7"
+  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.4.7.tgz#5da1181cdc2bc6e4248dcd3c1c1e4e9cd33d261a"
+  integrity sha512-/2gQmtb8I7gNNNZtjkHfgHt1G3Tr9yBCPiX2q43JvwwPkeuPQ/Whv3FDXAWrdnFOAXCFhowNT4HXlon5GwS1UA==
+  dependencies:
+    "@popperjs/core" "^2.6.0"
+    "@storybook/client-logger" "6.4.7"
+    "@storybook/csf" "0.0.2--canary.87bc651.0"
+    "@storybook/theming" "6.4.7"
+    "@types/color-convert" "^2.0.0"
+    "@types/overlayscrollbars" "^1.12.0"
+    "@types/react-syntax-highlighter" "11.0.5"
+    color-convert "^2.0.1"
+    core-js "^3.8.2"
+    fast-deep-equal "^3.1.3"
+    global "^4.4.0"
+    lodash "^4.17.21"
     markdown-to-jsx "^7.1.3"
     memoizerific "^1.11.3"
     overlayscrollbars "^1.13.1"
@@ -3046,6 +3084,24 @@
     "@emotion/is-prop-valid" "^0.8.6"
     "@emotion/styled" "^10.0.27"
     "@storybook/client-logger" "6.4.4"
+    core-js "^3.8.2"
+    deep-object-diff "^1.1.0"
+    emotion-theming "^10.0.27"
+    global "^4.4.0"
+    memoizerific "^1.11.3"
+    polished "^4.0.5"
+    resolve-from "^5.0.0"
+    ts-dedent "^2.0.0"
+
+"@storybook/theming@6.4.7":
+  version "6.4.7"
+  resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-6.4.7.tgz#da1876b46770a824c82e4ffe8069e9348073d2e7"
+  integrity sha512-xXQxnwx3nB/yDKYkvaUXdwLIL0E3oMlysLFx4VLVPKuF1co/rZCdyUD8aJM/tApczZpQULdiId6Llzzcvcl/wA==
+  dependencies:
+    "@emotion/core" "^10.1.1"
+    "@emotion/is-prop-valid" "^0.8.6"
+    "@emotion/styled" "^10.0.27"
+    "@storybook/client-logger" "6.4.7"
     core-js "^3.8.2"
     deep-object-diff "^1.1.0"
     emotion-theming "^10.0.27"
