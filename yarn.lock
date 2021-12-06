@@ -2343,15 +2343,15 @@
     postcss-loader "^4.2.0"
     style-loader "^1.3.0"
 
-"@storybook/addon-toolbars@^6.4.4":
-  version "6.4.4"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-toolbars/-/addon-toolbars-6.4.4.tgz#8abd693cc0b70b768d3a8e42d63108240e096c77"
-  integrity sha512-DqWudVpQuJLHcURAq3cYXYPkI70h49/nDNvZ7Z+je2DWwcn+dJvhk4+sBD5CJG1JRtLxrKl9MJE8ANlZP069nw==
+"@storybook/addon-toolbars@^6.4.7":
+  version "6.4.7"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-toolbars/-/addon-toolbars-6.4.7.tgz#7a8ccdeee80e6e2dbb6fb6dcc5c6c3beeb991982"
+  integrity sha512-tgE0YRpPSa96eEwmCm03DpUSyR4JyIkNUuciYYsmg8OpedpWHH+fLYduUlxEtM9ToUTbtKjOfhrYQ068Dlf6pA==
   dependencies:
-    "@storybook/addons" "6.4.4"
-    "@storybook/api" "6.4.4"
-    "@storybook/components" "6.4.4"
-    "@storybook/theming" "6.4.4"
+    "@storybook/addons" "6.4.7"
+    "@storybook/api" "6.4.7"
+    "@storybook/components" "6.4.7"
+    "@storybook/theming" "6.4.7"
     core-js "^3.8.2"
     regenerator-runtime "^0.13.7"
 
