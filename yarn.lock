@@ -2228,23 +2228,23 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@storybook/addon-a11y@^6.4.4":
-  version "6.4.4"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-6.4.4.tgz#736aa96beee92a2849318a0970ab4f506e825fb9"
-  integrity sha512-Rr4ll9bkDcUX8sy/O09X1XUGTRW0CXRflsgF3yw5+9F5x4Qb6h5xjNeznW+yV8K3/9IJIYaDP1ZLLFw9iRcnWw==
+"@storybook/addon-a11y@^6.4.8":
+  version "6.4.8"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-6.4.8.tgz#1cbd434380dc322eca111b9a6a51336a3ec17db8"
+  integrity sha512-gD1hTLhzfGEIa8/T+WzL8fOfl9w1lFCnGQVbBlcwk5BYLg2qUA5Gg1zIGgr/0G69Uq2G92Hc26YEsomOY1qprg==
   dependencies:
-    "@storybook/addons" "6.4.4"
-    "@storybook/api" "6.4.4"
-    "@storybook/channels" "6.4.4"
-    "@storybook/client-logger" "6.4.4"
-    "@storybook/components" "6.4.4"
-    "@storybook/core-events" "6.4.4"
+    "@storybook/addons" "6.4.8"
+    "@storybook/api" "6.4.8"
+    "@storybook/channels" "6.4.8"
+    "@storybook/client-logger" "6.4.8"
+    "@storybook/components" "6.4.8"
+    "@storybook/core-events" "6.4.8"
     "@storybook/csf" "0.0.2--canary.87bc651.0"
-    "@storybook/theming" "6.4.4"
+    "@storybook/theming" "6.4.8"
     axe-core "^4.2.0"
     core-js "^3.8.2"
     global "^4.4.0"
-    lodash "^4.17.20"
+    lodash "^4.17.21"
     react-sizeme "^3.0.1"
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
@@ -2866,7 +2866,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/components@6.4.7", "@storybook/components@^6.4.4":
+"@storybook/components@6.4.7":
   version "6.4.7"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.4.7.tgz#5da1181cdc2bc6e4248dcd3c1c1e4e9cd33d261a"
   integrity sha512-/2gQmtb8I7gNNNZtjkHfgHt1G3Tr9yBCPiX2q43JvwwPkeuPQ/Whv3FDXAWrdnFOAXCFhowNT4HXlon5GwS1UA==
@@ -2896,7 +2896,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/components@6.4.8":
+"@storybook/components@6.4.8", "@storybook/components@^6.4.4":
   version "6.4.8"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.4.8.tgz#cdcc3d0e8163e6fdc62e37963e5e5d69cb0bd8a8"
   integrity sha512-nNEv+jNHTiKTYIjzqpOSr6L4eRTHx3BCiFCVnOpRiPVh4GQ5edj9PrJTdlmNS6Czyexoc/52v/NoyGc13tP+mQ==
