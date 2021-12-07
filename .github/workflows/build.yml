@@ -44,11 +44,11 @@ jobs:
       - name: Build (bundled) examples
         run: |
           yarn --cwd ./examples/custom-themes build
-          yarn --cwd ./examples/html-css-js-parcel build
-          yarn --cwd ./examples/html-scss-ts-parcel build
-          yarn --cwd ./examples/react-emotion-ts-parcel build
+          yarn --cwd ./examples/html-css-js-bundler build
+          yarn --cwd ./examples/html-scss-ts-bundler build
+          yarn --cwd ./examples/react-emotion-ts-bundler build
           yarn --cwd ./examples/react-scss-js-webpack build
-          yarn --cwd ./examples/react-scss-ts-parcel build
+          yarn --cwd ./examples/react-scss-ts-bundler build
 
       - name: Generate prototype
         run: yarn prototype

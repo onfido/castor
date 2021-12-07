@@ -43,7 +43,7 @@ Choose _one_ theme from the following options:
 `@use` Castor within your main Sass file:
 
 ```scss
-@use '~@onfido/castor';
+@use '@onfido/castor';
 ```
 
 One time only, choose and include _one_ theme within your root element from the following options:
@@ -71,7 +71,7 @@ Also include any component(s) you wish to use. For example:
 If you're using CSS modules, you must use a global scope when including components. For example, for [PostCSS](https://postcss.org/):
 
 ```scss
-@use '~@onfido/castor';
+@use '@onfido/castor';
 
 :global {
   @include castor.Button();
@@ -127,7 +127,7 @@ switchTheme('night');
 You can also include class themes within your Sass file instead:
 
 ```scss
-@use '~@onfido/castor';
+@use '@onfido/castor';
 
 @include castor.day('class');
 @include castor.night('class');
@@ -152,7 +152,7 @@ If you do not use JavaScript, you might consider including a different CSS theme
 Lastly, if you're extremely concerned about efficiency, you can shave off 1-3 KBs by not including base tokens twice, if they're shared between the themes you're switching:
 
 ```scss
-@use '~@onfido/castor';
+@use '@onfido/castor';
 
 :root {
   @include castor.tokens();
@@ -185,7 +185,7 @@ For example, if you'd like a round button, you can create a CSS modifier class u
 Or using the Sass helper:
 
 ```scss
-@use '~@onfido/castor';
+@use '@onfido/castor';
 
 .ods-button.round {
   border-radius: castor.border-radius('full');

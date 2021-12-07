@@ -1,15 +1,16 @@
 {
   "name": "castor-html-css-js",
   "version": "2.0.2",
+  "type": "module",
   "private": true,
-  "main": "index.html",
   "scripts": {
+    "start": "yarn copy && http-server -p 1111 -o",
     "copy": "concurrently yarn:copy:*",
     "copy:castor": "shx cp -R ../../node_modules/@onfido/castor/ .castor",
-    "copy:castor-icons": "shx cp -R ../../node_modules/@onfido/castor-icons/ .castor-icons",
-    "start": "yarn copy && http-server -p 1111 -o"
+    "copy:castor-icons": "shx cp -R ../../node_modules/@onfido/castor-icons/ .castor-icons"
   },
   "dependencies": {
+    "@onfido/castor": "*",
     "@onfido/castor-icons": "*"
   },
   "devDependencies": {

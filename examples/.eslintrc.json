@@ -1,3 +1,4 @@
 {
-  "env": { "browser": true }
+  "env": { "browser": true },
+  "extends": ["plugin:react/jsx-runtime"]
 }

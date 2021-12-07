@@ -1,6 +1,6 @@
 {
   "include": ["**/*"],
-  "exclude": ["node_modules/**/*", "e2e/**/*"],
+  "exclude": ["node_modules/**/*", "e2e/**/*", "examples/**/*"],
   "compilerOptions": {
     "alwaysStrict": true,
     "declaration": false,
@@ -11,10 +11,10 @@
     "skipLibCheck": false,
     "strict": true,
 
+    "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "target": "es2019",
-    "esModuleInterop": true,
     "jsx": "react",
 
     "lib": ["esnext", "dom"]

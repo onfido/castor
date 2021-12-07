@@ -1,0 +1,29 @@
+@use '@onfido/castor';
+
+.grid {
+  display: grid;
+  gap: castor.space(5);
+  grid: auto-flow / 1fr 1fr 1fr;
+  margin: 0;
+  place-items: center;
+}
+
+.raised {
+  box-shadow: 0 castor.space(0.25) castor.space(0.5)
+    castor.color('neutral-900', 0.3);
+}
+
+.round {
+  border-radius: castor.border-radius(full);
+}
+
+.icon {
+  background-color: currentColor;
+  display: inline-block;
+  height: castor.space(3);
+  width: castor.space(3);
+}
+
+.passport {
+  mask: url('@onfido/castor-icons/svg/icon-passport.svg') no-repeat 100%;
+}

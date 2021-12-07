@@ -1,29 +1,27 @@
-@use '~@onfido/castor';
+@use '@onfido/castor';
 
-:global {
-  @include castor.components();
+@include castor.Button();
 
-  body {
-    align-items: center;
-    display: flex;
-    font-family: 'Helvetica Neue', Tahoma, sans-serif;
-    font-size: 16px;
-    height: 100vh;
-    justify-content: center;
-    margin: 0;
-  }
+body {
+  align-items: center;
+  display: flex;
+  font-family: 'Helvetica Neue', Tahoma, sans-serif;
+  font-size: 1rem;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+}
 
-  .app {
-    background-color: castor.color(background-main);
-    border: 1px solid castor.color(border-action);
-    border-radius: castor.border-radius(medium);
-    color: castor.color(content-main);
-    padding: castor.space(4);
-    transition: 0.2s ease;
-  }
+.app {
+  background-color: castor.color('background-main');
+  border: castor.space(0.125) solid castor.color('border-action');
+  border-radius: castor.border-radius('medium');
+  color: castor.color('content-main');
+  padding: castor.space(4);
+  transition: 0.2s ease;
+}
 
-  p {
-    @include castor.font('400-bold');
-    margin-top: 0;
-  }
+p {
+  @include castor.font('400-bold');
+  margin-top: 0;
 }

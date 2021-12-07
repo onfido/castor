@@ -1,6 +1,6 @@
 import { classy } from '@onfido/castor';
 import React, { CSSProperties } from 'react';
-import styles from './container.scss';
+import * as styles from './container.scss';
 
 export const withContainer = (
   storyFn: () => JSX.Element,

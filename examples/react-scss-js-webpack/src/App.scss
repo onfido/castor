@@ -1,4 +1,4 @@
-@use '~@onfido/castor';
+@use '@onfido/castor';
 
 .grid {
   display: grid;
@@ -9,7 +9,8 @@
 }
 
 .raised {
-  box-shadow: 0 2px 4px castor.color('neutral-900', 0.3);
+  box-shadow: 0 castor.space(0.25) castor.space(0.5)
+    castor.color('neutral-900', 0.3);
 }
 
 .round {
@@ -19,11 +20,14 @@
 .icon {
   background-color: currentColor;
   display: inline-block;
-  height: 24px;
-  width: 24px;
+  height: castor.space(3);
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  width: castor.space(3);
 }
 
 .passport {
-  mask: url('../../../node_modules/@onfido/castor-icons/svg/icon-passport.svg')
+  --mask: url('../../../node_modules/@onfido/castor-icons/svg/icon-passport.svg')
     no-repeat 100%;
 }
