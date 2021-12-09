@@ -15,7 +15,7 @@ export const CreatingTheme = () => (
       &#34;day&#34; theme, and then to change some theme tokens:
     </p>
     <Source
-      language="scss"
+      language="css"
       code={`
         @use '~@onfido/castor';
 
@@ -35,7 +35,7 @@ export const CreatingTheme = () => (
       Or by extending &#34;night&#34; theme, and then changing some base tokens:
     </p>
     <Source
-      language="scss"
+      language="css"
       code={`
         @use '~@onfido/castor';
 
@@ -68,7 +68,7 @@ export const CreatingTheme = () => (
       themes, but instead override base tokens:
     </p>
     <Source
-      language="scss"
+      language="css"
       code={`
         @use '~@onfido/castor';
 

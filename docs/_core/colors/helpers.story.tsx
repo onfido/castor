@@ -10,7 +10,7 @@ export const Helpers = () => (
     </p>
     <h5>Sass</h5>
     <Source
-      language="scss"
+      language="css"
       code={`
         @use '~@onfido/castor';
 
@@ -42,7 +42,7 @@ export const Helpers = () => (
     </p>
     <h5>Sass</h5>
     <Source
-      language="scss"
+      language="css"
       code={`
         .box {
           background-color: castor.color('primary-500', 0.5);

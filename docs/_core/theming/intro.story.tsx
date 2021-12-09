@@ -70,7 +70,7 @@ export const Intro = () => (
       If you prefer, you may also include class themes within your Sass file:
     </p>
     <Source
-      language="scss"
+      language="css"
       code={`
         @use '~@onfido/castor';
 
@@ -85,7 +85,7 @@ export const Intro = () => (
       &#34;raw&#34; versions:
     </p>
     <Source
-      language="scss"
+      language="css"
       code={`
         @use '~@onfido/castor';
 

@@ -6,7 +6,7 @@ export const Helpers = () => (
     <p>Use one of allowed sizes when setting border radius of an element.</p>
     <h4>Sass</h4>
     <Source
-      language="scss"
+      language="css"
       code={`
         @use '~@onfido/castor';
 
