@@ -2596,7 +2596,15 @@
     core-js "^3.8.2"
     global "^4.4.0"
 
-"@storybook/components@6.4.8", "@storybook/components@^6.4.4":
+"@storybook/client-logger@6.4.9":
+  version "6.4.9"
+  resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-6.4.9.tgz#ef6af30fac861fea69c8917120ed06b4c2f0b54e"
+  integrity sha512-BVagmmHcuKDZ/XROADfN3tiolaDW2qG0iLmDhyV1gONnbGE6X5Qm19Jt2VYu3LvjKF1zMPSWm4mz7HtgdwKbuQ==
+  dependencies:
+    core-js "^3.8.2"
+    global "^4.4.0"
+
+"@storybook/components@6.4.8":
   version "6.4.8"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.4.8.tgz#cdcc3d0e8163e6fdc62e37963e5e5d69cb0bd8a8"
   integrity sha512-nNEv+jNHTiKTYIjzqpOSr6L4eRTHx3BCiFCVnOpRiPVh4GQ5edj9PrJTdlmNS6Czyexoc/52v/NoyGc13tP+mQ==
@@ -2605,6 +2613,36 @@
     "@storybook/client-logger" "6.4.8"
     "@storybook/csf" "0.0.2--canary.87bc651.0"
     "@storybook/theming" "6.4.8"
+    "@types/color-convert" "^2.0.0"
+    "@types/overlayscrollbars" "^1.12.0"
+    "@types/react-syntax-highlighter" "11.0.5"
+    color-convert "^2.0.1"
+    core-js "^3.8.2"
+    fast-deep-equal "^3.1.3"
+    global "^4.4.0"
+    lodash "^4.17.21"
+    markdown-to-jsx "^7.1.3"
+    memoizerific "^1.11.3"
+    overlayscrollbars "^1.13.1"
+    polished "^4.0.5"
+    prop-types "^15.7.2"
+    react-colorful "^5.1.2"
+    react-popper-tooltip "^3.1.1"
+    react-syntax-highlighter "^13.5.3"
+    react-textarea-autosize "^8.3.0"
+    regenerator-runtime "^0.13.7"
+    ts-dedent "^2.0.0"
+    util-deprecate "^1.0.2"
+
+"@storybook/components@^6.4.9":
+  version "6.4.9"
+  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.4.9.tgz#caed59eb3f09d1646da748186f718a0e54fb8fd7"
+  integrity sha512-uOUR97S6kjptkMCh15pYNM1vAqFXtpyneuonmBco5vADJb3ds0n2a8NeVd+myIbhIXn55x0OHKiSwBH/u7swCQ==
+  dependencies:
+    "@popperjs/core" "^2.6.0"
+    "@storybook/client-logger" "6.4.9"
+    "@storybook/csf" "0.0.2--canary.87bc651.0"
+    "@storybook/theming" "6.4.9"
     "@types/color-convert" "^2.0.0"
     "@types/overlayscrollbars" "^1.12.0"
     "@types/react-syntax-highlighter" "11.0.5"
@@ -3045,6 +3083,24 @@
     "@emotion/is-prop-valid" "^0.8.6"
     "@emotion/styled" "^10.0.27"
     "@storybook/client-logger" "6.4.8"
+    core-js "^3.8.2"
+    deep-object-diff "^1.1.0"
+    emotion-theming "^10.0.27"
+    global "^4.4.0"
+    memoizerific "^1.11.3"
+    polished "^4.0.5"
+    resolve-from "^5.0.0"
+    ts-dedent "^2.0.0"
+
+"@storybook/theming@6.4.9":
+  version "6.4.9"
+  resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-6.4.9.tgz#8ece44007500b9a592e71eca693fbeac90803b0d"
+  integrity sha512-Do6GH6nKjxfnBg6djcIYAjss5FW9SRKASKxLYxX2RyWJBpz0m/8GfcGcRyORy0yFTk6jByA3Hs+WFH3GnEbWkw==
+  dependencies:
+    "@emotion/core" "^10.1.1"
+    "@emotion/is-prop-valid" "^0.8.6"
+    "@emotion/styled" "^10.0.27"
+    "@storybook/client-logger" "6.4.9"
     core-js "^3.8.2"
     deep-object-diff "^1.1.0"
     emotion-theming "^10.0.27"
