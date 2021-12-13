@@ -1,0 +1,26 @@
+{
+  "name": "castor-react-emotion-ts-bundler",
+  "version": "2.0.2",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "vite --open",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@emotion/core": "^11.0.0",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@onfido/castor": "*",
+    "@onfido/castor-icons": "*",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "@vitejs/plugin-react": "^1.1.1",
+    "typescript": "^4.5.3",
+    "vite": "^2.7.0"
+  }
+}

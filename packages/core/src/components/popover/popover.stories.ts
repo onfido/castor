@@ -7,7 +7,7 @@ import {
   Story,
 } from '../../../../../docs';
 import { Button } from '../button/button.story';
-import styles from './popover.stories.scss';
+import * as styles from './popover.stories.scss';
 import { Popover, PopoverProps } from './popover.story';
 
 const align = ['center', 'start', 'end'] as const;

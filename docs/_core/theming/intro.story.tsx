@@ -72,7 +72,7 @@ export const Intro = () => (
     <Source
       language="css"
       code={`
-        @use '~@onfido/castor';
+        @use '@onfido/castor';
 
         @include castor.day('class');
         @include castor.night('class');
@@ -87,7 +87,7 @@ export const Intro = () => (
     <Source
       language="css"
       code={`
-        @use '~@onfido/castor';
+        @use '@onfido/castor';
 
         :root {
           @include castor.tokens();

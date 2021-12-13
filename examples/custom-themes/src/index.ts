@@ -1,5 +1,4 @@
 import { switchTheme } from '@onfido/castor';
-import './index.scss';
 
 // lazy load themes
 const importThemes = {

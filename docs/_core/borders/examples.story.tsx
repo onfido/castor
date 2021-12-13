@@ -1,6 +1,6 @@
 import { BorderRadius, borderRadius } from '@onfido/castor';
 import React from 'react';
-import styles from './borders.scss';
+import * as styles from './borders.scss';
 
 export const Examples = () => (
   <div className={styles.container}>

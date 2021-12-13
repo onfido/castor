@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './spacing.scss';
+import * as styles from './spacing.scss';
 
 export const Examples = () => (
   <>

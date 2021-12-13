@@ -8,7 +8,7 @@ export const Helpers = () => (
     <Source
       language="css"
       code={`
-        @use '~@onfido/castor';
+        @use '@onfido/castor';
 
         .box {
           border-radius: castor.border-radius('medium');

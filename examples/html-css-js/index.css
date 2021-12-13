@@ -2,7 +2,7 @@ body {
   align-items: center;
   display: flex;
   font-family: 'Helvetica Neue', Tahoma, sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   height: 100vh;
   justify-content: center;
   margin: 0;
@@ -28,7 +28,8 @@ body {
   background-color: currentColor;
   display: inline-block;
   height: 24px;
-  mask: var(--mask);
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask: var(--mask);
   mask: var(--mask);
   width: 24px;
 }

@@ -2,7 +2,7 @@ import { Color, color } from '@onfido/castor';
 import { Button, Tooltip } from '@onfido/castor-react';
 import React, { useRef, useState } from 'react';
 import { colors, tokens } from '../..';
-import styles from './colors.scss';
+import * as styles from './colors.scss';
 
 export const Examples = () => {
   const timeout = useRef<number>();

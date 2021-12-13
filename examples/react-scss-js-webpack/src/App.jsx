@@ -19,7 +19,7 @@ export const App = () => (
       </Button>
       <Button>
         <IconPassport fill="currentColor" />
-        Individual (JS) icon
+        Individual (React) icon
       </Button>
       <Button>
         <i className={`${styles.icon} ${styles.passport}`} />

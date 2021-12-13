@@ -1,0 +1,18 @@
+@use '@onfido/castor';
+
+:root {
+  @include castor.day();
+}
+
+@include castor.Button();
+@include castor.Icon();
+
+body {
+  align-items: center;
+  display: flex;
+  font-family: 'Helvetica Neue', Tahoma, sans-serif;
+  font-size: 1rem;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+}

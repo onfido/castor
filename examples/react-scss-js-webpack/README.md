@@ -8,7 +8,7 @@ This is here for the core contributors to test Castor integration with older pro
 
 Even Babel is not recommended in favour of TypeScript.
 
-**Prefer any other example**, you might want to see `react-emotion-ts-parcel` or `react-scss-ts-parcel`.
+**Prefer any other example**, you might want to see `react-scss-ts-bundler` or `react-emotion-ts-bundler`.
 
 ## ES5 and IE 11 support
 
@@ -66,6 +66,4 @@ module: {
 
 If you can use Sass exclusively you can assume all are modules and not worry about `.css` files.
 
-See `react-scss-ts-parcel` for an example.
-
-The webpack setup for that is simply the second rule written just above.
+See `react-scss-ts-bundler` for a different example.

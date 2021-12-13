@@ -11,7 +11,7 @@ export const Helpers = () => (
     <Source
       language="css"
       code={`
-        @use '~@onfido/castor';
+        @use '@onfido/castor';
 
         .text {
           @include castor.font('600-regular');

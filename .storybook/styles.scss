@@ -1,4 +1,4 @@
-@use '~@onfido/castor';
+@use '@onfido/castor';
 
 :global {
   @include castor.components();

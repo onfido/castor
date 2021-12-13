@@ -2,13 +2,13 @@
   "name": "castor-react-scss-js-webpack",
   "version": "2.0.2",
   "private": true,
-  "main": "src/index.html",
   "scripts": {
-    "build": "webpack --mode production",
     "start": "webpack serve --mode development --open --hot",
+    "build": "webpack --mode production",
     "test": "es-check --module es5 ./dist/*.js"
   },
   "dependencies": {
+    "@onfido/castor": "*",
     "@onfido/castor-icons": "*",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
@@ -17,11 +17,11 @@
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.16.0",
-    "@open-wc/webpack-index-html-plugin": "^1.7.11",
+    "@open-wc/webpack-index-html-plugin": "^1.7.14",
     "babel-loader": "^8.2.3",
     "css-loader": "^5.2.7",
     "es-check": "^6.1.1",
-    "file-loader": "^6.1.0",
+    "file-loader": "^6.2.0",
     "sass-loader": "^10.2.0",
     "style-loader": "^2.0.0",
     "webpack": "^4.46.0",

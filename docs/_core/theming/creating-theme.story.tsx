@@ -17,7 +17,7 @@ export const CreatingTheme = () => (
     <Source
       language="css"
       code={`
-        @use '~@onfido/castor';
+        @use '@onfido/castor';
 
         // .castor-theme--custom-a
         @include castor.theme('custom-a', 'class') {
@@ -37,7 +37,7 @@ export const CreatingTheme = () => (
     <Source
       language="css"
       code={`
-        @use '~@onfido/castor';
+        @use '@onfido/castor';
 
         // .castor-theme--custom-b
         @include castor.theme('custom-b', 'class') {
@@ -70,7 +70,7 @@ export const CreatingTheme = () => (
     <Source
       language="css"
       code={`
-        @use '~@onfido/castor';
+        @use '@onfido/castor';
 
         :root {
           @include castor.tokens();

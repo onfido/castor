@@ -6,7 +6,7 @@ import {
   reactMatrix,
   Story,
 } from '../../../../../docs';
-import styles from './popover.stories.scss';
+import * as styles from './popover.stories.scss';
 
 const align = ['center', 'start', 'end'] as const;
 const position = ['top', 'left', 'right', 'bottom'] as const;
