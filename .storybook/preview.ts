@@ -2,7 +2,7 @@ import { Parameters } from '@storybook/addons';
 import { withContainer } from '../docs/decorators/withContainer';
 import { withIcons } from '../docs/decorators/withIcons';
 import { themeNames, withTheme } from '../docs/decorators/withTheme';
-import { prepareForInline, storySort, transformSource } from './custom';
+import { prepareForInline, transformSource } from './custom';
 import './styles.scss';
 
 export const parameters: Parameters = {
@@ -13,7 +13,9 @@ export const parameters: Parameters = {
   },
   options: {
     panelPosition: 'right',
-    storySort,
+    storySort: {
+      order: ['Intro'],
+    },
   },
   docs: { prepareForInline, transformSource },
 };
