@@ -1,23 +1,33 @@
-import { StoryContext } from '@storybook/addons';
-import React from 'react';
-import { ContainerContext } from '../../docs/decorators/withContainer';
-import { decorators } from '../preview';
+import React, { ReactElement, ReactNode } from 'react';
 
-export const prepareForInline = (
-  storyFn: () => JSX.Element,
-  ctx: StoryContext & ContainerContext
-) => {
-  const content = ctx.originalStoryFn(ctx.args as any, ctx);
+// NOTE: always execute storyFn so that source code snippets are generated
+export const prepareForInline = (storyFn: () => JSX.Element) =>
+  parse(storyFn());
 
-  if (typeof content == 'string')
-    return decorate(ctx, <HtmlContainer>{content}</HtmlContainer>);
+/**
+ * Deeply parses a React structure for strings and parses those as HTML
+ */
+function parse(node: ReactElement<{ children: ReactNode }>) {
+  const { children } = node.props;
 
-  return storyFn();
-};
+  if (!children) return node;
 
-const HtmlContainer = ({ children }: { children: string }) => (
-  <div ref={(node) => node && (node.outerHTML = children)} />
+  return {
+    ...node,
+    props: {
+      ...node.props,
+      children: value(children),
+    },
+  };
+}
+
+function value(node: ReactNode) {
+  if (Array.isArray(node)) return node.map(value);
+  if (typeof node === 'string') return html(node);
+  if (typeof node === 'object' && 'props' in node) return parse(node);
+  return node;
+}
+
+const html = (content: string) => (
+  <div ref={(el) => el && (el.outerHTML = content)} />
 );
-
-const decorate = (ctx: StoryContext & ContainerContext, content: JSX.Element) =>
-  decorators.reduce((final, next) => next(() => final, ctx), content);
