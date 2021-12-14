@@ -16,7 +16,7 @@
   "devDependencies": {
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.4",
-    "@babel/preset-react": "^7.16.0",
+    "@babel/preset-react": "^7.16.5",
     "@open-wc/webpack-index-html-plugin": "^1.7.14",
     "babel-loader": "^8.2.3",
     "css-loader": "^5.2.7",
