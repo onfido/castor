@@ -14,6 +14,8 @@ updates:
 
   - package-ecosystem: 'npm'
     directory: '/examples/react-scss-js-webpack'
+    schedule:
+      interval: 'daily'
     ignore:
       - dependency-name: 'sass-loader'
         versions: ['>= 11.0.0']
