@@ -15388,10 +15388,10 @@ vfile@^4.0.0:
     unist-util-stringify-position "^2.0.0"
     vfile-message "^2.0.0"
 
-vite@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-2.7.0.tgz#d3d753220d10afb055731cd7feaa8e87b2b779b6"
-  integrity sha512-ZM629j9n6f1Gcr2KsfpLhJ0FRkift4SsTLSvExmNpGJYzyi1JyLOFybz85ShqFP5f4oCfJSblWAma9X8lZg/vA==
+vite@^2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-2.7.2.tgz#f9937114cf2e730a7e2e4c4f8c26ed0ed1c3bb6b"
+  integrity sha512-wMffVVdKZRZP/HwW3yttKL8X+IJePz7bUcnGm0vqljffpVwHpjWC3duZtJQHAGvy+wrTjmwU7vkULpZ1dVXY6w==
   dependencies:
     esbuild "^0.13.12"
     postcss "^8.3.11"
