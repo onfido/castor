@@ -20,13 +20,14 @@ export function PopoverWithPortal({
     Pick<PopoverProps, 'align' | 'position' | 'target'>
   >) {
   const domBody = useRef(document.body);
-  const [anchor, setAnchor] = useState(at(target));
+  const [, _reRender] = useState({});
+  const reRender = () => _reRender({});
 
   useOnClickOutside(onClose, [target, popover]);
 
-  useResizeObserver(() => setAnchor(at(target)), [domBody]);
+  useResizeObserver(reRender, [domBody]);
 
-  useIntersectionObserver(() => setAnchor(at(target)), [target]);
+  useIntersectionObserver(reRender, [target]);
 
   const overlay = allowOverlay && screen.width < breakpoint('small');
   useNoScroll(overlay);
@@ -35,7 +36,7 @@ export function PopoverWithPortal({
     <Portal>
       <div
         className={classy(c('popover-anchor'), m({ overlay }))}
-        style={anchor}
+        style={at(target)}
       >
         <PopoverBase {...props} ref={popover} />
       </div>
