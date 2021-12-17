@@ -8,13 +8,14 @@ import {
   Meta as BaseMeta,
   Story as BaseStory,
 } from '@storybook/react/types-7-0';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { ContainerParams } from '../decorators/withContainer';
 
 export interface Meta<Args>
-  extends Omit<BaseMeta<Args>, 'argTypes' | 'component'>,
+  extends Omit<BaseMeta<Args>, 'argTypes' | 'component' | 'render'>,
     Annotation<Args> {
   component: FC<Args> | ((props: Args) => string);
+  render?: Render<Args>;
   parameters?: Parameters;
 }
 
@@ -22,10 +23,7 @@ export interface Story<Args>
   extends Omit<BaseStory<Args>, 'argTypes' | 'render'>,
     Annotation<Args> {
   parameters?: Parameters;
-  render?: (
-    args: Args,
-    context: StoryContext<ReactFramework, Args>
-  ) => JSX.Element | JSX.Element[] | string;
+  render?: Render<Args>;
 }
 
 /**
@@ -41,6 +39,11 @@ interface Annotation<Args> {
    */
   argTypes?: ArgTypes<Args>;
 }
+
+type Render<Args> = (
+  args: Args,
+  context: StoryContext<ReactFramework, Args>
+) => ReactNode;
 
 type Parameters = BaseStory['parameters'] & ContainerParams & DocsParams;
 

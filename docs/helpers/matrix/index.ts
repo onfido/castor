@@ -1,2 +1,1 @@
-export * from './htmlMatrix';
-export * from './reactMatrix';
+export * from './matrix';

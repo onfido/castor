@@ -12,7 +12,7 @@ const invalid = [true, false] as const;
 export default {
   title: 'CSS/Select',
   component: Select,
-  render: Select as unknown,
+  render: Select,
   argTypes: {
     ...omit('class', 'id', 'required', 'value'),
     children: {

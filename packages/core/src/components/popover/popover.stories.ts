@@ -16,7 +16,7 @@ const position = ['top', 'left', 'right', 'bottom'] as const;
 export default {
   title: 'CSS/Popover',
   component: Popover,
-  render: Popover as unknown,
+  render: Popover,
   argTypes: {
     ...omit('class'),
     align: {

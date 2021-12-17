@@ -13,7 +13,7 @@ const hideLabel = [false, true] as const;
 export default {
   title: 'CSS/Progress',
   component: Progress,
-  render: Progress as unknown,
+  render: Progress,
   argTypes: {
     ...omit('aria-valuetext'),
     children: {

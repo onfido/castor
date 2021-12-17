@@ -11,7 +11,7 @@ import { FieldLabel, FieldLabelProps } from './field-label.story';
 export default {
   title: 'CSS/FieldLabel',
   component: FieldLabel,
-  render: FieldLabel as unknown,
+  render: FieldLabel,
   argTypes: omit('for'),
   args: {
     children: 'Label',

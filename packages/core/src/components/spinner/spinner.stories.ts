@@ -12,7 +12,7 @@ const size = ['large', 'medium', 'small'] as const;
 export default {
   title: 'CSS/Spinner',
   component: Spinner,
-  render: Spinner as unknown,
+  render: Spinner,
   argTypes: {
     children: {
       description: 'Optional label.',
