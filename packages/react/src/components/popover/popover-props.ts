@@ -23,7 +23,7 @@ export interface PopoverProps extends BaseProps, Omit<Div, 'ref'> {
   /**
    * Ref to an element which the Popover should target for placement.
    *
-   * Will Portal the Popover into `document.body`.
+   * When defined will Portal the Popover into `document.body`.
    */
   target?: RefObject<Element>;
 }

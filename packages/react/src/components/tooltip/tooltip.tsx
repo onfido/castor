@@ -1,13 +1,14 @@
 import { c, classy, m, TooltipProps as BaseProps } from '@onfido/castor';
-import React, { ReactNode, RefObject, useEffect, useState } from 'react';
-import { Popover } from '../popover/popover';
+import React, { ReactNode, RefObject, useState } from 'react';
+import { createEventHook } from '../../utils';
+import { Popover, PopoverProps } from '../popover/popover';
 
-export interface TooltipProps extends BaseProps, Span {
+export interface TooltipProps extends BaseProps, PopoverProps {
   children?: ReactNode;
   /**
    * Ref to an element which the Tooltip should target for placement.
    *
-   * Will Portal the Tooltip into `document.body`.
+   * When defined will Portal the Tooltip into `document.body`.
    *
    * `target` behaves as the "previous sibling" for `show="on-hover"`.
    */
@@ -17,17 +18,11 @@ export interface TooltipProps extends BaseProps, Span {
 export function Tooltip({ className, show, target, ...props }: TooltipProps) {
   const [hover, setHover] = useState(false);
 
-  // `onHover` can't be CSS only inside a Portal because the target is no longer
-  // a sibling, so we listen to events instead
-  useEffect(() => {
-    const element = target?.current;
-    if (!element) return;
-
-    const watching = eventsThatChangeHoverOrFocus.map((type) =>
-      on(element, type, () => setHover(element.matches(':hover, :focus')))
-    );
-    return () => watching.forEach((stop) => stop());
-  }, []);
+  // `show="on-hover"` can't be CSS only inside a Portal because the target is
+  // no longer a sibling, so we listen to events on `target` instead
+  useOnInteract(() => {
+    setHover(!!target?.current?.matches(':hover, :focus'));
+  }, [target]);
 
   const showModifier =
     show === 'on-hover'
@@ -45,23 +40,11 @@ export function Tooltip({ className, show, target, ...props }: TooltipProps) {
   );
 }
 
-const eventsThatChangeHoverOrFocus = [
+const useOnInteract = createEventHook([
   'focus',
   'blur',
   'mouseenter',
   'mouseleave',
   'touchstart',
   'touchend',
-] as const;
-
-const on = <K extends keyof HTMLElementEventMap>(
-  element: HTMLElement,
-  type: K,
-  listener: (ev: HTMLElementEventMap[K]) => unknown,
-  options?: boolean | AddEventListenerOptions
-) => {
-  element.addEventListener(type, listener, options);
-  return () => element.removeEventListener(type, listener, options);
-};
-
-type Span = JSX.IntrinsicElements['span'];
+]);
