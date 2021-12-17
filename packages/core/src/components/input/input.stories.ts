@@ -26,7 +26,7 @@ const type = [
 export default {
   title: 'CSS/Input',
   component: Input,
-  render: Input as unknown,
+  render: Input,
   argTypes: {
     ...omit('id', 'value'),
     disabled: {

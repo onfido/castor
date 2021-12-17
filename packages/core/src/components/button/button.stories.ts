@@ -10,7 +10,7 @@ const variant = ['primary', 'secondary', 'tertiary'] as const;
 export default {
   title: 'CSS/Button',
   component: Button,
-  render: Button as unknown,
+  render: Button,
   argTypes: {
     children: {},
     disabled: {

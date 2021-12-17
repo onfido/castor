@@ -8,7 +8,7 @@ const invalid = [true, false] as const;
 export default {
   title: 'CSS/Checkbox',
   component: Checkbox,
-  render: Checkbox as unknown,
+  render: Checkbox,
   argTypes: {
     children: { description: 'Acts as a label for the `<input>`.' },
   },

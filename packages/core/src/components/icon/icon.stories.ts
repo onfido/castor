@@ -15,7 +15,7 @@ const [firstIconName] = iconNames;
 export default {
   title: 'CSS/Icon',
   component: Icon,
-  render: Icon as unknown,
+  render: Icon,
   argTypes: {
     color: {
       control: { type: 'select', options: colors },

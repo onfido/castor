@@ -14,7 +14,7 @@ const position = ['top', 'left', 'right', 'bottom'] as const;
 export default {
   title: 'CSS/Tooltip',
   component: Tooltip,
-  render: Tooltip as unknown,
+  render: Tooltip,
   argTypes: {
     align: {
       control: { type: 'inline-radio', options: align },
