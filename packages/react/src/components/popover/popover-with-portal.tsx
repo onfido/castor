@@ -2,9 +2,9 @@ import { c, classy, m } from '@onfido/castor';
 import React, { ReactNode, RefObject, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
+  createEventHook,
   useIntersectionObserver,
   useNoScroll,
-  useOnClickOutside,
   useResizeObserver,
 } from '../../utils';
 import { PopoverBase } from './popover-base';
@@ -23,10 +23,8 @@ export function PopoverWithPortal({
   const [, _reRender] = useState({});
   const reRender = () => _reRender({});
 
-  useOnClickOutside(onClose, [target, popover]);
-
+  useClickOutside(onClose, [target, popover]);
   useResizeObserver(reRender, [domBody]);
-
   useIntersectionObserver(reRender, [target]);
 
   const overlay = allowOverlay && screen.width < breakpoint('small');
@@ -43,6 +41,8 @@ export function PopoverWithPortal({
     </Portal>
   );
 }
+
+const useClickOutside = createEventHook('click', { outside: true });
 
 const Portal = ({ children }: { children: ReactNode }) =>
   createPortal(children, document.body);
