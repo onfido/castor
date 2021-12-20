@@ -1,6 +1,6 @@
 import { Alignment, Position } from '@onfido/castor';
 import React, { useEffect, useRef, useState } from 'react';
-import { useIntersectionObserver } from '../../utils';
+import { createEventHook, useIntersectionObserver } from '../../utils';
 import { PopoverBase } from './popover-base';
 import type { PopoverProps } from './popover-props';
 import { PopoverWithPortal } from './popover-with-portal';
@@ -8,45 +8,53 @@ import { PopoverWithPortal } from './popover-with-portal';
 export { PopoverProps };
 
 export function Popover({
-  align = 'center',
+  align: preferredAlign = 'center',
   onClose,
   onRender,
   overlay,
-  position = 'top',
+  position: preferredPosition = 'top',
   target,
   ...props
 }: PopoverProps) {
+  const preferredPlacement = [preferredPosition, preferredAlign] as const;
   const popover = useRef<HTMLDivElement>(null);
-  const [placement, setPlacement] = useState([position, align] as const);
+  const [[position, alignment], setPlacement] = useState(preferredPlacement);
 
   useEffect(() => onRender?.(popover.current), []);
+
+  // try the preferred placement again when the target is interacted with
+  // (previous sibling if not using Portal)
+  useHoverOrFocus(
+    () => setPlacement(preferredPlacement),
+    [target?.current || popover.current?.previousElementSibling]
+  );
 
   useIntersectionObserver(
     (entry) => setPlacement((placement) => optimalPlacement(entry, placement)),
     [popover]
   );
 
-  const [optimalPosition, optimalAlignment] = placement;
-
   return target ? (
     <PopoverWithPortal
       {...props}
-      align={optimalAlignment}
+      align={alignment}
       overlay={overlay}
       onClose={onClose}
       popover={popover}
-      position={optimalPosition}
+      position={position}
       target={target}
     />
   ) : (
     <PopoverBase
       {...props}
       ref={popover}
-      align={optimalAlignment}
-      position={optimalPosition}
+      align={alignment}
+      position={position}
     />
   );
 }
+
+const useHoverOrFocus = createEventHook(['focus', 'mouseenter', 'touchstart']);
 
 function optimalPlacement(
   entry: IntersectionObserverEntry,
@@ -67,11 +75,7 @@ function optimalPlacement(
     right: isClipping(sides.right),
   };
 
-  // if both edges of the same axis intersect, there is nothing we can do
-  if (clipping.bottom && clipping.top) return currentPlacement;
-  if (clipping.left && clipping.right) return currentPlacement;
-
-  // adjust to the clipping side, if any
+  // adjust each side to avoid clipping, if possible
   const newPlacement =
     check(sides.top) ||
     check(sides.bottom) ||
