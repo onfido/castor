@@ -1989,9 +1989,9 @@
     rimraf "^3.0.2"
 
 "@onfido/castor-icons@*":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-2.6.0.tgz#48954c03a53178ea880b03e220ab739aafd97a27"
-  integrity sha512-67nTIQMN/LyttvmgvxKqFTCJO9OpKsiBpkNw4PhXcQyTrjVMkbhw1TzLddRZp2HTnU9ISnDDS9XxsCva41jQJw==
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-2.7.0.tgz#c32562b07833233ab13fbb89b226e8726f7c54a6"
+  integrity sha512-6lpscVskCfl6UL3vY1XBvG8Lj4/3qOVzvEr8NE11zPoKP+UjEBnmCYDCIlFgFndeyTRqKs2RUsn2hPxMnpLDEw==
 
 "@onfido/castor-tokens@^1.0.0-beta.5":
   version "1.0.0-beta.5"
