@@ -1,8 +1,17 @@
+import { StoryContext } from '@storybook/react';
 import React, { ReactElement, ReactNode } from 'react';
 
 // NOTE: always execute storyFn so that source code snippets are generated
-export const prepareForInline = (storyFn: () => JSX.Element) =>
-  parse(storyFn());
+export const prepareForInline = (
+  storyFn: () => JSX.Element,
+  ctx: StoryContext
+) => {
+  const story = storyFn();
+
+  if (ctx.id.startsWith('css-')) return parse(story);
+
+  return story;
+};
 
 /**
  * Deeply parses a React structure for strings and parses those as HTML
