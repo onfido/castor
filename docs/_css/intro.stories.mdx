@@ -4,30 +4,23 @@ import { Meta } from '@storybook/addon-docs';
 
 # Vanilla HTML + CSS
 
-is Castor's lowest level API.
+Castor's lowest level API.
 
-Ideal in case you are not using React, or need more flexibility than what its
-components offer.
+Currently the only option in case you are not using React, or need more
+flexibility than what its components offer.
+
+## Usage
+
+Components are CSS classes:
 
 ```html dark
 <button class="ods-button -action--primary">Hello world!</button>
 ```
 
-### CSS specificity
+Helper functions are available from the main package:
 
-Castor is currently not locked at `0-1-0` specificity, so overriding or
-customising CSS rules need greater care.
+```js dark
+import { space } from '@onfido/castor';
 
-We keep an eye on [:where()](https://developer.mozilla.org/en-US/docs/Web/CSS/:where)
-browser support and will refactor Castor when it's more generally available.
-
-For class names we use an adapted [BEM](http://getbem.com/introduction) strategy
-that makes the API easier and terser for developers, while still avoiding most
-name clashes.
-
-- `ods-` is our prefix (Onfido Design System) for uniqueness
-- `button` is the name of the Component
-- `-action--primary` is a component Modifier
-  - `-` a prefix for all modifiers
-  - `--` joins modifier words that are compound state (action + primary)
-- some modifiers are pseudo-states (`:disabled`, `:hover`)
+document.body.style.padding = space(2);
+```
