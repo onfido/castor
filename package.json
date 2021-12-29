@@ -57,7 +57,7 @@
     "@storybook/react": "^6.4.9",
     "@types/cypress-image-snapshot": "^3.1.6",
     "@types/jest": "^27.0.3",
-    "@types/react": "^17.0.37",
+    "@types/react": "^17.0.38",
     "@typescript-eslint/eslint-plugin": "^5.8.0",
     "@typescript-eslint/parser": "^5.8.0",
     "bundlewatch": "^0.3.2",
