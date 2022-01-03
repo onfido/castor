@@ -62,7 +62,7 @@
     "@typescript-eslint/parser": "^5.8.1",
     "bundlewatch": "^0.3.2",
     "commitizen": "^4.2.4",
-    "concurrently": "^6.5.1",
+    "concurrently": "^7.0.0",
     "cypress": "^9.2.0",
     "cypress-image-snapshot": "^4.0.1",
     "cz-conventional-changelog": "^3.3.0",
