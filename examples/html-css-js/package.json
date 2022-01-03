@@ -14,7 +14,7 @@
     "@onfido/castor-icons": "*"
   },
   "devDependencies": {
-    "concurrently": "^6.5.1",
+    "concurrently": "^7.0.0",
     "http-server": "^14.0.0",
     "shx": "^0.3.3"
   }
