@@ -1,35 +1,25 @@
 @use '@onfido/castor';
 
-$gap: castor.space(1);
-$margin: castor.space(4);
-
 .container {
   box-sizing: border-box;
-  margin: $margin;
+  margin: castor.space(4);
 }
 
 .block {
   display: inline-grid;
-  gap: $gap;
+  gap: castor.space(1);
 }
 
 .flex {
   align-items: center;
   display: flex;
   flex-flow: row wrap;
-
-  // --- this is the same as gap, except Safari supports it
-  margin: $margin - $gap * 0.5;
-
-  > * {
-    margin: $gap * 0.5;
-  }
-  // ---
+  gap: castor.space(1);
 }
 
 .grid {
   align-items: center;
   display: grid;
-  gap: $gap;
+  gap: castor.space(1);
   grid: auto-flow / repeat(4, 1fr);
 }
