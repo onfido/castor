@@ -7,7 +7,7 @@ export function withTheme(
   storyFn: () => JSX.Element,
   context: StoryContext
 ): JSX.Element {
-  const themeName: typeof themeNames[number] = context.globals.theme;
+  const themeName = context.globals.theme as 'day' | 'night';
 
   useEffect(() => {
     switchTheme(themeName);
@@ -15,5 +15,3 @@ export function withTheme(
 
   return storyFn();
 }
-
-export const themeNames = ['day', 'night'] as const;

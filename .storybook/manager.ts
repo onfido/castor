@@ -1,3 +1,8 @@
+import { addons } from '@storybook/addons';
+import { sbCastorTheme } from './custom';
+
+addons.setConfig({ theme: sbCastorTheme });
+
 export const env = process.env.NODE_ENV; // defined by Storybook
 export const mode = process.env.STORYBOOK_MODE; // defined on CI script
 
