@@ -1,8 +1,14 @@
 import { Parameters } from '@storybook/addons';
 import { withContainer } from '../docs/decorators/withContainer';
 import { withIcons } from '../docs/decorators/withIcons';
-import { themeNames, withTheme } from '../docs/decorators/withTheme';
-import { prepareForInline, transformSource } from './custom';
+import { withTheme } from '../docs/decorators/withTheme';
+import {
+  preferredTheme,
+  prepareForInline,
+  sbCastorTheme,
+  themes,
+  transformSource,
+} from './custom';
 import './styles.scss';
 
 export const parameters: Parameters = {
@@ -17,17 +23,21 @@ export const parameters: Parameters = {
       order: ['Intro'],
     },
   },
-  docs: { prepareForInline, transformSource },
+  docs: {
+    prepareForInline,
+    transformSource,
+    theme: sbCastorTheme,
+  },
 };
 
 export const globalTypes = {
   theme: {
     name: 'Theme',
     description: 'Change the theme of the preview',
-    defaultValue: 'day',
+    defaultValue: preferredTheme,
     toolbar: {
       icon: 'paintbrush',
-      items: themeNames,
+      items: themes,
     },
   },
 };
