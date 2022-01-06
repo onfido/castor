@@ -1,15 +1,15 @@
 import { Parameters } from '@storybook/addons';
 import { withContainer } from '../docs/decorators/withContainer';
 import { withIcons } from '../docs/decorators/withIcons';
-import { withTheme } from '../docs/decorators/withTheme';
 import {
+  initTheme,
   preferredTheme,
   prepareForInline,
   sbCastorTheme,
   themes,
   transformSource,
 } from './custom';
-import './styles.scss';
+import './preview.scss';
 
 export const parameters: Parameters = {
   viewMode: 'docs',
@@ -42,4 +42,6 @@ export const globalTypes = {
   },
 };
 
-export const decorators = [withTheme, withContainer, withIcons];
+export const decorators = [withContainer, withIcons];
+
+initTheme();

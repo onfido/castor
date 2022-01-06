@@ -26,5 +26,6 @@ package-lock.json
 coverage
 cypress
 dist
+public
 packages/*/src/integrated
 packages/*/prototype.js*
