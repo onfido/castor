@@ -1,6 +1,12 @@
 @use '@onfido/castor';
 
+:root {
+  @include castor.tokens();
+}
+
 :global {
+  @include castor.day('class', 'raw');
+  @include castor.night('class', 'raw');
   @include castor.components();
 
   html {
@@ -14,9 +20,9 @@
     font-size: 1rem;
   }
 
-  // unfortunate hack to override background color of the Docs panel
-  .sbdocs-preview {
-    background-color: castor.color('background-main') !important;
+  // override background color of the Docs panel
+  body .sbdocs-preview {
+    background-color: castor.color('background-main');
   }
 
   // fix appearance of <select> control on the Docs panel

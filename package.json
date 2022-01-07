@@ -11,8 +11,9 @@
   },
   "scripts": {
     "postinstall": "yarn integrate && if test -d .git; then husky install; fi",
-    "start": "start-storybook -p 6006 -s .storybook/public",
-    "storybook:build": "build-storybook -o public -s .storybook/public",
+    "start": "start-storybook -p 6006",
+    "storybook:build": "build-storybook -o public",
+    "prestorybook:build": "npm run build:core:esm",
     "preintegrate": "shx rm -rf packages/*/src/integrated",
     "integrate": "concurrently yarn:integrate:*",
     "preintegrate:core:tokens": "shx mkdir -p packages/core/src/integrated/tokens",

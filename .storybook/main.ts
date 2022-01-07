@@ -8,7 +8,7 @@ const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
 module.exports = {
   stories: ['../docs', '../packages'],
-
+  staticDirs: ['./public'],
   addons: [
     '@storybook/addon-google-analytics',
     '@storybook/addon-docs',
