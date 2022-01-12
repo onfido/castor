@@ -55,7 +55,7 @@
     "@storybook/addon-google-analytics": "^6.2.9",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-toolbars": "^6.4.9",
-    "@storybook/addons": "^6.4.9",
+    "@storybook/addons": "^6.4.12",
     "@storybook/components": "^6.4.4",
     "@storybook/react": "^6.4.9",
     "@storybook/theming": "^6.4.10",
