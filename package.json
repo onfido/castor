@@ -56,7 +56,7 @@
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-toolbars": "^6.4.9",
     "@storybook/addons": "^6.4.9",
-    "@storybook/components": "^6.4.4",
+    "@storybook/components": "^6.4.12",
     "@storybook/react": "^6.4.9",
     "@storybook/theming": "^6.4.10",
     "@types/cypress-image-snapshot": "^3.1.6",
