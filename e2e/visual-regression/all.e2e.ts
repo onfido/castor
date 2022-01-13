@@ -5,10 +5,12 @@ describe('components', () => {
   it('should have no visual regressions', () => {
     cy.visit('/');
 
+    cy.get('#castor').should('exist');
+
     cy.get('#storybook-explorer-searchfield').type(storyName);
 
     cy.get('#storybook-explorer-menu li a').each((link) => {
-      const title: string = link.prop('title');
+      const title = link.prop('title') as string;
       const name = title.replaceAll(' / ', '/');
       const id = title
         .toLowerCase()

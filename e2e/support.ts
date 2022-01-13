@@ -5,7 +5,7 @@ addMatchImageSnapshotCommand({
   capture: 'viewport',
   customDiffConfig: { threshold: 0.015 },
   customDiffDir: 'coverage/e2e/.diff',
-  customSnapshotsDir: 'e2e/.snapshots',
+  customSnapshotsDir: 'e2e/.screenshots',
   failureThreshold: 0.015,
   failureThresholdType: 'percent',
 });

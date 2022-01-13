@@ -3,8 +3,8 @@
 // see https://github.com/storybookjs/storybook/issues/11843
 // import type { StorybookConfig } from '@storybook/react/types';
 
-const { resolve } = require('path');
 const { ESBuildMinifyPlugin } = require('esbuild-loader');
+const { resolve } = require('path');
 
 module.exports = {
   stories: ['../docs', '../packages'],
@@ -59,12 +59,18 @@ module.exports = {
       // don't watch
       config.watchOptions = { ignored: [/.*/] };
 
-      // instrument source code
-      config.module?.rules
-        .flatMap((rule) => rule.use)
-        .map((use) => use?.options?.plugins)
-        .filter(Boolean)
-        .forEach((p) => p.push('istanbul'));
+      // instrument source code after esbuild has compiled it
+      config.module.rules.unshift({
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['istanbul'],
+          },
+        },
+      });
     }
 
     return config;

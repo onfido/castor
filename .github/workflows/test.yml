@@ -33,7 +33,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Node dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn --frozen-lockfile --prefer-offline
 
       - name: Test packages
         run: yarn test
@@ -75,19 +75,9 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Node dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn --frozen-lockfile --prefer-offline
 
-      - name: Pull latest Docker image
-        run: docker-compose pull
-
-      - name: Cache Docker layers
-        uses: satackey/action-docker-layer-caching@v0.0.11
-        continue-on-error: true # continue without cache in case of a failure
-
-      - name: Build local container
-        run: docker-compose build
-
-      - name: Test packages (incl. visual regression)
+      - name: Visual regression tests
         run: yarn e2e
 
       - name: Keep artifacts
@@ -127,24 +117,14 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install Node dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Pull latest Docker image
-        run: docker-compose pull
-
-      - name: Cache Docker layers
-        uses: satackey/action-docker-layer-caching@v0.0.11
-        continue-on-error: true # continue without cache in case of a failure
-
-      - name: Build local container
-        run: docker-compose build
+        run: yarn --frozen-lockfile --prefer-offline
 
       - name: Take baseline screenshots
-        run: yarn snapshot
+        run: yarn screenshot
 
       - name: Keep artifacts
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: screenshots
-          path: e2e/.snapshots
+          path: e2e/.screenshots
