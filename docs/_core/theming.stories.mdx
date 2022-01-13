@@ -1,0 +1,223 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Theming" />
+
+# Theming
+
+Castor comes with two pre-built themes, `day` and `night`.
+
+They are designed to align with device specific light/dark modes.
+
+Unlike components, theming is just as equally efficient regardless of your
+choice of Sass or CSS.
+
+### Sass
+
+```css dark
+@use '@onfido/castor';
+
+:root {
+  @include castor.day();
+}
+```
+
+### HTML + CSS
+
+```html dark
+<link rel="stylesheet" href="node_modules/@onfido/castor/dist/themes/day.css" />
+```
+
+### JS / TS
+
+```js dark
+import '@onfido/castor/dist/themes/day.css';
+```
+
+## Multiple themes
+
+If you want to provide multiple themes, Castor offers the "class" variant of
+each theme, and helpers to make using them easier.
+
+That means that no theme applies to the whole page by default anymore, and you
+will need to explicitly define the current one.
+
+Also, there's still one efficiency concern: all themes define "base" tokens, so
+after one has defined them, the next theme does not need to.
+
+Again, only Sass will be able to optimise that, except PurgeCSS doesn't help here.
+
+### Sass
+
+For efficiency, include Castor's base tokens only once, then the "raw" variants
+of each theme you want to provide.
+
+Themes also need to be "class" in this case otherwise the last one defined would
+simply override all previous themes.
+
+```css dark
+@use '@onfido/castor';
+
+:root {
+  @include castor.tokens();
+}
+
+@include castor.day('class', 'raw');
+@include castor.night('class', 'raw');
+```
+
+Then, you explicitly define the theme by applying its class to your theming
+container (usually the root element of your app).
+
+You can more easily apply and switch between themes with our JS helper, see the
+following section.
+
+```html dark
+<body class="castor-theme--day"></body>
+```
+
+### JS / TS
+
+Import the "class" variants of each theme to be able to switch between them:
+
+```js dark
+import '@onfido/castor/dist/themes/day-class.css';
+import '@onfido/castor/dist/themes/night-class.css';
+```
+
+Then, you can explicitly define the theme by applying its class to your theming
+container (usually the root element of your app).
+
+```html dark
+<body class="castor-theme--day"></body>
+```
+
+Or you can use the provided helper.
+
+```js dark
+import { switchTheme } from '@onfido/castor';
+
+switchTheme('day');
+// second argument specifies the element, defaults to document.body
+switchTheme('night', document.querySelector('#root'));
+```
+
+## Creating a custom theme
+
+> Sass only, CSS is possible but not documented or officially supported
+
+Castor components use theme tokens for styling.
+
+Most of the time theme tokens will reference base tokens, but they can also have
+static values. Colors may have an alpha/opacity value defined in either
+approach.
+
+When creating a new theme, each theme token must be defined.
+
+The easiest way would be to extend one of Castor's themes, for instance "day"
+theme, and then overriding some theme tokens:
+
+> Color tokens must be valid
+> [rgba()](<https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgba()>)
+> values
+
+```css dark
+@use '@onfido/castor';
+
+/* .castor-theme--custom-day */
+@include castor.theme('custom-day', 'class') {
+  @include castor.day();
+
+  /* override theme color with palette token */
+  --ods-color-content-main: var(--ods-color-primary-800), 1;
+  /* override theme color with static value */
+  --ods-color-content-secondary: 136, 136, 136, 0.8;
+  /* override palette color */
+  --ods-color-primary-500: 255, 20, 147;
+}
+```
+
+To ensure the theme switching helper works properly, the class name of any theme
+must be start with `castor-theme--` followed by one or more characters that
+identify a unique theme.
+
+We recommend using the `castor.theme()` mixin as showed above, which applies the
+prefix automatically - first argument is a mandatory theme name.
+
+Additionally it accepts optional string arguments (order does not matter):
+
+- `class` - wraps theme tokens within a CSS class
+- `raw` - excludes base tokens, leaving only theme tokens in the output
+
+For example:
+
+```css dark
+@include castor.theme('my-theme', 'raw', 'class');
+```
+
+## CSS specificity
+
+Castor is currently not locked at `0-1-0`
+[specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity),
+so overriding or customising CSS rules need greater care.
+
+We want to have all rules at `0-1-0` though so we keep an eye on
+[:where()](https://developer.mozilla.org/en-US/docs/Web/CSS/:where)
+browser support and will refactor Castor when it's more generally available.
+
+That is because our main goal was to make our API easy and terse for developers,
+so we use an adapted [BEM](http://getbem.com/introduction) strategy that enables
+that, while still avoiding most class name clashes.
+
+For example, `.ods-button.-action--primary:disabled` has `0-3-0` specificity.
+
+- `ods-` is our prefix (Onfido Design System) for uniqueness
+- `button` is the name of the Component
+- `-action--primary` is a component Modifier
+  - `-` a prefix for all modifiers
+  - `--` joins modifier words that are compound state (action + primary)
+- some modifiers are pseudo-states (`:disabled`, `:hover`)
+
+In order to modify styles for components, simply overriding the base CSS rules
+might not be sufficient.
+
+For simplicity, let's focus on Button's `color`:
+
+```css dark
+/* from Castor */
+.ods-button.-action--primary {
+  color: rgba(var(--ods-color-content-on-action));
+}
+.ods-button:disabled {
+  color: rgba(var(--ods-color-content-disabled));
+}
+
+/* custom */
+.ods-button.-action--primary {
+  color: rgba(var(--my-own-variable));
+}
+```
+
+In that scenario, a Button of kind "action" and variant "primary" would
+successfully have its color overriden.
+
+However, a `:disabled` button would as well, unintentionally.
+
+That is because the specificity of all those rules is the same, `0-2-0`, so the
+one defined last wins.
+
+Which is why we recommend overriding only the values of CSS variables in order
+to customise Castor.
+
+```css dark
+/* custom */
+.ods-button {
+  --ods-color-content-on-action: var(--my-own-variable);
+}
+```
+
+That way, the `:disabled` color would still apply properly.
+
+Still, creating your own custom theme that applies globally to `:root` is still
+the best way to make sure your styles are consistent across components.
+
+Only override component specific styles if there's a good reason to do so.
