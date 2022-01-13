@@ -1,9 +1,0 @@
-FROM cypress/base:14.17.0
-
-WORKDIR /cypress
-
-COPY ./packages ./packages
-COPY ./package.json .
-COPY ./yarn.lock .
-
-RUN yarn install --frozen-lockfile

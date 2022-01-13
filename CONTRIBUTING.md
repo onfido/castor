@@ -1,32 +1,28 @@
 # Contributing
 
-When contributing to this repository, please read through and get familiarised with the processes of making a change to this package.
+Please read through and get familiarised with the processes for introducing a change in Castor.
 
-If you have further questions please discuss the change you wish to make with the owners of this repository.
+If you have further questions please discuss them with the owners of this repository.
 
 ## Get ready for development
 
-You will need Node 14.17 running locally.
+You will need the Node version specified in `.nvmrc` locally.
 
 **1. Install Node**
 
-Use [nvm](https://github.com/nvm-sh/nvm/) to manage the different Node versions and switch between them.
+We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage multiple Node versions.
 
-To install and switch to required version run:
+To install and switch to version specified in `.nvmrc` run:
 
     nvm install && nvm use
 
-Finally install Yarn via Homebrew:
+You'll also need [Yarn](https://classic.yarnpkg.com/en/docs/install) which you can install with `npm`:
 
-    brew install yarn
-
-Then remove Node that was installed alongside Yarn:
-
-    brew uninstall node --ignore-dependencies
+    npm i -g yarn
 
 **2. Install local Node dependencies**
 
-    yarn install
+    yarn
 
 ## Make a change
 
@@ -38,14 +34,13 @@ Then remove Node that was installed alongside Yarn:
 
     `yarn lint`
 
-3.  Inspect built packages:
+3.  Inspect built packages (optional):
 
     `yarn inspect`
 
-4.  Commit according to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). We support these tools:
+4.  Commit according to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0). We support these tools:
 
     - Commitizen, which runs automatically on a pre-commit Git hook thanks to Husky.
-
     - The [VS Code plugin](https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits).
 
 5.  When opening a pull request, provide as much details as possible for a reviewer to better understand the change.
@@ -74,7 +69,7 @@ If you want watch mode for your changes only, use:
 
     yarn jest --watch
 
-You can also filter to a single file if you want, like:
+You can also filter to a single file if you want:
 
     yarn jest --watch my-file
 
@@ -82,66 +77,43 @@ You can also filter to a single file if you want, like:
 
 Those are found in `./e2e`, in its root or inside folders, but mandatorily with a `.e2e.ts` file suffix.
 
-They are written in [Cypress](https://www.cypress.io/).
+They are written in [Cypress](https://www.cypress.io).
 
 Visual regression tests are run for all "All Combinations" stories, or you can add specs individually for other stories.
 
-Docker (and Compose) is used for running E2E tests, so first install it via Homebrew:
+For writing tests locally:
 
-    brew install --cask docker
+    yarn ui
 
-Then (only once) build the local container:
-
-    docker-compose build
-
-Now you can run UI tests with:
+For running like CI (GitHub Actions) would:
 
     yarn e2e
 
-This runs all specs and generates coverage reports.
+The latter runs all specs and generates coverage reports.
 
-For writing tests locally, serve Storybook in E2E mode with
+However, image diffing (for visual regression tests) will most likely fail locally, they can only be trusted in CI.
 
-    yarn e2e:serve
+To guarantee image diffing, screenshots must always be taken under the exact same environment.
 
-Then in another terminal open Cypress with:
+Using our own Docker containers turned out to be incredibly slow and flakey so instead we're using GitHub's virtual environments.
 
-    yarn cypress open --env failOnSnapshotDiff=false
-
-If you're on a Mac, you can also use XQuartz to open Cypress within a Docker container and communicate to the host system GUI. This is an advanced feature.
-
-First, install XQuartz via Homebrew:
-
-    brew install --cask xquartz
-
-Restart computer after installation.
-
-Start XQuartz from command line, and make sure "Allow connections from network clients" is enabled in the preferences under "Security" tab:
-
-    open -a XQuartz
-
-Get the IP address of the host machine and allow X11 to accept incoming connections from that IP address:
-
-    IP=$(ipconfig getifaddr en0)
-    /usr/X11/bin/xhost + $IP
-
-Then open Cypress GUI (using same terminal window that had the IP address set):
-
-    DISPLAY=$IP:0 CYPRESS_baseUrl=http://host.docker.internal:6006 docker-compose -f docker-compose.yml -f docker-compose.mac-open.yml up --abort-on-container-exit --exit-code-from cypress
-
-Finally, in another terminal window serve the Storybook instance:
-
-    yarn e2e:serve
+Therefore, the only reliable source of those screenshots is GitHub Actions.
 
 If tests fail on image diffing, make sure no regression has been introduced.
 
 Diffed images are stored in `./coverage/e2e/.diff`.
 
-If you introduced visual changes intentionally and are sure it's how it should look, update the screenshot baselines with:
+You can find them under the `coverage` artifacts.
 
-    yarn snapshot
+If you introduced visual changes intentionally and are sure it's how it should look, you will have to update the screenshot baselines.
 
-You may also download `screenshots` artifacts in your PR's checks, then copy the images into `./e2e/.snapshots`
+You can download `screenshots` artifacts manually in the Pull Request's Checks web UI, then copy its files into `./e2e/.screenshots`.
+
+Or if [GitHub CLI](https://github.com/cli/cli#installation) is installed you can use the following script:
+
+    yarn baseline
+
+It will download the latest artifact for the currently checked out branch, so make sure you have pushed it to GitHub and its checks have finished running.
 
 ### Build packages locally
 
@@ -253,4 +225,5 @@ yarn release
 git push --follow-tags -u origin release/1.2.x
 ```
 
-No need to open a PR to merge a non-latest release back to `main`, nor do tags need to be moved. However, consider protecting the branch `release/1.2.x` against deletion under GitHub's "Branches" settings.
+No need to open a PR to merge a non-latest release back to `main`, nor do tags need to be moved.
+However, consider protecting the branch `release/1.2.x` against deletion under GitHub's "Branches" settings.
