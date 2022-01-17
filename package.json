@@ -71,7 +71,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "esbuild": "^0.14.11",
     "esbuild-loader": "^2.18.0",
-    "eslint": "^8.6.0",
+    "eslint": "^8.7.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-storybook": "^0.5.5",
     "husky": "^7.0.4",
