@@ -37,9 +37,13 @@
       background-color: helpers.color('background-action');
       color: helpers.color('content-on-action');
 
-      &:hover {
-        background-color: helpers.color('background-action-hover');
+      /* stylelint-disable max-nesting-depth */
+      @media (hover: hover) {
+        &:hover {
+          background-color: helpers.color('background-action-hover');
+        }
       }
+      /* stylelint-enable max-nesting-depth */
 
       &:active {
         background-color: helpers.color('background-action-active');
@@ -49,7 +53,14 @@
     &.-action--secondary {
       border-color: helpers.color('border-action');
 
-      &:hover,
+      /* stylelint-disable max-nesting-depth */
+      @media (hover: hover) {
+        &:hover {
+          border-color: helpers.color('border-action-hover');
+        }
+      }
+      /* stylelint-enable max-nesting-depth */
+
       &:active {
         border-color: helpers.color('border-action-hover');
       }
@@ -59,9 +70,13 @@
     &.-action--tertiary {
       color: helpers.color('content-action');
 
-      &:hover {
-        background-color: helpers.color('background-action-subtle-hover');
+      /* stylelint-disable max-nesting-depth */
+      @media (hover: hover) {
+        &:hover {
+          background-color: helpers.color('background-action-subtle-hover');
+        }
       }
+      /* stylelint-enable max-nesting-depth */
 
       &:active {
         background-color: helpers.color('background-action-subtle');
@@ -78,9 +93,13 @@
       background-color: helpers.color('background-negative');
       color: helpers.color('content-always-light');
 
-      &:hover {
-        background-color: helpers.color('background-negative-hover');
+      /* stylelint-disable max-nesting-depth */
+      @media (hover: hover) {
+        &:hover {
+          background-color: helpers.color('background-negative-hover');
+        }
       }
+      /* stylelint-enable max-nesting-depth */
 
       &:active {
         background-color: helpers.color('background-negative-active');
@@ -95,9 +114,13 @@
     &.-destructive--tertiary {
       color: helpers.color('content-negative');
 
-      &:hover {
-        background-color: helpers.color('background-negative-subtle-hover');
+      /* stylelint-disable max-nesting-depth */
+      @media (hover: hover) {
+        &:hover {
+          background-color: helpers.color('background-negative-subtle-hover');
+        }
       }
+      /* stylelint-enable max-nesting-depth */
 
       &:active {
         background-color: helpers.color('background-negative-subtle');
