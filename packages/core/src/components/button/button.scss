@@ -53,14 +53,10 @@
     &.-action--secondary {
       border-color: helpers.color('border-action');
 
-      /* stylelint-disable max-nesting-depth */
-      @media (hover: hover) {
-        &:hover,
-        &:active {
-          border-color: helpers.color('border-action-hover');
-        }
+      &:hover,
+      &:active {
+        border-color: helpers.color('border-action-hover');
       }
-      /* stylelint-enable max-nesting-depth */
     }
 
     &.-action--secondary,
