@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.3](https://github.com/onfido/castor/compare/v2.0.2...v2.0.3) (2022-01-21)
+
+### Bug Fixes
+
+- button hover on iOS ([#1373](https://github.com/onfido/castor/issues/1373)) ([ef66c2b](https://github.com/onfido/castor/commit/ef66c2bcb4b09e8d2266ceb507b6a26bdf1ea8e2))
+- **react:** condition for Select's options render ([#1173](https://github.com/onfido/castor/issues/1173)) ([9b09be1](https://github.com/onfido/castor/commit/9b09be1289eda666dd7d4ea8c1e6b9bad216701d))
+- **react:** defaults Select to first option ([#1177](https://github.com/onfido/castor/issues/1177)) ([7f879c3](https://github.com/onfido/castor/commit/7f879c31fefcdda73e47ac61d4c785873b86d137))
+- **react:** ensure output's height ([#1174](https://github.com/onfido/castor/issues/1174)) ([59a0ef2](https://github.com/onfido/castor/commit/59a0ef2c548682c40674a3d15457ff8413e917a3))
+- **react:** expose Select's ref ([#1175](https://github.com/onfido/castor/issues/1175)) ([8ee8099](https://github.com/onfido/castor/commit/8ee809955a77cb35f0d864dc0d34263e9b903c69))
+- **react:** hidden options do not render ([#1141](https://github.com/onfido/castor/issues/1141)) ([b3dba84](https://github.com/onfido/castor/commit/b3dba8480b26dbc4bbd90b870efb9d5159f5f091))
+- **react:** popover placement ([#1265](https://github.com/onfido/castor/issues/1265)) ([bcd9a53](https://github.com/onfido/castor/commit/bcd9a53b33cce7e2518a22efc92c163ffd56f9f8))
+- **react:** popover position ([#1262](https://github.com/onfido/castor/issues/1262)) ([b6e3730](https://github.com/onfido/castor/commit/b6e373078602b5f272e5cb7defacadb065134308))
+- **react:** select empty modifier ([#1140](https://github.com/onfido/castor/issues/1140)) ([c103ed6](https://github.com/onfido/castor/commit/c103ed634b56ef6debab0081cad8d23a979bf377))
+- **react:** select empty state check ([#1176](https://github.com/onfido/castor/issues/1176)) ([fd15f51](https://github.com/onfido/castor/commit/fd15f51430a85e6d3b2a932e0f9cfba9801a3c9a))
+- **react:** select should respond to value changes ([#1150](https://github.com/onfido/castor/issues/1150)) ([60125af](https://github.com/onfido/castor/commit/60125af710e69c7f29ed350a4477ed93b1d5da9d))
+
 ### [2.0.2](https://github.com/onfido/castor/compare/v2.0.1...v2.0.2) (2021-11-16)
 
 ### Bug Fixes
