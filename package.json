@@ -50,7 +50,7 @@
     "@onfido/castor-icons": "*",
     "@storybook/addon-a11y": "^6.4.18",
     "@storybook/addon-controls": "^6.4.18",
-    "@storybook/addon-docs": "^6.4.17",
+    "@storybook/addon-docs": "^6.4.18",
     "@storybook/addon-google-analytics": "^6.2.9",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-toolbars": "^6.4.18",
