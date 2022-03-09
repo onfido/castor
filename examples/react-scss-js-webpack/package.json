@@ -19,7 +19,7 @@
     "@babel/preset-react": "^7.16.7",
     "@open-wc/webpack-index-html-plugin": "^1.7.14",
     "babel-loader": "^8.2.3",
-    "css-loader": "^5.2.7",
+    "css-loader": "^6.7.1",
     "es-check": "^6.2.1",
     "file-loader": "^6.2.0",
     "sass-loader": "^10.2.0",
