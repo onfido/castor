@@ -78,7 +78,7 @@
     "jest": "^27.5.1",
     "lint-staged": "^12.3.5",
     "optimist": "^0.6.1",
-    "postcss": "^8.4.8",
+    "postcss": "^8.4.11",
     "prettier": "^2.5.1",
     "prettier-plugin-organize-imports": "^2.3.4",
     "react": "^17.0.2",
