@@ -2090,9 +2090,9 @@
     rimraf "^3.0.2"
 
 "@onfido/castor-icons@*":
-  version "2.8.2"
-  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-2.8.2.tgz#3509a105e512dc13e7bc0f0e8f546b8322c2b459"
-  integrity sha512-K7KQFAgluPmDWaHpq72JyeeSw9Oand3nY1yRZJ4G7v36wd2mIOMz9uGKyzaQWDmq8bLdloTazHLE/caFm14gTA==
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-2.9.0.tgz#fcffa13ada14f2d3777a319371ab9244c69ebc51"
+  integrity sha512-n4RPY6GQP5+hOkhsIOCgX0reottvkNCkcKlJ+2v95973lt627jwCyNiUFwP0NfOWi9YhH8YjWaYTZ64n4GWGXw==
 
 "@onfido/castor-tokens@^1.0.0-beta.5":
   version "1.0.0-beta.5"
