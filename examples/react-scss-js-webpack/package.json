@@ -18,7 +18,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@open-wc/webpack-index-html-plugin": "^1.7.14",
-    "babel-loader": "^8.2.3",
+    "babel-loader": "^8.2.4",
     "css-loader": "^5.2.7",
     "es-check": "^6.2.1",
     "file-loader": "^6.2.0",
