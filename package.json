@@ -57,7 +57,7 @@
     "@storybook/addons": "^6.4.19",
     "@storybook/components": "^6.4.20",
     "@storybook/react": "^6.4.21",
-    "@storybook/theming": "^6.4.21",
+    "@storybook/theming": "^6.4.22",
     "@types/cypress-image-snapshot": "^3.1.6",
     "@types/jest": "^27.4.1",
     "@types/react": "^17.0.43",
