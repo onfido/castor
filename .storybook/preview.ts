@@ -9,6 +9,7 @@ import {
   themes,
   transformSource,
 } from './custom';
+import './custom/fixNames';
 import './preview.scss';
 
 export const parameters: Parameters = {
