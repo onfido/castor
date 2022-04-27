@@ -38,6 +38,10 @@
 @forward './tooltip/tooltip';
 @use './validation/validation';
 @forward './validation/validation';
+@use './date-picker/date-picker';
+@forward './date-picker/date-picker';
+@use './calendar/calendar';
+@forward './calendar/calendar';
 
 @mixin components() {
   @include asterisk.Asterisk();
@@ -60,4 +64,6 @@
   @include textarea.Textarea();
   @include tooltip.Tooltip();
   @include validation.Validation();
+  @include date-picker.DatePicker();
+  @include calendar.Calendar();
 }

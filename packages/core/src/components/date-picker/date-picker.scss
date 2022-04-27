@@ -1,0 +1,40 @@
+@use '../../helpers';
+@use '../../internal';
+@use '../../mixins';
+
+@mixin DatePicker() {
+  @include internal.IndicatorContainer();
+
+  @if not mixins.includes('DatePicker') {
+    @include _DatePicker();
+  }
+}
+
+@mixin _DatePicker() {
+  $stroke-size: helpers.space(0.25);
+
+  .ods-date-picker-overlay {
+    inset: 0;
+    position: fixed;
+  }
+
+  .ods-date-picker-container {
+    margin-bottom: 150vh; // To remove
+    position: relative;
+  }
+
+  .ods-date-picker {
+    @include helpers.font('600-regular');
+    position: relative;
+    width: helpers.space(24);
+  }
+
+  .ods-date-picker-button {
+    height: helpers.space(6);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: helpers.space(6);
+  }
+}
