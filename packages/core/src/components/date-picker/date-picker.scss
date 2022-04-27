@@ -1,0 +1,154 @@
+@use '../../helpers';
+@use '../../internal';
+@use '../../mixins';
+
+@mixin DatePicker() {
+  @include internal.IndicatorContainer();
+
+  @if not mixins.includes('DatePicker') {
+    @include _DatePicker();
+  }
+}
+
+@mixin _DatePicker() {
+  $stroke-size: helpers.space(0.25);
+
+  .ods-date-picker-overlay {
+    inset: 0;
+    position: fixed;
+  }
+
+  .ods-date-picker-container {
+    margin-bottom: 150vh; // To remove
+    position: relative;
+  }
+
+  .ods-date-picker {
+    @include helpers.font('600-regular');
+    position: relative;
+
+    input {
+      padding-right: 2.5rem;
+    }
+
+    .ods-date-picker-input::-webkit-inner-spin-button,
+    .ods-date-picker-input::-webkit-calendar-picker-indicator {
+      appearance: none;
+      display: none;
+    }
+  }
+
+  .ods-date-picker-nav {
+    align-items: center;
+    display: flex;
+
+    button {
+      aspect-ratio: 1;
+      border-radius: helpers.border-radius('full');
+      width: helpers.space(6);
+    }
+  }
+
+  .ods-date-picker-button {
+    aspect-ratio: 1;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: helpers.space(6);
+  }
+
+  .ods-date-picker-selector {
+    background-color: helpers.color('background-surface');
+    border: 1px solid helpers.color('border-input');
+    border-radius: helpers.border-radius('medium');
+    padding: helpers.space(2);
+    width: helpers.space(46);
+
+    header {
+      align-items: center;
+      display: flex;
+      margin-bottom: helpers.space(2);
+    }
+
+    h3 {
+      flex-grow: 1;
+      margin: 0;
+    }
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      width: calc(100% / 7);
+    }
+  }
+
+  .ods-date-picker-date {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: calc(100% / 7);
+
+    .ods-button {
+      aspect-ratio: 1;
+      border-radius: helpers.border-radius('full');
+      color: helpers.color('content-main');
+      width: 100%;
+    }
+
+    .ods-button.ods-date-picker-selected {
+      background-color: helpers.color('content-action');
+      color: helpers.color('content-inverse-main');
+    }
+
+    .ods-date-picker-today::before {
+      background-color: helpers.color('background-action');
+      border-radius: helpers.border-radius('full');
+      bottom: 4px;
+      content: '';
+      height: 6px;
+      left: 50%;
+      position: absolute;
+      transform: translateX(-50%);
+      width: 6px;
+    }
+
+    .ods-date-picker-today.ods-date-picker-selected::before {
+      background-color: helpers.color('background-inverse-action');
+    }
+  }
+
+  .ods-date-picker-days {
+    background-color: helpers.color('background-surface-alt');
+    border-radius: helpers.border-radius('medium');
+    font-weight: bold;
+    height: helpers.space(4);
+    margin: 0 0 helpers.space(0.5) 0;
+  }
+
+  .ods-date-picker-dates {
+    margin: 0;
+  }
+
+  .ods-date-picker-year {
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid helpers.color('border-action');
+    color: helpers.color('content-main');
+    font-size: 1.17rem;
+    font-weight: bold;
+    margin: 0 0 0 0.2rem;
+    padding: 0;
+    text-align: center;
+    width: 3rem;
+  }
+}
