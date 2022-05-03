@@ -1,4 +1,3 @@
-import { classy, m } from '@onfido/castor';
 import { html, htmlMatrix, Meta, omit, Story } from '../../../../../docs';
 import { FieldLabel } from '../field-label/field-label.story';
 import { Field } from '../field/field.story';
@@ -14,7 +13,7 @@ export default {
   component: Select,
   render: Select,
   argTypes: {
-    ...omit('class', 'id', 'required', 'value'),
+    ...omit('class', 'empty', 'id', 'required', 'value'),
     children: {
       description: [
         'List of options using `<option>`.',
@@ -84,7 +83,7 @@ export const WithEmptyModifier: Story<SelectProps> = {
         value: '',
       }),
     ],
-    class: classy(m('empty')),
+    empty: true,
   },
 };
 

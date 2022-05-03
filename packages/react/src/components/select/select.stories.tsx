@@ -1,3 +1,4 @@
+import { IconChevronDown } from '@onfido/castor-icons';
 import {
   Field,
   FieldLabel,
@@ -47,7 +48,7 @@ export default {
         </Option>
         <Option value={1}>Option 1</Option>
         <Option value={2}>Option 2</Option>
-        <Option value="long">Longer option that’s quite long</Option>
+        <Option value="long">Longer option that is quite long</Option>
         <Option value="enormous">
           An enormously long option that we truncate when it gets too long for a
           flexible width box
@@ -63,6 +64,24 @@ export default {
 } as Meta<SelectProps>;
 
 export const Playground: Story<SelectProps> = {};
+
+export const InlineIcon: Story<SelectProps> = {
+  render: (props) => <Select {...props} icon={<IconChevronDown />} />,
+  parameters: {
+    docs: {
+      source: {
+        code: `
+import { IconChevronDown } from '@onfido/castor-icons';
+
+<Select icon={<IconChevronDown />}>
+  {/* options */}
+</Select>
+`,
+      },
+    },
+  },
+};
+IconChevronDown.displayName = 'IconChevronDown';
 
 export const Borderless = reactMatrix(Select, { borderless });
 export const Invalid = reactMatrix(Select, { invalid });

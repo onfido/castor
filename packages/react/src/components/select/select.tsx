@@ -1,24 +1,30 @@
 import { c, classy, m, SelectProps as BaseProps } from '@onfido/castor';
-import { Icon } from '@onfido/castor-react';
 import React, { ForwardedRef, useEffect, useState } from 'react';
+import { MaybeIcon } from '../../internal';
 import { useForwardedRef, withRef } from '../../utils';
 import { CustomSelect, CustomSelectProps } from './custom';
 import { NativeSelect, NativeSelectProps } from './native';
 import { SelectProvider } from './useSelect';
 
-export type SelectProps =
-  | ({ native: true } & BaseProps & NativeSelectProps)
-  | ({ native?: false } & BaseProps &
-      Omit<CustomSelectProps, 'open' | 'onOpenChange'>);
+export type SelectProps = (Native | Custom) & {
+  icon?: JSX.Element;
+};
+
+type Native = { native: true } & BaseProps & NativeSelectProps;
+type Custom = { native?: false } & BaseProps &
+  Omit<CustomSelectProps, 'open' | 'onOpenChange'>;
 
 /**
- * `Select` uses an `Icon` that requires `Icons` (SVG sprite) to be included in
- * your app.
+ * `Select` by default uses an `Icon` that requires `Icons` (SVG sprite) to be
+ * included in your app.
  *
  * https://github.com/onfido/castor-icons#use-with-plain-code
+ *
+ * You may also provide any other SVG element via the `icon` prop, but using
+ * Castor iconography is recommended.
  */
 export const Select = withRef(function Select(
-  { borderless, className, native, onChange, ...restProps }: SelectProps,
+  { borderless, className, icon, native, onChange, ...restProps }: SelectProps,
   ref: ForwardedRef<HTMLSelectElement>
 ) {
   const { defaultValue, value } = restProps;
@@ -50,7 +56,7 @@ export const Select = withRef(function Select(
           }}
           onOpenChange={setOpen}
         />
-        <Icon name="chevron-down" aria-hidden="true" />
+        <MaybeIcon icon={icon} name="chevron-down" />
       </SelectProvider>
     </div>
   );

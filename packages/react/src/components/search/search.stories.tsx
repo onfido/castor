@@ -1,4 +1,6 @@
+import { IconSearch } from '@onfido/castor-icons';
 import { Search, SearchProps } from '@onfido/castor-react';
+import React from 'react';
 import { Meta, reactMatrix, Story } from '../../../../../docs';
 
 const disabled = [true, false] as const;
@@ -22,5 +24,21 @@ export default {
 } as Meta<SearchProps>;
 
 export const Playground: Story<SearchProps> = {};
+
+export const InlineIcon: Story<SearchProps> = {
+  render: (props) => <Search {...props} icon={<IconSearch />} />,
+  parameters: {
+    docs: {
+      source: {
+        code: `
+import { IconSearch } from '@onfido/castor-icons';
+
+<Search icon={<IconSearch />} placeholder="Placeholder" />
+`,
+      },
+    },
+  },
+};
+IconSearch.displayName = 'IconSearch';
 
 export const Disabled = reactMatrix(Search, { disabled });
