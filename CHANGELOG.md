@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/onfido/castor/compare/v2.0.3...v2.1.0) (2022-05-04)
+
+### Features
+
+- allow external icon usage ([#1644](https://github.com/onfido/castor/issues/1644)) ([67c7238](https://github.com/onfido/castor/commit/67c7238ee2b72e93605aab55ae2f079c3f433c0c))
+
 ### [2.0.3](https://github.com/onfido/castor/compare/v2.0.2...v2.0.3) (2022-01-21)
 
 ### Bug Fixes
