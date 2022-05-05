@@ -41,6 +41,8 @@
   .ods-date-picker-nav {
     align-items: center;
     display: flex;
+    justify-content: space-between;
+    width: 100%;
 
     button {
       aspect-ratio: 1;
@@ -63,7 +65,7 @@
     border: 1px solid helpers.color('border-input');
     border-radius: helpers.border-radius('medium');
     padding: helpers.space(2);
-    width: helpers.space(46);
+    width: helpers.space(42);
 
     header {
       align-items: center;
@@ -72,8 +74,11 @@
     }
 
     h3 {
+      display: flex;
       flex-grow: 1;
+      justify-content: center;
       margin: 0;
+      text-align: center;
     }
 
     ul {
@@ -87,21 +92,19 @@
       align-items: center;
       display: flex;
       justify-content: center;
-      width: calc(100% / 7);
+      width: helpers.space(6);
     }
   }
 
   .ods-date-picker-date {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    width: calc(100% / 7);
-
     .ods-button {
       aspect-ratio: 1;
       border-radius: helpers.border-radius('full');
-      color: helpers.color('content-main');
       width: 100%;
+    }
+
+    .ods-button:not(:disabled) {
+      color: helpers.color('content-main');
     }
 
     .ods-button.ods-date-picker-selected {
@@ -124,6 +127,11 @@
     .ods-date-picker-today.ods-date-picker-selected::before {
       background-color: helpers.color('background-inverse-action');
     }
+
+    &:nth-child(7n + 6),
+    &:nth-child(7n + 7) {
+      background-color: helpers.color('background-main');
+    }
   }
 
   .ods-date-picker-days {
@@ -139,16 +147,35 @@
   }
 
   .ods-date-picker-year {
+    margin: 0 0 0 0.2rem;
+    position: relative;
+    width: 3rem;
+
+    div {
+      background-color: helpers.color('border-action');
+      height: 1px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      transition: height ease-in-out 0.2s;
+    }
+  }
+
+  .ods-date-picker-year-input {
     appearance: none;
     background-color: transparent;
     border: 0;
-    border-bottom: 1px solid helpers.color('border-action');
     color: helpers.color('content-main');
     font-size: 1.17rem;
     font-weight: bold;
-    margin: 0 0 0 0.2rem;
+    outline: none;
     padding: 0;
     text-align: center;
-    width: 3rem;
+    width: 100%;
+
+    &:focus + div {
+      height: 2px;
+    }
   }
 }

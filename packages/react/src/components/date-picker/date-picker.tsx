@@ -1,4 +1,4 @@
-import { c, CheckboxProps as BaseProps, classy, color } from '@onfido/castor';
+import { c, classy, color, DatePickerProps as BaseProps } from '@onfido/castor';
 import React, { useEffect, useState } from 'react';
 import { Button } from '../button/button';
 import { Icon } from '../icon/icon';
@@ -40,7 +40,10 @@ const dateToString: (date: Date) => string = (date: Date) =>
     date.getDate()
   )}`;
 
-export const DatePicker: React.FC<DatePickerProps> = () => {
+export const DatePicker: React.FC<DatePickerProps> = ({
+  canSelectFuture = true,
+  canSelectPast = true,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState<string>();
   const [displayedYear, setDisplayedYear] = useState<number>(
@@ -61,11 +64,6 @@ export const DatePicker: React.FC<DatePickerProps> = () => {
       setValue(dateToString(new Date()));
     }
     toggle();
-  };
-
-  const currentMonth = () => {
-    setDisplayedYear(new Date().getFullYear());
-    setDisplayedMonth(new Date().getMonth());
   };
 
   const previous = () => {
@@ -99,13 +97,15 @@ export const DatePicker: React.FC<DatePickerProps> = () => {
         displayedMonth + 1
       )}-${padDateItem(date)}`
     );
+  };
 
-    console.log(
-      new Date(
-        `${String(displayedYear)}-${padDateItem(
-          displayedMonth + 1
-        )}-${padDateItem(date)}`
-      )
+  const isDateDisabled = (date: number) => {
+    const testedDate = new Date(displayedYear, displayedMonth, date);
+    const today = new Date();
+
+    return (
+      (!canSelectFuture ? testedDate > today : false) ||
+      (!canSelectPast ? testedDate < today : false)
     );
   };
 
@@ -174,24 +174,6 @@ export const DatePicker: React.FC<DatePickerProps> = () => {
         <Popover position="bottom" align="start">
           <div className={classy(c('date-picker-selector'))}>
             <header>
-              <h3>
-                {new Date(displayedYear, displayedMonth, 1).toLocaleDateString(
-                  undefined,
-                  {
-                    month: 'long',
-                  }
-                )}
-                <input
-                  className={classy(c('date-picker-year'))}
-                  type="text"
-                  pattern="\d*"
-                  maxLength={4}
-                  value={displayedYear}
-                  onChange={(event) =>
-                    setDisplayedYear(Number(event.target.value))
-                  }
-                />
-              </h3>
               <nav className={classy(c('date-picker-nav'))}>
                 <Button
                   kind="action"
@@ -201,14 +183,28 @@ export const DatePicker: React.FC<DatePickerProps> = () => {
                 >
                   <Icon aria-hidden="true" name="chevron-left" />
                 </Button>
-                <Button
-                  kind="action"
-                  variant="tertiary"
-                  onClick={currentMonth}
-                  title="Today"
-                >
-                  <Icon aria-hidden="true" name="circle-solid" />
-                </Button>
+                <h3>
+                  {new Date(
+                    displayedYear,
+                    displayedMonth,
+                    1
+                  ).toLocaleDateString(undefined, {
+                    month: 'long',
+                  })}
+                  <div className={classy(c('date-picker-year'))}>
+                    <input
+                      className={classy(c('date-picker-year-input'))}
+                      type="text"
+                      pattern="\d*"
+                      maxLength={4}
+                      value={displayedYear}
+                      onChange={(event) =>
+                        setDisplayedYear(Number(event.target.value))
+                      }
+                    />
+                    <div />
+                  </div>
+                </h3>
                 <Button
                   kind="action"
                   variant="tertiary"
@@ -223,7 +219,7 @@ export const DatePicker: React.FC<DatePickerProps> = () => {
               <li>M</li>
               <li>T</li>
               <li>W</li>
-              <li>T</li>
+              <li>Th</li>
               <li>F</li>
               <li>S</li>
               <li>S</li>
@@ -241,6 +237,7 @@ export const DatePicker: React.FC<DatePickerProps> = () => {
                       variant="tertiary"
                       className={getDayClassName(date)}
                       onClick={() => selectDate(date)}
+                      disabled={isDateDisabled(date)}
                     >
                       {date}
                     </Button>

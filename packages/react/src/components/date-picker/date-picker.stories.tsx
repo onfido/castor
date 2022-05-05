@@ -20,6 +20,14 @@ export default {
   parameters: { display: 'flex' },
 } as Meta<DatePickerProps>;
 
-export const AsIndeterminate: Story<DatePickerProps> = {
+export const Playground: Story<DatePickerProps> = {
   render: () => <DatePicker />,
+};
+
+export const NoPastSelection: Story<DatePickerProps> = {
+  render: () => <DatePicker canSelectPast={false} />,
+};
+
+export const NoFutureSelection: Story<DatePickerProps> = {
+  render: () => <DatePicker canSelectFuture={false} />,
 };
