@@ -13,6 +13,11 @@
 @mixin _DatePicker() {
   $stroke-size: helpers.space(0.25);
 
+  .ods-date-picker-overlay {
+    inset: 0;
+    position: fixed;
+  }
+
   .ods-date-picker-container {
     margin-bottom: 150vh; // To remove
     position: relative;
