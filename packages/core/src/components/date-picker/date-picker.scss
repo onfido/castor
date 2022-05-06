@@ -13,11 +13,6 @@
 @mixin _DatePicker() {
   $stroke-size: helpers.space(0.25);
 
-  .ods-date-picker-overlay {
-    inset: 0;
-    position: fixed;
-  }
-
   .ods-date-picker-container {
     margin-bottom: 150vh; // To remove
     position: relative;
@@ -29,6 +24,7 @@
 
     input {
       padding-right: 2.5rem;
+      width: helpers.space(22);
     }
 
     .ods-date-picker-input::-webkit-inner-spin-button,
@@ -45,14 +41,14 @@
     width: 100%;
 
     button {
-      aspect-ratio: 1;
       border-radius: helpers.border-radius('full');
+      height: helpers.space(6);
       width: helpers.space(6);
     }
   }
 
   .ods-date-picker-button {
-    aspect-ratio: 1;
+    height: helpers.space(6);
     position: absolute;
     right: 0;
     top: 50%;
@@ -64,19 +60,24 @@
     background-color: helpers.color('background-surface');
     border: 1px solid helpers.color('border-input');
     border-radius: helpers.border-radius('medium');
-    padding: helpers.space(2);
+    padding: helpers.space(0.5);
     width: helpers.space(42);
 
     header {
       align-items: center;
       display: flex;
-      margin-bottom: helpers.space(2);
+      margin-bottom: helpers.space(0.5);
     }
 
     h3 {
+      @include helpers.font('500-regular');
+      align-items: center;
       display: flex;
       flex-grow: 1;
+      font-size: 1rem;
+      font-weight: 500;
       justify-content: center;
+      line-height: 1rem;
       margin: 0;
       text-align: center;
     }
@@ -98,9 +99,9 @@
 
   .ods-date-picker-date {
     .ods-button {
-      aspect-ratio: 1;
       border-radius: helpers.border-radius('full');
-      width: 100%;
+      height: helpers.space(6);
+      width: helpers.space(6);
     }
 
     .ods-button:not(:disabled) {
@@ -108,7 +109,7 @@
     }
 
     .ods-button.ods-date-picker-selected {
-      background-color: helpers.color('content-action');
+      background-color: helpers.color('background-action');
       color: helpers.color('content-inverse-main');
     }
 
@@ -127,17 +128,12 @@
     .ods-date-picker-today.ods-date-picker-selected::before {
       background-color: helpers.color('background-inverse-action');
     }
-
-    &:nth-child(7n + 6),
-    &:nth-child(7n + 7) {
-      background-color: helpers.color('background-main');
-    }
   }
 
   .ods-date-picker-days {
     background-color: helpers.color('background-surface-alt');
     border-radius: helpers.border-radius('medium');
-    font-weight: bold;
+    color: helpers.color('content-secondary');
     height: helpers.space(4);
     margin: 0 0 helpers.space(0.5) 0;
   }
@@ -149,7 +145,7 @@
   .ods-date-picker-year {
     margin: 0 0 0 0.2rem;
     position: relative;
-    width: 3rem;
+    width: 2.5rem;
 
     div {
       background-color: helpers.color('border-action');
@@ -163,12 +159,15 @@
   }
 
   .ods-date-picker-year-input {
+    @include helpers.font('500-regular');
     appearance: none;
     background-color: transparent;
     border: 0;
     color: helpers.color('content-main');
-    font-size: 1.17rem;
+    font-size: 1rem;
     font-weight: bold;
+    font-weight: 500;
+    line-height: inherit;
     outline: none;
     padding: 0;
     text-align: center;
