@@ -24,18 +24,33 @@
   }
 
   .ods-date-picker {
+    @include mixins.as-text-field();
     @include helpers.font('600-regular');
     position: relative;
+    width: helpers.space(24);
+  }
+
+  .ods-date-picker-inputs {
+    align-items: center;
+    display: flex;
+    font-size: 1rem;
+    line-height: calc(1.5rem + 2px);
 
     input {
-      padding-right: 2.5rem;
-      width: helpers.space(22);
+      @include helpers.font('500-regular');
+      background-color: transparent;
+      border: 0;
+      font-size: 1rem;
+      height: 1rem;
+      line-height: 1rem;
+      margin: 0;
+      padding: 0.2rem 0.3ch;
+      text-align: center;
+      width: 3ch;
     }
 
-    .ods-date-picker-input::-webkit-inner-spin-button,
-    .ods-date-picker-input::-webkit-calendar-picker-indicator {
-      appearance: none;
-      display: none;
+    .ods-date-picker-inputs-year {
+      width: 5ch;
     }
   }
 

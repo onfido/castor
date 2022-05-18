@@ -1,10 +1,10 @@
 import { c, classy, color, DatePickerProps as BaseProps } from '@onfido/castor';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '../button/button';
 import { Icon } from '../icon/icon';
-import { Input } from '../input/input';
 import { Popover } from '../popover/popover';
 import CalendarIcon from './CalendarIcon';
+import Input from './date-picker-input';
 
 const getShiftArray = (year: number, month: number) => {
   const firstDay = new Date(year, month, 1).getDay();
@@ -32,42 +32,41 @@ const getDaysToDisplay = (
   return [...getShiftArray(year, month), ...days];
 };
 
-const padDateItem: (dateItem: number) => string = (dateItem: number) =>
-  String(dateItem).padStart(2, '0');
-
-const dateToString: (date: Date) => string = (date: Date) =>
-  `${date.getFullYear()}-${padDateItem(date.getMonth() + 1)}-${padDateItem(
-    date.getDate()
-  )}`;
-
 export const DatePicker: React.FC<DatePickerProps> = ({
   canSelectFuture = true,
   canSelectPast = true,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState<string>();
-  const [displayedYear, setDisplayedYear] = useState<number>(
-    new Date().getFullYear()
-  );
+
   const [displayedMonth, setDisplayedMonth] = useState<number>(
     new Date().getMonth()
   );
+  const [displayedYear, setDisplayedYear] = useState<number>(
+    new Date().getFullYear()
+  );
+
+  const [selectedDate, setSelectedDate] = useState<string>('');
+  const [selectedMonth, setSelectedMonth] = useState<string>('');
+  const [selectedYear, setSelectedYear] = useState<string>('');
+
   const [numberOfDisplayedDays, setNumberOfDisplayedDays] = useState<number>(0);
+
+  const dateInput = useRef<HTMLInputElement>(null);
+  const monthInput = useRef<HTMLInputElement>(null);
+  const yearInput = useRef<HTMLInputElement>(null);
 
   const toggle = () => setIsOpen(!isOpen);
   const close = () => setIsOpen(false);
   const open = () => setIsOpen(true);
-  const setDate = (date?: string) => {
-    if (date) {
-      setValue(date);
-    } else {
-      setValue(dateToString(new Date()));
-    }
-    toggle();
+
+  const focus = (event: React.FocusEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    event.target.select();
+    open();
   };
 
   const previous = () => {
-    if (displayedMonth > 0) {
+    if (Number(displayedMonth) > 0) {
       setDisplayedMonth(displayedMonth - 1);
     } else {
       setDisplayedMonth(11);
@@ -76,7 +75,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   };
 
   const next = () => {
-    if (displayedMonth < 11) {
+    if (Number(displayedMonth) < 11) {
       setDisplayedMonth(displayedMonth + 1);
     } else {
       setDisplayedMonth(0);
@@ -84,19 +83,54 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     }
   };
 
-  const change = (valueStr: string) => {
-    const [yearStr, monthStr] = valueStr.split('-');
-    setDisplayedYear(Number(yearStr));
-    setDisplayedMonth(Number(monthStr) - 1);
-    setValue(valueStr);
+  const onYearChange = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const value = (event.target as HTMLInputElement).value;
+    if (event.key !== ' ' && Number.isInteger(Number(event.key))) {
+      if (value.length === 0) {
+        setDisplayedYear(Number(event.key));
+        setSelectedYear(event.key.padStart(4, '0'));
+      } else {
+        if (value.length === 4 && value[0] === '0') {
+          setDisplayedYear(Number(value.substring(1) + event.key));
+          setSelectedYear(value.substring(1) + event.key);
+        } else {
+          setDisplayedYear(Number(event.key));
+          setSelectedYear(event.key.padStart(4, '0'));
+        }
+      }
+    }
+
+    if (event.key === 'Backspace') {
+      setDisplayedYear(new Date().getFullYear());
+      setSelectedYear('');
+    }
+  };
+
+  const onDisplayedYearChange = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    const value = (event.target as HTMLInputElement).value;
+    if (event.key !== ' ' && Number.isInteger(Number(event.key))) {
+      if (value.length === 0) {
+        setDisplayedYear(Number(event.key));
+      } else {
+        if (value.length === 4 && value[0] === '0') {
+          setDisplayedYear(Number(value.substring(1) + event.key));
+        } else {
+          setDisplayedYear(Number(event.key));
+        }
+      }
+    }
+
+    if (event.key === 'Backspace') {
+      setDisplayedYear(new Date().getFullYear());
+    }
   };
 
   const selectDate = (date: number) => {
-    setDate(
-      `${String(displayedYear)}-${padDateItem(
-        displayedMonth + 1
-      )}-${padDateItem(date)}`
-    );
+    setSelectedDate(String(date).padStart(2, '0'));
+    setSelectedMonth(String(Number(displayedMonth) + 1).padStart(2, '0'));
+    setSelectedYear(String(displayedYear).padStart(4, '0'));
   };
 
   const isDateDisabled = (date: number) => {
@@ -124,16 +158,12 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       className += classy(c('date-picker-today'));
     }
 
-    if (value) {
-      const selectedDate = new Date(value);
-
-      if (
-        displayedMonth === selectedDate.getMonth() &&
-        displayedYear === selectedDate.getFullYear() &&
-        selectedDate.getDate() === date
-      ) {
-        className = `${className} ${classy(c('date-picker-selected'))}`;
-      }
+    if (
+      displayedMonth === Number(selectedMonth) - 1 &&
+      displayedYear === Number(selectedYear) &&
+      date === Number(selectedDate)
+    ) {
+      className = `${className} ${classy(c('date-picker-selected'))}`;
     }
 
     return className;
@@ -148,19 +178,41 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   return (
     <div className={classy(c('date-picker-container'))}>
       {isOpen && (
-        <div
-          onClick={() => close()}
-          className={classy(c('date-picker-overlay'))}
-        />
+        <div onClick={close} className={classy(c('date-picker-overlay'))} />
       )}
       <div className={classy(c('date-picker'))}>
-        <Input
-          className={classy(c('date-picker-input'))}
-          type="date"
-          value={value}
-          onChange={(event) => change(event.currentTarget.value)}
-          onFocus={() => open()}
-        />
+        <div className={classy(c('date-picker-inputs'))}>
+          <Input
+            type="date"
+            onFocus={focus}
+            value={selectedDate}
+            ref={dateInput}
+            setSelected={setSelectedDate}
+            nextRef={monthInput}
+          />
+          /
+          <Input
+            type="month"
+            onFocus={focus}
+            value={selectedMonth}
+            ref={monthInput}
+            setDisplayed={setDisplayedMonth}
+            setSelected={setSelectedMonth}
+            nextRef={yearInput}
+          />
+          /
+          <input
+            type="text"
+            placeholder="yyyy"
+            onFocus={focus}
+            className={classy(c('date-picker-inputs-year'))}
+            maxLength={4}
+            minLength={4}
+            onKeyDown={onYearChange}
+            value={selectedYear}
+            ref={yearInput}
+          />
+        </div>
         <Button
           kind="action"
           variant="tertiary"
@@ -197,10 +249,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                       type="text"
                       pattern="\d*"
                       maxLength={4}
-                      value={displayedYear}
-                      onChange={(event) =>
-                        setDisplayedYear(Number(event.target.value))
-                      }
+                      value={String(displayedYear).padStart(4, '0')}
+                      onKeyDown={onDisplayedYearChange}
+                      onFocus={(event) => {
+                        event.target.select();
+                      }}
                     />
                     <div />
                   </div>
