@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "engines": {
-    "node": ">= 14.17"
+    "node": ">= 16.14"
   },
   "scripts": {
     "start": "start-storybook -p 6006",
