@@ -227,3 +227,7 @@ git push --follow-tags -u origin release/1.2.x
 
 No need to open a PR to merge a non-latest release back to `main`, nor do tags need to be moved.
 However, consider protecting the branch `release/1.2.x` against deletion under GitHub's "Branches" settings.
+
+## Workarounds
+
+1. Storybook 6.5.3 has a type issue with `react-textarea-autosize` so we installed its types as a dev dependency to prevent lint (tsc type checking) from failing.
