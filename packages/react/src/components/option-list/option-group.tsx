@@ -1,18 +1,18 @@
 import { c, classy } from '@onfido/castor';
 import React from 'react';
 
-export interface CustomOptionGroupProps extends JsxDiv {
+export interface OptionGroupProps extends JsxDiv {
   label: string;
 }
 
-export const CustomOptionGroup = ({
+export const OptionGroup = ({
   children,
   className,
   label,
   ...restProps
-}: CustomOptionGroupProps) => (
+}: OptionGroupProps) => (
   <>
-    <div {...restProps} className={classy(c('select-option-group'), className)}>
+    <div {...restProps} className={classy(c('option-group'), className)}>
       {label}
     </div>
     {children}

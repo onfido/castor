@@ -1,4 +1,4 @@
-import { IconChevronDown } from '@onfido/castor-icons';
+import { IconCheck, IconChevronDown } from '@onfido/castor-icons';
 import {
   Field,
   FieldLabel,
@@ -46,12 +46,13 @@ export default {
         <Option hidden value="">
           Select an option...
         </Option>
-        <Option value={1}>Option 1</Option>
-        <Option value={2}>Option 2</Option>
+        <Option value={1}>Option</Option>
+        <Option value={2} disabled>
+          Disabled option
+        </Option>
         <Option value="long">Longer option that is quite long</Option>
         <Option value="enormous">
-          An enormously long option that we truncate when it gets too long for a
-          flexible width box
+          An enormously long option that we truncate when it gets too long
         </Option>
       </>
     ),
@@ -66,14 +67,20 @@ export default {
 export const Playground: Story<SelectProps> = {};
 
 export const InlineIcon: Story<SelectProps> = {
-  render: (props) => <Select {...props} icon={<IconChevronDown />} />,
+  render: (props) => (
+    <Select
+      {...props}
+      icon={<IconChevronDown />}
+      selectedIcon={<IconCheck />}
+    />
+  ),
   parameters: {
     docs: {
       source: {
         code: `
 import { IconChevronDown } from '@onfido/castor-icons';
 
-<Select icon={<IconChevronDown />}>
+<Select icon={<IconChevronDown />} selectedIcon={<IconCheck />}>
   {/* options */}
 </Select>
 `,
@@ -82,6 +89,7 @@ import { IconChevronDown } from '@onfido/castor-icons';
   },
 };
 IconChevronDown.displayName = 'IconChevronDown';
+IconCheck.displayName = 'IconCheck';
 
 export const Borderless = reactMatrix(Select, { borderless });
 export const Invalid = reactMatrix(Select, { invalid });
@@ -96,12 +104,15 @@ export const OptionGroups: Story<SelectProps> = {
           Select an animal...
         </Option>
         <OptionGroup label="Birds">
-          <Option value="chicken">Chicken</Option>
-          <Option value="ostrich">Ostrich</Option>
+          <Option value="finch">🦜 Finch</Option>
+          <Option value="penguin">🐧 Penguin</Option>
+        </OptionGroup>
+        <OptionGroup label="Insects">
+          <Option value="bee">🐝 Bee</Option>
         </OptionGroup>
         <OptionGroup label="Mammals">
-          <Option value="monkey">Monkey</Option>
-          <Option value="whale">Whale</Option>
+          <Option value="lion">🦁 Lion</Option>
+          <Option value="monkey">🐒 Monkey</Option>
         </OptionGroup>
       </>
     ),

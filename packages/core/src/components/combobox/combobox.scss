@@ -1,0 +1,59 @@
+@use '../../helpers';
+@use '../../mixins';
+
+@mixin Combobox() {
+  @if not mixins.includes('Combobox') {
+    @include _Combobox();
+  }
+}
+
+@mixin _Combobox() {
+  $border-width: 1px;
+
+  .ods-combobox {
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-flex;
+    position: relative;
+    width: helpers.space(40);
+
+    > * {
+      box-sizing: inherit;
+    }
+
+    > .ods-input {
+      color: transparent;
+      cursor: pointer;
+      overflow: hidden;
+      padding-right: helpers.space(6);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &.-open > .ods-input {
+      color: inherit;
+    }
+
+    > .ods-icon {
+      pointer-events: none;
+      position: absolute;
+      right: helpers.space(1.5);
+      transition: transform helpers.time(1) ease;
+    }
+
+    &.-open > .ods-icon {
+      transform: rotateX(180deg);
+    }
+  }
+
+  .ods-option-content.-empty {
+    @include helpers.font('300-regular');
+
+    color: helpers.color('content-disabled');
+
+    &:not(:first-child) {
+      display: none;
+    }
+  }
+}

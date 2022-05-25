@@ -1,13 +1,11 @@
 import { c, classy, InputProps as BaseProps, m } from '@onfido/castor';
 import { useField } from '@onfido/castor-react';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { withRef } from '../../utils';
-
-let idCount = 0;
 
 export const Input = withRef(function Input(
   {
-    id = `castor_input_${++idCount}`,
+    id: initialId,
     type = 'text',
     invalid,
     className,
@@ -16,6 +14,7 @@ export const Input = withRef(function Input(
   ref: InputProps['ref']
 ) {
   const { disabled, touched } = useField();
+  const id = useMemo(() => `castor_input_${++idCount}`, [initialId]);
 
   return (
     <input
@@ -32,3 +31,5 @@ export const Input = withRef(function Input(
 export type InputProps = BaseProps & Omit<InputElementProps, 'children'>;
 
 type InputElementProps = JSX.IntrinsicElements['input'];
+
+let idCount = 0;

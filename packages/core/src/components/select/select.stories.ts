@@ -35,13 +35,21 @@ export default {
     children: [
       html('option', {
         children: 'Select an option...',
-        disabled: true,
+        hidden: true,
         selected: true,
         value: '',
       }),
-      html('option', { children: 'Option 1', value: 1 }),
-      html('option', { children: 'Option 2', value: 2 }),
-      html('option', { children: 'Option 3', value: 3 }),
+      html('option', { children: 'Option', value: 1 }),
+      html('option', { children: 'Disabled option', value: 2, disabled: true }),
+      html('option', {
+        children: 'Longer option that is quite long',
+        value: 'long',
+      }),
+      html('option', {
+        children:
+          'An enormously long option that we truncate when it gets too long',
+        value: 'enormous',
+      }),
     ],
     borderless: false,
     disabled: false,
@@ -56,19 +64,8 @@ export const Borderless = htmlMatrix(Select, { borderless });
 export const Invalid = htmlMatrix(Select, { invalid });
 export const Disabled = htmlMatrix(Select, { disabled });
 
-export const AsRequired: Story<SelectProps> = {
+export const Required: Story<SelectProps> = {
   args: {
-    children: [
-      html('option', {
-        children: 'Select an option...',
-        disabled: true,
-        selected: true,
-        value: '',
-      }),
-      html('option', { children: 'Option 1', value: 1 }),
-      html('option', { children: 'Option 2', value: 2 }),
-      html('option', { children: 'Option 3', value: 3 }),
-    ],
     required: true,
   },
 };

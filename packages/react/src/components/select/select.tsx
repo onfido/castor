@@ -8,6 +8,7 @@ import { SelectProvider } from './useSelect';
 
 export type SelectProps = (Native | Custom) & {
   icon?: JSX.Element;
+  selectedIcon?: JSX.Element;
 };
 
 type Native = { native: true } & BaseProps & NativeSelectProps;
@@ -15,13 +16,13 @@ type Custom = { native?: false } & BaseProps &
   Omit<CustomSelectProps, 'open' | 'onOpenChange'>;
 
 /**
- * `Select` by default uses an `Icon` that requires `Icons` (SVG sprite) to be
+ * `Select` by default uses two `Icon` that require `Icons` (SVG sprite) to be
  * included in your app.
  *
  * https://github.com/onfido/castor-icons#use-with-plain-code
  *
- * You may also provide any other SVG element via the `icon` prop, but using
- * Castor iconography is recommended.
+ * You may also provide any other SVG element via the `icon` and `selectedIcon`
+ * props, but using Castor iconography is recommended.
  */
 export const Select = withRef(function Select(
   { borderless, className, icon, native, onChange, ...restProps }: SelectProps,
@@ -67,6 +68,7 @@ interface ContentProps extends CustomSelectProps {
   native?: boolean;
   open?: boolean;
   onOpenChange: (open: boolean) => void;
+  selectedIcon?: JSX.Element;
 }
 
 const Content = withRef(function Content(

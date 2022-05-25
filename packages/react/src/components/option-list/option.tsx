@@ -1,29 +1,37 @@
 import { c, classy } from '@onfido/castor';
-import { Icon } from '@onfido/castor-react';
 import React, { ReactNode, useEffect } from 'react';
-import { useCustomSelect } from './useCustomSelect';
+import { MaybeIcon } from '../../internal';
+import { textContent } from '../../utils';
+import { useOptionList } from './useOptionList';
 
-export interface CustomOptionProps extends JsxLabel {
+export interface OptionProps extends JsxLabel {
   children?: ReactNode;
   disabled?: boolean;
+  /**
+   * Keywords that can also match Combobox search.
+   * If `true` will always show regardless of search term.
+   */
+  keywords?: string | readonly string[] | boolean;
   value: string | number | readonly string[];
 }
 
-export function CustomOption({
+export function Option({
   children,
   className,
   disabled,
   hidden,
+  keywords,
   value: optionValue,
   onClick,
   onKeyUp,
   ...restProps
-}: CustomOptionProps) {
-  const { initialize, name, select, value } = useCustomSelect();
+}: OptionProps) {
+  const { icon, initialize, name, search, select, value } = useOptionList();
 
   useEffect(() => initialize(children, optionValue), []);
 
   if (hidden) return null;
+  if (!matches(search, children, optionValue, keywords)) return null;
 
   const selectOption = () => disabled || select(children, optionValue);
   const selected = value == optionValue;
@@ -31,7 +39,7 @@ export function CustomOption({
   return (
     <label
       {...restProps}
-      className={classy(c('select-option'), className)}
+      className={classy(c('option'), className)}
       onClick={(event) => {
         // moving through options with arrow keys (onChange) will trigger
         // onClick events here, but we don't want to select then, so we filter
@@ -45,25 +53,35 @@ export function CustomOption({
       }}
     >
       <input
-        className={classy(c('select-option-input'))}
+        className={classy(c('option-input'))}
         checked={selected}
         disabled={disabled}
         name={name}
         readOnly
         type="radio"
       />
-      <span className={classy(c('select-option-content'))}>{children}</span>
-      {selected && !disabled && (
-        <Icon
-          className={classy(c('select-option-icon'))}
-          aria-hidden="true"
-          name="check"
-        />
-      )}
+      <span className={classy(c('option-content'))}>{children}</span>
+      {selected && !disabled && <MaybeIcon icon={icon} name="check" />}
     </label>
   );
 }
 
+const matches = (
+  search: string | undefined,
+  children: ReactNode,
+  value: Value | number,
+  keywords: Value | boolean
+) => {
+  if (keywords === true) return true;
+
+  const label = textContent(children);
+  const term = search?.toLowerCase().trim();
+  const values = [label, value, keywords].flat().map(String).filter(Boolean);
+
+  return !term || values.some((v) => v?.toLowerCase().includes(term));
+};
+
 const selectOptionKeys = new Set([' ', 'Enter']);
 
 type JsxLabel = JSX.IntrinsicElements['label'];
+type Value = string | readonly string[] | undefined;
