@@ -93,7 +93,7 @@ export const Combobox = withRef(function Combobox(
         onBlur={(event) => {
           if (preventBlur.current) return (preventBlur.current = false);
 
-          setSearch(textContent(selected.option));
+          setSearch('');
           close();
           onBlur?.(event);
         }}
