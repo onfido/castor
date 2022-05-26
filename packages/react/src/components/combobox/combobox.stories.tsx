@@ -14,7 +14,10 @@ export default {
     },
     disabled: {},
     empty: {
-      control: { type: 'string' },
+      control: 'text',
+      description: 'Option to show when search yields no results.',
+      defaultValue: 'No matching options',
+      table: { defaultValue: { summary: '"No matching options"' } },
     },
   },
   args: {
