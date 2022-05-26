@@ -1,8 +1,8 @@
 import { c, classy, m, PopoverProps, SelectProps } from '@onfido/castor';
-import React, { ForwardedRef, SyntheticEvent, useRef, useState } from 'react';
+import React, { ForwardedRef, SyntheticEvent, useState } from 'react';
 import { useForwardedRef, withRef } from '../../../utils';
 import { OptionList, OptionListEvent } from '../../option-list/option-list';
-import { OptionListProvider } from '../../option-list/useOptionList';
+import { OptionListInit } from '../../option-list/options-list-init';
 import { Popover } from '../../popover/popover';
 import { NativeSelect, NativeSelectProps } from '../native';
 
@@ -128,47 +128,22 @@ export const CustomSelect = withRef(function CustomSelect(
       )}
 
       {!selected.option && (
-        <Init defaultValue={defaultValue} value={value} onInit={setSelected}>
+        <OptionListInit
+          defaultValue={defaultValue}
+          value={value}
+          onInit={setSelected}
+        >
           {children}
-        </Init>
+        </OptionListInit>
       )}
     </>
   );
 });
-
-const Init = ({
-  children,
-  defaultValue,
-  value,
-  onInit,
-}: Pick<CustomSelectProps, 'children' | 'defaultValue' | 'value'> & {
-  onInit: (selected: OptionListEvent) => void;
-}) => {
-  const hasInit = useRef(false);
-
-  return (
-    <OptionListProvider
-      value={{
-        value: value ?? defaultValue,
-        initialize(option, value) {
-          if (hasInit.current) return;
-          hasInit.current = true;
-          onInit({ option, value });
-        },
-        select: noop,
-      }}
-    >
-      <div style={{ display: 'none' }}>{children}</div>
-    </OptionListProvider>
-  );
-};
 
 const closeSelectKeys = new Set(['Escape']);
 const openSelectKeys = new Set([' ', 'ArrowDown', 'ArrowUp']);
 
 const focus = (element: HTMLElement | null | undefined) =>
   element?.focus({ preventScroll: true });
-
-const noop = () => void 0;
 
 const stopPropagation = (event: SyntheticEvent) => event.stopPropagation();

@@ -6,14 +6,16 @@ import {
   m,
   PopoverProps,
 } from '@onfido/castor';
-import { Input } from '@onfido/castor-react';
+import {
+  Input,
+  OptionList,
+  OptionListEvent,
+  Popover,
+} from '@onfido/castor-react';
 import React, { ForwardedRef, SyntheticEvent, useRef, useState } from 'react';
 import { MaybeIcon } from '../../internal';
 import { textContent, withRef } from '../../utils';
-import { OptionList, OptionListEvent } from '../option-list/option-list';
-import { OptionListProvider } from '../option-list/useOptionList';
-import { Popover } from '../popover/popover';
-import { CustomSelectProps } from '../select/custom';
+import { OptionListInit } from '../option-list/options-list-init';
 
 export interface ComboboxProps
   extends BaseProps,
@@ -191,44 +193,17 @@ export const Combobox = withRef(function Combobox(
       )}
 
       {!placeholder && (
-        <Init
+        <OptionListInit
           defaultValue={defaultValue}
           value={value}
           onInit={(first) => setPlaceholder(textContent(first.option))}
         >
           {children}
-        </Init>
+        </OptionListInit>
       )}
     </div>
   );
 });
-
-const Init = ({
-  children,
-  defaultValue,
-  value,
-  onInit,
-}: Pick<CustomSelectProps, 'children' | 'defaultValue' | 'value'> & {
-  onInit: (selected: OptionListEvent) => void;
-}) => {
-  const hasInit = useRef(false);
-
-  return (
-    <OptionListProvider
-      value={{
-        value: value ?? defaultValue,
-        initialize(option, value) {
-          if (hasInit.current) return;
-          hasInit.current = true;
-          onInit({ option, value });
-        },
-        select: noop,
-      }}
-    >
-      <div style={{ display: 'none' }}>{children}</div>
-    </OptionListProvider>
-  );
-};
 
 const closeKeys = new Set(['Escape']);
 const confirmKeys = new Set(['Enter']);
@@ -240,7 +215,5 @@ const click = (element: HTMLElement | null | undefined) =>
 
 const focus = (element: HTMLElement | null | undefined) =>
   element?.focus({ preventScroll: true });
-
-const noop = () => void 0;
 
 const stopPropagation = (event: SyntheticEvent) => event.stopPropagation();
