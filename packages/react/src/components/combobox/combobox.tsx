@@ -84,8 +84,9 @@ export const Combobox = withRef(function Combobox(
       />
       <Input
         ref={inputRef}
+        autoComplete="off"
         disabled={disabled}
-        placeholder={selected.option ? undefined : placeholder}
+        placeholder={placeholder}
         value={search}
         onBlur={(event) => {
           if (preventBlur.current) return (preventBlur.current = false);
@@ -103,7 +104,7 @@ export const Combobox = withRef(function Combobox(
           onClick?.(event);
         }}
         onFocus={(event) => {
-          setSearch(textContent(selected.option));
+          setSearch('');
           setOpen(true);
           onFocus?.(event);
         }}
@@ -170,10 +171,7 @@ export const Combobox = withRef(function Combobox(
             value={selected.value ?? value ?? defaultValue}
             onChange={(selected) => {
               setSelected(selected);
-              setSearch(textContent(selected.option));
-              // order is important, close after inputRef gains focus
               focus(inputRef.current);
-              close();
               // propagate onChange manually because <input> won't naturally when
               // its value is changed programatically by React, and on next tick
               // because React needs to update its value first

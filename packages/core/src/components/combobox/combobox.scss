@@ -13,7 +13,6 @@
   .ods-combobox {
     align-items: center;
     box-sizing: border-box;
-    cursor: pointer;
     display: inline-flex;
     position: relative;
     width: helpers.space(40);
@@ -24,7 +23,6 @@
 
     > .ods-input {
       color: transparent;
-      cursor: pointer;
       overflow: hidden;
       padding-right: helpers.space(6);
       text-overflow: ellipsis;
