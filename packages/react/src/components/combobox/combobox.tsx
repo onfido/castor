@@ -187,8 +187,7 @@ export const Combobox = withRef(function Combobox(
               // any other key is assumed to be typing on the Input
               if (!navigateKeys.has(event.key)) {
                 if (moveCursorKeys.has(event.key)) event.preventDefault();
-                focus(inputRef.current);
-                return setInput(input);
+                return focus(inputRef.current);
               }
             }}
             onKeyUp={(event) => {
