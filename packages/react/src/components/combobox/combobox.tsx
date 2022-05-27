@@ -157,7 +157,6 @@ export const Combobox = withRef(function Combobox(
             search={search}
             value={selected.value ?? value ?? defaultValue}
             onChange={(selected) => {
-              preventBlur.current = true;
               setSelected(selected);
               focus(inputRef.current);
               // propagate onChange manually because <input> won't naturally when
