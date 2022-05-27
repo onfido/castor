@@ -106,6 +106,7 @@ export const Combobox = withRef(function Combobox(
           onBlur?.(event);
         }}
         onChange={(event) => {
+          setSearch(input);
           setInput(event.target.value);
           onChange?.(event);
         }}
@@ -118,13 +119,6 @@ export const Combobox = withRef(function Combobox(
           onFocus?.(event);
         }}
         onKeyUp={(event) => {
-          if (
-            !hasModifierKey(event) &&
-            !moveCursorKeys.has(event.key) &&
-            !navigateKeys.has(event.key)
-          )
-            setSearch(input);
-
           // select first option if confirming when focus is still on inputRef
           if (open && confirmKeys.has(event.key))
             select(optionsRef.current?.querySelector('input:enabled'));
