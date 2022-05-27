@@ -100,8 +100,8 @@ export const Combobox = withRef(function Combobox(
           onBlur?.(event);
         }}
         onChange={(event) => {
-          setSearch(input);
           setInput(event.target.value);
+          setSearch(event.target.value);
           onChange?.(event);
         }}
         onClick={(event) => {
