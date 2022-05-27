@@ -88,7 +88,7 @@ export const Combobox = withRef(function Combobox(
         ref={inputRef}
         autoComplete="off"
         disabled={disabled}
-        placeholder={placeholder}
+        placeholder={selected.option && !open ? undefined : placeholder}
         value={search}
         onBlur={(event) => {
           if (preventBlur.current) return (preventBlur.current = false);
@@ -111,16 +111,15 @@ export const Combobox = withRef(function Combobox(
           onFocus?.(event);
         }}
         onKeyUp={(event) => {
+          // select first option if confirming when focus is still on inputRef
+          if (open && confirmKeys.has(event.key))
+            select(optionsRef.current?.querySelector('input:enabled'));
           // arrow up and down keys move inside popover
-          if (navigateKeys.has(event.key)) {
+          else if (navigateKeys.has(event.key)) {
             preventBlur.current = true;
             focus(optionsRef.current?.querySelector('input:enabled'));
             setOpen(true);
-            preventBlur.current = false;
           }
-          // select first option if confirming when focus is still on inputRef
-          else if (open && confirmKeys.has(event.key))
-            click(optionsRef.current?.querySelector('input:enabled'));
           // close if 'Esc' is pressed, otherwise open on any other key
           else setOpen(!closeKeys.has(event.key));
 
@@ -145,20 +144,6 @@ export const Combobox = withRef(function Combobox(
           position={position}
           target={inputRef}
           onClose={close}
-          onPointerDown={() => {
-            preventBlur.current = true;
-          }}
-          onKeyUp={(event) => {
-            // 'Esc' moves back to inputRef
-            if (closeKeys.has(event.key)) focus(inputRef.current);
-          }}
-          onKeyDown={(event) => {
-            // close if focus moves outside
-            if (event.key === 'Tab') {
-              close();
-              event.preventDefault();
-            }
-          }}
           // stop bubbling so that Field validation isn't affected
           onBlur={stopPropagation}
           onChange={stopPropagation}
@@ -172,6 +157,7 @@ export const Combobox = withRef(function Combobox(
             search={search}
             value={selected.value ?? value ?? defaultValue}
             onChange={(selected) => {
+              preventBlur.current = true;
               setSelected(selected);
               focus(inputRef.current);
               // propagate onChange manually because <input> won't naturally when
@@ -182,6 +168,33 @@ export const Combobox = withRef(function Combobox(
                   new Event('change', { bubbles: true })
                 )
               );
+            }}
+            onKeyDown={(event) => {
+              // ignore 'Enter'
+              if (confirmKeys.has(event.key)) return;
+              // close if focus moves outside
+              if (event.key === 'Tab') {
+                close();
+                return event.preventDefault();
+              }
+              // reset state on 'Esc'
+              if (closeKeys.has(event.key)) {
+                focus(inputRef.current);
+                return close();
+              }
+              // any other key is assumed to be typing on the Input
+              if (!navigateKeys.has(event.key)) {
+                if (moveCursorKeys.has(event.key)) event.preventDefault();
+                focus(inputRef.current);
+                return setSearch(search);
+              }
+            }}
+            onKeyUp={(event) => {
+              // close on 'Enter' after change happened
+              if (confirmKeys.has(event.key)) return close();
+            }}
+            onPointerDown={() => {
+              preventBlur.current = true;
             }}
           >
             {children}
@@ -205,15 +218,18 @@ export const Combobox = withRef(function Combobox(
   );
 });
 
-const closeKeys = new Set(['Escape']);
+const closeKeys = new Set(['Escape', 'Enter']);
 const confirmKeys = new Set(['Enter']);
-const navigateKeys = new Set(['ArrowDown', 'ArrowUp']);
-
-const click = (element: HTMLElement | null | undefined) =>
-  // dispatch event because `detail` must be truthy
-  element?.dispatchEvent(new MouseEvent('click', { bubbles: true, detail: 1 }));
+const moveCursorKeys = new Set(['ArrowLeft', 'ArrowRight']);
+const navigateKeys = new Set(['ArrowDown', 'ArrowUp', 'Enter']);
 
 const focus = (element: HTMLElement | null | undefined) =>
   element?.focus({ preventScroll: true });
+
+// dispatch event to fake pressing 'Enter' to select option and close popover
+const select = (element: HTMLElement | null | undefined) =>
+  element?.dispatchEvent(
+    new KeyboardEvent('keyup', { bubbles: true, key: 'Enter' })
+  );
 
 const stopPropagation = (event: SyntheticEvent) => event.stopPropagation();
