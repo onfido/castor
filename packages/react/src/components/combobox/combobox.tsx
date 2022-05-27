@@ -12,7 +12,13 @@ import {
   OptionListEvent,
   Popover,
 } from '@onfido/castor-react';
-import React, { ForwardedRef, SyntheticEvent, useRef, useState } from 'react';
+import React, {
+  ForwardedRef,
+  KeyboardEvent,
+  SyntheticEvent,
+  useRef,
+  useState,
+} from 'react';
 import { MaybeIcon } from '../../internal';
 import { textContent, withRef } from '../../utils';
 import { OptionListInit } from '../option-list/options-list-init';
@@ -112,12 +118,10 @@ export const Combobox = withRef(function Combobox(
           onFocus?.(event);
         }}
         onKeyUp={(event) => {
-          console.log(event);
           if (
-            !event.altKey &&
-            !event.ctrlKey &&
-            !event.metaKey &&
-            !event.shiftKey
+            !hasModifierKey(event) &&
+            !moveCursorKeys.has(event.key) &&
+            !navigateKeys.has(event.key)
           )
             setSearch(input);
 
@@ -235,6 +239,9 @@ const navigateKeys = new Set(['ArrowDown', 'ArrowUp', 'Enter']);
 
 const focus = (element: HTMLElement | null | undefined) =>
   element?.focus({ preventScroll: true });
+
+const hasModifierKey = (event: KeyboardEvent) =>
+  event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
 
 // dispatch event to fake pressing 'Enter' to select option and close popover
 const select = (element: HTMLElement | null | undefined) =>
