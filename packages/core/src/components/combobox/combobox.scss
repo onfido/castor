@@ -22,15 +22,10 @@
     }
 
     > .ods-input {
-      color: transparent;
       overflow: hidden;
       padding-right: helpers.space(6);
       text-overflow: ellipsis;
       white-space: nowrap;
-    }
-
-    &.-open > .ods-input {
-      color: inherit;
     }
 
     > .ods-icon {

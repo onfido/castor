@@ -62,7 +62,8 @@ export const Combobox = withRef(function Combobox(
   const inputRef = useRef<HTMLInputElement>(null);
   const valueRef = useRef<HTMLInputElement>(null);
   const optionsRef = useRef<HTMLDivElement>(null);
-  const [search, setSearch] = useState('');
+  const [input, setInput] = useState('');
+  const [search, setSearch] = useState<string>();
   const [placeholder, setPlaceholder] = useState<string>();
   const [selected, setSelected] = useState<OptionListEvent>({});
   const [open, setOpen] = useState(false);
@@ -88,17 +89,18 @@ export const Combobox = withRef(function Combobox(
         ref={inputRef}
         autoComplete="off"
         disabled={disabled}
-        placeholder={selected.option && !open ? undefined : placeholder}
-        value={search}
+        placeholder={placeholder}
+        value={input}
         onBlur={(event) => {
           if (preventBlur.current) return (preventBlur.current = false);
 
-          setSearch(textContent(selected.option));
+          setInput(textContent(selected.option));
+          setSearch(undefined);
           close();
           onBlur?.(event);
         }}
         onChange={(event) => {
-          setSearch(event.target.value);
+          setInput(event.target.value);
           onChange?.(event);
         }}
         onClick={(event) => {
@@ -106,11 +108,19 @@ export const Combobox = withRef(function Combobox(
           onClick?.(event);
         }}
         onFocus={(event) => {
-          setSearch('');
           setOpen(true);
           onFocus?.(event);
         }}
         onKeyUp={(event) => {
+          console.log(event);
+          if (
+            !event.altKey &&
+            !event.ctrlKey &&
+            !event.metaKey &&
+            !event.shiftKey
+          )
+            setSearch(input);
+
           // select first option if confirming when focus is still on inputRef
           if (open && confirmKeys.has(event.key))
             select(optionsRef.current?.querySelector('input:enabled'));
@@ -127,13 +137,6 @@ export const Combobox = withRef(function Combobox(
         }}
       />
 
-      {!open && (
-        <output className={classy(c('select-output'))}>
-          {selected.option}
-          &nbsp; {/* non-breaking space guarantees element height */}
-        </output>
-      )}
-
       <MaybeIcon icon={icon} name="chevron-down" />
 
       {open && (
@@ -143,7 +146,11 @@ export const Combobox = withRef(function Combobox(
           overlay
           position={position}
           target={inputRef}
-          onClose={close}
+          onClose={() => {
+            setInput(textContent(selected.option));
+            setSearch(undefined);
+            close();
+          }}
           // stop bubbling so that Field validation isn't affected
           onBlur={stopPropagation}
           onChange={stopPropagation}
@@ -157,8 +164,12 @@ export const Combobox = withRef(function Combobox(
             search={search}
             value={selected.value ?? value ?? defaultValue}
             onChange={(selected) => {
+              preventBlur.current = true;
               setSelected(selected);
+              setInput(textContent(selected.option));
+              setSearch(undefined);
               focus(inputRef.current);
+              close();
               // propagate onChange manually because <input> won't naturally when
               // its value is changed programatically by React, and on next tick
               // because React needs to update its value first
@@ -185,7 +196,7 @@ export const Combobox = withRef(function Combobox(
               if (!navigateKeys.has(event.key)) {
                 if (moveCursorKeys.has(event.key)) event.preventDefault();
                 focus(inputRef.current);
-                return setSearch(search);
+                return setInput(input);
               }
             }}
             onKeyUp={(event) => {
