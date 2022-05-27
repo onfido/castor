@@ -107,8 +107,6 @@
     @include _display();
     @include _with-padding();
     pointer-events: none;
-    position: absolute;
-    width: 100%;
   }
 
   .ods-select-dropdown {
