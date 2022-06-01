@@ -24,7 +24,6 @@
   }
 
   .ods-date-picker {
-    @include mixins.as-text-field();
     @include helpers.font('600-regular');
     position: relative;
     width: helpers.space(24);
