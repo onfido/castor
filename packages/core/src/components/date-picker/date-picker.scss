@@ -162,38 +162,38 @@
   }
 
   .ods-date-picker-year {
-    margin: 0 0 0 0.2rem;
+    margin: 0 0 0 1ch;
     position: relative;
-    width: 2.5rem;
 
-    div {
-      background-color: helpers.color('border-action');
-      height: 1px;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 100%;
-      transition: height ease-in-out 0.2s;
-    }
+    // div {
+    //   background-color: helpers.color('border-action');
+    //   height: 1px;
+    //   left: 0;
+    //   position: absolute;
+    //   right: 0;
+    //   top: 100%;
+    //   transition: height ease-in-out 0.2s;
+    // }
   }
 
   .ods-date-picker-year-input {
-    @include helpers.font('500-regular');
-    appearance: none;
-    background-color: transparent;
-    border: 0;
+    box-sizing: content-box;
+    // @include helpers.font('500-regular');
+    // appearance: none;
+    // background-color: transparent;
+    // border: 0;
     color: helpers.color('content-main');
     font-size: 1rem;
     font-weight: bold;
     font-weight: 500;
     line-height: inherit;
     outline: none;
-    padding: 0;
+    // padding: 0;
     text-align: center;
-    width: 100%;
+    width: 4ch;
 
-    &:focus + div {
-      height: 2px;
-    }
+    // &:focus + div {
+    //   height: 2px;
+    // }
   }
 }

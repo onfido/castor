@@ -2,6 +2,7 @@ import { c, classy } from '@onfido/castor';
 import React, { useEffect, useState } from 'react';
 import { Button } from '../button/button';
 import { Icon } from '../icon/icon';
+import { Input } from '../input/input';
 
 interface CalendarProps {
   canSelectFuture?: boolean;
@@ -190,7 +191,7 @@ export const Calendar: React.FC<CalendarProps> = ({
               }
             )}
             <div className={classy(c('date-picker-year'))}>
-              <input
+              <Input
                 className={classy(c('date-picker-year-input'))}
                 type="text"
                 pattern="\d*"

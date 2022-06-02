@@ -24,6 +24,19 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     open();
   };
 
+  const validateInput = () => {
+    const regExp =
+      /^(0?[1-9]|[12][0-9]|3[01])[^a-zA-Z0-9](0?[1-9]|1[012])[^a-zA-Z0-9*]\d{4}$/;
+    if (regExp.test(inputValue)) {
+      const date = inputValue.replace(/[^a-zA-Z0-9*]/g, '/');
+      setSelectedDate(date);
+      setInputValue(date);
+    } else {
+      setSelectedDate(null);
+      setInputValue('');
+    }
+  };
+
   const onDateSelect = (date: string) => {
     if (date !== selectedDate) {
       setSelectedDate(date);
@@ -38,16 +51,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
 
   const onKeyPress = (e) => {
     if (e.key === 'Enter') {
-      const regExp =
-        /^(0?[1-9]|[12][0-9]|3[01])[^a-zA-Z0-9](0?[1-9]|1[012])[^a-zA-Z0-9*]\d{4}$/;
-      if (regExp.test(inputValue)) {
-        const date = inputValue.replace(/[^a-zA-Z0-9*]/g, '/');
-        setSelectedDate(date);
-        setInputValue(date);
-      } else {
-        setSelectedDate(null);
-        setInputValue('');
-      }
+      validateInput();
     }
   };
 
@@ -60,6 +64,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         <Input
           value={inputValue}
           onFocus={focus}
+          onBlur={validateInput}
           onChange={onChange}
           placeholder="dd/mm/yyyy"
           onKeyPress={onKeyPress}
