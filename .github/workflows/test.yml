@@ -25,7 +25,7 @@ jobs:
         id: yarn-cache
 
       - name: Cache Yarn
-        uses: actions/cache@v3.0.3
+        uses: actions/cache@v3.0.4
         with:
           path: ${{ steps.yarn-cache.outputs.DIR }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -67,7 +67,7 @@ jobs:
         id: yarn-cache
 
       - name: Cache Yarn
-        uses: actions/cache@v3.0.3
+        uses: actions/cache@v3.0.4
         with:
           path: ${{ steps.yarn-cache.outputs.DIR }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -109,7 +109,7 @@ jobs:
         id: yarn-cache
 
       - name: Cache Yarn
-        uses: actions/cache@v3.0.3
+        uses: actions/cache@v3.0.4
         with:
           path: ${{ steps.yarn-cache.outputs.DIR }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
