@@ -1,10 +1,15 @@
-import { c, classy, color, DatePickerProps as BaseProps } from '@onfido/castor';
-import React, { useState } from 'react';
+import { c, classy, DatePickerProps as BaseProps } from '@onfido/castor';
+import React, {
+  useState,
+  type ChangeEvent,
+  type FocusEvent,
+  type KeyboardEvent,
+} from 'react';
 import { Button } from '../button/button';
+import { Calendar } from '../calendar/calendar';
+import { Icon } from '../icon/icon';
 import { Input } from '../input/input';
 import { Popover } from '../popover/popover';
-import { Calendar } from './calendar';
-import CalendarIcon from './CalendarIcon';
 
 export const DatePicker: React.FC<DatePickerProps> = ({
   canSelectFuture = true,
@@ -18,7 +23,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   const close = () => setIsOpen(false);
   const open = () => setIsOpen(true);
 
-  const focus = (event: React.FocusEvent<HTMLInputElement>) => {
+  const focus = (event: FocusEvent<HTMLInputElement>) => {
     event.preventDefault();
     event.target.select();
     open();
@@ -45,12 +50,12 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     }
   };
 
-  const onChange = (e) => {
-    setInputValue(e.target.value);
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
   };
 
-  const onKeyPress = (e) => {
-    if (e.key === 'Enter') {
+  const onKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
       validateInput();
     }
   };
@@ -75,7 +80,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           onClick={toggle}
           className={classy(c('date-picker-button'))}
         >
-          <CalendarIcon color={color('content-main')} />
+          <Icon
+            aria-label="Calendar icon"
+            name="calendar"
+            color="content-main"
+          />
         </Button>
       </div>
       {isOpen && (

@@ -1,5 +1,6 @@
 export * from './asterisk/asterisk';
 export * from './button/button';
+export * from './calendar/calendar';
 export * from './checkbox/checkbox';
 export * from './date-picker/date-picker';
 export * from './field-label/field-label';

@@ -1,15 +1,8 @@
-import { c, classy } from '@onfido/castor';
+import { c, CalendarProps as BaseProps, classy } from '@onfido/castor';
 import React, { useEffect, useState } from 'react';
 import { Button } from '../button/button';
 import { Icon } from '../icon/icon';
 import { Input } from '../input/input';
-
-interface CalendarProps {
-  canSelectFuture?: boolean;
-  canSelectPast?: boolean;
-  selectedDate: string | null;
-  onDateSelect: (date: string) => void;
-}
 
 const getShiftArray = (year: number, month: number) => {
   const firstDay = new Date(year, month, 1).getDay();
@@ -129,7 +122,7 @@ export const Calendar: React.FC<CalendarProps> = ({
       currentMonth === displayedMonth &&
       currentDate === date
     ) {
-      className += classy(c('date-picker-today'));
+      className += '-date--today';
     }
 
     if (
@@ -137,7 +130,7 @@ export const Calendar: React.FC<CalendarProps> = ({
       displayedYear === Number(selectedYear) &&
       date === Number(selectedDate)
     ) {
-      className = `${className} ${classy(c('date-picker-selected'))}`;
+      className = `${className} ${'-date--selected'}`;
     }
 
     return className;
@@ -172,50 +165,48 @@ export const Calendar: React.FC<CalendarProps> = ({
   }, [selectedDateProps]);
 
   return (
-    <div className={classy(c('date-picker-selector'))}>
-      <header>
-        <nav className={classy(c('date-picker-nav'))}>
-          <Button
-            kind="action"
-            variant="tertiary"
-            onClick={previous}
-            title="Previous month"
-          >
-            <Icon aria-hidden="true" name="chevron-left" />
-          </Button>
-          <h3>
-            {new Date(displayedYear, displayedMonth, 1).toLocaleDateString(
-              undefined,
-              {
-                month: 'long',
-              }
-            )}
-            <div className={classy(c('date-picker-year'))}>
-              <Input
-                className={classy(c('date-picker-year-input'))}
-                type="text"
-                pattern="\d*"
-                maxLength={4}
-                value={String(displayedYear).padStart(4, '0')}
-                onKeyDown={onDisplayedYearChange}
-                onFocus={(event) => {
-                  event.target.select();
-                }}
-              />
-              <div />
-            </div>
-          </h3>
-          <Button
-            kind="action"
-            variant="tertiary"
-            onClick={next}
-            title="Next month"
-          >
-            <Icon aria-hidden="true" name="chevron-right" />
-          </Button>
-        </nav>
-      </header>
-      <ul className={classy(c('date-picker-days'))}>
+    <div className={classy(c('calendar'))}>
+      <nav className={classy(c('calendar-nav'))}>
+        <Button
+          kind="action"
+          variant="tertiary"
+          onClick={previous}
+          title="Previous month"
+          className={classy(c('calendar-nav-item'))}
+        >
+          <Icon aria-hidden="true" name="chevron-left" />
+        </Button>
+        <div className={classy(c('calendar-month'))}>
+          {new Date(displayedYear, displayedMonth, 1).toLocaleDateString(
+            undefined,
+            {
+              month: 'long',
+            }
+          )}
+          <Input
+            className={classy(c('calendar-year'))}
+            type="text"
+            pattern="\d*"
+            maxLength={4}
+            value={String(displayedYear).padStart(4, '0')}
+            onKeyDown={onDisplayedYearChange}
+            onFocus={(event) => {
+              event.target.select();
+            }}
+          />
+        </div>
+        <Button
+          kind="action"
+          variant="tertiary"
+          onClick={next}
+          title="Next month"
+          className={classy(c('calendar-nav-item'))}
+        >
+          <Icon aria-hidden="true" name="chevron-right" />
+        </Button>
+      </nav>
+
+      <ul className={classy(c('calendar-days'))}>
         <li>M</li>
         <li>T</li>
         <li>W</li>
@@ -224,18 +215,18 @@ export const Calendar: React.FC<CalendarProps> = ({
         <li>S</li>
         <li>Su</li>
       </ul>
-      <ul className={classy(c('date-picker-dates'))}>
+      <ul className={classy(c('calendar-dates'))}>
         {getDaysToDisplay(
           displayedYear,
           displayedMonth,
           numberOfDisplayedDays
         ).map((date, index) => (
-          <li key={index} className={classy(c('date-picker-date'))}>
+          <li key={index}>
             {date !== null && (
               <Button
                 kind="action"
                 variant="tertiary"
-                className={getDayClassName(date)}
+                className={classy('-date', getDayClassName(date))}
                 onClick={() => selectDate(date)}
                 disabled={isDateDisabled(date)}
               >
@@ -248,3 +239,6 @@ export const Calendar: React.FC<CalendarProps> = ({
     </div>
   );
 };
+
+export type CalendarProps = BaseProps &
+  Omit<JSX.IntrinsicElements['div'], 'type'>;

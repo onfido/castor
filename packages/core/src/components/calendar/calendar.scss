@@ -1,0 +1,116 @@
+@use '../../helpers';
+@use '../../internal';
+@use '../../mixins';
+
+@mixin Calendar() {
+  @include internal.IndicatorContainer();
+
+  @if not mixins.includes('Calendar') {
+    @include _Calendar();
+  }
+}
+
+@mixin _Calendar() {
+  $cldr-btn-size: helpers.space(6);
+
+  .ods-calendar {
+    background-color: helpers.color('background-surface');
+    border: 1px solid helpers.color('border-input');
+    border-radius: helpers.border-radius('medium');
+    padding: helpers.space(0.5);
+    width: helpers.space(42);
+
+    &-nav {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: helpers.space(0.5);
+      width: 100%;
+    }
+
+    &-nav-item {
+      border-radius: helpers.border-radius('full');
+      height: $cldr-btn-size;
+      width: $cldr-btn-size;
+    }
+
+    &-month {
+      align-items: center;
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+      margin: 0;
+    }
+
+    &-year {
+      box-sizing: content-box;
+      margin-left: 1ch;
+      width: 4ch;
+    }
+
+    &-month,
+    &-year {
+      @include helpers.font('300-bold');
+    }
+
+    &-days,
+    &-dates {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    &-days li,
+    &-dates li {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      width: $cldr-btn-size;
+    }
+
+    &-days {
+      background-color: helpers.color('background-surface-alt');
+      border-radius: helpers.border-radius('medium');
+      color: helpers.color('content-secondary');
+      height: helpers.space(4);
+      margin-bottom: helpers.space(0.5);
+    }
+  }
+
+  .ods-button {
+    &.-date {
+      border-radius: helpers.border-radius('full');
+      height: $cldr-btn-size;
+      width: $cldr-btn-size;
+    }
+
+    &.-date:not(:disabled) {
+      color: helpers.color('content-main');
+    }
+
+    &.-date--selected:not(:disabled) {
+      background-color: helpers.color('background-action');
+      color: helpers.color('content-inverse-main');
+    }
+
+    &.-date--today::before {
+      $cldr-indicator-size: helpers.space(0.75);
+      background-color: helpers.color('background-action');
+      border-radius: helpers.border-radius('full');
+      bottom: helpers.space(0.5);
+
+      content: '';
+      height: $cldr-indicator-size;
+      left: 50%;
+      position: absolute;
+      transform: translateX(-50%);
+      width: $cldr-indicator-size;
+    }
+
+    &.-date--today.-date--selected::before {
+      background-color: helpers.color('background-inverse-action');
+    }
+  }
+}
