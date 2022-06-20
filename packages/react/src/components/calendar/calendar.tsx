@@ -103,6 +103,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   const isDateDisabled = (date: number) => {
     const testedDate = new Date(displayedYear, displayedMonth, date);
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
     return (
       (!canSelectFuture ? testedDate > today : false) ||
