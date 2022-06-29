@@ -61,7 +61,7 @@
     "@types/cypress-image-snapshot": "^3.1.6",
     "@types/jest": "^27.5.0",
     "@types/react": "^17.0.43",
-    "@types/react-textarea-autosize": "^4.3.6",
+    "@types/react-textarea-autosize": "^8.0.0",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "bundlewatch": "^0.3.3",
