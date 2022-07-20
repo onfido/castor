@@ -64,7 +64,7 @@ export const Borderless = htmlMatrix(Select, { borderless });
 export const Invalid = htmlMatrix(Select, { invalid });
 export const Disabled = htmlMatrix(Select, { disabled });
 
-export const Required: Story<SelectProps> = {
+export const AsRequired: Story<SelectProps> = {
   args: {
     required: true,
   },
