@@ -183,11 +183,20 @@ export const WithKeywords: Story<ComboboxProps> = {
 };
 
 export const AllCombinations: Story<ComboboxProps> = {
-  ...reactMatrix((props: ComboboxProps) => <Combobox {...props} />, {
-    disabled,
-  }),
+  ...reactMatrix(
+    (props: ComboboxProps) => <Combobox {...props}>{children(props)}</Combobox>,
+    { disabled, invalid }
+  ),
+  argTypes: omit('children', 'disabled', 'invalid'),
   parameters: {
     display: 'grid',
-    columns: 'repeat(3, 1fr)',
+    columns: 'repeat(2, 1fr)',
   },
+};
+
+const children = ({ disabled, invalid }: ComboboxProps) => {
+  const variation = [invalid && 'invalid', disabled && 'disabled']
+    .filter(Boolean)
+    .join(' ');
+  return <Option value={variation}>{variation || 'default'}</Option>;
 };
