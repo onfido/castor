@@ -71,6 +71,7 @@
 
   .ods-option-content {
     @include _with-padding();
+
     position: relative;
     transition: background-color ease helpers.time(1);
 

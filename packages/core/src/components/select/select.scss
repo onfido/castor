@@ -106,6 +106,7 @@
     @include helpers.font('300-regular');
     @include _display();
     @include _with-padding();
+
     pointer-events: none;
   }
 
