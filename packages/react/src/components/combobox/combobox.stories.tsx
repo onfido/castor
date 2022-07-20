@@ -2,6 +2,9 @@ import { IconBolt, IconChevronsDown } from '@onfido/castor-icons';
 import {
   Combobox,
   ComboboxProps,
+  Field,
+  FieldLabel,
+  HelperText,
   Option,
   OptionGroup,
 } from '@onfido/castor-react';
@@ -103,6 +106,30 @@ export const OptionGroups: Story<ComboboxProps> = {
     ),
   },
 };
+
+type ComboboxWithLabelAndHelperTextProps = ComboboxProps & {
+  id: string;
+  label: string;
+  helperText: string;
+};
+
+export const WithLabelAndHelperText: Story<ComboboxWithLabelAndHelperTextProps> =
+  {
+    args: {
+      id: 'combobox-with-label-and-helper-text',
+      label: 'Label',
+      helperText: 'Helper text',
+    },
+    render: ({ id, label, helperText, ...restProps }) => (
+      <Field>
+        <FieldLabel htmlFor={id}>
+          {label}
+          <HelperText>{helperText}</HelperText>
+          <Combobox {...restProps} id={id} />
+        </FieldLabel>
+      </Field>
+    ),
+  };
 
 export const WithKeywords: Story<ComboboxProps> = {
   parameters: {
