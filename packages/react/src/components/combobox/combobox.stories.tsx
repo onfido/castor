@@ -104,7 +104,7 @@ export const OptionGroups: Story<ComboboxProps> = {
   },
 };
 
-export const Keywords: Story<ComboboxProps> = {
+export const WithKeywords: Story<ComboboxProps> = {
   parameters: {
     docs: {
       description: {
