@@ -39,7 +39,7 @@ export interface ComboboxProps
  */
 export const Combobox = withRef(function Combobox(
   {
-    align,
+    align = 'start',
     children,
     className,
     defaultValue,
