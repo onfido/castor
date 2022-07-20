@@ -17,6 +17,7 @@ export interface CustomSelectProps
 
 export const CustomSelect = withRef(function CustomSelect(
   {
+    id,
     align = 'start',
     borderless,
     children,
@@ -49,6 +50,7 @@ export const CustomSelect = withRef(function CustomSelect(
       <NativeSelect
         {...restProps}
         ref={selectRef}
+        id={id}
         className={classy(m('absolute'), className)}
         name={name}
         onBlur={(event) => {
@@ -65,6 +67,9 @@ export const CustomSelect = withRef(function CustomSelect(
           if (openSelectKeys.has(event.key)) open();
           onKeyUp?.(event);
         }}
+        aria-controls={`${id}_options`}
+        aria-autocomplete="list"
+        aria-expanded={isOpen}
       >
         {!selected.value || <option hidden value={selected.value} />}
       </NativeSelect>
@@ -105,6 +110,7 @@ export const CustomSelect = withRef(function CustomSelect(
           onInvalid={stopPropagation}
         >
           <OptionList
+            id={`${id}_options`}
             defaultValue={defaultValue}
             icon={selectedIcon}
             name={name}

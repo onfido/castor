@@ -12,7 +12,13 @@ import {
   OptionListEvent,
   Popover,
 } from '@onfido/castor-react';
-import React, { ForwardedRef, SyntheticEvent, useRef, useState } from 'react';
+import React, {
+  ForwardedRef,
+  SyntheticEvent,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { MaybeIcon } from '../../internal';
 import { textContent, withRef } from '../../utils';
 import { OptionListInit } from '../option-list/options-list-init';
@@ -39,6 +45,7 @@ export interface ComboboxProps
  */
 export const Combobox = withRef(function Combobox(
   {
+    id: initialId,
     align = 'start',
     children,
     className,
@@ -68,6 +75,8 @@ export const Combobox = withRef(function Combobox(
   const [open, setOpen] = useState(false);
   const preventBlur = useRef(false);
 
+  const id = useMemo(() => `castor_combobox_${++idCount}`, [initialId]);
+
   const close = () => setOpen(false);
 
   return (
@@ -83,10 +92,12 @@ export const Combobox = withRef(function Combobox(
       <Input
         {...restProps}
         ref={inputRef}
+        id={id}
+        role="combobox"
+        value={input}
+        placeholder={placeholder}
         autoComplete="off"
         disabled={disabled}
-        placeholder={placeholder}
-        value={input}
         onBlur={(event) => {
           if (preventBlur.current) return (preventBlur.current = false);
 
@@ -122,6 +133,9 @@ export const Combobox = withRef(function Combobox(
 
           onKeyUp?.(event);
         }}
+        aria-controls={`${id}_options`}
+        aria-autocomplete="list"
+        aria-expanded={open}
       />
 
       <MaybeIcon icon={icon} name="chevron-down" />
@@ -145,6 +159,7 @@ export const Combobox = withRef(function Combobox(
         >
           <OptionList
             ref={optionsRef}
+            id={`${id}_options`}
             defaultValue={defaultValue}
             icon={selectedIcon}
             name={name}
@@ -229,3 +244,5 @@ const select = (element: HTMLElement | null | undefined) =>
   );
 
 const stopPropagation = (event: SyntheticEvent) => event.stopPropagation();
+
+let idCount = 0;

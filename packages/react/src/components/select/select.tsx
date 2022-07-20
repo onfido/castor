@@ -1,5 +1,5 @@
 import { c, classy, m, SelectProps as BaseProps } from '@onfido/castor';
-import React, { ForwardedRef, useEffect, useState } from 'react';
+import React, { ForwardedRef, useEffect, useMemo, useState } from 'react';
 import { MaybeIcon } from '../../internal';
 import { useForwardedRef, withRef } from '../../utils';
 import { CustomSelect, CustomSelectProps } from './custom';
@@ -25,13 +25,22 @@ type Custom = { native?: false } & BaseProps &
  * props, but using Castor iconography is recommended.
  */
 export const Select = withRef(function Select(
-  { borderless, className, icon, native, onChange, ...restProps }: SelectProps,
+  {
+    id: initialId,
+    borderless,
+    className,
+    icon,
+    native,
+    onChange,
+    ...restProps
+  }: SelectProps,
   ref: ForwardedRef<HTMLSelectElement>
 ) {
   const { defaultValue, value } = restProps;
   const selectRef = useForwardedRef(ref);
   const [empty, setEmpty] = useState(!(value ?? defaultValue));
   const [open, setOpen] = useState(false);
+  const id = useMemo(() => `castor_select_${++idCount}`, [initialId]);
 
   // on every re-render, check for "empty" just after a DOM cycle
   useEffect(() => void setTimeout(() => setEmpty(!selectRef.current?.value)));
@@ -48,6 +57,7 @@ export const Select = withRef(function Select(
         <Content
           {...restProps}
           ref={selectRef}
+          id={id}
           borderless={borderless}
           native={native}
           open={open}
@@ -87,3 +97,5 @@ const Content = withRef(function Content(
     />
   );
 });
+
+let idCount = 0;

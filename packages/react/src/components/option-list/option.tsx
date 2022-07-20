@@ -60,7 +60,9 @@ export function Option({
         readOnly
         type="radio"
       />
-      <span className={classy(c('option-content'))}>{children}</span>
+      <span role="option" className={classy(c('option-content'))}>
+        {children}
+      </span>
       {selected && !disabled && <MaybeIcon icon={icon} name="check" />}
     </label>
   );

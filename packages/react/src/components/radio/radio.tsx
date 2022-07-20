@@ -1,14 +1,12 @@
 import { c, classy, m, RadioProps as BaseProps } from '@onfido/castor';
 import { useField } from '@onfido/castor-react';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { IndicatorContainer, splitContainerProps } from '../../internal';
 import { withRef } from '../../utils';
 
-let idCount = 0;
-
 export const Radio = withRef(function Radio(
   {
-    id = `castor_radio_${++idCount}`,
+    id: initialId,
     bordered,
     invalid,
     children,
@@ -19,6 +17,7 @@ export const Radio = withRef(function Radio(
   ref: RadioProps['ref']
 ) {
   const { disabled, touched } = useField();
+  const id = useMemo(() => `castor_radio_${++idCount}`, [initialId]);
   const [containerProps, inputProps] = splitContainerProps(restProps);
 
   return (
@@ -46,5 +45,8 @@ export const Radio = withRef(function Radio(
   );
 });
 
-export type RadioProps = BaseProps &
-  Omit<JSX.IntrinsicElements['input'], 'type'>;
+export type RadioProps = BaseProps & Omit<InputElementProps, 'type'>;
+
+type InputElementProps = JSX.IntrinsicElements['input'];
+
+let idCount = 0;

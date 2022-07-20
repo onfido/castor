@@ -87,8 +87,9 @@ export const OptionList = withRef(function OptionList(
     >
       <div
         {...restProps}
-        className={classy(c('option-list'), className)}
         ref={ref}
+        role="listbox"
+        className={classy(c('option-list'), className)}
       />
     </OptionListProvider>
   );
