@@ -3,16 +3,19 @@ import React from 'react';
 import { Meta, reactMatrix, Story } from '../../../../../docs';
 
 const disabled = [true, false] as const;
+const invalid = [true, false] as const;
 
 export default {
   title: 'React/Combobox',
   component: Combobox,
   argTypes: {
+    borderless: {},
     children: {
       control: false,
       description: 'List of options using `Option`.',
     },
     disabled: {},
+    invalid: {},
     empty: {
       control: 'text',
       description: 'Option to show when search yields no results.',
@@ -37,12 +40,14 @@ export default {
       </>
     ),
     disabled: false,
+    invalid: false,
   },
   parameters: { display: 'flex' },
 } as Meta<ComboboxProps>;
 
 export const Playground: Story<ComboboxProps> = {};
 
+export const Invalid = reactMatrix(Combobox, { invalid });
 export const Disabled = reactMatrix(Combobox, { disabled });
 
 export const Keywords: Story<ComboboxProps> = {

@@ -72,11 +72,7 @@ export const Combobox = withRef(function Combobox(
   const close = () => setOpen(false);
 
   return (
-    <div
-      {...restProps}
-      ref={ref}
-      className={classy(c('combobox'), m({ open }), className)}
-    >
+    <div ref={ref} className={classy(c('combobox'), m({ open }), className)}>
       <input
         ref={valueRef}
         disabled={disabled}
@@ -86,6 +82,7 @@ export const Combobox = withRef(function Combobox(
         value={selected.value || ''}
       />
       <Input
+        {...restProps}
         ref={inputRef}
         autoComplete="off"
         disabled={disabled}
