@@ -50,7 +50,6 @@ export const Combobox = withRef(function Combobox(
     onBlur,
     onChange,
     onClick,
-    onFocus,
     onKeyUp,
     position = 'bottom',
     selectedIcon,
@@ -105,22 +104,21 @@ export const Combobox = withRef(function Combobox(
           setOpen(true);
           onClick?.(event);
         }}
-        onFocus={(event) => {
-          setOpen(true);
-          onFocus?.(event);
-        }}
         onKeyUp={(event) => {
-          // select first option if confirming when focus is still on inputRef
-          if (open && confirmKeys.has(event.key))
-            select(optionsRef.current?.querySelector('input:enabled'));
-          // arrow up and down keys move inside popover
-          else if (navigateKeys.has(event.key)) {
-            preventBlur.current = true;
-            focus(optionsRef.current?.querySelector('input:enabled'));
-            setOpen(true);
+          // ignore 'Tab'
+          if (event.key !== 'Tab') {
+            // select first option if confirming when focus is still on inputRef
+            if (open && confirmKeys.has(event.key))
+              select(optionsRef.current?.querySelector('input:enabled'));
+            // arrow up and down keys move inside popover
+            else if (navigateKeys.has(event.key)) {
+              preventBlur.current = true;
+              focus(optionsRef.current?.querySelector('input:enabled'));
+              setOpen(true);
+            }
+            // close if 'Esc' is pressed, otherwise open on any other key
+            else setOpen(!closeKeys.has(event.key));
           }
-          // close if 'Esc' is pressed, otherwise open on any other key
-          else setOpen(!closeKeys.has(event.key));
 
           onKeyUp?.(event);
         }}
