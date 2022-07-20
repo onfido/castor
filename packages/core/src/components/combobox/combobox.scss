@@ -41,6 +41,11 @@
     }
   }
 
+  .ods-combobox-dropdown {
+    --popover-gap: #{helpers.space(0.125)};
+    width: 100%;
+  }
+
   .ods-option-content.-empty {
     @include helpers.font('300-regular');
 

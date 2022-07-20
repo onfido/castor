@@ -131,7 +131,7 @@ export const Combobox = withRef(function Combobox(
       {open && (
         <Popover
           align={align}
-          className={classy(c('select-dropdown'))}
+          className={classy(c('combobox-dropdown'))}
           overlay
           position={position}
           target={inputRef}
