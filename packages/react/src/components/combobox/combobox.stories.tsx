@@ -1,3 +1,4 @@
+import { IconBolt, IconChevronsDown } from '@onfido/castor-icons';
 import { Combobox, ComboboxProps, Option } from '@onfido/castor-react';
 import React from 'react';
 import { Meta, reactMatrix, Story } from '../../../../../docs';
@@ -46,6 +47,31 @@ export default {
 } as Meta<ComboboxProps>;
 
 export const Playground: Story<ComboboxProps> = {};
+
+export const InlineIcon: Story<ComboboxProps> = {
+  render: (props) => (
+    <Combobox
+      {...props}
+      icon={<IconChevronsDown />}
+      selectedIcon={<IconBolt />}
+    />
+  ),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+import { IconBolt, IconChevronsDown } from '@onfido/castor-icons';
+
+<Combobox icon={<IconChevronsDown />} selectedIcon={<IconBolt />}>
+  {/* options */}
+</Combobox>
+`,
+      },
+    },
+  },
+};
+IconBolt.displayName = 'IconBolt';
+IconChevronsDown.displayName = 'IconChevronsDown';
 
 export const Invalid = reactMatrix(Combobox, { invalid });
 export const Disabled = reactMatrix(Combobox, { disabled });

@@ -1,4 +1,4 @@
-import { IconCheck, IconChevronDown } from '@onfido/castor-icons';
+import { IconBolt, IconChevronsDown } from '@onfido/castor-icons';
 import {
   Field,
   FieldLabel,
@@ -70,17 +70,17 @@ export const InlineIcon: Story<SelectProps> = {
   render: (props) => (
     <Select
       {...props}
-      icon={<IconChevronDown />}
-      selectedIcon={<IconCheck />}
+      icon={<IconChevronsDown />}
+      selectedIcon={<IconBolt />}
     />
   ),
   parameters: {
     docs: {
       source: {
         code: `
-import { IconChevronDown } from '@onfido/castor-icons';
+import { IconBolt, IconChevronsDown } from '@onfido/castor-icons';
 
-<Select icon={<IconChevronDown />} selectedIcon={<IconCheck />}>
+<Select icon={<IconChevronsDown />} selectedIcon={<IconBolt />}>
   {/* options */}
 </Select>
 `,
@@ -88,8 +88,8 @@ import { IconChevronDown } from '@onfido/castor-icons';
     },
   },
 };
-IconChevronDown.displayName = 'IconChevronDown';
-IconCheck.displayName = 'IconCheck';
+IconBolt.displayName = 'IconBolt';
+IconChevronsDown.displayName = 'IconChevronsDown';
 
 export const Borderless = reactMatrix(Select, { borderless });
 export const Invalid = reactMatrix(Select, { invalid });
