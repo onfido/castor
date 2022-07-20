@@ -7,9 +7,10 @@ import {
   HelperText,
   Option,
   OptionGroup,
+  Validation,
 } from '@onfido/castor-react';
 import React from 'react';
-import { Meta, reactMatrix, Story } from '../../../../../docs';
+import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
 
 const disabled = [true, false] as const;
 const invalid = [true, false] as const;
@@ -130,6 +131,23 @@ export const WithLabelAndHelperText: Story<ComboboxWithLabelAndHelperTextProps> 
       </Field>
     ),
   };
+
+type ComboboxWithValidationProps = ComboboxProps & {
+  validation: string;
+  withIcon: boolean;
+};
+
+export const WithValidation: Story<ComboboxWithValidationProps> = {
+  argTypes: omit('disabled', 'invalid'),
+  render: (props) => (
+    <Field>
+      <Combobox {...props} invalid />
+      <Validation state="error" withIcon>
+        Please select an option
+      </Validation>
+    </Field>
+  ),
+};
 
 export const WithKeywords: Story<ComboboxProps> = {
   parameters: {
