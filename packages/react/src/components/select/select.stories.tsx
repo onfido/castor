@@ -119,13 +119,6 @@ export const OptionGroups: Story<SelectProps> = {
   },
 };
 
-export const AsRequired: Story<SelectProps> = {
-  args: {
-    required: true,
-  },
-  argTypes: omit('required'),
-};
-
 type SelectWithLabelAndHelperTextProps = SelectProps & {
   id: string;
   label: string;
