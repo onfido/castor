@@ -1,5 +1,10 @@
 import { IconBolt, IconChevronsDown } from '@onfido/castor-icons';
-import { Combobox, ComboboxProps, Option } from '@onfido/castor-react';
+import {
+  Combobox,
+  ComboboxProps,
+  Option,
+  OptionGroup,
+} from '@onfido/castor-react';
 import React from 'react';
 import { Meta, reactMatrix, Story } from '../../../../../docs';
 
@@ -75,6 +80,29 @@ IconChevronsDown.displayName = 'IconChevronsDown';
 
 export const Invalid = reactMatrix(Combobox, { invalid });
 export const Disabled = reactMatrix(Combobox, { disabled });
+
+export const OptionGroups: Story<ComboboxProps> = {
+  args: {
+    children: (
+      <>
+        <Option hidden value="">
+          Select an animal...
+        </Option>
+        <OptionGroup label="Birds">
+          <Option value="finch">🦜 Finch</Option>
+          <Option value="penguin">🐧 Penguin</Option>
+        </OptionGroup>
+        <OptionGroup label="Insects">
+          <Option value="bee">🐝 Bee</Option>
+        </OptionGroup>
+        <OptionGroup label="Mammals">
+          <Option value="lion">🦁 Lion</Option>
+          <Option value="monkey">🐒 Monkey</Option>
+        </OptionGroup>
+      </>
+    ),
+  },
+};
 
 export const Keywords: Story<ComboboxProps> = {
   parameters: {
