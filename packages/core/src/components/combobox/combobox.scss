@@ -14,8 +14,9 @@
     align-items: center;
     box-sizing: border-box;
     display: inline-flex;
+    max-width: helpers.space(50);
     position: relative;
-    width: helpers.space(40);
+    width: 100%;
 
     > * {
       box-sizing: inherit;
