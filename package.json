@@ -70,7 +70,7 @@
     "cypress": "^9.7.0",
     "cypress-image-snapshot": "^4.0.1",
     "cz-conventional-changelog": "^3.3.0",
-    "esbuild": "^0.14.47",
+    "esbuild": "^0.14.49",
     "esbuild-loader": "^2.19.0",
     "eslint": "^8.20.0",
     "eslint-plugin-react": "^7.30.1",
