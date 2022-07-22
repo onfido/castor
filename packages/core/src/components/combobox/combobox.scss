@@ -41,7 +41,7 @@
     }
   }
 
-  .ods-combobox-dropdown {
+  .ods-popover.ods-combobox-dropdown {
     --popover-gap: #{helpers.space(0.125)};
     width: 100%;
   }

@@ -110,7 +110,7 @@
     pointer-events: none;
   }
 
-  .ods-select-dropdown {
+  .ods-popover.ods-select-dropdown {
     --popover-gap: #{helpers.space(0.125)};
     width: 100%;
 

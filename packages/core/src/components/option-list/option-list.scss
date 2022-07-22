@@ -16,6 +16,7 @@
     border: helpers.space(0.125) solid helpers.color('border-input');
     border-radius: helpers.border-radius('medium');
     box-shadow: 0 helpers.space(0.25) helpers.space(0.5) rgb(0 0 0 / 0.25);
+    box-sizing: border-box;
     max-height: helpers.space(30);
     max-width: helpers.space(50);
     overflow: hidden;
