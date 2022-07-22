@@ -2055,9 +2055,9 @@
     rimraf "^3.0.2"
 
 "@onfido/castor-icons@*":
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-2.10.0.tgz#f98468b0ca466635e39b2e07a14cf6571d8875d2"
-  integrity sha512-R1rGudzI1EPl06rzLVtbsP0x8HlG2/irxWZedJJdgMctF4z+/Rf706uitkhA/WbW6hln72rD/dH+G6Fvqp8FXQ==
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-2.11.0.tgz#b1074c90c9b63b202ececa1cf76e4031451b59c3"
+  integrity sha512-CVvWUPQWEGbeie2UY0EEAGW1fPi5eEAEJDTxyTkwWL1Df96FaRX/4Wshzi65PWQ0RC18yOxBT528Jkauki9HbQ==
 
 "@onfido/castor-tokens@^1.0.0-beta.5":
   version "1.0.0-beta.5"
