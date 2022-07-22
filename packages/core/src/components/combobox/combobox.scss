@@ -1,7 +1,14 @@
 @use '../../helpers';
 @use '../../mixins';
+@use '../icon/icon';
+@use '../option-list/option-list';
+@use '../popover/popover';
 
 @mixin Combobox() {
+  @include icon.Icon();
+  @include option-list.OptionList();
+  @include popover.Popover();
+
   @if not mixins.includes('Combobox') {
     @include _Combobox();
   }
