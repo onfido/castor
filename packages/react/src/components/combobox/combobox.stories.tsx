@@ -1,32 +1,24 @@
 import { IconBolt, IconChevronsDown } from '@onfido/castor-icons';
 import {
+  Combobox,
+  ComboboxProps,
   Field,
   FieldLabel,
   HelperText,
   Option,
   OptionGroup,
-  Select,
-  SelectProps,
   Validation,
 } from '@onfido/castor-react';
 import React from 'react';
 import { Meta, omit, reactMatrix, Story } from '../../../../../docs';
-import { CustomSelectProps } from './custom';
 
-const borderless = [true, false] as const;
 const disabled = [true, false] as const;
 const invalid = [true, false] as const;
-const native = [true, false] as readonly true[];
 
 export default {
-  title: 'React/Select',
-  component: Select,
+  title: 'React/Combobox',
+  component: Combobox,
   argTypes: {
-    ...omit<CustomSelectProps>('open', 'onOpenChange'),
-    align: {
-      control: 'inline-radio',
-      table: { defaultValue: { summary: 'start' } },
-    },
     borderless: {},
     children: {
       control: false,
@@ -34,10 +26,11 @@ export default {
     },
     disabled: {},
     invalid: {},
-    native: {},
-    position: {
-      control: 'inline-radio',
-      table: { defaultValue: { summary: 'bottom' } },
+    empty: {
+      control: 'text',
+      description: 'Option to show when search yields no results.',
+      defaultValue: 'No matching options',
+      table: { defaultValue: { summary: '"No matching options"' } },
     },
   },
   args: {
@@ -56,19 +49,17 @@ export default {
         </Option>
       </>
     ),
-    borderless: false,
     disabled: false,
     invalid: false,
-    native: false,
   },
   parameters: { display: 'flex' },
-} as Meta<SelectProps>;
+} as Meta<ComboboxProps>;
 
-export const Playground: Story<SelectProps> = {};
+export const Playground: Story<ComboboxProps> = {};
 
-export const InlineIcon: Story<SelectProps> = {
+export const InlineIcon: Story<ComboboxProps> = {
   render: (props) => (
-    <Select
+    <Combobox
       {...props}
       icon={<IconChevronsDown />}
       selectedIcon={<IconBolt />}
@@ -80,9 +71,9 @@ export const InlineIcon: Story<SelectProps> = {
         code: `
 import { IconBolt, IconChevronsDown } from '@onfido/castor-icons';
 
-<Select icon={<IconChevronsDown />} selectedIcon={<IconBolt />}>
+<Combobox icon={<IconChevronsDown />} selectedIcon={<IconBolt />}>
   {/* options */}
-</Select>
+</Combobox>
 `,
       },
     },
@@ -91,12 +82,10 @@ import { IconBolt, IconChevronsDown } from '@onfido/castor-icons';
 IconBolt.displayName = 'IconBolt';
 IconChevronsDown.displayName = 'IconChevronsDown';
 
-export const Borderless = reactMatrix(Select, { borderless });
-export const Invalid = reactMatrix(Select, { invalid });
-export const Disabled = reactMatrix(Select, { disabled });
-export const Native = reactMatrix(Select, { native });
+export const Invalid = reactMatrix(Combobox, { invalid });
+export const Disabled = reactMatrix(Combobox, { disabled });
 
-export const OptionGroups: Story<SelectProps> = {
+export const OptionGroups: Story<ComboboxProps> = {
   args: {
     children: (
       <>
@@ -119,16 +108,16 @@ export const OptionGroups: Story<SelectProps> = {
   },
 };
 
-type SelectWithLabelAndHelperTextProps = SelectProps & {
+type ComboboxWithLabelAndHelperTextProps = ComboboxProps & {
   id: string;
   label: string;
   helperText: string;
 };
 
-export const WithLabelAndHelperText: Story<SelectWithLabelAndHelperTextProps> =
+export const WithLabelAndHelperText: Story<ComboboxWithLabelAndHelperTextProps> =
   {
     args: {
-      id: 'select-with-label-and-helper-text',
+      id: 'combobox-with-label-and-helper-text',
       label: 'Label',
       helperText: 'Helper text',
     },
@@ -137,22 +126,22 @@ export const WithLabelAndHelperText: Story<SelectWithLabelAndHelperTextProps> =
         <FieldLabel htmlFor={id}>
           {label}
           <HelperText>{helperText}</HelperText>
-          <Select {...restProps} id={id} />
+          <Combobox {...restProps} id={id} />
         </FieldLabel>
       </Field>
     ),
   };
 
-type SelectWithValidationProps = SelectProps & {
+type ComboboxWithValidationProps = ComboboxProps & {
   validation: string;
   withIcon: boolean;
 };
 
-export const WithValidation: Story<SelectWithValidationProps> = {
+export const WithValidation: Story<ComboboxWithValidationProps> = {
   argTypes: omit('disabled', 'invalid'),
   render: (props) => (
     <Field>
-      <Select {...props} invalid />
+      <Combobox {...props} invalid />
       <Validation state="error" withIcon>
         Please select an option
       </Validation>
@@ -160,25 +149,53 @@ export const WithValidation: Story<SelectWithValidationProps> = {
   ),
 };
 
-export const AllCombinations: Story<SelectProps> = {
+export const WithKeywords: Story<ComboboxProps> = {
+  parameters: {
+    docs: {
+      description: {
+        story: [
+          'Options match by "textContent", "value", and specified "keywords".',
+          'Click "Show code" to see what they can match to.',
+        ].join('\n\n'),
+      },
+    },
+  },
+  args: {
+    children: (
+      <>
+        <Option hidden value="">
+          Select an option...
+        </Option>
+        <Option value="foo">Matches textContent and value</Option>
+        <Option keywords="1" value="first">
+          One
+        </Option>
+        <Option keywords={['2', '3']} value="second/third">
+          Two or three
+        </Option>
+        <Option keywords value="always">
+          Setting <code>keywords</code> to <code>true</code> will make this
+          option always show, regardless of search term
+        </Option>
+      </>
+    ),
+  },
+};
+
+export const AllCombinations: Story<ComboboxProps> = {
   ...reactMatrix(
-    (props: SelectProps) => <Select {...props}>{children(props)}</Select>,
-    { borderless, disabled, invalid, native }
+    (props: ComboboxProps) => <Combobox {...props}>{children(props)}</Combobox>,
+    { disabled, invalid }
   ),
-  argTypes: omit('borderless', 'children', 'disabled', 'invalid', 'native'),
+  argTypes: omit('children', 'disabled', 'invalid'),
   parameters: {
     display: 'grid',
     columns: 'repeat(2, 1fr)',
   },
 };
 
-const children = ({ borderless, disabled, invalid, native }: SelectProps) => {
-  const variation = [
-    native && 'native',
-    invalid && 'invalid',
-    borderless && 'borderless',
-    disabled && 'disabled',
-  ]
+const children = ({ disabled, invalid }: ComboboxProps) => {
+  const variation = [invalid && 'invalid', disabled && 'disabled']
     .filter(Boolean)
     .join(' ');
   return <Option value={variation}>{variation || 'default'}</Option>;

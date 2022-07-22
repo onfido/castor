@@ -3,6 +3,7 @@ import {
   Fieldset,
   Form,
   Input,
+  OptionList,
   Progress,
   Radio,
   Spinner,
@@ -19,6 +20,7 @@ import { FC } from 'react';
 (Fieldset as FC).displayName = 'Fieldset';
 (Form as FC).displayName = 'Form';
 (Input as FC).displayName = 'Input';
+(OptionList as FC).displayName = 'OptionList';
 (Progress as FC).displayName = 'Progress';
 (Radio as FC).displayName = 'Radio';
 (Spinner as FC).displayName = 'Spinner';

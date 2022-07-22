@@ -1,11 +1,12 @@
-@use 'sass:map';
 @use '../../helpers';
 @use '../../mixins';
 @use '../icon/icon';
+@use '../option-list/option-list';
 @use '../popover/popover';
 
 @mixin Select() {
   @include icon.Icon();
+  @include option-list.OptionList();
   @include popover.Popover();
 
   @if not mixins.includes('Select') {
@@ -47,8 +48,8 @@
   .ods-select-native {
     @include mixins.as-text-field();
     @include mixins.interactive();
-    @include display();
-    @include with-padding(1px); // border width set on `as-text-field` mixin
+    @include _display();
+    @include _with-padding(1px); // border width set on `as-text-field` mixin
 
     appearance: none; // removes native arrow that opens the select
 
@@ -77,7 +78,7 @@
 
   :where(.ods-select.-borderless) > .ods-select-native {
     @include mixins.with-inner-focus('action');
-    @include with-padding(); // no border width because border will be unset
+    @include _with-padding(); // no border width because border will be unset
 
     background-color: transparent;
     border: 0;
@@ -103,121 +104,30 @@
 
   .ods-select-output {
     @include helpers.font('300-regular');
-    @include display();
-    @include with-padding();
+    @include _display();
+    @include _with-padding();
+
     pointer-events: none;
   }
 
-  .ods-select-dropdown {
+  .ods-popover.ods-select-dropdown {
     --popover-gap: #{helpers.space(0.125)};
-
-    background-color: helpers.color('border-focus-inner');
-    border: helpers.space(0.125) solid helpers.color('border-input');
-    border-radius: helpers.border-radius('medium');
-    box-shadow: 0 helpers.space(0.25) helpers.space(0.5) rgb(0 0 0 / 0.25);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    max-height: helpers.space(30);
-    max-width: helpers.space(50);
-    padding: helpers.space(0.5) 0;
-    pointer-events: initial;
     width: 100%;
 
     &:where(.-borderless) {
       width: max-content;
     }
-
-    > * {
-      box-sizing: inherit;
-    }
-  }
-
-  .ods-select-option {
-    @include helpers.font('300-regular');
-    @include mixins.interactive();
-
-    align-items: center;
-    color: helpers.color('content-main');
-    display: grid;
-    position: relative;
-    text-align: left;
-  }
-
-  .ods-select-option-input {
-    height: 0;
-    margin: 0;
-    opacity: 0;
-    position: absolute;
-    width: 0;
-
-    &:active,
-    &:focus {
-      + .ods-select-option-content {
-        @include mixins.inner-focus('action');
-      }
-    }
-
-    &:checked {
-      + .ods-select-option-content {
-        background-color: helpers.color('background-action-subtle');
-      }
-
-      ~ .ods-select-option-icon {
-        opacity: 1;
-      }
-    }
-
-    &:disabled {
-      + .ods-select-option-content {
-        background-color: helpers.color('background-disabled');
-        box-shadow: initial;
-        color: helpers.color('content-disabled');
-        cursor: not-allowed;
-      }
-    }
-  }
-
-  .ods-select-option-content {
-    @include with-padding();
-    background-color: helpers.color('background-input');
-    display: flex;
-    position: relative;
-    transition: background-color ease helpers.time(1);
-
-    &:hover {
-      background-color: helpers.color('background-action-subtle-hover');
-    }
-  }
-
-  .ods-select-option-icon {
-    color: helpers.color('content-action');
-    opacity: 0;
-    position: absolute;
-    right: helpers.space(1.5);
-    transition: opacity ease helpers.time(1);
-  }
-
-  .ods-select-option-group {
-    @include helpers.font('200-allcaps');
-
-    background-color: helpers.color('background-main');
-    border: 0 solid helpers.color('border-separator');
-    border-width: helpers.space(0.125) 0;
-    color: helpers.color('content-placeholder');
-    padding: helpers.space(0.5) helpers.space(2);
-    text-transform: uppercase;
   }
 }
 
-@mixin display() {
+@mixin _display() {
   overflow: hidden;
   position: relative;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-@mixin with-padding($border-width: 0) {
+@mixin _with-padding($border-width: 0) {
   @if type-of($border-width) != number {
     @error '$border-width must be a number';
   }

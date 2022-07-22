@@ -1,5 +1,28 @@
 # Migration guides
 
+## 2.1.x to 2.2.x
+
+### Select (React)
+
+Although not a breaking change because these classes were never documented or exposed in the API, if you were overriding internal Select (non-native) CSS with custom rules of your own, you will need to update some of them:
+
+- `ods-select-option` -> `ods-option`
+- `ods-select-option-input` -> `ods-option-input`
+- `ods-select-option-content` -> `ods-option-content`
+- `ods-select-option-icon` -> `ods-option > ods-icon`
+
+Additionally, there's now an itermediate element between `ods-select-dropdown` and all the `ods-option`s.
+
+If you relied on their structure, you will need to change some CSS selectors too.
+
+```tsx
+<div class="ods-select-dropdown">
+  <div class="ods-option-list">
+    <label class="ods-option">...</label>
+  </div>
+</div>
+```
+
 ## 1.x to 2.x
 
 ### Color tokens (CSS and React)

@@ -1,13 +1,11 @@
 import { c, classy, m, TextareaProps as BaseProps } from '@onfido/castor';
 import { useField } from '@onfido/castor-react';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { withRef } from '../../utils';
-
-let idCount = 0;
 
 export const Textarea = withRef(function Textarea(
   {
-    id = `castor_textarea_${++idCount}`,
+    id: initialId,
     resize = 'vertical',
     rows = 3,
     invalid,
@@ -18,6 +16,7 @@ export const Textarea = withRef(function Textarea(
   ref: TextareaProps['ref']
 ) {
   const { disabled, touched } = useField();
+  const id = useMemo(() => `castor_textarea_${++idCount}`, [initialId]);
 
   return (
     <textarea
@@ -35,3 +34,5 @@ export const Textarea = withRef(function Textarea(
 export type TextareaProps = BaseProps & Omit<TextareaElementProps, 'children'>;
 
 type TextareaElementProps = JSX.IntrinsicElements['textarea'];
+
+let idCount = 0;

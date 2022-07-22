@@ -1,5 +1,5 @@
 import { c, classy, m, SelectProps as BaseProps } from '@onfido/castor';
-import React, { ForwardedRef, useEffect, useState } from 'react';
+import React, { ForwardedRef, useEffect, useMemo, useState } from 'react';
 import { MaybeIcon } from '../../internal';
 import { useForwardedRef, withRef } from '../../utils';
 import { CustomSelect, CustomSelectProps } from './custom';
@@ -8,6 +8,7 @@ import { SelectProvider } from './useSelect';
 
 export type SelectProps = (Native | Custom) & {
   icon?: JSX.Element;
+  selectedIcon?: JSX.Element;
 };
 
 type Native = { native: true } & BaseProps & NativeSelectProps;
@@ -15,22 +16,31 @@ type Custom = { native?: false } & BaseProps &
   Omit<CustomSelectProps, 'open' | 'onOpenChange'>;
 
 /**
- * `Select` by default uses an `Icon` that requires `Icons` (SVG sprite) to be
+ * `Select` by default uses two `Icon` that require `Icons` (SVG sprite) to be
  * included in your app.
  *
  * https://github.com/onfido/castor-icons#use-with-plain-code
  *
- * You may also provide any other SVG element via the `icon` prop, but using
- * Castor iconography is recommended.
+ * You may also provide any other SVG element via the `icon` and `selectedIcon`
+ * props, but using Castor iconography is recommended.
  */
 export const Select = withRef(function Select(
-  { borderless, className, icon, native, onChange, ...restProps }: SelectProps,
+  {
+    id: initialId,
+    borderless,
+    className,
+    icon,
+    native,
+    onChange,
+    ...restProps
+  }: SelectProps,
   ref: ForwardedRef<HTMLSelectElement>
 ) {
   const { defaultValue, value } = restProps;
   const selectRef = useForwardedRef(ref);
   const [empty, setEmpty] = useState(!(value ?? defaultValue));
   const [open, setOpen] = useState(false);
+  const id = useMemo(() => `castor_select_${++idCount}`, [initialId]);
 
   // on every re-render, check for "empty" just after a DOM cycle
   useEffect(() => void setTimeout(() => setEmpty(!selectRef.current?.value)));
@@ -47,6 +57,7 @@ export const Select = withRef(function Select(
         <Content
           {...restProps}
           ref={selectRef}
+          id={id}
           borderless={borderless}
           native={native}
           open={open}
@@ -67,6 +78,7 @@ interface ContentProps extends CustomSelectProps {
   native?: boolean;
   open?: boolean;
   onOpenChange: (open: boolean) => void;
+  selectedIcon?: JSX.Element;
 }
 
 const Content = withRef(function Content(
@@ -85,3 +97,5 @@ const Content = withRef(function Content(
     />
   );
 });
+
+let idCount = 0;

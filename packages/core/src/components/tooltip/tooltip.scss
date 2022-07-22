@@ -24,6 +24,7 @@
     line-height: helpers.space(2.25);
     max-width: helpers.space(40);
     opacity: 0;
+    overflow: auto;
     padding: helpers.space(1) helpers.space(1.5);
     transition: opacity helpers.time(2) ease helpers.time(3),
       visibility helpers.time(5);

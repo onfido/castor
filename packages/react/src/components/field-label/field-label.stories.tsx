@@ -89,10 +89,15 @@ export const WithSelect: Story<FieldLabelWithSelectProps> = {
     <Field>
       <FieldLabel {...restProps} htmlFor={id} />
       <Select id={id}>
-        <Option disabled>Select an option...</Option>
-        <Option value={1}>Option 1</Option>
-        <Option value={2}>Option 2</Option>
-        <Option value={3}>Option 3</Option>
+        <Option hidden>Select an option...</Option>
+        <Option value={1}>Option</Option>
+        <Option value={2} disabled>
+          Disabled option
+        </Option>
+        <Option value="long">Longer option that is quite long</Option>
+        <Option value="enormous">
+          An enormously long option that we truncate when it gets too long
+        </Option>
       </Select>
     </Field>
   ),

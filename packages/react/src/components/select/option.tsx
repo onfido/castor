@@ -1,5 +1,8 @@
 import React from 'react';
-import { CustomOption, CustomOptionProps } from './custom';
+import {
+  Option as CustomOption,
+  OptionProps as CustomOptionProps,
+} from '../option-list/option';
 import { NativeOption, NativeOptionProps } from './native';
 import { useSelect } from './useSelect';
 

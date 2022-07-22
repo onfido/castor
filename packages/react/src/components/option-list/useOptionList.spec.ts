@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
 import { useContext } from 'react';
-import { CustomSelectProvider, useCustomSelect } from './useCustomSelect';
+import { OptionListProvider, useOptionList } from './useOptionList';
 
 jest.mock('react', () => {
   const context = { Provider: {} };
@@ -10,19 +10,19 @@ jest.mock('react', () => {
   };
 });
 
-describe('CustomSelectProvider', () => {
+describe('OptionListProvider', () => {
   it('should be the context.Provider', () => {
     const context = useContext<any>(null as any);
 
-    expect(CustomSelectProvider).toBe(context.Provider);
+    expect(OptionListProvider).toBe(context.Provider);
   });
 });
 
-describe('useCustomSelect', () => {
+describe('useOptionList', () => {
   it('should simply wrap useContext', () => {
     const context = useContext(null as any);
 
-    const result = useCustomSelect();
+    const result = useOptionList();
 
     expect(result).toBe(context);
   });
