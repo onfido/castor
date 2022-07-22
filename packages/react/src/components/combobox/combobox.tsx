@@ -178,7 +178,7 @@ export const Combobox = withRef(function Combobox(
             search={search}
             value={selected.value ?? value ?? defaultValue}
             onChange={(selected) => {
-              preventBlur.current = true;
+              preventBlur.current = false;
               setSelected(selected);
               setInput(textContent(selected.option));
               setSearch(undefined);
