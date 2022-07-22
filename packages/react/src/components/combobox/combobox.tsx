@@ -112,23 +112,35 @@ export const Combobox = withRef(function Combobox(
           onChange?.(event);
         }}
         onClick={(event) => {
-          setOpen(true);
+          if (!open) {
+            setOpen(true);
+            preventBlur.current = true;
+            setTimeout(() =>
+              focus(optionsRef.current?.querySelector('input:enabled'))
+            );
+          }
+
           onClick?.(event);
         }}
         onKeyUp={(event) => {
-          // ignore 'Tab'
+          // ignore 'Tab' - expect arrow up/down keys to open when/if pressed
           if (event.key !== 'Tab') {
             // select first option if confirming when focus is still on inputRef
-            if (open && confirmKeys.has(event.key))
+            if (open && confirmKeys.has(event.key) && !selected.value) {
               select(optionsRef.current?.querySelector('input:enabled'));
+            }
             // arrow up and down keys move inside popover
             else if (navigateKeys.has(event.key)) {
+              if (!open) setOpen(true);
               preventBlur.current = true;
-              focus(optionsRef.current?.querySelector('input:enabled'));
-              setOpen(true);
+              setTimeout(() =>
+                focus(optionsRef.current?.querySelector('input:enabled'))
+              );
             }
             // close if 'Esc' is pressed, otherwise open on any other key
-            else setOpen(!closeKeys.has(event.key));
+            else {
+              setOpen(!closeKeys.has(event.key));
+            }
           }
 
           onKeyUp?.(event);
@@ -172,9 +184,9 @@ export const Combobox = withRef(function Combobox(
               setSearch(undefined);
               focus(inputRef.current);
               close();
-              // propagate onChange manually because <input> won't naturally when
-              // its value is changed programatically by React, and on next tick
-              // because React needs to update its value first
+              // Propagate `onChange` manually because <input> won't naturally
+              // when its value is changed programatically by React, and on next
+              // tick because React needs to update its value first.
               setTimeout(() =>
                 valueRef.current?.dispatchEvent(
                   new Event('change', { bubbles: true })
@@ -182,26 +194,26 @@ export const Combobox = withRef(function Combobox(
               );
             }}
             onKeyDown={(event) => {
-              // ignore 'Enter'
+              // ignore confirmation keys
               if (confirmKeys.has(event.key)) return;
-              // close if focus moves outside
-              if (event.key === 'Tab') {
-                close();
-                return event.preventDefault();
-              }
-              // reset state on 'Esc'
-              if (closeKeys.has(event.key)) {
+              // reset state on closing key press
+              else if (closeKeys.has(event.key)) {
                 focus(inputRef.current);
-                return close();
+                close();
               }
-              // any other key is assumed to be typing on the Input
-              if (!navigateKeys.has(event.key)) {
+              // close if focus moves outside
+              else if (event.key === 'Tab') {
+                close();
+                event.preventDefault();
+              }
+              // any other key is assumed to be typing on <input>
+              else if (!navigateKeys.has(event.key)) {
                 if (moveCursorKeys.has(event.key)) event.preventDefault();
-                return focus(inputRef.current);
+                focus(inputRef.current);
               }
             }}
             onKeyUp={(event) => {
-              // close on 'Enter' after change happened
+              // close on confirmation key press after change happened
               if (confirmKeys.has(event.key)) return close();
             }}
             onPointerDown={() => {
