@@ -1,6 +1,6 @@
 {
   "name": "@onfido/castor-react",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "React component library for Castor.",
   "author": "Onfido",
   "license": "Apache-2.0",
@@ -27,7 +27,7 @@
     "!src/**/*.d.ts"
   ],
   "peerDependencies": {
-    "@onfido/castor": "^2.2.0",
+    "@onfido/castor": "^2.2.1",
     "@onfido/castor-icons": ">=1.0.0",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
