@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.1](https://github.com/onfido/castor/compare/v2.2.0...v2.2.1) (2022-07-25)
+
+### Bug Fixes
+
+- **core:** adjust combobox styling when used alongside field label ([#1845](https://github.com/onfido/castor/issues/1845)) ([b89220b](https://github.com/onfido/castor/commit/b89220bc2e41629ad9755b0e7dc6e9adf7254bea))
+- **core:** automatically include required component styles for combobox ([#1844](https://github.com/onfido/castor/issues/1844)) ([9e94c88](https://github.com/onfido/castor/commit/9e94c88fa1889a6bcfaaed4851212f4cc9e7decb))
+- **react:** correctly init options when value (or defaultValue) provided ([#1849](https://github.com/onfido/castor/issues/1849)) ([2d11f0a](https://github.com/onfido/castor/commit/2d11f0a03c459cb5cff9c7330c57f406ad6452c2))
+- **react:** correctly validate selected option on select/combobox ([#1850](https://github.com/onfido/castor/issues/1850)) ([7b37a20](https://github.com/onfido/castor/commit/7b37a2065d74ce17acf5a0971132bae36653bce2))
+
 ## [2.2.0](https://github.com/onfido/castor/compare/v2.1.0...v2.2.0) (2022-07-22)
 
 ### Features
