@@ -42,10 +42,9 @@ export const CustomSelect = withRef(function CustomSelect(
   ref: ForwardedRef<HTMLSelectElement>
 ) {
   const selectRef = useForwardedRef(ref);
-  const [selected, _setSelected] = useState<OptionListEvent>({});
+  const [selected, setSelected] = useState<OptionListEvent>({});
 
-  const setSelected = useCallback((selected) => {
-    _setSelected(selected);
+  const propagateOnChange = useCallback(() => {
     // propagate `onChange` manually because <select> won't naturally when its
     // value is changed programatically by React, and on next tick, because
     // React needs to update its value first
@@ -132,6 +131,7 @@ export const CustomSelect = withRef(function CustomSelect(
             value={selected.value ?? value ?? defaultValue}
             onChange={(selected) => {
               setSelected(selected);
+              propagateOnChange();
               close();
             }}
           >
@@ -144,7 +144,12 @@ export const CustomSelect = withRef(function CustomSelect(
         <OptionListInit
           defaultValue={defaultValue}
           value={value}
-          onInit={setSelected}
+          onInit={(selected) => {
+            setSelected(selected);
+            if (selected.value) {
+              propagateOnChange();
+            }
+          }}
         >
           {children}
         </OptionListInit>
