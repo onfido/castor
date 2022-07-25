@@ -1,5 +1,10 @@
 import { c, classy, m, PopoverProps, SelectProps } from '@onfido/castor';
-import React, { ForwardedRef, SyntheticEvent, useState } from 'react';
+import React, {
+  ForwardedRef,
+  SyntheticEvent,
+  useCallback,
+  useState,
+} from 'react';
 import { useForwardedRef, withRef } from '../../../utils';
 import { OptionList, OptionListEvent } from '../../option-list/option-list';
 import { OptionListInit } from '../../option-list/options-list-init';
@@ -37,7 +42,17 @@ export const CustomSelect = withRef(function CustomSelect(
   ref: ForwardedRef<HTMLSelectElement>
 ) {
   const selectRef = useForwardedRef(ref);
-  const [selected, setSelected] = useState<OptionListEvent>({});
+  const [selected, _setSelected] = useState<OptionListEvent>({});
+
+  const setSelected = useCallback((selected) => {
+    _setSelected(selected);
+    // propagate `onChange` manually because <select> won't naturally when its
+    // value is changed programatically by React, and on next tick, because
+    // React needs to update its value first
+    setTimeout(() =>
+      selectRef.current?.dispatchEvent(new Event('change', { bubbles: true }))
+    );
+  }, []);
 
   const open = () => onOpenChange?.(true);
   const close = () => {
@@ -118,14 +133,6 @@ export const CustomSelect = withRef(function CustomSelect(
             onChange={(selected) => {
               setSelected(selected);
               close();
-              // propagate onChange manually because <select> won't naturally when
-              // its value is changed programatically by React, and on next tick
-              // because React needs to update its value first
-              setTimeout(() =>
-                selectRef.current?.dispatchEvent(
-                  new Event('change', { bubbles: true })
-                )
-              );
             }}
           >
             {children}

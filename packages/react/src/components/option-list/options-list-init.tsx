@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { ComboboxProps } from '../combobox/combobox';
 import { CustomSelectProps } from '../select/custom';
 import { OptionListEvent } from './option-list';
 import { OptionListProvider } from './useOptionList';
@@ -8,19 +9,26 @@ export const OptionListInit = ({
   defaultValue,
   value,
   onInit,
-}: Pick<CustomSelectProps, 'children' | 'defaultValue' | 'value'> & {
+}: (
+  | Pick<ComboboxProps, 'children' | 'defaultValue' | 'value'>
+  | Pick<CustomSelectProps, 'children' | 'defaultValue' | 'value'>
+) & {
   onInit: (selected: OptionListEvent) => void;
 }) => {
   const hasInit = useRef(false);
 
+  const currentValue = value ?? defaultValue;
+
   return (
     <OptionListProvider
       value={{
-        value: value ?? defaultValue,
+        value: currentValue,
         initialize(option, value) {
           if (hasInit.current) return;
-          hasInit.current = true;
-          onInit({ option, value });
+          if (!currentValue || value === currentValue) {
+            hasInit.current = true;
+            onInit({ option, value });
+          }
         },
         select: noop,
       }}
