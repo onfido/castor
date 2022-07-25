@@ -2,9 +2,9 @@ import {
   c,
   classy,
   ComboboxProps as BaseProps,
-  InputProps,
   m,
   PopoverProps,
+  SelectProps,
 } from '@onfido/castor';
 import {
   Input,
@@ -15,6 +15,7 @@ import {
 import React, {
   ForwardedRef,
   SyntheticEvent,
+  useCallback,
   useMemo,
   useRef,
   useState,
@@ -25,7 +26,7 @@ import { OptionListInit } from '../option-list/options-list-init';
 
 export interface ComboboxProps
   extends BaseProps,
-    InputProps,
+    SelectProps,
     PopoverProps,
     Omit<JSX.IntrinsicElements['input'], 'type'> {
   icon?: JSX.Element;
@@ -59,6 +60,7 @@ export const Combobox = withRef(function Combobox(
     onClick,
     onKeyUp,
     position = 'bottom',
+    required,
     selectedIcon,
     value,
     ...restProps
@@ -66,7 +68,7 @@ export const Combobox = withRef(function Combobox(
   ref: ForwardedRef<HTMLDivElement>
 ) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const valueRef = useRef<HTMLInputElement>(null);
+  const selectRef = useRef<HTMLSelectElement>(null);
   const optionsRef = useRef<HTMLDivElement>(null);
   const [input, setInput] = useState('');
   const [search, setSearch] = useState<string>();
@@ -77,18 +79,32 @@ export const Combobox = withRef(function Combobox(
 
   const id = useMemo(() => `castor_combobox_${++idCount}`, [initialId]);
 
+  const propagateOnChange = useCallback(() => {
+    // propagate `onChange` manually because <select> won't naturally when its
+    // value is changed programatically by React, and on next tick, because
+    // React needs to update its value first
+    setTimeout(() =>
+      selectRef.current?.dispatchEvent(new Event('change', { bubbles: true }))
+    );
+  }, []);
+
   const close = () => setOpen(false);
 
   return (
     <div ref={ref} className={classy(c('combobox'), m({ open }), className)}>
-      <input
-        ref={valueRef}
-        disabled={disabled}
-        hidden
+      <select
+        ref={selectRef}
         name={name}
-        onChange={() => void 0}
-        value={selected.value || ''}
-      />
+        disabled={disabled}
+        required={required}
+        hidden
+        onChange={
+          (onChange as JSX.IntrinsicElements['select']['onChange']) ??
+          (() => void 0)
+        }
+      >
+        {!selected.value || <option hidden value={selected.value} />}
+      </select>
       <Input
         {...restProps}
         ref={inputRef}
@@ -98,6 +114,7 @@ export const Combobox = withRef(function Combobox(
         placeholder={placeholder}
         autoComplete="off"
         disabled={disabled}
+        required={required}
         onBlur={(event) => {
           if (preventBlur.current) return (preventBlur.current = false);
 
@@ -109,7 +126,6 @@ export const Combobox = withRef(function Combobox(
         onChange={(event) => {
           setInput(event.target.value);
           setSearch(event.target.value);
-          onChange?.(event);
         }}
         onClick={(event) => {
           if (!open) {
@@ -182,16 +198,9 @@ export const Combobox = withRef(function Combobox(
               setSelected(selected);
               setInput(textContent(selected.option));
               setSearch(undefined);
+              propagateOnChange();
               focus(inputRef.current);
               close();
-              // Propagate `onChange` manually because <input> won't naturally
-              // when its value is changed programatically by React, and on next
-              // tick because React needs to update its value first.
-              setTimeout(() =>
-                valueRef.current?.dispatchEvent(
-                  new Event('change', { bubbles: true })
-                )
-              );
             }}
             onKeyDown={(event) => {
               // ignore confirmation keys
@@ -232,7 +241,14 @@ export const Combobox = withRef(function Combobox(
         <OptionListInit
           defaultValue={defaultValue}
           value={value}
-          onInit={(first) => setPlaceholder(textContent(first.option))}
+          onInit={(selected) => {
+            setSelected(selected);
+            if (!selected.value) setPlaceholder(textContent(selected.option));
+            else {
+              setInput(textContent(selected.option));
+              propagateOnChange();
+            }
+          }}
         >
           {children}
         </OptionListInit>
