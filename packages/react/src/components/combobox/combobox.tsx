@@ -131,9 +131,6 @@ export const Combobox = withRef(function Combobox(
           if (!open) {
             setOpen(true);
             preventBlur.current = true;
-            setTimeout(() =>
-              focus(optionsRef.current?.querySelector('input:enabled'))
-            );
           }
 
           onClick?.(event);
