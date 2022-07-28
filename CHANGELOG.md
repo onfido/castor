@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.2](https://github.com/onfido/castor/compare/v2.2.1...v2.2.2) (2022-07-28)
+
+### Bug Fixes
+
+- **react:** don't focus on 1st element when opening dropdown with click ([#1856](https://github.com/onfido/castor/issues/1856)) ([e448dfa](https://github.com/onfido/castor/commit/e448dfa83bf7d823db1dc3fa1478afb2317b059d))
+
 ### [2.2.1](https://github.com/onfido/castor/compare/v2.2.0...v2.2.1) (2022-07-25)
 
 ### Bug Fixes
