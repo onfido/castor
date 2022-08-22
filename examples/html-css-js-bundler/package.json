@@ -12,6 +12,6 @@
     "@onfido/castor-icons": "*"
   },
   "devDependencies": {
-    "vite": "^3.0.8"
+    "vite": "^3.0.9"
   }
 }
