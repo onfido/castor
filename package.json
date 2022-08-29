@@ -44,7 +44,7 @@
     "release": "HUSKY=0 standard-version"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.3",
+    "@commitlint/cli": "^17.1.1",
     "@commitlint/config-conventional": "^17.0.3",
     "@cypress/code-coverage": "^3.10.0",
     "@onfido/castor-icons": "*",
