@@ -6905,10 +6905,10 @@ es-array-method-boxes-properly@^1.0.0:
   resolved "https://registry.yarnpkg.com/es-array-method-boxes-properly/-/es-array-method-boxes-properly-1.0.0.tgz#873f3e84418de4ee19c5be752990b2e44718d09e"
   integrity sha512-wd6JXUmyHmt8T5a2xreUwKcGPq6f1f+WwIJkijUqiGcJz1qqnZgP6XIK+QyIWU5lT7imeNxUll48bziG+TSYcA==
 
-es-check@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/es-check/-/es-check-7.0.0.tgz#50c1273fd5fca2c44b5ed8d8ddfbd8ad4759934a"
-  integrity sha512-hmx2z4kPNEQWKzQrE1b1bA+g16zbWpilFymFdLDDoZKsxJITvj5xScigMl56X3D+NRlzasJKPEAHTyH6D+mGDQ==
+es-check@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/es-check/-/es-check-7.0.1.tgz#cf44b603f2c4cf9c5a585978bdf2631d1fa22102"
+  integrity sha512-I2+Wov4dEikUjn4xnJwW6YmbhPXzgtqT9kXfron2P7YzHBuzwVQPQn446VIBUgtiNujagtPfMts3/whNydgx/g==
   dependencies:
     acorn "^8.7.0"
     commander "^9.4.0"
