@@ -2118,9 +2118,9 @@
     rimraf "^3.0.2"
 
 "@onfido/castor-icons@*":
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-2.12.0.tgz#c130a877280defd2052ca6e592fe02f246802a4f"
-  integrity sha512-nGWkcE99zEDoFrzu2Za/SogvSLw++89O9Mua88MiE50+z1n461fGz55FUfPGSozpsewBeVHcvU7NBmBptWkmzg==
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/@onfido/castor-icons/-/castor-icons-2.13.0.tgz#20a099958950102d81608a585e076bb8d7077527"
+  integrity sha512-ZTgIAqQV8u/iXxe919I5H0ExYOyiN5k/LNlgHMlp7y/xGqK7Cj4QPOGHl9smVGDm1lW9kSMq0yqc4lczCHOTtA==
 
 "@onfido/castor-tokens@^1.0.0-beta.5":
   version "1.0.0-beta.5"
@@ -6177,10 +6177,10 @@ csstype@^2.5.7:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.19.tgz#feeb5aae89020bb389e1f63669a5ed490e391caa"
   integrity sha512-ZVxXaNy28/k3kJg0Fou5MiYpp88j7H9hLZp8PDC3jV0WFjfH5E9xHb56L0W59cPbKbcHXeP4qyT8PrHp8t6LcQ==
 
-csstype@^3.0.2, csstype@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.0.tgz#4ddcac3718d787cf9df0d1b7d15033925c8f29f2"
-  integrity sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==
+csstype@^3.0.2, csstype@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
+  integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
