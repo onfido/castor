@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "@onfido/castor-tokens": "^1.0.0-beta.5",
-    "csstype": "^3.1.0"
+    "csstype": "^3.1.1"
   },
   "peerDependencies": {
     "@onfido/castor-icons": ">=1.0.0"
