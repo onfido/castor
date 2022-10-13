@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-Changes `swithcTheme` type issue with `@types/node` v18.8.4.
+Changes `switchTheme` type issue with `@types/node` v18.8.4.
 
 ### [2.2.2](https://github.com/onfido/castor/compare/v2.2.1...v2.2.2) (2022-07-28)
 
