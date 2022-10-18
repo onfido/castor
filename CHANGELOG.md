@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.4](https://github.com/onfido/castor/compare/v2.2.3...v2.2.4) (2022-10-18)
+
+### Bug Fixes
+
+- **react:** make sure custom-select reacts to value change ([#2017](https://github.com/onfido/castor/issues/2017)) ([04f3fb9](https://github.com/onfido/castor/commit/04f3fb94fbf2c54e9a48fc2424ed622364976d60))
+
 ### [2.2.3](https://github.com/onfido/castor/compare/v2.2.2...v2.2.3) (2022-10-13)
 
 ### Bug Fixes
