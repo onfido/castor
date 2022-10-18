@@ -3,6 +3,7 @@ import React, {
   ForwardedRef,
   SyntheticEvent,
   useCallback,
+  useEffect,
   useState,
 } from 'react';
 import { useForwardedRef, withRef } from '../../../utils';
@@ -43,6 +44,10 @@ export const CustomSelect = withRef(function CustomSelect(
 ) {
   const selectRef = useForwardedRef(ref);
   const [selected, setSelected] = useState<OptionListEvent>({});
+
+  useEffect(() => {
+    if (selected.option) setSelected({ value });
+  }, [value]);
 
   const propagateOnChange = useCallback(() => {
     // propagate `onChange` manually because <select> won't naturally when its
