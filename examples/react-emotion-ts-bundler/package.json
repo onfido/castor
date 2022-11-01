@@ -10,7 +10,7 @@
   "dependencies": {
     "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
+    "@emotion/styled": "^11.10.5",
     "@onfido/castor": "*",
     "@onfido/castor-icons": "*",
     "react": "^17.0.2",
