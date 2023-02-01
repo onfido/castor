@@ -1,6 +1,6 @@
 import { c, classy, m } from '@onfido/castor';
 import { IndicatorContainerProps as BaseProps } from '@onfido/castor/src/internal';
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 export * from './splitContainerProps';
 
@@ -28,7 +28,7 @@ export type IndicatorContainerProps = BaseProps &
   Omit<LabelElementProps, 'children'> & {
     children: {
       children: LabelElementProps['children'];
-      input: JSX.IntrinsicElements['input'];
+      input: ReactElement & JSX.IntrinsicElements['input'];
     };
   };
 
