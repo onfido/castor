@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.5](https://github.com/onfido/castor/compare/v2.2.4...v2.2.5) (2023-02-22)
+
+### Bug Fixes
+
+- update IndicatorContainer children type ([#2103](https://github.com/onfido/castor/issues/2103)) ([a9d283d](https://github.com/onfido/castor/commit/a9d283d293bf6c9c893643a4d22ddb4bb3c4af5c))
+
 ### [2.2.4](https://github.com/onfido/castor/compare/v2.2.3...v2.2.4) (2022-10-18)
 
 ### Bug Fixes
