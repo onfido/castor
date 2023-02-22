@@ -122,6 +122,7 @@ export const Combobox = withRef(function Combobox(
           setSearch(undefined);
           close();
           onBlur?.(event);
+          return preventBlur.current;
         }}
         onChange={(event) => {
           setInput(event.target.value);
