@@ -23,7 +23,7 @@
     "es-check": "^7.0.1",
     "file-loader": "^6.2.0",
     "sass-loader": "^10.2.0",
-    "style-loader": "^2.0.0",
+    "style-loader": "^3.3.1",
     "webpack": "^4.46.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^3.11.3"
