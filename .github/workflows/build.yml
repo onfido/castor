@@ -54,7 +54,7 @@ jobs:
         run: yarn prototype
 
       - name: Inspect bundle size
-        uses: jackyef/bundlewatch-gh-action@0.2.0
+        uses: jackyef/bundlewatch-gh-action@0.2.1
         with:
           bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
           bundlewatch-config: .bundlewatchrc.json
