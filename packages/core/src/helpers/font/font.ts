@@ -1,5 +1,5 @@
-import { toCSS } from '@onfido/castor';
 import { Properties } from 'csstype';
+import { toCSS } from '../../utils';
 
 /**
  * Returns an object that represents a `Font`.

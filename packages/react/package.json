@@ -15,16 +15,9 @@
     "url": "https://github.com/onfido/castor/issues"
   },
   "homepage": "https://github.com/onfido/castor",
-  "types": "src/index.ts",
+  "types": "dist/index.d,ts",
   "files": [
-    "prototype.js*",
-    "index.js",
-    "dist",
-    "src",
-    "!src/**/*.spec.*",
-    "!src/**/*.story.*",
-    "!src/**/*.stories.*",
-    "!src/**/*.d.ts"
+    "dist"
   ],
   "peerDependencies": {
     "@onfido/castor": "^2.2.5",
