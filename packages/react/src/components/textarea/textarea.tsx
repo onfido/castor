@@ -1,7 +1,7 @@
 import { c, classy, m, TextareaProps as BaseProps } from '@onfido/castor';
-import { useField } from '@onfido/castor-react';
 import React, { useMemo } from 'react';
 import { withRef } from '../../utils';
+import { useField } from '../field/useField';
 
 export const Textarea = withRef(function Textarea(
   {

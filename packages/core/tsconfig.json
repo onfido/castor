@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["**/*"],
+  "include": ["src/index.ts"],
   "exclude": ["**/*.spec.*", "**/*.stories.*", "**/*.story.*"],
   "compilerOptions": { "rootDir": "src", "outDir": "dist", "sourceMap": true }
 }

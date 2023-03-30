@@ -1,6 +1,6 @@
 import { FieldState } from '@onfido/castor';
-import { useForm } from '@onfido/castor-react';
 import { createContext, useContext } from 'react';
+import { useForm } from '../form/useForm';
 
 const FieldContext = createContext({} as FieldState);
 

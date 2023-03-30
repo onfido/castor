@@ -1,4 +1,4 @@
-import { Color, ColorPalette } from '@onfido/castor';
+import { Color, ColorPalette } from '@onfido/castor-tokens';
 
 /**
  * Returns the rgba value of a specified (palette or theme) color.

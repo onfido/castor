@@ -6,12 +6,6 @@ import {
   PopoverProps,
   SelectProps,
 } from '@onfido/castor';
-import {
-  Input,
-  OptionList,
-  OptionListEvent,
-  Popover,
-} from '@onfido/castor-react';
 import React, {
   ForwardedRef,
   SyntheticEvent,
@@ -22,7 +16,10 @@ import React, {
 } from 'react';
 import { MaybeIcon } from '../../internal';
 import { textContent, withRef } from '../../utils';
+import { Input } from '../input/input';
+import { OptionList, OptionListEvent } from '../option-list/option-list';
 import { OptionListInit } from '../option-list/options-list-init';
+import { Popover } from '../popover/popover';
 
 export interface ComboboxProps
   extends BaseProps,

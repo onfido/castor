@@ -1,4 +1,4 @@
-import { BorderRadius } from '@onfido/castor';
+import { BorderRadius } from '@onfido/castor-tokens';
 
 /**
  * Returns the border-radius CSS var of a specified size.

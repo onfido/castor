@@ -3,7 +3,7 @@
   "exclude": ["node_modules/**/*", "e2e/**/*", "examples/**/*"],
   "compilerOptions": {
     "alwaysStrict": true,
-    "declaration": false,
+    "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,

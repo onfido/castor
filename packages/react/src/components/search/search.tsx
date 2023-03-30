@@ -1,8 +1,8 @@
 import { c, classy } from '@onfido/castor';
-import { Input, InputProps } from '@onfido/castor-react';
 import React from 'react';
 import { MaybeIcon } from '../../internal';
 import { withRef } from '../../utils';
+import { Input, InputProps } from '../input/input';
 
 /**
  * `Search` by default uses an `Icon` that requires `Icons` (SVG sprite) to be

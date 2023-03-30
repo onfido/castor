@@ -1,7 +1,7 @@
 import { c, classy, m, SelectProps } from '@onfido/castor';
-import { useField } from '@onfido/castor-react';
 import React from 'react';
 import { withRef } from '../../../utils';
+import { useField } from '../../field/useField';
 
 export const NativeSelect = withRef(function NativeSelect(
   { className, invalid, ...restProps }: NativeSelectProps,

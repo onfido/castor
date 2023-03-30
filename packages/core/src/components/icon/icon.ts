@@ -1,5 +1,5 @@
-import { Color } from '@onfido/castor';
 import { IconName } from '@onfido/castor-icons';
+import { Color } from '@onfido/castor-tokens';
 
 export type IconProps = (Hidden | Labeled) & {
   name: IconName;
