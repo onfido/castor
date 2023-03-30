@@ -1,8 +1,8 @@
 import { c, CheckboxProps as BaseProps, classy, m } from '@onfido/castor';
-import { useField } from '@onfido/castor-react';
 import React from 'react';
 import { IndicatorContainer, splitContainerProps } from '../../internal';
 import { withRef } from '../../utils';
+import { useField } from '../field/useField';
 
 let count = 0;
 

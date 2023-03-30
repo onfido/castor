@@ -1,7 +1,7 @@
 import { ButtonProps as BaseProps, c, classy, m } from '@onfido/castor';
-import { useField } from '@onfido/castor-react';
 import React, { ForwardedRef, HTMLAttributes } from 'react';
 import { withRef } from '../../utils';
+import { useField } from '../field/useField';
 
 export const Button: ButtonComponent = withRef(function Button(
   {

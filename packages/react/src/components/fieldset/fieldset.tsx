@@ -1,7 +1,7 @@
 import { c, classy } from '@onfido/castor';
-import { useField } from '@onfido/castor-react';
 import React from 'react';
 import { withRef } from '../../utils';
+import { useField } from '../field/useField';
 
 export const Fieldset = withRef(function Fieldset(
   { className, ...restProps }: FieldsetProps,

@@ -1,7 +1,8 @@
 import { c, classy, m, ValidationProps as BaseProps } from '@onfido/castor';
-import { Icon, useField } from '@onfido/castor-react';
 import React from 'react';
 import { withRef } from '../../utils';
+import { useField } from '../field/useField';
+import { Icon } from '../icon/icon';
 
 /**
  * Intended to be used alongside field components.

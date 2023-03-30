@@ -1,7 +1,7 @@
 import { c, classy } from '@onfido/castor';
 import { IconName } from '@onfido/castor-icons';
-import { Icon } from '@onfido/castor-react';
 import React from 'react';
+import { Icon } from '../../components';
 
 interface Props {
   icon?: JSX.Element;

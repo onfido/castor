@@ -1,7 +1,7 @@
 import { c, classy, InputProps as BaseProps, m } from '@onfido/castor';
-import { useField } from '@onfido/castor-react';
 import React, { useMemo } from 'react';
 import { withRef } from '../../utils';
+import { useField } from '../field/useField';
 
 export const Input = withRef(function Input(
   {

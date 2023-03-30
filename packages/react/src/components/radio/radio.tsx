@@ -1,8 +1,8 @@
 import { c, classy, m, RadioProps as BaseProps } from '@onfido/castor';
-import { useField } from '@onfido/castor-react';
 import React, { useMemo } from 'react';
 import { IndicatorContainer, splitContainerProps } from '../../internal';
 import { withRef } from '../../utils';
+import { useField } from '../field/useField';
 
 export const Radio = withRef(function Radio(
   {
