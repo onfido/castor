@@ -1,6 +1,6 @@
 {
   "name": "@onfido/castor",
-  "version": "2.2.5",
+  "version": "2.3.0",
   "description": "Onfido's design system.",
   "author": "Onfido",
   "license": "Apache-2.0",
@@ -17,14 +17,9 @@
     "url": "https://github.com/onfido/castor/issues"
   },
   "homepage": "https://github.com/onfido/castor",
-  "types": "src/index.ts",
+  "types": "dist/index.d.ts",
   "files": [
-    "index.js",
-    "index.scss",
-    "dist",
-    "src",
-    "!src/**/*.spec.*",
-    "!src/**/*.d.ts"
+    "dist"
   ],
   "dependencies": {
     "csstype": "^3.1.1"
