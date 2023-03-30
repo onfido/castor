@@ -15,7 +15,7 @@
     "url": "https://github.com/onfido/castor/issues"
   },
   "homepage": "https://github.com/onfido/castor",
-  "types": "dist/index.d,ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
