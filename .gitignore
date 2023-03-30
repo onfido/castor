@@ -10,6 +10,7 @@ Desktop.ini
 .idea
 *.sublime-project
 *.sublime-workspace
+*.iml
 
 # Logs
 *.log*
