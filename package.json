@@ -49,7 +49,7 @@
     "@cypress/code-coverage": "^3.10.0",
     "@onfido/castor-icons": "*",
     "@storybook/addon-a11y": "^6.5.12",
-    "@storybook/addon-controls": "^6.5.12",
+    "@storybook/addon-controls": "^7.0.15",
     "@storybook/addon-docs": "^6.5.12",
     "@storybook/addon-google-analytics": "^6.2.9",
     "@storybook/addon-postcss": "^2.0.0",
