@@ -45,13 +45,13 @@ jobs:
         run: yarn prototype
 
       - name: Publish core to npm
-        uses: JS-DevTools/npm-publish@v1.4.3
+        uses: JS-DevTools/npm-publish@v2.2.0
         with:
           package: ./packages/core/package.json
           token: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish React to npm
-        uses: JS-DevTools/npm-publish@v1.4.3
+        uses: JS-DevTools/npm-publish@v2.2.0
         with:
           package: ./packages/react/package.json
           token: ${{ secrets.NPM_TOKEN }}
