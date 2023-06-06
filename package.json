@@ -62,7 +62,7 @@
     "@types/jest": "^27.5.0",
     "@types/react": "^17.0.43",
     "@types/react-textarea-autosize": "^8.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.9",
     "@typescript-eslint/parser": "^5.40.1",
     "bundlewatch": "^0.3.3",
     "commitizen": "^4.2.5",
