@@ -1,3 +1,4 @@
+export * from './accordion/accordion';
 export * from './asterisk/asterisk';
 export * from './button/button';
 export * from './checkbox/checkbox';

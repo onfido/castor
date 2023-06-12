@@ -42,6 +42,8 @@
 @forward './tooltip/tooltip';
 @use './validation/validation';
 @forward './validation/validation';
+@use './accordion/accordion.scss';
+@forward './accordion/accordion.scss';
 
 @mixin components() {
   @include asterisk.Asterisk();
@@ -66,4 +68,5 @@
   @include textarea.Textarea();
   @include tooltip.Tooltip();
   @include validation.Validation();
+  @include accordion.Accordion();
 }
