@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/onfido/castor/compare/v2.2.5...v2.3.0) (2023-10-02)
+
+### Features
+
+- **react:** accordion component ([#2295](https://github.com/onfido/castor/issues/2295)) ([1e86c3f](https://github.com/onfido/castor/commit/1e86c3f178f7476e670622b442d8cd056866650d))
+
 ### [2.2.5](https://github.com/onfido/castor/compare/v2.2.4...v2.2.5) (2023-02-22)
 
 ### Bug Fixes
