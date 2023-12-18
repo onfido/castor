@@ -39,7 +39,7 @@ jobs:
         run: yarn test
 
       - name: Keep artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: coverage
@@ -81,7 +81,7 @@ jobs:
         run: yarn e2e
 
       - name: Keep artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: coverage
@@ -123,7 +123,7 @@ jobs:
         run: yarn screenshot
 
       - name: Keep artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: screenshots
