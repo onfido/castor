@@ -53,6 +53,7 @@ export function Option({
       }}
     >
       <input
+        aria-hidden={true}
         className={classy(c('option-input'))}
         checked={selected}
         disabled={disabled}
