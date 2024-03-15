@@ -38,6 +38,7 @@ export const Validation = withRef(function Validation(
       {...restProps}
       ref={ref}
       className={classy(c('validation'), m(state), className)}
+      role="alert"
     >
       {withIcon && <Icon name="error" aria-hidden="true" />}
       {children}
