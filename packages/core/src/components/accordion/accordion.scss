@@ -96,9 +96,9 @@
     &.-with-separator::before {
       border-bottom: 1px solid helpers.color('border-separator');
       content: '';
-      left: var(--padding);
+      left: 0;
       position: absolute;
-      right: var(--padding);
+      right: 0;
       top: 0;
     }
   }
