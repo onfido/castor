@@ -12,6 +12,7 @@ export * from './progress/progress';
 export * from './radio/radio';
 export * from './select/select';
 export * from './spinner/spinner';
+export * from './switch/switch';
 export * from './textarea/textarea';
 export * from './tooltip/tooltip';
 export * from './validation/validation';

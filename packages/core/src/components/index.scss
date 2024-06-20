@@ -44,6 +44,8 @@
 @forward './validation/validation';
 @use './accordion/accordion.scss';
 @forward './accordion/accordion.scss';
+@use './switch/switch.scss';
+@forward './switch/switch.scss';
 
 @mixin components() {
   @include asterisk.Asterisk();
@@ -69,4 +71,5 @@
   @include tooltip.Tooltip();
   @include validation.Validation();
   @include accordion.Accordion();
+  @include switch.Switch();
 }

@@ -1,0 +1,132 @@
+/* stylelint-disable selector-max-compound-selectors */
+
+@use '../../animations';
+@use '../../helpers';
+@use '../../mixins';
+
+@mixin Switch() {
+  @if not mixins.includes('Switch') {
+    @include _Switch();
+  }
+}
+
+@mixin _Switch() {
+  .ods-switch-label {
+    align-items: center;
+    color: helpers.color('content-main');
+    cursor: pointer;
+    display: inline-flex;
+    gap: helpers.space(1);
+    position: relative;
+
+    input {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+    }
+
+    // Hover
+    input + .ods-switch-indicator:hover {
+      border-color: #636670;
+    }
+
+    input + .ods-switch-indicator:hover::before {
+      background-color: #636670;
+    }
+
+    // Checked
+    input:checked + .ods-switch-indicator {
+      background-color: helpers.color('background-input-selected');
+      border-color: helpers.color('border-input-selected');
+    }
+
+    input:checked + .ods-switch-indicator::before {
+      background-color: helpers.color('background-input');
+      transform: translateY(-50%) translateX(helpers.space(2));
+    }
+
+    input:checked + .ods-switch-indicator .ods-icon {
+      opacity: 1;
+      transform: translateY(-50%) translateX(helpers.space(2));
+    }
+
+    input:checked + .ods-switch-indicator:hover {
+      background-color: #5666f9;
+      border-color: #5666f9;
+    }
+
+    input:checked + .ods-switch-indicator:hover .ods-icon {
+      border-color: #5666f9;
+    }
+
+    // Focus
+    input:focus + .ods-switch-indicator {
+      box-shadow: //
+        0 0 0 helpers.space(0.25) helpers.color('border-focus-inner'),
+        0 0 0 helpers.space(0.5) helpers.color('border-action-focus');
+    }
+
+    // Disabled
+    input:disabled + .ods-switch-indicator {
+      cursor: not-allowed;
+    }
+
+    input:disabled + .ods-switch-indicator,
+    input:disabled + .ods-switch-indicator:hover,
+    input:disabled + .ods-switch-indicator .ods-icon,
+    input:disabled + .ods-switch-indicator:hover .ods-icon {
+      border-color: helpers.color('border-disabled');
+    }
+
+    input:disabled:checked + .ods-switch-indicator,
+    input:disabled + .ods-switch-indicator::before {
+      background-color: helpers.color('background-disabled');
+    }
+
+    input:disabled:checked + .ods-switch-indicator::before {
+      background-color: #fff;
+    }
+  }
+
+  .ods-switch-indicator {
+    $border-width: helpers.space(0.25);
+
+    background-color: helpers.color('background-input');
+    border: $border-width solid helpers.color('border-input');
+    border-radius: helpers.border-radius('full');
+    box-sizing: border-box;
+    height: helpers.space(3);
+    margin: helpers.space(1.5) helpers.space(1);
+    position: relative;
+    width: helpers.space(5);
+
+    // slider
+    &::before {
+      background-color: #828893;
+      border-radius: helpers.border-radius('full');
+      content: '';
+      display: inline-block;
+      height: 18px;
+      left: 1px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform calc(var(--ods-transition-duration) * 2) ease-out;
+      width: 18px;
+    }
+
+    // check icon
+    .ods-icon {
+      content: '';
+      fill: helpers.color('border-input-selected');
+      height: helpers.space(2);
+      left: 2px;
+      opacity: 0;
+      position: absolute;
+      top: calc(50% - 1px);
+      transform: translateY(-50%) translateX(0);
+      transition: transform calc(var(--ods-transition-duration) * 2) ease-out;
+      width: helpers.space(2);
+    }
+  }
+}
