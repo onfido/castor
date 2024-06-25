@@ -1,9 +1,0 @@
-$_base: 8px;
-
-@function space($multiplier) {
-  @if type-of($multiplier) != number {
-    @error '$multiplier must be a number';
-  }
-
-  @return $multiplier * $_base;
-}
