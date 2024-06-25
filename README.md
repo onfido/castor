@@ -24,6 +24,7 @@ If you use React:
 
 ```sh
 npm install @onfido/castor-react
+
 ```
 
 Also setup following [React documentation](./packages/react).
