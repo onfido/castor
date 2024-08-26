@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/compare/v2.2.5...v2.4.0) (2024-08-23)
+
+### Features
+
+- add github publish ([ec4d136](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/ec4d136a49bce982d96a7fd1694343d419fdb884))
+- add switch component ([49065d8](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/49065d82dbc26df26d930732e3f9031a57978b5c))
+- migrate ci ([ff12bb3](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/ff12bb30eedf217c4b956e842e39ee1f49c76565))
+- **react:** accordion component ([#2295](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/issues/2295)) ([1e86c3f](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/1e86c3f178f7476e670622b442d8cd056866650d))
+- test new e2e ([f690e6b](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/f690e6bdb4f635e8c0396b0c58e5abc1fd939adc))
+
+### Bug Fixes
+
+- **a11y:** set to hidden input ([#2560](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/issues/2560)) ([a342a0e](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/a342a0e4a5d44532d4da2fd761760ab293e35102))
+- remove old github files ([9f9eadf](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/9f9eadfd719289ead28e3fa71e833bac17091d5f))
+- select nbsp ([c1d4ddb](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/c1d4ddb296ac693f280b8dcbaa513d3919c5fa47))
+- update e2e screenshots ([11bf032](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/11bf0324109ba40ee574207c2fe27eb3d33631d7))
+
 ## [2.3.0](https://github.com/onfido/castor/compare/v2.2.5...v2.3.0) (2023-10-02)
 
 ### Features
