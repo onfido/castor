@@ -1,6 +1,6 @@
 {
   "name": "castor-react-scss-js-webpack",
-  "version": "2.4.0",
+  "version": "2.4.2",
   "private": true,
   "scripts": {
     "start": "webpack serve --mode development --open --hot",
