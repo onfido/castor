@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.3](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/compare/v2.4.2...v2.4.3) (2024-08-28)
+
+### Features
+
+- release jobs ([92aaf47](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/92aaf47d613893f916baadbfdd4dac3f934dbaa8))
+
+### Bug Fixes
+
+- e2e ([e9857e8](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/e9857e8461da6f99c526f88886834d06a04d21bd))
+
 ### [2.4.2](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/compare/v2.4.1...v2.4.2) (2024-08-27)
 
 ## [2.4.0](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/compare/v2.2.5...v2.4.0) (2024-08-23)
