@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.4](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/compare/v2.4.3...v2.4.4) (2024-09-09)
+
+### Features
+
+- add optional id override to form inputs ([4460b9e](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/4460b9eb83b3442116763df062a273be738c3415))
+
 ### [2.4.3](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/compare/v2.4.2...v2.4.3) (2024-08-28)
 
 ### Features
