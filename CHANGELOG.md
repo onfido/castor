@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.7](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/compare/v2.4.6...v2.4.7) (2024-09-25)
+
+### Bug Fixes
+
+- **STUDIO-4063:** assign minimum width to switch indicator ([2bd879f](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/2bd879f2479824f0714edd34339b31cf021cf1f5))
+
 ### [2.4.6](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/compare/v2.4.5...v2.4.6) (2024-09-16)
 
 ### Bug Fixes
