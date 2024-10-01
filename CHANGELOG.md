@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.8](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/compare/v2.4.7...v2.4.8) (2024-10-01)
+
+### Bug Fixes
+
+- **sdk-4360:** combo box voice over accessibility ([ad49b22](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/ad49b220767dc44f542fa072368fb408f0522dff))
+- **sdk-4360:** combo box voice over accessibility ([5aeeb85](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/5aeeb85de927496ecc1a748498c3d93530d5589e))
+- **sdk-4360:** combo box voice over accessibility ([3ac288e](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/3ac288e4bd7cd425c3f38f0f1db07b1307070a69))
+
 ### [2.4.7](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/compare/v2.4.6...v2.4.7) (2024-09-25)
 
 ### Bug Fixes
