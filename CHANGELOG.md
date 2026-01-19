@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.3](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/compare/v2.4.9...v2.5.3) (2026-01-19)
+
+### Features
+
+- add nexus deploy ci ([c282ff2](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/c282ff2ed2645c42834c89b7456d52703fd36e07))
+- **CASTOR-1:** figma code connect files scripts and instructions ([9e8986e](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/9e8986ea5bc9c6d071a9ec98d3488b74ce25bbb6))
+- move storybook to gitlab pages ([6149574](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/6149574af137593850a2a24971425b28b0047616))
+
+### Bug Fixes
+
+- add core/src/integrated as artifacts to build job ([d6a1935](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/d6a193581b32755c4cbb0bf5b21a78482167eb12))
+- add integrate to the build process ([d873063](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/d8730637c1bfc2629b2a88bfa3d6ea61f25f1803))
+- **CASTOR-1:** excluded figma files frop typescript checking ([468bd89](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/468bd89c75d7d4d53d5c380a8590f612c6d0522f))
+- **CASTOR-1:** excluded figma files frop typescript checking ([2c12d11](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/2c12d1177ad3f6fbfa69b23a545394f2233ece58))
+- **castor-1:** fixed code connect instructions ([6bb7d33](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/6bb7d3336c5fdeb718ba7abdf0564587911d2825))
+- **CASTOR-1:** improved naming of package commands ([46651d9](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/46651d99afee91c51d0693c41988013adbf4b0e4))
+- **CASTOR-1:** made code connect dependency optional and fixed package commands ([99fc8b7](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/99fc8b7140d8cf5d13131367f0d7f1bef86ed7a3))
+- **castor-1:** updated script and build instructions ([5d0d9e4](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/5d0d9e4cba63e3aa917a7d498704d0850d7ace52))
+- fix export from ./dist ([b01202a](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/b01202a73ec44d4e54a1286eedb67abe0953d1fe))
+- nexus ci job ([f3e80ef](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/f3e80ef500abba97576e7c1b0d650032baac7cd1))
+- update changelog for 2.5.1 ([6627fdc](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/6627fdc3a66cf2487b6256f69f80782f22da43d3))
+
 ### [2.5.2](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/compare/v2.4.9...v2.5.2) (2026-01-16)
 
 ### Bug Fixes

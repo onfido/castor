@@ -1,6 +1,6 @@
 {
   "name": "html-scss-ts-bundler",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "type": "module",
   "private": true,
   "scripts": {
