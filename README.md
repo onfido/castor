@@ -2,7 +2,7 @@
 
 [![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://castor.vercel.app)
 
-_Castor_ is Onfido's design system. It has been designed to support different renderers, and plain HTML + CSS.
+_Castor_ is the design system used by Entrust's identity verification products. It has been designed to support different renderers, and plain HTML + CSS.
 
 ## Browser support
 

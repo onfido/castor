@@ -3,7 +3,7 @@
 [![npm version](https://badgen.net/npm/v/@onfido/castor-react)](https://www.npmjs.com/package/@onfido/castor-react)
 [![Bundle size](https://badgen.net/bundlephobia/minzip/@onfido/castor-react)](https://bundlephobia.com/result?p=@onfido/castor-react)
 
-_Castor React_ is Onfido's design system addition. It provides [React](https://reactjs.org/) component library.
+_Castor React_ is the design system used by Entrust identity verification products. It provides [React](https://reactjs.org/) component library.
 
 ## Get started
 

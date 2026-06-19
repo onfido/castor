@@ -3,7 +3,7 @@
 [![npm version](https://badgen.net/npm/v/@onfido/castor)](https://www.npmjs.com/package/@onfido/castor)
 [![Bundle size](https://badgen.net/bundlephobia/minzip/@onfido/castor)](https://bundlephobia.com/result?p=@onfido/castor)
 
-_Castor_ is Onfido's design system.
+_Castor_ is the design system that powers Entrust's identify verification products.
 
 ## Get started
 

@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.4](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/compare/v2.5.3...v2.5.4) (2026-06-19)
+
+### Features
+
+- deploy storybook to vercel ([95f67d0](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/95f67d0c518880aeb7b56056b91e8864c7218fa2))
+
+### Bug Fixes
+
+- **react:** prevent native select dropdown opening in Safari ([70ef993](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/commit/70ef9938c213580930803d4abafff6c13fd9268b))
+
 ### [2.5.3](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/sdks/castor/compare/v2.4.9...v2.5.3) (2026-01-19)
 
 ### Features
